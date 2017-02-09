@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 - Changed the text on the individual transaction entry pages to more closely align with our church's vision.
+- Changed the giving history filters to show a "Last Year" option
 
 ## [1.2.3] - 2017-01-09
 ### Added

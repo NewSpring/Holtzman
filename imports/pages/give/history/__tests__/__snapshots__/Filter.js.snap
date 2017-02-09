@@ -38,12 +38,12 @@ exports[`test doesn't render family members if there are none 1`] = `
           items={
             Array [
               Object {
-                "label": "Last Month",
-                "value": "LastMonth",
+                "label": "2016",
+                "value": "LastYear",
               },
               Object {
-                "label": "Last 6 Months",
-                "value": "LastSixMonths",
+                "label": "Last Month",
+                "value": "LastMonth",
               },
               Object {
                 "label": "Year To Date",
@@ -193,12 +193,12 @@ exports[`test renders family members when expanded is true 1`] = `
           items={
             Array [
               Object {
-                "label": "Last Month",
-                "value": "LastMonth",
+                "label": "2016",
+                "value": "LastYear",
               },
               Object {
-                "label": "Last 6 Months",
-                "value": "LastSixMonths",
+                "label": "Last Month",
+                "value": "LastMonth",
               },
               Object {
                 "label": "Year To Date",
@@ -376,12 +376,12 @@ exports[`test works with nickname 1`] = `
           items={
             Array [
               Object {
-                "label": "Last Month",
-                "value": "LastMonth",
+                "label": "2016",
+                "value": "LastYear",
               },
               Object {
-                "label": "Last 6 Months",
-                "value": "LastSixMonths",
+                "label": "Last Month",
+                "value": "LastMonth",
               },
               Object {
                 "label": "Year To Date",

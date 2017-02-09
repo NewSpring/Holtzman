@@ -174,20 +174,19 @@ it("dataRangeClick with LastMonth value sets the start and end dates correctly",
   expect(wrapper.state().end).toEqual("");
 })
 
-it("dataRangeClick with LastSixMonths value sets the start and end dates correctly", () => {
+it("dataRangeClick with LastYear value sets the start and end dates correctly", () => {
   const wrapper = shallow(generateComponent());
   wrapper.setState({
     start: "",
     end: "",
   });
 
-  // this should set a 6 month range
-  wrapper.instance().dateRangeClick("LastSixMonths");
-  expect(moment(wrapper.state().start).format("L")).toEqual(moment().subtract(6, "months").format("L"));
-  expect(moment(wrapper.state().end).format("L")).toEqual(moment().format("L"));
+  wrapper.instance().dateRangeClick("LastYear");
+  expect(moment(wrapper.state().start).format("L")).toEqual(moment().subtract(1, "year").startOf("year").format("L"));
+  expect(moment(wrapper.state().end).format("L")).toEqual(moment().subtract(1, "year").endOf("year").format("L"));
 
   // calling it again should reset the start and end dates
-  wrapper.instance().dateRangeClick("LastSixMonths");
+  wrapper.instance().dateRangeClick("LastYear");
   expect(wrapper.state().start).toEqual("");
   expect(wrapper.state().end).toEqual("");
 })
