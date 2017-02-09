@@ -1,0 +1,72 @@
+// @flow
+import { Link } from "react-router";
+
+import categories from "../../../../util/categories";
+import time from "../../../../util/time";
+
+function isReady(content: Object) {
+  return Object.keys(content).length;
+}
+
+function getTimeStampStyles() {
+  const styles = {
+    marginTop: "5px",
+  };
+
+  return styles;
+}
+
+function getIconClasses(content: Object) {
+  if (isReady(content)) {
+    let iconClasses = "text-light-primary soft-half-right";
+    iconClasses = iconClasses += ` ${categories.icon(content)}`;
+    return iconClasses;
+  }
+  return null;
+}
+
+function getImage(images: Object, label: string = "2:1") {
+  let selectedImage = "";
+
+  for (const image of images) {
+    if (image.fileLabel === label) {
+      selectedImage = image.url;
+      break;
+    }
+    selectedImage = image.url;
+  }
+  return selectedImage;
+}
+
+type IHero = {
+  content: Object,
+  title?: string,
+  hideDate?: boolean,
+  link?: string,
+  image?: string,
+}
+
+const Hero = ({
+  content,
+  title,
+  hideDate,
+  link,
+  image,
+}: IHero) => (
+  <Link
+    to={link || content.meta.urlTitle}
+  >
+    <section className={`hard floating--bottom text-left background--dark-primary ratio--square ${(content.content.images) ? "background--fill overlay--gradient" : ""}`} style={{ backgroundImage: `url('${image || getImage(content.content.images, "1:1")}')` }}>
+      <div className="one-whole overlay__item floating__item soft">
+        <h3 className="text-light-primary flush soft-half-bottom capitalize">{title || content.title}</h3>
+        <i className={getIconClasses(content)} />
+        <h7 className="text-light-primary">{isReady(content) ? categories.name(content) : ""}</h7>
+        {(content && !hideDate) && <h7 className="text-light-primary text-right float-right" style={getTimeStampStyles()}>
+          {isReady(content) ? time.relative(content) : ""}
+        </h7>}
+      </div>
+    </section>
+  </Link>
+);
+
+export default Hero;

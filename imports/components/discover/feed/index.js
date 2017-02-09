@@ -3,16 +3,18 @@ import { graphql } from "react-apollo";
 import { connect } from "react-redux";
 import gql from "graphql-tag";
 
+import withPublicLikes from "../../@enhancers/likes";
 import Layout from "./Layout";
 
 class DiscoverWithoutData extends Component {
 
   static propTypes = {
     discover: PropTypes.object.isRequired,
+    publicLikes: PropTypes.object.isRequired,
   }
 
   render() {
-    const { discover } = this.props;
+    const { discover, publicLikes } = this.props;
     if (discover.loading) return null; // XXX <Loading />
 
     const featured = discover.items.filter((x) => (x.status.toLowerCase() === "featured"));
@@ -26,6 +28,7 @@ class DiscoverWithoutData extends Component {
         featuredItem={featuredItem}
         recommendedItems={recommendedItems}
         textItems={open}
+        publicLikes={publicLikes}
       />
     );
   }
@@ -38,6 +41,7 @@ const DISCOVER_QUERY = gql`
       title
       id
       status
+      channelName
       meta {
         urlTitle
         date
@@ -66,7 +70,7 @@ const withDiscover = graphql(DISCOVER_QUERY, {
 
 const withRedux = connect();
 
-export default withRedux(withDiscover(DiscoverWithoutData));
+export default withRedux(withDiscover(withPublicLikes(DiscoverWithoutData)));
 
 export {
   DiscoverWithoutData,

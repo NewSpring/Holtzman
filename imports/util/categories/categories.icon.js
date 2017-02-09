@@ -10,6 +10,8 @@ function categoryIcon(contentItem) {
       return "icon-category-video";
     case "newspring_albums":
       return "icon-category-audio";
+    case "promotions_newspring":
+      return "icon-leaf-outline";
     case "articles":
     case "devotionals":
     case "stories":
