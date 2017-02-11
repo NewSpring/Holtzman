@@ -2,7 +2,6 @@ import { Component, PropTypes } from "react";
 
 import Forms from "../../../components/@primitives/UI/forms";
 import { Error as Err, Loading } from "../../../components/@primitives/UI/states";
-import Checkbox from "../../../components/@primitives/UI/forms/Checkbox";
 
 export default class Join extends Component {
 
@@ -15,9 +14,7 @@ export default class Join extends Component {
   state = {
     state: "default",
     err: null,
-    emailCommunicationPreferenceChecked: false,
-    phoneCommunicationPreferenceChecked: false,
-    textCommunicationPreferenceChecked: false,
+    showPhoneBox: false,
   };
 
   onClick = (e) => {
@@ -35,38 +32,25 @@ export default class Join extends Component {
     });
   }
 
-  toggleCheckbox = (checkboxName: String) => {
-    console.log("checkboxName = ", checkboxName);
-    switch (checkboxName) {
-      case "emailCommunicationPreference":
-        console.log("checking email communication preference");
-        this.setState({ emailCommunicationPreferenceChecked: true });
-        this.setState({ phoneCommunicationPreferenceChecked: false });
-        this.setState({ textCommunicationPreferenceChecked: false });
-        break;
-      case "phoneCommunicationPreference":
-        console.log("checking phone communication preference");
-        this.setState({ emailCommunicationPreferenceChecked: false });
-        this.setState({ phoneCommunicationPreferenceChecked: true });
-        this.setState({ textCommunicationPreferenceChecked: false });
-        break;
-      case "textCommunicationPreference":
-        console.log("checking text communication preference");
-        this.setState({ emailCommunicationPreferenceChecked: false });
-        this.setState({ phoneCommunicationPreferenceChecked: false });
-        this.setState({ textCommunicationPreferenceChecked: true });
-        break;
-      default:
-        this.setState({ emailCommunicationPreferenceChecked: false });
-        this.setState({ phoneCommunicationPreferenceChecked: false });
-        this.setState({ textCommunicationPreferenceChecked: false });
+  showPhoneBox = (value: string) => {
+    let shouldShowPhoneBox = false;
+    if (value === "Phone" || value === "Text") {
+      console.log("gonna show a phone number box here");
+      shouldShowPhoneBox = true;
     }
+    this.setState({ showPhoneBox: shouldShowPhoneBox });
   }
 
   render() {
     const { group, onExit } = this.props;
     const leaders = group.members.filter((x) => (x.role.toLowerCase() === "leader"));
     const firstNames = leaders.map((x) => (x.person.nickName || x.person.firstName)).join(", ");
+    const communicationPreferences = [
+      { label: "No Preference", value: "No Preference" },
+      { label: "Email", value: "Email" },
+      { label: "Phone", value: "Phone" },
+      { label: "Text", value: "Text" },
+    ];
 
     const message = `\nHey ${firstNames},\n\nI'm interested in learning more about your group and ` +
       "looking forward to hearing from you soon!\n\nThanks!";
@@ -111,30 +95,14 @@ export default class Join extends Component {
               />
               <div className="text-left soft-bottom">
                 <h5 className="soft-half-bottom">Communication Preference</h5>
-                <Checkbox
-                  name="emailCommunicationPreference"
-                  classes={["soft-bottom display-inline-block soft-right push-double-right"]}
-                  defaultValue={false}
-                  clicked={() => this.toggleCheckbox("emailCommunicationPreference")}
-                >
-                  <span className="soft-half-top">Email</span>
-                </Checkbox>
-                <Checkbox
-                  name="phoneCommunicationPreference"
-                  classes={["soft-bottom display-inline-block soft-right push-double-right"]}
-                  defaultValue={false}
-                  clicked={() => this.toggleCheckbox("phoneCommunicationPreference")}
-                >
-                  <span className="soft-half-top">Phone</span>
-                </Checkbox>
-                <Checkbox
-                  name="textCommunicationPreference"
-                  classes={["soft-bottom display-inline-block soft-right push-double-right"]}
-                  defaultValue={false}
-                  clicked={() => this.toggleCheckbox("textCommunicationPreference")}
-                >
-                  <span className="soft-half-top">Text</span>
-                </Checkbox>
+                <Forms.Select
+                  defaultValue={"No Preference"}
+                  items={communicationPreferences}
+                  onChange={this.showPhoneBox}
+                />
+                {this.state.showPhoneBox && (
+                  <div>This is the phone box</div>
+                )}
               </div>
               <div className="grid">
                 <div className="grid__item one-half">
