@@ -1,6 +1,16 @@
 exports[`test does not render if guest checkout 1`] = `null`;
 
-exports[`test does not render if scheduling 1`] = `null`;
+exports[`test does not render if scheduling 1`] = `
+<div>
+  <p>
+    <small>
+      <em>
+        To save a payment, please give a one time contribution. We are sorry for any inconvenience this may cause.
+      </em>
+    </small>
+  </p>
+</div>
+`;
 
 exports[`test does not render if using saved account 1`] = `null`;
 
