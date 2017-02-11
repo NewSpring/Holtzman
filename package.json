@@ -52,7 +52,9 @@
       "/.meteor/"
     ],
     "moduleNameMapper": {
-      "^meteor/(.*)": "<rootDir>/.meteor/mocks/$1.js"
+      "^meteor/(.*)": "<rootDir>/.meteor/mocks/$1.js",
+      "meteor/bjwiley2:server-watch(.*)": "<rootDir>/.meteor/mocks/bjwiley2-server-watch.js"
+
     },
     "setupFiles": [
       "<rootDir>/imports/util/tests/beforeTest.js"
