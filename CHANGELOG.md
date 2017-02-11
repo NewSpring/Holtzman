@@ -31,6 +31,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Hero UI Primitive
 - recent likes section in discover page.
 
+### Changed
+- UI for joining a group
+  - changed join group button to say `Contact`
+  - Groups: changed join group modal title to say `Contact`
+  - changed default message for joining a group
+
 ## [1.2.3] - 2017-01-09
 ### Added
 - `index.js` files for folders with collections of components
