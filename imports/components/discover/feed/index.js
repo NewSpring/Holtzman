@@ -4,7 +4,6 @@ import { graphql } from "react-apollo";
 import { connect } from "react-redux";
 import gql from "graphql-tag";
 
-import { Loading } from "../../@primitives/UI/states";
 import withRecentLikes from "../../@enhancers/likes/recents";
 import Layout from "./Layout";
 
@@ -17,13 +16,14 @@ const DiscoverWithoutData = ({
   discover,
   recentLikes,
 }: IDiscoverWithoutData) => {
-  if (!discover || !recentLikes || discover.loading || recentLikes.loading) return <Loading />;
+  const featured = discover.items && discover.items
+    .filter((x) => (x.status.toLowerCase() === "featured"));
 
-  const featured = discover.items.filter((x) => (x.status.toLowerCase() === "featured"));
-  const open = discover.items.filter((x) => (x.status.toLowerCase() === "open"));
+  const open = discover.items && discover.items
+    .filter((x) => (x.status.toLowerCase() === "open"));
 
-  const featuredItem = featured[0];
-  const recommendedItems = [...featured.slice(1, featured.length)];
+  const featuredItem = featured && featured[0];
+  const recommendedItems = featured && [...featured.slice(1, featured.length)];
 
   return (
     <Layout
@@ -31,6 +31,7 @@ const DiscoverWithoutData = ({
       recommendedItems={recommendedItems}
       textItems={open}
       recentLikes={recentLikes.recentlyLiked}
+      recentLikedLoading={recentLikes.loading}
     />
   );
 };
