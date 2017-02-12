@@ -9,6 +9,7 @@ export default class Join extends Component {
     onClick: PropTypes.func.isRequired,
     group: PropTypes.object.isRequired,
     onExit: PropTypes.func.isRequired,
+    phones: PropTypes.Object,
   }
 
   state = {
@@ -35,7 +36,6 @@ export default class Join extends Component {
   showPhoneBox = (value: string) => {
     let shouldShowPhoneBox = false;
     if (value === "Phone" || value === "Text") {
-      console.log("gonna show a phone number box here");
       shouldShowPhoneBox = true;
     }
     this.setState({ showPhoneBox: shouldShowPhoneBox });
@@ -100,9 +100,13 @@ export default class Join extends Component {
                   items={communicationPreferences}
                   onChange={this.showPhoneBox}
                 />
-                {this.state.showPhoneBox && (
-                  <div>This is the phone box</div>
-                )}
+                {this.state.showPhoneBox && !this.props.phones && (
+                  <Forms.TextArea
+                    label={"Your phone number"}
+                    name={"phoneNumber"}
+                    rows={1}
+                  />
+              )}
               </div>
               <div className="grid">
                 <div className="grid__item one-half">
