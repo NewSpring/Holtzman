@@ -18,6 +18,7 @@ class Meta extends Component {
       typeof ga !== "undefined" &&
       window.location.pathname !== "/give/review"
     ) {
+      ga("set", "page", location.pathname);
       ga("send", "pageview");
     }
     if (typeof fabric !== "undefined") {
