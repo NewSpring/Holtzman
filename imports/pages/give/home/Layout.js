@@ -2,6 +2,7 @@
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 
+import Meta from "../../../components/shared/meta";
 import Activity from "./Activity";
 import Schedules from "./Schedules";
 import SavedPayments from "./SavedPayments";
@@ -68,6 +69,7 @@ const withData = graphql(ACTIVITY_QUERY, {
 
 const Layout = withData(({ data }) => (
   <div className="soft-double-bottom@lap-and-up soft-bottom">
+    <Meta title="Giving Dashboard" />
     <Activity feed={data} />
     <Schedules schedules={data} />
     <SavedPayments payments={data} />
