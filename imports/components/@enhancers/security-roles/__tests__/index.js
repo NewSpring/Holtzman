@@ -67,7 +67,11 @@ it("expects an exact match", () => {
   expect(isAuthorized).toBeFalsy();
 });
 
+it("returns false if no person", () => {
+  const data = {
+    currentPerson: {}
+  };
 
-
-
-
+  const isAuthorized = authorized(data, ["Super"]);
+  expect(isAuthorized).toBeFalsy();
+});
