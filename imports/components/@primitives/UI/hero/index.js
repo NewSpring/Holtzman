@@ -28,7 +28,7 @@ export function getIconClasses(content: Object) {
 
 export function getImage(images: Object, label: string = "2:1") {
   let selectedImage = "";
-  if (!Array.isArray(images)) return null;
+  if (!Array.isArray(images)) return "";
   for (const image of images) {
     if (image.fileLabel === label) {
       selectedImage = image.url;

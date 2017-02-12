@@ -8,7 +8,7 @@ import { Loading } from "../../@primitives/UI/states";
 import withRecentLikes from "../../@enhancers/likes/recents";
 import Layout from "./Layout";
 
-const IDiscoverWithoutData = {
+type IDiscoverWithoutData = {
   discover: Object,
   recentLikes: Object,
 };
