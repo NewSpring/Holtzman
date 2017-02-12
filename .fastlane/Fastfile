@@ -87,6 +87,24 @@ platform :ios do
       target_filter: ENV['XCODE_SCHEME_NAME'],
     )
 
+    set_info_plist_value(
+      path: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/ios/project/#{ENV['XCODE_SCHEME_NAME']}/#{ENV['XCODE_SCHEME_NAME']}-Info.plist",
+      key: "NSCameraUsageDescription",
+      value: "Profile Upload",
+    )
+
+    set_info_plist_value(
+      path: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/ios/project/#{ENV['XCODE_SCHEME_NAME']}/#{ENV['XCODE_SCHEME_NAME']}-Info.plist",
+      key: "NSPhotoLibraryUsageDescription",
+      value: "Profile Upload",
+    )
+
+    set_info_plist_value(
+      path: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/ios/project/#{ENV['XCODE_SCHEME_NAME']}/#{ENV['XCODE_SCHEME_NAME']}-Info.plist",
+      key: "NSLocationWhenInUseUsageDescription",
+      value: "Group Finder",
+    )
+
     gym(
       project: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/ios/project/#{ENV['XCODE_SCHEME_NAME']}.xcodeproj",
       scheme: ENV['XCODE_SCHEME_NAME'],
