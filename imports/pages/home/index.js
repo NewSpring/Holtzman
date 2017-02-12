@@ -5,18 +5,17 @@ import { graphql } from "react-apollo";
 import difference from "lodash.difference";
 import gql from "graphql-tag";
 
+import { FeedItemSkeleton } from "../../components/@primitives/UI/loading";
 import Split, { Left, Right } from "../../components/@primitives/layout/split";
-import { topics } from "../../components/people/profile/following";
 
 import ApollosPullToRefresh from "../../components/@enhancers/pull-to-refresh";
-import { FeedItemSkeleton } from "../../components/@primitives/UI/loading";
-import FeedItem from "../../components/content/feed-item-card";
+import infiniteScroll from "../../components/@enhancers/infinite-scroll";
+import { canSee } from "../../components/@enhancers/security-roles";
 
+import FeedItem from "../../components/content/feed-item-card";
+import { topics } from "../../components/people/profile/following";
 import { nav as navActions } from "../../data/store";
 import Headerable from "../../deprecated/mixins/mixins.Header";
-
-import infiniteScroll from "../../components/@enhancers/infinite-scroll";
-
 import backgrounds from "../../util/backgrounds";
 import content from "../../util/content";
 
@@ -26,7 +25,7 @@ class HomeWithoutData extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    data: PropTypes.object.isRequired,
+    data: PropTypes.object,
   }
 
   componentWillMount() {
@@ -43,11 +42,11 @@ class HomeWithoutData extends Component {
   }
 
   renderFeed = () => {
-    const { feed } = this.props.data;
+    const { data } = this.props;
 
     let feedItems = [1, 2, 3, 4, 5];
-    if (feed) {
-      feedItems = feed.slice(1);
+    if (data && data.feed) {
+      feedItems = data.feed.slice(1);
     }
     return (
       feedItems.map((item, i) => (
@@ -67,13 +66,13 @@ class HomeWithoutData extends Component {
   }
 
   render() {
-    const { data: { feed } } = this.props;
+    const { data } = this.props;
 
     let photo;
     let heroItem;
     let heroLink;
-    if (feed) {
-      heroItem = feed[0];
+    if (data && data.feed) {
+      heroItem = data.feed[0];
       heroLink = content.links(heroItem);
       if (heroItem.channelName === "sermons") {
         photo = backgrounds.image(heroItem.parent);
@@ -164,9 +163,14 @@ const CONTENT_FEED_QUERY = gql`
   ${contentFragment}
 `;
 
-const getTopics = (opts) => {
-  let channels = opts;
 
+const getTopics = (opts) => {
+  let channels = opts.topics;
+
+  const filterChannels = (value) => {
+    if (value !== "Events") return true;
+    return opts.person.authorized;
+  };
   // only include what user hasn't excluded
   channels = difference(topics, channels);
 
@@ -174,21 +178,22 @@ const getTopics = (opts) => {
   if (channels.length === 0) channels = [...topics];
 
   // return for the graphql call
-  return channels.map((x) => x.toLowerCase());
+  return channels.filter(filterChannels).map((x) => x.toLowerCase());
 };
 
 const withFeedContent = graphql(CONTENT_FEED_QUERY, {
   options: (ownProps) => ({
     variables: {
       filters: ["CONTENT"],
-      options: JSON.stringify({ content: { channels: getTopics(ownProps.topics) } }),
+      options: JSON.stringify({ content: { channels: getTopics(ownProps) } }),
       limit: 20,
       skip: 0,
       cache: true,
     },
+    skip: ownProps.person.authLoading,
   }),
   props: ({ data }) => ({
-    data,
+    data: data || {},
     loading: data.loading,
     fetchMore: () => data.fetchMore({
       variables: { ...data.variables, skip: data.feed.length },
@@ -201,10 +206,12 @@ const withFeedContent = graphql(CONTENT_FEED_QUERY, {
 });
 
 export default connect((state) => ({ topics: state.topics.topics }))(
-  withFeedContent(
-    infiniteScroll()(
-      ReactMixin.decorate(Headerable)(
-        HomeWithoutData
+  canSee(["RSR - Beta Testers"])(
+    withFeedContent(
+      infiniteScroll()(
+        ReactMixin.decorate(Headerable)(
+          HomeWithoutData
+        )
       )
     )
   )

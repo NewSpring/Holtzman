@@ -1,4 +1,4 @@
-exports[`test doesn't render if loading 1`] = `null`;
+exports[`test doesn't render if loading 1`] = `<Loading />`;
 
 exports[`test parses query correctly 1`] = `
 "query GetPromotions($setName: String!) {
@@ -6,6 +6,7 @@ exports[`test parses query correctly 1`] = `
     title
     id
     status
+    channelName
     meta {
       urlTitle
       date

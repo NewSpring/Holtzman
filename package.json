@@ -52,6 +52,8 @@
       "/.meteor/"
     ],
     "moduleNameMapper": {
+      "meteor/bjwiley2:server-watch": "<rootDir>/.meteor/mocks/bjwiley2-server-watch.js",
+
       "^meteor/(.*)": "<rootDir>/.meteor/mocks/$1.js"
     },
     "setupFiles": [
@@ -110,6 +112,7 @@
     "lodash.clonedeep": "^4.5.0",
     "lodash.difference": "^4.5.0",
     "lodash.find": "^4.4.0",
+    "lodash.intersection": "^4.4.0",
     "lodash.uniqby": "^4.7.0",
     "meteor-node-stubs": "^0.2.3",
     "moment": "^2.14.1",

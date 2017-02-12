@@ -55,7 +55,7 @@ exports[`test doesn't render account type if none 1`] = `
             </h4>
             <p
               className="text-center soft-ends soft-double@anchored flush-bottom soft-ends soft-sides@portable">
-              Thank you so much for your contributions! It is because of your generosity that we are able to continue telling stories of the greatness of Jesus and seeing lives changed.
+              Thank you for your contribution to NewSpring Church. Because you are obedient in giving, we\'ll be able to connect more people to Jesus and each other.
             </p>
           </div>
         </div>
@@ -196,7 +196,7 @@ exports[`test doesn't render entries if there are none 1`] = `
             </h4>
             <p
               className="text-center soft-ends soft-double@anchored flush-bottom soft-ends soft-sides@portable">
-              Thank you so much for your contributions! It is because of your generosity that we are able to continue telling stories of the greatness of Jesus and seeing lives changed.
+              Thank you for your contribution to NewSpring Church. Because you are obedient in giving, we\'ll be able to connect more people to Jesus and each other.
             </p>
           </div>
         </div>
@@ -267,7 +267,7 @@ exports[`test doesn't render payment account at all if none 1`] = `
             </h6>
             <p
               className="text-center soft-ends soft-double@anchored flush-bottom soft-ends soft-sides@portable">
-              Thank you so much for your contributions! It is because of your generosity that we are able to continue telling stories of the greatness of Jesus and seeing lives changed.
+              Thank you for your contribution to NewSpring Church. Because you are obedient in giving, we\'ll be able to connect more people to Jesus and each other.
             </p>
           </div>
         </div>
@@ -408,7 +408,7 @@ exports[`test renders loading if loadingEntries 1`] = `
             </h4>
             <p
               className="text-center soft-ends soft-double@anchored flush-bottom soft-ends soft-sides@portable">
-              Thank you so much for your contributions! It is because of your generosity that we are able to continue telling stories of the greatness of Jesus and seeing lives changed.
+              Thank you for your contribution to NewSpring Church. Because you are obedient in giving, we\'ll be able to connect more people to Jesus and each other.
             </p>
           </div>
         </div>
@@ -605,7 +605,7 @@ exports[`test renders with props 1`] = `
             </h4>
             <p
               className="text-center soft-ends soft-double@anchored flush-bottom soft-ends soft-sides@portable">
-              Thank you so much for your contributions! It is because of your generosity that we are able to continue telling stories of the greatness of Jesus and seeing lives changed.
+              Thank you for your contribution to NewSpring Church. Because you are obedient in giving, we\'ll be able to connect more people to Jesus and each other.
             </p>
           </div>
         </div>
@@ -746,7 +746,7 @@ exports[`test works with credit card 1`] = `
             </h4>
             <p
               className="text-center soft-ends soft-double@anchored flush-bottom soft-ends soft-sides@portable">
-              Thank you so much for your contributions! It is because of your generosity that we are able to continue telling stories of the greatness of Jesus and seeing lives changed.
+              Thank you for your contribution to NewSpring Church. Because you are obedient in giving, we\'ll be able to connect more people to Jesus and each other.
             </p>
           </div>
         </div>
@@ -887,7 +887,7 @@ exports[`test works with nickname 1`] = `
             </h4>
             <p
               className="text-center soft-ends soft-double@anchored flush-bottom soft-ends soft-sides@portable">
-              Thank you so much for your contributions! It is because of your generosity that we are able to continue telling stories of the greatness of Jesus and seeing lives changed.
+              Thank you for your contribution to NewSpring Church. Because you are obedient in giving, we\'ll be able to connect more people to Jesus and each other.
             </p>
           </div>
         </div>

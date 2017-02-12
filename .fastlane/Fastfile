@@ -113,7 +113,6 @@ platform :ios do
       export_team_id: ENV['TEAM_ID'],
       codesigning_identity: ENV["CODESIGNING_IDENTITY"],
     )
-
   end
 
   desc "Just build the app"

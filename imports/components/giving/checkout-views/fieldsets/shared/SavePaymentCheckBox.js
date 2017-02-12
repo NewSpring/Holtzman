@@ -1,6 +1,5 @@
 // @flow
 import Forms from "../../../../@primitives/UI/forms";
-import { isIOS } from "../../../../../util";
 
 type ISavePaymentCheckBox = {
   savedAccount: Object,
@@ -10,6 +9,7 @@ type ISavePaymentCheckBox = {
   transactionType: string,
 };
 
+/* eslint-disable max-len */
 const SavePaymentCheckBox = ({
   savedAccount,
   savePayment,
@@ -20,8 +20,7 @@ const SavePaymentCheckBox = ({
   if (
     !savedAccount.id &&
     transactionType !== "guest" &&
-    !schedule.start &&
-    !isIOS()
+    !schedule.start
   ) {
     return (
       <Forms.Checkbox
@@ -31,6 +30,12 @@ const SavePaymentCheckBox = ({
       >
         Save this payment for future contributions
       </Forms.Checkbox>
+    );
+  } else if (schedule.start) {
+    return (
+      <div>
+        <p><small><em>To save a payment, please give a one time contribution. We are sorry for any inconvenience this may cause.</em></small></p>
+      </div>
     );
   }
   return null;
