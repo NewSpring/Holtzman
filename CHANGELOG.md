@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Fixed: The tag gallery would revert back to system color when the selected button wasn't "actively pressed". Added a "nohover" class to fix this.
 - Feature: Added ability to save a payment during a transaction on iOS
 - Fixed the "Home" tab on Giving to now say "Dashboard". Because clarity.
+- Fixed a typo on the Annual Report. The KidSpring section story now spells "among" correctly.
 
 ### Changed
 - Changed the text on the individual transaction entry pages to more closely align with our church's vision.
