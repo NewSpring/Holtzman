@@ -49,7 +49,7 @@ describe("Meta", () => {
     const wrapper = mount(
       <Meta />
     );
-    expect(ga).toHaveBeenCalledTimes(1);
+    expect(ga).toHaveBeenCalledTimes(2);
     delete global.ga;
   });
   it("should not call the ga function if it's the iOS review page", () => {
