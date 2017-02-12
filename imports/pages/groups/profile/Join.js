@@ -1,16 +1,40 @@
-import { Component, PropTypes } from "react";
+// @flow
+import { Component } from "react";
 
 import Forms from "../../../components/@primitives/UI/forms";
 import { Error as Err, Loading } from "../../../components/@primitives/UI/states";
 
+type IShowTextArea = {
+  loading: boolean,
+  phones: Object,
+  show: boolean,
+}
+
+export const ShowPhoneTextArea = (props: IShowTextArea) => {
+  if (props.loading) return null;
+  if ((!props.phones || !props.phones.length) && props.show) {
+    return (
+      <Forms.TextArea
+        label={"Your phone number"}
+        name={"phoneNumber"}
+        rows={1}
+      />
+    );
+  }
+  return null;
+};
+
+type IJoin = {
+  onClick: Function,
+  group: Object,
+  onExit: Function,
+  loading: boolean,
+  phones: Object,
+}
+
 export default class Join extends Component {
 
-  static propTypes = {
-    onClick: PropTypes.func.isRequired,
-    group: PropTypes.object.isRequired,
-    onExit: PropTypes.func.isRequired,
-    phones: PropTypes.Object,
-  }
+  props: IJoin;
 
   state = {
     state: "default",
@@ -18,7 +42,7 @@ export default class Join extends Component {
     showPhoneBox: false,
   };
 
-  onClick = (e) => {
+  onClick = (e: Event) => {
     this.setState({ state: "loading" });
 
     this.props.onClick(e, (err) => {
@@ -100,13 +124,11 @@ export default class Join extends Component {
                   items={communicationPreferences}
                   onChange={this.showPhoneBox}
                 />
-                {this.state.showPhoneBox && !this.props.phones && (
-                  <Forms.TextArea
-                    label={"Your phone number"}
-                    name={"phoneNumber"}
-                    rows={1}
-                  />
-              )}
+                <ShowPhoneTextArea
+                  loading={this.props.loading}
+                  phones={this.props.phones}
+                  show={this.state.showPhoneBox}
+                />
               </div>
               <div className="grid">
                 <div className="grid__item one-half">
