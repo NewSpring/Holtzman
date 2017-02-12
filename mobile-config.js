@@ -6,7 +6,11 @@ App.info({
   email: "web@newspring.cc",
   website: "https://newspring.cc",
   version: process.env.APP_VERSION,
+<<<<<<< HEAD
+  buildNumber: process.env.APP_BUILD,
+=======
   buildNumber: process.env.APP_ID,
+>>>>>>> 6270100f0540cddea99b854b511dce50c24be7d2
 });
 
 App.icons({
