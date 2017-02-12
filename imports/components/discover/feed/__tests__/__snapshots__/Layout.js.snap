@@ -87,7 +87,6 @@ exports[`Layout renders with props 1`] = `
         Recently Liked By Others
       </h5>
     </div>
-    <Component />
   </section>
   <div
     className="soft-half background--light-secondary">
@@ -142,6 +141,9 @@ exports[`Layout works without featured item 1`] = `
       Recommended by NewSpring
     </h6>
   </section>
+  <Hero
+    content={null}
+    hideDate={true} />
   <section
     className="soft-half background--light-secondary">
     <div
@@ -197,7 +199,6 @@ exports[`Layout works without featured item 1`] = `
         Recently Liked By Others
       </h5>
     </div>
-    <Component />
   </section>
   <div
     className="soft-half background--light-secondary">

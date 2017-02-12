@@ -1,6 +1,7 @@
 import { PropTypes } from "react";
 import { Link } from "react-router";
 
+import Loading from "../../@primitives/UI/loading/Spinner";
 import Hero from "../../@primitives/UI/hero";
 import { MiniCard } from "../../@primitives/UI/cards";
 
@@ -19,27 +20,24 @@ function getImage(images, label = "2:1") {
   return selectedImage;
 }
 
-const Layout = ({ featuredItem, recommendedItems, textItems, recentLikes }) => (
+const Layout = ({
+  featuredItem,
+  recommendedItems,
+  textItems,
+  recentLikes,
+  recentLoading,
+}) => (
   <div style={{ overflowY: "hidden", height: "100%" }} className="background--light-primary">
 
     <section className="hard background--light-secondary">
       <h6 className="push-left soft-half-bottom soft-top">Recommended by NewSpring</h6>
     </section>
 
-    {(() => {
-      if (!featuredItem) return null;
-
-      const formattedObj = {
-        content: featuredItem,
-        hideDate: true,
-      };
-
-      return <Hero {...formattedObj} />;
-    })()}
+    <Hero {...{ content: featuredItem, hideDate: true }} />
 
     <section className="soft-half background--light-secondary">
       <div className="grid flush">
-        {recommendedItems.map((item, i) => {
+        {recommendedItems && recommendedItems.map((item, i) => {
           const formattedObj = {
             title: item.title,
             content: item,
@@ -57,39 +55,43 @@ const Layout = ({ featuredItem, recommendedItems, textItems, recentLikes }) => (
       <div className="one-whole text-center">
         <h5 className="flush soft-bottom">Recently Liked By Others</h5>
       </div>
-      <RecentLikes likes={recentLikes} />
+      {recentLoading && <div className="text-center"><Loading /></div>}
+      {recentLikes && <RecentLikes likes={recentLikes} />}
     </section>
 
-    <div className="soft-half background--light-secondary">
-      <div className="card soft one-whole">
-        <div className="card__item">
-          <p className="flush">
-            <small>
-              <em>
-                Are you looking for&nbsp;
-                {textItems.map((x, i) => {
-                  let delimeter = ", ";
-                  if (textItems[i].id === textItems[textItems.length - 1].id) {
-                    delimeter = "";
-                  } else if (textItems[i].id === textItems[textItems.length - 2].id) {
-                    delimeter = " or ";
-                  }
+    {textItems && (
+      <div className="soft-half background--light-secondary">
+        <div className="card soft one-whole">
+          <div className="card__item">
+            <p className="flush">
+              <small>
+                <em>
+                  Are you looking for&nbsp;
+                  {textItems.map((x, i) => {
+                    let delimeter = ", ";
+                    if (textItems[i].id === textItems[textItems.length - 1].id) {
+                      delimeter = "";
+                    } else if (textItems[i].id === textItems[textItems.length - 2].id) {
+                      delimeter = " or ";
+                    }
 
-                  return (
-                    <span key={i}>
-                      <Link to={x.meta.urlTitle} >{x.title}</Link>
-                      {delimeter}
-                    </span>
-                  );
-                })}?
-              </em>
-            </small>
+                    return (
+                      <span key={i}>
+                        <Link to={x.meta.urlTitle} >{x.title}</Link>
+                        {delimeter}
+                      </span>
+                    );
+                  })}?
+                </em>
+              </small>
 
-          </p>
+            </p>
 
+          </div>
         </div>
       </div>
-    </div>
+    )}
+
 
     {/*
     <section className="hard background--light-secondary">
@@ -116,6 +118,7 @@ Layout.propTypes = {
   recommendedItems: PropTypes.array,
   textItems: PropTypes.array,
   recentLikes: PropTypes.array,
+  recentLoading: PropTypes.bool,
 };
 
 export default Layout;
