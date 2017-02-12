@@ -60,6 +60,8 @@ exports[`test renders with props 1`] = `
           ]
         }
         onChange={[Function]} />
+      <ShowPhoneTextArea
+        show={false} />
     </div>
     <div
       className="grid">
