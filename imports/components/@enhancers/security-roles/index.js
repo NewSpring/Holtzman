@@ -1,4 +1,3 @@
-
 import { graphql } from "react-apollo";
 import intersection from "lodash.intersection";
 import gql from "graphql-tag";
@@ -15,12 +14,13 @@ export const SECURITY_ROLES_QUERY = gql`
 `;
 
 export const authorized = (data, roles) => {
-  const auth = !data.loading && intersection(
+  const auth = !data.loading && data.currentPerson && data.currentPerson.roles && intersection(
     data.currentPerson.roles.map((x) => x.name), roles
   ).length > 0;
   return auth;
 };
 
+// XXX skip if not logged in
 export const canSee = (roles) => graphql(SECURITY_ROLES_QUERY, {
   props: ({ data }) => ({
     person: {
@@ -30,6 +30,3 @@ export const canSee = (roles) => graphql(SECURITY_ROLES_QUERY, {
     },
   }),
 });
-
-export const isStaff = canSee(["Hello"]);
-
