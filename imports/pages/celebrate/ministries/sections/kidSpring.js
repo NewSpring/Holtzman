@@ -52,7 +52,7 @@ const data = {
     {
       imageUrl: "//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/stories/story-img6.png",
       heading: "",
-      content: "<p>Every week, kids like <strong>Sydney Chandler</strong> from <strong>Anderson</strong> are amoung the volunteers who make KidSpring a unique, fun, and valuable experience for kids.</p>",
+      content: "<p>Every week, kids like <strong>Sydney Chandler</strong> from <strong>Anderson</strong> are among the volunteers who make KidSpring a unique, fun, and valuable experience for kids.</p>",
       linkUrl: "",
       linkText: "Read Her Story",
     },
