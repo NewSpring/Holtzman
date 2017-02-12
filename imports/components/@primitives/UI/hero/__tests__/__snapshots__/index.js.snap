@@ -117,7 +117,7 @@ exports[`Hero should render with no props 1`] = `
         style={
           Object {
             "backgroundImage": "
-                    url(\'null\')
+                    url(\'\')
                   ",
           }
         }>
