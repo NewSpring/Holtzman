@@ -80,11 +80,12 @@ class TemplateWithoutData extends Component {
     dispatch: PropTypes.func.isRequired,
     data: PropTypes.object.isRequired,
     addPhone: PropTypes.function.isRequired,
-    // addToGroup: PropTypes.function.isRequired,
+    addToGroup: PropTypes.function.isRequired,
   }
 
   state = {
     phoneNumber: "",
+    communicationPreference: "No Preference",
   }
 
   componentWillMount() {
@@ -114,20 +115,32 @@ class TemplateWithoutData extends Component {
     return true;
   }
 
-  sendRequest = (e: Event) => {
+  onCommunicationPreferenceChange = (value: string) => {
+    const communicationPreference = value;
+    return this.setState({ communicationPreference });
+  }
+
+  sendRequest = (e: Event, callback) => {
     if (e && e.preventDefault) e.preventDefault();
 
-    // const { currentTarget } = e;
-    // const message = currentTarget.querySelectorAll("textarea")[0].value
-    //   .replace(new RegExp("\\n", "gmi"), "<br/>");
-
-    // Meteor.call("community/actions/join",
-    //       this.props.data.group.entityId, message, callback
-    // );
+    const { currentTarget } = e;
+    const message = currentTarget.querySelectorAll("textarea")[0].value
+      .replace(new RegExp("\\n", "gmi"), "<br/>");
 
     if (this.state.phoneNumber && this.state.phoneNumber.length > 0) {
       this.props.addPhone(this.state.phoneNumber);
     }
+
+    this.props.addToGroup(
+      this.props.data.group.entityId,
+      message,
+      this.state.communicationPreference
+    ).then((response) => {
+      callback(null, response);
+    })
+    .catch((err) => {
+      callback(err);
+    });
   }
 
   join = () => {
@@ -138,6 +151,7 @@ class TemplateWithoutData extends Component {
         onClick: this.sendRequest,
         onChange: this.onPhoneNumberChange,
         validatePhoneNumber: this.validatePhoneNumber,
+        onCommunicationPreferenceChange: this.onCommunicationPreferenceChange,
       }));
     };
 
