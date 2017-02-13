@@ -9,6 +9,7 @@ import { Motion, spring } from "react-motion";
 import Styles from "./live-css";
 
 import liveActions from "../../../../data/store/live";
+import { canSee } from "../../../@enhancers/security-roles";
 
 class LiveWithoutData extends Component {
 
@@ -79,6 +80,16 @@ class LiveWithoutData extends Component {
     const { live, show, embedCode } = this.props.live;
     if (!live || !show || !embedCode) return null;
 
+    // TODO load different embed code for beta users
+
+    //create beta link
+    const shouldShowBetaLink = (
+      this.props.person
+      && !this.props.person.authLoading
+      && this.props.person.authorized
+    );
+    const link = shouldShowBetaLink ? `/wowza/${embedCode}` : `/video/${embedCode}`;
+
     return (
       <Motion
         defaultStyle={{ height: 0 }}
@@ -86,7 +97,7 @@ class LiveWithoutData extends Component {
       >
         {(interpolatingStyle) =>
           <Link
-            to={`/video/${embedCode}`}
+            to={link}
             className={this.getClasses()}
             style={interpolatingStyle}
           >
@@ -113,11 +124,28 @@ const map = ({ live }) => ({ live });
 
 const withRedux = connect(map);
 
+// const withLive = graphql(LIVE_QUERY, {
+//   options: { pollInterval: 60000 },
+// });
+
+// XXX FOR TESTING ONLY
 const withLive = graphql(LIVE_QUERY, {
+  props: ({ data }) => ({
+    data: {
+      live: {
+        live: true,
+        embedCode: "12345",
+      }
+    }
+  }),
   options: { pollInterval: 60000 },
 });
 
-export default withRedux(withLive(LiveWithoutData));
+export default withRedux(
+  withLive(
+    canSee(["RSR - Beta Testers"])(LiveWithoutData)
+  )
+);
 
 export {
   LiveWithoutData,
