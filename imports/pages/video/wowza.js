@@ -4,8 +4,6 @@ import { css } from "aphrodite";
 
 import navActions from "../../data/store/nav";
 import headerActions from "../../data/store/header";
-import Video from "../../components/@primitives/players/video";
-import wowzaRoute from "./wowza";
 
 import styles from "../../components/@primitives/nav/offset-css";
 
@@ -13,18 +11,18 @@ class TemplateWithoutData extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    params: PropTypes.object.isRequired,
+    // params: PropTypes.object.isRequired,
   }
 
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("BASIC_CONTENT"));
     this.props.dispatch(headerActions.set({
-      title: "Live Now",
+      title: "Wowza",
     }));
   }
 
   render() {
-    const { embedCode } = this.props.params;
+    // const { embedCode } = this.props.params;
 
     return (
       <div
@@ -33,7 +31,8 @@ class TemplateWithoutData extends Component {
         }
       >
         <div className="floating__item one-whole">
-          <Video id={embedCode} ref="video" />
+          {/* <Video id={embedCode} ref="video" /> */}
+          hello wowza
         </div>
       </div>
     );
@@ -42,16 +41,13 @@ class TemplateWithoutData extends Component {
 
 const Template = connect()(TemplateWithoutData);
 
-const Routes = [
-  {
-    path: "/video/:embedCode",
-    component: Template,
-  },
-  wowzaRoute.Route,
-];
+const Route = {
+  path: "/wowza/:embedCode",
+  component: Template,
+};
 
 export default {
-  Routes,
+  Route,
 };
 
 export {
