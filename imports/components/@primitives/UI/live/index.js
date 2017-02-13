@@ -17,6 +17,7 @@ class LiveWithoutData extends Component {
     live: PropTypes.object, // eslint-disable-line
     dispatch: PropTypes.func,
     data: PropTypes.object, // eslint-disable-line
+    person: PropTypes.object,
   }
 
   componentWillUpdate(nextProps, nextState) {
@@ -82,7 +83,7 @@ class LiveWithoutData extends Component {
 
     // TODO load different embed code for beta users
 
-    //create beta link
+    // create beta link
     const shouldShowBetaLink = (
       this.props.person
       && !this.props.person.authLoading
@@ -130,13 +131,13 @@ const withRedux = connect(map);
 
 // XXX FOR TESTING ONLY
 const withLive = graphql(LIVE_QUERY, {
-  props: ({ data }) => ({
+  props: () => ({
     data: {
       live: {
         live: true,
         embedCode: "12345",
-      }
-    }
+      },
+    },
   }),
   options: { pollInterval: 60000 },
 });

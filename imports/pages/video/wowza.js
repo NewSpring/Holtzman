@@ -11,7 +11,7 @@ class TemplateWithoutData extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    params: PropTypes.object.isRequired,
+    // params: PropTypes.object.isRequired,
   }
 
   componentWillMount() {
