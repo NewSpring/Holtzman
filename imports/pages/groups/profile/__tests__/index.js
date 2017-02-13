@@ -3,7 +3,7 @@ import { shallowToJson } from "enzyme-to-json";
 import { Meteor } from "meteor/meteor";
 import { modal } from "../../../../data/store";
 import OnBoard from "../../../../components/people/accounts";
-import { TemplateWithoutData as Template, JoinWithPhones } from "../";
+import { TemplateWithoutData as Template, JoinWithPhones, PHONE_NUMBER_MUTATION, GROUP_MUTATION } from "../";
 
 jest.mock("../../../../deprecated/mixins/mixins.Header", () => {});
 jest.mock("../../../../data/store", () => ({
@@ -180,4 +180,12 @@ it("join renders OnBoard modal if no user", () => {
   expect(modal.render).toHaveBeenCalledTimes(1);
   expect(modal.render.mock.calls[0][0]).toBe(OnBoard);
   expect(modal.render.mock.calls[0][1].coverHeader).toBe(true);
+});
+
+it("should contain a phone number mutation", () => {
+  expect(print(PHONE_NUMBER_MUTATION)).toMatchSnapshot();
+});
+
+it("should contain a group mutation", () => {
+  expect(print(GROUP_MUTATION)).toMatchSnapshot();
 });

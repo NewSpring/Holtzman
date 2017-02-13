@@ -196,3 +196,7 @@ exports[`test renders without map on server 1`] = `
   </Left>
 </div>
 `;
+
+exports[`test should contain a group mutation 1`] = `undefined`;
+
+exports[`test should contain a phone number mutation 1`] = `undefined`;
