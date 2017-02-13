@@ -3,8 +3,7 @@ import { shallowToJson } from "enzyme-to-json";
 import { Meteor } from "meteor/meteor";
 import { modal } from "../../../../data/store";
 import OnBoard from "../../../../components/people/accounts";
-import Join from "../Join";
-import { TemplateWithoutData as Template } from "../";
+import { TemplateWithoutData as Template, JoinWithPhones } from "../";
 
 jest.mock("../../../../deprecated/mixins/mixins.Header", () => {});
 jest.mock("../../../../data/store", () => ({
@@ -150,7 +149,7 @@ it("join renders Join modal if user", () => {
   wrapper.instance().join();
   expect(mockDispatch).toHaveBeenCalledTimes(1);
   expect(modal.render).toHaveBeenCalledTimes(1);
-  expect(modal.render.mock.calls[0][0]).toBe(Join);
+  expect(modal.render.mock.calls[0][0]).toBe(JoinWithPhones);
   expect(modal.render.mock.calls[0][1]).toEqual({
     group: defaultProps.data.group,
     onExit: wrapper.instance().closeModal,

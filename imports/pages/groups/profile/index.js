@@ -19,6 +19,24 @@ import { modal } from "../../../data/store";
 import Layout from "./Layout";
 import Join from "./Join";
 
+const PHONE_QUERY = gql`
+{
+  currentPerson {
+    phoneNumbers {
+      number
+      rawNumber
+    }
+  }
+}`;
+
+export const JoinWithPhones = graphql(PHONE_QUERY, {
+  props: ({ data }) => ({
+    ...data,
+    loading: data.loading,
+    phones: data.loading ? null : data.currentPerson.phoneNumbers,
+  }),
+})(Join);
+
 const defaultArray = [];
 class TemplateWithoutData extends Component {
 
@@ -56,7 +74,7 @@ class TemplateWithoutData extends Component {
 
   join = () => {
     const joinModal = () => {
-      this.props.dispatch(modal.render(Join, {
+      this.props.dispatch(modal.render(JoinWithPhones, {
         group: this.props.data.group,
         onExit: this.closeModal,
         onClick: this.sendRequest,
