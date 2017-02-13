@@ -5,7 +5,7 @@ import Forms from "../../../components/@primitives/UI/forms";
 import { Error as Err, Loading } from "../../../components/@primitives/UI/states";
 
 type IShowTextArea = {
-  loading: boolean,
+  phonesLoading: boolean,
   phones: Object,
   show: boolean,
   onChange: Function,
@@ -13,7 +13,7 @@ type IShowTextArea = {
 }
 
 export const ShowPhoneTextArea = (props: IShowTextArea) => {
-  if (props.loading) return null;
+  if (props.phonesLoading) return null;
   if ((!props.phones || !props.phones.length) && props.show) {
     return (
       <Forms.Input
@@ -33,10 +33,11 @@ type IJoin = {
   onClick: Function,
   group: Object,
   onExit: Function,
-  loading: boolean,
+  phonesLoading: boolean,
   phones: Object,
   onChange: Function,
   validatePhoneNumber: Function,
+  onCommunicationPreferenceChange: Function,
 }
 
 export default class Join extends Component {
@@ -70,6 +71,7 @@ export default class Join extends Component {
       shouldShowPhoneBox = true;
     }
     this.setState({ showPhoneBox: shouldShowPhoneBox });
+    this.props.onCommunicationPreferenceChange(value);
   }
 
   render() {
@@ -132,7 +134,7 @@ export default class Join extends Component {
                   onChange={this.showPhoneBox}
                 />
                 <ShowPhoneTextArea
-                  loading={this.props.loading}
+                  phonesLoading={this.props.phonesLoading}
                   phones={this.props.phones}
                   show={this.state.showPhoneBox}
                   onChange={this.props.onChange}

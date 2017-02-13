@@ -116,12 +116,34 @@ it("closeModal calls preventDefault, hides modal, and adjust nav", () => {
 });
 
 it("sendRequest calls preventDefault", () => {
+  const mockPromiseData = {
+    response: {
+      success: true,
+      code: 200,
+      error: false,
+    },
+  };
+  const mockPromise = new Promise(p => p(mockPromiseData));
+  const mockQuery = jest.fn(() => mockPromise);
+  const mockCallback = jest.fn();
+
   const mockPreventDefault = jest.fn();
-  const wrapper = shallow(generateComponent());
+  const mockQuerySelectorAll = jest.fn().mockReturnValue([
+    { value: "test\n" },
+  ]);
+  const mockCurrentTarget = {
+    querySelectorAll: mockQuerySelectorAll,
+  };
+  const wrapper = shallow(generateComponent({
+    addToGroup: mockQuery,
+  }));
   wrapper.instance().sendRequest({
     preventDefault: mockPreventDefault,
-  });
+    currentTarget: mockCurrentTarget,
+  }, mockCallback);
   expect(mockPreventDefault).toHaveBeenCalledTimes(1);
+  expect(mockQuerySelectorAll).toHaveBeenCalledTimes(1);
+  expect(mockQuerySelectorAll).toHaveBeenCalledWith("textarea");
 });
 
 it("join renders Join modal if user", () => {
@@ -141,6 +163,7 @@ it("join renders Join modal if user", () => {
     onClick: wrapper.instance().sendRequest,
     onChange: wrapper.instance().onPhoneNumberChange,
     validatePhoneNumber: wrapper.instance().validatePhoneNumber,
+    onCommunicationPreferenceChange: wrapper.instance().onCommunicationPreferenceChange,
   });
 });
 

@@ -61,7 +61,6 @@ exports[`Join renders with props 1`] = `
         }
         onChange={[Function]} />
       <ShowPhoneTextArea
-        loading={false}
         phones={Array []}
         show={false} />
     </div>
