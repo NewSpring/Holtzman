@@ -8,16 +8,21 @@ type IShowTextArea = {
   loading: boolean,
   phones: Object,
   show: boolean,
+  onChange: Function,
+  validatePhoneNumber: Function,
 }
 
 export const ShowPhoneTextArea = (props: IShowTextArea) => {
   if (props.loading) return null;
   if ((!props.phones || !props.phones.length) && props.show) {
     return (
-      <Forms.TextArea
+      <Forms.Input
         label={"Your phone number"}
         name={"phoneNumber"}
-        rows={1}
+        onChange={props.onChange}
+        errorText={"Incorrect phone number format"}
+        maxLength={20}
+        validation={props.validatePhoneNumber}
       />
     );
   }
@@ -30,6 +35,8 @@ type IJoin = {
   onExit: Function,
   loading: boolean,
   phones: Object,
+  onChange: Function,
+  validatePhoneNumber: Function,
 }
 
 export default class Join extends Component {
@@ -128,6 +135,8 @@ export default class Join extends Component {
                   loading={this.props.loading}
                   phones={this.props.phones}
                   show={this.state.showPhoneBox}
+                  onChange={this.props.onChange}
+                  validatePhoneNumber={this.props.validatePhoneNumber}
                 />
               </div>
               <div className="grid">

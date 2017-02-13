@@ -89,10 +89,11 @@ exports[`Join renders with props 1`] = `
 `;
 
 exports[`ShowPhoneTextArea renders with props 1`] = `
-<TextArea
+<Input
+  errorText="Incorrect phone number format"
   label="Your phone number"
-  name="phoneNumber"
-  rows={1} />
+  maxLength={20}
+  name="phoneNumber" />
 `;
 
 exports[`ShowPhoneTextArea returns null if still loading 1`] = `null`;

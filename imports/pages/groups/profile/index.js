@@ -37,12 +37,54 @@ export const JoinWithPhones = graphql(PHONE_QUERY, {
   }),
 })(Join);
 
+export const PHONE_NUMBER_MUTATION = gql`
+  mutation SetPhoneNumber($phoneNumber: String!) {
+    setPhoneNumber(phoneNumber: $phoneNumber) {
+      error
+      success
+      code
+    }
+  }
+`;
+
+const withAddPhoneNumber = graphql(PHONE_NUMBER_MUTATION, {
+  props: ({ mutate }) => ({
+    addPhone: (phoneNumber) => mutate({
+      variables: { phoneNumber },
+    }),
+  }),
+});
+
+export const GROUP_MUTATION = gql`
+  mutation AddToGroup($groupId: ID!, $message: String!, $communicationPreference: String!) {
+    requestGroupInfo(groupId: $groupId, message: $message, communicationPreference: $communicationPreference) {
+      error
+      success
+      code
+    }
+  }
+`;
+
+const withGroupMutation = graphql(GROUP_MUTATION, {
+  props: ({ mutate }) => ({
+    addToGroup: (groupId, message, communicationPreference) => mutate({
+      variables: { groupId, message, communicationPreference },
+    }),
+  }),
+});
+
 const defaultArray = [];
 class TemplateWithoutData extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     data: PropTypes.object.isRequired,
+    addPhone: PropTypes.function.isRequired,
+    // addToGroup: PropTypes.function.isRequired,
+  }
+
+  state = {
+    phoneNumber: "",
   }
 
   componentWillMount() {
@@ -60,16 +102,32 @@ class TemplateWithoutData extends Component {
     this.props.dispatch(modal.hide());
   }
 
-  sendRequest = (e, callback) => {
+  onPhoneNumberChange = (value: string) => {
+    const phoneNumber = value.replace(/[^\d]+/g, "");
+    return this.setState({ phoneNumber });
+  }
+
+  validatePhoneNumber = (value: string): boolean => {
+    if (value.length < 10) {
+      return false;
+    }
+    return true;
+  }
+
+  sendRequest = (e: Event) => {
     if (e && e.preventDefault) e.preventDefault();
 
-    const { currentTarget } = e;
-    const message = currentTarget.querySelectorAll("textarea")[0].value
-      .replace(new RegExp("\\n", "gmi"), "<br/>");
+    // const { currentTarget } = e;
+    // const message = currentTarget.querySelectorAll("textarea")[0].value
+    //   .replace(new RegExp("\\n", "gmi"), "<br/>");
 
-    Meteor.call("community/actions/join",
-      this.props.data.group.entityId, message, callback
-    );
+    // Meteor.call("community/actions/join",
+    //       this.props.data.group.entityId, message, callback
+    // );
+
+    if (this.state.phoneNumber && this.state.phoneNumber.length > 0) {
+      this.props.addPhone(this.state.phoneNumber);
+    }
   }
 
   join = () => {
@@ -78,6 +136,8 @@ class TemplateWithoutData extends Component {
         group: this.props.data.group,
         onExit: this.closeModal,
         onClick: this.sendRequest,
+        onChange: this.onPhoneNumberChange,
+        validatePhoneNumber: this.validatePhoneNumber,
       }));
     };
 
@@ -200,7 +260,7 @@ export default connect()(
     ReactMixin.decorate(Headerable)(
       canLike(
         (props) => (props.data.loading ? null : props.data.group.id)
-      )(TemplateWithoutData)
+      )(withGroupMutation(withAddPhoneNumber(TemplateWithoutData)))
     )
   )
 );
