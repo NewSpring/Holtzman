@@ -115,7 +115,18 @@ it("closeModal calls preventDefault, hides modal, and adjust nav", () => {
   expect(modal.hide).toHaveBeenCalledTimes(1);
 });
 
-it("sendRequest calls preventDefault and the join meteor method", () => {
+it("sendRequest calls preventDefault", () => {
+  const mockPromiseData = {
+    response: {
+      success: true,
+      code: 200,
+      error: false,
+    },
+  };
+  const mockPromise = new Promise(p => p(mockPromiseData));
+  const mockQuery = jest.fn(() => mockPromise);
+  const mockCallback = jest.fn();
+
   const mockPreventDefault = jest.fn();
   const mockQuerySelectorAll = jest.fn().mockReturnValue([
     { value: "test\n" },
@@ -123,20 +134,16 @@ it("sendRequest calls preventDefault and the join meteor method", () => {
   const mockCurrentTarget = {
     querySelectorAll: mockQuerySelectorAll,
   };
-  Meteor.call = jest.fn();
-  const wrapper = shallow(generateComponent());
+  const wrapper = shallow(generateComponent({
+    addToGroup: mockQuery,
+  }));
   wrapper.instance().sendRequest({
     preventDefault: mockPreventDefault,
     currentTarget: mockCurrentTarget,
-  });
-
+  }, mockCallback);
   expect(mockPreventDefault).toHaveBeenCalledTimes(1);
   expect(mockQuerySelectorAll).toHaveBeenCalledTimes(1);
   expect(mockQuerySelectorAll).toHaveBeenCalledWith("textarea");
-  expect(Meteor.call).toHaveBeenCalledTimes(1);
-  expect(Meteor.call.mock.calls[0][0]).toBe("community/actions/join");
-  expect(Meteor.call.mock.calls[0][1]).toBe(defaultProps.data.group.entityId);
-  expect(Meteor.call.mock.calls[0][2]).toBe("test<br/>");
 });
 
 it("join renders Join modal if user", () => {
@@ -154,6 +161,9 @@ it("join renders Join modal if user", () => {
     group: defaultProps.data.group,
     onExit: wrapper.instance().closeModal,
     onClick: wrapper.instance().sendRequest,
+    onChange: wrapper.instance().onPhoneNumberChange,
+    validatePhoneNumber: wrapper.instance().validatePhoneNumber,
+    onCommunicationPreferenceChange: wrapper.instance().onCommunicationPreferenceChange,
   });
 });
 
