@@ -17,7 +17,7 @@ class TemplateWithoutData extends Component {
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("BASIC_CONTENT"));
     this.props.dispatch(headerActions.set({
-      title: "Live",
+      title: "Wowza",
     }));
   }
 

@@ -131,9 +131,9 @@ const map = ({ live }) => ({ live });
 
 const withRedux = connect(map);
 
-const withLive = graphql(LIVE_QUERY, {
-  options: { pollInterval: 60000 },
-});
+// const withLive = graphql(LIVE_QUERY, {
+//   options: { pollInterval: 60000 },
+// });
 
 // XXX FOR TESTING ONLY
 // const withLive = graphql(LIVE_QUERY, {
@@ -148,11 +148,11 @@ const withLive = graphql(LIVE_QUERY, {
 //   options: { pollInterval: 60000 },
 // });
 
-export default withRedux(
-  withLive(
-    canSee(["RSR - Beta Testers"])(LiveWithoutData)
-  )
-);
+// export default withRedux(
+//   withLive(
+//     canSee(["RSR - Beta Testers"])(LiveWithoutData)
+//   )
+// );
 
 export {
   LiveWithoutData,
