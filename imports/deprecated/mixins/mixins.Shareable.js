@@ -28,6 +28,7 @@ const Shareable = {
     if (nextProps.news) item = nextProps.news;
     if (nextProps.study) item = nextProps.study;
     if (nextProps.studyEntry) item = nextProps.studyEntry;
+    if (nextProps.data && nextProps.data.group) item = nextProps.data.group;
 
     if (!item) return null;
 
@@ -74,11 +75,20 @@ const Shareable = {
       image = `https:${image}`;
     }
 
+    let link;
+    // eslint-disable-next-line no-underscore-dangle
+    if (item.__typename === "Group") {
+      image = `https:${item.photo}`;
+      link = `https://my.newspring.cc/groups/${item.id}`;
+    } else {
+      link = content.siteLink(item, options.parentItem);
+    }
+
     const msg = {
-      subject: item.title,
-      text: item.title,
+      subject: item.title || item.name,
+      text: item.title || item.name,
       image,
-      url: content.siteLink(item, options.parentItem),
+      url: link,
     };
 
     this.props.dispatch(shareActions.set(msg));
