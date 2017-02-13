@@ -53,7 +53,6 @@
     ],
     "moduleNameMapper": {
       "meteor/bjwiley2:server-watch": "<rootDir>/.meteor/mocks/bjwiley2-server-watch.js",
-
       "^meteor/(.*)": "<rootDir>/.meteor/mocks/$1.js"
     },
     "setupFiles": [
@@ -125,6 +124,7 @@
     "react-dom": "^15.0.0",
     "react-hammerjs": "^0.4.6",
     "react-helmet": "^3.1.0",
+    "react-jw-player": "^1.1.1",
     "react-mixin": "^3.0.5",
     "react-motion": "^0.4.4",
     "react-pull-to-refresh": "https://git@github.com/NewSpring/react-pull-to-refresh.git",
