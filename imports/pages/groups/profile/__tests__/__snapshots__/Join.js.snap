@@ -1,4 +1,4 @@
-exports[`test renders with props 1`] = `
+exports[`Join renders with props 1`] = `
 <div
   className="soft soft-double-ends one-whole text-center">
   <h4
@@ -61,6 +61,8 @@ exports[`test renders with props 1`] = `
         }
         onChange={[Function]} />
       <ShowPhoneTextArea
+        loading={false}
+        phones={Array []}
         show={false} />
     </div>
     <div
@@ -85,3 +87,14 @@ exports[`test renders with props 1`] = `
   </Form>
 </div>
 `;
+
+exports[`ShowPhoneTextArea renders with props 1`] = `
+<TextArea
+  label="Your phone number"
+  name="phoneNumber"
+  rows={1} />
+`;
+
+exports[`ShowPhoneTextArea returns null if still loading 1`] = `null`;
+
+exports[`ShowPhoneTextArea shouldn't render if there is a phone number 1`] = `null`;
