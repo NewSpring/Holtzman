@@ -31,10 +31,10 @@ const PHONE_QUERY = gql`
 }`;
 
 export const JoinWithPhones = graphql(PHONE_QUERY, {
-  props: ({ data }) => ({
-    ...data,
-    loading: data.loading,
-    phones: data.loading ? null : data.currentPerson.phoneNumbers,
+  name: "phoneNumbers",
+  props: ({ phoneNumbers }) => ({
+    phonesLoading: phoneNumbers.loading,
+    phones: phoneNumbers.loading ? null : phoneNumbers.currentPerson.phoneNumbers,
   }),
 })(Join);
 
