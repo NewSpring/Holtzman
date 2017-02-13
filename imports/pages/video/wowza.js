@@ -22,7 +22,7 @@ class TemplateWithoutData extends Component {
   }
 
   render() {
-    const { embedCode } = this.props.params;
+    // const { embedCode } = this.props.params;
 
     return (
       <div
@@ -31,7 +31,7 @@ class TemplateWithoutData extends Component {
         }
       >
         <div className="floating__item one-whole">
-          {/*<Video id={embedCode} ref="video" />*/}
+          {/* <Video id={embedCode} ref="video" /> */}
           hello wowza
         </div>
       </div>
