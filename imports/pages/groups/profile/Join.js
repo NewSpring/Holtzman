@@ -17,7 +17,7 @@ export const ShowPhoneTextArea = (props: IShowTextArea) => {
   if ((!props.phones || !props.phones.length) && props.show) {
     return (
       <Forms.Input
-        label={"Your phone number"}
+        label={"Phone number"}
         name={"phoneNumber"}
         onChange={props.onChange}
         errorText={"Incorrect phone number format"}

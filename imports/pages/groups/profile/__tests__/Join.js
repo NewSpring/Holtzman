@@ -36,7 +36,6 @@ describe("Join", () => {
       onExit: mockOnClick,
     }));
     expect(mockOnClick).not.toHaveBeenCalled();
-    console.log(wrapper.find("button[data-spec=\"cancel\"]").html());
     wrapper.find("button[data-spec=\"cancel\"]").simulate("click");
     expect(mockOnClick).toHaveBeenCalledTimes(1);
   });
