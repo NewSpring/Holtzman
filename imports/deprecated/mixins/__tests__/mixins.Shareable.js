@@ -63,6 +63,12 @@ it("getShareableEntry returns for all entry types", () => {
       id: "1",
     });
   });
+
+  const result = wrapper.instance().getShareableEntry({
+    data: { group: { id: "1" } },
+  });
+
+  expect(result).toEqual({ id: "1" });
 });
 
 it("getShareableEntry works if no id but content", () => {
@@ -170,6 +176,30 @@ it("setShareAction dispatches share", () => {
     text: mockEntry.title,
     image: mockEntry.content.images[0].url,
     url: "https://newspring.cc/articles/test-item",
+  });
+});
+
+it("setShareAction dispatches share properly with groups", () => {
+  const mockDispatch = jest.fn();
+  shareActions.set = jest.fn();
+  const wrapper = shallow(generateComponent({
+    dispatch: mockDispatch,
+  }));
+  wrapper.setState({ __shareActionSet: false });
+  const mockEntry = {
+    __typename: "Group",
+    id: "1",
+    photo: "//harambe.gorilla/we-all-miss-him",
+    name: "missing harambe group",
+  };
+  wrapper.instance().setShareAction(mockEntry);
+  expect(mockDispatch).toHaveBeenCalledTimes(1);
+  expect(shareActions.set).toHaveBeenCalledTimes(1);
+  expect(shareActions.set).toHaveBeenCalledWith({
+    subject: mockEntry.name,
+    text: mockEntry.name,
+    image: `https:${mockEntry.photo}`,
+    url: "https://my.newspring.cc/groups/1",
   });
 });
 
