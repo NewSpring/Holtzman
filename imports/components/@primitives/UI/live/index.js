@@ -77,11 +77,8 @@ class LiveWithoutData extends Component {
     }
   }
 
-  render() {
-    const { live, show, embedCode } = this.props.live;
-    if (!live || !show || !embedCode) return null;
-
-    // TODO load different embed code for beta users
+  getLink() {
+    const { embedCode } = this.props.live;
 
     // create beta link
     const shouldShowBetaLink = (
@@ -89,7 +86,16 @@ class LiveWithoutData extends Component {
       && !this.props.person.authLoading
       && this.props.person.authorized
     );
-    const link = shouldShowBetaLink ? `/wowza/${embedCode}` : `/video/${embedCode}`;
+    return shouldShowBetaLink ? `/wowza/${embedCode}` : `/video/${embedCode}`;
+  }
+
+  render() {
+    const { live, show, embedCode } = this.props.live;
+    if (!live || !show || !embedCode) return null;
+
+    // TODO load different embed code for beta users
+
+    const link = this.getLink();
 
     return (
       <Motion
