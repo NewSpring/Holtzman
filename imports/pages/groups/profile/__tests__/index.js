@@ -189,3 +189,29 @@ it("should contain a phone number mutation", () => {
 it("should contain a group mutation", () => {
   expect(print(GROUP_MUTATION)).toMatchSnapshot();
 });
+
+it("calls onPhoneNumberChange and sets the state", () => {
+  const wrapper = shallow(generateComponent());
+  wrapper.setState({ phoneNumber: "" });
+  wrapper.instance().onPhoneNumberChange("5555555555");
+  expect(wrapper.state().phoneNumber).toBe("5555555555");
+});
+
+it("should call validatePhoneNumber and return true", () => {
+  const wrapper = shallow(generateComponent());
+  let result = wrapper.instance().validatePhoneNumber("5555555555");
+  expect(result).toBe(true);
+});
+
+it("should call validatePhoneNumber and return false", () => {
+  const wrapper = shallow(generateComponent());
+  let result = wrapper.instance().validatePhoneNumber("5");
+  expect(result).toBe(false);
+});
+
+it("calls onCommunicationPreferenceChange and sets the state", () => {
+  const wrapper = shallow(generateComponent());
+  wrapper.setState({ communicationPreference: "No Preference" });
+  wrapper.instance().onCommunicationPreferenceChange("Phone");
+  expect(wrapper.state().communicationPreference).toBe("Phone");
+});
