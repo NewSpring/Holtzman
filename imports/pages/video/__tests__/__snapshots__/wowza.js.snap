@@ -1,0 +1,9 @@
+exports[`test renders with props 1`] = `
+<div
+  className="locked-ends locked-sides background--dark-primary floating offset_b736ty">
+  <div
+    className="floating__item one-whole">
+    hello wowza
+  </div>
+</div>
+`;
