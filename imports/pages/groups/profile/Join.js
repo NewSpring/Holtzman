@@ -1,19 +1,56 @@
-import { Component, PropTypes } from "react";
+// @flow
+import { Component } from "react";
 
 import Forms from "../../../components/@primitives/UI/forms";
 import { Error as Err, Loading } from "../../../components/@primitives/UI/states";
 
+type IShowTextArea = {
+  phonesLoading: boolean,
+  phones: Object,
+  show: boolean,
+  onChange: Function,
+  validatePhoneNumber: Function,
+}
+
+export const ShowPhoneTextArea = (props: IShowTextArea) => {
+  if (props.phonesLoading) return null;
+  if ((!props.phones || !props.phones.length) && props.show) {
+    return (
+      <Forms.Input
+        label={"Your phone number"}
+        name={"phoneNumber"}
+        onChange={props.onChange}
+        errorText={"Incorrect phone number format"}
+        maxLength={20}
+        validation={props.validatePhoneNumber}
+      />
+    );
+  }
+  return null;
+};
+
+type IJoin = {
+  onClick: Function,
+  group: Object,
+  onExit: Function,
+  phonesLoading: boolean,
+  phones: Object,
+  onChange: Function,
+  validatePhoneNumber: Function,
+  onCommunicationPreferenceChange: Function,
+}
+
 export default class Join extends Component {
 
-  static propTypes = {
-    onClick: PropTypes.func.isRequired,
-    group: PropTypes.object.isRequired,
-    onExit: PropTypes.func.isRequired,
-  }
+  props: IJoin;
 
-  state = { state: "default", err: null }
+  state = {
+    state: "default",
+    err: null,
+    showPhoneBox: false,
+  };
 
-  onClick = (e) => {
+  onClick = (e: Event) => {
     this.setState({ state: "loading" });
 
     this.props.onClick(e, (err) => {
@@ -28,10 +65,25 @@ export default class Join extends Component {
     });
   }
 
+  showPhoneBox = (value: string) => {
+    let shouldShowPhoneBox = false;
+    if (value === "Phone" || value === "Text") {
+      shouldShowPhoneBox = true;
+    }
+    this.setState({ showPhoneBox: shouldShowPhoneBox });
+    this.props.onCommunicationPreferenceChange(value);
+  }
+
   render() {
     const { group, onExit } = this.props;
     const leaders = group.members.filter((x) => (x.role.toLowerCase() === "leader"));
     const firstNames = leaders.map((x) => (x.person.nickName || x.person.firstName)).join(", ");
+    const communicationPreferences = [
+      { label: "No Preference", value: "No Preference" },
+      { label: "Email", value: "Email" },
+      { label: "Phone", value: "Phone" },
+      { label: "Text", value: "Text" },
+    ];
 
     const message = `\nHey ${firstNames},\n\nI'm interested in learning more about your group and ` +
       "looking forward to hearing from you soon!\n\nThanks!";
@@ -74,6 +126,21 @@ export default class Join extends Component {
                 rows={10}
                 defaultValue={message}
               />
+              <div className="text-left soft-bottom">
+                <h5 className="soft-half-bottom">Communication Preference</h5>
+                <Forms.Select
+                  defaultValue={"No Preference"}
+                  items={communicationPreferences}
+                  onChange={this.showPhoneBox}
+                />
+                <ShowPhoneTextArea
+                  phonesLoading={this.props.phonesLoading}
+                  phones={this.props.phones}
+                  show={this.state.showPhoneBox}
+                  onChange={this.props.onChange}
+                  validatePhoneNumber={this.props.validatePhoneNumber}
+                />
+              </div>
               <div className="grid">
                 <div className="grid__item one-half">
                   <button className="btn--thin btn--small btn--dark-tertiary one-whole" onClick={onExit}>
