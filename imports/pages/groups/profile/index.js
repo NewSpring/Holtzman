@@ -20,14 +20,15 @@ import Layout from "./Layout";
 import Join from "./Join";
 
 const PHONE_QUERY = gql`
-query PhoneNumbers {
-  currentPerson {
-    phoneNumbers {
-      number
-      rawNumber
+  query PullPhoneNumbers {
+    currentPerson {
+      phoneNumbers {
+        number
+        rawNumber
+      }
     }
   }
-}`;
+`;
 
 export const JoinWithPhones = graphql(PHONE_QUERY, {
   name: "phoneNumbers",
@@ -37,12 +38,68 @@ export const JoinWithPhones = graphql(PHONE_QUERY, {
   }),
 })(Join);
 
+export const PHONE_NUMBER_MUTATION = gql`
+  mutation SetPhoneNumber($phoneNumber: String!) {
+    setPhoneNumber(phoneNumber: $phoneNumber) {
+      error
+      success
+      code
+    }
+  }
+`;
+
+const withAddPhoneNumber = graphql(PHONE_NUMBER_MUTATION, {
+  props: ({ mutate }) => ({
+    addPhone: (phoneNumber) => mutate({
+      variables: { phoneNumber },
+      updateQueries: {
+        PullPhoneNumbers: (prev, { mutationResult }) => {
+          console.log("prev = ", prev);
+          console.log("mutationResult = ", mutationResult);
+          console.log("phoneNumber = ", phoneNumber);
+          if (!mutationResult.data) return prev;
+          const { success, error } = mutationResult.data.setPhoneNumber;
+          if (!success || error) return prev;
+          prev.currentPerson.phoneNumbers.push({ rawNumber: phoneNumber });
+          console.log("prev2 = ", prev);
+          return prev;
+        },
+      },
+    }),
+  }),
+});
+
+export const GROUP_MUTATION = gql`
+  mutation AddToGroup($groupId: ID!, $message: String!, $communicationPreference: String!) {
+    requestGroupInfo(groupId: $groupId, message: $message, communicationPreference: $communicationPreference) {
+      error
+      success
+      code
+    }
+  }
+`;
+
+const withGroupMutation = graphql(GROUP_MUTATION, {
+  props: ({ mutate }) => ({
+    addToGroup: (groupId, message, communicationPreference) => mutate({
+      variables: { groupId, message, communicationPreference },
+    }),
+  }),
+});
+
 const defaultArray = [];
 class TemplateWithoutData extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     data: PropTypes.object.isRequired,
+    addPhone: PropTypes.function.isRequired,
+    addToGroup: PropTypes.function.isRequired,
+  }
+
+  state = {
+    phoneNumber: "",
+    communicationPreference: "No Preference",
   }
 
   componentWillMount() {
@@ -60,16 +117,42 @@ class TemplateWithoutData extends Component {
     this.props.dispatch(modal.hide());
   }
 
-  sendRequest = (e, callback) => {
+  onPhoneNumberChange = (value: string) => {
+    const phoneNumber = value.replace(/[^\d]+/g, "");
+    return this.setState({ phoneNumber });
+  }
+
+  validatePhoneNumber = (value: string): boolean => {
+    if (value.length < 10) return false;
+    return true;
+  }
+
+  onCommunicationPreferenceChange = (value: string) => {
+    const communicationPreference = value;
+    return this.setState({ communicationPreference });
+  }
+
+  sendRequest = (e: Event, callback) => {
     if (e && e.preventDefault) e.preventDefault();
 
     const { currentTarget } = e;
     const message = currentTarget.querySelectorAll("textarea")[0].value
       .replace(new RegExp("\\n", "gmi"), "<br/>");
 
-    Meteor.call("community/actions/join",
-      this.props.data.group.entityId, message, callback
-    );
+    if (this.state.phoneNumber && this.state.phoneNumber.length > 0) {
+      this.props.addPhone(this.state.phoneNumber);
+    }
+
+    this.props.addToGroup(
+      this.props.data.group.entityId,
+      message,
+      this.state.communicationPreference
+    ).then((response) => {
+      callback(null, response);
+    })
+    .catch((err) => {
+      callback(err);
+    });
   }
 
   join = () => {
@@ -78,6 +161,9 @@ class TemplateWithoutData extends Component {
         group: this.props.data.group,
         onExit: this.closeModal,
         onClick: this.sendRequest,
+        onChange: this.onPhoneNumberChange,
+        validatePhoneNumber: this.validatePhoneNumber,
+        onCommunicationPreferenceChange: this.onCommunicationPreferenceChange,
       }));
     };
 
@@ -200,7 +286,7 @@ export default connect()(
     ReactMixin.decorate(Headerable)(
       canLike(
         (props) => (props.data.loading ? null : props.data.group.id)
-      )(TemplateWithoutData)
+      )(withGroupMutation(withAddPhoneNumber(TemplateWithoutData)))
     )
   )
 );
