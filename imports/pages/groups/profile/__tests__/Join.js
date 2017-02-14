@@ -90,7 +90,7 @@ describe("ShowPhoneTextArea", () => {
       phones: ["(555) 555-5555"],
     }
     const wrapper = shallow(generateComponent(additionalProps));
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(shallowToJson(wrapper)).toBe(null);
   });
 
   it("returns null if still loading", () => {
@@ -99,6 +99,6 @@ describe("ShowPhoneTextArea", () => {
       phones: ["(555) 555-5555"],
     }
     const wrapper = shallow(generateComponent(additionalProps));
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(shallowToJson(wrapper)).toBe(null);
   })
 })

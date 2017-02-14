@@ -20,14 +20,15 @@ import Layout from "./Layout";
 import Join from "./Join";
 
 const PHONE_QUERY = gql`
-query PhoneNumbers {
-  currentPerson {
-    phoneNumbers {
-      number
-      rawNumber
+  query PullPhoneNumbers {
+    currentPerson {
+      phoneNumbers {
+        number
+        rawNumber
+      }
     }
   }
-}`;
+`;
 
 export const JoinWithPhones = graphql(PHONE_QUERY, {
   name: "phoneNumbers",
@@ -51,6 +52,19 @@ const withAddPhoneNumber = graphql(PHONE_NUMBER_MUTATION, {
   props: ({ mutate }) => ({
     addPhone: (phoneNumber) => mutate({
       variables: { phoneNumber },
+      updateQueries: {
+        PullPhoneNumbers: (prev, { mutationResult }) => {
+          console.log("prev = ", prev);
+          console.log("mutationResult = ", mutationResult);
+          console.log("phoneNumber = ", phoneNumber);
+          if (!mutationResult.data) return prev;
+          const { success, error } = mutationResult.data.setPhoneNumber;
+          if (!success || error) return prev;
+          prev.currentPerson.phoneNumbers.push({ rawNumber: phoneNumber });
+          console.log("prev2 = ", prev);
+          return prev;
+        },
+      },
     }),
   }),
 });
@@ -109,9 +123,7 @@ class TemplateWithoutData extends Component {
   }
 
   validatePhoneNumber = (value: string): boolean => {
-    if (value.length < 10) {
-      return false;
-    }
+    if (value.length < 10) return false;
     return true;
   }
 

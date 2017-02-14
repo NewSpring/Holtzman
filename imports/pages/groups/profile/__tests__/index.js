@@ -1,6 +1,7 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import { Meteor } from "meteor/meteor";
+import { print } from "graphql-tag/printer";
 import { modal } from "../../../../data/store";
 import OnBoard from "../../../../components/people/accounts";
 import { TemplateWithoutData as Template, JoinWithPhones, PHONE_NUMBER_MUTATION, GROUP_MUTATION } from "../";

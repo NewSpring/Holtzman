@@ -197,6 +197,24 @@ exports[`test renders without map on server 1`] = `
 </div>
 `;
 
-exports[`test should contain a group mutation 1`] = `undefined`;
+exports[`test should contain a group mutation 1`] = `
+"mutation AddToGroup($groupId: ID!, $message: String!, $communicationPreference: String!) {
+  requestGroupInfo(groupId: $groupId, message: $message, communicationPreference: $communicationPreference) {
+    error
+    success
+    code
+  }
+}
+"
+`;
 
-exports[`test should contain a phone number mutation 1`] = `undefined`;
+exports[`test should contain a phone number mutation 1`] = `
+"mutation SetPhoneNumber($phoneNumber: String!) {
+  setPhoneNumber(phoneNumber: $phoneNumber) {
+    error
+    success
+    code
+  }
+}
+"
+`;

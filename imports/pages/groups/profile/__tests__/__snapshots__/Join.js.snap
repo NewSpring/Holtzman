@@ -94,7 +94,3 @@ exports[`ShowPhoneTextArea renders with props 1`] = `
   maxLength={20}
   name="phoneNumber" />
 `;
-
-exports[`ShowPhoneTextArea returns null if still loading 1`] = `null`;
-
-exports[`ShowPhoneTextArea shouldn't render if there is a phone number 1`] = `null`;
