@@ -30,6 +30,17 @@ describe("Join", () => {
     expect(shallowToJson(wrapper)).toMatchSnapshot();
   });
 
+  it("calls the onClick function", () => {
+    const mockOnClick = jest.fn();
+    const wrapper = shallow(generateComponent({
+      onExit: mockOnClick,
+    }));
+    expect(mockOnClick).not.toHaveBeenCalled();
+    console.log(wrapper.find("button[data-spec=\"cancel\"]").html());
+    wrapper.find("button[data-spec=\"cancel\"]").simulate("click");
+    expect(mockOnClick).toHaveBeenCalledTimes(1);
+  });
+
   it("onClick calls updates state and calls onClick", () => {
     const mockOnClick = jest.fn();
     const wrapper = shallow(generateComponent({

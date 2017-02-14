@@ -70,6 +70,7 @@ exports[`Join renders with props 1`] = `
         className="grid__item one-half">
         <button
           className="btn--thin btn--small btn--dark-tertiary one-whole"
+          data-spec="cancel"
           onClick={[Function]}>
           Cancel
         </button>

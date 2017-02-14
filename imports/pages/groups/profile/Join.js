@@ -143,7 +143,7 @@ export default class Join extends Component {
               </div>
               <div className="grid">
                 <div className="grid__item one-half">
-                  <button className="btn--thin btn--small btn--dark-tertiary one-whole" onClick={onExit}>
+                  <button data-spec="cancel" className="btn--thin btn--small btn--dark-tertiary one-whole" onClick={onExit}>
                     Cancel
                   </button>
                 </div>
