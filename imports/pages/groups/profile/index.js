@@ -20,7 +20,7 @@ import Layout from "./Layout";
 import Join from "./Join";
 
 const PHONE_QUERY = gql`
-{
+query PhoneNumbers {
   currentPerson {
     phoneNumbers {
       number
