@@ -54,14 +54,10 @@ const withAddPhoneNumber = graphql(PHONE_NUMBER_MUTATION, {
       variables: { phoneNumber },
       updateQueries: {
         PullPhoneNumbers: (prev, { mutationResult }) => {
-          console.log("prev = ", prev);
-          console.log("mutationResult = ", mutationResult);
-          console.log("phoneNumber = ", phoneNumber);
           if (!mutationResult.data) return prev;
           const { success, error } = mutationResult.data.setPhoneNumber;
           if (!success || error) return prev;
           prev.currentPerson.phoneNumbers.push({ rawNumber: phoneNumber });
-          console.log("prev2 = ", prev);
           return prev;
         },
       },
