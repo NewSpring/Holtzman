@@ -1,4 +1,4 @@
-exports[`test renders with props 1`] = `
+exports[`Join renders with props 1`] = `
 <div
   className="soft soft-double-ends one-whole text-center">
   <h4
@@ -32,6 +32,39 @@ exports[`test renders with props 1`] = `
       name="message"
       rows={10} />
     <div
+      className="text-left soft-bottom">
+      <h5
+        className="soft-half-bottom">
+        Communication Preference
+      </h5>
+      <Select
+        defaultValue="No Preference"
+        items={
+          Array [
+            Object {
+              "label": "No Preference",
+              "value": "No Preference",
+            },
+            Object {
+              "label": "Email",
+              "value": "Email",
+            },
+            Object {
+              "label": "Phone",
+              "value": "Phone",
+            },
+            Object {
+              "label": "Text",
+              "value": "Text",
+            },
+          ]
+        }
+        onChange={[Function]} />
+      <ShowPhoneTextArea
+        phones={Array []}
+        show={false} />
+    </div>
+    <div
       className="grid">
       <div
         className="grid__item one-half">
@@ -52,4 +85,12 @@ exports[`test renders with props 1`] = `
     </div>
   </Form>
 </div>
+`;
+
+exports[`ShowPhoneTextArea renders with props 1`] = `
+<Input
+  errorText="Incorrect phone number format"
+  label="Your phone number"
+  maxLength={20}
+  name="phoneNumber" />
 `;
