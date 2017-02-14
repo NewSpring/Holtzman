@@ -131,20 +131,7 @@ const map = ({ live }) => ({ live });
 
 const withRedux = connect(map);
 
-// const withLive = graphql(LIVE_QUERY, {
-//   options: { pollInterval: 60000 },
-// });
-
-// XXX FOR TESTING ONLY
 const withLive = graphql(LIVE_QUERY, {
-  props: () => ({
-    data: {
-      live: {
-        live: true,
-        embedCode: "12345",
-      },
-    },
-  }),
   options: { pollInterval: 60000 },
 });
 
