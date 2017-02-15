@@ -1,3 +1,6 @@
+
+// @flow
+
 import { PropTypes } from "react";
 import { Link } from "react-router";
 
@@ -20,21 +23,37 @@ function getImage(images, label = "2:1") {
   return selectedImage;
 }
 
+type IRenderRecentLikes = {
+  recentLikes: boolean,
+  recentLoading: [Object],
+  show: boolean,
+};
+
 const RenderRecentLikes = ({
   recentLikes,
   recentLoading,
-}) => {
-  if (!process.env.WEB) {
-    return (
-      <section className="soft-half background--light-secondary">
+  show,
+}: IRenderRecentLikes) => {
+  if (!show) return null; //|| (!recentLoading && !(recentLikes && recentLikes.length))) return null;
+  return (
+    <section className="soft-half background--light-secondary">
+      {(recentLoading || (!recentLoading && recentLikes && recentLikes.length)) &&
         <div className="one-whole text-center">
           <h5 className="flush soft-bottom">Recently Liked By Others</h5>
         </div>
-        {recentLoading && <div className="text-center"><Loading /></div>}
-        {recentLikes && <RecentLikes likes={recentLikes} />}
-      </section>)
-  };
-  return null;
+      }
+      {recentLoading && <div className="text-center" data-spec="loading"><Loading /></div>}
+      {recentLikes && <RecentLikes likes={recentLikes} />}
+    </section>
+  );
+};
+
+type ILayout = {
+  featuredItem: Object,
+  recommendedItems: [Object],
+  textItems: [Object],
+  recentLikes: [Object],
+  recentLoading: boolean,
 };
 
 const Layout = ({
@@ -43,7 +62,7 @@ const Layout = ({
   textItems,
   recentLikes,
   recentLoading,
-}) => (
+}: ILayout) => (
   <div style={{ overflowY: "hidden", height: "100%" }} className="background--light-primary">
 
     <section className="hard background--light-secondary">
@@ -71,6 +90,7 @@ const Layout = ({
     <RenderRecentLikes
       recentLikes={recentLikes}
       recentLoading={recentLoading}
+      show={!process.env.WEB}
     />
 
     {textItems && (
@@ -105,38 +125,12 @@ const Layout = ({
         </div>
       </div>
     )}
-
-
-    {/*
-    <section className="hard background--light-secondary">
-      <h6 className="push-left soft-half-bottom soft-top">Popular Content</h6>
-    </section>
-
-    <section className="soft-half background--light-secondary">
-      <div className="grid">
-        {popularItems.map(function(item, i) {
-          return (
-            <div className="grid__item one-whole" key={i}>
-              <PopularItem like={item} />
-            </div>
-          )
-        })}
-      </div>
-    </section>
-    */}
   </div>
 );
-
-Layout.propTypes = {
-  featuredItem: PropTypes.object,
-  recommendedItems: PropTypes.array,
-  textItems: PropTypes.array,
-  recentLikes: PropTypes.array,
-  recentLoading: PropTypes.bool,
-};
 
 export default Layout;
 
 export {
+  RenderRecentLikes,
   getImage,
 };
