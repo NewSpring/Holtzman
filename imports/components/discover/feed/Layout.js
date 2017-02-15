@@ -20,6 +20,12 @@ function getImage(images, label = "2:1") {
   return selectedImage;
 }
 
+type IRenderRecentLikes = {
+  recentLikes: boolean,
+  recentLoading: [Object],
+  show: boolean,
+};
+
 const RenderRecentLikes = ({
   recentLikes,
   recentLoading,
@@ -51,7 +57,7 @@ const Layout = ({
   textItems,
   recentLikes,
   recentLoading,
-}) => (
+}: ILayout) => (
   <div style={{ overflowY: "hidden", height: "100%" }} className="background--light-primary">
 
     <section className="hard background--light-secondary">
@@ -116,14 +122,6 @@ const Layout = ({
     )}
   </div>
 );
-
-Layout.propTypes = {
-  featuredItem: PropTypes.object,
-  recommendedItems: PropTypes.array,
-  textItems: PropTypes.array,
-  recentLikes: PropTypes.array,
-  recentLoading: PropTypes.bool,
-};
 
 export default Layout;
 
