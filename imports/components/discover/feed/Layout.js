@@ -20,6 +20,23 @@ function getImage(images, label = "2:1") {
   return selectedImage;
 }
 
+const RenderRecentLikes = ({
+  recentLikes,
+  recentLoading,
+}) => {
+  if (!process.env.WEB) {
+    return (
+      <section className="soft-half background--light-secondary">
+        <div className="one-whole text-center">
+          <h5 className="flush soft-bottom">Recently Liked By Others</h5>
+        </div>
+        {recentLoading && <div className="text-center"><Loading /></div>}
+        {recentLikes && <RecentLikes likes={recentLikes} />}
+      </section>)
+  };
+  return null;
+};
+
 const Layout = ({
   featuredItem,
   recommendedItems,
@@ -51,13 +68,10 @@ const Layout = ({
       </div>
     </section>
 
-    <section className="soft-half background--light-secondary">
-      <div className="one-whole text-center">
-        <h5 className="flush soft-bottom">Recently Liked By Others</h5>
-      </div>
-      {recentLoading && <div className="text-center"><Loading /></div>}
-      {recentLikes && !process.env.WEB && <RecentLikes likes={recentLikes} />}
-    </section>
+    <RenderRecentLikes
+      recentLikes={recentLikes}
+      recentLoading={recentLoading}
+    />
 
     {textItems && (
       <div className="soft-half background--light-secondary">
