@@ -1,9 +1,6 @@
 
-// @flow
-
 import { PropTypes } from "react";
 import { Link } from "react-router";
-
 import Loading from "../../@primitives/UI/loading/Spinner";
 import Hero from "../../@primitives/UI/hero";
 import { MiniCard } from "../../@primitives/UI/cards";
@@ -23,18 +20,12 @@ function getImage(images, label = "2:1") {
   return selectedImage;
 }
 
-type IRenderRecentLikes = {
-  recentLikes: boolean,
-  recentLoading: [Object],
-  show: boolean,
-};
-
 const RenderRecentLikes = ({
   recentLikes,
   recentLoading,
   show,
-}: IRenderRecentLikes) => {
-  if (!show) return null; //|| (!recentLoading && !(recentLikes && recentLikes.length))) return null;
+}) => {
+  if (!show) return null;
   return (
     <section className="soft-half background--light-secondary">
       {(recentLoading || (!recentLoading && recentLikes && recentLikes.length)) &&
@@ -48,12 +39,10 @@ const RenderRecentLikes = ({
   );
 };
 
-type ILayout = {
-  featuredItem: Object,
-  recommendedItems: [Object],
-  textItems: [Object],
-  recentLikes: [Object],
-  recentLoading: boolean,
+RenderRecentLikes.propTypes = {
+  recentLikes: PropTypes.object,
+  recentLoading: PropTypes.bool,
+  show: PropTypes.bool,
 };
 
 const Layout = ({
@@ -62,7 +51,7 @@ const Layout = ({
   textItems,
   recentLikes,
   recentLoading,
-}: ILayout) => (
+}) => (
   <div style={{ overflowY: "hidden", height: "100%" }} className="background--light-primary">
 
     <section className="hard background--light-secondary">
@@ -127,6 +116,14 @@ const Layout = ({
     )}
   </div>
 );
+
+Layout.propTypes = {
+  featuredItem: PropTypes.object,
+  recommendedItems: PropTypes.array,
+  textItems: PropTypes.array,
+  recentLikes: PropTypes.array,
+  recentLoading: PropTypes.bool,
+};
 
 export default Layout;
 
