@@ -56,7 +56,7 @@ const Layout = ({
         <h5 className="flush soft-bottom">Recently Liked By Others</h5>
       </div>
       {recentLoading && <div className="text-center"><Loading /></div>}
-      {recentLikes && <RecentLikes likes={recentLikes} />}
+      {recentLikes && !process.env.WEB && <RecentLikes likes={recentLikes} />}
     </section>
 
     {textItems && (
