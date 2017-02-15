@@ -78,16 +78,7 @@ exports[`Layout renders with props 1`] = `
         title="recommend two" />
     </div>
   </section>
-  <section
-    className="soft-half background--light-secondary">
-    <div
-      className="one-whole text-center">
-      <h5
-        className="flush soft-bottom">
-        Recently Liked By Others
-      </h5>
-    </div>
-  </section>
+  <RenderRecentLikes />
   <div
     className="soft-half background--light-secondary">
     <div
@@ -190,16 +181,7 @@ exports[`Layout works without featured item 1`] = `
         title="recommend two" />
     </div>
   </section>
-  <section
-    className="soft-half background--light-secondary">
-    <div
-      className="one-whole text-center">
-      <h5
-        className="flush soft-bottom">
-        Recently Liked By Others
-      </h5>
-    </div>
-  </section>
+  <RenderRecentLikes />
   <div
     className="soft-half background--light-secondary">
     <div
@@ -235,4 +217,44 @@ exports[`Layout works without featured item 1`] = `
     </div>
   </div>
 </div>
+`;
+
+exports[`RenderRecentLikes should render likes if not loading 1`] = `
+<section
+  className="soft-half background--light-secondary">
+  <div
+    className="one-whole text-center">
+    <h5
+      className="flush soft-bottom">
+      Recently Liked By Others
+    </h5>
+  </div>
+  <Component
+    likes={
+      Array [
+        "yo",
+        "dawg",
+      ]
+    } />
+</section>
+`;
+
+exports[`RenderRecentLikes should render loading if it is loading 1`] = `
+<section
+  className="soft-half background--light-secondary">
+  <div
+    className="one-whole text-center">
+    <h5
+      className="flush soft-bottom">
+      Recently Liked By Others
+    </h5>
+  </div>
+  <div
+    className="text-center"
+    data-spec="loading">
+    <Spinner />
+  </div>
+  <Component
+    likes={Array []} />
+</section>
 `;
