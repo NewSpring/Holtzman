@@ -1,10 +1,10 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import { Meteor } from "meteor/meteor";
+import { print } from "graphql-tag/printer";
 import { modal } from "../../../../data/store";
 import OnBoard from "../../../../components/people/accounts";
-import Join from "../Join";
-import { TemplateWithoutData as Template } from "../";
+import { TemplateWithoutData as Template, JoinWithPhones, PHONE_NUMBER_MUTATION, GROUP_MUTATION } from "../";
 
 jest.mock("../../../../deprecated/mixins/mixins.Header", () => {});
 jest.mock("../../../../data/store", () => ({
@@ -116,7 +116,18 @@ it("closeModal calls preventDefault, hides modal, and adjust nav", () => {
   expect(modal.hide).toHaveBeenCalledTimes(1);
 });
 
-it("sendRequest calls preventDefault and the join meteor method", () => {
+it("sendRequest calls preventDefault", () => {
+  const mockPromiseData = {
+    response: {
+      success: true,
+      code: 200,
+      error: false,
+    },
+  };
+  const mockPromise = new Promise(p => p(mockPromiseData));
+  const mockQuery = jest.fn(() => mockPromise);
+  const mockCallback = jest.fn();
+
   const mockPreventDefault = jest.fn();
   const mockQuerySelectorAll = jest.fn().mockReturnValue([
     { value: "test\n" },
@@ -124,20 +135,16 @@ it("sendRequest calls preventDefault and the join meteor method", () => {
   const mockCurrentTarget = {
     querySelectorAll: mockQuerySelectorAll,
   };
-  Meteor.call = jest.fn();
-  const wrapper = shallow(generateComponent());
+  const wrapper = shallow(generateComponent({
+    addToGroup: mockQuery,
+  }));
   wrapper.instance().sendRequest({
     preventDefault: mockPreventDefault,
     currentTarget: mockCurrentTarget,
-  });
-
+  }, mockCallback);
   expect(mockPreventDefault).toHaveBeenCalledTimes(1);
   expect(mockQuerySelectorAll).toHaveBeenCalledTimes(1);
   expect(mockQuerySelectorAll).toHaveBeenCalledWith("textarea");
-  expect(Meteor.call).toHaveBeenCalledTimes(1);
-  expect(Meteor.call.mock.calls[0][0]).toBe("community/actions/join");
-  expect(Meteor.call.mock.calls[0][1]).toBe(defaultProps.data.group.entityId);
-  expect(Meteor.call.mock.calls[0][2]).toBe("test<br/>");
 });
 
 it("join renders Join modal if user", () => {
@@ -150,11 +157,14 @@ it("join renders Join modal if user", () => {
   wrapper.instance().join();
   expect(mockDispatch).toHaveBeenCalledTimes(1);
   expect(modal.render).toHaveBeenCalledTimes(1);
-  expect(modal.render.mock.calls[0][0]).toBe(Join);
+  expect(modal.render.mock.calls[0][0]).toBe(JoinWithPhones);
   expect(modal.render.mock.calls[0][1]).toEqual({
     group: defaultProps.data.group,
     onExit: wrapper.instance().closeModal,
     onClick: wrapper.instance().sendRequest,
+    onChange: wrapper.instance().onPhoneNumberChange,
+    validatePhoneNumber: wrapper.instance().validatePhoneNumber,
+    onCommunicationPreferenceChange: wrapper.instance().onCommunicationPreferenceChange,
   });
 });
 
@@ -171,4 +181,50 @@ it("join renders OnBoard modal if no user", () => {
   expect(modal.render).toHaveBeenCalledTimes(1);
   expect(modal.render.mock.calls[0][0]).toBe(OnBoard);
   expect(modal.render.mock.calls[0][1].coverHeader).toBe(true);
+});
+
+it("should contain a phone number mutation", () => {
+  expect(print(PHONE_NUMBER_MUTATION)).toMatchSnapshot();
+});
+
+it("should contain a group mutation", () => {
+  expect(print(GROUP_MUTATION)).toMatchSnapshot();
+});
+
+it("calls onPhoneNumberChange and sets the state", () => {
+  const wrapper = shallow(generateComponent());
+  wrapper.setState({ phoneNumber: "" });
+  wrapper.instance().onPhoneNumberChange("5555555555");
+  expect(wrapper.state().phoneNumber).toBe("5555555555");
+});
+
+it("should call validatePhoneNumber and return true", () => {
+  const wrapper = shallow(generateComponent());
+  let result = wrapper.instance().validatePhoneNumber("5555555555");
+  expect(result).toBe(true);
+});
+
+it("should call validatePhoneNumber and return false", () => {
+  const wrapper = shallow(generateComponent());
+  let result = wrapper.instance().validatePhoneNumber("5");
+  expect(result).toBe(false);
+});
+
+it("should call validatePhoneNumber with characters and numbers and return true", () => {
+  const wrapper = shallow(generateComponent());
+  let result = wrapper.instance().validatePhoneNumber("1234abcdef1a2b3c4d56");
+  expect(result).toBe(true);
+});
+
+it("should call validatePhoneNumber with characters and numbers and return false", () => {
+  const wrapper = shallow(generateComponent());
+  let result = wrapper.instance().validatePhoneNumber("1234abcdef1a2b3c4d5e");
+  expect(result).toBe(false);
+});
+
+it("calls onCommunicationPreferenceChange and sets the state", () => {
+  const wrapper = shallow(generateComponent());
+  wrapper.setState({ communicationPreference: "No Preference" });
+  wrapper.instance().onCommunicationPreferenceChange("Phone");
+  expect(wrapper.state().communicationPreference).toBe("Phone");
 });
