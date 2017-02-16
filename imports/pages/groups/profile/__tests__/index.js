@@ -210,6 +210,18 @@ it("should call validatePhoneNumber and return false", () => {
   expect(result).toBe(false);
 });
 
+it("should call validatePhoneNumber with characters and numbers and return true", () => {
+  const wrapper = shallow(generateComponent());
+  let result = wrapper.instance().validatePhoneNumber("1234abcdef1a2b3c4d56");
+  expect(result).toBe(true);
+});
+
+it("should call validatePhoneNumber with characters and numbers and return false", () => {
+  const wrapper = shallow(generateComponent());
+  let result = wrapper.instance().validatePhoneNumber("1234abcdef1a2b3c4d5e");
+  expect(result).toBe(false);
+});
+
 it("calls onCommunicationPreferenceChange and sets the state", () => {
   const wrapper = shallow(generateComponent());
   wrapper.setState({ communicationPreference: "No Preference" });
