@@ -120,7 +120,7 @@ class TemplateWithoutData extends Component {
   }
 
   validatePhoneNumber = (value: string): boolean => {
-    if (value.length < 10) return false;
+    if (value.replace(/[^\d]+/g, "").length < 10) return false;
     return true;
   }
 
