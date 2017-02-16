@@ -130,9 +130,14 @@ export class Schedule extends Component {
     });
   }
 
+  /*
+    if one is selected, and freqClick is called with the same one, disable it
+    if one is selected, and freqClick is called with another one, SET THAT ONE
+    if one is not selected, set it
+  */
   frequencyClick = (value: string) => {
     let newValue = value;
-    if (this.state.frequency) newValue = null;
+    if (this.state.frequency === newValue) newValue = null;
 
     this.setState({ frequency: newValue });
     this.props.saveSchedule({
@@ -143,7 +148,7 @@ export class Schedule extends Component {
 
   startClick = (value: string) => {
     let newValue = value;
-    if (this.state.start) newValue = null;
+    if (this.state.start === newValue) newValue = null;
 
     if (this.state.start || value !== "custom") {
       this.setState({ start: newValue });
