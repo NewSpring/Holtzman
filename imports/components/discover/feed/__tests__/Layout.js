@@ -1,7 +1,6 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import Layout, { getImage, RenderRecentLikes } from "../Layout";
-import Loading from "../../../@primitives/UI/Loading/spinner";
 import { getSingleSpecWrapper } from "../../../../util/tests/data-spec";
 import RecentLikes from "../../../shared/likes-list";
 
