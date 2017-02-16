@@ -26,23 +26,6 @@ type ILayout = {
   dataId: string | number,
 };
 
-// this definition of Layout won't render
-// const Layout = ({
-//   accounts,
-//   existing,
-//   format,
-//   onSubmitSchedule,
-//   ready,
-//   save,
-//   saveDate,
-//   schedules,
-//   setFrequency,
-//   setFund,
-//   state,
-//   text,
-//   total,
-// }: ILayout) => {
-
 // this definition of Layout works
 class Layout extends Component {
 
