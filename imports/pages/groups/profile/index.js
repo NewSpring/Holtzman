@@ -121,11 +121,7 @@ class TemplateWithoutData extends Component {
   }
 
   validatePhoneNumber = (value: string): boolean => {
-<<<<<<< HEAD
     if (value.replace(/[^\d]+/g, "").length < 10) return false;
-=======
-    if (value.length < 10) return false;
->>>>>>> All Things Group Joining (#1814)
     return true;
   }
 
