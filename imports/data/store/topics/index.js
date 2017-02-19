@@ -7,6 +7,7 @@
 */
 import reducer from "./reducer";
 import { addReducer } from "../utilities";
+import "./saga";
 
 addReducer({
   topics: reducer,
