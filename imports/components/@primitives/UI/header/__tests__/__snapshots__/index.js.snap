@@ -27,7 +27,7 @@ exports[`test renders NewSpring text version 1`] = `
       NewSpring Church
     </h6>
   </div>
-  <Connect(Apollo(LiveWithoutData)) />
+  <Connect(Apollo(Apollo(LiveWithoutData))) />
 </div>
 `;
 
@@ -60,7 +60,7 @@ exports[`test renders default text version 1`] = `
       NewSpring Church
     </h6>
   </div>
-  <Connect(Apollo(LiveWithoutData)) />
+  <Connect(Apollo(Apollo(LiveWithoutData))) />
 </div>
 `;
 
@@ -107,7 +107,7 @@ exports[`test renders isSearch version 1`] = `
       </div>
     </form>
   </div>
-  <Connect(Apollo(LiveWithoutData)) />
+  <Connect(Apollo(Apollo(LiveWithoutData))) />
 </div>
 `;
 
@@ -142,11 +142,11 @@ exports[`test renders light version 1`] = `
       test
     </h6>
   </div>
-  <Connect(Apollo(LiveWithoutData)) />
+  <Connect(Apollo(Apollo(LiveWithoutData))) />
 </div>
 `;
 
-exports[`test renders live version 1`] = `<Connect(Apollo(LiveWithoutData)) />`;
+exports[`test renders live version 1`] = `<Connect(Apollo(Apollo(LiveWithoutData))) />`;
 
 exports[`test renders searching version 1`] = `
 <div
@@ -192,7 +192,7 @@ exports[`test renders searching version 1`] = `
       test
     </h6>
   </div>
-  <Connect(Apollo(LiveWithoutData)) />
+  <Connect(Apollo(Apollo(LiveWithoutData))) />
 </div>
 `;
 
@@ -251,7 +251,7 @@ exports[`test renders subtext if present 1`] = `
       some subtext
     </h6>
   </div>
-  <Connect(Apollo(LiveWithoutData)) />
+  <Connect(Apollo(Apollo(LiveWithoutData))) />
 </div>
 `;
 
@@ -286,7 +286,7 @@ exports[`test renders with props 1`] = `
       test
     </h6>
   </div>
-  <Connect(Apollo(LiveWithoutData)) />
+  <Connect(Apollo(Apollo(LiveWithoutData))) />
 </div>
 `;
 
