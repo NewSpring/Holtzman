@@ -1,6 +1,6 @@
+
 import { PropTypes } from "react";
 import { Link } from "react-router";
-
 import Loading from "../../@primitives/UI/loading/Spinner";
 import Hero from "../../@primitives/UI/hero";
 import { MiniCard } from "../../@primitives/UI/cards";
@@ -19,6 +19,31 @@ function getImage(images, label = "2:1") {
   }
   return selectedImage;
 }
+
+const RenderRecentLikes = ({
+  recentLikes,
+  recentLoading,
+  show,
+}) => {
+  if (!show) return null;
+  return (
+    <section className="soft-half background--light-secondary">
+      {(recentLoading || (!recentLoading && recentLikes && recentLikes.length)) &&
+        <div className="one-whole text-center">
+          <h5 className="flush soft-bottom">Recently Liked By Others</h5>
+        </div>
+      }
+      {recentLoading && <div className="text-center" data-spec="loading"><Loading /></div>}
+      {recentLikes && <RecentLikes likes={recentLikes} />}
+    </section>
+  );
+};
+
+RenderRecentLikes.propTypes = {
+  recentLikes: PropTypes.object,
+  recentLoading: PropTypes.bool,
+  show: PropTypes.bool,
+};
 
 const Layout = ({
   featuredItem,
@@ -51,13 +76,11 @@ const Layout = ({
       </div>
     </section>
 
-    <section className="soft-half background--light-secondary">
-      <div className="one-whole text-center">
-        <h5 className="flush soft-bottom">Recently Liked By Others</h5>
-      </div>
-      {recentLoading && <div className="text-center"><Loading /></div>}
-      {recentLikes && <RecentLikes likes={recentLikes} />}
-    </section>
+    <RenderRecentLikes
+      recentLikes={recentLikes}
+      recentLoading={recentLoading}
+      show={!process.env.WEB}
+    />
 
     {textItems && (
       <div className="soft-half background--light-secondary">
@@ -91,25 +114,6 @@ const Layout = ({
         </div>
       </div>
     )}
-
-
-    {/*
-    <section className="hard background--light-secondary">
-      <h6 className="push-left soft-half-bottom soft-top">Popular Content</h6>
-    </section>
-
-    <section className="soft-half background--light-secondary">
-      <div className="grid">
-        {popularItems.map(function(item, i) {
-          return (
-            <div className="grid__item one-whole" key={i}>
-              <PopularItem like={item} />
-            </div>
-          )
-        })}
-      </div>
-    </section>
-    */}
   </div>
 );
 
@@ -124,5 +128,6 @@ Layout.propTypes = {
 export default Layout;
 
 export {
+  RenderRecentLikes,
   getImage,
 };
