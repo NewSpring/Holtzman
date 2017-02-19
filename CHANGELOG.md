@@ -23,6 +23,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Fixed a typo on the Annual Report. The KidSpring section story now spells "among" correctly.
 - Fixed the security enhancer so that it correctly shows the home feed if you are not signed in.
 - Fixed schedule tags breaking in giving when changed from one tag to another
+- Fixed the home feed so that it will only show you all of the basic topics if you are signed out.
 
 ### Changed
 - Changed the text on the individual transaction entry pages to more closely align with our church's vision.
