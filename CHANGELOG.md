@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - The channel entries will appear in the home feed alongside the rest of the home feed items.
 - Tapping on an Event entry will take you to a page that has the live feed (or on-demand video if not Sunday) along with other relevant information.
 - This feature is wrapped by an awesome new ability to test features based on security role. You'll have to have the beta tester role in order to see and use this new feature.Added the ability for the home feed to pull items from the NS: Now channel in EE. These items link to internal entry pages.
+- Ability to share a group
+
 ### Fixed
 - Fixed an issue in iOS that was causing schedules to not be created.
 - Fixed the toggle import in the `/following` section on profile causing component not to render.
@@ -21,6 +23,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Fixed a typo on the Annual Report. The KidSpring section story now spells "among" correctly.
 - Fixed the security enhancer so that it correctly shows the home feed if you are not signed in.
 - Removed recently liked section on web.
+- Fixed schedule tags breaking in giving when changed from one tag to another
 
 ### Changed
 - Changed the text on the individual transaction entry pages to more closely align with our church's vision.
