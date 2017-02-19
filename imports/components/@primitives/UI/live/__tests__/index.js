@@ -228,7 +228,7 @@ it("shows beta users a link to wowza page", () => {
     },
   };
   const wrapper = shallow(generateComponent(props));
-  expect(wrapper.instance().getLink()).toEqual("/wowza/harambe");
+  expect(wrapper.instance().getLink()).toEqual("/wowza");
   wrapper.setProps({ ...props, person: {
     authLoading: false, authorized: false,
   }});
