@@ -175,7 +175,7 @@ const getTopics = (opts) => {
   channels = difference(topics, channels);
 
   // ensure channels aren't empty
-  if (channels.length === 0) channels = [...topics];
+  if (channels.length === 0 || !Meteor.userId()) channels = [...topics];
 
   // return for the graphql call
   return channels.filter(filterChannels).map((x) => x.toLowerCase());
