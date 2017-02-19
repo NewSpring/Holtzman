@@ -200,6 +200,18 @@ describe("Class", () => {
       });
       expect(wrapper.state().frequency).toEqual(null);
     });
+    it("changes frequency", () => {
+      const saveSchedule = jest.fn();
+      const wrapper = mount(generateComponent({ saveSchedule }));
+      const { frequencyClick } = wrapper.instance();
+      wrapper.setState({ start: "now", frequency: "one-time" });
+      frequencyClick("monthly");
+      expect(saveSchedule).toBeCalledWith({
+        frequency: "monthly",
+        start: "now",
+      });
+      expect(wrapper.state().frequency).toEqual("monthly");
+    });
   });
 
   describe("startClick", () => {
@@ -231,6 +243,18 @@ describe("Class", () => {
         start: null,
       });
       expect(wrapper.state().start).toEqual(null);
+    });
+    it("changes the start", () => {
+      const saveSchedule = jest.fn();
+      const wrapper = mount(generateComponent({ saveSchedule }));
+      const { startClick } = wrapper.instance();
+      wrapper.setState({ start: "now", frequency: "one-time" });
+      startClick("l8r");
+      expect(saveSchedule).toBeCalledWith({
+        frequency: "one-time",
+        start: "l8r",
+      });
+      expect(wrapper.state().start).toEqual("l8r");
     });
     it("toggles the date picker (true)", () => {
       const wrapper = mount(generateComponent());
