@@ -79,6 +79,12 @@ platform :ios do
       value: "Group Finder",
     )
 
+    set_info_plist_value(
+      path: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/ios/project/#{ENV['XCODE_SCHEME_NAME']}/#{ENV['XCODE_SCHEME_NAME']}-Info.plist",
+      key: "ITSAppUsesNonExemptEncryption",
+      value: "YES",
+    )
+
     update_app_identifier(
       xcodeproj: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/ios/project/#{ENV['XCODE_SCHEME_NAME']}.xcodeproj",
       plist_path: "#{ENV['XCODE_SCHEME_NAME']}/#{ENV['XCODE_SCHEME_NAME']}-Info.plist",
