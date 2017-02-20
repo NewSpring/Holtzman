@@ -51,6 +51,6 @@ it("updates nav and header on mount", () => {
   expect(navActions.setLevel).toHaveBeenCalledWith("BASIC_CONTENT");
   expect(headerActions.set).toHaveBeenCalledTimes(1);
   expect(headerActions.set).toHaveBeenCalledWith({
-    title: "Live",
+    title: "Wowza",
   });
 });
