@@ -3,7 +3,34 @@ exports[`test renders with props 1`] = `
   className="locked-ends locked-sides background--dark-primary floating offset_b736ty">
   <div
     className="floating__item one-whole">
-    hello wowza
+    <ReactJWPlayer
+      aspectRatio="inherit"
+      isMuted={false}
+      onAdPause={[Function]}
+      onAdPlay={[Function]}
+      onAdResume={[Function]}
+      onAutoStart={[Function]}
+      onClose={[Function]}
+      onEnterFullScreen={[Function]}
+      onError={[Function]}
+      onExitFullScreen={[Function]}
+      onFiftyPercent={[Function]}
+      onMute={[Function]}
+      onNinetyFivePercent={[Function]}
+      onOneHundredPercent={[Function]}
+      onPause={[Function]}
+      onPlay={[Function]}
+      onReady={[Function]}
+      onResume={[Function]}
+      onTenSeconds={[Function]}
+      onThirtySeconds={[Function]}
+      onThreeSeconds={[Function]}
+      onUnmute={[Function]}
+      onVideoLoad={[Function]}
+      playerId="wowza-live-video"
+      playerScript="//content.jwplatform.com/libraries/SgGdRKN7.js"
+      playlist="//content.jwplatform.com/feeds/STml6Fs1.json" />
+    ,
   </div>
 </div>
 `;
