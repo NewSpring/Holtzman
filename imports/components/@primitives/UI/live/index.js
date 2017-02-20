@@ -86,7 +86,7 @@ class LiveWithoutData extends Component {
       && !this.props.person.authLoading
       && this.props.person.authorized
     );
-    return shouldShowBetaLink ? `/wowza` : `/video/${embedCode}`;
+    return shouldShowBetaLink ? "/wowza" : `/video/${embedCode}`;
   }
 
   render() {
