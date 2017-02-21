@@ -44,7 +44,7 @@ type IHeroLink = {
   children?: any,
 };
 
-const HeroLink = (props: IHeroLink) => {
+export const HeroLink = (props: IHeroLink) => {
   if (!props.to) return <Link>{props.children}</Link>;
 
   // external link
