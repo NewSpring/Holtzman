@@ -39,6 +39,23 @@ export function getImage(images: Object, label: string = "2:1") {
   return selectedImage;
 }
 
+type IHeroLink = {
+  to: string,
+  children?: any,
+};
+
+export const HeroLink = (props: IHeroLink) => {
+  if (!props.to) return <Link>{props.children}</Link>;
+
+  // external link
+  if (props.to.includes("http://") || props.to.includes("https://")) {
+    return <a href={props.to}>{props.children}</a>;
+  }
+
+  // internal link
+  return <Link to={props.to}>{props.children}</Link>;
+};
+
 type IHero = {
   content: Object,
   title?: string,
@@ -54,7 +71,7 @@ const Hero = ({
   link,
   image,
 }: IHero) => (
-  <Link
+  <HeroLink
     to={link || (content && content.meta && content.meta.urlTitle)}
   >
     <section
@@ -89,7 +106,7 @@ const Hero = ({
         }
       </div>
     </section>
-  </Link>
+  </HeroLink>
 );
 
 export default Hero;
