@@ -53,7 +53,6 @@
     ],
     "moduleNameMapper": {
       "meteor/bjwiley2:server-watch": "<rootDir>/.meteor/mocks/bjwiley2-server-watch.js",
-
       "^meteor/(.*)": "<rootDir>/.meteor/mocks/$1.js"
     },
     "setupFiles": [
@@ -191,7 +190,7 @@
     "flow-bin": "^0.34.0",
     "gagarin": "^0.4.12",
     "github-download": "^0.5.0",
-    "jest": "^18.0.0",
+    "jest": "^19.0.0",
     "jest-cli": "^17.0.3",
     "json-loader": "^0.5.4",
     "mkdirp": "^0.5.1",
