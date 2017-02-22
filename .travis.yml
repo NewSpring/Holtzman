@@ -29,7 +29,7 @@ before_install:
   - npm install -g coveralls
 script:
   - yarn
-  - yarn test -- -w="2"
+  - yarn test
 after_success:
   - 'if [ "$TRAVIS_EVENT_TYPE" == "cron" ]; then bash ./.travis/run_for_coverage; fi'
   - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then bash ./.travis/run_on_pull_requests; fi'
