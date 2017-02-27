@@ -1,11 +1,10 @@
 import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 import { css } from "aphrodite";
+import ReactJWPlayer from "react-jw-player";
 
 import navActions from "../../data/store/nav";
 import headerActions from "../../data/store/header";
-import Video from "../../components/@primitives/players/video";
-import wowzaRoute from "./wowza";
 
 import styles from "../../components/@primitives/nav/offset-css";
 
@@ -13,27 +12,28 @@ class TemplateWithoutData extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    params: PropTypes.object.isRequired,
+    // params: PropTypes.object.isRequired,
   }
 
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("BASIC_CONTENT"));
     this.props.dispatch(headerActions.set({
-      title: "Live Now",
+      title: "Live",
     }));
   }
 
   render() {
-    const { embedCode } = this.props.params;
+    // const { embedCode } = this.props.params;
 
     return (
-      <div
-        className={
-          `locked-ends locked-sides background--dark-primary floating ${css(styles.offset)}`
-        }
-      >
+      <div className={`locked-ends locked-sides background--dark-primary floating ${css(styles.offset)}`}>
         <div className="floating__item one-whole">
-          <Video id={embedCode} ref="video" />
+          <ReactJWPlayer
+            playerId="wowza-live-video"
+            playerScript="//content.jwplatform.com/libraries/SgGdRKN7.js"
+            // playlist="//content.jwplatform.com/players/eFu3SiOb-SgGdRKN7.js"
+            playlist="//content.jwplatform.com/feeds/STml6Fs1.json"
+          />,
         </div>
       </div>
     );
@@ -42,16 +42,13 @@ class TemplateWithoutData extends Component {
 
 const Template = connect()(TemplateWithoutData);
 
-const Routes = [
-  {
-    path: "/video/:embedCode",
-    component: Template,
-  },
-  wowzaRoute.Route,
-];
+const Route = {
+  path: "/wowza/:embedCode",
+  component: Template,
+};
 
 export default {
-  Routes,
+  Route,
 };
 
 export {

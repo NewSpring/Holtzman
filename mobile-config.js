@@ -70,6 +70,10 @@ App.configurePlugin("cordova-fabric-plugin", {
   FABRIC_API_SECRET: process.env.FABRIC_API_SECRET,
 });
 
+App.configurePlugin("phonegap-plugin-push", {
+  SENDER_ID: process.env.FIREBASE_SENDER_ID,
+});
+
 App.appendToConfig(`
     <universal-links>
       <ios-team-id value="7TM8C6252Z" />

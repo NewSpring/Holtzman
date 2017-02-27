@@ -124,6 +124,7 @@
     "react-dom": "^15.0.0",
     "react-hammerjs": "^0.4.6",
     "react-helmet": "^3.1.0",
+    "react-jw-player": "^1.1.2",
     "react-mixin": "^3.0.5",
     "react-motion": "^0.4.4",
     "react-pull-to-refresh": "https://git@github.com/NewSpring/react-pull-to-refresh.git",
