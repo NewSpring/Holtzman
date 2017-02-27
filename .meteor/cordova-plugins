@@ -10,3 +10,4 @@ cordova-plugin-social-message@0.4.0
 cordova-plugin-statusbar@2.1.3
 cordova-universal-links-plugin@1.2.1
 nl.kingsquare.cordova.background-audio@https://github.com/AubreyHewes/cordova-background-audio.git
+phonegap-plugin-push@1.8.4
