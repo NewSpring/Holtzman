@@ -170,6 +170,8 @@ class GlobalWithoutData extends Component {
       document.addEventListener("click", linkListener);
       document.addEventListener("deviceready", () => {
         universalLinks.subscribe("universalLinkRoute", this.universalLinkRouting);
+        window.FirebasePlugin.grantPermission();
+        window.FirebasePlugin.subscribe("newspring");
       }, false);
     }
   }
