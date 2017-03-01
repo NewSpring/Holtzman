@@ -3,6 +3,10 @@ logs
 *.log
 npm-debug.log*
 
+reset-local-device
+setup-ios-project
+.fastlane/README.md
+
 # Runtime data
 pids
 *.pid
