@@ -188,26 +188,28 @@ class GlobalWithoutData extends Component {
   componentWillMount() {
     if (Meteor.isCordova) {
       document.addEventListener("click", linkListener);
-      document.addEventListener("deviceready", () => {
-        universalLinks.subscribe("universalLinkRoute", this.universalLinkRouting);
-        /* eslint-disable */
-        if(isIOS()) {
-          FCMPlugin.ready();
-        }
-        FCMPlugin.subscribeToTopic('newspring');
-        FCMPlugin.getToken((token) => {
-          this.props.saveDeviceRegistrationId(token);
-        });
-        FCMPlugin.onTokenRefresh((token) => {
-          this.props.saveDeviceRegistrationId(token);
-        });
-        /* eslint-enable */
-      }, false);
+      document.addEventListener("deviceready", () => this.deviceReadyFunction(this.props.saveDeviceRegistrationId), false);
     }
   }
 
   componentWillUnMount() {
     if (Meteor.isCordova) universalLinks.unsubscribe("universalLinkRoute");
+  }
+
+  deviceReadyFunction = (saveDeviceRegistrationId) => {
+    universalLinks.subscribe("universalLinkRoute", this.universalLinkRouting);
+    /* eslint-disable */
+    if(isIOS()) {
+      FCMPlugin.ready();
+    }
+    FCMPlugin.subscribeToTopic('newspring');
+    FCMPlugin.getToken((token) => {
+      saveDeviceRegistrationId(token);
+    });
+    FCMPlugin.onTokenRefresh((token) => {
+      saveDeviceRegistrationId(token);
+    });
+    /* eslint-enable */
   }
 
   universalLinkRouting = ({ path }) => {
