@@ -82,7 +82,7 @@ platform :ios do
     set_info_plist_value(
       path: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/ios/project/#{ENV['XCODE_SCHEME_NAME']}/#{ENV['XCODE_SCHEME_NAME']}-Info.plist",
       key: "ITSAppUsesNonExemptEncryption",
-      value: "YES",
+      value: "NO",
     )
 
     update_app_identifier(

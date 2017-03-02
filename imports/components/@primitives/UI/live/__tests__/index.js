@@ -213,3 +213,24 @@ it("handleLive updates store when data is not live and props live is", () => {
 it("parses query", () => {
   expect(print(LIVE_QUERY)).toMatchSnapshot();
 });
+
+// XXX FOR BETA
+it("shows beta users a link to wowza page", () => {
+  const mockDispatch = jest.fn();
+  liveActions.set = jest.fn();
+  liveActions.reset = jest.fn();
+  const props = {
+    dispatch: mockDispatch,
+    live: { embedCode: "harambe" },
+    person: {
+      authLoading: false,
+      authorized: true,
+    },
+  };
+  const wrapper = shallow(generateComponent(props));
+  expect(wrapper.instance().getLink()).toEqual("/wowza");
+  wrapper.setProps({ ...props, person: {
+    authLoading: false, authorized: false,
+  }});
+  expect(wrapper.instance().getLink()).toEqual("/video/harambe");
+});
