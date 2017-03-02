@@ -2,7 +2,7 @@ import { Component, PropTypes } from "react";
 import { Meteor } from "meteor/meteor";
 import { connect } from "react-redux";
 import { css } from "aphrodite";
-import { withApollo } from "react-apollo";
+import { withApollo, graphql } from "react-apollo";
 import gql from "graphql-tag";
 import createContainer from "../../../../deprecated/meteor/react-meteor-data";
 import { routeActions } from "../../../../data/store/routing";
@@ -157,11 +157,30 @@ export const URL_TITLE_QUERY = gql`
   }
 `;
 
+export const SAVE_DEVICE_REGISTRATION_ID = gql`
+  mutation SaveDeviceRegistrationId($registrationId: String!) {
+    saveDeviceRegistrationId(registrationId: $registrationId) {
+      error
+      code
+      success
+    }
+  }
+`;
+
+export const withSaveDeviceRegistrationId = graphql(SAVE_DEVICE_REGISTRATION_ID, {
+  props: ({ mutate }) => ({
+    saveDeviceRegistrationId: (registrationId) => mutate({
+      variable: { registrationId },
+    }),
+  }),
+});
+
 class GlobalWithoutData extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     client: PropTypes.object.isRequired,
+    saveDeviceRegistrationId: PropTypes.func.isRequired,
   }
 
   state = { universalLinkLoading: false }
@@ -177,6 +196,16 @@ class GlobalWithoutData extends Component {
         }
         FCMPlugin.subscribeToTopic('newspring');
         /* eslint-enable */
+        window.FirebasePlugin.getToken((token) => {
+          this.props.saveDeviceRegistrationId(token);
+        }, (error) => {
+          console.error(error);
+        });
+        window.FirebasePlugin.onTokenRefresh((token) => {
+          this.props.saveDeviceRegistrationId(token);
+        }, (error) => {
+          console.error(error);
+        });
       }, false);
     }
   }
@@ -295,7 +324,7 @@ class GlobalWithoutData extends Component {
   }
 }
 
-export default withRedux(withApollo(GlobalWithoutData));
+export default withRedux(withApollo(withSaveDeviceRegistrationId(GlobalWithoutData)));
 
 export {
   GlobalWithoutData,
