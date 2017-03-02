@@ -82,7 +82,7 @@ platform :ios do
     set_info_plist_value(
       path: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/ios/project/#{ENV['XCODE_SCHEME_NAME']}/#{ENV['XCODE_SCHEME_NAME']}-Info.plist",
       key: "ITSAppUsesNonExemptEncryption",
-      value: "YES",
+      value: "NO",
     )
 
     update_app_identifier(
@@ -111,6 +111,16 @@ platform :ios do
   lane :certificates do
     match(
       type: "appstore",
+      git_url: ENV['CERTIFICATES_REPO'],
+      app_identifier: [ "cc.newspring.newspringapp", "com.subsplashstudio31.NewSpring-Church" ],
+      username: ENV["APPLE_ID"],
+    )
+  end
+
+  desc "Install Development Certificates"
+  lane :dev do
+    match(
+      type: "development",
       git_url: ENV['CERTIFICATES_REPO'],
       app_identifier: [ "cc.newspring.newspringapp", "com.subsplashstudio31.NewSpring-Church" ],
       username: ENV["APPLE_ID"],
