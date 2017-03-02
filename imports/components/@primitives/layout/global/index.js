@@ -195,17 +195,13 @@ class GlobalWithoutData extends Component {
           FCMPlugin.ready();
         }
         FCMPlugin.subscribeToTopic('newspring');
+        FCMPlugin.getToken((token) => {
+          this.props.saveDeviceRegistrationId(token);
+        });
+        FCMPlugin.onTokenRefresh((token) => {
+          this.props.saveDeviceRegistrationId(token);
+        });
         /* eslint-enable */
-        window.FirebasePlugin.getToken((token) => {
-          this.props.saveDeviceRegistrationId(token);
-        }, (error) => {
-          console.error(error);
-        });
-        window.FirebasePlugin.onTokenRefresh((token) => {
-          this.props.saveDeviceRegistrationId(token);
-        }, (error) => {
-          console.error(error);
-        });
       }, false);
     }
   }
