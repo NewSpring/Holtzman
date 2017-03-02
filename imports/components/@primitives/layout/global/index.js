@@ -15,6 +15,7 @@ import { Loading } from "../../UI/states";
 
 import Likes from "../../../../deprecated/database/collections/likes";
 
+import isIOS from "../../../../util/isIOS";
 import { linkListener } from "../../../../util/inAppLink";
 
 import {
@@ -170,8 +171,12 @@ class GlobalWithoutData extends Component {
       document.addEventListener("click", linkListener);
       document.addEventListener("deviceready", () => {
         universalLinks.subscribe("universalLinkRoute", this.universalLinkRouting);
-        window.FirebasePlugin.grantPermission();
-        window.FirebasePlugin.subscribe("newspring");
+        /* eslint-disable */
+        if(isIOS()) {
+          FCMPlugin.ready();
+        }
+        FCMPlugin.subscribeToTopic('newspring');
+        /* eslint-enable */
       }, false);
     }
   }
