@@ -1,7 +1,7 @@
 
 import { mount } from "enzyme";
 import { mountToJson } from "enzyme-to-json";
-import Hero, { isReady, getIconClasses, getImage } from "../";
+import Hero, { isReady, getIconClasses, getImage, HeroLink } from "../";
 
 jest.mock("../../../../../util/categories", () => ({
   icon: jest.fn(() => "categories.icon"),
@@ -67,5 +67,21 @@ describe("Hero", () => {
     expect(component).toBeDefined();
     expect(mountToJson(component)).toMatchSnapshot();
   });
+});
 
+describe("HeroLink", () => {
+  it("should handle external and internal links", () => {
+    const external1 = mount(<HeroLink to="https://harambe.gorilla" />);
+    const external2 = mount(<HeroLink to="http://harambe.gorilla" />);
+    const internal = mount(<HeroLink to="/harambe_gorilla" />);
+
+    expect(external1.html().includes("https://")).toEqual(true);
+    expect(external2.html().includes("http://")).toEqual(true);
+    expect(internal.html().includes("http")).not.toEqual(true);
+  });
+
+  it("should pass children", () => {
+    const component = mount(<HeroLink><p>harambe was an inside job</p></HeroLink>);
+    expect(component.html().includes("harambe")).toEqual(true);
+  });
 });
