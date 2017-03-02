@@ -2,5 +2,5 @@
 set -e
 
 yarn coverage
-coveralls < ./coverage/lcov.info || true # ignore coveralls error
+coveralls < $TRAVIS_BUILD_DIR/.coverage/lcov.info || true # ignore coveralls error
 
