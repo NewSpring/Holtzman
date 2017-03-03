@@ -198,18 +198,14 @@ class GlobalWithoutData extends Component {
 
   deviceReadyFunction = (saveDeviceRegistrationId) => {
     universalLinks.subscribe("universalLinkRoute", this.universalLinkRouting);
-    /* eslint-disable */
-    if(isIOS()) {
-      FCMPlugin.ready();
-    }
-    FCMPlugin.subscribeToTopic('newspring');
+    if (isIOS()) FCMPlugin.ready();
+    FCMPlugin.subscribeToTopic("newspring");
     FCMPlugin.getToken((token) => {
       saveDeviceRegistrationId(token);
     });
     FCMPlugin.onTokenRefresh((token) => {
       saveDeviceRegistrationId(token);
     });
-    /* eslint-enable */
   }
 
   universalLinkRouting = ({ path }) => {
