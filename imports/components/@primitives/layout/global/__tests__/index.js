@@ -16,6 +16,7 @@ import {
   Blank,
   GlobalData,
   URL_TITLE_QUERY,
+  SAVE_DEVICE_REGISTRATION_ID,
 } from "../";
 
 jest.mock("../../../../../deprecated/database/collections/likes", () => ({
@@ -41,7 +42,14 @@ global.fabric = {
   },
 };
 
-beforeEach(() => {
+global.FCMPlugin = {
+  ready: jest.fn(),
+  subscribeToTopic: jest.fn(),
+  getToken: jest.fn(),
+  onTokenRefresh: jest.fn(),
+};
+
+ beforeEach(() => {
   reset();
   startBuffering();
 });
@@ -272,6 +280,9 @@ describe("GlobalWithoutData", () => {
   });
 
   it("adds link listener if cordova", () => {
+    global.universalLinks = {
+      subscribe: jest.fn(),
+    };
     Meteor.isCordova = true;
     document.addEventListener = jest.fn();
     const wrapper = shallow(generateComponent());
@@ -295,6 +306,9 @@ describe("GlobalWithoutData", () => {
   });
 
   it("tests universalLinkRouting", () => {
+    global.universalLinks = {
+      subscribe: jest.fn(),
+    };
     Meteor.isCordova = true;
     let eventData = {
       path: "/groups/finder",
@@ -310,6 +324,9 @@ describe("GlobalWithoutData", () => {
   });
 
   it("tests isQueryRoute", () => {
+    global.universalLinks = {
+      subscribe: jest.fn(),
+    };
     let path = "/groups/finder";
     const wrapper = shallow(generateComponent());
     let result = wrapper.instance().isQueryRoute(path);
@@ -323,6 +340,9 @@ describe("GlobalWithoutData", () => {
   });
 
   it("tests the /sermons/ route", () => {
+    global.universalLinks = {
+      subscribe: jest.fn(),
+    };
     let path = "/sermons/";
     const wrapper = shallow(generateComponent());
     wrapper.instance().withQuery(path);
@@ -341,6 +361,9 @@ describe("GlobalWithoutData", () => {
   });
 
   it("tests the /sermons/forsc route", () => {
+    global.universalLinks = {
+      subscribe: jest.fn(),
+    };
     let path = "/sermons/forsc";
     const wrapper = shallow(generateComponent());
     wrapper.instance().withQuery(path);
@@ -358,6 +381,9 @@ describe("GlobalWithoutData", () => {
   });
 
   it("tests the /sermons/forsc/growing-people-change1 route", () => {
+    global.universalLinks = {
+      subscribe: jest.fn(),
+    };
     let path = "/sermons/forsc/growing-people-change1";
     const wrapper = shallow(generateComponent());
     wrapper.instance().withQuery(path);
@@ -377,5 +403,32 @@ describe("GlobalWithoutData", () => {
   // test URL_TITLE_QUERY
   it("parses URL_TITLE_QUERY correctly", () => {
     expect(print(URL_TITLE_QUERY)).toMatchSnapshot();
+  });
+
+  // test SAVE_DEVICE_REGISTRATION_ID
+  it("parses SAVE_DEVICE_REGISTRATION_ID correctly", () => {
+    expect(print(SAVE_DEVICE_REGISTRATION_ID)).toMatchSnapshot();
+  });
+
+  it("tests deviceready and it's associated functions", () => {
+    global.FCMPlugin = {
+      ready: jest.fn(),
+      subscribeToTopic: jest.fn(),
+      getToken: jest.fn(),
+      onTokenRefresh: jest.fn(),
+    };
+    global.universalLinks = {
+      subscribe: jest.fn(),
+    };
+    jest.resetAllMocks();
+    const saveDeviceRegistrationId = jest.fn();
+    Meteor.isCordova = true;
+    const wrapper = shallow(generateComponent());
+    wrapper.instance().deviceReadyFunction(saveDeviceRegistrationId);
+    expect(global.universalLinks.subscribe).toHaveBeenCalledTimes(1);
+    expect(global.FCMPlugin.subscribeToTopic).toHaveBeenCalledTimes(1);
+    expect(global.FCMPlugin.subscribeToTopic).toHaveBeenCalledWith("newspring");
+    expect(global.FCMPlugin.getToken).toHaveBeenCalledTimes(1);
+    expect(global.FCMPlugin.onTokenRefresh).toHaveBeenCalledTimes(1);
   });
 });
