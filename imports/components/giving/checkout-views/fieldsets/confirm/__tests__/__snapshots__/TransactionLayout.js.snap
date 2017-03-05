@@ -70,7 +70,7 @@ exports[`TransactionLayout should render with a schedule props 1`] = `
             }
           }>
           <div
-            className="grid__item two-thirds"
+            className="grid__item one-half"
             style={
               Object {
                 "verticalAlign": "middle",
@@ -82,7 +82,7 @@ exports[`TransactionLayout should render with a schedule props 1`] = `
             </h5>
           </div>
           <div
-            className="grid__item one-third text-right"
+            className="grid__item one-half text-right"
             style={
               Object {
                 "verticalAlign": "middle",
@@ -131,7 +131,7 @@ exports[`TransactionLayout should render with a schedule props 1`] = `
             }
           }>
           <div
-            className="grid__item two-thirds"
+            className="grid__item one-half"
             style={
               Object {
                 "verticalAlign": "middle",
@@ -143,7 +143,7 @@ exports[`TransactionLayout should render with a schedule props 1`] = `
             </h5>
           </div>
           <div
-            className="grid__item one-third text-right"
+            className="grid__item one-half text-right"
             style={
               Object {
                 "verticalAlign": "middle",
@@ -229,7 +229,7 @@ exports[`TransactionLayout should render with a schedule props 1`] = `
           }
         }>
         <div
-          className="grid__item one-half"
+          className="grid__item one-quarter"
           style={
             Object {
               "verticalAlign": "middle",
@@ -241,7 +241,7 @@ exports[`TransactionLayout should render with a schedule props 1`] = `
           </h5>
         </div>
         <div
-          className="grid__item one-half text-right"
+          className="grid__item three-quarters text-right"
           style={
             Object {
               "verticalAlign": "middle",
@@ -343,7 +343,7 @@ exports[`TransactionLayout should render with props 1`] = `
             }
           }>
           <div
-            className="grid__item two-thirds"
+            className="grid__item one-half"
             style={
               Object {
                 "verticalAlign": "middle",
@@ -355,7 +355,7 @@ exports[`TransactionLayout should render with props 1`] = `
             </h5>
           </div>
           <div
-            className="grid__item one-third text-right"
+            className="grid__item one-half text-right"
             style={
               Object {
                 "verticalAlign": "middle",
@@ -404,7 +404,7 @@ exports[`TransactionLayout should render with props 1`] = `
             }
           }>
           <div
-            className="grid__item two-thirds"
+            className="grid__item one-half"
             style={
               Object {
                 "verticalAlign": "middle",
@@ -416,7 +416,7 @@ exports[`TransactionLayout should render with props 1`] = `
             </h5>
           </div>
           <div
-            className="grid__item one-third text-right"
+            className="grid__item one-half text-right"
             style={
               Object {
                 "verticalAlign": "middle",
@@ -463,7 +463,7 @@ exports[`TransactionLayout should render with props 1`] = `
           }
         }>
         <div
-          className="grid__item one-half"
+          className="grid__item one-quarter"
           style={
             Object {
               "verticalAlign": "middle",
@@ -475,7 +475,7 @@ exports[`TransactionLayout should render with props 1`] = `
           </h5>
         </div>
         <div
-          className="grid__item one-half text-right"
+          className="grid__item three-quarters text-right"
           style={
             Object {
               "verticalAlign": "middle",

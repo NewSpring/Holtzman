@@ -204,7 +204,7 @@ exports[`test renders Confirm form 1`] = `
             }
           }>
           <div
-            className="grid__item one-half"
+            className="grid__item one-quarter"
             style={
               Object {
                 "verticalAlign": "middle",
@@ -216,7 +216,7 @@ exports[`test renders Confirm form 1`] = `
             </h5>
           </div>
           <div
-            className="grid__item one-half text-right"
+            className="grid__item three-quarters text-right"
             style={
               Object {
                 "verticalAlign": "middle",
