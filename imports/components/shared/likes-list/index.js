@@ -5,7 +5,8 @@ import contentHelper from "../../../util/content";
 import categories from "../../../util/categories";
 import { MiniCard } from "../../@primitives/UI/cards";
 
-function getImage(images: [Object], label: string = "2:1") {
+export function getImage(images: [Object], label: string = "2:1") {
+  if (!images || !images.length) return "";
   let selectedImage = "";
 
   for (const image of images) {
