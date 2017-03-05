@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { Meteor } from "meteor/meteor";
 
 if (Meteor.isServer) {
