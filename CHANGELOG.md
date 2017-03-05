@@ -26,6 +26,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Fixed the home feed so that it will only show you all of the basic topics if you are signed out.
 - Removed recently liked section on web.
 - Discover hero not linking out
+- Fixed currency wrapping in review checkout on $1000+ transactions
 
 ### Changed
 - Changed the text on the individual transaction entry pages to more closely align with our church's vision.
