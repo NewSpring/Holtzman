@@ -9,7 +9,7 @@ exports[`test should render with props 1`] = `
       }
     }>
     <div
-      className="grid__item two-thirds"
+      className="grid__item one-half"
       style={
         Object {
           "verticalAlign": "middle",
@@ -21,7 +21,7 @@ exports[`test should render with props 1`] = `
       </h5>
     </div>
     <div
-      className="grid__item one-third text-right"
+      className="grid__item one-half text-right"
       style={
         Object {
           "verticalAlign": "middle",

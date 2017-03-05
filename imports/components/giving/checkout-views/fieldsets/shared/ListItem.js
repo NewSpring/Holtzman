@@ -13,13 +13,13 @@ const ListItem = ({
 
     <div className="grid" style={{ verticalAlign: "middle" }}>
 
-      <div className="grid__item two-thirds" style={{ verticalAlign: "middle" }}>
+      <div className="grid__item one-half" style={{ verticalAlign: "middle" }}>
         <h5 className="text-dark-primary flush text-left">
           {transaction.label}
         </h5>
       </div>
 
-      <div className="grid__item one-third text-right" style={{ verticalAlign: "middle" }}>
+      <div className="grid__item one-half text-right" style={{ verticalAlign: "middle" }}>
         <Currency
           amount={monetize(transaction.value)}
           baseHeadingSize="4"
