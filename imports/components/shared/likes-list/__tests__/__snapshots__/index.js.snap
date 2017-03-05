@@ -1,0 +1,53 @@
+exports[`likes list should render likes 1`] = `
+<Component
+  likes={
+    Array [
+      Object {
+        "__typename": "Group",
+        "id": "12345",
+        "name": "hello",
+        "photo": "zookeeper",
+      },
+      Object {
+        "__typename": "Content",
+        "channelName": "study_entries",
+        "content": Object {
+          "images": Array [
+            Object {
+              "fileLabel": "1:1",
+              "url": "harambe",
+            },
+          ],
+        },
+        "id": "12345",
+        "parent": null,
+        "title": "harambe",
+      },
+    ]
+  }>
+  <div>
+    <MiniCard
+      category="Groups"
+      icon="icon-groups"
+      image="zookeeper"
+      link="/groups/12345"
+      title="hello">
+      <div />
+    </MiniCard>
+    <MiniCard
+      category="Devotionals"
+      icon="icon-category-text"
+      image="harambe"
+      link="/studies/null/entry/12345"
+      title="harambe">
+      <div />
+    </MiniCard>
+  </div>
+</Component>
+`;
+
+exports[`likes list should render with no likes 1`] = `
+<Component>
+  <div />
+</Component>
+`;
