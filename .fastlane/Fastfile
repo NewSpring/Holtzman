@@ -117,6 +117,16 @@ platform :ios do
     )
   end
 
+  desc "Install Development Certificates"
+  lane :dev do
+    match(
+      type: "development",
+      git_url: ENV['CERTIFICATES_REPO'],
+      app_identifier: [ "cc.newspring.newspringapp", "com.subsplashstudio31.NewSpring-Church" ],
+      username: ENV["APPLE_ID"],
+    )
+  end
+
   desc "Submit a new Beta Build to Apple TestFlight"
   desc "This will also make sure the profile is up to date"
   lane :beta do

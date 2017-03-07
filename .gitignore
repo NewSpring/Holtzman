@@ -17,6 +17,9 @@ lib-cov
 # Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
 .grunt
 
+# test script
+setup-ios-project
+
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 build/Release
 
@@ -46,6 +49,7 @@ apollos-runtime.json
 .meteor/settings.json
 
 .fastlane/report.xml
+.fastlane/README.md
 .build
 .play-service.json
 
