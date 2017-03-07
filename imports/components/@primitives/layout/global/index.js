@@ -2,7 +2,7 @@ import { Component, PropTypes } from "react";
 import { Meteor } from "meteor/meteor";
 import { connect } from "react-redux";
 import { css } from "aphrodite";
-import { withApollo } from "react-apollo";
+import { withApollo, graphql } from "react-apollo";
 import gql from "graphql-tag";
 import createContainer from "../../../../deprecated/meteor/react-meteor-data";
 import { routeActions } from "../../../../data/store/routing";
@@ -15,6 +15,7 @@ import { Loading } from "../../UI/states";
 
 import Likes from "../../../../deprecated/database/collections/likes";
 
+import isIOS from "../../../../util/isIOS";
 import { linkListener } from "../../../../util/inAppLink";
 
 import {
@@ -156,11 +157,30 @@ export const URL_TITLE_QUERY = gql`
   }
 `;
 
+export const SAVE_DEVICE_REGISTRATION_ID = gql`
+  mutation SaveDeviceRegistrationId($registrationId: String!) {
+    saveDeviceRegistrationId(registrationId: $registrationId) {
+      error
+      code
+      success
+    }
+  }
+`;
+
+export const withSaveDeviceRegistrationId = graphql(SAVE_DEVICE_REGISTRATION_ID, {
+  props: ({ mutate }) => ({
+    saveDeviceRegistrationId: (registrationId) => mutate({
+      variable: { registrationId },
+    }),
+  }),
+});
+
 class GlobalWithoutData extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     client: PropTypes.object.isRequired,
+    saveDeviceRegistrationId: PropTypes.func.isRequired,
   }
 
   state = { universalLinkLoading: false }
@@ -168,14 +188,26 @@ class GlobalWithoutData extends Component {
   componentWillMount() {
     if (Meteor.isCordova) {
       document.addEventListener("click", linkListener);
-      document.addEventListener("deviceready", () => {
-        universalLinks.subscribe("universalLinkRoute", this.universalLinkRouting);
-      }, false);
+      document.addEventListener("deviceready", () => this.deviceReadyFunction(this.props.saveDeviceRegistrationId), false);
     }
   }
 
   componentWillUnMount() {
     if (Meteor.isCordova) universalLinks.unsubscribe("universalLinkRoute");
+  }
+
+  deviceReadyFunction = (saveDeviceRegistrationId) => {
+    universalLinks.subscribe("universalLinkRoute", this.universalLinkRouting);
+    /* eslint-disable */
+    if (isIOS()) FCMPlugin.ready();
+    FCMPlugin.subscribeToTopic("newspring");
+    FCMPlugin.getToken((token) => {
+      saveDeviceRegistrationId(token);
+    });
+    FCMPlugin.onTokenRefresh((token) => {
+      saveDeviceRegistrationId(token);
+    });
+    /* eslint-enable */
   }
 
   universalLinkRouting = ({ path }) => {
@@ -288,7 +320,7 @@ class GlobalWithoutData extends Component {
   }
 }
 
-export default withRedux(withApollo(GlobalWithoutData));
+export default withRedux(withApollo(withSaveDeviceRegistrationId(GlobalWithoutData)));
 
 export {
   GlobalWithoutData,
