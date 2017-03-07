@@ -9,7 +9,7 @@
     "coverage": "jest --coverage",
     "lint-fix": "eslint ./imports ./client ./server --fix",
     "lint": "eslint ./imports ./client ./server",
-    "flow": "flow; test $? -eq 0 -o $? -eq 2",
+    "flow": "flow",
     "flow:stop": "flow stop",
     "storybook": "start-storybook -p 6006 -s ./public",
     "build-storybook": "node ./.bin/index.js setup && build-storybook -s public -o docs",
@@ -17,8 +17,8 @@
   },
   "lint-staged": {
       "*.js": [
-        "eslint --fix",
-        "git add",
+        "lint",
+        "flow",
         "jest --bail --findRelatedTests"
       ]
     },
