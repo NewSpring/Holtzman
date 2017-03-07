@@ -1,5 +1,6 @@
 cordova-fabric-plugin@1.0.8
 cordova-plugin-camera@2.3.0
+cordova-plugin-fcm@https://github.com/NewSpring/cordova-plugin-fcm.git#f9e4775ad7968d0f209c7bf7c2d2b86c2a125cbe
 cordova-plugin-file-transfer@1.6.0
 cordova-plugin-hockeyapp@2.2.2
 cordova-plugin-inappbrowser@1.4.0
