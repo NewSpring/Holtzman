@@ -1,8 +1,11 @@
 // @flow
 import { Link } from "react-router";
+import { Meteor } from "meteor/meteor";
 
 import categories from "../../../../util/categories";
 import time from "../../../../util/time";
+import inAppLink from "../../../../util/inAppLink";
+
 
 export function isReady(content: Object) {
   if (!content) return false;
@@ -47,13 +50,11 @@ type IHeroLink = {
 export const HeroLink = (props: IHeroLink) => {
   if (!props.to) return <Link>{props.children}</Link>;
 
-  // external link
-  if (props.to.includes("http://") || props.to.includes("https://")) {
-    return <a href={props.to}>{props.children}</a>;
+  if (Meteor.isCordova) {
+    return <Link to={props.to} onClick={inAppLink}>{props.children}</Link>;
   }
 
-  // internal link
-  return <Link to={props.to}>{props.children}</Link>;
+  return <a href={props.to}>{props.children}</a>;
 };
 
 type IHero = {
