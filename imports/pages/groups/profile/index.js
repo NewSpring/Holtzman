@@ -31,13 +31,17 @@ const PHONE_QUERY = gql`
   }
 `;
 
+export const phonePropsReducer = ({ phoneNumbers }) => ({
+  phonesLoading: phoneNumbers ? phoneNumbers.loading : true,
+  phones:
+    !phoneNumbers || phoneNumbers.loading || !phoneNumbers.currentPerson.phoneNumbers.length
+      ? null
+      : phoneNumbers.currentPerson.phoneNumbers,
+});
+
 export const JoinWithPhones = graphql(PHONE_QUERY, {
   name: "phoneNumbers",
-  props: ({ phoneNumbers }) => ({
-    phonesLoading: phoneNumbers && phoneNumbers.loading ? phoneNumbers.loading : true,
-    phones:
-      !phoneNumbers.length || phoneNumbers.loading ? null : phoneNumbers.currentPerson.phoneNumbers,
-  }),
+  props: phonePropsReducer,
 })(Join);
 
 export const PHONE_NUMBER_MUTATION = gql`

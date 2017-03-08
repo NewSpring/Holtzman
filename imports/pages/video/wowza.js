@@ -43,7 +43,7 @@ class TemplateWithoutData extends Component {
 const Template = connect()(TemplateWithoutData);
 
 const Route = {
-  path: "/wowza/:embedCode",
+  path: "/wowza",
   component: Template,
 };
 

@@ -27,12 +27,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Removed recently liked section on web.
 - Discover hero not linking out
 - Fixed currency wrapping in review checkout on $1000+ transactions
+- Contact group modal now shows phone number field if needed
 
 ### Changed
 - Changed the text on the individual transaction entry pages to more closely align with our church's vision.
 - Changed the giving history filters to show a "Last Year" option
 - Changed the text on the giving dashboard, schedule detail, and adding a payment type during a schedule to bring clarity to our amazing people.
 - Changed the group sign up to be a request for information. Updated the UI to have text that speaks to requesting information and not joining the group. Allow the person signing up to choose their communication preference based on the choices in Rock. Allow the person to add a phone number if they do not have one in the database.
+- Giving summary file name no longer includes year
 
 ### Changed
 
