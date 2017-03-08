@@ -27,6 +27,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Removed recently liked section on web.
 - Discover hero not linking out
 - Fixed currency wrapping in review checkout on $1000+ transactions
+- Contact group modal now shows phone number field if needed
 
 ### Changed
 - Changed the text on the individual transaction entry pages to more closely align with our church's vision.
