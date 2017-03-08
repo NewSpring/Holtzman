@@ -2,7 +2,6 @@
 import { Component, PropTypes } from "react";
 // $FlowMeteor
 import { Meteor } from "meteor/meteor";
-import moment from "moment";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 import fileSaver from "file-saver";
@@ -55,7 +54,7 @@ class TemplateWithoutData extends Component {
       .then(({ data: { transactionStatement } }) => {
         const blob = base64ToBlob(transactionStatement.file);
         this.setState({ printLoading: false });
-        fileSaver.saveAs(blob, `${moment().year()} NewSpring Church Giving Summary.pdf`);
+        fileSaver.saveAs(blob, "NewSpring Church Giving Summary.pdf");
       })
       .catch(() => {
         this.setState({ printLoading: false });
