@@ -2,6 +2,7 @@
 import { mount } from "enzyme";
 import { mountToJson } from "enzyme-to-json";
 import Hero, { isReady, getIconClasses, getImage, HeroLink } from "../";
+import { Meteor } from "meteor/meteor";
 
 jest.mock("../../../../../util/categories", () => ({
   icon: jest.fn(() => "categories.icon"),
@@ -70,14 +71,17 @@ describe("Hero", () => {
 });
 
 describe("HeroLink", () => {
-  it("should handle external and internal links", () => {
+  it("should show Link element if cordova", () => {
+    Meteor.isCordova = true;
     const external1 = mount(<HeroLink to="https://harambe.gorilla" />);
-    const external2 = mount(<HeroLink to="http://harambe.gorilla" />);
-    const internal = mount(<HeroLink to="/harambe_gorilla" />);
+    expect(external1.find("Link").length).toEqual(1);
+  });
 
-    expect(external1.html().includes("https://")).toEqual(true);
-    expect(external2.html().includes("http://")).toEqual(true);
-    expect(internal.html().includes("http")).not.toEqual(true);
+  it("should show `a` element if cordova", () => {
+    Meteor.isCordova = false;
+    const external1 = mount(<HeroLink to="https://harambe.gorilla" />);
+    expect(external1.find("Link").length).toEqual(0);
+    expect(external1.find("a").length).toEqual(1);
   });
 
   it("should pass children", () => {
