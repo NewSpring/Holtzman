@@ -22,46 +22,40 @@ exports[`Hero should render with content object passed in 1`] = `
   }>
   <HeroLink
     to="/harambe">
-    <Link
-      onlyActiveOnIndex={false}
-      style={Object {}}
-      to="/harambe">
-      <a
-        onClick={[Function]}
-        style={Object {}}>
-        <section
-          className="hard floating--bottom text-left background--dark-primary ratio--square
-                background--fill overlay--gradient"
-          style={
-            Object {
-              "backgroundImage": "
-                      url(\'harambe-square.jpg\')
-                    ",
-            }
-          }>
-          <div
-            className="one-whole overlay__item floating__item soft">
-            <h3
-              className="text-light-primary flush soft-half-bottom capitalize">
-              hello
-            </h3>
-            <i
-              className="text-light-primary soft-half-right categories.icon" />
-            <h7
-              className="text-light-primary">
-              categories.name
-            </h7>
-            <h7
-              className="text-light-primary text-right float-right"
-              style={
-                Object {
-                  "marginTop": "5px",
-                }
-              } />
-          </div>
-        </section>
-      </a>
-    </Link>
+    <a
+      href="/harambe">
+      <section
+        className="hard floating--bottom text-left background--dark-primary ratio--square
+              background--fill overlay--gradient"
+        style={
+          Object {
+            "backgroundImage": "
+                    url(\'harambe-square.jpg\')
+                  ",
+          }
+        }>
+        <div
+          className="one-whole overlay__item floating__item soft">
+          <h3
+            className="text-light-primary flush soft-half-bottom capitalize">
+            hello
+          </h3>
+          <i
+            className="text-light-primary soft-half-right categories.icon" />
+          <h7
+            className="text-light-primary">
+            categories.name
+          </h7>
+          <h7
+            className="text-light-primary text-right float-right"
+            style={
+              Object {
+                "marginTop": "5px",
+              }
+            } />
+        </div>
+      </section>
+    </a>
   </HeroLink>
 </Hero>
 `;
@@ -74,37 +68,31 @@ exports[`Hero should render with data passed as separate props 1`] = `
   title="miss you">
   <HeroLink
     to="/harambe">
-    <Link
-      onlyActiveOnIndex={false}
-      style={Object {}}
-      to="/harambe">
-      <a
-        onClick={[Function]}
-        style={Object {}}>
-        <section
-          className="hard floating--bottom text-left background--dark-primary ratio--square
-                "
-          style={
-            Object {
-              "backgroundImage": "
-                      url(\'harambe.jpg\')
-                    ",
-            }
-          }>
-          <div
-            className="one-whole overlay__item floating__item soft">
-            <h3
-              className="text-light-primary flush soft-half-bottom capitalize">
-              miss you
-            </h3>
-            <i
-              className={null} />
-            <h7
-              className="text-light-primary" />
-          </div>
-        </section>
-      </a>
-    </Link>
+    <a
+      href="/harambe">
+      <section
+        className="hard floating--bottom text-left background--dark-primary ratio--square
+              "
+        style={
+          Object {
+            "backgroundImage": "
+                    url(\'harambe.jpg\')
+                  ",
+          }
+        }>
+        <div
+          className="one-whole overlay__item floating__item soft">
+          <h3
+            className="text-light-primary flush soft-half-bottom capitalize">
+            miss you
+          </h3>
+          <i
+            className={null} />
+          <h7
+            className="text-light-primary" />
+        </div>
+      </section>
+    </a>
   </HeroLink>
 </Hero>
 `;
