@@ -4,7 +4,13 @@ import { Meteor } from "meteor/meteor";
 import { print } from "graphql-tag/printer";
 import { modal } from "../../../../data/store";
 import OnBoard from "../../../../components/people/accounts";
-import { TemplateWithoutData as Template, JoinWithPhones, PHONE_NUMBER_MUTATION, GROUP_MUTATION } from "../";
+import {
+  TemplateWithoutData as Template,
+  JoinWithPhones,
+  PHONE_NUMBER_MUTATION,
+  GROUP_MUTATION,
+  phonePropsReducer,
+} from "../";
 
 jest.mock("../../../../deprecated/mixins/mixins.Header", () => {});
 jest.mock("../../../../data/store", () => ({
@@ -145,6 +151,37 @@ it("sendRequest calls preventDefault", () => {
   expect(mockPreventDefault).toHaveBeenCalledTimes(1);
   expect(mockQuerySelectorAll).toHaveBeenCalledTimes(1);
   expect(mockQuerySelectorAll).toHaveBeenCalledWith("textarea");
+});
+
+it("should reduce phonesLoading prop", () => {
+  // loading key is true
+  expect(phonePropsReducer({
+    phoneNumbers: { loading: true },
+  }).phonesLoading).toEqual(true);
+
+  // no phone numbers key
+  expect(phonePropsReducer({}).phonesLoading).toEqual(true);
+});
+
+it("should reduce phones prop", () => {
+  // loading key is true,
+  expect(phonePropsReducer({
+    phoneNumbers: {
+      loading: true,
+      currentPerson: { phoneNumbers: ["yo"] },
+    },
+  }).phones).toEqual(null);
+
+  //no phone numbers
+  expect(phonePropsReducer({
+    phoneNumbers: {
+      loading: false,
+      currentPerson: { phoneNumbers: [] },
+    },
+  }).phones).toEqual(null);
+  
+  // no phone numbers key
+  expect(phonePropsReducer({}).phones).toEqual(null);
 });
 
 it("join renders Join modal if user", () => {
