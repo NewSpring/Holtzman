@@ -1,6 +1,6 @@
 import renderer from "react-test-renderer";
 import { reset, startBuffering } from "aphrodite/lib/inject";
-import MiniCard from "../MiniCard";
+import MiniCard, { hasImage } from "../MiniCard";
 
 describe("MiniCard", () => {
   beforeEach(() => {
@@ -10,6 +10,26 @@ describe("MiniCard", () => {
 
   afterEach(() => {
     reset();
+  });
+
+  it("should not error with no content", () => {
+    expect(hasImage()).toEqual(false);
+  });
+
+  it("should render with no image and no content", () => {
+
+    const tree = renderer.create(
+      <MiniCard
+        category="Devotionals"
+        icon="icon-name"
+        image=""
+        link="/1234"
+        title="title"
+      />
+    );
+
+    expect(tree).toBeDefined();
+    expect(tree).toMatchSnapshot();
   });
 
   it("has a channelName of 'articles', an image, and a title of 'MiniCard Title'", () => {

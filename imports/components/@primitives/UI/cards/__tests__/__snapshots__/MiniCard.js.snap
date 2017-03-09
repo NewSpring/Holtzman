@@ -117,3 +117,43 @@ exports[`MiniCard has a video icon if it's a sermon 1`] = `
   </div>
 </a>
 `;
+
+exports[`MiniCard should render with no image and no content 1`] = `
+<a
+  className="plain"
+  onClick={[Function]}
+  style={Object {}}>
+  <div
+    className="card">
+    <div
+      className="card__item soft push-half-ends one-whole"
+      style={
+        Object {
+          "verticalAlign": "middle",
+        }
+      }>
+      <h6
+        className="text-dark-primary capitalize">
+        title
+      </h6>
+      <div
+        className="display-inline-block">
+        <span
+          className="icon-name text-dark-tertiary" />
+        <h7
+          className="text-dark-tertiary soft-half-left">
+          Devotionals
+        </h7>
+      </div>
+    </div>
+    <div
+      className="locked-ends locked-right card__image one-third background--fill"
+      style={
+        Object {
+          "backgroundImage": "url(\'\')",
+          "verticalAlign": "middle",
+        }
+      } />
+  </div>
+</a>
+`;
