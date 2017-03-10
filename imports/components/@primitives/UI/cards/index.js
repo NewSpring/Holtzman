@@ -1,8 +1,8 @@
 
 import Card from "./Card";
 import MetricCard from "./MetricCard";
-import MiniCard from "./MiniCard";
 import SideBySideCard from "./SideBySideCard";
+import MiniCard from "./MiniCard";
 
 export {
   Card,
