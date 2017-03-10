@@ -2,6 +2,19 @@
 import Loading from "../../@primitives/UI/loading";
 import MiniCard from "../../@primitives/UI/cards/MiniCard";
 
+// reducer helpers
+import backgrounds from "../../../util/backgrounds";
+import contentHelper from "../../../util/content";
+import categories from "../../../util/categories";
+
+const cardPropsReducer = (c) => ({
+  title: c.title,
+  category: categories.name(c),
+  icon: categories.icon(c),
+  image: c ? backgrounds.image(c, { label: "2:1" }) : "",
+  link: contentHelper.links(c),
+});
+
 // Loading Content
 type ILoadingContent = {
   loading: boolean,
@@ -42,12 +55,7 @@ const Layout = ({
             margin: "0 auto",
           }}
         >
-          <MiniCard
-            title={c.title}
-            images={c.content.images}
-            type={c.channel}
-            content={c}
-          />
+          <MiniCard {...cardPropsReducer(c)} />
         </div>
       ))}
     </div>
