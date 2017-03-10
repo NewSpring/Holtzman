@@ -1,5 +1,7 @@
 // @flow
 import { Link } from "react-router";
+
+// $FlowMeteor
 import { Meteor } from "meteor/meteor";
 
 import categories from "../../../../util/categories";
