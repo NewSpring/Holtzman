@@ -7,7 +7,7 @@ import backgrounds from "../../../util/backgrounds";
 import contentHelper from "../../../util/content";
 import categories from "../../../util/categories";
 
-const cardPropsReducer = (c) => ({
+const cardPropsReducer = (c: Object): Object => ({
   title: c.title,
   category: categories.name(c),
   icon: categories.icon(c),
