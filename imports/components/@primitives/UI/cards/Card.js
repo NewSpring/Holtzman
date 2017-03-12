@@ -2,6 +2,14 @@ import { Component, PropTypes } from "react";
 import { Link } from "react-router";
 
 import { ImageLoader } from "../../UI/loading";
+
+import ifElse from "ramda/src/ifElse";
+import compose from "ramda/src/compose";
+import join from "ramda/src/join";
+import flatten from "ramda/src/flatten";
+import append from "ramda/src/append";
+import merge from "ramda/src/merge";
+
 // import { ImageLoader } from "/imports/components/loading";
 // import Styles from "../loading/FeedItemSkeleton-css";
 
@@ -36,59 +44,56 @@ export default class Card extends Component {
     wrapperClasses: PropTypes.string,
   }
 
-  itemClasses = () => {
-    let classes = [
-      "card__item",
-      "soft",
-      "text-center",
-      "soft-double-ends",
-    ];
+  // [string] -> boolean -> string
+  createItemClasses = (itemClasses, linkAll) =>
+    compose(
+      join(" "),
+      flatten,
+      ifElse(() => itemClasses, append(itemClasses), x => x),
+      ifElse(() => linkAll, append("background--light-primary"), x => x)
+    )([ "card__item", "soft", "text-center", "soft-double-ends" ]);
 
-    if (this.props.itemClasses) {
-      classes = classes.concat(this.props.itemClasses);
-    }
 
-    if (this.props.linkAll) {
-      classes.push("background--light-primary");
-    }
+  // [string] -> string
+  cardClasses = (classes) =>
+    compose(
+      join(" "),
+      flatten,
+      ifElse(() => classes, append(classes), x => x)
+    )(["card"]);
 
-    return classes.join(" ");
-  }
+  // styles = () => {
+  //   const defaultStyles = {
+  //     overflow: "hidden",
+  //     display: "block",
+  //   };
+  //
+  //   if (this.props.linkAll) {
+  //     defaultStyles.color = "inherit";
+  //     defaultStyles.textDecoration = "none";
+  //   }
+  //
+  //   return defaultStyles;
+  // }
 
-  cardClasses = () => {
-    let classes = [
-      "card",
-    ];
+  // boolean -> Object
+  createStyles = (linkAll) =>
+    compose(
+      ifElse(() => linkAll, merge({ color: "inherit", textDecoration: "none" }), x => x)
+    )({ overflow: "hidden", display: "block" });
 
-    if (this.props.classes) {
-      classes = classes.concat(this.props.classes);
-    }
+  // imageStyles = () => {
+  //   const defaultStyles = {};
+  //   if (this.props.image && this.props.image.full) {
+  //     defaultStyles.backgroundImage = `url('${this.props.image.url}')`;
+  //   }
+  //
+  //   return defaultStyles;
+  // }
+  // boolean -> string -> Object
+  imageStyles = (full, url) =>
+    ifElse(() => full, () => ({ backgroundImage: `url('${url}')`}), () => ({}))();
 
-    return classes.join(" ");
-  }
-
-  styles = () => {
-    const defaultStyles = {
-      overflow: "hidden",
-      display: "block",
-    };
-
-    if (this.props.linkAll) {
-      defaultStyles.color = "inherit";
-      defaultStyles.textDecoration = "none";
-    }
-
-    return defaultStyles;
-  }
-
-  imageStyles = () => {
-    const defaultStyles = {};
-    if (this.props.image && this.props.image.full) {
-      defaultStyles.backgroundImage = `url('${this.props.image.url}')`;
-    }
-
-    return defaultStyles;
-  }
 
   // context from ImageLoader
   preloader() {
@@ -148,7 +153,7 @@ export default class Card extends Component {
   }
 
   render() {
-    const { link, theme, styles, itemTheme, itemStyles } = this.props;
+    const { link, theme, styles, itemTheme, itemStyles, linkAll, classes, image } = this.props;
     let { wrapperClasses } = this.props;
 
     wrapperClasses += " plain";
@@ -160,15 +165,15 @@ export default class Card extends Component {
       return (
         <Link
           data-spec="card"
-          className={theme || this.cardClasses()}
-          style={styles || this.styles()}
+          className={theme || this.cardClasses(classes)}
+          style={styles || this.createStyles(linkAll)}
           to={link}
         >
-          <div className={wrapperClasses} style={this.imageStyles()} data-spec="card-image-wrapper">
+          <div className={wrapperClasses} style={this.imageStyles(image ? image.full : null, image ? image.url : null)} data-spec="card-image-wrapper">
             {this.createImage()}
           </div>
           <div
-            className={itemTheme || this.itemClasses()}
+            className={itemTheme || createItemClasses(itemClasses, linkAll)}
             style={itemStyles}
             data-spec="card-item"
           >
@@ -181,8 +186,8 @@ export default class Card extends Component {
     return (
       <div
         data-spec="card"
-        className={theme || this.cardClasses()}
-        style={styles || this.styles()}
+        className={theme || this.cardClasses(classes)}
+        style={styles || this.createStyles(linkAll)}
       >
         {(() => {
           if (link) {
@@ -199,7 +204,7 @@ export default class Card extends Component {
           );
         })()}
         <div
-          className={itemTheme || this.itemClasses()}
+          className={itemTheme || createItemClasses(itemClasses, linkAll)}
           style={itemStyles}
           data-spec="card-item"
         >
