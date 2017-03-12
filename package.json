@@ -18,7 +18,6 @@
   "lint-staged": {
       "*.js": [
         "eslint",
-        "flow",
         "jest --bail --findRelatedTests"
       ]
     },

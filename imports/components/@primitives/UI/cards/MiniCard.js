@@ -19,7 +19,7 @@ const defaultContent = {
   },
 };
 
-export const hasImage = (content = defaultContent) =>
+export const hasImage = (content: Object = defaultContent) =>
   content.content.images.length > 0 ||
     (
       content.parent &&
