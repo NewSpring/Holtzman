@@ -73,6 +73,17 @@ it("renders result if campuses", () => {
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 
+it("renders result if schedules", () => {
+  const wrapper = shallow(generateComponent({
+    location: {
+      query: {
+        schedules: [{}],
+      },
+    },
+  }));
+  expect(shallowToJson(wrapper)).toMatchSnapshot();
+});
+
 it("renders without attributes", () => {
   const wrapper = shallow(generateComponent({
     attributes: null,
