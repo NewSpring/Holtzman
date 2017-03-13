@@ -18,6 +18,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Fixed the GA code for production app [CI]
 - Login on groups join page failing
 
+### Added
+- A day of week filter for group finder.
+
 ## [5.0.17] - 2017-03-08
 ### Added
 - NewSpring Now!
