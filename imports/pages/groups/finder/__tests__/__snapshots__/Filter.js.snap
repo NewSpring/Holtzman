@@ -14,6 +14,37 @@ exports[`test hides search when false 1`] = `
       </div>
     </div>
     <div
+      className="soft-half-sides soft-ends text-center background--light-primary">
+      <h4
+        className="soft-half-bottom flush-bottom">
+        Day of Week
+      </h4>
+      <div
+        className="two-thirds@anchored display-inline-block soft-ends@anchored">
+        <withRouter(Connect(TagWithoutData))
+          urlKey="schedules"
+          val="Sunday" />
+        <withRouter(Connect(TagWithoutData))
+          urlKey="schedules"
+          val="Monday" />
+        <withRouter(Connect(TagWithoutData))
+          urlKey="schedules"
+          val="Tuesday" />
+        <withRouter(Connect(TagWithoutData))
+          urlKey="schedules"
+          val="Wednesday" />
+        <withRouter(Connect(TagWithoutData))
+          urlKey="schedules"
+          val="Thursday" />
+        <withRouter(Connect(TagWithoutData))
+          urlKey="schedules"
+          val="Friday" />
+        <withRouter(Connect(TagWithoutData))
+          urlKey="schedules"
+          val="Saturday" />
+      </div>
+    </div>
+    <div
       className="outlined--light outlined--bottom soft-half-sides soft-ends soft-double-bottom@anchored text-center background--light-primary">
       <h4
         className="soft-half-bottom flush-bottom">
@@ -106,6 +137,37 @@ exports[`test renders with props 1`] = `
       </div>
     </div>
     <div
+      className="soft-half-sides soft-ends text-center background--light-primary">
+      <h4
+        className="soft-half-bottom flush-bottom">
+        Day of Week
+      </h4>
+      <div
+        className="two-thirds@anchored display-inline-block soft-ends@anchored">
+        <withRouter(Connect(TagWithoutData))
+          urlKey="schedules"
+          val="Sunday" />
+        <withRouter(Connect(TagWithoutData))
+          urlKey="schedules"
+          val="Monday" />
+        <withRouter(Connect(TagWithoutData))
+          urlKey="schedules"
+          val="Tuesday" />
+        <withRouter(Connect(TagWithoutData))
+          urlKey="schedules"
+          val="Wednesday" />
+        <withRouter(Connect(TagWithoutData))
+          urlKey="schedules"
+          val="Thursday" />
+        <withRouter(Connect(TagWithoutData))
+          urlKey="schedules"
+          val="Friday" />
+        <withRouter(Connect(TagWithoutData))
+          urlKey="schedules"
+          val="Saturday" />
+      </div>
+    </div>
+    <div
       className="outlined--light outlined--bottom soft-half-sides soft-ends soft-double-bottom@anchored text-center background--light-primary">
       <h4
         className="soft-half-bottom flush-bottom">
@@ -190,6 +252,37 @@ exports[`test renders without campuses 1`] = `
         className="two-thirds@anchored display-inline-block soft-ends@anchored">
         <withRouter(Connect(TagWithoutData)) />
         <withRouter(Connect(TagWithoutData)) />
+      </div>
+    </div>
+    <div
+      className="soft-half-sides soft-ends text-center background--light-primary">
+      <h4
+        className="soft-half-bottom flush-bottom">
+        Day of Week
+      </h4>
+      <div
+        className="two-thirds@anchored display-inline-block soft-ends@anchored">
+        <withRouter(Connect(TagWithoutData))
+          urlKey="schedules"
+          val="Sunday" />
+        <withRouter(Connect(TagWithoutData))
+          urlKey="schedules"
+          val="Monday" />
+        <withRouter(Connect(TagWithoutData))
+          urlKey="schedules"
+          val="Tuesday" />
+        <withRouter(Connect(TagWithoutData))
+          urlKey="schedules"
+          val="Wednesday" />
+        <withRouter(Connect(TagWithoutData))
+          urlKey="schedules"
+          val="Thursday" />
+        <withRouter(Connect(TagWithoutData))
+          urlKey="schedules"
+          val="Friday" />
+        <withRouter(Connect(TagWithoutData))
+          urlKey="schedules"
+          val="Saturday" />
       </div>
     </div>
     <div
