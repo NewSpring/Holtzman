@@ -1,5 +1,5 @@
-exports[`test should render 1`] = `
-<Card>
+exports[`Card should render with no props 1`] = `
+<Component>
   <div
     className="card"
     data-spec="card"
@@ -9,18 +9,45 @@ exports[`test should render 1`] = `
         "overflow": "hidden",
       }
     }>
-    <Wrapper
-      className="undefined plain"
+    <div
+      className="plain undefined"
       data-spec="card-image-wrapper">
-      <div
-        className="undefined plain"
-        data-spec="card-image-wrapper" />
-    </Wrapper>
+      <ImageLoader
+        data-spec="card-image-loader"
+        imageclasses={
+          Array [
+            "background--fill",
+            "card__image",
+            "background-light-tertiary",
+            "ratio--landscape",
+          ]
+        }
+        preloader={[Function]}
+        renderElement={[Function]}
+        style={
+          Object {
+            "backgroundImage": "url(\'undefined\')",
+          }
+        }
+        wrapper={[Function]}>
+        <span>
+          <span
+            className="imageloader pending"
+            style={Object {}}>
+            <div
+              className="background--fill card__image background-light-tertiary ratio--landscape">
+              <div
+                className="ratio__item" />
+            </div>
+          </span>
+        </span>
+      </ImageLoader>
+    </div>
     <div
       className="card__item soft text-center soft-double-ends"
       data-spec="card-item" />
   </div>
-</Card>
+</Component>
 `;
 
 exports[`wrapper should render 1`] = `

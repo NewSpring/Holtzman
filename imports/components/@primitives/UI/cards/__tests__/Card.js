@@ -170,17 +170,80 @@ describe("createWrapperClasses", () => {
   });
 });
 
-describe("", () => {
+describe("Card", () => {
   const generateComponent = (additionalProps={}) => (<Card {...additionalProps} />);
   beforeEach(() => {
     jest.mock("../../../UI/loading", (props) => <div />);
-    // jest.mock("react-router", jest.fn(() => ({
-    //   "Link": (props) => <div />,
-    // }));
+    jest.mock("react-router", () => ({
+      "Link": jest.fn((props) => "a"),
+    }))
   });
 
-  it("", () => {
-
+  it("should render with no props", () => {
+    const component = mount(generateComponent());
+    expect(component).toBeDefined();
+    expect(mountToJson(component)).toMatchSnapshot();
   });
-
+  it("should render wrapping `a` with linkAll", () => {
+    const component = mount(generateComponent({linkAll: true}));
+    expect(component.find("a.card")).toHaveLength(1);
+  });
+  it("should render wrapping `div` with no linkAll", () => {
+    const component = mount(generateComponent());
+    expect(component.find("div.card")).toHaveLength(1);
+  });
+  it("should pass theme to card if present", () => {
+    const component = mount(generateComponent({theme: "yellow"}));
+    const card = getSingleSpecWrapper(component, "card");
+    expect(card.hasClass("yellow")).toEqual(true);
+  });
+  it("should pass classes to card if theme not present", () => {
+    const component = mount(generateComponent({classes: ["yellow"]}));
+    const card = getSingleSpecWrapper(component, "card");
+    expect(card.hasClass("yellow")).toEqual(true);
+  });
+  it("should pass styles to card", () => {
+    const component = mount(generateComponent({styles: {color: "blue"}}));
+    const card = getSingleSpecWrapper(component, "card");
+    expect(card.prop("style")).toEqual({ color: "blue" });
+  });
+  it("should create styles for card if not present", () => {
+    const component = mount(generateComponent());
+    const card = getSingleSpecWrapper(component, "card");
+    expect(card.prop("style")).toBeDefined();
+  });
+  it("should link card with linkAll", () => {
+    const component = mount(generateComponent({ linkAll: true }));
+    const card = getSingleSpecWrapper(component, "card");
+    expect(card.is("a")).toEqual(true);
+  });
+  it("should link image with linkAll false", () => {
+    const component = mount(generateComponent({ linkAll: false, link: "hai" }));
+    const wrapper = getSingleSpecWrapper(component, "card-image-wrapper");
+    expect(wrapper.is("a")).toEqual(true);
+  });
+  it("should link nothing with no link passed", () => {
+    const component = mount(generateComponent({ linkAll: false }));
+    const wrapper = getSingleSpecWrapper(component, "card-image-wrapper");
+    expect(wrapper.is("div")).toEqual(true);
+  });
+  it("should generate wrapper classes properly", () => {
+    const component = mount(generateComponent({ linkAll: false }));
+    const wrapper = getSingleSpecWrapper(component, "card-image-wrapper");
+    expect(wrapper.hasClass("plain")).toEqual(true);
+  });
+  it("should pass itemTheme", () => {
+    const component = mount(generateComponent({ itemTheme: "harambe" }));
+    const wrapper = getSingleSpecWrapper(component, "card-item");
+    expect(wrapper.hasClass("harambe")).toEqual(true);
+  });
+  it("should create item classes if itemTheme not passed", () => {
+    const component = mount(generateComponent({ itemTheme: "harambe" }));
+    const wrapper = getSingleSpecWrapper(component, "card-item");
+    expect(wrapper.prop("className")).toBeDefined();
+  });
+  it("should pass children", () => {
+    const component = mount(<Card><p id="hey">cincinnati zoo</p></Card>);
+    expect(component.find("#hey").text()).toEqual("cincinnati zoo");
+  });
 });

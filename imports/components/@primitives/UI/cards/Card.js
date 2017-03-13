@@ -33,11 +33,9 @@ export const createStyles = (linkAll: boolean): Object =>
 export const imageStyles = (full: boolean, url: string): Object =>
   ifElse(() => full, () => ({ backgroundImage: `url('${url}')`}), () => ({}))();
 
-// [string] -> -> Object<ReactComponent>
 export const preloader = (imageClasses: [?string] = []) => (): Object =>
   <div className={`${join(" ")(imageClasses)}`}><div className="ratio__item"/></div>;
 
-// [string] -> Object -> Object<ReactComponent>
 export const renderActualElement = (imageClasses: [?string] = [], style: Object): Object =>
   <div className={join(" ")(imageClasses)} style={style}><div className="ratio__item" /></div>;
 
@@ -92,7 +90,7 @@ type ICard = {
 };
 
 export default ({
-  classes, theme, link, image, styles, children, itemClasses,
+  classes, theme, link, image = {}, styles, children, itemClasses,
   linkAll, imageclasses, itemTheme, itemStyles, mobile, wrapperClasses,
 }: ICard): any => {
     type IImage = { url: string, ratio: string, full: boolean };
