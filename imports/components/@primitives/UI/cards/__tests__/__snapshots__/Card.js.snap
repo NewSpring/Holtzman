@@ -22,3 +22,9 @@ exports[`test should render 1`] = `
   </div>
 </Card>
 `;
+
+exports[`wrapper should render 1`] = `
+<Wrapper>
+  <div />
+</Wrapper>
+`;
