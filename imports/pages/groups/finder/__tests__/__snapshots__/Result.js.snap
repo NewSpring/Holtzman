@@ -77,6 +77,11 @@ exports[`test renders with props 1`] = `
       onCardHover={[Function]}
       query="test"
       removeQueryString={[Function]}
+      schedules={
+        Array [
+          "1",
+        ]
+      }
       showSearch={true}
       showTags={false}
       tags={
@@ -150,6 +155,11 @@ exports[`test renders without map on mobile 1`] = `
       onCardHover={[Function]}
       query="test"
       removeQueryString={[Function]}
+      schedules={
+        Array [
+          "1",
+        ]
+      }
       showSearch={true}
       showTags={false}
       tags={
@@ -223,6 +233,11 @@ exports[`test renders without map on server 1`] = `
       onCardHover={[Function]}
       query="test"
       removeQueryString={[Function]}
+      schedules={
+        Array [
+          "1",
+        ]
+      }
       showSearch={true}
       showTags={false}
       tags={
