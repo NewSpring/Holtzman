@@ -53,6 +53,7 @@ const defaultProps = {
   },
   campusLocations: [],
   campuses: "one,two",
+  schedules: "1",
 };
 
 const generateComponent = (additionalProps = {}) => {
