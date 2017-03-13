@@ -1,5 +1,5 @@
 import { graphql } from "react-apollo";
-import intersection from "lodash.intersection";
+import { intersection } from "ramda";
 import gql from "graphql-tag";
 
 export const SECURITY_ROLES_QUERY = gql`

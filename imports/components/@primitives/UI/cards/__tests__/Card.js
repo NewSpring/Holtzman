@@ -2,278 +2,248 @@
 import { shallow, mount } from "enzyme";
 import { mountToJson } from "enzyme-to-json";
 import { getSingleSpecWrapper } from "../../../../../util/tests/data-spec";
+import { ImageLoader } from "../../../UI/loading";
+import { Link } from "react-router";
 
-import Card from "../Card";
+import
+  Card,
+  { Wrapper, createItemClasses, cardClasses, createStyles, imageStyles, preloader, renderActualElement, createImage, createWrapperClasses }
+from "../Card";
 
-const generateComponent = (additionalProps={}) => (
-    <Card {...additionalProps} />
-);
-
-it ('should render', () => {
-  let wrapper = mount(generateComponent());
-
-  expect(mountToJson(wrapper)).toMatchSnapshot();
+describe("wrapper", () => {
+  it("should render", () => {
+    const component = mount(<Wrapper />);
+    expect(component).toBeDefined();
+    expect(mountToJson(component)).toMatchSnapshot();
+  });
+  it("should pass children", () => {
+    const component = mount(<Wrapper><img /></Wrapper>);
+    expect(component).toBeDefined();
+    expect(component.find("img")).toBeDefined();
+  });
+  it("should pass props", () => {
+    const component = mount(<Wrapper style={{color: "blue"}}/>);
+    expect(component).toBeDefined();
+    expect(component.find("div").props().style).toEqual({ color: "blue" });
+  });
 });
 
-it ('should accept linkAll prop', () => {
-  //shallow here because meteor in imageloader is undefined
-  const wrapper = shallow(generateComponent({
-    link: "http://example.com",
-    children: "hello world"
-  }));
-  const linked = shallow(generateComponent({
-    link: "http://example.com",
-    children: "hello world",
-    linkAll: true
-  }));
-
-  const card = getSingleSpecWrapper(wrapper, "card");
-  const linkedCard = getSingleSpecWrapper(linked, "card");
-
-  expect(card.is("div")).toEqual(true);
-  expect(linkedCard.is("Link")).toEqual(true);
+describe("createItemClasses", () => {
+  it("should not error with no args", () => {
+    expect(createItemClasses()).toBeDefined();
+  });
+  it("should append background style with linkAll", () => {
+    expect(createItemClasses(null, true)).toContain("background--light-primary");
+  });
+  it("should append item classes", () => {
+    expect(createItemClasses(["harambe"], true)).toContain("harambe");
+    expect(createItemClasses(["harambe", "zoo"], true)).toContain("zoo");
+    expect(createItemClasses("harambe", true)).toContain("harambe");
+  });
 });
 
-it ('should accept classes prop', () => {
-  let wrapper = mount(generateComponent({classes: ["test1", "test2"]}));
-  let linked = mount(generateComponent({
-      classes: ["test1", "test2"],
-      linkAll: true
-  }));
-
-  const cardWrapper = getSingleSpecWrapper(wrapper, "card");
-  const linkedCardWrapper = getSingleSpecWrapper(linked, "card");
-
-  expect(linkedCardWrapper.hasClass("test1")).toEqual(true);
-  expect(linkedCardWrapper.hasClass("test2")).toEqual(true);
-  expect(cardWrapper.hasClass("test1")).toEqual(true);
-  expect(cardWrapper.hasClass("test2")).toEqual(true);
+describe("cardClasses", () => {
+  it("should not error with no args", () => {
+    expect(cardClasses()).toBeDefined();
+  });
+  it("should append classes", () => {
+    expect(cardClasses(["harambe"])).toContain("harambe");
+    expect(cardClasses(["harambe", "zoo"])).toContain("zoo");
+    expect(cardClasses("harambe")).toContain("harambe");
+  });
 });
 
-it ('should accept theme prop', () => {
-  let wrapper = mount(generateComponent({theme: "test"}));
-  let linked = mount(generateComponent({
-    theme: "test",
-    linkAll: true
-  }));
-
-  const cardWrapper = getSingleSpecWrapper(wrapper, "card");
-  const linkedCardWrapper = getSingleSpecWrapper(linked, "card");
-
-  expect(linkedCardWrapper.hasClass("test")).toEqual(true);
-  expect(cardWrapper.hasClass("test")).toEqual(true);
+describe("createStyles", () => {
+  it("should not error with no args", () => {
+    expect(createStyles()).toBeDefined();
+  });
+  it("should merge color styles with linkAll", () => {
+    expect(createStyles(true).color).toEqual("inherit");
+  });
 });
 
-it ('should accept style prop', () => {
-  const wrapper = mount(generateComponent({
-    link: "http://example.com",
-    children: "hello world",
-    styles: {backgroundColor: "red"}
-  }));
-  const linked = mount(generateComponent({
-    link: "http://example.com",
-    children: "hello world",
-    linkAll: true,
-    styles: {backgroundColor: "red"}
-  }));
-
-  const cardWrapper = getSingleSpecWrapper(wrapper, "card");
-  const linkedCardWrapper = getSingleSpecWrapper(linked, "card");
-
-  expect(cardWrapper.html().indexOf("style=\"background-color: red;\"")).toBeGreaterThan(0);
-  expect(linkedCardWrapper.html().indexOf("style=\"background-color: red;\"")).toBeGreaterThan(0);
+describe("imageStyles", () => {
+  it("should not error with no args", () => {
+    expect(imageStyles()).toEqual({});
+  });
+  it("should return empty obj with false full arg", () => {
+    expect(imageStyles(false, null)).toEqual({});
+  });
+  it("should return style with url if true full arg", () => {
+    expect(imageStyles(true, "//harambe")).toEqual({
+      backgroundImage: "url('//harambe')",
+    });
+  });
+  it("should not error with null or empty url", () => {
+    expect(imageStyles(true)).toEqual({
+      backgroundImage: "url('undefined')",
+    });
+    expect(imageStyles(true, "")).toEqual({
+      backgroundImage: "url('')",
+    });
+  });
 });
 
-it ('should accept wrapperClasses prop', () => {
-  const wrapper = mount(generateComponent({
-    children: "hello world",
-    wrapperClasses: "test1 test2"
-  }));
-  const linkedWrapper = mount(generateComponent({
-    link: "http://example.com",
-    children: "hello world",
-    wrapperClasses: "test1 test2"
-  }));
-  const linkedAllWrapper = mount(generateComponent({
-    link: "http://example.com",
-    children: "hello world",
-    linkAll: true,
-    wrapperClasses: "test1 test2"
-  }));
-
-  const imageWrapper = getSingleSpecWrapper(wrapper, "card-image-wrapper");
-  const linkedImageWrapper = getSingleSpecWrapper(linkedWrapper, "card-image-wrapper");
-  const linkedAllImageWrapper = getSingleSpecWrapper(linkedAllWrapper, "card-image-wrapper");
-
-  expect(imageWrapper.hasClass("test1")).toEqual(true);
-  expect(linkedImageWrapper.hasClass("test1")).toEqual(true);
-  expect(linkedAllImageWrapper.hasClass("test1")).toEqual(true);
+describe("preloader", () => {
+  it("should return a function", () => {
+    expect(preloader()).toBeDefined();
+    expect(typeof preloader()).toEqual("function");
+  });
+  it("should not error with no args", () => {
+    expect(preloader()()).toBeDefined();
+  });
+  it("should pass imageclasses to component", () => {
+    const component = mount(preloader(["wow"])());
+    expect(component.find("div.wow")).toHaveLength(1);
+  });
 });
 
-it ('should accept mobile prop', () => {
-  const wrapper = mount(generateComponent({
-    children: "hello world",
-    wrapperClasses: "test1 test2",
-    mobile: false
-  }));
-
-  const imageWrapper = getSingleSpecWrapper(wrapper, "card-image-wrapper");
-
-  expect(imageWrapper.hasClass("visuallyhidden@handheld")).toEqual(true);
+describe("renderActualElement", () => {
+  it("should return a function", () => {
+    expect(renderActualElement()).toBeDefined();
+  });
+  it("should not error with no args", () => {
+    expect(renderActualElement()).toBeDefined();
+  });
+  it("should pass imageclasses to component", () => {
+    const component = mount(renderActualElement(["wow"]));
+    expect(component.find("div.wow")).toHaveLength(1);
+  });
 });
 
-it ('should accept children prop', () => {
-  const wrapper = mount(generateComponent({
-    link: "http://example.com",
-    children: "hello world"
-  }));
-  const linked = mount(generateComponent({
-    link: "http://example.com",
-    children: "hello world",
-    linkAll: true
-  }));
+describe("createImage", () => {
+  beforeEach(() => {
+    jest.mock("../../../UI/loading", (props) => <div />);
+  });
 
-  const cardItem = getSingleSpecWrapper(wrapper, "card-item");
-  const linkedCardItem = getSingleSpecWrapper(linked, "card-item");
-
-  expect(cardItem.text()).toEqual("hello world");
-  expect(linkedCardItem.text()).toEqual("hello world");
+  it("should not error with no args", () => {
+    const component = mount(createImage());
+    expect(component).toBeDefined();
+  });
+  it("should append ratio if defined", () => {
+    const component = mount(createImage("triangle"));
+    expect(component.find("ImageLoader").props().imageclasses)
+      .toContain("ratio--triangle");
+  });
+  it("should append landscape ratio if one isn't defined", () => {
+    const component = mount(createImage());
+    expect(component.find("ImageLoader").props().imageclasses)
+      .toContain("ratio--landscape");
+  });
+  it("should append imageclasses if passed in", () => {
+    const component = mount(createImage(null, "ballin"));
+    expect(component.find("ImageLoader").props().imageclasses)
+      .toContain("ballin");
+  });
+  it("should pass url prop", () => {
+    const component = mount(createImage(null, null, "//harambe"));
+    expect(component.find("ImageLoader").props().src)
+      .toEqual("//harambe");
+  });
+  it("should pass style prop if not full", () => {
+    const component = mount(createImage(null, null, "//harambe", false));
+    expect(component.find("ImageLoader").props().style.backgroundImage)
+      .toEqual("url(\'//harambe\')");
+  });
+  it("should pass renderElement", () => {
+    const component = mount(createImage(null, null, null, false, jest.fn()));
+    expect(typeof component.find("ImageLoader").props().renderElement)
+      .toEqual("function");
+  });
+  it("should pass preloader", () => {
+    const preloader = jest.fn();
+    const component = mount(createImage(null, null, null, false, null, preloader));
+    expect(preloader).toBeCalled();
+    expect(preloader.mock.calls[0][0].length).toBeTruthy();
+  });
 });
 
-it ('should accept itemClasses prop', () => {
-  const wrapper = mount(generateComponent({
-    link: "http://example.com",
-    children: "hello world",
-    itemClasses: "test"
-  }));
-  const linked = mount(generateComponent({
-    link: "http://example.com",
-    children: "hello world",
-    linkAll: true,
-    itemClasses: "test"
-  }));
-
-  const cardItem = getSingleSpecWrapper(wrapper, "card-item");
-  const linkedCardItem = getSingleSpecWrapper(linked, "card-item");
-
-  expect(cardItem.hasClass("test")).toEqual(true);
-  expect(linkedCardItem.hasClass("test")).toEqual(true);
+describe("createWrapperClasses", () => {
+  it("should not error with nothing passed in", () => {
+    expect(createWrapperClasses());
+  });
+  it("should hide if mobile is false", () => {
+    expect(createWrapperClasses(false)("hey")).toContain("visuallyhidden");
+  });
+  it("should return properly with mobile true", () => {
+    expect(createWrapperClasses(true)).toBeTruthy();
+  });
 });
 
-it ('should accept itemTheme prop', () => {
-  //shallow here because meteor in imageloader is undefined
-  const wrapper = mount(generateComponent({
-    link: "http://example.com",
-    children: "hello world",
-    itemTheme: "test"
-  }));
-  const linked = mount(generateComponent({
-    link: "http://example.com",
-    children: "hello world",
-    linkAll: true,
-    itemTheme: "test"
-  }));
+describe("Card", () => {
+  const generateComponent = (additionalProps={}) => (<Card {...additionalProps} />);
+  beforeEach(() => {
+    jest.mock("../../../UI/loading", (props) => <div />);
+    jest.mock("react-router", () => ({
+      "Link": jest.fn((props) => "a"),
+    }))
+  });
 
-  const cardItem = getSingleSpecWrapper(wrapper, "card-item");
-  const linkedCardItem = getSingleSpecWrapper(linked, "card-item");
-
-  expect(cardItem.hasClass("test")).toEqual(true);
-  expect(linkedCardItem.hasClass("test")).toEqual(true);
+  it("should render with no props", () => {
+    const component = mount(generateComponent());
+    expect(component).toBeDefined();
+    expect(mountToJson(component)).toMatchSnapshot();
+  });
+  it("should render wrapping `a` with linkAll", () => {
+    const component = mount(generateComponent({linkAll: true}));
+    expect(component.find("a.card")).toHaveLength(1);
+  });
+  it("should render wrapping `div` with no linkAll", () => {
+    const component = mount(generateComponent());
+    expect(component.find("div.card")).toHaveLength(1);
+  });
+  it("should pass theme to card if present", () => {
+    const component = mount(generateComponent({theme: "yellow"}));
+    const card = getSingleSpecWrapper(component, "card");
+    expect(card.hasClass("yellow")).toEqual(true);
+  });
+  it("should pass classes to card if theme not present", () => {
+    const component = mount(generateComponent({classes: ["yellow"]}));
+    const card = getSingleSpecWrapper(component, "card");
+    expect(card.hasClass("yellow")).toEqual(true);
+  });
+  it("should pass styles to card", () => {
+    const component = mount(generateComponent({styles: {color: "blue"}}));
+    const card = getSingleSpecWrapper(component, "card");
+    expect(card.prop("style")).toEqual({ color: "blue" });
+  });
+  it("should create styles for card if not present", () => {
+    const component = mount(generateComponent());
+    const card = getSingleSpecWrapper(component, "card");
+    expect(card.prop("style")).toBeDefined();
+  });
+  it("should link card with linkAll", () => {
+    const component = mount(generateComponent({ linkAll: true }));
+    const card = getSingleSpecWrapper(component, "card");
+    expect(card.is("a")).toEqual(true);
+  });
+  it("should link image with linkAll false", () => {
+    const component = mount(generateComponent({ linkAll: false, link: "hai" }));
+    const wrapper = getSingleSpecWrapper(component, "card-image-wrapper");
+    expect(wrapper.is("a")).toEqual(true);
+  });
+  it("should link nothing with no link passed", () => {
+    const component = mount(generateComponent({ linkAll: false }));
+    const wrapper = getSingleSpecWrapper(component, "card-image-wrapper");
+    expect(wrapper.is("div")).toEqual(true);
+  });
+  it("should generate wrapper classes properly", () => {
+    const component = mount(generateComponent({ linkAll: false }));
+    const wrapper = getSingleSpecWrapper(component, "card-image-wrapper");
+    expect(wrapper.hasClass("plain")).toEqual(true);
+  });
+  it("should pass itemTheme", () => {
+    const component = mount(generateComponent({ itemTheme: "harambe" }));
+    const wrapper = getSingleSpecWrapper(component, "card-item");
+    expect(wrapper.hasClass("harambe")).toEqual(true);
+  });
+  it("should create item classes if itemTheme not passed", () => {
+    const component = mount(generateComponent({ itemTheme: "harambe" }));
+    const wrapper = getSingleSpecWrapper(component, "card-item");
+    expect(wrapper.prop("className")).toBeDefined();
+  });
+  it("should pass children", () => {
+    const component = mount(<Card><p id="hey">cincinnati zoo</p></Card>);
+    expect(component.find("#hey").text()).toEqual("cincinnati zoo");
+  });
 });
-
-
-it ('should accept itemStyles prop', () => {
-  const wrapper = mount(generateComponent({
-    link: "http://example.com",
-    children: "hello world",
-    itemStyles: {backgroundColor: "red"}
-  }));
-  const linked = mount(generateComponent({
-    link: "http://example.com",
-    children: "hello world",
-    linkAll: true,
-    itemStyles: {backgroundColor: "red"}
-  }));
-
-  const cardItem = getSingleSpecWrapper(wrapper, "card-item");
-  const linkedCardItem = getSingleSpecWrapper(linked, "card-item");
-
-  expect(cardItem.html().indexOf("style=\"background-color: red;\"")).toBeGreaterThan(0);
-  expect(linkedCardItem.html().indexOf("style=\"background-color: red;\"")).toBeGreaterThan(0);
-});
-
-it ('should accept background images option', () => {
-  //shallow here because meteor in imageloader is undefined
-  const wrapper = shallow(generateComponent({
-    link: "http://example.com",
-    image: {url: "http://placehold.it/100x100", full: true},
-    children: "hello world",
-    itemTheme: "test",
-    linkAll: true
-  }));
-
-  const cardImage = getSingleSpecWrapper(wrapper, "card-image-wrapper");
-
-  expect(
-    cardImage
-      .html()
-      .indexOf("background-image:url(&#x27;http://placehold.it/100x100&#x27;);")
-  ).toBeGreaterThan(0);
-});
-
-it ('should accept image ratio', () => {
-  //shallow here because meteor in imageloader is undefined
-  const wrapper = shallow(generateComponent({
-    link: "http://example.com",
-    image: {url: "http://placehold.it/100x100", ratio: "square"},
-    children: "hello world",
-    itemTheme: "test",
-    linkAll: true
-  }));
-
-  const cardImage = getSingleSpecWrapper(wrapper, "card-image-wrapper");
-
-  expect(cardImage.html().indexOf("ratio--square")).toBeGreaterThan(0);
-});
-
-// XXX Need to import meteor for this to work
-/*
-it ('should accept imageclasses prop', () => {
-  //shallow here because meteor in imageloader is undefined
-  const wrapper = mount(generateComponent({
-    link: "http://example.com",
-    image: {url: "http://placehold.it/100x100"},
-    children: "hello world",
-    imageclasses: ["test"]
-  }));
-
-  const cardImage = getSingleSpecWrapper(wrapper, "card-image-loader");
-
-  expect(cardImage.find(".test").length).toBe(1);
-});
-*/
-
-// XXX why is the link not rendering?
-/*
-it ('should accept link prop', () => {
-  //shallow here because meteor in imageloader is undefined
-  const wrapper = shallow(generateComponent({
-    link: "http://example.com",
-    image: {url: "http://placehold.it/100x100"},
-    children: "hello world",
-  }));
-  const linked = shallow(generateComponent({
-    link: "http://example.com",
-    image: {url: "http://placehold.it/100x100"},
-    children: "hello world",
-    linkAll: true,
-  }));
-
-  const cardWrapper = getSingleSpecWrapper(wrapper, "card");
-  const linkedCardWrapper = getSingleSpecWrapper(linked, "card");
-
-  console.log(linkedCardWrapper.html());
-  expect(cardWrapper.html().indexOf("href=\"http://example.com\"")).toBeGreaterThan(0);
-  expect(linkedCardWrapper.html().indexOf("href=\"http://example.com\"")).toBeGreaterThan(0);
-});
-*/

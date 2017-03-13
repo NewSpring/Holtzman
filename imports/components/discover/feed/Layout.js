@@ -7,6 +7,18 @@ import { MiniCard } from "../../@primitives/UI/cards";
 
 import RecentLikes from "../../shared/likes-list";
 
+// reducer helpers
+import backgrounds from "../../../util/backgrounds";
+import categories from "../../../util/categories";
+
+const cardPropsReducer = (c) => ({
+  title: c.title,
+  category: categories.name(c),
+  icon: categories.icon(c),
+  image: c ? backgrounds.image(c, { label: "2:1" }) : "",
+  link: c.meta.urlTitle,
+});
+
 function getImage(images, label = "2:1") {
   let selectedImage = "";
 
@@ -62,17 +74,9 @@ const Layout = ({
 
     <section className="soft-half background--light-secondary">
       <div className="grid flush">
-        {recommendedItems && recommendedItems.map((item, i) => {
-          const formattedObj = {
-            title: item.title,
-            content: item,
-            link: item.meta.urlTitle,
-          };
-
-          return (
-            <MiniCard {...formattedObj} key={i} />
-          );
-        })}
+        {recommendedItems && recommendedItems.map((item, i) =>
+          <MiniCard {...cardPropsReducer(item)} key={i} />
+        )}
       </div>
     </section>
 

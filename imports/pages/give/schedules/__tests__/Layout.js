@@ -1,6 +1,6 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
-import cloneDeep from "lodash.clonedeep";
+import { clone } from "ramda";
 import mockDate from "mockdate";
 import { Meteor } from "meteor/meteor";
 import Layout from "../Layout";
@@ -112,14 +112,14 @@ it("renders no schedules message", () => {
 });
 
 it("renders without schedule details", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.schedules[0].details = null;
   const wrapper = shallow(generateComponent());
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 
 it("renders without schedule details account", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.schedules[0].details[0].account = null;
   const wrapper = shallow(generateComponent());
   expect(shallowToJson(wrapper)).toMatchSnapshot();

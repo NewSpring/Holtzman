@@ -1,6 +1,6 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
-import cloneDeep from "lodash.clonedeep";
+import { clone } from "ramda";
 import { GroupCardWithoutData as GroupCard } from "../GroupCard";
 
 const defaultProps = {
@@ -43,63 +43,63 @@ it("renders with props", () => {
 });
 
 it("renders default photo", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.group.photo = null;
   const wrapper = shallow(generateComponent(props));
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 
 it("renders without schedule", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.group.schedule = null;
   const wrapper = shallow(generateComponent(props));
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 
 it("renders without schedule description", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.group.schedule.description = null;
   const wrapper = shallow(generateComponent(props));
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 
 it("renders without distance", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.group.distance = null;
   const wrapper = shallow(generateComponent(props));
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 
 it("doesn't render tag for type `Interests`", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.group.type = "Interests";
   const wrapper = shallow(generateComponent(props));
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 
 it("doesn't render kid friendly tag if no", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.group.kidFriendly = false;
   const wrapper = shallow(generateComponent(props));
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 
 it("doesn't render demographic tag if no", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.group.demographic = false;
   const wrapper = shallow(generateComponent(props));
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 
 it("doesn't render campus tag if no campus", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.group.campus = false;
   const wrapper = shallow(generateComponent(props));
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 
 it("doesn't render campus tag if no campus name", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.group.campus.name = false;
   const wrapper = shallow(generateComponent(props));
   expect(shallowToJson(wrapper)).toMatchSnapshot();

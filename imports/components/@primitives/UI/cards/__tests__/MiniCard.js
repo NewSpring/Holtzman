@@ -1,91 +1,77 @@
-import renderer from "react-test-renderer";
-import { reset, startBuffering } from "aphrodite/lib/inject";
-import MiniCard, { hasImage } from "../MiniCard";
+
+import { mount } from "enzyme"
+import { mountToJson } from "enzyme-to-json";
+
+import { Link } from "react-router";
+
+import MiniCard from "../MiniCard";
 
 describe("MiniCard", () => {
-  beforeEach(() => {
-    reset();
-    startBuffering();
+  const generateComponent = (additionalProps) =>
+    <MiniCard {...additionalProps} />;
+
+  it("should render with no props", () => {
+    const component = mount(generateComponent());
+    expect(component).toBeDefined();
+    expect(mountToJson(component)).toMatchSnapshot();
   });
 
-  afterEach(() => {
-    reset();
+  it("should render title", () => {
+    const component = mount(generateComponent({
+      title: "Harambe",
+    }));
+    expect(component).toBeDefined();
+    expect(component.find("h6").text()).toEqual("Harambe");
   });
 
-  it("should not error with no content", () => {
-    expect(hasImage()).toEqual(false);
+  it("should render description", () => {
+    const component = mount(generateComponent({
+      description: "my description",
+    }));
+    expect(component).toBeDefined();
+    expect(component.find("p")).toHaveLength(1);
+    expect(component.find("p").text()).toEqual("my description");
   });
 
-  it("should render with no image and no content", () => {
-
-    const tree = renderer.create(
-      <MiniCard
-        category="Devotionals"
-        icon="icon-name"
-        image=""
-        link="/1234"
-        title="title"
-      />
-    );
-
-    expect(tree).toBeDefined();
-    expect(tree).toMatchSnapshot();
+  it("should render with icon", () => {
+    const component = mount(generateComponent({
+      icon: "my-icon",
+    }));
+    expect(component).toBeDefined();
+    expect(component.find("span")).toHaveLength(1);
+    expect(component.find("span.my-icon")).toHaveLength(1);
   });
 
-  it("has a channelName of 'articles', an image, and a title of 'MiniCard Title'", () => {
-    const content = {
-      channelName: "articles",
-      content: {
-        images: [{
-          fileLabel: "2:1",
-          url: "https://images.unsplash.com/24/5895672523_2e8ce56485_o.jpg",
-        }],
-      },
-      title: "MiniCard Title",
-    };
-
-    const tree = renderer.create(
-      <MiniCard
-        title={content.title}
-        content={content}
-      />
-    );
-    expect(tree).toMatchSnapshot();
+  it("should render with category", () => {
+    const component = mount(generateComponent({
+      category: "conspiracy",
+    }));
+    expect(component).toBeDefined();
+    expect(component.find("h7")).toHaveLength(1);
+    expect(component.find("h7").text()).toEqual("conspiracy");
   });
 
-  it("doesn't have an image if one isn't passed", () => {
-    const content = {
-      channelName: "articles",
-      content: {
-        images: [],
-      },
-      title: "MiniCard Title",
-    };
-
-    const tree = renderer.create(
-      <MiniCard
-        title={content.title}
-        content={content}
-      />
-    );
-    expect(tree).toMatchSnapshot();
+  it("should render with link", () => {
+    const component = mount(generateComponent({
+      link: "/wow",
+    }));
+    expect(component).toBeDefined();
+    expect(component.find("Link")).toHaveLength(1);
+    expect(component.find("Link").props().to).toEqual("/wow");
   });
 
-  it("has a video icon if it's a sermon", () => {
-    const content = {
-      channelName: "sermons",
-      content: {
-        images: [],
-      },
-      title: "MiniCard Title",
-    };
+  it("should render with image", () => {
+    const component = mount(generateComponent({
+      image: "/img",
+    }));
+    expect(component).toBeDefined();
+    expect(component.find("div.card__item").props().className).toContain("two-thirds");
+    expect(component.find("div.card__image").props().style.backgroundImage).toContain("/img");
+  });
 
-    const tree = renderer.create(
-      <MiniCard
-        title={content.title}
-        content={content}
-      />
-    );
-    expect(tree).toMatchSnapshot();
+  it("should render full width with no image", () => {
+    const component = mount(generateComponent());
+    expect(component).toBeDefined();
+    expect(component.find("div.card__item").props().className).toContain("one-whole");
   });
 });
