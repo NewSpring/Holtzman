@@ -1,6 +1,6 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
-import cloneDeep from "lodash.clonedeep";
+import { clone } from "ramda";
 import ListDetail from "../../../../../pages/music/ListDetail";
 import { actions as audioActions } from "../../../../../data/store/audio";
 import { modal, nav as navActions } from "../../../../../data/store";
@@ -75,7 +75,7 @@ it("renders with props", () => {
 });
 
 it("renders dock version", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.audio.visibility = "dock";
   const wrapper = shallow(generateComponent(props))
   expect(shallowToJson(wrapper)).toMatchSnapshot();
@@ -143,7 +143,7 @@ it("activeShuffleStyles returns tertiary if not shuffle", () => {
 });
 
 it("activeShuffleStyles returns primary if shuffle", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.audio.order = "shuffle";
   const wrapper = shallow(generateComponent(props));
   const result = wrapper.instance().activeShuffleStyles();
@@ -169,7 +169,7 @@ it("repeatIcon returns default icon", () => {
 });
 
 it("repeatIcon returns repeat icon", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.audio.repeat = "repeat";
   const wrapper = shallow(generateComponent(props));
   const result = wrapper.instance().repeatIcon();
@@ -177,7 +177,7 @@ it("repeatIcon returns repeat icon", () => {
 });
 
 it("repeatIcon returns repeat one icon", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.audio.repeat = "repeat-one";
   const wrapper = shallow(generateComponent(props));
   const result = wrapper.instance().repeatIcon();
@@ -191,7 +191,7 @@ it("activeRepeatStyles returns tertiary if not repeat", () => {
 });
 
 it("activeRepeatStyles returns primary if repeat", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.audio.repeat = "repeat";
   const wrapper = shallow(generateComponent(props));
   const result = wrapper.instance().activeRepeatStyles();
@@ -260,7 +260,7 @@ it("playIconPosition returns 6px if not playing", () => {
 });
 
 it("playIconPosition returns 2px if playing", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.audio.state = "playing";
   const wrapper = shallow(generateComponent(props));
   expect(wrapper.instance().playIconPosition()).toEqual({
@@ -288,7 +288,7 @@ it("toggle calls preventDefault and play if not playing", () => {
 });
 
 it("toggle calls preventDefault and pause if playing", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.audio.state = "playing";
   const mockDispatch = jest.fn();
   const mockPreventDefault = jest.fn();
@@ -327,7 +327,7 @@ it("next calls preventDefault and next if not series", () => {
 });
 
 it("next calls preventDefault and seek if series", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.audio.playing.album.channelName = "series_newspring";
   const mockDispatch = jest.fn();
   const mockPreventDefault = jest.fn();
@@ -367,7 +367,7 @@ it("back calls preventDefault and previous if not series", () => {
 });
 
 it("back calls preventDefault and seek if series", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.audio.playing.album.channelName = "series_newspring";
   const mockDispatch = jest.fn();
   const mockPreventDefault = jest.fn();
@@ -407,7 +407,7 @@ it("repeat calls preventDefault and repeat if default", () => {
 });
 
 it("repeat calls preventDefault and repeatOne if default", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.audio.repeat = "repeat";
   const mockDispatch = jest.fn();
   const mockPreventDefault = jest.fn();
@@ -428,7 +428,7 @@ it("repeat calls preventDefault and repeatOne if default", () => {
 });
 
 it("repeat calls preventDefault and resetRepeat if default", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.audio.repeat = "repeat-one";
   const mockDispatch = jest.fn();
   const mockPreventDefault = jest.fn();
@@ -467,7 +467,7 @@ it("shuffle calls preventDefault and shuffle if default", () => {
 });
 
 it("shuffle calls preventDefault and shuffle if default", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.audio.order = "shuffle";
   const mockDispatch = jest.fn();
   const mockPreventDefault = jest.fn();
@@ -488,7 +488,7 @@ it("shuffle calls preventDefault and shuffle if default", () => {
 });
 
 it("showControls returns null if series", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.audio.playing.album.channelName = "series_newspring";
   const wrapper = shallow(generateComponent(props));
   const result = wrapper.instance().playlistControls();

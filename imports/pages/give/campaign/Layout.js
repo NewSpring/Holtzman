@@ -1,6 +1,7 @@
 // @flow
 /* eslint-disable react/no-danger */
-import find from "lodash.find";
+// $FlowMeteor
+import { find } from "ramda";
 import { Link } from "react-router";
 
 import Split, { Left, Right } from "../../../components/@primitives/layout/split";

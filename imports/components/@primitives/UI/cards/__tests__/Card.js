@@ -163,7 +163,7 @@ describe("createWrapperClasses", () => {
     expect(createWrapperClasses());
   });
   it("should hide if mobile is false", () => {
-    expect(createWrapperClasses(false)).toContain("visuallyhidden");
+    expect(createWrapperClasses(false)("hey")).toContain("visuallyhidden");
   });
   it("should return properly with mobile true", () => {
     expect(createWrapperClasses(true)).toBeTruthy();

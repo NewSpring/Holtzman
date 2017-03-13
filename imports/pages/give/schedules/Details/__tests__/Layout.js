@@ -1,6 +1,6 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
-import cloneDeep from "lodash.clonedeep";
+import { clone } from "ramda";
 import Layout from "../Layout";
 
 const defaultProps = {
@@ -107,14 +107,14 @@ it("renders loading if not ready", () => {
 });
 
 it("renders without schedule payment", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   delete props.schedule.payment;
   const wrapper = shallow(generateComponent(props));
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 
 it("works with credit card", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.schedule.payment.paymentType = "Visa";
   const wrapper = shallow(generateComponent(props));
   expect(shallowToJson(wrapper)).toMatchSnapshot();
@@ -142,7 +142,7 @@ it("renders without schedule", () => {
 });
 
 it("renders no contributions message", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.schedule.transactions = [];
   const wrapper = shallow(generateComponent(props));
   expect(shallowToJson(wrapper)).toMatchSnapshot();

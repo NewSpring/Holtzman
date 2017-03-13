@@ -3,7 +3,8 @@
 // $FlowMeteor
 import { Meteor } from "meteor/meteor";
 import { Component } from "react";
-import cloneDeep from "lodash.clonedeep";
+// $FlowMeteor
+import { clone } from "ramda";
 
 import { openUrl } from "../../../../../util/inAppLink";
 
@@ -39,7 +40,7 @@ export default class Confirm extends Component {
   completeGift = (e: Event) => {
     e.preventDefault();
     // deep clone
-    const props = cloneDeep(this.props);
+    const props = clone(this.props);
     let { url } = props;
     const { transactions, total, data, savedAccount } = props;
 

@@ -1,6 +1,6 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
-import cloneDeep from "lodash.clonedeep";
+import { clone } from "ramda";
 import Layout, { campusLookup } from "../Layout";
 
 const defaultProps = {
@@ -56,7 +56,7 @@ it("renders with props", () => {
 });
 
 it("renders without campus distance", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.data.campuses[0].distance = null;
   const wrapper = shallow(generateComponent(props));
   expect(shallowToJson(wrapper)).toMatchSnapshot();
