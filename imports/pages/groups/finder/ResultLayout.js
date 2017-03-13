@@ -16,6 +16,7 @@ const Layout = ({
   count,
   query,
   campuses,
+  schedules,
   showSearch,
   toggleSearch,
   showTags,
@@ -44,6 +45,16 @@ const Layout = ({
           style={{ verticalAlign: "bottom" }}
           className="flush-bottom"
           val={tag}
+          key={key}
+          canBeActive
+        />
+      ))}
+      {schedules && schedules.map((schedule, key) => (
+        <Tag
+          style={{ verticalAlign: "bottom" }}
+          className="flush-bottom"
+          val={schedule}
+          urlKey="schedules"
           key={key}
           canBeActive
         />
@@ -187,6 +198,7 @@ Layout.propTypes = {
   toggleTags: PropTypes.func.isRequired,
   onCardHover: PropTypes.func.isRequired,
   campuses: PropTypes.array,
+  schedules: PropTypes.array,
   LoadingComponent: PropTypes.func,
 };
 

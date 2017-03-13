@@ -63,6 +63,7 @@ class TemplateWithoutData extends Component {
     /* eslint-enable */
     campusLocations: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
     campuses: PropTypes.string.isRequired,
+    schedules: PropTypes.string.isRequired,
   }
 
   state = {
@@ -110,7 +111,7 @@ class TemplateWithoutData extends Component {
   }
 
   render() {
-    const { data, tags, campusLocations, campuses, q, done, Loading, loading } = this.props;
+    const { data, tags, campusLocations, campuses, schedules, q, done, Loading, loading } = this.props;
     let count;
     let groups = defaultArray;
     if (data.groups && data.groups.count) count = data.groups.count;
@@ -149,6 +150,7 @@ class TemplateWithoutData extends Component {
             groups={groups}
             count={count}
             tags={tags && tags.split(",").filter((x) => x)}
+            schedules={schedules && schedules.split(",").filter((x) => x)}
             campuses={campuses && campuses.split(",").filter((x) => x)}
             campusLocations={campusLocations}
             query={q}
@@ -172,7 +174,10 @@ const mapStateToProps = ({ routing: { location } }) => {
   const campuses = (
     Object.keys(location.query).length && location.query.campuses ? location.query.campuses : ""
   );
-  return { tags, q, location, campuses };
+  const schedules = (
+    Object.keys(location.query).length && location.query.schedules ? location.query.schedules : ""
+  );
+  return { tags, q, location, campuses, schedules };
 };
 
 const CAMPUS_LOCATION_QUERY = gql`
@@ -182,8 +187,8 @@ const CAMPUS_LOCATION_QUERY = gql`
 const withCampusLocations = graphql(CAMPUS_LOCATION_QUERY, { name: "campusLocations" });
 
 const GROUP_FINDER_QUERY = gql`
-  query GroupFinder($query: String, $tags: [String], $limit: Int, $offset: Int, $ip: String, $campuses: [String]) {
-    groups(query: $query, attributes: $tags, limit: $limit, offset: $offset, clientIp: $ip, campuses: $campuses) {
+  query GroupFinder($query: String, $tags: [String], $limit: Int, $offset: Int, $ip: String, $campuses: [String], $schedules: [Int]) {
+    groups(query: $query, attributes: $tags, limit: $limit, offset: $offset, clientIp: $ip, campuses: $campuses, schedules: $schedules) {
       count
       results {
         id
@@ -205,6 +210,36 @@ const GROUP_FINDER_QUERY = gql`
   }
 `;
 
+const getDay = (schedule: String) => {
+  let day;
+  switch (schedule) {
+    case "sunday":
+      day = 0;
+      break;
+    case "monday":
+      day = 1;
+      break;
+    case "tuesday":
+      day = 2;
+      break;
+    case "wednesday":
+      day = 3;
+      break;
+    case "thursday":
+      day = 4;
+      break;
+    case "friday":
+      day = 5;
+      break;
+    case "saturday":
+      day = 6;
+      break;
+    default:
+      break;
+  }
+  return day;
+};
+
 const withGroupFinder = graphql(GROUP_FINDER_QUERY, {
   options: (ownProps) => ({
     ssr: false,
@@ -215,6 +250,7 @@ const withGroupFinder = graphql(GROUP_FINDER_QUERY, {
       limit: 10,
       offset: 0,
       campuses: ownProps.campuses && ownProps.campuses.split(",").filter((x) => x),
+      schedules: ownProps.schedules && ownProps.schedules.length ? ownProps.schedules.split(",").filter((x) => x).map((x) => getDay(x)) : [],
     },
   }),
   props: ({ data }) => ({
