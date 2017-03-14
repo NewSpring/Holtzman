@@ -1,12 +1,27 @@
+// @flow
 import { Link } from "react-router";
-
-import { PropTypes } from "react";
 import Meta from "../../../components/shared/meta";
-
 import Tag from "../../../components/@primitives/UI/tags";
 import Group from "../components/GroupCard";
-
+import { Spinner } from "../../../components/@primitives/UI/loading";
 import Filter from "./Filter";
+
+type ILayout = {
+  groups: [Object],
+  tags: [String],
+  loading: boolean,
+  query: String,
+  showSearch: boolean,
+  toggleSearch: Function,
+  showTags: boolean,
+  count: number,
+  toggleTags: Function,
+  onCardHover: Function,
+  campuses: [String],
+  schedules: [String],
+  LoadingComponent: Function,
+  done: boolean,
+};
 
 const Layout = ({
   groups,
@@ -16,12 +31,14 @@ const Layout = ({
   count,
   query,
   campuses,
+  schedules,
   showSearch,
   toggleSearch,
   showTags,
   toggleTags,
   onCardHover,
-}) => (
+  done,
+}: ILayout) => (
   <section className="background--light-secondary hard">
     {/* Meta */}
     <Meta title="Group Finder" />
@@ -44,6 +61,16 @@ const Layout = ({
           style={{ verticalAlign: "bottom" }}
           className="flush-bottom"
           val={tag}
+          key={key}
+          canBeActive
+        />
+      ))}
+      {schedules && schedules.map((schedule, key) => (
+        <Tag
+          style={{ verticalAlign: "bottom" }}
+          className="flush-bottom"
+          val={schedule}
+          urlKey="schedules"
           key={key}
           canBeActive
         />
@@ -106,6 +133,13 @@ const Layout = ({
 
       {/* Results */}
 
+      {/* Loading */}
+      {loading && (
+        <div className="text-center soft">
+          <Spinner styles={{ width: "40px", height: "40px" }} />
+        </div>
+      )}
+
       {groups.map((group, key) => (
         <Group onHover={onCardHover} group={group} id={group.id} key={key} />
       ))}
@@ -127,7 +161,7 @@ const Layout = ({
       })()}
 
       {/* Loading */}
-      <LoadingComponent />
+      {!loading && !done && <LoadingComponent />}
 
       <div className="one-whole text-center push-bottom">
         {(() => {
@@ -174,20 +208,5 @@ const Layout = ({
     </div>
   </section>
 );
-
-Layout.propTypes = {
-  groups: PropTypes.array.isRequired,
-  tags: PropTypes.array.isRequired,
-  loading: PropTypes.bool.isRequired,
-  query: PropTypes.string.isRequired,
-  showSearch: PropTypes.bool.isRequired,
-  toggleSearch: PropTypes.func.isRequired,
-  showTags: PropTypes.bool.isRequired,
-  count: PropTypes.number.isRequired,
-  toggleTags: PropTypes.func.isRequired,
-  onCardHover: PropTypes.func.isRequired,
-  campuses: PropTypes.array,
-  LoadingComponent: PropTypes.func,
-};
 
 export default Layout;

@@ -38,6 +38,8 @@ exports[`test renders result if campuses 1`] = `<withRouter(Apollo(Connect(Apoll
 
 exports[`test renders result if q 1`] = `<withRouter(Apollo(Connect(Apollo(InfiniteScrollContainer)))) />`;
 
+exports[`test renders result if schedules 1`] = `<withRouter(Apollo(Connect(Apollo(InfiniteScrollContainer)))) />`;
+
 exports[`test renders result if tags 1`] = `<withRouter(Apollo(Connect(Apollo(InfiniteScrollContainer)))) />`;
 
 exports[`test renders with props 1`] = `
