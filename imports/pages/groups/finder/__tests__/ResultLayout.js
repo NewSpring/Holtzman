@@ -1,6 +1,6 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
-import ResultLayout from "../ResultLayout";
+import Layout from "../ResultLayout";
 
 const defaultProps = {
   groups: [],
@@ -22,10 +22,18 @@ const generateComponent = (additionalProps = {}) => {
     ...defaultProps,
     ...additionalProps,
   };
-  return <ResultLayout { ...newProps } />;
+  return <Layout { ...newProps } />;
 };
 
 it("renders with props", () => {
   const wrapper = shallow(generateComponent());
+  expect(shallowToJson(wrapper)).toMatchSnapshot();
+});
+
+it("renders spinner when loading is true", () => {
+  const someProps = {
+    loading: true,
+  }
+  const wrapper = shallow(generateComponent(someProps));
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
