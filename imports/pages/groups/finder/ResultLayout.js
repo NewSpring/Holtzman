@@ -5,6 +5,7 @@ import Meta from "../../../components/shared/meta";
 
 import Tag from "../../../components/@primitives/UI/tags";
 import Group from "../components/GroupCard";
+import { Spinner } from "../../../components/@primitives/UI/loading";
 
 import Filter from "./Filter";
 
@@ -16,11 +17,13 @@ const Layout = ({
   count,
   query,
   campuses,
+  schedules,
   showSearch,
   toggleSearch,
   showTags,
   toggleTags,
   onCardHover,
+  done,
 }) => (
   <section className="background--light-secondary hard">
     {/* Meta */}
@@ -44,6 +47,16 @@ const Layout = ({
           style={{ verticalAlign: "bottom" }}
           className="flush-bottom"
           val={tag}
+          key={key}
+          canBeActive
+        />
+      ))}
+      {schedules && schedules.map((schedule, key) => (
+        <Tag
+          style={{ verticalAlign: "bottom" }}
+          className="flush-bottom"
+          val={schedule}
+          urlKey="schedules"
           key={key}
           canBeActive
         />
@@ -106,6 +119,13 @@ const Layout = ({
 
       {/* Results */}
 
+      {/* Loading */}
+      {loading && (
+        <div className="text-center soft">
+          <Spinner styles={{ width: "40px", height: "40px" }} />
+        </div>
+      )}
+
       {groups.map((group, key) => (
         <Group onHover={onCardHover} group={group} id={group.id} key={key} />
       ))}
@@ -127,7 +147,7 @@ const Layout = ({
       })()}
 
       {/* Loading */}
-      <LoadingComponent />
+      {!loading && !done && <LoadingComponent />}
 
       <div className="one-whole text-center push-bottom">
         {(() => {
@@ -187,7 +207,9 @@ Layout.propTypes = {
   toggleTags: PropTypes.func.isRequired,
   onCardHover: PropTypes.func.isRequired,
   campuses: PropTypes.array,
+  schedules: PropTypes.array,
   LoadingComponent: PropTypes.func,
+  done: PropTypes.bool,
 };
 
 export default Layout;
