@@ -1,7 +1,7 @@
 import { shallow, mount } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import { reset, startBuffering } from "aphrodite/lib/inject";
-import cloneDeep from "lodash.clonedeep";
+import { clone } from "ramda";
 import TextArea from "../TextArea";
 
 const defaultProps = {
@@ -108,7 +108,7 @@ it("updates state on will update", () => {
   const wrapper = mount(generateComponent({
     defaultValue: "2",
   }));
-  const nextProps = cloneDeep(defaultProps);
+  const nextProps = clone(defaultProps);
   nextProps.defaultValue = "3";
   wrapper.setState({ focused: true });
   wrapper.instance().componentWillUpdate(nextProps);

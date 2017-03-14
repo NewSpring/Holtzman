@@ -1,6 +1,6 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
-import cloneDeep from "lodash.clonedeep";
+import { clone } from "ramda";
 import SeriesHero from "../Hero";
 
 const defaultProps = {
@@ -34,7 +34,7 @@ it("renders with props", () => {
 });
 
 it("renders without video", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.series.content.ooyalaId = null;
   const wrapper = shallow(generateComponent(props));
   expect(shallowToJson(wrapper)).toMatchSnapshot();

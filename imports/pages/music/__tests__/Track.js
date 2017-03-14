@@ -1,6 +1,6 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
-import cloneDeep from "lodash.clonedeep";
+import { clone } from "ramda";
 import { modal, audio as audioActions } from "../../../data/store";
 import ListDetail from "../ListDetail";
 import { AudioTrackWithoutData as AudioTrack } from "../Track";
@@ -112,7 +112,7 @@ it("play does nothing if no file", () => {
   const mockDispatch = jest.fn();
   audioActions.setPlaying = jest.fn();
   audioActions.setPlaylist = jest.fn();
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.album.content.tracks[2].file = null;
   const wrapper = shallow(generateComponent({
     album: props.album,

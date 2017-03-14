@@ -2,7 +2,7 @@ import { Component, PropTypes } from "react";
 import ReactMixin from "react-mixin";
 import { connect } from "react-redux";
 import { graphql } from "react-apollo";
-import difference from "lodash.difference";
+import { difference } from "ramda";
 import gql from "graphql-tag";
 
 import { FeedItemSkeleton } from "../../components/@primitives/UI/loading";
