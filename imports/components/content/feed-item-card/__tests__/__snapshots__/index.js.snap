@@ -12,7 +12,7 @@ exports[`FeedItem should have styles based on a channelName of 'articles' 1`] = 
     }
   }>
   <div
-    className="background--fill plain"
+    className="plain background--fill"
     data-spec="card-image-wrapper"
     style={Object {}}>
     <span>
@@ -89,7 +89,7 @@ exports[`FeedItem should have styles based on a channelName of 'series_newspring
     }
   }>
   <div
-    className="background--fill overlay-color--303030 overlay--gradient plain"
+    className="plain background--fill overlay-color--303030 overlay--gradient"
     data-spec="card-image-wrapper"
     style={
       Object {
@@ -98,10 +98,15 @@ exports[`FeedItem should have styles based on a channelName of 'series_newspring
     }>
     <span>
       <span
-        className="imageloader loaded">
+        className="imageloader loaded"
+        style={
+          Object {
+            "backgroundImage": undefined,
+          }
+        }>
         <div
           className="background--fill card__image background-light-tertiary ratio--square rounded-top"
-          style={undefined}>
+          style={Object {}}>
           <div
             className="ratio__item" />
         </div>
@@ -165,7 +170,7 @@ exports[`FeedItem should pull the parent color if the channelName is 'sermons' 1
     }
   }>
   <div
-    className="background--fill overlay-color--030303 overlay--gradient plain"
+    className="plain background--fill overlay-color--030303 overlay--gradient"
     data-spec="card-image-wrapper"
     style={
       Object {
@@ -174,10 +179,15 @@ exports[`FeedItem should pull the parent color if the channelName is 'sermons' 1
     }>
     <span>
       <span
-        className="imageloader loaded">
+        className="imageloader loaded"
+        style={
+          Object {
+            "backgroundImage": undefined,
+          }
+        }>
         <div
           className="background--fill card__image background-light-tertiary ratio--square rounded-top"
-          style={undefined}>
+          style={Object {}}>
           <div
             className="ratio__item" />
         </div>
@@ -241,7 +251,7 @@ exports[`FeedItem should pull the parent image if the channelName is 'sermons' a
     }
   }>
   <div
-    className="background--fill overlay-color--030303 overlay--gradient plain"
+    className="plain background--fill overlay-color--030303 overlay--gradient"
     data-spec="card-image-wrapper"
     style={
       Object {
@@ -250,10 +260,15 @@ exports[`FeedItem should pull the parent image if the channelName is 'sermons' a
     }>
     <span>
       <span
-        className="imageloader loaded">
+        className="imageloader loaded"
+        style={
+          Object {
+            "backgroundImage": undefined,
+          }
+        }>
         <div
           className="background--fill card__image background-light-tertiary ratio--square rounded-top"
-          style={undefined}>
+          style={Object {}}>
           <div
             className="ratio__item" />
         </div>
@@ -317,7 +332,7 @@ exports[`FeedItem should pull the regular image if the channelName is 'sermons' 
     }
   }>
   <div
-    className="background--fill overlay-color--030303 overlay--gradient plain"
+    className="plain background--fill overlay-color--030303 overlay--gradient"
     data-spec="card-image-wrapper"
     style={
       Object {
@@ -326,10 +341,15 @@ exports[`FeedItem should pull the regular image if the channelName is 'sermons' 
     }>
     <span>
       <span
-        className="imageloader loaded">
+        className="imageloader loaded"
+        style={
+          Object {
+            "backgroundImage": undefined,
+          }
+        }>
         <div
           className="background--fill card__image background-light-tertiary ratio--square rounded-top"
-          style={undefined}>
+          style={Object {}}>
           <div
             className="ratio__item" />
         </div>

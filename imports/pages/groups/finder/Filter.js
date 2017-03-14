@@ -66,6 +66,7 @@ class FilterWithoutData extends Component {
     } = this.props;
     const tags = attributes.tags ? attributes.tags : defaultTags;
     const campuses = campusLocations.campuses ? campusLocations.campuses : defaultTags;
+    const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     return (
       <div>
 
@@ -81,6 +82,14 @@ class FilterWithoutData extends Component {
                 </h4>
                 <div className="two-thirds@anchored display-inline-block soft-ends@anchored">
                   {tags.map((tag, key) => <Tag key={key} val={tag.value} />)}
+                </div>
+              </div>
+              <div className="soft-half-sides soft-ends text-center background--light-primary">
+                <h4 className="soft-half-bottom flush-bottom">
+                  Day of Week
+                </h4>
+                <div className="two-thirds@anchored display-inline-block soft-ends@anchored">
+                  {daysOfWeek.map((day, key) => <Tag key={key} val={day} urlKey="schedules" />)}
                 </div>
               </div>
               <div className="outlined--light outlined--bottom soft-half-sides soft-ends soft-double-bottom@anchored text-center background--light-primary">
