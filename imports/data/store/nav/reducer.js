@@ -46,7 +46,7 @@ const discoverActive = ({ path, modal }) => {
 };
 
 let homeLink = "/";
-if (process.env.WEB) homeLink = "/give/home";
+if (process.env.WEB) homeLink = "/give/now";
 let links = {
   TOP: [
     {
@@ -68,7 +68,7 @@ let links = {
       label: "Groups",
       link: "/groups/finder",
       icon: "icon-groups",
-      isActive: ({ path, modal }) => (path === "/groups/finder" && !modal.visible),
+      isActive: ({ path, modal }) => (path.startsWith("/groups") && !modal.visible),
     },
     {
       id: 4,

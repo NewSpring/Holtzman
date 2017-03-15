@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [5.0.19] - UNRELEASED
+### Fixed
+- Navigation inside of group profile not linking to the sections page
+
+
 ## [5.0.17] - 2017-03-08
 ### Added
 - NewSpring Now!
