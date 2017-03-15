@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - A day of week filter for group finder.
 
+### Fixed
+- Ellipses on last tag of group finder results being hidden with long lists of tags
+
 ## [5.0.17] - 2017-03-08
 ### Added
 - NewSpring Now!
