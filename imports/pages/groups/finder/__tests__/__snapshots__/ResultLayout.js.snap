@@ -43,7 +43,7 @@ exports[`test renders spinner when loading is true 1`] = `
       val={1} />
     <withRouter(Connect(TagWithoutData))
       canBeActive={false}
-      className="flush-bottom background--dark-tertiary"
+      className="flush-bottom"
       onClick={[Function]}
       style={
         Object {
@@ -152,7 +152,7 @@ exports[`test renders with props 1`] = `
       val={1} />
     <withRouter(Connect(TagWithoutData))
       canBeActive={false}
-      className="flush-bottom background--dark-tertiary"
+      className="flush-bottom"
       onClick={[Function]}
       style={
         Object {
