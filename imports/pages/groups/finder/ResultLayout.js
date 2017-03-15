@@ -87,7 +87,7 @@ const Layout = ({
       ))}
       <Tag
         style={{ verticalAlign: "bottom" }}
-        className="flush-bottom background--dark-tertiary"
+        className="flush-bottom"
         val="..."
         canBeActive={false}
         onClick={() => toggleTags()}
