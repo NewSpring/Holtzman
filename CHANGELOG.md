@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [5.0.20] - UNRELEASED
+### Added
+- redirect on signin with person guid for work workflows.
+
 ## [5.0.17] - 2017-03-08
 ### Added
 - NewSpring Now!
