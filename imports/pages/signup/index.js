@@ -117,14 +117,15 @@ const Routes = [
         forceFetch: true,
       })
       .then(({data}) => {
-        replace(`${redirect}&person_guid=${data.currentPerson.guid}`);
+        replace({
+          pathname: `${query.redirect}&person_guid=${data.currentPerson.guid}`,
+        });
         callback();
       })
       .catch(e => {
+        console.error(e);
         callback();
       });
-
-
     }
   },
 ];
