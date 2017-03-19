@@ -42,6 +42,9 @@ export const phonePropsReducer = ({ phoneNumbers }) => ({
 export const JoinWithPhones = graphql(PHONE_QUERY, {
   name: "phoneNumbers",
   props: phonePropsReducer,
+  options: {
+    forceFetch: true,
+  },
 })(Join);
 
 export const PHONE_NUMBER_MUTATION = gql`
