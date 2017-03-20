@@ -6,9 +6,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [5.0.20] - UNRELEASED
 ### Added
+- A day of week filter for group finder.
 
 ### Fixed
 - Navigation inside of group profile not linking to the sections page
+- Ellipses on last tag of group finder results being hidden with long lists of tags
 
 ### Changed
 - Removed the content prop the `MiniCard` component
