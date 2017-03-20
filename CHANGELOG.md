@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [5.0.19] - 2017-03-17
 ### Fixed
 - Fixed the GA code for production app [CI]
+- Login on groups join page failing
 
 ## [5.0.17] - 2017-03-08
 ### Added
