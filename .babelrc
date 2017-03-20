@@ -6,6 +6,7 @@
     "react"
   ],
   "plugins": [
+    "ramda",
     "babel-root-slash-import",
     "transform-react-router-optimize",
     "transform-inline-environment-variables",

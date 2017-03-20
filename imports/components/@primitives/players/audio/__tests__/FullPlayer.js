@@ -1,7 +1,7 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import { reset, startBuffering } from "aphrodite/lib/inject";
-import cloneDeep from "lodash.clonedeep";
+import { clone } from "ramda";
 import headerActions from "../../../../../data/store/header";
 import {
   FullPlayerWithoutData as FullPlayer,
@@ -105,7 +105,7 @@ it("renders with props", () => {
 });
 
 it("renders without color", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.playing.album.content.colors = null;
   const wrapper = shallow(generateComponent(props));
   expect(shallowToJson(wrapper)).toMatchSnapshot();
@@ -180,14 +180,14 @@ it("getArtist returns track artist first", () => {
 });
 
 it("getArtist returns album artist if no track artist", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.playing.track.artist = null;
   const wrapper = shallow(generateComponent(props));
   expect(wrapper.instance().getArtist()).toBe(defaultProps.playing.album.artist);
 });
 
 it("getArtist returns NewSpring as last resort", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.playing.track.artist = null;
   props.playing.album.artist = null;
   const wrapper = shallow(generateComponent(props));
@@ -316,7 +316,7 @@ it("toggle updates play state and playlist if not playing", () => {
 });
 
 it("toggle updates just pauses if playing and play state exists", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.audio.playing.album.title = "test";
   props.audio.state = "playing";
   const mockSetPlaylist = jest.fn();
@@ -344,7 +344,7 @@ it("shuffle calls shuffle if not shuffling", () => {
 });
 
 it("shuffle calls reset order if shuffling", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.audio.order = "shuffle";
   const mockResetOrder = jest.fn();
   const wrapper = shallow(generateComponent({
@@ -365,7 +365,7 @@ it("repeat calls repeat if default", () => {
 });
 
 it("repeat calls reset repeat if repeat one", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.audio.repeat = "repeat-one";
   const mockResetRepeat = jest.fn();
   const wrapper = shallow(generateComponent({
@@ -377,7 +377,7 @@ it("repeat calls reset repeat if repeat one", () => {
 });
 
 it("repeat calls repeat one if repeat", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.audio.repeat = "repeat";
   const mockRepeatOne = jest.fn();
   const wrapper = shallow(generateComponent({

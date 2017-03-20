@@ -1,6 +1,6 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
-import cloneDeep from "lodash.clonedeep";
+import { clone } from "ramda";
 import {
   modal,
   nav as navActions,
@@ -76,7 +76,7 @@ it("renders with props", () => {
 });
 
 it("renders default artist", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.album.artist = null;
   const wrapper = shallow(generateComponent(props));
   expect(shallowToJson(wrapper)).toMatchSnapshot();

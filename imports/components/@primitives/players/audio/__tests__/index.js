@@ -1,6 +1,6 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
-import cloneDeep from "lodash.clonedeep";
+import { clone } from "ramda";
 import { actions as audioActions } from "../../../../../data/store/audio";
 import { modal, nav as navActions } from "../../../../../data/store";
 import FullPlayer from "../FullPlayer";
@@ -60,7 +60,7 @@ it("renders with props", () => {
 });
 
 it("renders with mini player", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.audio.visibility = "dock";
   const wrapper = shallow(generateComponent(props));
   expect(shallowToJson(wrapper)).toMatchSnapshot();
@@ -72,7 +72,7 @@ it("triggers modal if expanding", () => {
   const wrapper = shallow(generateComponent({
     dispatch: mockDispatch,
   }));
-  const nextProps = cloneDeep(defaultProps);
+  const nextProps = clone(defaultProps);
   nextProps.audio.visibility = "expand";
   wrapper.setProps(nextProps);
   expect(mockDispatch).toHaveBeenCalledTimes(1);
@@ -93,7 +93,7 @@ it("updates nav if phone", () => {
   const wrapper = shallow(generateComponent({
     dispatch: mockDispatch,
   }));
-  const nextProps = cloneDeep(defaultProps);
+  const nextProps = clone(defaultProps);
   nextProps.audio.visibility = "expand";
   wrapper.setProps(nextProps);
   expect(mockDispatch).toHaveBeenCalledTimes(3);
@@ -105,7 +105,7 @@ it("updates nav if phone", () => {
 
 it("sets visibility to dock if modal closing", () => {
   audioActions.setVisibility = jest.fn();
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.audio.visibility = "expand";
   props.modal.visible = true;
   const wrapper = shallow(generateComponent(props));
@@ -121,7 +121,7 @@ it("sets visibility to dock if modal closing", () => {
 it("sets retriggers FullPlayer if necessary", () => {
   audioActions.setVisibility = jest.fn();
   modal.setRetrigger = jest.fn();
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.audio.visibility = "expand";
   props.modal.visible = true;
   props.modal.retrigger = "FullPlayer";
@@ -142,14 +142,14 @@ it("shouldDisplayMini returns false if not dock or fade", () => {
 });
 
 it("shouldDisplayMini returns false if no file", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.audio.playing.track.file = null;
   const wrapper = shallow(generateComponent(props));
   expect(wrapper.instance().shouldDisplayMini()).toBe(false);
 });
 
 it("shouldDisplayMini returns true if dock", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.audio.visibility = "dock";
   const wrapper = shallow(generateComponent(props));
   expect(wrapper.instance().shouldDisplayMini()).toBe(
@@ -158,7 +158,7 @@ it("shouldDisplayMini returns true if dock", () => {
 });
 
 it("shouldDisplayMini returns true if fade", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.audio.visibility = "fade";
   const wrapper = shallow(generateComponent(props));
   expect(wrapper.instance().shouldDisplayMini()).toBe(

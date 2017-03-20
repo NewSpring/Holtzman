@@ -1,6 +1,6 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
-import cloneDeep from "lodash.clonedeep";
+import { clone } from "ramda";
 import StoriesContent, { StoryImage } from "../Content";
 
 describe("StoryImage", () => {
@@ -85,14 +85,14 @@ describe("StoriesContent", () => {
   });
 
   it("renders with video", () => {
-    const props = cloneDeep(defaultProps);
+    const props = clone(defaultProps);
     props.story.content.ooyalaId = "test";
     const wrapper = shallow(generateComponent(props));
     expect(shallowToJson(wrapper)).toMatchSnapshot();
   });
 
   it("renders without imaes", () => {
-    const props = cloneDeep(defaultProps);
+    const props = clone(defaultProps);
     props.story.content.images = [];
     const wrapper = shallow(generateComponent(props));
     expect(shallowToJson(wrapper)).toMatchSnapshot();
