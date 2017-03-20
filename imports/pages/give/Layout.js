@@ -1,5 +1,6 @@
 // @flow
-import find from "lodash.find";
+// $FlowMeteor
+import { find, propEq } from "ramda";
 import React, { Component, cloneElement } from "react";
 import Split, { Left, Right } from "../../components/@primitives/layout/split";
 import DashboardLayout from "../../components/@primitives/layout/dashboard";
@@ -62,7 +63,7 @@ class Layout extends Component {
 
   getActive = (props: Object) => {
     const active = props.location.pathname.split("/");
-    return find(props.routes, { path: active[2] });
+    return find(propEq("path", active[2]), props.routes);
   }
 
   getRightComponent = (props: Object) => {

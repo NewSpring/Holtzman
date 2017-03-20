@@ -1,7 +1,7 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import { reset, startBuffering } from "aphrodite/lib/inject";
-import cloneDeep from "lodash.clonedeep";
+import { clone } from "ramda";
 import { actions as audioActions } from "../../../../../data/store/audio";
 import { MiniPlayerWithoutData as MiniPlayer } from "../MiniPlayer";
 
@@ -61,7 +61,7 @@ it("renders with props", () => {
 });
 
 it("works without fileLabel", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.audio.playing.album.content.images[0].fileLabel = null;
   const wrapper = shallow(generateComponent(props));
   expect(shallowToJson(wrapper)).toMatchSnapshot();
@@ -84,7 +84,7 @@ it("getArtistList returns track artist first", () => {
 });
 
 it("getArtistList returns triest album artist next", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.audio.playing.track.artist = null;
   const wrapper = shallow(generateComponent(props));
   const result = wrapper.instance().getArtistLine();
@@ -95,7 +95,7 @@ it("getArtistList returns triest album artist next", () => {
 });
 
 it("getArtistList returns NewSpring if nothing else", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.audio.playing.track.artist = null;
   props.audio.playing.album.artist = null;
   const wrapper = shallow(generateComponent(props));
@@ -106,7 +106,7 @@ it("getArtistList returns NewSpring if nothing else", () => {
 });
 
 it("getArtistList returns reversed if series", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.audio.playing.album.channelName = "series_newspring";
   const wrapper = shallow(generateComponent(props));
   const result = wrapper.instance().getArtistLine();
@@ -177,7 +177,7 @@ it("toggle stops event and starts play if not playing", () => {
 });
 
 it("toggle stops event and pauses if playing", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.audio.state = "playing";
   const mockPreventDefault = jest.fn();
   const mockStopPropagation = jest.fn();
@@ -336,7 +336,7 @@ it("fadeClass returns undefined if not fading", () => {
 });
 
 it("fadeClass returns style class if fading", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.audio.visibility = "fade";
   const wrapper = shallow(generateComponent(props));
   expect(wrapper.instance().fadeClass()).toMatchSnapshot();

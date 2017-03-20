@@ -1,6 +1,6 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
-import cloneDeep from "lodash.clonedeep";
+import { clone } from "ramda";
 import { Meteor } from "meteor/meteor";
 import { actions as audioActions } from "../../../../../data/store/audio";
 import Audio from "../../../../../util/vendor/players/audio";
@@ -63,17 +63,17 @@ it("renders nothing but span", () => {
 it("creates player when current title is not next title", () => {
   const wrapper = shallow(generateComponent());
   expect(wrapper.instance().player).toBeFalsy();
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.audio.playing.track.title = "new track";
   wrapper.setProps(props);
   expect(wrapper.instance().player).toBeTruthy();
 });
 
 it("calls toggle when next state is not this state (play/pause) and not default", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.audio.state = "playing";
   const wrapper = shallow(generateComponent(props));
-  const nextProps = cloneDeep(props);
+  const nextProps = clone(props);
   nextProps.audio.state = "paused";
   const mockToggle = jest.fn();
   wrapper.instance().toggle = mockToggle;
@@ -82,10 +82,10 @@ it("calls toggle when next state is not this state (play/pause) and not default"
 });
 
 it("calls next when next state is not this state (playing) and not default", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.audio.state = "playing";
   const wrapper = shallow(generateComponent(props));
-  const nextProps = cloneDeep(props);
+  const nextProps = clone(props);
   nextProps.audio.state = "next";
   const mockNext = jest.fn();
   wrapper.instance().next = mockNext;
@@ -94,10 +94,10 @@ it("calls next when next state is not this state (playing) and not default", () 
 });
 
 it("calls previous when next state is not this state (playing) and not default", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.audio.state = "playing";
   const wrapper = shallow(generateComponent(props));
-  const nextProps = cloneDeep(props);
+  const nextProps = clone(props);
   nextProps.audio.state = "previous";
   const mockPrevious = jest.fn();
   wrapper.instance().previous = mockPrevious;
@@ -107,7 +107,7 @@ it("calls previous when next state is not this state (playing) and not default",
 
 it("calls seek if current seek is not next seek", () => {
   const wrapper = shallow(generateComponent());
-  const nextProps = cloneDeep(defaultProps);
+  const nextProps = clone(defaultProps);
   nextProps.audio.seek = 1;
   const mockSeek = jest.fn();
   wrapper.instance().seek = mockSeek;
@@ -169,7 +169,7 @@ it("createPlayer calls release", () => {
 });
 
 it("createPlayer prefixes tracks with https", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.audio.playlist[0].file = "//test.com/no.mp3";
   const wrapper = shallow(generateComponent(props));
   const result = wrapper.instance().createPlayer(
@@ -267,7 +267,7 @@ it("next calls setPlaying with next track", () => {
 });
 
 it("next calls setPlaying with random track", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.audio.order = "shuffle";
   const mockSetPlaying = jest.fn();
   const wrapper = shallow(generateComponent({
@@ -282,7 +282,7 @@ it("next calls setPlaying with random track", () => {
 });
 
 it("next calls restart and play if repeat one", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.audio.repeat = "repeat-one";
   const mockSetPlaying = jest.fn();
   const mockPlay = jest.fn();
@@ -301,7 +301,7 @@ it("next calls restart and play if repeat one", () => {
 
 it("next calls seek and play if cordova", () => {
   Meteor.isCordova = true;
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.audio.repeat = "repeat-one";
   const mockSetPlaying = jest.fn();
   const mockPlay = jest.fn();
@@ -335,7 +335,7 @@ it("previous calls setPlaying with previous track", () => {
 });
 
 it("previous calls setPlaying with random track", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.audio.order = "shuffle";
   const mockSetPlaying = jest.fn();
   const wrapper = shallow(generateComponent({
@@ -350,7 +350,7 @@ it("previous calls setPlaying with random track", () => {
 });
 
 it("previous calls restart and play if repeat one", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.audio.repeat = "repeat-one";
   const mockSetPlaying = jest.fn();
   const mockPlay = jest.fn();
@@ -369,7 +369,7 @@ it("previous calls restart and play if repeat one", () => {
 
 it("previous calls seek and play if cordova", () => {
   Meteor.isCordova = true;
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.audio.repeat = "repeat-one";
   const mockSetPlaying = jest.fn();
   const mockPlay = jest.fn();

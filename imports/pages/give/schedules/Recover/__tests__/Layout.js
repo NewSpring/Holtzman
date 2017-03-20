@@ -1,6 +1,6 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
-import cloneDeep from "lodash.clonedeep";
+import { clone } from "ramda";
 import Layout from "../Layout";
 
 const defaultProps = {
@@ -50,7 +50,7 @@ it("renders without recoverableSchedules", () => {
 });
 
 it("does not render recoverableSchedule if it has a gateway", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.recoverableSchedules[0].gateway = "test gateway";
   const wrapper = shallow(generateComponent(props));
   expect(shallowToJson(wrapper)).toMatchSnapshot();
@@ -66,14 +66,14 @@ it("works with nickName", () => {
 });
 
 it("does not render recoverableSchedule if no details", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   delete props.recoverableSchedules[0].details;
   const wrapper = shallow(generateComponent(props));
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 
 it("does not render recoverableSchedule if no account", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   delete props.recoverableSchedules[0].details[0].account;
   const wrapper = shallow(generateComponent(props));
   expect(shallowToJson(wrapper)).toMatchSnapshot();

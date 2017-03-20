@@ -1,7 +1,7 @@
 import { mount, shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import { reset, startBuffering } from "aphrodite/lib/inject";
-import cloneDeep from "lodash.clonedeep";
+import { clone } from "ramda";
 import Validate from "../../../../../util/validate";
 import Layout from "../Layout";
 
@@ -50,7 +50,7 @@ it("renders with props", () => {
 });
 
 it("renders without person campus", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.person.campus = null;
   const wrapper = shallow(generateComponent(props));
   expect(shallowToJson(wrapper)).toMatchSnapshot();
@@ -82,6 +82,6 @@ it("submit calls submit with values in inputs", () => {
     BirthMonth: 1,
     BirthDay: 1,
     BirthYear: 2000,
-    Campus: 1 
+    Campus: 1
   });
 });

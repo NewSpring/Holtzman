@@ -4,12 +4,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [5.0.19] - Unreleased
+## [5.0.20] - UNRELEASED
 ### Added
 - A day of week filter for group finder.
 
 ### Fixed
+- Navigation inside of group profile not linking to the sections page
 - Ellipses on last tag of group finder results being hidden with long lists of tags
+
+### Changed
+- Removed the content prop the `MiniCard` component
+
+## [5.0.19] - 2017-03-17
+### Fixed
+- Fixed the GA code for production app [CI]
+- Login on groups join page failing
 
 ## [5.0.17] - 2017-03-08
 ### Added

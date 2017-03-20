@@ -1,6 +1,6 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
-import cloneDeep from "lodash.clonedeep";
+import { clone } from "ramda";
 import { Meteor } from "meteor/meteor";
 import Layout from "../Layout";
 
@@ -86,49 +86,49 @@ it("renders leader version", () => {
 });
 
 it("renders without schedule", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.group.schedule = null;
   const wrapper = shallow(generateComponent());
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 
 it("renders without schedule description", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.group.schedule.description = null;
   const wrapper = shallow(generateComponent());
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 
 it("renders without group locations", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.group.locations = null;
   const wrapper = shallow(generateComponent());
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 
 it("renders without campus", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.group.campus = null;
   const wrapper = shallow(generateComponent());
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 
 it("renders adult only version", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.group.kidFriendly = false;
   const wrapper = shallow(generateComponent());
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 
 it("doesn't render Interest type tag", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.group.type = "Interests";
   const wrapper = shallow(generateComponent());
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 
 it("doesn't render demographic tag if none", () => {
-  const props = cloneDeep(defaultProps);
+  const props = clone(defaultProps);
   props.group.demographic = null;
   const wrapper = shallow(generateComponent());
   expect(shallowToJson(wrapper)).toMatchSnapshot();
