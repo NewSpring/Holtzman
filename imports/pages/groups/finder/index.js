@@ -53,6 +53,7 @@ class TemplateWithoutData extends Component {
     if (tags.length) location.query.tags = tags.join(",").toLowerCase();
 
     if (location.query.campuses) delete location.query.campuses;
+    if (location.query.schedules) delete location.query.schedules;
 
     // reset state
     this.setState({ tags: [], query: null });
@@ -93,7 +94,10 @@ class TemplateWithoutData extends Component {
   render() {
     const { attributes, location, content } = this.props;
     if (location.query && (
-      location.query.tags || location.query.q || location.query.campuses
+      location.query.tags
+      || location.query.q
+      || location.query.campuses
+      || location.query.schedules
     )) return <Result />;
     return (
       <div>
