@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [5.0.19] - UNRELEASED
+## [5.0.20] - UNRELEASED
 ### Added
 
 ### Fixed
@@ -12,7 +12,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 - Removed the content prop the `MiniCard` component
 
-## [5.0.18] - 2017-03-08
+## [5.0.19] - 2017-03-17
+### Fixed
+- Fixed the GA code for production app [CI]
+- Login on groups join page failing
+
+## [5.0.17] - 2017-03-08
 ### Added
 - NewSpring Now!
 - A new channel in EE (NS: Now) will allow staff members to create entries to show on Sunday's.
