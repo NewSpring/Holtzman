@@ -42,15 +42,17 @@ export const classWrapper = (propsReducer: Function) => (WrappedComponent: any) 
     props: ILikesWrapper;
 
     componentWillMount() {
-      this.props.dispatch(navActions.setLevel("CONTENT"));
-      this.props.dispatch(navActions.setAction("CONTENT", {
-        id: 2,
-        action: this.toggleLike,
-      }));
+      if (!process.env.WEB) {
+        this.props.dispatch(navActions.setLevel("CONTENT"));
+        this.props.dispatch(navActions.setAction("CONTENT", {
+          id: 2,
+          action: this.toggleLike,
+        }));
+      }
     }
 
     componentWillUnmount() {
-      this.props.dispatch(navActions.setLevel("TOP"));
+      if (!process.env.WEB) this.props.dispatch(navActions.setLevel("TOP"));
     }
 
     getNodeId = () => {

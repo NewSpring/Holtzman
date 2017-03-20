@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 
 ### Fixed
+- Navigation inside of group profile not linking to the sections page
 
 ### Changed
 - Removed the content prop the `MiniCard` component
