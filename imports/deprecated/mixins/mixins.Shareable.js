@@ -4,7 +4,6 @@ import content from "../../util/content";
 import { share as shareActions } from "../../data/store";
 
 const Shareable = {
-
   componentWillMount() {
     this.shareableAction = this.setShareAction.bind(this);
     this.state = { ...this.state, ...{ __shareActionSet: false } };
@@ -45,17 +44,16 @@ const Shareable = {
     const item = this.getShareableEntry(nextProps);
     if (!item) return;
 
-    if (
-      !nextProps.currentSermon &&
-      !nextProps.studyEntry
-    ) {
+    if (!nextProps.currentSermon && !nextProps.studyEntry) {
       this.setShareAction(item);
     } else if (
       (nextProps.currentSermon && nextProps.series) ||
-      (nextProps.studyEntry ** nextProps.study)
+      (nextProps.studyEntry && nextProps.study)
     ) {
       this.setShareAction(item, {
-        parentItem: nextProps.series ? nextProps.series.content : nextProps.study.content,
+        parentItem: nextProps.series
+          ? nextProps.series.content
+          : nextProps.study.content,
       });
     }
   },
@@ -96,7 +94,6 @@ const Shareable = {
       __shareActionSet: true,
     });
   },
-
 };
 
 export default Shareable;
