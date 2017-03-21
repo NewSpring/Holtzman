@@ -108,7 +108,6 @@ class TemplateWithoutData extends Component {
   }
 
   componentWillMount() {
-    console.log(this.headerAction);
     if (this.headerAction) {
       this.headerAction({ title: "Group Profile" });
     }
