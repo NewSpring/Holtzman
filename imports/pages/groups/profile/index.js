@@ -108,6 +108,7 @@ class TemplateWithoutData extends Component {
   }
 
   componentWillMount() {
+    console.log(this.headerAction);
     if (this.headerAction) {
       this.headerAction({ title: "Group Profile" });
     }
@@ -289,10 +290,14 @@ const withGroup = graphql(GROUP_QUERY, {
 export default connect()(
   withGroup(
     ReactMixin.decorate(Shareable)(
-      ReactMixin.decorate(Headerable)(
-        canLike(
-          (props) => (props.data.loading ? null : props.data.group.id)
-        )(withGroupMutation(withAddPhoneNumber(TemplateWithoutData)))
+      canLike((props) => (props.data.loading ? null : props.data.group.id))(
+        withGroupMutation(
+          withAddPhoneNumber(
+            ReactMixin.decorate(Headerable)(
+              TemplateWithoutData
+            )
+          )
+        )
       )
     )
   )
