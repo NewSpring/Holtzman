@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 - Navigation inside of group profile not linking to the sections page
+- Give Campaign pages not loading
 
 ### Changed
 - Removed the content prop the `MiniCard` component
