@@ -125,7 +125,7 @@ platform :ios do
     pilot(
       username: ENV['APPLE_ID'],
       skip_waiting_for_build_processing: true,
-      app_identifier: "cc.newspring.newspringapp",
+      app_identifier: ENV['APP_IDENTIFIER'],
       changelog: ENV['RELEASE_NOTES'],
     )
   end
@@ -137,7 +137,7 @@ platform :ios do
     deliver(
       username: ENV['APPLE_ID'],
       force: true,
-      app_identifier: "com.subsplashstudio31.NewSpring-Church",
+      app_identifier: ENV['APP_IDENTIFIER'],
     )
   end
 end

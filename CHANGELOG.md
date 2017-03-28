@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 - Navigation inside of group profile not linking to the sections page
+- Group profile title not changing from previous page
+- Liked stories not showing the proper images in likes lists
+- Give Campaign pages not loading
 
 ### Changed
 - Removed the content prop the `MiniCard` component
