@@ -65,26 +65,26 @@ describe("likes list", () => {
 
   it("should properly parse title for likes", () => {
     const component = mount(generateComponent({
+      likes: mockLikes,
+    }));
+    expect(component.find("MiniCard").get(0).props.title).toEqual("hello");
+    expect(component.find("MiniCard").get(1).props.title).toEqual("harambe");
+  });
+
+  it("should properly parse image for likes", () => {
+    const component = mount(generateComponent({
       likes: [...mockLikes, {
         __typename: "Content",
         channelName: "study_entries",
         content: {images: []},
         id: "12345",
-        parent: {content: {images: [{ fileLabel: "1:1", url: "harambe"}]}},
+        parent: {content: {images: [{ fileLabel: "1:1", url: "harambe's dad"}]}},
         title: "harambe's dad"
       }],
     }));
-    expect(component.find("MiniCard").get(0).props.title).toEqual("hello");
-    expect(component.find("MiniCard").get(1).props.title).toEqual("harambe");
-    expect(component.find("MiniCard").get(2).props.title).toEqual("harambe's dad");
-  });
-
-  it("should properly parse image for likes", () => {
-    const component = mount(generateComponent({
-      likes: mockLikes,
-    }));
     expect(component.find("MiniCard").get(0).props.image).toEqual("zookeeper");
     expect(component.find("MiniCard").get(1).props.image).toEqual("harambe");
+    expect(component.find("MiniCard").get(2).props.image).toEqual("harambe's dad");
   });
 
   it("should properly parse icon for likes", () => {
