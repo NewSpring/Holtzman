@@ -35,7 +35,7 @@ exports[`test should render iOS action button 1`] = `
     className="btn soft-half-top one-whole"
     onClick={[Function]}>
     <span>
-      Complete Using With 6789
+      Complete With 6789
     </span>
       
     <div
