@@ -8,6 +8,8 @@ exports[`Template accepts account object with complete data 1`] = `
     }
     nav={true}>
     <Meta
+      description="Tesla, because they\'re awesome!"
+      image="https://cl.ly/i26e/Image%202016-11-07%20at%202.38.14%20PM.png"
       meta={
         Array [
           Object {
@@ -15,10 +17,13 @@ exports[`Template accepts account object with complete data 1`] = `
             "property": "og:type",
           },
         ]
-      } />
+      }
+      title="Tesla Fund" />
     <Right
+      background="https://cl.ly/i26e/Image%202016-11-07%20at%202.38.14%20PM.png"
       mobile={true} />
     <Right
+      background="https://cl.ly/i26e/Image%202016-11-07%20at%202.38.14%20PM.png"
       mobile={false} />
   </Connect(SplitContainerWithoutData)>
   <Left
@@ -55,11 +60,13 @@ exports[`Template accepts account object with complete data 1`] = `
       className="soft@lap-and-up soft-double-top@lap-and-up">
       <div
         className="soft soft-double-bottom soft-double-top@lap-and-up">
-        <h2 />
+        <h2>
+          Tesla Fund
+        </h2>
         <div
           dangerouslySetInnerHTML={
             Object {
-              "__html": undefined,
+              "__html": "Web Team Tesla Fund",
             }
           } />
       </div>
@@ -73,23 +80,23 @@ exports[`Template accepts account object with complete data 1`] = `
           <Connect(CartContainer)
             accounts={
               Array [
-                Array [
-                  Object {
-                    "description": "Web Team Tesla Fund",
-                    "id": "e450b1f1dbb79ffea48d9aba1a00ea0f2885d4bfe435683d1b1129fae408729d",
-                    "image": "https://cl.ly/i26e/Image%202016-11-07%20at%202.38.14%20PM.png",
-                    "images": Object {
+                Object {
+                  "description": "Web Team Tesla Fund",
+                  "id": "e450b1f1dbb79ffea48d9aba1a00ea0f2885d4bfe435683d1b1129fae408729d",
+                  "image": "https://cl.ly/i26e/Image%202016-11-07%20at%202.38.14%20PM.png",
+                  "images": Array [
+                    Object {
                       "cloudfront": "https://cl.ly/i26e/Image%202016-11-07%20at%202.38.14%20PM.png",
                       "fileLabel": "2:1",
                       "fileName": "Image%202016-11-07%20at%202.38.14%20PM.png",
                       "fileType": null,
                       "s3": "https://cl.ly/i26e/Image%202016-11-07%20at%202.38.14%20PM.png",
                     },
-                    "name": "Tesla Fund",
-                    "order": 0,
-                    "summary": "Tesla, because they\'re awesome!",
-                  },
-                ],
+                  ],
+                  "name": "Tesla Fund",
+                  "order": 0,
+                  "summary": "Tesla, because they\'re awesome!",
+                },
               ]
             }
             donate={true} />
@@ -110,6 +117,8 @@ exports[`Template accepts account object without image data 1`] = `
     }
     nav={true}>
     <Meta
+      description="Tesla, because they\'re awesome!"
+      image="https://cl.ly/i26e/Image%202016-11-07%20at%202.38.14%20PM.png"
       meta={
         Array [
           Object {
@@ -117,10 +126,13 @@ exports[`Template accepts account object without image data 1`] = `
             "property": "og:type",
           },
         ]
-      } />
+      }
+      title="Tesla Fund" />
     <Right
+      background="https://cl.ly/i26e/Image%202016-11-07%20at%202.38.14%20PM.png"
       mobile={true} />
     <Right
+      background="https://cl.ly/i26e/Image%202016-11-07%20at%202.38.14%20PM.png"
       mobile={false} />
   </Connect(SplitContainerWithoutData)>
   <Left
@@ -157,11 +169,13 @@ exports[`Template accepts account object without image data 1`] = `
       className="soft@lap-and-up soft-double-top@lap-and-up">
       <div
         className="soft soft-double-bottom soft-double-top@lap-and-up">
-        <h2 />
+        <h2>
+          Tesla Fund
+        </h2>
         <div
           dangerouslySetInnerHTML={
             Object {
-              "__html": undefined,
+              "__html": "Web Team Tesla Fund",
             }
           } />
       </div>
@@ -175,16 +189,14 @@ exports[`Template accepts account object without image data 1`] = `
           <Connect(CartContainer)
             accounts={
               Array [
-                Array [
-                  Object {
-                    "description": "Web Team Tesla Fund",
-                    "id": "e450b1f1dbb79ffea48d9aba1a00ea0f2885d4bfe435683d1b1129fae408729d",
-                    "image": "https://cl.ly/i26e/Image%202016-11-07%20at%202.38.14%20PM.png",
-                    "name": "Tesla Fund",
-                    "order": 0,
-                    "summary": "Tesla, because they\'re awesome!",
-                  },
-                ],
+                Object {
+                  "description": "Web Team Tesla Fund",
+                  "id": "e450b1f1dbb79ffea48d9aba1a00ea0f2885d4bfe435683d1b1129fae408729d",
+                  "image": "https://cl.ly/i26e/Image%202016-11-07%20at%202.38.14%20PM.png",
+                  "name": "Tesla Fund",
+                  "order": 0,
+                  "summary": "Tesla, because they\'re awesome!",
+                },
               ]
             }
             donate={true} />
