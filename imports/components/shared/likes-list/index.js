@@ -27,7 +27,7 @@ const renderLikes = (likes: [Object]) => {
       // if the item has an image, default to it. If not, use the parent.
       // if the parent doesn't have images, pass empty array to getImage()
       let images;
-      if (!item.content || !item.content.images) {
+      if (!item.content || !item.content.images || item.content.images.length === 0) {
         if (item.parent && item.parent.content && item.parent.content.images) {
           images = item.parent.content.images;
         } else {

@@ -65,10 +65,18 @@ describe("likes list", () => {
 
   it("should properly parse title for likes", () => {
     const component = mount(generateComponent({
-      likes: mockLikes,
+      likes: [...mockLikes, {
+        __typename: "Content",
+        channelName: "study_entries",
+        content: {images: []},
+        id: "12345",
+        parent: {content: {images: [{ fileLabel: "1:1", url: "harambe"}]}},
+        title: "harambe's dad"
+      }],
     }));
     expect(component.find("MiniCard").get(0).props.title).toEqual("hello");
     expect(component.find("MiniCard").get(1).props.title).toEqual("harambe");
+    expect(component.find("MiniCard").get(2).props.title).toEqual("harambe's dad");
   });
 
   it("should properly parse image for likes", () => {
