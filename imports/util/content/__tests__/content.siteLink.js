@@ -64,3 +64,8 @@ it("returns external link for news", () => {
   }));
   expect(result).toBe("https://newspring.cc/news/test-slug");
 });
+
+it("gracefully fails if a study with no parent", () => {
+  const result = siteLink(getContentItem({ channelName: "study_entries"}));
+  expect(result).toBe("https://newspring.cc/studies/undefined/test-slug");
+});
