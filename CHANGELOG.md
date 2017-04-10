@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Unpredictable custom tag in give/now with schedules
 - Start/End date tags being active when they shouldn't in giving history
 - Users were previously able to submit a contribution before campus info was loaded.
+- fixed blurred images for album likes on profile feed
 
 ## [5.0.22]
 ### Fixed
