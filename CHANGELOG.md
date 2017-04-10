@@ -16,14 +16,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Added back the ability to save payments without a transaction.
 
 ## [5.0.22]
+### Fixed
+- issue with siteLinks erroring out, causing content to never load
+- Giving statements filtered by all time only printing YTD
+- Giving history filters not allowing switching from one to another
 ### Added
 - danger for PR's, with support for meteor build
 - unit cost for each transaction will be piped through to NMI.
 - fixed blurred images for album likes on profile feed
-## Fixed
-- issue with siteLinks erroring out, causing content to never load
-- Giving statements filtered by all time only printing YTD
-- Giving history filters not allowing switching from one to another
 
 ## [5.0.20]
 ### Added
