@@ -42,7 +42,7 @@ const ActionButton = ({
             savedAccount={savedAccount}
             schedule={schedule}
             scheduleToRecover={scheduleToRecover}
-            overrideText="Complete Using"
+            overrideText="Complete"
           />
           &nbsp;&nbsp;
           <Icon
