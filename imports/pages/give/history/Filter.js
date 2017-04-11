@@ -74,18 +74,15 @@ export default class Filter extends Component {
     this.setState({ expanded: !this.state.expanded });
   }
 
-  dateRangeClick = (value: string) => {
-    this.setState(({ start, end, limit }) => {
-      let transactionLimit;
-      if (start !== "" || end !== "") {
-        if (value === "AllTime" && limit !== 20) {
-          transactionLimit = 20;
-        }
-        return { start: "", end: "", limit: transactionLimit, customDateDisabled: false, dateRangeActive: "" };
-      }
+  dateRangeClick = (clickedValue: string) => {
+    this.setState(({ start, end, limit, dateRangeActive }) => {
+      // toggle values if clicked is same as current
+      const value = dateRangeActive === clickedValue ? "" : clickedValue;
 
       let startDate;
       let endDate;
+      let transactionLimit;
+
       if (value === "LastYear") {
         startDate = moment().subtract(1, "year").startOf("year");
         endDate = moment().subtract(1, "year").endOf("year");
@@ -95,8 +92,11 @@ export default class Filter extends Component {
       } else if (value === "YearToDate") {
         startDate = moment().startOf("year");
         endDate = moment();
+      } else if (value === "AllTime") {
+        startDate = "";
+        endDate = "";
       } else {
-        transactionLimit = 0;
+        transactionLimit = 20;
       }
 
       return {
