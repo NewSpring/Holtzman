@@ -13,14 +13,18 @@ const DATE_RANGES = [
   { label: "All Time", value: "AllTime" },
 ];
 
-const scheduleIcon = <span className="icon-calendar push-half-left" style={{ position: "relative", top: "-2px" }} />;
+const scheduleIcon = (
+  <span
+    className="icon-calendar push-half-left"
+    style={{ position: "relative", top: "-2px" }}
+  />
+);
 
 export default class Filter extends Component {
-
   static propTypes = {
     family: PropTypes.array.isRequired,
     filterTransactions: PropTypes.func.isRequired,
-  }
+  };
 
   state = {
     customDateDisabled: false,
@@ -37,7 +41,7 @@ export default class Filter extends Component {
     showEndDatePicker: false,
     showStartDatePicker: false,
     start: "",
-  }
+  };
 
   componentDidMount() {
     if (typeof window !== "undefined") {
@@ -68,14 +72,14 @@ export default class Filter extends Component {
 
     people.push(id);
     this.setState({ people });
-  }
+  };
 
   toggle = () => {
     this.setState({ expanded: !this.state.expanded });
-  }
+  };
 
   dateRangeClick = (clickedValue: string) => {
-    this.setState(({ start, end, limit, dateRangeActive }) => {
+    this.setState(({ /* start, end, limit, */ dateRangeActive }) => {
       // toggle values if clicked is same as current
       const value = dateRangeActive === clickedValue ? "" : clickedValue;
 
@@ -95,48 +99,55 @@ export default class Filter extends Component {
       } else if (value === "AllTime") {
         startDate = "";
         endDate = "";
+        transactionLimit = 0;
       } else {
+        // default
+        startDate = "";
+        endDate = "";
         transactionLimit = 20;
       }
 
       return {
-        customDateDisabled: true,
+        customDateDisabled: value !== "",
         dateRangeActive: value,
         end: endDate,
         limit: transactionLimit,
         start: startDate,
       };
     });
-  }
+  };
 
   fixPickerPosition = () => {
-    const interval = setInterval(() => {
-      const picker = document.getElementById("datepicker");
-      if (!picker) return;
+    const interval = setInterval(
+      () => {
+        const picker = document.getElementById("datepicker");
+        if (!picker) return;
 
-      clearInterval(interval);
-      const child = picker.children[0];
-      const globalTop = Number(child.getBoundingClientRect().top);
-      if (globalTop < 0) {
-        const marginTop = Number(child.style.marginTop.slice(0, -2)) + 40;
-        child.style.marginTop = `${marginTop + Math.abs(globalTop)}px`;
-      }
-    }, 50);
-  }
+        clearInterval(interval);
+        const child = picker.children[0];
+        const globalTop = Number(child.getBoundingClientRect().top);
+        if (globalTop < 0) {
+          const marginTop = Number(child.style.marginTop.slice(0, -2)) + 40;
+          child.style.marginTop = `${marginTop + Math.abs(globalTop)}px`;
+        }
+      },
+      50,
+    );
+  };
 
   toggleStartDatePicker = () => {
     this.setState(({ showStartDatePicker }) => {
       if (!showStartDatePicker) this.fixPickerPosition();
       return { showStartDatePicker: !showStartDatePicker };
     });
-  }
+  };
 
   toggleEndDatePicker = () => {
     this.setState(({ showEndDatePicker }) => {
       if (!showEndDatePicker) this.fixPickerPosition();
       return { showEndDatePicker: !showEndDatePicker };
     });
-  }
+  };
 
   startClick = (value: string) => {
     if (value === "StartDate") {
@@ -182,7 +193,7 @@ export default class Filter extends Component {
         };
       });
     }
-  }
+  };
 
   onStartDayClick = (e: Event, day: string, { selected, disabled }: Object) => {
     if (disabled) return;
@@ -192,7 +203,7 @@ export default class Filter extends Component {
       customStartActive: !selected,
       overrideActive: !selected,
     });
-  }
+  };
 
   onEndDayClick = (e: Event, day: string, { selected, disabled }: Object) => {
     if (disabled) return;
@@ -202,7 +213,7 @@ export default class Filter extends Component {
       customEndActive: !selected,
       overrideActive: !selected,
     });
-  }
+  };
 
   filterResults = () => {
     this.props.filterTransactions({
@@ -212,7 +223,7 @@ export default class Filter extends Component {
       limit: this.state.limit,
     });
     this.toggle();
-  }
+  };
 
   render() {
     const { family } = this.props;
@@ -224,28 +235,35 @@ export default class Filter extends Component {
           onClick={this.toggle}
           className={
             "one-whole background--light-primary " +
-            "soft-half-ends soft-sides soft-double-sides@lap-and-up"
+              "soft-half-ends soft-sides soft-double-sides@lap-and-up"
           }
         >
-          <h7 className="text-dark-secondary flush-bottom push-half-left display-inline-block">
+          <h7
+            className="text-dark-secondary flush-bottom push-half-left display-inline-block"
+          >
             Filter Transactions
           </h7>
           <span
-            className={`float-right flush ${expanded ? "icon-close" : "icon-filter"}`}
+            className={
+              `float-right flush ${expanded ? "icon-close" : "icon-filter"}`
+            }
             style={{ marginTop: expanded ? "0px" : "0px", cursor: "pointer" }}
           />
         </div>
         <div className="one-whole outlined--bottom outlined--light" />
-        {expanded && (
+        {expanded &&
           <div
             className={
               "one-whole outlined--light outlined--bottom background--light-primary " +
-              "soft-half-ends soft-sides soft-double-sides@lap-and-up push-half-left"
+                "soft-half-ends soft-sides soft-double-sides@lap-and-up push-half-left"
             }
           >
-            {family && family.length > 1 && (
+            {family &&
+              family.length > 1 &&
               <div>
-                <h7 className="push-top text-dark-secondary display-inline-block">
+                <h7
+                  className="push-top text-dark-secondary display-inline-block"
+                >
                   Family Members
                 </h7>
 
@@ -261,7 +279,7 @@ export default class Filter extends Component {
                       <div
                         className={
                           `${active ? "checkbox-checked" : ""} ` +
-                          "display-inline-block outlined checkbox"
+                            "display-inline-block outlined checkbox"
                         }
                       />
                       <h6 className="soft-half-left display-inline-block">
@@ -270,18 +288,15 @@ export default class Filter extends Component {
                     </div>
                   );
                 })}
-              </div>
-            )}
+              </div>}
 
-            <h7 className="soft-half-top push-half-top text-dark-secondary display-inline-block">
+            <h7
+              className="soft-half-top push-half-top text-dark-secondary display-inline-block"
+            >
               Date Range
             </h7>
             <div className="grid one-whole flush-left@palm">
-              <div
-                className={
-                  "hard-left@palm grid__item one-whole"
-                }
-              >
+              <div className={"hard-left@palm grid__item one-whole"}>
                 <TagSelect
                   items={DATE_RANGES}
                   onClick={this.dateRangeClick}
@@ -291,7 +306,9 @@ export default class Filter extends Component {
               </div>
             </div>
 
-            <h7 className="soft-half-top push-half-top text-dark-secondary display-inline-block">
+            <h7
+              className="soft-half-top push-half-top text-dark-secondary display-inline-block"
+            >
               Custom Dates
             </h7>
             <div className="grid one-whole flush-left@palm">
@@ -305,40 +322,34 @@ export default class Filter extends Component {
                   label={this.state.customStartLabel}
                   val={"StartDate"}
                   onClick={this.startClick}
-                  active={(
+                  active={
                     this.state.customStartLabel !== "Start Date" &&
-                    this.state.customStartActive
-                  )}
-                  className={(
-                    this.state.customDateDisabled &&
-                    "tag--disabled"
-                  )}
-                  icon={(
+                      this.state.customStartActive
+                  }
+                  className={this.state.customDateDisabled && "tag--disabled"}
+                  icon={
                     this.state.customStartLabel === "Start Date" &&
-                    !this.state.showStartDatePicker &&
-                    !this.state.customStartActive &&
-                    scheduleIcon
-                  )}
+                      !this.state.showStartDatePicker &&
+                      !this.state.customStartActive &&
+                      scheduleIcon
+                  }
                 />
                 <Tag
                   key={2}
                   label={this.state.customEndLabel}
                   val={"EndDate"}
                   onClick={this.startClick}
-                  active={(
+                  active={
                     this.state.customEndLabel !== "End Date" &&
-                    this.state.customEndActive
-                  )}
-                  className={(
-                    this.state.customDateDisabled &&
-                    "tag--disabled"
-                  )}
-                  icon={(
+                      this.state.customEndActive
+                  }
+                  className={this.state.customDateDisabled && "tag--disabled"}
+                  icon={
                     this.state.customEndLabel === "End Date" &&
-                    !this.state.showEndDatePicker &&
-                    !this.state.customEndActive &&
-                    scheduleIcon
-                  )}
+                      !this.state.showEndDatePicker &&
+                      !this.state.customEndActive &&
+                      scheduleIcon
+                  }
                 />
               </div>
             </div>
@@ -351,25 +362,22 @@ export default class Filter extends Component {
               </button>
             </div>
             {/* eslint-disable */}
-            {this.state.showStartDatePicker && (
+            {this.state.showStartDatePicker &&
               <Date
                 start={this.state.start}
                 onDayClick={this.onStartDayClick}
                 toggleDatePicker={this.toggleStartDatePicker}
                 allTime={true}
-              />
-            )}
-            {this.state.showEndDatePicker && (
+              />}
+            {this.state.showEndDatePicker &&
               <Date
                 start={this.state.end}
                 onDayClick={this.onEndDayClick}
                 toggleDatePicker={this.toggleEndDatePicker}
                 allTime={true}
-              />
-            )}
+              />}
             {/* eslint-enable */}
-          </div>
-        )}
+          </div>}
       </div>
     );
   }

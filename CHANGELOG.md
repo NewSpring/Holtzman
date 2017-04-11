@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Fixed
 - issue with siteLinks erroring out, causing content to never load
 - Giving statements filtered by all time only printing YTD
+- Giving history filters not allowing switching from one to another
 
 ## [5.0.20]
 ### Added
