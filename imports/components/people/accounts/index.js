@@ -1,6 +1,8 @@
+
+/* eslint-disable react/no-multi-comp */
 import { Meteor } from "meteor/meteor";
 import { Component, PropTypes } from "react";
-import { graphql } from "react-apollo";
+import { graphql, withApollo } from "react-apollo";
 import { connect } from "react-redux";
 import gql from "graphql-tag";
 
@@ -16,12 +18,11 @@ import ForgotPassword from "./ForgotPassword";
 import SuccessCreate from "./SuccessCreate";
 
 class Accounts extends Component {
-
   static propTypes = {
     setAccount: PropTypes.func.isRequired,
     save: PropTypes.func.isRequired,
     peopleWithoutAccountEmails: PropTypes.func.isRequired,
-  }
+  };
 
   componentWillReceiveProps(nextProps) {
     if (!nextProps.data.loading && nextProps.data.person) {
@@ -36,7 +37,8 @@ class Accounts extends Component {
   }
 }
 
-class AccountsContainer extends Component { // eslint-disable-line
+class AccountsContainer extends Component {
+  // eslint-disable-line
 
   static propTypes = {
     account: PropTypes.object,
@@ -55,12 +57,12 @@ class AccountsContainer extends Component { // eslint-disable-line
     clear: PropTypes.func,
     submit: PropTypes.func,
     location: PropTypes.object,
-  }
+  };
 
   state = {
     loading: false,
     account: null,
-  }
+  };
 
   componentWillMount() {
     // XXX this doesn't work because we are mapping dispatch to props
@@ -86,10 +88,29 @@ class AccountsContainer extends Component { // eslint-disable-line
         if (this.props.onFinished) return this.props.onFinished();
 
         // redirect after signin or register
-        const { redirect } = this.props.location.query;
+        const whiteListed = (url) =>
+          url.indexOf("https://alpha-rock.newspring.cc") === 0 ||
+          url.indexOf("https://beta-rock.newspring.cc") === 0 ||
+          url.indexOf("https://rock.newspring.cc") === 0;
+
+        /* eslint-disable camelcase*/
+        const { redirect, return_person_guid } = this.props.location.query;
         if (redirect) {
-          window.location.href = redirect;
+          if (
+            typeof return_person_guid !== "undefined" && whiteListed(redirect)
+          ) {
+            nextProps.client.query({
+              query: gql`{ currentPerson { guid }}`,
+              forceFetch: true,
+            })
+            .then(({ data }) => {
+              window.location.href = `${redirect}&person_guid=${data.currentPerson.guid}`;
+            });
+          } else {
+            window.location.href = redirect;
+          }
         }
+        /* eslint-enable camelcase */
 
         // close the modal
         this.props.hide();
@@ -98,10 +119,7 @@ class AccountsContainer extends Component { // eslint-disable-line
 
       if (this.props.onSignin) {
         this.setState({ loading: true });
-
-        this.props.onSignin()
-          .then(finish)
-          .catch(finish);
+        this.props.onSignin().then(finish).catch(finish);
       }
 
       finish();
@@ -124,35 +142,35 @@ class AccountsContainer extends Component { // eslint-disable-line
   setAccountWrapper = (bool) => {
     this.setState({ account: null });
     this.props.setAccount(bool);
-  }
+  };
 
   goBack = (e) => {
     e.preventDefault();
     if (typeof window !== "undefined" && window != null) {
       window.history.back();
     }
-  }
+  };
 
   goSignIn = (e) => {
     if (e) e.preventDefault();
     this.props.remember();
-  }
+  };
 
   goBackToDefaultOnBoard = (e) => {
     if (e) e.preventDefault();
     this.props.resetAccount();
-  }
+  };
 
   goForgotPassword = (e) => {
     if (e) e.preventDefault();
     this.props.forgot();
-  }
+  };
 
   signout = (e) => {
     if (e) e.preventDefault();
     Meteor.logout();
     this.props.authorize(false);
-  }
+  };
 
   render() {
     const {
@@ -177,10 +195,12 @@ class AccountsContainer extends Component { // eslint-disable-line
 
     if (Object.keys(errors).length) {
       let primaryError;
-      for (const error in errors) { // eslint-disable-line
+      /* eslint-disable */
+      for (const error in errors) {
         primaryError = errors[error];
         break;
       }
+      /* eslint-enable */
       return <Err msg="There was an error" error={primaryError} />;
     }
 
@@ -203,12 +223,7 @@ class AccountsContainer extends Component { // eslint-disable-line
     }
 
     if (authorized && showWelcome) {
-      return (
-        <Success
-          person={person}
-          onExit={this.props.hide}
-        />
-      );
+      return <Success person={person} onExit={this.props.hide} />;
     }
 
     if (data.personId && !authorized && resettingAccount) {
@@ -220,10 +235,7 @@ class AccountsContainer extends Component { // eslint-disable-line
         }
       }
       return (
-        <SuccessCreate
-          email={email}
-          goBack={this.goBackToDefaultOnBoard}
-        />
+        <SuccessCreate email={email} goBack={this.goBackToDefaultOnBoard} />
       );
     }
 
@@ -267,26 +279,27 @@ const withPerson = graphql(PERSON_QUERY, {
   options: (ownProps) => ({
     ssr: false,
     variables: {
-      guid: (
-        ownProps.location && ownProps.location.query && ownProps.location.query.guid
-      ),
+      guid: ownProps.location &&
+        ownProps.location.query &&
+        ownProps.location.query.guid,
     },
   }),
 });
 
-const AccountsContainerWithData = connect((state) => ({
-  accounts: state.accounts,
-}), mapDispatchToProps
-)(AccountsContainer);
+const AccountsContainerWithData = withApollo(connect(
+  (state) => ({
+    accounts: state.accounts,
+  }),
+  mapDispatchToProps,
+)(AccountsContainer));
 
 export default withPerson(
-  connect((state) => ({
-    location: state.routing.location,
-  }), mapDispatchToProps
-  )(Accounts)
+  connect(
+    (state) => ({
+      location: state.routing.location,
+    }),
+    mapDispatchToProps,
+  )(Accounts),
 );
 
-export {
-  AccountsContainer,
-  Accounts,
-};
+export { AccountsContainer, Accounts };

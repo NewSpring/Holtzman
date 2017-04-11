@@ -1,5 +1,5 @@
 exports[`Accounts renders with props 1`] = `
-<Connect(AccountsContainer)
+<withApollo(Connect(AccountsContainer))
   peopleWithoutAccountEmails={[Function]}
   save={[Function]}
   setAccount={[Function]} />

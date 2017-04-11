@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [5.0.20] - UNRELEASED
 ### Added
+- redirect on signin with person guid for work workflows.
 
 ### Fixed
 - Navigation inside of group profile not linking to the sections page

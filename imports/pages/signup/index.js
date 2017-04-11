@@ -2,6 +2,8 @@
 import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 import { Meteor } from "meteor/meteor";
+import gql from "graphql-tag";
+import graphql from "../../data/graphql";
 import AccountsWithData from "../../components/people/accounts";
 import Loading from "../../components/@primitives/UI/loading";
 import Meta from "../../components/shared/meta";
@@ -90,7 +92,43 @@ const Template = connect((state) => ({ breakpoints: state.responsive.breakpoints
 );
 
 const Routes = [
-  { path: "/signup", component: Template },
+  {
+    path: "/signup",
+    component: Template,
+    onEnter: (nextState, replace, callback) => {
+      const { query } = nextState.location;
+      if (!query.redirect) { callback(); return; }
+      if (typeof query.return_person_guid === "undefined" || !Meteor.userId()) {
+        callback();
+        return;
+      }
+
+      const whiteListed = (url) =>
+        url.indexOf("https://alpha-rock.newspring.cc") === 0 ||
+        url.indexOf("https://beta-rock.newspring.cc") === 0 ||
+        url.indexOf("https://rock.newspring.cc") === 0;
+
+      if (!whiteListed(query.redirect)) {
+        callback(); return;
+      }
+
+      // assume logged in
+      graphql.query({
+        query: gql`{ currentPerson { guid }}`,
+        forceFetch: true,
+      })
+      .then(({ data }) => {
+        replace({
+          pathname: `${query.redirect}&person_guid=${data.currentPerson.guid}`,
+        });
+        callback();
+      })
+      .catch((e) => {
+        console.error(e);
+        callback();
+      });
+    },
+  },
 ];
 
 export default {
