@@ -126,11 +126,18 @@ if (packageChanged && !lockfileChanged) {
 
 // show release QA checklist if it be a release
 const checklist = `
+---\n\n
 ### QA Checklist\n\n
 - [ ] do a thing\n
 - [ ] probably do another thing\n
 `;
 
-if (danger.github.pr_labels && danger.github.pr_labels.includes("Release")) {
+const hasReleaseLabel = danger.github &&
+  danger.github.issue &&
+  danger.github.issue.labels &&
+  danger.github.issue.labels.find(x => x.name && x.name === "Release");
+
+if (hasReleaseLabel) {
+  console.log("THIS PR IS A RELEASE CANDIDATE");
   markdown(checklist);
 }
