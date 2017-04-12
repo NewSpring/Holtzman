@@ -130,7 +130,7 @@ const checklist = `
 - [ ] do a thing\n
 - [ ] probably do another thing\n
 `;
-console.log("GITHUB META", danger.github);
+console.log("GITHUB META", danger.github.issue.labels.toString());
 console.log("LABELS", danger.github.prLabels);
 if (danger.github.prLabels && danger.github.prLabels.includes("Release")) {
   console.log("INSIDE");
