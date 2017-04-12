@@ -108,13 +108,15 @@ platform :ios do
   end
 
   desc "Install App Store Certificates"
-  lane :certificates do
-    match(
-      type: "appstore",
-      git_url: ENV['CERTIFICATES_REPO'],
-      app_identifier: [ "cc.newspring.newspringapp", "com.subsplashstudio31.NewSpring-Church" ],
-      username: ENV["APPLE_ID"],
-    )
+  lane :certs do
+    %w(appstore development).each do |e|
+      match(
+        type: e,
+        git_url: ENV['CERTIFICATES_REPO'],
+        app_identifier: [ "cc.newspring.newspringapp", "com.subsplashstudio31.NewSpring-Church" ],
+        username: ENV["APPLE_ID"],
+      )
+    end
   end
 
   desc "Submit a new Beta Build to Apple TestFlight"

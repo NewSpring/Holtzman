@@ -46,6 +46,7 @@ apollos-runtime.json
 .meteor/settings.json
 
 .fastlane/report.xml
+.fastlane/README.md
 .build
 .play-service.json
 
