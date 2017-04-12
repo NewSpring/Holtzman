@@ -130,9 +130,9 @@ const checklist = `
 - [ ] do a thing\n
 - [ ] probably do another thing\n
 `;
-console.log("CHECKLIST", checklist);
-console.log("LABELS", danger.github.pr_labels);
-if (danger.github.pr_labels && danger.github.pr_labels.includes("Release")) {
+console.log("GITHUB META", danger.github);
+console.log("LABELS", danger.github.prLabels);
+if (danger.github.prLabels && danger.github.prLabels.includes("Release")) {
   console.log("INSIDE");
   markdown(checklist);
 }
