@@ -130,9 +130,13 @@ const checklist = `
 - [ ] do a thing\n
 - [ ] probably do another thing\n
 `;
-console.log("GITHUB META", danger.github.issue.labels, Object.keys(danger.github.issue.labels));
-console.log("LABELS", danger.github.prLabels);
-if (danger.github.prLabels && danger.github.prLabels.includes("Release")) {
-  console.log("INSIDE");
+
+const hasReleaseLabel = danger.github &&
+  danger.github.issue &&
+  danger.github.issue.labels &&
+  danger.github.issue.labels.find(x => x.name && x.name === "Release");
+
+if (hasReleaseLabel) {
+  console.log("This PR is a release");
   markdown(checklist);
 }
