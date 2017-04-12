@@ -1,5 +1,5 @@
 // Removed import
-import { danger, fail, warn } from "danger";
+import { danger, fail, warn, markdown } from "danger";
 import { any } from "ramda";
 import fs from "fs";
 
@@ -122,4 +122,15 @@ if (packageChanged && !lockfileChanged) {
   const message = "Changes were made to package.json, but not to yarn.lock";
   const idea = "Perhaps you need to run `yarn install`?";
   warn(`${message} - <i>${idea}</i>`);
+}
+
+// show release QA checklist if it be a release
+const checklist = `
+### QA Checklist\n\n
+- [ ] do a thing\n
+- [ ] probably do another thing\n
+`;
+
+if (danger.github.pr_labels && danger.github.pr_labels.includes("Release")) {
+  markdown(checklist);
 }
