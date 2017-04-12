@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "posttest": "npm run lint && npm run flow",
+    "posttest": "npm run flow",
     "coverage": "jest --coverage",
     "lint-fix": "eslint ./imports ./client ./server --fix",
     "lint": "eslint ./imports ./client ./server",
@@ -13,14 +13,15 @@
     "flow:stop": "flow stop",
     "storybook": "start-storybook -p 6006 -s ./public",
     "build-storybook": "node ./.bin/index.js setup && build-storybook -s public -o docs",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "danger": "danger run --verbose"
   },
   "lint-staged": {
-      "*.js": [
-        "eslint",
-        "jest --bail --findRelatedTests"
-      ]
-    },
+    "*.js": [
+      "eslint",
+      "jest --bail --findRelatedTests"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/NewSpring/my.newspring.cc.git"
@@ -181,6 +182,7 @@
     "babel-root-slash-import": "^1.1.0",
     "babel-traverse": "^6.11.4",
     "css-loader": "^0.25.0",
+    "danger": "^0.15.0",
     "enzyme": "^2.5.1",
     "enzyme-to-json": "^1.3.0",
     "es6-promise": "^3.2.1",
