@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Giving statements filtered by all time only printing YTD
 - Giving history filters not allowing switching from one to another
 
+### Added
+- danger for PR's
+
 ## [5.0.20]
 ### Added
 - redirect on signin with person guid for work workflows.
