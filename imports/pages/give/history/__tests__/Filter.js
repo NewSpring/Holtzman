@@ -239,6 +239,15 @@ it("dataRangeClick sets customDateDisabled correctly", () => {
   expect(wrapper.state().customDateDisabled).toEqual(false);
 })
 
+it("dateRangeClick allows switching from one tag to another", () => {
+  const wrapper = shallow(generateComponent());
+  const click = wrapper.instance().dateRangeClick;
+  click("AllTime");
+  click("YearToDate");
+  expect(wrapper.state().start).toEqual(moment().startOf("year"));
+  expect(wrapper.state().dateRangeActive).toEqual("YearToDate");
+});
+
 it("toggleStartDatePicker correctly toggles the start date picker", () => {
   const wrapper = shallow(generateComponent());
   wrapper.setState({
