@@ -5,6 +5,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [5.0.22] - UNRELEASED
+## Fixed
+- Giving statements filtered by all time only printing YTD
+- Giving history filters not allowing switching from one to another
+
 ### Added
 - danger for PR's
 
