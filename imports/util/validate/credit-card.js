@@ -1,3 +1,4 @@
+import moment from "moment";
 import defaultRegex from "../regex/defaults";
 
 const creditCard = (value) => {
@@ -21,8 +22,11 @@ const creditCard = (value) => {
 };
 
 const creditExpiry = (value) => {
-  const regex = /^((0[1-9])|(1[0-2]))\/((2009)|(20[1-2][0-9]))$/;
-  return regex.test(value);
+  const d = moment(value, "MM/YY");
+  if (d == null || !d.isValid()) return false;
+  if (d.isBefore(moment().subtract(1, "month")) ||
+      d.isAfter(moment().add(15, "years"))) return false;
+  return true;
 };
 
 const creditCVV = (value) => {
