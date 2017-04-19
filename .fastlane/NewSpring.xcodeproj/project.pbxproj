@@ -10,7 +10,6 @@
 		0002A740F5E84FD08F3D8EF9 /* CDVPluginResult+CULPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = B199432E30604BCDA1B30D0C /* CDVPluginResult+CULPlugin.m */; };
 		00C8897A853E4D068E2C5DC4 /* WebAppLocalServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16408CAA52A249CDB2E39C0A /* WebAppLocalServer.swift */; };
 		0207DA581B56EA530066E2B4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0207DA571B56EA530066E2B4 /* Images.xcassets */; };
-		0275E4C188BB43B1962346DF /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A37EAAE4453432BBA253F80 /* HockeySDK.framework */; };
 		03218858E2F64135BC04A703 /* GCDWebServerURLEncodedFormRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E519318CF643F29AF9F20B /* GCDWebServerURLEncodedFormRequest.m */; };
 		050B80EAC0954F09BE8CE324 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 792DD88519104B69891F93DC /* Security.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		066DD552932B46C8862BFA20 /* GCDWebServerRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 74DD9EE91FFD4FF290ED8ED1 /* GCDWebServerRequest.m */; };
@@ -58,13 +57,11 @@
 		9032E0E6288A4BFA9D6C9585 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9A18E5FECE43178CE3B5D2 /* Errors.swift */; };
 		9308BD439FA143EDBF826106 /* CDVFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 9407087EE3CF42C6B89AA0BF /* CDVFile.m */; };
 		94A66B35237E43579DBD1411 /* GCDWebServerFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 601E04AEA1FB448FB8D9376C /* GCDWebServerFunctions.m */; };
-		9874144EEF4F4EF7844A83D0 /* HockeyApp.m in Sources */ = {isa = PBXBuildFile; fileRef = C59203D868C34F53A67FCD2F /* HockeyApp.m */; };
 		98F5C49F89164F8F91DDA55D /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AD50180A0A24BBAB57721EC /* CFNetwork.framework */; };
 		9A11BAF2441C4B96AF19853F /* GCDWebServerStreamedResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D7D5E73EB4349EAA12AE927 /* GCDWebServerStreamedResponse.m */; };
 		9DEB474180F2428986849B7F /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61CDE9DD38A64498B7E1969F /* Photos.framework */; };
 		9FE5F67A0B27467886CBB476 /* CULXmlTags.m in Sources */ = {isa = PBXBuildFile; fileRef = 96438814E3B443C18EC9BB41 /* CULXmlTags.m */; };
 		A1F8221AD4DA4D8C915AC3B4 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22C07DB3FFE14DEBAC26194B /* CoreTelephony.framework */; };
-		A327C07F25DB47D2B20D8B8F /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9C19D11038C941C3A684E016 /* HockeySDKResources.bundle */; };
 		A7B9054EF8B048E091A4862A /* CDVSplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 597CB7FA7BE640B5A4BC6DF1 /* CDVSplashScreen.m */; };
 		A97A0415BDC444D590073BE9 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 60842169D2434EC8B89A596E /* libz.tbd */; };
 		AE4F71B9419C4237B458D8F3 /* CULHost.m in Sources */ = {isa = PBXBuildFile; fileRef = FD0A59EAE1BE4BF3A6638F52 /* CULHost.m */; };
@@ -191,7 +188,6 @@
 		74DD9EE91FFD4FF290ED8ED1 /* GCDWebServerRequest.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = GCDWebServerRequest.m; path = "cordova-plugin-meteor-webapp/GCDWebServerRequest.m"; sourceTree = "<group>"; };
 		792DD88519104B69891F93DC /* Security.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		7A37C3DD21E148AB91E73613 /* METTimer.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = METTimer.h; path = "cordova-plugin-meteor-webapp/METTimer.h"; sourceTree = "<group>"; };
-		7A37EAAE4453432BBA253F80 /* HockeySDK.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = HockeySDK.framework; path = "NewSpring/Plugins/cordova-plugin-hockeyapp/HockeySDK.framework"; sourceTree = "<group>"; };
 		7BD38C13FE404F44AE068130 /* GCDWebServerURLEncodedFormRequest.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = GCDWebServerURLEncodedFormRequest.h; path = "cordova-plugin-meteor-webapp/GCDWebServerURLEncodedFormRequest.h"; sourceTree = "<group>"; };
 		7C4291ADB4674AEFBEB3C5F7 /* NSBundle+CULPlugin.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = "NSBundle+CULPlugin.m"; path = "cordova-universal-links-plugin/Utils/NSBundle+CULPlugin.m"; sourceTree = "<group>"; };
 		8089F612697949D8AEB99F49 /* SafariViewController.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = SafariViewController.m; path = "cordova-plugin-safariviewcontroller/SafariViewController.m"; sourceTree = "<group>"; };
@@ -216,8 +212,6 @@
 		99C7ABC6BD4F4C518CC04EA0 /* GCDWebServerDataRequest.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = GCDWebServerDataRequest.m; path = "cordova-plugin-meteor-webapp/GCDWebServerDataRequest.m"; sourceTree = "<group>"; };
 		9A7653C8492648C7820832E0 /* Foundation.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9B3C1E24C722466E8BADD4FA /* CDVLocalFilesystem.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVLocalFilesystem.m; path = "cordova-plugin-file/CDVLocalFilesystem.m"; sourceTree = "<group>"; };
-		9BAD0D79E62A43FAA3E9AED2 /* HockeyApp.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = HockeyApp.h; path = "cordova-plugin-hockeyapp/HockeyApp.h"; sourceTree = "<group>"; };
-		9C19D11038C941C3A684E016 /* HockeySDKResources.bundle */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.plug-in"; path = HockeySDKResources.bundle; sourceTree = "<group>"; };
 		A4BD3F3BEFE141B5A15F7B47 /* WebKit.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		AC5AE75B044243E9B6747E14 /* AVFoundation.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		B03EB71BB4CF4B15A3D760B0 /* QuartzCore.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -233,7 +227,6 @@
 		C022BCAE6DC6451185B09377 /* METRetryStrategy.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = METRetryStrategy.m; path = "cordova-plugin-meteor-webapp/METRetryStrategy.m"; sourceTree = "<group>"; };
 		C0677C67D6E144A685596B62 /* SystemConfiguration.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C24AF7B2965C433183BADF3E /* METRetryStrategy.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = METRetryStrategy.h; path = "cordova-plugin-meteor-webapp/METRetryStrategy.h"; sourceTree = "<group>"; };
-		C59203D868C34F53A67FCD2F /* HockeyApp.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = HockeyApp.m; path = "cordova-plugin-hockeyapp/HockeyApp.m"; sourceTree = "<group>"; };
 		C61CC7785BE747C7807C51EF /* CDVFile.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVFile.h; path = "cordova-plugin-file/CDVFile.h"; sourceTree = "<group>"; };
 		CA776E547F8443D28D69A18D /* GCDWebServerDataRequest.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = GCDWebServerDataRequest.h; path = "cordova-plugin-meteor-webapp/GCDWebServerDataRequest.h"; sourceTree = "<group>"; };
 		CE893D49DFCD4A08A01F9C63 /* CDVWKWebViewUIDelegate.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVWKWebViewUIDelegate.h; path = "cordova-plugin-wkwebview-engine/CDVWKWebViewUIDelegate.h"; sourceTree = "<group>"; };
@@ -281,7 +274,6 @@
 				783E854136004E969D830993 /* ImageIO.framework in Frameworks */,
 				EBFB05E07A5B4731885B6236 /* CoreLocation.framework in Frameworks */,
 				6E06B9A417F346D089A7A72C /* AVFoundation.framework in Frameworks */,
-				0275E4C188BB43B1962346DF /* HockeySDK.framework in Frameworks */,
 				3C89A4F8B4814D2789897395 /* libstdc++.dylib in Frameworks */,
 				A97A0415BDC444D590073BE9 /* libz.tbd in Frameworks */,
 				2CC36076D534492982A2DB15 /* CoreText.framework in Frameworks */,
@@ -355,7 +347,6 @@
 				0207DA571B56EA530066E2B4 /* Images.xcassets */,
 				3047A50E1AB8057F00498E2A /* config */,
 				8D1107310486CEB800E47090 /* NewSpring-Info.plist */,
-				9C19D11038C941C3A684E016 /* HockeySDKResources.bundle */,
 			);
 			name = Resources;
 			path = NewSpring/Resources;
@@ -375,7 +366,6 @@
 				6F5898D5F41E4899941BBB8D /* ImageIO.framework */,
 				58FAA8D0DB3341AC84589BBC /* CoreLocation.framework */,
 				AC5AE75B044243E9B6747E14 /* AVFoundation.framework */,
-				7A37EAAE4453432BBA253F80 /* HockeySDK.framework */,
 				0651A316763F4F21ADBAA521 /* libstdc++.dylib */,
 				60842169D2434EC8B89A596E /* libz.tbd */,
 				561AE800246F48B1B4CF309F /* CoreText.framework */,
@@ -486,8 +476,6 @@
 				05817E9D019641B0B4A0452B /* CDVAssetLibraryFilesystem.h */,
 				88CA0BFBD2B142B4A588AABB /* CDVFileTransfer.m */,
 				F56617E8EB4740038D667476 /* CDVFileTransfer.h */,
-				C59203D868C34F53A67FCD2F /* HockeyApp.m */,
-				9BAD0D79E62A43FAA3E9AED2 /* HockeyApp.h */,
 				3A16EAF6DFE24DB79A28FD22 /* CDVInAppBrowser.m */,
 				5F611001643942D282A5C0DF /* CDVInAppBrowser.h */,
 				DAA9D6331D254CBE981E7C66 /* CDVSound.m */,
@@ -610,7 +598,6 @@
 			files = (
 				302D95F214D2391D003F00A1 /* MainViewController.xib in Resources */,
 				0207DA581B56EA530066E2B4 /* Images.xcassets in Resources */,
-				A327C07F25DB47D2B20D8B8F /* HockeySDKResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -682,7 +669,6 @@
 				C847CB434BBA40D5BDA4A8A6 /* CDVLocalFilesystem.m in Sources */,
 				4523A5AC83A345B891099287 /* CDVAssetLibraryFilesystem.m in Sources */,
 				DCEB47253DFE44909BABB69B /* CDVFileTransfer.m in Sources */,
-				9874144EEF4F4EF7844A83D0 /* HockeyApp.m in Sources */,
 				6329AA8FB4C44088BBC32C3B /* CDVInAppBrowser.m in Sources */,
 				B4B1DD793F3B424A8BFD3089 /* CDVSound.m in Sources */,
 				8940E1B9DA3A4E06BD843809 /* NativeStorage.m in Sources */,
@@ -728,8 +714,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"NewSpring/Plugins/cordova-fabric-plugin\"",
-					"\"NewSpring/Plugins/cordova-fabric-plugin\"",
-					"\"NewSpring/Plugins/cordova-plugin-hockeyapp\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -761,8 +745,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"NewSpring/Plugins/cordova-fabric-plugin\"",
-					"\"NewSpring/Plugins/cordova-fabric-plugin\"",
-					"\"NewSpring/Plugins/cordova-plugin-hockeyapp\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NewSpring/NewSpring-Prefix.pch";
