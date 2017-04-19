@@ -219,21 +219,21 @@ describe("Menu", () => {
     expect(result).toBe("");
   });
 
-  it("showFeedback returns null when not native", () => {
-    const wrapper = shallow(generateComponent());
-    const result = wrapper.instance().showFeedback();
-    expect(result).toBe(null);
-  });
+  // it("showFeedback returns null when not native", () => {
+  //   const wrapper = shallow(generateComponent());
+  //   const result = wrapper.instance().showFeedback();
+  //   expect(result).toBe(null);
+  // });
 
-  it("giveFeedback does not call hockeyapp when not native", () => {
-    const mockFeedback = jest.fn();
-    global.hockeyapp = {
-      feedback: mockFeedback,
-    };
-    const wrapper = shallow(generateComponent());
-    const result = wrapper.instance().giveFeedback();
-    expect(mockFeedback).not.toHaveBeenCalled();
-  });
+  // it("giveFeedback does not call hockeyapp when not native", () => {
+  //   const mockFeedback = jest.fn();
+  //   global.hockeyapp = {
+  //     feedback: mockFeedback,
+  //   };
+  //   const wrapper = shallow(generateComponent());
+  //   const result = wrapper.instance().giveFeedback();
+  //   expect(mockFeedback).not.toHaveBeenCalled();
+  // });
 
   it("dividerClasses return web classes", () => {
     const wrapper = shallow(generateComponent());

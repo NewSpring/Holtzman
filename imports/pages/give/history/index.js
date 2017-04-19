@@ -5,6 +5,7 @@ import { Meteor } from "meteor/meteor";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 import fileSaver from "file-saver";
+import moment from "moment";
 
 import infiniteScroll from "../../../components/@enhancers/infinite-scroll";
 import createContainer from "../../../deprecated/meteor/react-meteor-data";
@@ -15,7 +16,6 @@ import base64ToBlob from "../../../util/base64ToBlob";
 import Layout from "./Layout";
 
 class TemplateWithoutData extends Component {
-
   static propTypes = {
     loading: PropTypes.bool,
     transactions: PropTypes.array,
@@ -28,9 +28,9 @@ class TemplateWithoutData extends Component {
     setRightProps: PropTypes.func,
     currentVariables: PropTypes.object,
     getPDF: PropTypes.func,
-  }
+  };
 
-  state = { refetching: false, printLoading: false }
+  state = { refetching: false, printLoading: false };
 
   componentWillMount() {
     this.props.setRightProps({
@@ -38,19 +38,27 @@ class TemplateWithoutData extends Component {
     });
   }
 
-  wrapRefetch = (refetch: Function) => (...args: Object[]) => {
-    this.setState({ refetching: true });
-    return refetch(...args).then((x) => {
-      this.setState({ refetching: false });
-      return x;
-    });
-  }
+  wrapRefetch = (refetch: Function) =>
+    (...args: Object[]) => {
+      this.setState({ refetching: true });
+      return refetch(...args).then((x) => {
+        this.setState({ refetching: false });
+        return x;
+      });
+    };
 
   onPrintClick = (e: Event) => {
     e.preventDefault();
+    const { limit, start, end } = this.props.currentVariables;
+
+    // XXX default shows all transactions, but we only want to print YTD
+    const vars = limit && !start && !end
+      ? { ...this.props.currentVariables, start: moment().startOf("year") }
+      : this.props.currentVariables;
 
     this.setState({ printLoading: true });
-    this.props.getPDF(this.props.currentVariables)
+    this.props
+      .getPDF(vars)
       .then(({ data: { transactionStatement } }) => {
         const blob = base64ToBlob(transactionStatement.file);
         this.setState({ printLoading: false });
@@ -59,7 +67,7 @@ class TemplateWithoutData extends Component {
       .catch(() => {
         this.setState({ printLoading: false });
       });
-  }
+  };
 
   render() {
     const {
@@ -148,7 +156,13 @@ const DEFAULT_LIMIT = 20;
 
 const withTransactions = graphql(TRANSACTIONS_QUERY, {
   options: ({ authorized }) => ({
-    variables: { limit: DEFAULT_LIMIT, skip: 0, people: [], start: "", end: "" },
+    variables: {
+      limit: DEFAULT_LIMIT,
+      skip: 0,
+      people: [],
+      start: "",
+      end: "",
+    },
     forceFetch: true,
     skip: !authorized,
     ssr: false,
@@ -157,24 +171,24 @@ const withTransactions = graphql(TRANSACTIONS_QUERY, {
     currentVariables: data.variables,
     transactions: data.transactions || [],
     loading: data.loading,
-    done: (
-      data.variables.limit === 0 ||
-      (
-        data.transactions &&
+    done: data.variables.limit === 0 ||
+      (data.transactions &&
         !data.loading &&
-        data.transactions.length < data.variables.limit + data.variables.skip
-      )
-    ),
-    fetchMore: () => data.fetchMore({
-      variables: { ...data.variables, skip: data.transactions.length },
-      updateQuery: (previousResult, { fetchMoreResult }) => {
-        if (!fetchMoreResult.data) return previousResult;
-        const transactions = [...previousResult.transactions, ...fetchMoreResult.data.transactions];
-        return {
-          transactions: transactions.filter((x) => !!x.id),
-        };
-      },
-    }),
+        data.transactions.length < data.variables.limit + data.variables.skip),
+    fetchMore: () =>
+      data.fetchMore({
+        variables: { ...data.variables, skip: data.transactions.length },
+        updateQuery: (previousResult, { fetchMoreResult }) => {
+          if (!fetchMoreResult.data) return previousResult;
+          const transactions = [
+            ...previousResult.transactions,
+            ...fetchMoreResult.data.transactions,
+          ];
+          return {
+            transactions: transactions.filter((x) => !!x.id),
+          };
+        },
+      }),
     filterTransactions: ({ people, start, end, limit = 0 }) =>
       data.refetch({ ...data.variables, people, start, end, limit }),
   }),
@@ -182,15 +196,12 @@ const withTransactions = graphql(TRANSACTIONS_QUERY, {
 
 const authorized = () => ({ authorized: Meteor.userId() });
 
-const Template = createContainer(authorized, withFilter(
-  withStatement(
-    withTransactions(
-      infiniteScroll()(
-        TemplateWithoutData
-      )
-    )
-  )
-));
+const Template = createContainer(
+  authorized,
+  withFilter(
+    withStatement(withTransactions(infiniteScroll()(TemplateWithoutData))),
+  ),
+);
 
 const Routes = [
   {
@@ -205,6 +216,4 @@ export default {
   Routes,
 };
 
-export {
-  TemplateWithoutData,
-};
+export { TemplateWithoutData };
