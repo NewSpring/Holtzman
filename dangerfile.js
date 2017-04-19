@@ -1,10 +1,8 @@
-// Removed import
-import { danger, fail, warn, markdown } from "danger";
-import { any } from "ramda";
-import fs from "fs";
+ if(process.env.CI) {
+   const { danger, fail, warn, markdown } = require("danger");
+   const { any }  = require("ramda");
+   const fs = require("fs");}
 
-// Takes a list of file paths, and converts it into clickable links
-if(danger){
   const linkableFiles = paths => {
     const repoURL = danger.github.pr.head.repo.html_url;
     const ref = danger.github.pr.head.ref;
