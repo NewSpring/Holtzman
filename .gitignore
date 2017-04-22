@@ -3,6 +3,10 @@ logs
 *.log
 npm-debug.log*
 
+reset-local-device
+setup-ios-project
+.fastlane/README.md
+
 # Runtime data
 pids
 *.pid
@@ -48,6 +52,8 @@ apollos-runtime.json
 .fastlane/report.xml
 .build
 .play-service.json
+cordova-build-override/GoogleService-Info.plist
+cordova-build-override/google-services.json
 
 # xcode builds
 *.ipa

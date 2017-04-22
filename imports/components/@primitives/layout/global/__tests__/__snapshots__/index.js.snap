@@ -54,6 +54,17 @@ Array [
 ]
 `;
 
+exports[`GlobalWithoutData parses SAVE_DEVICE_REGISTRATION_ID correctly 1`] = `
+"mutation SaveDeviceRegistrationId($registrationId: String!) {
+  saveDeviceRegistrationId(registrationId: $registrationId) {
+    error
+    code
+    success
+  }
+}
+"
+`;
+
 exports[`GlobalWithoutData parses URL_TITLE_QUERY correctly 1`] = `
 "query contentWithUrlTitle($parentChannel: String!, $parentUrl: String!, $childChannel: String = \"\", $childUrl: String = \"\", $hasChild: Boolean = false) {
   parent: contentWithUrlTitle(channel: $parentChannel, urlTitle: $parentUrl)
