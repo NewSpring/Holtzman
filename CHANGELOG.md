@@ -7,9 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [5.0.23] - UNRELEASED
 ### Fixed
 - fixed cc exp date validation
+- Users were previously able to submit a contribution before campus info was loaded.
 
 ## [5.0.22] - UNRELEASED
-## Fixed
+### Fixed
 - Giving statements filtered by all time only printing YTD
 - Giving history filters not allowing switching from one to another
 - issue with siteLinks erroring out, causing content to never load
