@@ -2,6 +2,9 @@
 
 import { WindowLoading, Spinner } from "../../@primitives/UI/loading";
 
+const PREPARING_HEADER = "We're Preparing Your Contribution";
+const PREPARING_TEXT = "Please don't close this window while your contribution is being prepared.";
+
 const LOADING_HEADER = "We're Processing Your Contribution";
 const LOADING_TEXT = "Please don't close this window while your contribution is being processed.";
 
@@ -11,11 +14,13 @@ const SAVED_TEXT = "Please don't close this window while your account is being v
 const SCHEDULE_HEADER = "We're Processing Your Schedule";
 const SCHEDULE_TEXT = "Please don't close this window while your schedule is being processed.";
 
+
 type ILoadingProps = {
   isSchedule?: boolean,
   isSavedPayment?: boolean,
+  isPreparation?: boolean,
 }
-const Loading = ({ isSchedule, isSavedPayment }: ILoadingProps) => {
+const Loading = ({ isSchedule, isSavedPayment, isPreparation }: ILoadingProps) => {
   let header = LOADING_HEADER;
   let text = LOADING_TEXT;
 
@@ -25,6 +30,9 @@ const Loading = ({ isSchedule, isSavedPayment }: ILoadingProps) => {
   } else if (isSavedPayment) {
     header = SAVED_HEADER;
     text = SAVED_TEXT;
+  } else if (isPreparation) {
+    header = PREPARING_HEADER;
+    text = PREPARING_TEXT;
   }
 
   return (
