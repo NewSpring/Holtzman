@@ -7,7 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Fixed
 - fixed cc exp date validation
 
-## [5.0.22] - UNRELEASED
+## [5.0.23] - UNRELEASED
+## Fixed
+- Users were previously able to submit a contribution before campus info was loaded.
+
+## [5.0.22]
 ### Added
 - danger for PR's, with support for meteor build
 
