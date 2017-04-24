@@ -37,10 +37,9 @@ const formatPersonDetails = (give) => {
       case "One-Time":
         joinedData.plan.payments = 1;
         joinedData.plan["month-frequency"] = 12;
-        joinedData.plan["day-of-month"] = schedule.start ?
-          moment(schedule.start).date() :
-          moment().date()
-        ;
+        joinedData.plan["day-of-month"] = schedule.start
+          ? moment(schedule.start).date()
+          : moment().date();
         break;
       case "Weekly":
         joinedData.plan["day-frequency"] = 7;
@@ -50,19 +49,17 @@ const formatPersonDetails = (give) => {
         break;
       case "Monthly":
         joinedData.plan["month-frequency"] = 1;
-        joinedData.plan["day-of-month"] = schedule.start ?
-          moment(schedule.start).date() :
-          moment().date()
-        ;
+        joinedData.plan["day-of-month"] = schedule.start
+          ? moment(schedule.start).date()
+          : moment().date();
         break;
       default:
         break;
     }
 
-    joinedData["start-date"] = schedule.start ?
-      moment(schedule.start).format("YYYYMMDD") :
-      moment().add(1, "days").format("YYYYMMDD")
-    ;
+    joinedData["start-date"] = schedule.start
+      ? moment(schedule.start).format("YYYYMMDD")
+      : moment().add(1, "days").format("YYYYMMDD");
     joinedData["merchant-defined-field-3"] = joinedData["start-date"];
 
     // This isn't super well organized
@@ -74,9 +71,9 @@ const formatPersonDetails = (give) => {
 
     // in order to line up the amounts with the funds, we store the amounts
     // in a matching comma sep string
-    joinedData["merchant-defined-field-4"] = Object.keys(transactions).map((key) => (
-      transactions[key].value
-    )).join(",");
+    joinedData["merchant-defined-field-4"] = Object.keys(transactions)
+      .map((key) => transactions[key].value)
+      .join(",");
   } else if (transactions && Object.keys(transactions).length) {
     joinedData.product = [];
     // eslint-disable-next-line no-restricted-syntax, guard-for-in
@@ -86,6 +83,7 @@ const formatPersonDetails = (give) => {
         "product-code": transaction,
         description: transactions[transaction].label,
         "total-amount": transactions[transaction].value,
+        "unit-cost": transactions[transaction].value,
       });
     }
   }
