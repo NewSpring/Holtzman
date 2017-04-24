@@ -4,7 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [5.0.22] - UNRELEASED
+## [5.0.23] - UNRELEASED
+## Fixed
+- Users were previously able to submit a contribution before campus info was loaded.
+
+## [5.0.22]
 ### Added
 - danger for PR's, with support for meteor build
 
