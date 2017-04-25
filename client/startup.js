@@ -57,10 +57,6 @@ if (process.env.NATIVE) {
 
   if (Meteor.isCordova) {
     document.addEventListener("deviceready", () => {
-      if (Meteor.settings.public.hockey) {
-        hockeyapp.start(null, null, Meteor.settings.public.hockey);
-      }
-
       window.open = cordova.InAppBrowser.open;
 
       document.addEventListener("click", (event) => {
