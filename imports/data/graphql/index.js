@@ -38,6 +38,8 @@ const authMiddleware = {
     }
 
     request.options.headers.Authorization = currentUserToken;
+    request.options.headers.Platform = Meteor.isCordova ? "Native" : "Web";
+    request.options.headers.Version = Meteor.settings.public.release;
 
     next();
   },
