@@ -1,9 +1,9 @@
 // Removed import
+if(process.env.CI) {
 import { danger, fail, warn, markdown } from "danger";
 import { any } from "ramda";
 import fs from "fs";
 
-if(danger) {
   // Takes a list of file paths, and converts it into clickable links
   const linkableFiles = paths => {
     const repoURL = danger.github.pr.head.repo.html_url;
