@@ -128,21 +128,6 @@ class MenuWithoutData extends Component {
     return "";
   }
 
-  showFeedback = () => {
-    if (process.env.NATIVE) {
-      return (
-        <a onClick={this.giveFeedback} className="plain text-dark-secondary">
-          <RenderCell name="Give Feedback" />
-        </a>
-      );
-    }
-    return null;
-  }
-
-  giveFeedback = () => {
-    if (process.env.NATIVE && typeof hockeyapp !== "undefined") hockeyapp.feedback();
-  }
-
   dividerClasses = () => {
     const classes = ["push-double-ends@lap-and-up", "push-half-ends"];
     if (process.env.NATIVE) classes.push("background--light-primary");
@@ -218,7 +203,6 @@ class MenuWithoutData extends Component {
 
           <div className={this.dividerClasses()}>
             <div className={this.outlineClasses()} style={{ borderLeft: 0, borderRight: 0 }}>
-              {this.showFeedback()}
               <a
                 href="//newspring.cc/privacy"
                 rel="noopener noreferrer"
