@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - issue with siteLinks erroring out, causing content to never load
 
 ### Added
-- danger for PR's
+- danger for PR's, with support for meteor build
 
 ## [5.0.20]
 ### Added
