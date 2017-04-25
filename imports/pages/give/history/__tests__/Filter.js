@@ -1,7 +1,10 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import moment from "moment";
+import Tag from "../../../../components/@primitives/UI/tags";
 import Filter from "../Filter";
+
+jest.mock("../../../../components/@primitives/UI/tags");
 
 const defaultProps = {
   family: [
@@ -156,7 +159,7 @@ it("toggle changes the expanded state", () => {
   expect(wrapper.state().expanded).toBe(false);
 });
 
-it("dataRangeClick with LastMonth value sets the start and end dates correctly", () => {
+it("dateRangeClick with LastMonth value sets the start and end dates correctly", () => {
   const wrapper = shallow(generateComponent());
   wrapper.setState({
     start: "",
@@ -174,7 +177,7 @@ it("dataRangeClick with LastMonth value sets the start and end dates correctly",
   expect(wrapper.state().end).toEqual("");
 })
 
-it("dataRangeClick with LastYear value sets the start and end dates correctly", () => {
+it("dateRangeClick with LastYear value sets the start and end dates correctly", () => {
   const wrapper = shallow(generateComponent());
   wrapper.setState({
     start: "",
@@ -191,7 +194,7 @@ it("dataRangeClick with LastYear value sets the start and end dates correctly", 
   expect(wrapper.state().end).toEqual("");
 })
 
-it("dataRangeClick with YearToDate value sets the start and end dates correctly", () => {
+it("dateRangeClick with YearToDate value sets the start and end dates correctly", () => {
   const wrapper = shallow(generateComponent());
   wrapper.setState({
     start: "",
@@ -209,7 +212,7 @@ it("dataRangeClick with YearToDate value sets the start and end dates correctly"
   expect(wrapper.state().end).toEqual("");
 })
 
-it("dataRangeClick with AllTime sets limit correctly", () => {
+it("dateRangeClick with AllTime sets limit correctly", () => {
   const wrapper = shallow(generateComponent());
   wrapper.setState({
     limit: 20,
@@ -224,7 +227,7 @@ it("dataRangeClick with AllTime sets limit correctly", () => {
   expect(wrapper.state().limit).toEqual(20);
 })
 
-it("dataRangeClick sets customDateDisabled correctly", () => {
+it("dateRangeClick sets customDateDisabled correctly", () => {
   const wrapper = shallow(generateComponent());
   wrapper.setState({
     customDateDisabled: false,
@@ -246,6 +249,24 @@ it("dateRangeClick allows switching from one tag to another", () => {
   click("YearToDate");
   expect(wrapper.state().start).toEqual(moment().startOf("year"));
   expect(wrapper.state().dateRangeActive).toEqual("YearToDate");
+});
+
+it("dateRangeClick disables custom dates from being selected", () => {
+  const wrapper = shallow(generateComponent({ expanded: true, store: {} }));
+  wrapper.instance().toggle();
+  expect(wrapper.find(Tag).get(0).props.clickAble).toEqual(true);
+  const click = wrapper.instance().dateRangeClick;
+  click("AllTime");
+  expect(wrapper.find(Tag).get(0).props.clickAble).toEqual(false);
+});
+
+it("dateRangeClick toggling off enables custom dates", () => {
+  const wrapper = shallow(generateComponent({ expanded: true, store: {} }));
+  wrapper.instance().toggle();
+  const click = wrapper.instance().dateRangeClick;
+  click("AllTime");
+  click("AllTime");
+  expect(wrapper.find(Tag).get(0).props.clickAble).toEqual(true);
 });
 
 it("toggleStartDatePicker correctly toggles the start date picker", () => {
