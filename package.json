@@ -104,6 +104,7 @@
     "apollo-client": "0.5.20",
     "audio5": "^0.1.10",
     "babel-plugin-ramda": "^1.2.0",
+    "babel-polyfill": "^6.23.0",
     "bcrypt": "^0.8.7",
     "bluebird": "^3.4.6",
     "cheerio": "^0.20.0",
