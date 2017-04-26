@@ -5,6 +5,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [5.0.22] - UNRELEASED
+## Fixed
+- Giving statements filtered by all time only printing YTD
+- Giving history filters not allowing switching from one to another
+- issue with siteLinks erroring out, causing content to never load
+
 ### Added
 - danger for PR's, with support for meteor build
 
