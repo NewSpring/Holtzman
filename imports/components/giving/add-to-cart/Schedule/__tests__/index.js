@@ -1,6 +1,7 @@
 import { mount, shallow } from "enzyme";
 import { mountToJson, shallowToJson } from "enzyme-to-json";
 import { connect } from "react-redux";
+import moment from "moment";
 
 import { give as giveActions } from "../../../../../data/store";
 
@@ -22,6 +23,8 @@ jest.mock("moment", () => (date) => ({
   add: (amount, time) => ({
     toISOString: (style) => `${date || "now"}.endOf(${time}).add(${amount}, ${time}).toISOString()`,
   }),
+  isValid: date => date !== "custom",
+  isSame: date => false,
 }));
 
 jest.mock("../Layout", () => jest.fn(() => <div />));
@@ -218,8 +221,8 @@ describe("Class", () => {
     it("updates the state for start", () => {
       const wrapper = mount(generateComponent());
       const { startClick } = wrapper.instance();
-      startClick("one-time");
-      expect(wrapper.state().start).toEqual("one-time");
+      startClick("9000-01-01");
+      expect(wrapper.state().start).toEqual("9000-01-01");
     });
     it("saves the schedule", () => {
       const saveSchedule = jest.fn();
@@ -232,7 +235,7 @@ describe("Class", () => {
         start: "now",
       });
     });
-    it("removes the start", () => {
+    it("should allow toggling", () => {
       const saveSchedule = jest.fn();
       const wrapper = mount(generateComponent({ saveSchedule }));
       const { startClick } = wrapper.instance();
@@ -244,7 +247,7 @@ describe("Class", () => {
       });
       expect(wrapper.state().start).toEqual(null);
     });
-    it("changes the start", () => {
+    it("should allow switching tags", () => {
       const saveSchedule = jest.fn();
       const wrapper = mount(generateComponent({ saveSchedule }));
       const { startClick } = wrapper.instance();
@@ -262,22 +265,29 @@ describe("Class", () => {
       startClick("custom");
       expect(wrapper.state().showDatePicker).toEqual(true);
     });
-    it("removes the state when it was custom", () => {
+    it("allows toggling of custom tag", () => {
       const saveSchedule = jest.fn();
       const wrapper = mount(generateComponent({ saveSchedule }));
       const { startClick } = wrapper.instance();
-      wrapper.setState({ start: "custom", frequency: "one-time" });
-      startClick("custom");
-      expect(saveSchedule).toBeCalledWith({
+      const initialState = {
+        start: "9000-01-01",
         frequency: "one-time",
+        activeStartTag: "Custom",
+        checked: true
+      };
+      wrapper.setState(s => initialState);
+      startClick("custom");
+      expect(wrapper.state()).toEqual({
+        ...initialState,
         start: null,
+        showDatePicker: false,
+        activeStartTag: null,
       });
-      expect(wrapper.state().start).toEqual(null);
     });
     it("toggles the date picker (false)", () => {
       const wrapper = mount(generateComponent());
       const { startClick } = wrapper.instance();
-      wrapper.setState({ showDatePicker: true });
+      wrapper.setState({ showDatePicker: true, activeStartTag: "Custom" });
       startClick("custom");
       expect(wrapper.state().showDatePicker).toEqual(false);
     });
@@ -323,5 +333,4 @@ describe("Class", () => {
       expect(wrapper.state()).toEqual(originalState);
     });
   });
-
 });

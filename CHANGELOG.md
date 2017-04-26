@@ -4,7 +4,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [5.0.22] - UNRELEASED
+## [5.1.0] - UNRELEASED
+## Fixed
+- Unpredictable custom tag in give/now with schedules
+- Start/End date tags being active when they shouldn't in giving history
+
+## [5.0.22]
 ## Fixed
 - Giving statements filtered by all time only printing YTD
 - Giving history filters not allowing switching from one to another
