@@ -1,7 +1,7 @@
  if(process.env.CI) {
    const { danger, fail, warn, markdown } = require("danger");
    const { any }  = require("ramda");
-   const fs = require("fs");}
+   const fs = require("fs");
 
   const linkableFiles = paths => {
     const repoURL = danger.github.pr.head.repo.html_url;
