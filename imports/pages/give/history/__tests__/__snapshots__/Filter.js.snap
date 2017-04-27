@@ -70,6 +70,7 @@ exports[`test doesn't render family members if there are none 1`] = `
         <withRouter(Connect(TagWithoutData))
           active={false}
           className={false}
+          clickAble={true}
           icon={
             <span
               className="icon-calendar push-half-left"
@@ -86,6 +87,7 @@ exports[`test doesn't render family members if there are none 1`] = `
         <withRouter(Connect(TagWithoutData))
           active={false}
           className={false}
+          clickAble={true}
           icon={
             <span
               className="icon-calendar push-half-left"
@@ -225,6 +227,7 @@ exports[`test renders family members when expanded is true 1`] = `
         <withRouter(Connect(TagWithoutData))
           active={false}
           className={false}
+          clickAble={true}
           icon={
             <span
               className="icon-calendar push-half-left"
@@ -241,6 +244,7 @@ exports[`test renders family members when expanded is true 1`] = `
         <withRouter(Connect(TagWithoutData))
           active={false}
           className={false}
+          clickAble={true}
           icon={
             <span
               className="icon-calendar push-half-left"
@@ -408,6 +412,7 @@ exports[`test works with nickname 1`] = `
         <withRouter(Connect(TagWithoutData))
           active={false}
           className={false}
+          clickAble={true}
           icon={
             <span
               className="icon-calendar push-half-left"
@@ -424,6 +429,7 @@ exports[`test works with nickname 1`] = `
         <withRouter(Connect(TagWithoutData))
           active={false}
           className={false}
+          clickAble={true}
           icon={
             <span
               className="icon-calendar push-half-left"

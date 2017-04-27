@@ -26,12 +26,22 @@ describe("creditCard", () => {
 
 describe("creditExpiry", () => {
   it("returns true for valid expiry", () => {
-    const result = creditExpiry("12/2018");
+    const result = creditExpiry("12/30"); // 12/2030
     expect(result).toBe(true);
   });
 
   it("returns false for invalid expiry", () => {
-    const result = creditExpiry("12/2006");
+    const result = creditExpiry("12/06"); // 12/2006
+    expect(result).toBe(false);
+  });
+
+  it("returns false for dates beyond 15 years", () => {
+    const result = creditExpiry("12/99"); // 12/2099
+    expect(result).toBe(false);
+  });
+
+  it("returns false for not having a valid month", () => {
+    const result = creditExpiry("15/30"); // 15/2099
     expect(result).toBe(false);
   });
 });

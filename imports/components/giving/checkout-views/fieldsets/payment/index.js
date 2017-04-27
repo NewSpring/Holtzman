@@ -1,5 +1,6 @@
 // @flow
 import { Component } from "react";
+import moment from "moment";
 
 import Validate from "../../../../../util/validate";
 
@@ -59,7 +60,7 @@ export default class Payment extends Component {
       accountType: notEmpty,
       accountName: notEmpty,
       cardNumber: Validate.isCreditCard,
-      expiration: notEmpty,
+      expiration: Validate.isExpiry,
       ccv: Validate.isCCV,
     };
 

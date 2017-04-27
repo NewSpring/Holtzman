@@ -72,7 +72,7 @@ const CardFields = ({
             defaultValue={payment.expiration}
             format={formatExp}
             onChange={saveData}
-            validation={(value) => (value.length > 0)}
+            validation={validate}
             data-expiry-input
           />
         </div>
