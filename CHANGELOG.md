@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Start/End date tags being active when they shouldn't in giving history
 - Users were previously able to submit a contribution before campus info was loaded.
 - fixed blurred images for album likes on profile feed
+### Added
+- Added back the ability to save payments without a transaction.
 
 ## [5.0.22]
 ### Fixed
@@ -18,11 +20,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Giving history filters not allowing switching from one to another
 - issue with siteLinks erroring out, causing content to never load
 - Unpredictable custom tag in give/now with schedules
-- Start/End date tags being active when they shouldn't in giving history
-- Users were previously able to submit a contribution before campus info was loaded.
-- fixed blurred images for album likes on profile feed
 ### Added
-- Added back the ability to save payments without a transaction.
 - danger for PR's, with support for meteor build
 - unit cost for each transaction will be piped through to NMI.
 
