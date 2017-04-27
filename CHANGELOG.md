@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - danger for PR's, with support for meteor build
 - unit cost for each transaction will be piped through to NMI.
+- fixed blurred images for album likes on profile feed
 ## Fixed
 - issue with siteLinks erroring out, causing content to never load
 - Giving statements filtered by all time only printing YTD
