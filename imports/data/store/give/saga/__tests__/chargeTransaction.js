@@ -8,6 +8,7 @@ import { Meteor } from "meteor/meteor";
 import { initial } from "../../reducer";
 import actions from "../../actions";
 import types from "../../types";
+import { validate } from "../";
 
 import { chargeTransaction } from "../";
 
@@ -49,6 +50,20 @@ describe("successful charge without saved payment", () => {
     expect(result).toEqual(take(types.SET_TRANSACTION_DETAILS));
     return { url: "https://example.com/TOKEN" };
   });
+
+  // STEP THROUGH VALIDATION
+  it("requires initial seed data", () => ({ give: { ...initial } }));
+  it("formats the data in the store", result => {
+    return { data: { response: { url: "http://test.com/TOKEN" } } };
+  });
+  it("tries to submit payment details with the data and url", result => {
+    result.next();
+    return null;
+  });
+  it("tries to submit payment details with the data and url", result => {
+    return { };
+  });
+  // DONE VALIDATING
 
   it("tries to submit a transaction with the correct token", result => {
     expect(result.CALL.args[0].variables).toEqual({
