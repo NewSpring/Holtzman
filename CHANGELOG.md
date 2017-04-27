@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [5.0.22] - UNRELEASED
 ### Added
 - danger for PR's, with support for meteor build
+- fixed blurred images for album likes on profile feed
 
 ## [5.0.20]
 ### Added
