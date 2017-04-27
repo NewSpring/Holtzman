@@ -206,5 +206,46 @@ describe("successful charge using a saved payment", () => {
     delete window.ga;
     expect(result).toBeUndefined();
   });
+});
 
+fdescribe("validating cards on saved payment creation", () => {
+  const giveData = {
+    personal: {},
+    billing: {},
+    payment: {
+      type: "cc"
+    },
+  };
+  const it = sagaHelper(chargeTransaction({ state: "submit" }));
+  const initalState = {
+    give: {
+      ...initial,
+      savedAccount: {},
+      data: giveData,
+    },
+  };
+
+  it("reads the state from the store", result => {
+    expect(result.SELECT).toBeTruthy();
+    return initalState;
+  });
+
+  it("skips over loading state", result => {});
+  it("skips over setting store the first time", result => {
+    return {};
+  });
+  it("passes give data", result => ({
+    give: {
+      url: "URL-Mc-URLface",
+      data: giveData,
+    }
+  }));
+
+  it("calls validation method", result => {
+    // validate calls select() first.
+    // if validate wasn't being called, the next yield in the file
+    // is a graphql call, so this would fail.
+    expect(result.SELECT).toBeDefined();
+    return { validationError: true };
+  });
 });
