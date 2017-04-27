@@ -208,7 +208,7 @@ describe("successful charge using a saved payment", () => {
   });
 });
 
-fdescribe("validating cards on saved payment creation", () => {
+describe("validating cards on saved payment creation", () => {
   const giveData = {
     personal: {},
     billing: {},
