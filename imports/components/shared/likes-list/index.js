@@ -37,12 +37,11 @@ const renderLikes = (likes: [Object]) => {
         images = item.content.images;
       }
 
-
       if (item.channelName === "newspring_albums") {
-        images = [images.shift()];
+        images = [[...images].shift()];
         formatted = {
           title: item.title,
-          image: getImage(images, "1:1"),
+          image: getImage(images),
           icon: categories.icon(item),
           category: categories.name(item),
           link: contentHelper.links(item),
