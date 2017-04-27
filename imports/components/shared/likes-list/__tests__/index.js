@@ -1,4 +1,3 @@
-
 import LikesList, { getImage } from "../";
 import { mount } from "enzyme";
 import { mountToJson } from "enzyme-to-json";
@@ -35,7 +34,26 @@ describe("likes list", () => {
       id: "12345",
       parent: null,
       title: "harambe"
-    }
+    },
+    {
+      __typename: "Content",
+      title: "Able",
+      channelName: "newspring_albums",
+      id: "3776",
+      parent: null,
+      content: {
+        images: [
+          {
+            url: "harambe-tribute-one",
+            fileLabel: null,
+          },
+          {
+            url: "harambe-tribute-two",
+            fileLabel: null,
+          },
+        ],
+      },
+    },
   ];
 
   const generateComponent = (additionalProps) =>
@@ -51,7 +69,7 @@ describe("likes list", () => {
     const component = mount(generateComponent({
       likes: mockLikes,
     }));
-    expect(component.find("MiniCard").length).toEqual(2);
+    expect(component.find("MiniCard").length).toEqual(3);
     expect(mountToJson(component)).toMatchSnapshot();
   });
 
@@ -61,6 +79,7 @@ describe("likes list", () => {
     }));
     expect(component.find("MiniCard").get(0).props.category).toEqual("Groups");
     expect(component.find("MiniCard").get(1).props.category).toEqual("Devotionals");
+    expect(component.find("MiniCard").get(2).props.category).toEqual("Albums");
   });
 
   it("should properly parse title for likes", () => {
@@ -69,6 +88,7 @@ describe("likes list", () => {
     }));
     expect(component.find("MiniCard").get(0).props.title).toEqual("hello");
     expect(component.find("MiniCard").get(1).props.title).toEqual("harambe");
+    expect(component.find("MiniCard").get(2).props.title).toEqual("Able");
   });
 
   it("should properly parse image for likes", () => {
@@ -84,7 +104,8 @@ describe("likes list", () => {
     }));
     expect(component.find("MiniCard").get(0).props.image).toEqual("zookeeper");
     expect(component.find("MiniCard").get(1).props.image).toEqual("harambe");
-    expect(component.find("MiniCard").get(2).props.image).toEqual("harambe's dad");
+    expect(component.find("MiniCard").get(2).props.image).toEqual("harambe-tribute-one");
+    expect(component.find("MiniCard").get(3).props.image).toEqual("harambe's dad");
   });
 
   it("should properly parse icon for likes", () => {
@@ -101,6 +122,7 @@ describe("likes list", () => {
     }));
     expect(component.find("MiniCard").get(0).props.link).toEqual("/groups/12345");
     expect(component.find("MiniCard").get(1).props.link).toEqual("/studies/null/entry/12345");
+    expect(component.find("MiniCard").get(2).props.link).toEqual("/music/3776");
   });
 
 });
