@@ -37,13 +37,25 @@ const renderLikes = (likes: [Object]) => {
         images = item.content.images;
       }
 
-      formatted = {
-        title: item.title,
-        image: getImage(images, "1:1"),
-        icon: categories.icon(item),
-        category: categories.name(item),
-        link: contentHelper.links(item),
-      };
+
+      if (item.channelName === "newspring_albums") {
+        images = [images.shift()];
+        formatted = {
+          title: item.title,
+          image: getImage(images, "1:1"),
+          icon: categories.icon(item),
+          category: categories.name(item),
+          link: contentHelper.links(item),
+        };
+      } else {
+        formatted = {
+          title: item.title,
+          image: getImage(images, "1:1"),
+          icon: categories.icon(item),
+          category: categories.name(item),
+          link: contentHelper.links(item),
+        };
+      }
     } else if (item.__typename === "Group") {
       formatted = {
         title: item.name,
