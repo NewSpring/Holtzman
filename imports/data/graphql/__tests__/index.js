@@ -7,7 +7,6 @@ import {
   authMiddleware,
 } from "../";
 
-
 describe("networkInterface", () => {
   it("creates network interface with heighliner url", () => {
     expect(networkInterface._uri).toBe("https://api.newspring.cc/graphql");
@@ -48,6 +47,8 @@ describe("authMiddleware", () => {
     authMiddleware.applyMiddleware(mockRequest, mockNext);
     expect(mockRequest.options.headers).toEqual({
       Authorization: "test",
+      Platform: "Web",
+      Version: undefined,
     });
     expect(Accounts._storedLoginToken).toHaveBeenCalledTimes(1);
     expect(mockNext).toHaveBeenCalledTimes(1);
@@ -72,6 +73,8 @@ describe("authMiddleware", () => {
     authMiddleware.applyMiddleware(mockRequest, mockNext);
     expect(mockRequest.options.headers).toEqual({
       Authorization: "new token",
+      Platform: "Web",
+      Version: undefined,
     });
     expect(Accounts._getLoginToken).toBeCalledWith("4");
     expect(DDP._CurrentInvocation.get).toHaveBeenCalledTimes(1);
@@ -89,9 +92,51 @@ describe("authMiddleware", () => {
     authMiddleware.applyMiddleware(mockRequest, mockNext);
     expect(mockRequest.options.headers).toEqual({
       Authorization: "test",
+      Platform: "Web",
+      Version: undefined,
       map: {},
     });
     expect(Accounts._storedLoginToken).toHaveBeenCalledTimes(1);
+    expect(mockNext).toHaveBeenCalledTimes(1);
+  });
+
+  it("does adds native platform header when in cordova", () => {
+    // Meteor.settings.public.release = "123";
+    Meteor.isCordova = true;
+    const mockRequest = {
+      options: {
+        headers: {},
+        map: {},
+      },
+    };
+    const mockNext = jest.fn();
+    // simulate request
+    authMiddleware.applyMiddleware(mockRequest, mockNext);
+    expect(mockRequest.options.headers).toEqual({
+      Authorization: "test",
+      Platform: "Native",
+      Version: undefined,
+    });
+    expect(mockNext).toHaveBeenCalledTimes(1);
+  });
+
+  it("does adds release header", () => {
+    Meteor.settings.public.release = "123";
+    Meteor.isCordova = false;
+    const mockRequest = {
+      options: {
+        headers: {},
+        map: {},
+      },
+    };
+    const mockNext = jest.fn();
+    // simulate request
+    authMiddleware.applyMiddleware(mockRequest, mockNext);
+    expect(mockRequest.options.headers).toEqual({
+      Authorization: "test",
+      Platform: "Web",
+      Version: "123",
+    });
     expect(mockNext).toHaveBeenCalledTimes(1);
   });
 });

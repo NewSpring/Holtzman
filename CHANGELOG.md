@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - fixed blurred images for album likes on profile feed
 ### Added
 - Added back the ability to save payments without a transaction.
+- Platform and version headers to api requests
 
 ## [5.0.22]
 ### Fixed
