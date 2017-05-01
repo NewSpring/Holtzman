@@ -59,6 +59,7 @@ const PrimaryButton = ({
       value={value}
       data-id={dataId}
       style={style}
+      id="sign-in-button"
     >
       {message} {Meteor.userId() && <span className="icon-lock" />}
     </button>

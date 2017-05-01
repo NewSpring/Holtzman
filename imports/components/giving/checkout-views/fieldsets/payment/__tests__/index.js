@@ -167,7 +167,7 @@ it("validate expiration returns true if not empty", () => {
   const mockTarget = document.createElement("input");
   mockTarget.id = "expiration";
 
-  const result = wrapper.instance().validate("test", mockTarget);
+  const result = wrapper.instance().validate("12/30", mockTarget);
   expect(result).toBeTruthy();
 });
 

@@ -58,6 +58,10 @@ const Layout = ({
 
   let { step } = give;
 
+  if (!campuses.length) {
+    return <Loading isPreparation />
+  }
+
   if (["loading", "error", "success"].indexOf(state) > -1) {
     switch (state) {
       case "loading":

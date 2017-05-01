@@ -45,7 +45,9 @@ afterEach(() => {
 });
 
 it("renders Personal form", () => {
-  const result = renderer.create(generateComponent());
+  const result = renderer.create(generateComponent({
+    campuses: ["hey"],
+  }));
   expect(result).toMatchSnapshot();
 });
 
@@ -59,6 +61,7 @@ it("renders Billing form", () => {
       state: "SC",
       step: 2,
     },
+    campuses: ["hey"],
     states: ["SC","NC"],
     countries: ["USA","Others"],
   }));
@@ -77,6 +80,7 @@ it("renders Payment form", () => {
       state: "default",
       step: 3,
     },
+    campuses: ["hey"],
   }));
   expect(result).toMatchSnapshot();
 });
@@ -96,6 +100,7 @@ it("renders Confirm form", () => {
       step: 4,
       transactions: {},
     },
+    campuses: ["hey"],
   }));
   expect(result).toMatchSnapshot();
 });
@@ -105,6 +110,7 @@ it("renders Loading", () => {
     give: {
       state: "loading",
     },
+    campuses: ["hey"],
   }));
   expect(result).toMatchSnapshot();
 });
@@ -115,6 +121,7 @@ it("renders Error", () => {
       state: "error",
       errors: { "123": "error" },
     },
+    campuses: ["hey"],
   }));
   expect(result).toMatchSnapshot();
 });
@@ -131,6 +138,12 @@ it("renders Success", () => {
       state: "success",
       total: 12,
     },
+    campuses : ["yo"],
   }));
   expect(result).toMatchSnapshot();
+});
+
+it("should show loading state with no campus info", () => {
+  const component = renderer.create(generateComponent({campuses: []}));
+  expect(component).toMatchSnapshot();
 });

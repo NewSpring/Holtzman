@@ -56,21 +56,18 @@ export default function* chargeTransaction({ state }) {
   // get the token and name of the saved account
   const token = give.url.split("/").pop();
 
-  if (give.schedule.start) {
-    // if there is not a saved account, charge the order
-    if (!formattedData.savedAccount) {
-      if (give.data.payment.type === "cc") {
-        // saved accounts don't validate the payment by default
-        // so we make 3 blocking requests to validate the card :(
-        const { validationError } = yield* validate();
+  // if there is not a saved account, validate the payment
+  if (!formattedData.savedAccount) {
+    if (give.data.payment.type === "cc") {
+      // saved accounts don't validate the payment by default
+      // so we make 3 blocking requests to validate the card :(
+      const { validationError } = yield* validate();
 
-        if (validationError) {
-          error = validationError;
-        }
+      if (validationError) {
+        error = validationError;
       }
     }
   }
-
 
   if (give.scheduleToRecover && give.schedule.start) {
     id = give.scheduleToRecover;
