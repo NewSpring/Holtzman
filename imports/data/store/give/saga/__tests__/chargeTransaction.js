@@ -8,6 +8,7 @@ import { Meteor } from "meteor/meteor";
 import { initial } from "../../reducer";
 import actions from "../../actions";
 import types from "../../types";
+import { validate } from "../";
 
 import { chargeTransaction } from "../";
 
@@ -49,6 +50,20 @@ describe("successful charge without saved payment", () => {
     expect(result).toEqual(take(types.SET_TRANSACTION_DETAILS));
     return { url: "https://example.com/TOKEN" };
   });
+
+  // STEP THROUGH VALIDATION
+  it("requires initial seed data", () => ({ give: { ...initial } }));
+  it("formats the data in the store", result => {
+    return { data: { response: { url: "http://test.com/TOKEN" } } };
+  });
+  it("tries to submit payment details with the data and url", result => {
+    result.next();
+    return null;
+  });
+  it("tries to submit payment details with the data and url", result => {
+    return { };
+  });
+  // DONE VALIDATING
 
   it("tries to submit a transaction with the correct token", result => {
     expect(result.CALL.args[0].variables).toEqual({
@@ -206,5 +221,46 @@ describe("successful charge using a saved payment", () => {
     delete window.ga;
     expect(result).toBeUndefined();
   });
+});
 
+describe("validating cards on saved payment creation", () => {
+  const giveData = {
+    personal: {},
+    billing: {},
+    payment: {
+      type: "cc"
+    },
+  };
+  const it = sagaHelper(chargeTransaction({ state: "submit" }));
+  const initalState = {
+    give: {
+      ...initial,
+      savedAccount: {},
+      data: giveData,
+    },
+  };
+
+  it("reads the state from the store", result => {
+    expect(result.SELECT).toBeTruthy();
+    return initalState;
+  });
+
+  it("skips over loading state", result => {});
+  it("skips over setting store the first time", result => {
+    return {};
+  });
+  it("passes give data", result => ({
+    give: {
+      url: "URL-Mc-URLface",
+      data: giveData,
+    }
+  }));
+
+  it("calls validation method", result => {
+    // validate calls select() first.
+    // if validate wasn't being called, the next yield in the file
+    // is a graphql call, so this would fail.
+    expect(result.SELECT).toBeDefined();
+    return { validationError: true };
+  });
 });

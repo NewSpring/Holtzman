@@ -23,6 +23,25 @@ exports[`likes list should render likes 1`] = `
         "parent": null,
         "title": "harambe",
       },
+      Object {
+        "__typename": "Content",
+        "channelName": "newspring_albums",
+        "content": Object {
+          "images": Array [
+            Object {
+              "fileLabel": null,
+              "url": "harambe-tribute-one",
+            },
+            Object {
+              "fileLabel": null,
+              "url": "harambe-tribute-two",
+            },
+          ],
+        },
+        "id": "3776",
+        "parent": null,
+        "title": "Able",
+      },
     ]
   }>
   <div>
@@ -40,6 +59,14 @@ exports[`likes list should render likes 1`] = `
       image="harambe"
       link="/studies/null/entry/12345"
       title="harambe">
+      <div />
+    </MiniCard>
+    <MiniCard
+      category="Albums"
+      icon="icon-category-audio"
+      image="harambe-tribute-one"
+      link="/music/3776"
+      title="Able">
       <div />
     </MiniCard>
   </div>
