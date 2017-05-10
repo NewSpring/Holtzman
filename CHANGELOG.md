@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## UNRELEASED
+### Fixed
+- Fixed an issue with the createDataChannel not existing which caused the app
+to break on the latest Microsoft Edge releases.
+
 ## [5.1.0] - UNRELEASED
 ### Fixed
 - fixed cc exp date validation
