@@ -20,30 +20,33 @@ import Layout from "./ResultLayout";
 let internalIp = null;
 if (Meteor.isClient) {
   // NOTE: window.RTCPeerConnection is "not a constructor" in FF22/23
-  const RTCPeerConnection = window.RTCPeerConnection ||
+  const RTCPeerConnection =
+    window.RTCPeerConnection ||
     window.mozRTCPeerConnection ||
-    window.webkitRTCPeerConnection;   // compatibility for firefox and chrome
+    window.webkitRTCPeerConnection; // compatibility for firefox and chrome
 
   if (RTCPeerConnection) {
     const pc = new RTCPeerConnection({ iceServers: [] });
     const noop = () => {};
     // create a bogus data channel
-    pc.createDataChannel("");
-    // create offer and set local description
-    pc.createOffer(pc.setLocalDescription.bind(pc), noop);
-    // listen for candidate events
-    pc.onicecandidate = (ice) => {
-      if (!ice || !ice.candidate || !ice.candidate.candidate) return;
-      const myIP = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/
-        .exec(ice.candidate.candidate)[1];
-      internalIp = myIP;
-      pc.onicecandidate = noop;
-    };
+    if (typeof pc.createDataChannel === "function") {
+      pc.createDataChannel("");
+      // create offer and set local description
+      pc.createOffer(pc.setLocalDescription.bind(pc), noop);
+      // listen for candidate events
+      pc.onicecandidate = (ice) => {
+        if (!ice || !ice.candidate || !ice.candidate.candidate) return;
+        const myIP = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/.exec(
+          ice.candidate.candidate,
+        )[1];
+        internalIp = myIP;
+        pc.onicecandidate = noop;
+      };
+    }
   }
 }
 const defaultArray = [];
 class TemplateWithoutData extends Component {
-
   static propTypes = {
     q: PropTypes.string,
     dispatch: PropTypes.func.isRequired,
