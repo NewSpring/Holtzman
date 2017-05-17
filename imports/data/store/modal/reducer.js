@@ -5,7 +5,7 @@
 */
 
 const initial = {
-  visible: false,
+  visible: true,
   state: "default", // "full"
   content: null, // component to render within nav
   retrigger: null,
@@ -15,6 +15,7 @@ const initial = {
     styles: {}, // styles to be set on modal component
     keepNav: false,
     coverMiniPlayer: true,
+    promptModal: true,
   },
 };
 
