@@ -36,7 +36,7 @@ export default class PromptModal extends Component {
     };
   }
 
-  layoutClasses = () => {
+  layoutClasses = (): string => {
     const classList = ["hard", "flush", "background--light-primary push-half-left rounded-top"];
 
     classList.push(css(offsetStyles.offset));
@@ -45,7 +45,7 @@ export default class PromptModal extends Component {
     return classList.join(" ");
   };
 
-  profileImageClasses = () => {
+  profileImageClasses = (): Object => {
     const classes = {};
     if (this.props.heroImage && this.props.heroImage.length > 0) {
       classes.marginTop = "-35px";
@@ -55,12 +55,12 @@ export default class PromptModal extends Component {
 
   // render the prompt modal component.
   render() {
-    const slide = {
+    const slide: Object = {
       opacity: [1, 0],
       translateZ: 0,
     };
-    const ChildComponent = this.props.component;
-    const defaultPersonImage =
+    const ChildComponent: Function = this.props.component;
+    const defaultPersonImage: string =
       "https://pbs.twimg.com/profile_images/640498978539245568/YubwjicR.png";
 
     return (
