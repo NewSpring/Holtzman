@@ -107,7 +107,7 @@ class SideModalContainerWithoutData extends Component {
 
   render() {
     const { visible, content, props } = this.props.modal;
-    if (props.promptModal) {
+    if (props && props.promptModal) {
       return (
         <PromptModal
           close={this.close}
