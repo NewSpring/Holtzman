@@ -19,7 +19,7 @@ export default StyleSheet.create({
   "prompt-panel": {
     position: "fixed",
     zIndex: 100,
-    top: 150,
+    top: 200,
     bottom: 0,
 
     width: "375px",
@@ -30,8 +30,7 @@ export default StyleSheet.create({
     "@media (max-width: 480px)": {
       width: "90%",
       right: "5%",
-      bottom: "5%",
-      top: "100px",
+      top: "150px",
     },
   },
   interior: {
