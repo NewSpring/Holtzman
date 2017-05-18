@@ -96,7 +96,6 @@ class SideModalContainerWithoutData extends Component {
     const { target } = e;
     const { id } = target;
     if (id !== "@@modal") return;
-    console.log("this.props.modal.props.forceOpen = ", this.props.modal.props.forceOpen);
     if (this.props.modal.props.forceOpen) return;
 
     this.props.dispatch(modalActions.hide());
