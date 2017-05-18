@@ -5,7 +5,7 @@
 */
 
 const initial = {
-  visible: true,
+  visible: false,
   state: "default", // "full"
   content: null, // component to render within nav
   retrigger: null,
