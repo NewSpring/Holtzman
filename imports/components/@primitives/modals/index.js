@@ -1,32 +1,11 @@
 import { Meteor } from "meteor/meteor";
 import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router";
 
 import { modal as modalActions, nav as navActions } from "../../../data/store";
 
 import Modal from "./SideModal";
 import PromptModal from "./PromptModal";
-
-const TestComponent = () => (
-  <div>
-    <h4 className="soft-half-top">
-      Hey Dude!
-    </h4>
-    <p>
-      The new better awesome amazing Retro MySpace is coming. Get notified.
-    </p>
-    <Link className="btn push-double-bottom one-whole">
-      Get Notified!
-    </Link>
-    <Link
-      className="btn--dark-tertiary push-double-bottom one-whole"
-      style={{ marginTop: "-24px" }}
-    >
-      Go Away!
-    </Link>
-  </div>
-);
 
 class SideModalContainerWithoutData extends Component {
   static propTypes = {
@@ -117,6 +96,7 @@ class SideModalContainerWithoutData extends Component {
     const { target } = e;
     const { id } = target;
     if (id !== "@@modal") return;
+    console.log("this.props.modal.props.forceOpen = ", this.props.modal.props.forceOpen);
     if (this.props.modal.props.forceOpen) return;
 
     this.props.dispatch(modalActions.hide());
@@ -125,10 +105,6 @@ class SideModalContainerWithoutData extends Component {
   captureRef = (ref) => {
     this.scrollElement = ref;
   };
-  // heroImage={
-  //   "https://s3.amazonaws.com/ns.images/newspring/collection/series_newspring/v4.sermonseries.graphics.myspace.2to1.jpg"
-  // }
-  // profileImage={"http://25.media.tumblr.com/tumblr_m57lw3KsNw1qepij6o4_r1_250.gif"}
 
   render() {
     const { visible, content, props } = this.props.modal;
@@ -136,11 +112,11 @@ class SideModalContainerWithoutData extends Component {
       return (
         <PromptModal
           close={this.close}
-          profileImage={"http://25.media.tumblr.com/tumblr_m57lw3KsNw1qepij6o4_r1_250.gif"}
+          profileImage={"https://pbs.twimg.com/profile_images/1893823484/image.jpg"}
           heroImage={
             "https://s3.amazonaws.com/ns.images/newspring/collection/series_newspring/v4.sermonseries.graphics.myspace.2to1.jpg"
           }
-          component={TestComponent}
+          component={content}
           visible={visible}
           {...this.props}
         />
