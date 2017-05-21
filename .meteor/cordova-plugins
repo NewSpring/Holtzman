@@ -2,6 +2,8 @@ cordova-fabric-plugin@1.0.8
 cordova-plugin-camera@2.3.0
 cordova-plugin-file-transfer@1.6.0
 cordova-plugin-inappbrowser@1.4.0
+cordova-plugin-fcm@file://../cordova-plugin-fcm
+>>>>>>> back to local
 cordova-plugin-media@2.4.0
 cordova-plugin-nativestorage@2.0.2
 cordova-plugin-safariviewcontroller@https://github.com/johnthepink/cordova-plugin-safariviewcontroller.git#ff8e5ccf1488e4e8ceff72f2c0ef99ce0346af25
