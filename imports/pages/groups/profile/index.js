@@ -93,6 +93,13 @@ const withGroupMutation = graphql(GROUP_MUTATION, {
 });
 
 const defaultArray = [];
+
+// UTILITIES
+const getLeaders = group => group && group.members && group.members
+  .filter((x) => x.role.toLowerCase() === "leader");
+
+const isCurrentPersonLeader = (person, leaders) => person && leaders.filter((x) => x.person.id === person.id).length;
+
 class TemplateWithoutData extends Component {
 
   static propTypes = {
@@ -201,12 +208,10 @@ class TemplateWithoutData extends Component {
       );
     }
 
-
     const { group, person } = data;
-    const leaders = group && group.members && group.members
-      .filter((x) => x.role.toLowerCase() === "leader");
+    const leaders = getLeaders(group);
+    const isLeader = isCurrentPersonLeader(person, leaders);
 
-    const isLeader = person && leaders.filter((x) => x.id === person.id).length;
     if (!group.photo) {
       group.photo = "//s3.amazonaws.com/ns.assets/apollos/group-profile-placeholder.png";
     }
@@ -273,7 +278,7 @@ const GROUP_QUERY = gql`
         schedule { description }
         members {
           role
-          person { photo, firstName, nickName, lastName }
+          person { id, photo, firstName, nickName, lastName }
         }
       }
     }
