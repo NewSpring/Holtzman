@@ -199,6 +199,18 @@ class GlobalWithoutData extends Component {
   deviceReadyFunction = (saveDeviceRegistrationId) => {
     universalLinks.subscribe("universalLinkRoute", this.universalLinkRouting);
     /* eslint-disable */
+<<<<<<< HEAD
+=======
+    FCMPlugin.onDynamicLink(({ deepLink }) => {
+      // this is a free way to parse a link without requring another lib
+      const parser = document.createElement("a");
+      parser.href = deepLink;
+      const path = parser.pathname;
+      // send to be routed :yay:
+      this.universalLinkRouting({ path });
+    }, alert);
+
+>>>>>>> back to local
     if (isIOS()) FCMPlugin.ready();
     FCMPlugin.subscribeToTopic("newspring");
     FCMPlugin.getToken((token) => {
