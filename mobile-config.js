@@ -70,8 +70,8 @@ App.configurePlugin("cordova-fabric-plugin", {
   FABRIC_API_SECRET: process.env.FABRIC_API_SECRET,
 });
 
-App.configurePlugin("phonegap-plugin-push", {
-  SENDER_ID: process.env.FIREBASE_SENDER_ID,
+App.configurePlugin("cordova-plugin-fcm", {
+  APP_DOMAIN: "rm2y5.app.goo.gl",
 });
 
 App.appendToConfig(`
@@ -114,6 +114,7 @@ App.appendToConfig(`
       </host>
       <host name="beta-my.newspring.cc" scheme="https" event="universalLinkRoute" />
       <host name="my.newspring.cc" scheme="https" event="universalLinkRoute" />
+      <host name="rm2y5.app.goo.gl" scheme="https" event="universalLinkRoute" />
     </universal-links>
 `);
 

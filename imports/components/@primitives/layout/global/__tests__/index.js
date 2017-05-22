@@ -16,7 +16,6 @@ import {
   Blank,
   GlobalData,
   URL_TITLE_QUERY,
-  SAVE_DEVICE_REGISTRATION_ID,
 } from "../";
 
 jest.mock("../../../../../deprecated/database/collections/likes", () => ({
@@ -228,27 +227,14 @@ describe("GlobalData", () => {
     Meteor.user = jest.fn(() => ({
       topics: [{}, {}],
     }));
-    const mockFetch = jest.fn(() => [{ entryId: 1 }, { entryId: 2 }]);
-    Likes.find = jest.fn(() => ({
-      fetch: mockFetch,
-    }));
-    likedActions.set = jest.fn();
+    
     topicActions.set = jest.fn();
     const wrapper = shallow(generateComponent());
 
-    expect(Meteor.subscribe).toHaveBeenCalledTimes(3);
+    expect(Meteor.subscribe).toHaveBeenCalledTimes(1);
     expect(Meteor.subscribe.mock.calls[0][0]).toBe("userData");
     expect(topicActions.set).toHaveBeenCalledTimes(1);
     expect(topicActions.set).toHaveBeenCalledWith([{}, {}]);
-
-    expect(Meteor.subscribe.mock.calls[1][0]).toBe("likes");
-    expect(Meteor.subscribe.mock.calls[2][0]).toBe("recently-liked");
-
-    expect(Likes.find).toHaveBeenCalledTimes(1);
-    expect(Likes.find).toHaveBeenCalledWith({ userId: 2 });
-    expect(mockFetch).toHaveBeenCalledTimes(1);
-    expect(likedActions.set).toHaveBeenCalledTimes(1);
-    expect(likedActions.set).toHaveBeenCalledWith([1, 2]);
   });
 });
 
@@ -406,9 +392,9 @@ describe("GlobalWithoutData", () => {
   });
 
   // test SAVE_DEVICE_REGISTRATION_ID
-  it("parses SAVE_DEVICE_REGISTRATION_ID correctly", () => {
-    expect(print(SAVE_DEVICE_REGISTRATION_ID)).toMatchSnapshot();
-  });
+  // it("parses SAVE_DEVICE_REGISTRATION_ID correctly", () => {
+  //   expect(print(SAVE_DEVICE_REGISTRATION_ID)).toMatchSnapshot();
+  // });
 
   it("tests deviceready and it's associated functions", () => {
     global.FCMPlugin = {
@@ -416,6 +402,7 @@ describe("GlobalWithoutData", () => {
       subscribeToTopic: jest.fn(),
       getToken: jest.fn(),
       onTokenRefresh: jest.fn(),
+      onDynamicLink: jest.fn(),
     };
     global.universalLinks = {
       subscribe: jest.fn(),
@@ -425,10 +412,11 @@ describe("GlobalWithoutData", () => {
     Meteor.isCordova = true;
     const wrapper = shallow(generateComponent());
     wrapper.instance().deviceReadyFunction(saveDeviceRegistrationId);
-    expect(global.universalLinks.subscribe).toHaveBeenCalledTimes(1);
-    expect(global.FCMPlugin.subscribeToTopic).toHaveBeenCalledTimes(1);
-    expect(global.FCMPlugin.subscribeToTopic).toHaveBeenCalledWith("newspring");
-    expect(global.FCMPlugin.getToken).toHaveBeenCalledTimes(1);
-    expect(global.FCMPlugin.onTokenRefresh).toHaveBeenCalledTimes(1);
+    // expect(global.universalLinks.subscribe).toHaveBeenCalledTimes(1);
+    // expect(global.FCMPlugin.subscribeToTopic).toHaveBeenCalledTimes(1);
+    // expect(global.FCMPlugin.subscribeToTopic).toHaveBeenCalledWith("newspring");
+    // expect(global.FCMPlugin.getToken).toHaveBeenCalledTimes(1);
+    // expect(global.FCMPlugin.onTokenRefresh).toHaveBeenCalledTimes(1);
+    expect(global.FCMPlugin.onDynamicLink).toHaveBeenCalledTimes(1);
   });
 });

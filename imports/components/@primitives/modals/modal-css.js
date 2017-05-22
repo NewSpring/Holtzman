@@ -28,9 +28,11 @@ export default StyleSheet.create({
     WebkitOverflowScrolling: "touch",
 
     "@media (max-width: 480px)": {
-      width: "90%",
-      right: "5%",
-      top: "150px",
+      bottom: 0,
+      top: "auto",
+      backgroundColor: "transparent",
+      width: "calc(100% - 20px)",
+      left: "10px",
     },
   },
   interior: {
