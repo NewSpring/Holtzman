@@ -10,7 +10,8 @@ type IPromptModal = {
   close: Function,
   component: Function,
   heroImage: string, // assuming this is the url to the image
-  profileImage: string // assuming this is the url to the image
+  profileImage: string, // assuming this is the url to the image
+  visible: boolean,
 };
 
 export default class PromptModal extends Component {
@@ -59,15 +60,19 @@ export default class PromptModal extends Component {
       opacity: [1, 0],
       translateZ: 0,
     };
-    const ChildComponent: Function = this.props.component;
-    const defaultPersonImage: string =
-      "https://pbs.twimg.com/profile_images/640498978539245568/YubwjicR.png";
+    const { close, component, visible } = this.props;
+
+    const ChildComponent = component;
+
+    if (!visible || !component) {
+      return <div />;
+    }
 
     return (
       <div
         className="panel overlay--solid-dark fixed"
         style={this.getContainerStyle()}
-        onClick={this.props.close}
+        onClick={close}
         id="@@modal"
       >
         <VelocityComponent animation={slide} duration={300} runOnMount>
@@ -78,28 +83,30 @@ export default class PromptModal extends Component {
                 <div>
                   <img src={this.props.heroImage} alt="hero" />
                 </div>}
-              {this.props.profileImage &&
-                this.props.profileImage.length > 0 &&
+              {this.props.profileImage && (
                 <div style={this.profileImageClasses()} className="text-center">
-                  <img
-                    src={this.props.profileImage}
-                    alt="avatar"
-                    width="64px"
-                    height="64px"
-                    style={{ border: "5px solid #fff" }}
-                    className="round"
+                  <div
+                    style={{
+                      border: this.props.heroImage ? "3px solid #fff" : "none",
+                      display: "inline-block",
+                      width: "64px",
+                      height: "64px",
+                      backgroundImage: `url('${this.props.profileImage}')`,
+                    }}
+                    className="round background--fill"
                   />
-                </div>}
-              {(!this.props.heroImage || this.props.heroImage.length === 0) &&
-                (!this.props.profileImage || this.props.profileImage.length === 0) &&
+                </div>
+              )}
+              {!this.props.heroImage && !this.props.profileImage && (
                 <div className="text-center">
-                  <img src={defaultPersonImage} alt="default" width="64px" height="64px" />
-                </div>}
+                  <img src={this.props.profileImage} alt="default" width="64px" height="64px" />
+                </div>
+              )}
               <div
-                style={{ marginTop: "-40px" }}
-                className="soft-double-top soft-sides text-center"
+                style={{ marginTop: "-40px", backgroundColor: "white" }}
+                className={`soft-double-top soft-bottom soft-sides text-center ${this.props.heroImage ? "" : "rounded-top"}`}
               >
-                <ChildComponent />
+                <ChildComponent close={this.props.close} />
               </div>
             </div>
           </section>

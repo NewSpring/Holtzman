@@ -108,13 +108,13 @@ class SideModalContainerWithoutData extends Component {
   render() {
     const { visible, content, props } = this.props.modal;
     if (props && props.promptModal) {
+      const { profile, hero } = props;
+      const userProfile = hero && !profile ? null : profile;
       return (
         <PromptModal
           close={this.close}
-          profileImage={"https://pbs.twimg.com/profile_images/1893823484/image.jpg"}
-          heroImage={
-            "https://s3.amazonaws.com/ns.images/newspring/collection/series_newspring/v4.sermonseries.graphics.myspace.2to1.jpg"
-          }
+          profileImage={(!profile && !hero) ? "//s3.amazonaws.com/ns.assets/apollos/icon.png" : userProfile}
+          heroImage={hero}
           component={content}
           visible={visible}
           {...this.props}

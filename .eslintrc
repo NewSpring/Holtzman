@@ -31,6 +31,7 @@
     "jest": true,
     "universalLinks": true,
     "FCMPlugin": true,
+    "device": true
   },
   "plugins": [
     "jsx-a11y",
