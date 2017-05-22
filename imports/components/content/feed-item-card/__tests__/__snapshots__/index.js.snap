@@ -61,15 +61,6 @@ exports[`FeedItem should have styles based on a channelName of 'articles' 1`] = 
         className="text-dark-secondary">
         Articles
       </h7>
-      <h7
-        className="text-right float-right flush-bottom text-dark-secondary"
-        style={
-          Object {
-            "marginTop": "5px",
-          }
-        }>
-        1d
-      </h7>
     </div>
   </div>
 </a>
@@ -141,15 +132,6 @@ exports[`FeedItem should have styles based on a channelName of 'series_newspring
       <h7
         className="text-light-primary">
         Series
-      </h7>
-      <h7
-        className="text-right float-right flush-bottom text-light-primary"
-        style={
-          Object {
-            "marginTop": "5px",
-          }
-        }>
-        1d
       </h7>
     </div>
   </div>
@@ -223,15 +205,6 @@ exports[`FeedItem should pull the parent color if the channelName is 'sermons' 1
         className="text-light-primary">
         Sermons
       </h7>
-      <h7
-        className="text-right float-right flush-bottom text-light-primary"
-        style={
-          Object {
-            "marginTop": "5px",
-          }
-        }>
-        1d
-      </h7>
     </div>
   </div>
 </a>
@@ -304,15 +277,6 @@ exports[`FeedItem should pull the parent image if the channelName is 'sermons' a
         className="text-light-primary">
         Sermons
       </h7>
-      <h7
-        className="text-right float-right flush-bottom text-light-primary"
-        style={
-          Object {
-            "marginTop": "5px",
-          }
-        }>
-        1d
-      </h7>
     </div>
   </div>
 </a>
@@ -384,15 +348,6 @@ exports[`FeedItem should pull the regular image if the channelName is 'sermons' 
       <h7
         className="text-light-primary">
         Sermons
-      </h7>
-      <h7
-        className="text-right float-right flush-bottom text-light-primary"
-        style={
-          Object {
-            "marginTop": "5px",
-          }
-        }>
-        1d
       </h7>
     </div>
   </div>
