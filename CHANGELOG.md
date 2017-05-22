@@ -7,12 +7,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## UNRELEASED
 ### Added
 - Added a "Prompt Modal" to prompt users of necessary information.
+- Push notifications!
+- Support for dynamic links
 ### Fixed
 - Fixed an issue with the createDataChannel not existing which caused the app
 to break on the latest Microsoft Edge releases.
 - Fixed a bug when changing credit cards during a one time gift on iOS
 
-## [5.1.0] - UNRELEASED
+## [5.1.0]
 ### Fixed
 - fixed cc exp date validation
 - Unpredictable custom tag in give/now with schedules
@@ -22,6 +24,7 @@ to break on the latest Microsoft Edge releases.
 ### Added
 - Added back the ability to save payments without a transaction.
 - Platform and version headers to api requests
+
 
 ## [5.0.22]
 ### Fixed
