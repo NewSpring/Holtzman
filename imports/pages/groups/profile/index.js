@@ -136,8 +136,8 @@ class TemplateWithoutData extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    // don't show like or share buttons for private groups
-    if (nextProps && nextProps.data && nextProps.data.group && nextProps.data.group.isPrivate){
+    // don't show like or share buttons for non-community groups (!== 25)
+    if (nextProps && nextProps.data && nextProps.data.group && nextProps.data.group.groupType !== 25){
       nextProps.dispatch(navActions.setLevel("BASIC_CONTENT"));
     }
   }
@@ -302,7 +302,7 @@ const GROUP_QUERY = gql`
           role
           person { id, photo, firstName, nickName, lastName }
         }
-        isPrivate
+        groupType
       }
     }
   }
