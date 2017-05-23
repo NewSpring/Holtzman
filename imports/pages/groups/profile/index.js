@@ -8,7 +8,7 @@ import { Meteor } from "meteor/meteor";
 import OnBoard from "../../../components/people/accounts";
 import Split, {
   Left,
-  Right,
+  Right
 } from "../../../components/@primitives/layout/split";
 
 import GoogleMap from "../../../components/@primitives/map";
@@ -41,15 +41,15 @@ export const phonePropsReducer = ({ phoneNumbers }) => ({
     phoneNumbers.loading ||
     !phoneNumbers.currentPerson.phoneNumbers.length
     ? null
-    : phoneNumbers.currentPerson.phoneNumbers,
+    : phoneNumbers.currentPerson.phoneNumbers
 });
 
 export const JoinWithPhones = graphql(PHONE_QUERY, {
   name: "phoneNumbers",
   props: phonePropsReducer,
   options: {
-    forceFetch: true,
-  },
+    forceFetch: true
+  }
 })(Join);
 
 export const PHONE_NUMBER_MUTATION = gql`
@@ -74,10 +74,10 @@ const withAddPhoneNumber = graphql(PHONE_NUMBER_MUTATION, {
             if (!success || error) return prev;
             prev.currentPerson.phoneNumbers.push({ rawNumber: phoneNumber });
             return prev;
-          },
-        },
-      }),
-  }),
+          }
+        }
+      })
+  })
 });
 
 export const GROUP_MUTATION = gql`
@@ -94,20 +94,20 @@ const withGroupMutation = graphql(GROUP_MUTATION, {
   props: ({ mutate }) => ({
     addToGroup: (groupId, message, communicationPreference) =>
       mutate({
-        variables: { groupId, message, communicationPreference },
-      }),
-  }),
+        variables: { groupId, message, communicationPreference }
+      })
+  })
 });
 
 const defaultArray = [];
 
 // UTILITIES
-const getLeaders = group =>
+export const getLeaders = group =>
   group &&
   group.members &&
   group.members.filter(x => x.role.toLowerCase() === "leader");
 
-const isCurrentPersonLeader = (person, leaders) =>
+export const isCurrentPersonLeader = (person, leaders) =>
   person &&
   Array.isArray(leaders) &&
   leaders.filter(x => x.person.id === person.id).length;
@@ -117,12 +117,12 @@ class TemplateWithoutData extends Component {
     dispatch: PropTypes.func.isRequired,
     data: PropTypes.object.isRequired,
     addPhone: PropTypes.function.isRequired,
-    addToGroup: PropTypes.function.isRequired,
+    addToGroup: PropTypes.function.isRequired
   };
 
   state = {
     phoneNumber: "",
-    communicationPreference: "No Preference",
+    communicationPreference: "No Preference"
   };
 
   componentWillMount() {
@@ -137,7 +137,12 @@ class TemplateWithoutData extends Component {
 
   componentWillReceiveProps(nextProps) {
     // don't show like or share buttons for non-community groups (!== 25)
-    if (nextProps && nextProps.data && nextProps.data.group && nextProps.data.group.groupType !== 25){
+    if (
+      nextProps &&
+      nextProps.data &&
+      nextProps.data.group &&
+      nextProps.data.group.groupType !== 25
+    ) {
       nextProps.dispatch(navActions.setLevel("BASIC_CONTENT"));
     }
   }
@@ -178,7 +183,7 @@ class TemplateWithoutData extends Component {
       .addToGroup(
         this.props.data.group.entityId,
         message,
-        this.state.communicationPreference,
+        this.state.communicationPreference
       )
       .then(response => {
         callback(null, response);
@@ -197,8 +202,8 @@ class TemplateWithoutData extends Component {
           onClick: this.sendRequest,
           onChange: this.onPhoneNumberChange,
           validatePhoneNumber: this.validatePhoneNumber,
-          onCommunicationPreferenceChange: this.onCommunicationPreferenceChange,
-        }),
+          onCommunicationPreferenceChange: this.onCommunicationPreferenceChange
+        })
       );
     };
 
@@ -207,8 +212,8 @@ class TemplateWithoutData extends Component {
     this.props.dispatch(
       modal.render(OnBoard, {
         onFinished: joinModal,
-        coverHeader: true,
-      }),
+        coverHeader: true
+      })
     );
 
     return null;
@@ -238,12 +243,15 @@ class TemplateWithoutData extends Component {
     const isLeader = isCurrentPersonLeader(person, leaders);
 
     if (!group.photo) {
-      group.photo = "//s3.amazonaws.com/ns.assets/apollos/group-profile-placeholder.png";
+      group.photo =
+        "//s3.amazonaws.com/ns.assets/apollos/group-profile-placeholder.png";
     }
 
     let markers = defaultArray;
     if (
-      group.locations && group.locations.length && group.locations[0].location
+      group.locations &&
+      group.locations.length &&
+      group.locations[0].location
     ) {
       const { latitude, longitude } = group.locations[0].location;
       markers = [{ latitude, longitude }];
@@ -310,22 +318,22 @@ const GROUP_QUERY = gql`
 
 const withGroup = graphql(GROUP_QUERY, {
   options: ownProps => ({
-    variables: { id: ownProps.params.id },
-  }),
+    variables: { id: ownProps.params.id }
+  })
 });
 
 export default connect()(
   withGroup(
-    canLike(props => props.data.loading ? null : props.data.group.id)(
+    canLike(props => (props.data.loading ? null : props.data.group.id))(
       ReactMixin.decorate(Shareable)(
         withGroupMutation(
           withAddPhoneNumber(
-            ReactMixin.decorate(Headerable)(TemplateWithoutData),
-          ),
-        ),
-      ),
-    ),
-  ),
+            ReactMixin.decorate(Headerable)(TemplateWithoutData)
+          )
+        )
+      )
+    )
+  )
 );
 
 export { TemplateWithoutData };
