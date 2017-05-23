@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Fixed
 - Fixed an issue with the createDataChannel not existing which caused the app
 to break on the latest Microsoft Edge releases.
+- Fixed a bug when changing credit cards during a one time gift on iOS
 
 ## [5.1.0] - UNRELEASED
 ### Fixed
