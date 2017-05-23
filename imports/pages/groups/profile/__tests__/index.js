@@ -10,18 +10,20 @@ import {
   PHONE_NUMBER_MUTATION,
   GROUP_MUTATION,
   phonePropsReducer,
+  getLeaders,
+  isCurrentPersonLeader
 } from "../";
 
 jest.mock("../../../../deprecated/mixins/mixins.Header", () => {});
 jest.mock("../../../../data/store", () => ({
   nav: {
-    setLevel: jest.fn(),
+    setLevel: jest.fn()
   },
   modal: {
     update: jest.fn(),
     hide: jest.fn(),
-    render: jest.fn(),
-  },
+    render: jest.fn()
+  }
 }));
 
 const defaultProps = {
@@ -34,30 +36,30 @@ const defaultProps = {
         {
           location: {
             latitude: 2,
-            longitude: 2,
-          },
-        },
+            longitude: 2
+          }
+        }
       ],
       members: [
-        { role: "default" },
-        { role: "leader" },
+        { role: "default", person: { id: 200 } },
+        { role: "leader", person: { id: 100 } }
       ],
-      photo: "http://test.com/test.jpg",
+      photo: "http://test.com/test.jpg"
     },
-    person: {},
-  },
+    person: { id: 100 }
+  }
 };
 
 const generateComponent = (additionalProps = {}) => {
   const newProps = {
     ...defaultProps,
-    ...additionalProps,
+    ...additionalProps
   };
-  return <Template { ...newProps } />;
+  return <Template {...newProps} />;
 };
 
 window.matchMedia = jest.fn().mockReturnValue({
-  matches: false,
+  matches: false
 });
 
 Meteor.isServer = false;
@@ -69,17 +71,19 @@ it("renders with props", () => {
 });
 
 it("renders loading", () => {
-  const wrapper = shallow(generateComponent({
-    data: {
-      loading: true,
-    },
-  }));
+  const wrapper = shallow(
+    generateComponent({
+      data: {
+        loading: true
+      }
+    })
+  );
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 
 it("renders without map on mobile", () => {
   const mockMatchMedia = jest.fn().mockReturnValue({
-    matches: true,
+    matches: true
   });
   window.matchMedia = mockMatchMedia;
   const wrapper = shallow(generateComponent());
@@ -98,24 +102,28 @@ it("renders without map on server", () => {
 it("updates modal on unmount", () => {
   const mockDispatch = jest.fn();
   modal.update = jest.fn();
-  const wrapper = shallow(generateComponent({
-    dispatch: mockDispatch,
-  }));
+  const wrapper = shallow(
+    generateComponent({
+      dispatch: mockDispatch
+    })
+  );
   wrapper.unmount();
   expect(mockDispatch).toHaveBeenCalledTimes(1);
   expect(modal.update).toHaveBeenCalledTimes(1);
-  expect(modal.update).toHaveBeenCalledWith({ onFinished: null});
+  expect(modal.update).toHaveBeenCalledWith({ onFinished: null });
 });
 
 it("closeModal calls preventDefault, hides modal, and adjust nav", () => {
   const mockPreventDefault = jest.fn();
   const mockDispatch = jest.fn();
   modal.hide = jest.fn();
-  const wrapper = shallow(generateComponent({
-    dispatch: mockDispatch,
-  }));
+  const wrapper = shallow(
+    generateComponent({
+      dispatch: mockDispatch
+    })
+  );
   wrapper.instance().closeModal({
-    preventDefault: mockPreventDefault,
+    preventDefault: mockPreventDefault
   });
   expect(mockPreventDefault).toHaveBeenCalledTimes(1);
   expect(mockDispatch).toHaveBeenCalledTimes(1);
@@ -127,27 +135,30 @@ it("sendRequest calls preventDefault", () => {
     response: {
       success: true,
       code: 200,
-      error: false,
-    },
+      error: false
+    }
   };
   const mockPromise = new Promise(p => p(mockPromiseData));
   const mockQuery = jest.fn(() => mockPromise);
   const mockCallback = jest.fn();
 
   const mockPreventDefault = jest.fn();
-  const mockQuerySelectorAll = jest.fn().mockReturnValue([
-    { value: "test\n" },
-  ]);
+  const mockQuerySelectorAll = jest.fn().mockReturnValue([{ value: "test\n" }]);
   const mockCurrentTarget = {
-    querySelectorAll: mockQuerySelectorAll,
+    querySelectorAll: mockQuerySelectorAll
   };
-  const wrapper = shallow(generateComponent({
-    addToGroup: mockQuery,
-  }));
-  wrapper.instance().sendRequest({
-    preventDefault: mockPreventDefault,
-    currentTarget: mockCurrentTarget,
-  }, mockCallback);
+  const wrapper = shallow(
+    generateComponent({
+      addToGroup: mockQuery
+    })
+  );
+  wrapper.instance().sendRequest(
+    {
+      preventDefault: mockPreventDefault,
+      currentTarget: mockCurrentTarget
+    },
+    mockCallback
+  );
   expect(mockPreventDefault).toHaveBeenCalledTimes(1);
   expect(mockQuerySelectorAll).toHaveBeenCalledTimes(1);
   expect(mockQuerySelectorAll).toHaveBeenCalledWith("textarea");
@@ -155,9 +166,11 @@ it("sendRequest calls preventDefault", () => {
 
 it("should reduce phonesLoading prop", () => {
   // loading key is true
-  expect(phonePropsReducer({
-    phoneNumbers: { loading: true },
-  }).phonesLoading).toEqual(true);
+  expect(
+    phonePropsReducer({
+      phoneNumbers: { loading: true }
+    }).phonesLoading
+  ).toEqual(true);
 
   // no phone numbers key
   expect(phonePropsReducer({}).phonesLoading).toEqual(true);
@@ -165,21 +178,25 @@ it("should reduce phonesLoading prop", () => {
 
 it("should reduce phones prop", () => {
   // loading key is true,
-  expect(phonePropsReducer({
-    phoneNumbers: {
-      loading: true,
-      currentPerson: { phoneNumbers: ["yo"] },
-    },
-  }).phones).toEqual(null);
+  expect(
+    phonePropsReducer({
+      phoneNumbers: {
+        loading: true,
+        currentPerson: { phoneNumbers: ["yo"] }
+      }
+    }).phones
+  ).toEqual(null);
 
   //no phone numbers
-  expect(phonePropsReducer({
-    phoneNumbers: {
-      loading: false,
-      currentPerson: { phoneNumbers: [] },
-    },
-  }).phones).toEqual(null);
-  
+  expect(
+    phonePropsReducer({
+      phoneNumbers: {
+        loading: false,
+        currentPerson: { phoneNumbers: [] }
+      }
+    }).phones
+  ).toEqual(null);
+
   // no phone numbers key
   expect(phonePropsReducer({}).phones).toEqual(null);
 });
@@ -188,9 +205,11 @@ it("join renders Join modal if user", () => {
   const mockDispatch = jest.fn();
   Meteor.userId = jest.fn().mockReturnValue(true);
   modal.render = jest.fn();
-  const wrapper = shallow(generateComponent({
-    dispatch: mockDispatch,
-  }));
+  const wrapper = shallow(
+    generateComponent({
+      dispatch: mockDispatch
+    })
+  );
   wrapper.instance().join();
   expect(mockDispatch).toHaveBeenCalledTimes(1);
   expect(modal.render).toHaveBeenCalledTimes(1);
@@ -201,7 +220,8 @@ it("join renders Join modal if user", () => {
     onClick: wrapper.instance().sendRequest,
     onChange: wrapper.instance().onPhoneNumberChange,
     validatePhoneNumber: wrapper.instance().validatePhoneNumber,
-    onCommunicationPreferenceChange: wrapper.instance().onCommunicationPreferenceChange,
+    onCommunicationPreferenceChange: wrapper.instance()
+      .onCommunicationPreferenceChange
   });
 });
 
@@ -209,15 +229,54 @@ it("join renders OnBoard modal if no user", () => {
   const mockDispatch = jest.fn();
   Meteor.userId = jest.fn().mockReturnValue(false);
   modal.render = jest.fn();
-  const wrapper = shallow(generateComponent({
-    dispatch: mockDispatch,
-  }));
+  const wrapper = shallow(
+    generateComponent({
+      dispatch: mockDispatch
+    })
+  );
   const result = wrapper.instance().join();
   expect(result).toBe(null);
   expect(mockDispatch).toHaveBeenCalledTimes(1);
   expect(modal.render).toHaveBeenCalledTimes(1);
   expect(modal.render.mock.calls[0][0]).toBe(OnBoard);
   expect(modal.render.mock.calls[0][1].coverHeader).toBe(true);
+});
+
+it("should render manage if member is a leader", () => {
+  const wrapper = shallow(generateComponent());
+  expect(shallowToJson(wrapper)).toMatchSnapshot();
+});
+
+it("should render contact if member is a leader", () => {
+  const wrapper = shallow(
+    generateComponent({
+      data: {
+        group: {
+          members: [
+            { role: "default", person: { id: 200 } },
+            { role: "leader", person: { id: 500 } }
+          ]
+        }
+      }
+    })
+  );
+  expect(shallowToJson(wrapper)).toMatchSnapshot();
+});
+
+it("should filter leaders from member list", () => {
+  const { group } = defaultProps.data;
+  const leaders = getLeaders(group);
+  expect(leaders).toHaveLength(1);
+});
+
+it("should determine if current user is a leader", () => {
+  const { group, person } = defaultProps.data;
+  const leaders = getLeaders(group);
+  const isLeader = isCurrentPersonLeader(person, leaders);
+  expect(isLeader).toBeTruthy();
+
+  const notLeader = isCurrentPersonLeader({ id: 500 }, leaders);
+  expect(notLeader).toBeFalsy();
 });
 
 it("should contain a phone number mutation", () => {
