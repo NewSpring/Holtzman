@@ -181,3 +181,21 @@ input[type=checkbox]:checked + label:before {
 @include namespace(display-inline-block) {
     display: inline-block
 }
+
+.icon-like-solid {
+  animation-duration: .3s;
+  animation-name: fadeAndScale;
+  animation-timing-function: cubic-bezier(.71,.55,.62,1.57);
+}
+
+@keyframes fadeAndScale {
+    0% {
+        transform: scale(.9, .9);
+    }
+    50% {
+        transform: scale(1.2, 1.2);
+    }
+    100% {
+        transform: scale(1, 1);
+    }
+}

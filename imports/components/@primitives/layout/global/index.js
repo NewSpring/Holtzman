@@ -16,10 +16,13 @@ import Nav from "../../nav";
 import Header from "../../UI/header";
 import { Loading } from "../../UI/states";
 
+import Likes from "../../../../deprecated/database/collections/likes";		
+
 import { linkListener } from "../../../../util/inAppLink";
 
 import {
   accounts as accountsActions,
+  liked as likedActions,
   modal as modalActions,
   topics as topicActions,
 } from "../../../../data/store";
@@ -162,6 +165,10 @@ const GlobalData = createContainer(({ dispatch, client }) => {
     Meteor.subscribe("userData");
     const topics = Meteor.user() ? Meteor.user().topics : [];
     if (topics && topics.length) dispatch(topicActions.set(topics));
+
+    Meteor.subscribe("likes");
+    const likes = Likes.find({ userId }).fetch().map((like) => like.entryId);
+    if (likes.length) dispatch(likedActions.set(likes));
   }
 
   return { userId };
