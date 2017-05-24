@@ -231,7 +231,7 @@ describe("GlobalData", () => {
     topicActions.set = jest.fn();
     const wrapper = shallow(generateComponent());
 
-    expect(Meteor.subscribe).toHaveBeenCalledTimes(1);
+    expect(Meteor.subscribe).toHaveBeenCalledTimes(2);
     expect(Meteor.subscribe.mock.calls[0][0]).toBe("userData");
     expect(topicActions.set).toHaveBeenCalledTimes(1);
     expect(topicActions.set).toHaveBeenCalledWith([{}, {}]);

@@ -157,7 +157,7 @@ const likeStyles = {
   zIndex: 10,
 };
 
-const FeedItem = ({ item, isLiked, toggleLike }: IFeedItem) => (
+export const FeedItem = ({ item, isLiked, toggleLike }: IFeedItem) => (
   <Card
     link={content.links(item)}
     classes={cardClasses(item)}

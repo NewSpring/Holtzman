@@ -65,6 +65,7 @@ exports[`Likes Wrapper should render the child component 1`] = `
       }>
       <Apollo(LikesWrapper)
         dispatch={[Function]}
+        likes={Array []}
         modal={
           Object {
             "visible": false,
@@ -72,6 +73,7 @@ exports[`Likes Wrapper should render the child component 1`] = `
         }>
         <LikesWrapper
           dispatch={[Function]}
+          likes={Array []}
           modal={
             Object {
               "visible": false,
@@ -80,12 +82,15 @@ exports[`Likes Wrapper should render the child component 1`] = `
           mutate={[Function]}>
           <TestComponent
             dispatch={[Function]}
+            isLiked={false}
+            likes={Array []}
             modal={
               Object {
                 "visible": false,
               }
             }
-            mutate={[Function]}>
+            mutate={[Function]}
+            toggleLike={[Function]}>
             <div
               id="tester">
               Test
