@@ -1,7 +1,7 @@
 cordova-fabric-plugin@1.0.8
 cordova-plugin-camera@2.3.0
 cordova-plugin-device@1.1.6
-cordova-plugin-fcm@https://github.com/NewSpring/cordova-plugin-fcm.git#513021cf26bded326966c370da4b0b9bd31bef1b
+cordova-plugin-fcm@https://github.com/NewSpring/cordova-plugin-fcm.git#5a75bb0ee8f16faed2d5a3a30bf9c0b1c3e527de
 cordova-plugin-file-transfer@1.6.0
 cordova-plugin-inappbrowser@1.4.0
 cordova-plugin-media@2.4.0
