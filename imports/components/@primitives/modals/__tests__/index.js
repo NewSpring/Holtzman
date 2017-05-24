@@ -22,6 +22,7 @@ const defaultProps = {
     content: {},
     props: {
       keepNav: false,
+      promptModal: false,
     },
   },
   navigation: {
@@ -52,6 +53,7 @@ it("updates nav if not keeping the nav and modal visible", () => {
       visible: true,
       props: {
         keepNav: false,
+        promptModal: false,
       },
     },
   }));
@@ -81,6 +83,7 @@ it("updates nav and state if visible, not level modal or down, and not keeping n
       visible: true,
       props: {
         keepNav: false,
+        promptModal: false,
       },
     },
     navigation: {
