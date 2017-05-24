@@ -147,7 +147,7 @@ export class Schedule extends Component {
   }
 
   startClick = (value: string) => {
-    const filtered = START_DATES.find(x => moment(x.value).isValid() && moment(x.value).isSame(value, "day"));
+    const filtered = START_DATES.find((x) => moment(x.value).isValid() && moment(x.value).isSame(value, "day"));
     const label = filtered ? filtered.label : "Custom"; // the tag label
 
     // DATETIME || "custom"
@@ -156,7 +156,7 @@ export class Schedule extends Component {
 
     // other tags have a start date, so update schedule
     if (value !== "custom") {
-      this.setState(s => ({ start: newValue, activeStartTag: newStartTag }));
+      this.setState(() => ({ start: newValue, activeStartTag: newStartTag }));
       this.props.saveSchedule({
         frequency: this.state.frequency,
         start: newValue,
@@ -166,7 +166,7 @@ export class Schedule extends Component {
 
     // custom doesn't need to save schedule.
     // toggle date picker and clear previous set start dates
-    this.setState(({activeStartTag}) => ({ showDatePicker: activeStartTag !== "Custom", start: null, activeStartTag: newStartTag }));
+    this.setState(({ activeStartTag }) => ({ showDatePicker: activeStartTag !== "Custom", start: null, activeStartTag: newStartTag }));
   }
 
   onDayClick = (e, day, { selected, disabled }) => {
