@@ -31,18 +31,22 @@ export const TOGGLE_LIKE_MUTATION = gql`
 
 const withToggleLike = graphql(TOGGLE_LIKE_MUTATION, {});
 
-export const classWrapper = (propsReducer: Function) => (WrappedComponent: any) => {
+export const classWrapper = (
+  propsReducer: Function,
+  updateNav: boolean = true
+) => (WrappedComponent: any) => {
   type ILikesWrapper = {
     dispatch: Function,
     mutate: Function,
     modal: Object,
+    likes: string[]
   };
 
   class LikesWrapper extends Component {
     props: ILikesWrapper;
 
     componentWillMount() {
-      if (!process.env.WEB) {
+      if (!process.env.WEB && updateNav) {
         this.props.dispatch(navActions.setLevel("CONTENT"));
         this.props.dispatch(navActions.setAction("CONTENT", {
           id: 2,
@@ -52,7 +56,7 @@ export const classWrapper = (propsReducer: Function) => (WrappedComponent: any) 
     }
 
     componentWillUnmount() {
-      if (!process.env.WEB) this.props.dispatch(navActions.setLevel("TOP"));
+      if (!process.env.WEB && updateNav) this.props.dispatch(navActions.setLevel("TOP"));
     }
 
     getNodeId = () => {
@@ -85,11 +89,23 @@ export const classWrapper = (propsReducer: Function) => (WrappedComponent: any) 
       return { type: "FALSY", payload: {} };
     }
 
-    render = () => <WrappedComponent {...this.props} />;
+    render() {
+      const id = this.getNodeId(this.props);
+      const { likes } = this.props;
+      const isLiked = Boolean(id) && likes.length > 0 && likes.filter((x) => id === x).length !== 0;
+      return (
+        <WrappedComponent
+          {...this.props}
+          toggleLike={this.toggleLike}
+          isLiked={isLiked}
+        />
+      );
+    }
   }
 
   const mapStateToProps = (state) => ({
     modal: state.modal,
+    likes: state.liked.likes,
   });
 
   return connect(mapStateToProps)(withToggleLike(LikesWrapper));

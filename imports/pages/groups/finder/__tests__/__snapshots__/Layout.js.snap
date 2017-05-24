@@ -87,12 +87,12 @@ exports[`test renders disabled tags 1`] = `
       className="grid">
       <div
         className="grid__item one-whole one-half@palm-wide-and-up">
-        <FeedItem
+        <Connect(Apollo(LikesWrapper))
           item={Object {}} />
       </div>
       <div
         className="grid__item one-whole one-half@palm-wide-and-up">
-        <FeedItem
+        <Connect(Apollo(LikesWrapper))
           item={Object {}} />
       </div>
     </div>
@@ -178,12 +178,12 @@ exports[`test renders loading if no tags 1`] = `
       className="grid">
       <div
         className="grid__item one-whole one-half@palm-wide-and-up">
-        <FeedItem
+        <Connect(Apollo(LikesWrapper))
           item={Object {}} />
       </div>
       <div
         className="grid__item one-whole one-half@palm-wide-and-up">
-        <FeedItem
+        <Connect(Apollo(LikesWrapper))
           item={Object {}} />
       </div>
     </div>
@@ -280,12 +280,12 @@ exports[`test renders with props 1`] = `
       className="grid">
       <div
         className="grid__item one-whole one-half@palm-wide-and-up">
-        <FeedItem
+        <Connect(Apollo(LikesWrapper))
           item={Object {}} />
       </div>
       <div
         className="grid__item one-whole one-half@palm-wide-and-up">
-        <FeedItem
+        <Connect(Apollo(LikesWrapper))
           item={Object {}} />
       </div>
     </div>

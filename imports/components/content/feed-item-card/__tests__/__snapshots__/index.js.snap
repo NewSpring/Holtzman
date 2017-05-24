@@ -62,14 +62,19 @@ exports[`FeedItem should have styles based on a channelName of 'articles' 1`] = 
         Articles
       </h7>
       <h7
-        className="text-right float-right flush-bottom text-dark-secondary"
+        className="text-right float-right flush-bottom icon-like text-dark-secondary"
+        onClick={[Function]}
         style={
           Object {
-            "marginTop": "5px",
+            "bottom": 0,
+            "fontSize": "1.15em",
+            "marginTop": "-1px",
+            "padding": "20px 20px",
+            "position": "absolute",
+            "right": 0,
+            "zIndex": 10,
           }
-        }>
-        1d
-      </h7>
+        } />
     </div>
   </div>
 </a>
@@ -143,14 +148,19 @@ exports[`FeedItem should have styles based on a channelName of 'series_newspring
         Series
       </h7>
       <h7
-        className="text-right float-right flush-bottom text-light-primary"
+        className="text-right float-right flush-bottom icon-like text-light-primary"
+        onClick={[Function]}
         style={
           Object {
-            "marginTop": "5px",
+            "bottom": 0,
+            "fontSize": "1.15em",
+            "marginTop": "-1px",
+            "padding": "20px 20px",
+            "position": "absolute",
+            "right": 0,
+            "zIndex": 10,
           }
-        }>
-        1d
-      </h7>
+        } />
     </div>
   </div>
 </a>
@@ -224,14 +234,19 @@ exports[`FeedItem should pull the parent color if the channelName is 'sermons' 1
         Sermons
       </h7>
       <h7
-        className="text-right float-right flush-bottom text-light-primary"
+        className="text-right float-right flush-bottom icon-like text-light-primary"
+        onClick={[Function]}
         style={
           Object {
-            "marginTop": "5px",
+            "bottom": 0,
+            "fontSize": "1.15em",
+            "marginTop": "-1px",
+            "padding": "20px 20px",
+            "position": "absolute",
+            "right": 0,
+            "zIndex": 10,
           }
-        }>
-        1d
-      </h7>
+        } />
     </div>
   </div>
 </a>
@@ -305,14 +320,19 @@ exports[`FeedItem should pull the parent image if the channelName is 'sermons' a
         Sermons
       </h7>
       <h7
-        className="text-right float-right flush-bottom text-light-primary"
+        className="text-right float-right flush-bottom icon-like text-light-primary"
+        onClick={[Function]}
         style={
           Object {
-            "marginTop": "5px",
+            "bottom": 0,
+            "fontSize": "1.15em",
+            "marginTop": "-1px",
+            "padding": "20px 20px",
+            "position": "absolute",
+            "right": 0,
+            "zIndex": 10,
           }
-        }>
-        1d
-      </h7>
+        } />
     </div>
   </div>
 </a>
@@ -386,14 +406,19 @@ exports[`FeedItem should pull the regular image if the channelName is 'sermons' 
         Sermons
       </h7>
       <h7
-        className="text-right float-right flush-bottom text-light-primary"
+        className="text-right float-right flush-bottom icon-like text-light-primary"
+        onClick={[Function]}
         style={
           Object {
-            "marginTop": "5px",
+            "bottom": 0,
+            "fontSize": "1.15em",
+            "marginTop": "-1px",
+            "padding": "20px 20px",
+            "position": "absolute",
+            "right": 0,
+            "zIndex": 10,
           }
-        }>
-        1d
-      </h7>
+        } />
     </div>
   </div>
 </a>
