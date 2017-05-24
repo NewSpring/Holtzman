@@ -110,6 +110,8 @@ export const Finances = () => {
         </div>
         <div className="soft-sides">
           <small className="text-center"><em>Lexington campus merged with Columbia campus on Oct. 30.</em></small>
+          <br />
+          <small className="text-center"><em>Financials have been audited.</em></small>
         </div>
       </div>
       <div className="background--light-primary text-center soft-double-top">
