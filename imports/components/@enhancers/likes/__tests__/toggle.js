@@ -17,6 +17,7 @@ const mockStore = {
   subscribe: jest.fn(),
   dispatch: jest.fn(),
   modal: { visible: false },
+  liked: { likes: [] }
 };
 
 const mockClient = {
@@ -29,6 +30,7 @@ Meteor.userId = jest.fn();
 const renderComponent = (additionalProps) => {
   const defaultProps = {
     modal: { visible: false },
+    liked: { likes: [] }
   }
   const Wrapped = classWrapper(jest.fn(() => "12345"))(TestComponent);
   return (
