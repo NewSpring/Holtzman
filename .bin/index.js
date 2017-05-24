@@ -128,7 +128,7 @@ Vorpal
     }
 
     var meteorArgs = [ "--settings" ];
-    if (options.ios && !options.device) meteorArgs.unshift("run", "ios", "--mobile-server", "http://localhost:3000");
+    if (options.ios && !options.device) meteorArgs.unshift("run", "ios");
     if (options.android && !options.device) meteorArgs.unshift("run", "android");
     if (options.ios && options.device) meteorArgs.unshift("run", "ios-device");
     if (options.android && options.device) meteorArgs.unshift("run", "android-device");
