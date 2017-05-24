@@ -15,6 +15,7 @@ const initial = {
     styles: {}, // styles to be set on modal component
     keepNav: false,
     coverMiniPlayer: true,
+    promptModal: false,
   },
 };
 
