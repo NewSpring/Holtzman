@@ -8,6 +8,8 @@ import FeedItem from "../../../components/content/feed-item-card";
 import SideBySide from "../../../components/@primitives/UI/cards/SideBySideCard";
 import Tag from "../../../components/@primitives/UI/tags";
 
+import GroupsILead from "../../../components/groups/groups-i-lead";
+
 /* eslint-disable max-len */
 const Layout = ({
   tags,
@@ -26,39 +28,47 @@ const Layout = ({
       image="https://dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/groups/groups.2x1_2000_1000_90_a789ae07aae81961.jpg"
     />
 
-    {/* Tags :rocket: */}
-    <div
-      className={
-        "soft-half soft-double-ends soft-double-sides@palm-wide " +
-        "push-double@lap-and-up soft-double@lap-wide-and-up text-center"
-      }
-    >
-      <h3 className="flush-bottom">Find My People</h3>
-      <h6 className="soft-half-bottom@handheld soft-bottom@anchored">
-        <em>Select multiple tags to find even more groups</em>
-      </h6>
-      <div className="push-ends soft-double-sides@lap-and-up push-double-sides@anchored">
-        {/* weird SSR stuff here to investigate */}
-        {tags.map((tag, i) => <Tag className="" onClick={tagOnClick} key={i} val={tag.value} />)}
-      </div>
-      {(() => {
-        if (!tags.length) {
-          return <div className="one-whole text-center"><Loading /></div>;
-        }
+    <GroupsILead />
 
-        const classes = ["btn", "push-top@lap-and-up"];
-        if (!canSearchTags) classes.push("btn--disabled");
-        // XXX why can't I just pass in the function here?
-        return (
-          <button
-            disabled={!canSearchTags}
-            onClick={(e) => submitTags(e)}
-            className={classes.join(" ")}
-          >
-            Let&#39;s Go!
-          </button>
-        );
-      })()}
+    {/* Tags :rocket: */}
+    <div className="background--light-primary soft-double-sides@lap-wide-and-up">
+      <div
+        className={
+          "soft-half soft-double-ends " +
+          "push-double@lap-and-up soft@lap-wide-and-up text-center"
+        }
+      >
+        <h3 className="flush-bottom">Find My People</h3>
+        <h6 className="soft-half-bottom@handheld soft-bottom@anchored">
+          <em>Select multiple tags to find even more groups</em>
+        </h6>
+        <div className="push-ends soft-double-sides@lap-and-up push-double-sides@anchored">
+          {/* weird SSR stuff here to investigate */}
+          {tags.map((tag, i) => <Tag className="" onClick={tagOnClick} key={i} val={tag.value} />)}
+        </div>
+        {(() => {
+          if (!tags.length) {
+            return <div className="one-whole text-center"><Loading /></div>;
+          }
+
+          const classes = ["btn", "push-top@lap-and-up"];
+          if (!canSearchTags) classes.push("btn--disabled");
+          // XXX why can't I just pass in the function here?
+          return (
+            <button
+              disabled={!canSearchTags}
+              onClick={(e) => submitTags(e)}
+              className={classes.join(" ")}
+            >
+              Let&#39;s Go!
+            </button>
+          );
+        })()}
+      </div>
+    </div>
+
+    <div className="soft-sides background--light-primary">
+      <hr className="flush" />
     </div>
 
     {/* Search */}
