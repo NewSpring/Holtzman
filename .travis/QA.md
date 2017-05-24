@@ -12,5 +12,7 @@
 - [ ] Locations
 - [ ] Search
 - [ ] Account Changes
+- [ ] Push notifications
+- [ ] Open in app (dynamic links)
 - [ ] Live
 - [ ] Sprint Features
