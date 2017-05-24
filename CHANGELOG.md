@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## UNRELEASED
+### Changed
+- Updated numbers on financial report and added button to detailed pdf
 ### Fixed
 - Fixed an issue with the createDataChannel not existing which caused the app
 to break on the latest Microsoft Edge releases.
