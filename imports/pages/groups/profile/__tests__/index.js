@@ -1,4 +1,4 @@
-import { shallow } from "enzyme";
+import { shallow, mount } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import { Meteor } from "meteor/meteor";
 import { print } from "graphql-tag/printer";
@@ -79,6 +79,17 @@ it("renders loading", () => {
     })
   );
   expect(shallowToJson(wrapper)).toMatchSnapshot();
+});
+
+it("doesn't dispatch actions if group type is incorrect", () => {
+  const mockDispatch = jest.fn();
+  const wrapper = shallow(
+    generateComponent({
+      dispatch: mockDispatch
+    })
+  );
+  wrapper.setProps({ data: { group: { groupType: 25 } } });
+  expect(mockDispatch).not.toHaveBeenCalled();
 });
 
 it("renders without map on mobile", () => {
