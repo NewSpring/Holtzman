@@ -1,6 +1,7 @@
 // @flow
 
 import Card from "../../@primitives/UI/cards/Card";
+import canLike from "../../@enhancers/likes/toggle";
 import styles from "../../../util/styles";
 import backgrounds from "../../../util/backgrounds";
 import content from "../../../util/content";
@@ -68,6 +69,19 @@ const h4Classes = (item: Object): string =>
 const categoryClasses = (item: Object): string =>
   !isLight(item) ? "text-light-primary" : "text-dark-secondary";
 
+const likeClasses = (item: Object, isLiked): string => {
+  const classes = ["text-right", "float-right", "flush-bottom", "icon-like"];
+  if (!isLight(item)) {		
+    classes.push("text-light-primary");
+  } else {		
+    classes.push("text-dark-secondary");
+  }
+
+  if (isLiked) classes.push("icon-like-solid");	
+
+  return classes.join(" ");		
+};
+
 const iconClasses = (item: Object): string => {
   let classes = `soft-half-right ${categories.icon(item)} `;
   classes += !isLight(item) ? "text-light-primary" : "text-dark-secondary";
@@ -116,10 +130,34 @@ const itemStyles = (item: Object): Object => {
 };
 
 type IFeedItem = {
-  item: Object
+  item: {
+    entryId: string,
+    title: string
+  },
+  isLiked: boolean,
+  toggleLike: () => void
 };
 
-const FeedItem = ({ item }: IFeedItem) => (
+export const stopClick = (fn: () => void) => (e: Event) => {
+  console.log(e);
+  if (e && e.stopPropagation) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+  fn();
+};
+
+const likeStyles = {
+  marginTop: "-1px",
+  fontSize: "1.15em",
+  position: "absolute",
+  right: 0,
+  padding: "20px 20px",
+  bottom: 0,
+  zIndex: 10,
+};
+
+const FeedItem = ({ item, isLiked, toggleLike }: IFeedItem) => (
   <Card
     link={content.links(item)}
     classes={cardClasses(item)}
@@ -136,8 +174,9 @@ const FeedItem = ({ item }: IFeedItem) => (
       <h4 className={h4Classes(item)}>{item.title}</h4>
       <i className={iconClasses(item)} />
       <h7 className={categoryClasses(item)}>{categories.name(item)}</h7>
+      <h7 onClick={stopClick(toggleLike)} style={likeStyles} className={likeClasses(item, isLiked)}></h7>
     </div>
   </Card>
 );
 
-export default FeedItem;
+export default canLike(({ item: { entryId } }: IFeedItem) => entryId, false)(FeedItem);
