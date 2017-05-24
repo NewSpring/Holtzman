@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Updated the feed card to remove the time stamp.
 - Updated the home feed to no longer have the first card be a hero card. It's now
 a regular card just like everything else.
+- Updated numbers on financial report and added button to detailed pdf
 ### Added
 - Added a "Prompt Modal" to prompt users of necessary information.
 - Push notifications!
@@ -16,6 +17,7 @@ a regular card just like everything else.
 ### Fixed
 - Fixed an issue with the createDataChannel not existing which caused the app
 to break on the latest Microsoft Edge releases.
+- Fixed a bug when changing credit cards during a one time gift on iOS
 
 ## [5.1.0]
 ### Fixed
