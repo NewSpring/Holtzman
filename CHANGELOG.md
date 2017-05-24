@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Fixed an issue with the createDataChannel not existing which caused the app
 to break on the latest Microsoft Edge releases.
 - Fixed a bug when changing credit cards during a one time gift on iOS
+- Fixed a bug with the user likes list not displaying likes
+when the data being returned had a null item.
 
 ## [5.1.0] - UNRELEASED
 ### Fixed
