@@ -8,6 +8,7 @@ export function getImage(images: [Object], label: string = "2:1") {
   if (!images || !images.length) return "";
   let selectedImage = "";
 
+  // eslint-disable-next-line
   for (const image of images) {
     if (image.fileLabel === label) {
       selectedImage = image.url;
