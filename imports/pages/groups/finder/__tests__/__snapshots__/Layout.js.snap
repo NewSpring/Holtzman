@@ -40,9 +40,17 @@ exports[`test renders disabled tags 1`] = `
     </div>
   </div>
   <div
-    className="soft-sides background--light-primary">
-    <hr
-      className="flush" />
+    className="soft-sides soft-double-sides@lap-and-up background--light-primary">
+    <div
+      className="soft@lap-and-up">
+      <hr
+        className="flush outlined--light"
+        style={
+          Object {
+            "borderWidth": "1px",
+          }
+        } />
+    </div>
   </div>
   <div
     className="soft soft-double-ends soft-double@lap-and-up text-center background--light-primary">
@@ -140,9 +148,17 @@ exports[`test renders loading if no tags 1`] = `
     </div>
   </div>
   <div
-    className="soft-sides background--light-primary">
-    <hr
-      className="flush" />
+    className="soft-sides soft-double-sides@lap-and-up background--light-primary">
+    <div
+      className="soft@lap-and-up">
+      <hr
+        className="flush outlined--light"
+        style={
+          Object {
+            "borderWidth": "1px",
+          }
+        } />
+    </div>
   </div>
   <div
     className="soft soft-double-ends soft-double@lap-and-up text-center background--light-primary">
@@ -251,9 +267,17 @@ exports[`test renders with props 1`] = `
     </div>
   </div>
   <div
-    className="soft-sides background--light-primary">
-    <hr
-      className="flush" />
+    className="soft-sides soft-double-sides@lap-and-up background--light-primary">
+    <div
+      className="soft@lap-and-up">
+      <hr
+        className="flush outlined--light"
+        style={
+          Object {
+            "borderWidth": "1px",
+          }
+        } />
+    </div>
   </div>
   <div
     className="soft soft-double-ends soft-double@lap-and-up text-center background--light-primary">
