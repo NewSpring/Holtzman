@@ -127,7 +127,7 @@ Vorpal
       Rimraf(Path.join(app, ".meteor/local"));
     }
 
-    var meteorArgs = [ "--verbose", "--mobile-server=192.168.1.14:3000", "--settings" ];
+    var meteorArgs = [ "--settings" ];
     if (options.ios && !options.device) meteorArgs.unshift("run", "ios");
     if (options.android && !options.device) meteorArgs.unshift("run", "android");
     if (options.ios && options.device) meteorArgs.unshift("run", "ios-device");
