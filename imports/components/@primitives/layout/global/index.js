@@ -1,5 +1,7 @@
 import { Component, PropTypes } from "react";
 import { Meteor } from "meteor/meteor";
+import moment from "moment";
+import { flatten, pluck } from "ramda";
 import { connect } from "react-redux";
 import { css } from "aphrodite";
 import { withApollo } from "react-apollo";
@@ -7,19 +9,18 @@ import gql from "graphql-tag";
 import createContainer from "../../../../deprecated/meteor/react-meteor-data";
 import { routeActions } from "../../../../data/store/routing";
 
+import NotificationRequest from "./NotificationRequest";
 import Modal from "../../modals";
 import Meta from "../../../shared/meta";
 import Nav from "../../nav";
 import Header from "../../UI/header";
 import { Loading } from "../../UI/states";
 
-import Likes from "../../../../deprecated/database/collections/likes";
-
 import { linkListener } from "../../../../util/inAppLink";
 
 import {
   accounts as accountsActions,
-  liked as likedActions,
+  modal as modalActions,
   topics as topicActions,
 } from "../../../../data/store";
 
@@ -74,6 +75,39 @@ App.propTypes = {
 
 const Blank = () => (<div />);
 
+const PERSON_QUERY = gql`
+  query GetPerson {
+    person: currentPerson {
+      attributes(key:"NotificationIgnoreDate"){
+        values {
+          value
+        }
+      }   
+    }
+  }
+`;
+
+export const promptNotify = (client, dispatch) => () => {
+  const lookup = (token) => {
+    // no need to lookup anything since notifications are already there
+    if (token === true) return;
+
+    client.query({ query: PERSON_QUERY })
+      .then((result) => {
+        const current = flatten(pluck("values", result.data.person.attributes));
+        if (current.length && moment(current[0].value).isAfter(moment())) return;
+        // wait three seconds after app launch before asking for permission
+        setTimeout(() => {
+          dispatch(modalActions.render(NotificationRequest, {
+            promptModal: true,
+          }));
+        }, 3000);
+      });
+  };
+
+  NativeStorage.getItem("pushNotifications", lookup, lookup);
+};
+
 // Global Data is a Tracker aware data fetching container
 // it has no children to avoid reredering any child elements on change
 // it pretty much just gives us Tracker + redux together
@@ -118,20 +152,16 @@ const GlobalData = createContainer(({ dispatch, client }) => {
 
   if (userId) {
     dispatch(accountsActions.authorize(true));
+    if (!hasBeenSignedIn && Meteor.isCordova) {
+      document.addEventListener("deviceready", promptNotify(client, dispatch), false);
+    }
+
     hasBeenSignedIn = true;
 
     // Load in topics from user profile
     Meteor.subscribe("userData");
     const topics = Meteor.user() ? Meteor.user().topics : [];
     if (topics && topics.length) dispatch(topicActions.set(topics));
-
-
-    // XXX which one?
-    // XXX remove this section and replace with Heighliner implementation
-    Meteor.subscribe("likes");
-    Meteor.subscribe("recently-liked");
-    const likes = Likes.find({ userId }).fetch().map((like) => like.entryId);
-    if (likes.length) dispatch(likedActions.set(likes));
   }
 
   return { userId };
@@ -168,14 +198,27 @@ class GlobalWithoutData extends Component {
   componentWillMount() {
     if (Meteor.isCordova) {
       document.addEventListener("click", linkListener);
-      document.addEventListener("deviceready", () => {
-        universalLinks.subscribe("universalLinkRoute", this.universalLinkRouting);
-      }, false);
+      document.addEventListener("deviceready", this.deviceReadyFunction, false);
     }
   }
 
   componentWillUnMount() {
     if (Meteor.isCordova) universalLinks.unsubscribe("universalLinkRoute");
+  }
+
+  deviceReadyFunction = () => {
+    universalLinks.subscribe("universalLinkRoute", this.universalLinkRouting);
+    /* eslint-disable */
+    FCMPlugin.onDynamicLink(({ deepLink }) => {
+      console.log(deepLink);
+      // this is a free way to parse a link without requring another lib
+      const parser = document.createElement("a");
+      parser.href = deepLink;
+      const path = parser.pathname;
+      // send to be routed :yay:
+      this.universalLinkRouting({ path });
+    }, alert);
+    /* eslint-enable */
   }
 
   universalLinkRouting = ({ path }) => {
