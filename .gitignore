@@ -70,3 +70,5 @@ docs
 .vscode
 tsconfig.json
 jsconfig.json
+GoogleService-Info.plist
+google-services.json

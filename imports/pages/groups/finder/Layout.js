@@ -67,8 +67,10 @@ const Layout = ({
       </div>
     </div>
 
-    <div className="soft-sides background--light-primary">
-      <hr className="flush" />
+    <div className="soft-sides soft-double-sides@lap-and-up background--light-primary">
+      <div className="soft@lap-and-up">
+        <hr className="flush outlined--light" style={{ borderWidth: "1px" }} />
+      </div>
     </div>
 
     {/* Search */}
