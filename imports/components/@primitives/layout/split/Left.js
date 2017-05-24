@@ -1,7 +1,6 @@
 import { Component, PropTypes } from "react";
 
 export default class Left extends Component {
-
   static propTypes = {
     classes: PropTypes.array,
     theme: PropTypes.string,
@@ -11,7 +10,7 @@ export default class Left extends Component {
     image: PropTypes.string,
     styles: PropTypes.object,
     children: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
-  }
+  };
 
   layoutClasses = () => {
     let classes = [
@@ -27,6 +26,8 @@ export default class Left extends Component {
 
     if (this.props.width) {
       classes.push(this.props.width);
+    } else if (process.env.NATIVE) {
+      classes.push("one-whole@lap-and-up");
     } else {
       classes.push("seven-twelfths@lap-and-up");
     }
@@ -40,7 +41,7 @@ export default class Left extends Component {
     }
 
     return classes.join(" ");
-  }
+  };
 
   styles = () => {
     const defaults = {
@@ -56,7 +57,7 @@ export default class Left extends Component {
     }
 
     return defaults;
-  }
+  };
 
   render() {
     return (
@@ -68,5 +69,4 @@ export default class Left extends Component {
       </section>
     );
   }
-
 }

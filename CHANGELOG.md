@@ -5,6 +5,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## UNRELEASED
+### Updated
+- Updated the feed card to remove the time stamp.
+- Updated the home feed to no longer have the first card be a hero card. It's now
+a regular card just like everything else.
 ### Fixed
 - Fixed an issue with the createDataChannel not existing which caused the app
 to break on the latest Microsoft Edge releases.
