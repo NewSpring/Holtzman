@@ -18,7 +18,7 @@ const fundData = [
   { campus: "Clemson", amount: 1232141.32 },
   { campus: "Columbia*", amount: 4657366.47 },
   { campus: "Florence", amount: 2884996.14 },
-  { campus: "Greenville", amount: 8151610.15 },
+  { campus: "Greenville", amount: 8224077.56 },
   { campus: "Greenwood", amount: 1820647.55 },
   { campus: "Hilton Head", amount: 338145.47 },
   { campus: "Lexington*", amount: 1265007.66 },
@@ -129,61 +129,54 @@ export const Finances = () => {
         </div>
         <div className="floating">
           <div className="soft-double-sides soft-sides@handheld text-center three-quarters@lap-wide-and-up nine-tenths@lap floating__item">
-            <hr className="visuallyhidden@handheld push-ends" style={{ borderTop: "1px solid #dddddd" }} />
-            <Story
-              image={"//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/stories/story-img1.png"}
-              content={"<p>&#34;We gave to the Clemson building campaign because we saw NewSpring's impact on our own daughter when she was at college. We're excited to see the lives that will be changed in and around Clemson and from all over the world because of the new campus.&#34;</p>"}
-              name={"Carol and Laurie Brown"}
-              location={"Sumter"}
-              heading={"Meet givers"}
-            />
-          </div>
-        </div>
-      </div>
-      <div className="one-whole floating text-center background--light-secondary soft-sides soft-double-ends">
-        <div className="grid three-quarters@lap-wide-and-up floating__item push-ends">
-          <div className="grid__item one-half@lap-and-up one-whole">
-            <h3
-              className="italic"
-              style={{
-                fontFamily: "ff-meta-serif-web-pro, serif",
-              }}
-            >
-              We had
-            </h3>
-            <FitText compressor={0.5}>
-              <h1
-                className="uppercase flush-bottom soft-half-bottom"
-                style={{
-                  fontWeight: "900",
-                }}
-              >
-                5,400
-              </h1>
-            </FitText>
-            <h3>first time givers</h3>
-          </div>
-          <div className="grid__item one-half@lap-and-up">
-            <h3
-              className="italic"
-              style={{
-                fontFamily: "ff-meta-serif-web-pro, serif",
-              }}
-            >
-              and
-            </h3>
-            <FitText compressor={0.5}>
-              <h1
-                className="uppercase flush-bottom soft-half-bottom"
-                style={{
-                  fontWeight: "900",
-                }}
-              >
-                18,173
-              </h1>
-            </FitText>
-            <div className="floating text-center">
-              <h3 className="floating__item push-half-bottom">households gave.</h3>
+            <hr className="push-ends" style={{ borderTop: "1px solid #dddddd" }} />
+            <div className="soft-ends">
+              <div className="grid push-ends">
+                <div className="grid__item one-half@lap-and-up one-whole">
+                  <h3
+                    className="italic"
+                    style={{
+                      fontFamily: "ff-meta-serif-web-pro, serif",
+                    }}
+                  >
+                    We had
+                  </h3>
+                  <FitText compressor={0.5}>
+                    <h1
+                      className="uppercase flush-bottom soft-half-bottom"
+                      style={{
+                        fontWeight: "900",
+                      }}
+                    >
+                      5,400
+                    </h1>
+                  </FitText>
+                  <h3>first time givers</h3>
+                </div>
+                <div className="grid__item one-half@lap-and-up">
+                  <h3
+                    className="italic"
+                    style={{
+                      fontFamily: "ff-meta-serif-web-pro, serif",
+                    }}
+                  >
+                    and
+                  </h3>
+                  <FitText compressor={0.5}>
+                    <h1
+                      className="uppercase flush-bottom soft-half-bottom"
+                      style={{
+                        fontWeight: "900",
+                      }}
+                    >
+                      18,173
+                    </h1>
+                  </FitText>
+                  <div className="floating text-center">
+                    <h3 className="floating__item push-half-bottom">households gave.</h3>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
