@@ -13,10 +13,24 @@ fragment ContentCard on Content {
   id
   title
   channelName
+  parent {
+    channelName
+    id
+    content {
+      images(sizes: ["medium"]) {
+        url
+        label
+        fileLabel
+        id
+      }
+    }
+  }
   content {
-    images(sizes: ["SMALL", "MEDIUM"]) {
+    images(sizes: ["medium"]) {
       url
       label
+      fileLabel
+      id
     }
   }
 }
@@ -31,74 +45,38 @@ fragment GroupCard on Group {
 `;
 
 exports[`Likes Wrapper should render the child component 1`] = `
-<Provider
-  store={
+<LikesWrapper
+  dispatch={[Function]}
+  liked={
     Object {
-      "dispatch": [Function],
-      "getState": [Function],
-      "replaceReducer": [Function],
-      "subscribe": [Function],
-      Symbol(observable): [Function],
+      "likes": Array [],
+    }
+  }
+  likes={Array []}
+  modal={
+    Object {
+      "visible": false,
     }
   }>
-  <ApolloProvider
-    client={
+  <TestComponent
+    dispatch={[Function]}
+    isLiked={false}
+    liked={
       Object {
-        "initStore": [Function],
-        "mutate": [Function],
+        "likes": Array [],
       }
     }
-    store={
+    likes={Array []}
+    modal={
       Object {
-        "dispatch": [Function],
-        "getState": [Function],
-        "replaceReducer": [Function],
-        "subscribe": [Function],
-        Symbol(observable): [Function],
+        "visible": false,
       }
-    }>
-    <Connect(Apollo(LikesWrapper))
-      modal={
-        Object {
-          "visible": false,
-        }
-      }>
-      <Apollo(LikesWrapper)
-        dispatch={[Function]}
-        likes={Array []}
-        modal={
-          Object {
-            "visible": false,
-          }
-        }>
-        <LikesWrapper
-          dispatch={[Function]}
-          likes={Array []}
-          modal={
-            Object {
-              "visible": false,
-            }
-          }
-          mutate={[Function]}>
-          <TestComponent
-            dispatch={[Function]}
-            isLiked={false}
-            likes={Array []}
-            modal={
-              Object {
-                "visible": false,
-              }
-            }
-            mutate={[Function]}
-            toggleLike={[Function]}>
-            <div
-              id="tester">
-              Test
-            </div>
-          </TestComponent>
-        </LikesWrapper>
-      </Apollo(LikesWrapper)>
-    </Connect(Apollo(LikesWrapper))>
-  </ApolloProvider>
-</Provider>
+    }
+    toggleLike={[Function]}>
+    <div
+      id="tester">
+      Test
+    </div>
+  </TestComponent>
+</LikesWrapper>
 `;
