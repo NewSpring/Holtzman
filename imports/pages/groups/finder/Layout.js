@@ -34,7 +34,7 @@ const Layout = ({
     <div className="background--light-primary soft-double-sides@lap-wide-and-up">
       <div
         className={
-          "soft-half soft-double-ends " +
+          "soft soft-double-ends " +
           "push-double@lap-and-up soft@lap-wide-and-up text-center"
         }
       >

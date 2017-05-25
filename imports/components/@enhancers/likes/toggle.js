@@ -32,7 +32,7 @@ export const TOGGLE_LIKE_MUTATION = gql`
 const withToggleLike = graphql(TOGGLE_LIKE_MUTATION, {});
 
 export const classWrapper = (
-  propsReducer: Function,
+  propsReducer: Function = () => null,
   updateNav: boolean = true
 ) => (WrappedComponent: any) => {
   type ILikesWrapper = {
@@ -59,13 +59,8 @@ export const classWrapper = (
       if (!process.env.WEB && updateNav) this.props.dispatch(navActions.setLevel("TOP"));
     }
 
-    getNodeId = () => {
-      if (propsReducer && typeof propsReducer === "function") {
-        return propsReducer(this.props);
-      }
-      console.warn("propsReducer was either not passed, or is not a function");
-      return null;
-    };
+    // has a default propsReducer that returns null if not passed
+    getNodeId = () => propsReducer(this.props);
 
     toggleLike = () => {
       const { dispatch, mutate } = this.props;
@@ -103,12 +98,19 @@ export const classWrapper = (
     }
   }
 
-  const mapStateToProps = (state) => ({
-    modal: state.modal,
-    likes: state.liked.likes,
-  });
+  return LikesWrapper;
 
-  return connect(mapStateToProps)(withToggleLike(LikesWrapper));
 };
 
-export default classWrapper;
+const mapStateToProps = (state) => ({
+  modal: state.modal,
+  likes: state.liked.likes,
+});
+
+export default (...args: any[]) => (component: any) => connect(mapStateToProps)(
+  withToggleLike(
+    classWrapper(...args)(
+      component
+    )
+  )
+);
