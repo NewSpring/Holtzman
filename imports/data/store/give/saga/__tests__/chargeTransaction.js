@@ -12,6 +12,12 @@ import { validate } from "../";
 
 import { chargeTransaction } from "../";
 
+const routing = {
+  location: {
+    pathname: "/give",
+  },
+};
+
 describe("early return", () => {
   const it = sagaHelper(chargeTransaction({ state: "HAPPY" }));
   it("exits on wrong state", result => {
@@ -22,6 +28,7 @@ describe("early return", () => {
 describe("successful charge without saved payment", () => {
   const it = sagaHelper(chargeTransaction({ state: "submit" }));
   const initalState = {
+    routing,
     give: {
       ...initial,
     },
@@ -52,7 +59,7 @@ describe("successful charge without saved payment", () => {
   });
 
   // STEP THROUGH VALIDATION
-  it("requires initial seed data", () => ({ give: { ...initial } }));
+  it("requires initial seed data", () => ({ give: { ...initial }, routing }));
   it("formats the data in the store", result => {
     return { data: { response: { url: "http://test.com/TOKEN" } } };
   });
@@ -233,6 +240,7 @@ describe("validating cards on saved payment creation", () => {
   };
   const it = sagaHelper(chargeTransaction({ state: "submit" }));
   const initalState = {
+    routing,
     give: {
       ...initial,
       savedAccount: {},
@@ -262,5 +270,51 @@ describe("validating cards on saved payment creation", () => {
     // is a graphql call, so this would fail.
     expect(result.SELECT).toBeDefined();
     return { validationError: true };
+  });
+});
+
+describe("ignoring validation for iOS giving (one time)", () => {
+  const giveData = {
+    personal: {},
+    billing: {},
+    payment: {
+      type: "cc"
+    },
+  };
+  const it = sagaHelper(chargeTransaction({ state: "submit" }));
+  const initalState = {
+    routing: {
+      location: { 
+        pathname: "/give/review?foo=bar"
+      }
+    },
+    give: {
+      ...initial,
+      savedAccount: {},
+      data: giveData,
+    },
+  };
+
+  it("reads the state from the store", result => {
+    expect(result.SELECT).toBeTruthy();
+    return initalState;
+  });
+
+  it("skips over loading state", result => {});
+  it("skips over setting store the first time", result => {
+    return {};
+  });
+  it("passes give data", result => ({
+    give: {
+      url: "URL-Mc-URLface",
+      data: giveData,
+    }
+  }));
+
+  it("does not call validation method", result => {
+    // validate calls select() first.
+    // if validate was being called, this yield would be SELECT
+    // since it is a graphql call, this yield is a CALL.
+    expect(result.CALL).toBeDefined();
   });
 });

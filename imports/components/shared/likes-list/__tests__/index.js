@@ -125,4 +125,26 @@ describe("likes list", () => {
     expect(component.find("MiniCard").get(2).props.link).toEqual("/music/3776");
   });
 
+  it("should properly skip any likes with a __typename that's null", () => {
+    const component = mount(generateComponent({
+      likes: [
+        {
+          __typename: "",
+          id: "12345",
+          name: "hello",
+          photo: "zookeeper"
+        },
+        {
+          __typename: "Content",
+          channelName: "study_entries",
+          content: {images: [{ fileLabel: "1:1", url: "harambe"}]},
+          id: "12345",
+          parent: null,
+          title: "harambe"
+        },
+      ],
+    }));
+    expect(mountToJson(component)).toMatchSnapshot();
+  });
+
 });

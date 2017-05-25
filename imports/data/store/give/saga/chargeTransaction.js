@@ -19,7 +19,8 @@ import submitPersonDetails from "./submitPersonDetails";
 export default function* chargeTransaction({ state }) {
   if (state !== "submit") return;
 
-  let { give } = yield select();
+  // eslint-disable-next-line
+  let { give, routing } = yield select();
   const name = give.data.payment.name;
   let error = false;
   let id;
@@ -57,12 +58,11 @@ export default function* chargeTransaction({ state }) {
   const token = give.url.split("/").pop();
 
   // if there is not a saved account, validate the payment
-  if (!formattedData.savedAccount) {
+  if (!formattedData.savedAccount && !routing.location.pathname.includes("give/review")) {
     if (give.data.payment.type === "cc") {
       // saved accounts don't validate the payment by default
       // so we make 3 blocking requests to validate the card :(
       const { validationError } = yield* validate();
-
       if (validationError) {
         error = validationError;
       }

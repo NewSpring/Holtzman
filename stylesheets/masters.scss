@@ -96,9 +96,11 @@ blockquote p {
 .tag--clickable {
   @extend .tag;
   cursor: pointer;
-  &:hover {
-    color: map-get($colors, light-primary);
-    background-color: $brand-color;
+  @include media-query (lap-and-up){
+    &:hover {
+      color: map-get($colors, light-primary);
+      background-color: $brand-color;
+    }
   }
 }
 
