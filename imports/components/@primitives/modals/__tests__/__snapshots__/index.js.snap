@@ -11,6 +11,7 @@ exports[`test render with props 1`] = `
       "content": Object {},
       "props": Object {
         "keepNav": false,
+        "promptModal": false,
       },
       "visible": false,
     }
@@ -25,6 +26,7 @@ exports[`test render with props 1`] = `
   props={
     Object {
       "keepNav": false,
+      "promptModal": false,
     }
   }
   styles={Object {}}
