@@ -1,5 +1,7 @@
 cordova-fabric-plugin@1.0.8
 cordova-plugin-camera@2.3.0
+cordova-plugin-device@1.1.6
+cordova-plugin-fcm@https://github.com/NewSpring/cordova-plugin-fcm.git#5a75bb0ee8f16faed2d5a3a30bf9c0b1c3e527de
 cordova-plugin-file-transfer@1.6.0
 cordova-plugin-inappbrowser@1.4.0
 cordova-plugin-media@2.4.0
@@ -7,5 +9,5 @@ cordova-plugin-nativestorage@2.0.2
 cordova-plugin-safariviewcontroller@https://github.com/johnthepink/cordova-plugin-safariviewcontroller.git#ff8e5ccf1488e4e8ceff72f2c0ef99ce0346af25
 cordova-plugin-social-message@0.4.0
 cordova-plugin-statusbar@2.1.3
-cordova-universal-links-plugin@1.2.1
+cordova-universal-links-plugin@https://github.com/NewSpring/cordova-universal-links-plugin.git#e2a7f39a6cb46557c9b79169cd3a7b2cb57c0fc3
 nl.kingsquare.cordova.background-audio@https://github.com/AubreyHewes/cordova-background-audio.git
