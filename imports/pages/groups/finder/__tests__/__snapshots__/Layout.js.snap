@@ -12,7 +12,7 @@ exports[`test renders disabled tags 1`] = `
       className="soft soft-double-ends push-double@lap-and-up soft@lap-wide-and-up text-center">
       <h3
         className="flush-bottom">
-        Find My People
+        Find Your People
       </h3>
       <h6
         className="soft-half-bottom@handheld soft-bottom@anchored">
@@ -47,6 +47,7 @@ exports[`test renders disabled tags 1`] = `
         className="flush outlined--light"
         style={
           Object {
+            "borderTopWidth": 0,
             "borderWidth": "1px",
           }
         } />
@@ -131,7 +132,7 @@ exports[`test renders loading if no tags 1`] = `
       className="soft soft-double-ends push-double@lap-and-up soft@lap-wide-and-up text-center">
       <h3
         className="flush-bottom">
-        Find My People
+        Find Your People
       </h3>
       <h6
         className="soft-half-bottom@handheld soft-bottom@anchored">
@@ -155,6 +156,7 @@ exports[`test renders loading if no tags 1`] = `
         className="flush outlined--light"
         style={
           Object {
+            "borderTopWidth": 0,
             "borderWidth": "1px",
           }
         } />
@@ -239,7 +241,7 @@ exports[`test renders with props 1`] = `
       className="soft soft-double-ends push-double@lap-and-up soft@lap-wide-and-up text-center">
       <h3
         className="flush-bottom">
-        Find My People
+        Find Your People
       </h3>
       <h6
         className="soft-half-bottom@handheld soft-bottom@anchored">
@@ -274,6 +276,7 @@ exports[`test renders with props 1`] = `
         className="flush outlined--light"
         style={
           Object {
+            "borderTopWidth": 0,
             "borderWidth": "1px",
           }
         } />

@@ -38,6 +38,7 @@ export const PRELOAD_PERSON = gql`
       nickName
       email
       photo
+      impersonationParameter
       groups(groupTypeIds: [25, 60]) {
         id
         groupType
