@@ -49,7 +49,7 @@
   const hasChangelog = danger.git.modified_files.includes("CHANGELOG.md") ||
     danger.git.created_files.includes("CHANGELOG.md");
   if (!hasChangelog) {
-    fail("No Changelog changes!");
+    warn("No Changelog changes!");
   }
 
   // only look in the /imports/ folder
