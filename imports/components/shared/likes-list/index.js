@@ -8,6 +8,7 @@ export function getImage(images: [Object], label: string = "2:1") {
   if (!images || !images.length) return "";
   let selectedImage = "";
 
+  // eslint-disable-next-line
   for (const image of images) {
     if (image.fileLabel === label) {
       selectedImage = image.url;
@@ -23,6 +24,7 @@ const renderLikes = (likes: [Object]) => {
   if (!Array.isArray(likes)) return undefined;
   return likes.map((item, i) => {
     let formatted;
+    if (!item) return null;
     if (item.__typename === "Content") {
       // if the item has an image, default to it. If not, use the parent.
       // if the parent doesn't have images, pass empty array to getImage()
@@ -84,7 +86,7 @@ const renderLikes = (likes: [Object]) => {
   ]
 */
 type ILikesList = {
-  likes: [Object],
+  likes: [Object]
 };
 
 export default (props: ILikesList) => (

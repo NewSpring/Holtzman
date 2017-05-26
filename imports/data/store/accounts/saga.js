@@ -10,6 +10,51 @@ import { addSaga } from "../utilities";
 
 import actions from "./actions";
 
+export const PRELOAD_PERSON = gql`
+  query GetPersonData {
+    person: currentPerson {
+      id
+      age
+      birthDate
+      birthDay
+      birthMonth
+      birthYear
+      campus {
+        name
+        shortCode
+        id
+      }
+      home {
+        city
+        country
+        id
+        zip
+        state
+        street1
+        street2
+      }
+      firstName
+      lastName
+      nickName
+      email
+      photo
+      impersonationParameter
+      groups(groupTypeIds: [25, 60]) {
+        id
+        groupType
+        name
+        photo
+        members {
+          person {
+            id
+          }
+          role
+        }
+      }
+    }
+  }
+`;
+
 let inFlight = false;
 // Check for availibilty of account
 function* checkAccount({ data }) {
@@ -176,40 +221,8 @@ function* onboard({ state }) {
       // reset the UI
       yield put(actions.setState("default"));
     } else {
-      const query = gql`
-        query GetPersonData {
-          person: currentPerson {
-            id
-            age
-            birthDate
-            birthDay
-            birthMonth
-            birthYear
-            campus {
-              name
-              shortCode
-              id
-            }
-            home {
-              city
-              country
-              id
-              zip
-              state
-              street1
-              street2
-            }
-            firstName
-            lastName
-            nickName
-            email
-            photo
-          }
-        }
-      `;
-
       // forceFetch for someone signs out and signs back in again
-      const { data } = yield GraphQL.query({ query, forceFetch: true });
+      const { data } = yield GraphQL.query({ query: PRELOAD_PERSON, forceFetch: true });
       const { person } = data;
 
       if (person) yield put(actions.person(person));

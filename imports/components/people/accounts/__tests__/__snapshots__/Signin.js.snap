@@ -68,7 +68,7 @@ exports[`test can override header with prop 1`] = `
         </a>
       </Checkbox>
       <button
-        className="push-double-bottom btn"
+        className="push-double-bottom btn--disabled"
         type="submit">
         Enter
       </button>
@@ -174,7 +174,7 @@ exports[`test renders account version 1`] = `
         </h7>
       </div>
       <button
-        className="push-double-bottom btn"
+        className="push-double-bottom btn--disabled"
         type="submit">
         Enter
       </button>
@@ -607,7 +607,7 @@ exports[`test renders with props 1`] = `
         </a>
       </Checkbox>
       <button
-        className="push-double-bottom btn"
+        className="push-double-bottom btn--disabled"
         type="submit">
         Enter
       </button>
