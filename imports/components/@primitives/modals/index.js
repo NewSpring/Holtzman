@@ -54,6 +54,11 @@ class SideModalContainerWithoutData extends Component {
       this.props.dispatch(navActions.setLevel(previous));
     }
 
+    if (this.props.modal.visible && !nextProps.modal.visible) {
+      // never stay in prompt modal mode on modal close
+      this.props.dispatch(modalActions.update({ promptModal: false }));
+    }
+
     if (!nextProps.modal.visible && this.props.path !== nextProps.path) {
       this.props.dispatch(modalActions.hide());
     }
@@ -78,7 +83,7 @@ class SideModalContainerWithoutData extends Component {
     if (Meteor.isClient) {
       document.removeEventListener("keyup", this.bindEsc, false);
     }
-    this.props.dispatch(navActions.resetColor());
+   this.props.dispatch(navActions.resetColor());
   }
 
   handleKeyPress = ({ keyCode }) => {
@@ -113,7 +118,7 @@ class SideModalContainerWithoutData extends Component {
       return (
         <PromptModal
           close={this.close}
-          profileImage={(!profile && !hero) ? "//s3.amazonaws.com/ns.assets/apollos/icon.png" : userProfile}
+          profileImage={userProfile}
           heroImage={hero}
           component={content}
           visible={visible}

@@ -5,9 +5,9 @@
 */
 
 const initial = {
-  visible: false,
+  visible: true,
   state: "default", // "full"
-  content: null, // component to render within nav
+  content: () => <h1>hello world</h1>, // component to render within nav
   retrigger: null,
   props: {
     classes: [], // classes to be added to modal
@@ -15,7 +15,7 @@ const initial = {
     styles: {}, // styles to be set on modal component
     keepNav: false,
     coverMiniPlayer: true,
-    promptModal: false,
+    promptModal: true,
   },
 };
 

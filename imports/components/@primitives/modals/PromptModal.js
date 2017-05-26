@@ -68,6 +68,8 @@ export default class PromptModal extends Component {
       return <div />;
     }
 
+    const size = 80;
+
     return (
       <div
         className="panel overlay--solid-dark fixed"
@@ -89,17 +91,40 @@ export default class PromptModal extends Component {
                     style={{
                       border: this.props.heroImage ? "3px solid #fff" : "none",
                       display: "inline-block",
-                      width: "64px",
-                      height: "64px",
+                      width: size,
+                      height: size,
                       backgroundImage: `url('${this.props.profileImage}')`,
                     }}
                     className="round background--fill"
                   />
                 </div>
               )}
-              {!this.props.heroImage && !this.props.profileImage && (
+              {!this.props.profileImage && (
+                <div style={this.profileImageClasses()} className="text-center">
+                  <div
+                    style={{
+                      border: this.props.heroImage ? "3px solid #fff" : "none",
+                      display: "inline-block",
+                      width: size,
+                      height: size,
+                    }}
+                    className="round floating background--fill background--primary"
+                  >
+                    <div 
+                      className="icon-logo display-block floating__item"
+                      style={{
+                        fontSize: "40px",
+                        color: "white",
+                        marginTop: "-13px"
+                      }}
+                    />
+                  </div>
+                </div>
+              )}
+
+              {!this.props.heroImage && this.props.profileImage && (
                 <div className="text-center">
-                  <img src={this.props.profileImage} alt="default" width="64px" height="64px" />
+                  <img src={this.props.profileImage} alt="default" width={size} height={size} />
                 </div>
               )}
               <div
