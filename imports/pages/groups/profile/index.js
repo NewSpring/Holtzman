@@ -241,6 +241,7 @@ class TemplateWithoutData extends Component {
     const { group, person } = data;
     const leaders = getLeaders(group);
     const isLeader = isCurrentPersonLeader(person, leaders);
+    const loginParam = person ? person.impersonationParameter : "";
 
     if (!group.photo) {
       group.photo =
@@ -274,6 +275,7 @@ class TemplateWithoutData extends Component {
         <Left scroll classes={["background--light-secondary"]}>
           <Layout
             isLeader={isLeader}
+            loginParam={loginParam}
             group={group}
             leaders={leaders || defaultArray}
             join={this.join}
@@ -290,6 +292,7 @@ const GROUP_QUERY = gql`
       id
       firstName
       nickName
+      impersonationParameter
     }
     group: node(id: $id) {
       id
