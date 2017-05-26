@@ -159,6 +159,10 @@ blockquote p {
   h2 {
     font-size: 2.1em;
   }
+  .btn--dark-tertiary:hover {
+    background-color: transparent;
+    color: #505050;
+  }
 }
 
 .btn--small\@next,
