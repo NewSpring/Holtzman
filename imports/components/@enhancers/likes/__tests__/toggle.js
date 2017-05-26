@@ -1,12 +1,11 @@
 
 import { print } from "graphql-tag/printer";
-import { ApolloProvider } from 'react-apollo';
+// import { ApolloProvider } from 'react-apollo';
 import { mount } from "enzyme";
-import { Provider } from 'react-redux';
+// import { Provider } from 'react-redux';
 import { mountToJson } from "enzyme-to-json";
 import { Meteor } from "meteor/meteor";
-import { connect } from "react-redux";
-import { createStore } from "redux";
+// import { connect } from "react-redux";
 
 import { classWrapper, TOGGLE_LIKE_MUTATION } from "../toggle";
 
@@ -17,7 +16,13 @@ const mockStore = {
   subscribe: jest.fn(),
   dispatch: jest.fn(),
   modal: { visible: false },
+  liked: { likes: [] }
 };
+
+
+// jest.mock("react-redux", () => ({
+//   connect: jest.fn(() => (component) => <component />),
+// }));
 
 const mockClient = {
   initStore: jest.fn(),
@@ -26,17 +31,17 @@ const mockClient = {
 
 Meteor.userId = jest.fn();
 
-const renderComponent = (additionalProps) => {
-  const defaultProps = {
-    modal: { visible: false },
-  }
-  const Wrapped = classWrapper(jest.fn(() => "12345"))(TestComponent);
+const defaultProps = {
+  modal: { visible: false },
+  liked: { likes: [] },
+  likes: [],
+};
+
+const renderComponent = (additionalProps, updateNav = true) => {
+  const Wrapped = classWrapper(jest.fn(() => "12345"), updateNav)(TestComponent);
+
   return (
-    <Provider store={createStore(() => mockStore, mockStore)}>
-      <ApolloProvider client={mockClient} store={createStore(() => mockStore, mockStore)}>
-        <Wrapped modal={{ visible: false }} { ...additionalProps } />
-      </ApolloProvider>
-    </Provider>
+    <Wrapped  { ...defaultProps} {...additionalProps } dispatch={mockStore.dispatch}/>
   );
 };
 
@@ -46,7 +51,7 @@ describe("Likes Wrapper", () => {
     expect(print(TOGGLE_LIKE_MUTATION)).toMatchSnapshot();
   });
 
-  fit("should render the child component", () => {
+  it("should render the child component", () => {
     const component = mount(renderComponent());
     expect(mountToJson(component)).toMatchSnapshot();
   });
@@ -64,7 +69,7 @@ describe("Likes Wrapper", () => {
 
   it("should dispatch nav actions on mount", () => {
     mockStore.dispatch.mockReset();
-    const component = mount(renderComponent());
+    const component = mount(renderComponent({}, true));
     expect(mockStore.dispatch).toHaveBeenCalledTimes(2)
     expect(mockStore.dispatch.mock.calls[0][0]).toEqual({
       "level": "CONTENT", "type": "NAV.SET_LEVEL"
@@ -95,15 +100,18 @@ describe("Likes Wrapper", () => {
     expect(mockStore.dispatch.mock.calls[2][0].type).toEqual("MODAL.SET_CONTENT");
   });
 
+  it("should not dispatch if updateNav is false", () => {
+    mockStore.dispatch.mockReset();
+    const component = mount(renderComponent({}, false));
+
+    expect(mockStore.dispatch).not.toBeCalled();
+  });
+
   it("should not dispatch if user but no nodeId", () => {
     mockStore.dispatch.mockReset();
     const Wrapped = classWrapper(jest.fn())(TestComponent);
     const Component = (
-      <Provider store={mockStore}>
-        <ApolloProvider client={mockClient} store={mockStore}>
-          <Wrapped modal={{visible: false}} />
-        </ApolloProvider>
-      </Provider>
+      <Wrapped  { ...defaultProps} dispatch={mockStore.dispatch}/>
     );
 
     // when mounting, it calls an action to set the trigger for toggling a like.
@@ -111,7 +119,7 @@ describe("Likes Wrapper", () => {
 
     // look into the dispatch calls to get access to the toggleLike
     const toggle = mockStore.dispatch.mock.calls[1][0].props.action;
-    Meteor.userId.mockReturnValueOnce("123");
+    Meteor.userId.mockReturnValue("123");
     toggle();
 
     expect(mockStore.dispatch).toHaveBeenCalledTimes(2);
@@ -122,11 +130,7 @@ describe("Likes Wrapper", () => {
 
     const Wrapped = classWrapper()(TestComponent);
     const Component = (
-      <Provider store={mockStore}>
-        <ApolloProvider client={mockClient} store={mockStore}>
-          <Wrapped modal={{visible: false}} />
-        </ApolloProvider>
-      </Provider>
+      <Wrapped  { ...defaultProps} dispatch={mockStore.dispatch}/>
     );
 
     // when mounting, it calls an action to set the trigger for toggling a like.
@@ -134,7 +138,7 @@ describe("Likes Wrapper", () => {
 
     // look into the dispatch calls to get access to the toggleLike
     const toggle = mockStore.dispatch.mock.calls[1][0].props.action;
-    Meteor.userId.mockReturnValueOnce("1234");
+    Meteor.userId.mockReturnValue("1234");
     toggle();
 
     // since there,s no reducer, the dispatch from toggle won't get called
@@ -143,11 +147,13 @@ describe("Likes Wrapper", () => {
 
   it("should dispatch and call mutate in toggleLike if user and nodeId present", () => {
     mockStore.dispatch.mockReset();
-    const component = mount(renderComponent());
+    const mutate = jest.fn();
+    const component = mount(renderComponent({ mutate }));
 
     // look into the dispatch calls to get access to the toggleLike
     const toggle = mockStore.dispatch.mock.calls[1][0].props.action;
-    Meteor.userId.mockReturnValueOnce("1234");
+    Meteor.userId.mockReturnValue("1234");
+
     toggle();
 
     expect(mockStore.dispatch).toHaveBeenCalledTimes(3);
@@ -155,16 +161,17 @@ describe("Likes Wrapper", () => {
       props: {entryId: "12345"},
       type: "LIKED.TOGGLE",
     });
-    expect(mockClient.mutate).toBeCalled();
+    expect(mutate).toBeCalled();
   });
 
   it("should return properly from toggleLike", () => {
     mockStore.dispatch.mockReset();
-    const component = mount(renderComponent());
+    const mutate = jest.fn();
+    const component = mount(renderComponent({ mutate }));
 
     // look into the dispatch calls to get access to the toggleLike
     const toggle = mockStore.dispatch.mock.calls[1][0].props.action;
-    Meteor.userId.mockReturnValueOnce("1234");
+    Meteor.userId.mockReturnValue("1234");
     const res = toggle();
 
     expect(res).toEqual({ type: "FALSY", payload: {} });
