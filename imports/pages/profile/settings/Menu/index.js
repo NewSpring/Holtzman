@@ -186,6 +186,17 @@ class MenuWithoutData extends Component {
             </div>
           </div>
 
+          <div className={this.dividerClasses()}>
+            <div className={this.outlineClasses()} style={{ borderLeft: 0, borderRight: 0 }}>
+              <a
+                href="mailto:web.helpdesk@newspring.cc"
+                className="plain text-dark-secondary"
+              >
+                <RenderCell name="Give Feedback" last />
+              </a>
+            </div>
+          </div>
+
 
           <div className={this.dividerClasses()}>
             <div className={this.outlineClasses()} style={{ borderLeft: 0, borderRight: 0 }}>
