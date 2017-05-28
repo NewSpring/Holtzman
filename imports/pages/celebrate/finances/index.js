@@ -8,7 +8,6 @@ import ProgressBar from "../../../components/giving/giving-progress";
 import Story from "../components/story";
 import inAppLink from "../../../util/inAppLink";
 
-const generalFundAmountTotal =   49329320.14 ;
 const fundData = [
   { campus: "Aiken", amount: 492202.38 },
   { campus: "Anderson", amount: 14034355.56 },
@@ -30,6 +29,9 @@ const fundData = [
   { campus: "Sumter", amount: 288200.25 },
   { campus: "Web", amount: 391954.32 },
 ];
+
+// -1 for rounding correction
+const generalFundAmountTotal = fundData.reduce(((acc, fund) => acc + fund.amount), 0) - 1;
 const stepUpFundTotal = "1792258.15";
 
 /* eslint-disable max-len */
