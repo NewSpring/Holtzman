@@ -16,7 +16,7 @@ exports[`Finances renders a layout 1`] = `
           compressor={1.5}
           maxFontSize={18}>
           <Currency
-            amount="49329320.14"
+            amount="49329319.14"
             baseHeadingSize="1"
             className="display-inline-block text-center soft-bottom"
             roundCurrency={true}
@@ -38,7 +38,7 @@ exports[`Finances renders a layout 1`] = `
           <div
             className="grid__item one-whole">
             <Progress
-              percentDone={0.9977886956542191}
+              percentDone={0.9977887158813115}
               style={Object {}}
               theme="dark"
               title="Aiken"
@@ -50,7 +50,7 @@ exports[`Finances renders a layout 1`] = `
           <div
             className="grid__item one-whole">
             <Progress
-              percentDone={28.4503324192783}
+              percentDone={28.45033299602116}
               style={Object {}}
               theme="dark"
               title="Anderson"
@@ -62,7 +62,7 @@ exports[`Finances renders a layout 1`] = `
           <div
             className="grid__item one-whole">
             <Progress
-              percentDone={2.5218144431536045}
+              percentDone={2.5218144942756244}
               style={Object {}}
               theme="dark"
               title="Boiling Springs"
@@ -74,7 +74,7 @@ exports[`Finances renders a layout 1`] = `
           <div
             className="grid__item one-whole">
             <Progress
-              percentDone={0.2395834965180609}
+              percentDone={0.23958350137487833}
               style={Object {}}
               theme="dark"
               title="Central"
@@ -86,7 +86,7 @@ exports[`Finances renders a layout 1`] = `
           <div
             className="grid__item one-whole">
             <Progress
-              percentDone={6.626845557008319}
+              percentDone={6.626845691347201}
               style={Object {}}
               theme="dark"
               title="Charleston"
@@ -98,7 +98,7 @@ exports[`Finances renders a layout 1`] = `
           <div
             className="grid__item one-whole">
             <Progress
-              percentDone={2.497786948012051}
+              percentDone={2.497786998646988}
               style={Object {}}
               theme="dark"
               title="Clemson"
@@ -110,7 +110,7 @@ exports[`Finances renders a layout 1`] = `
           <div
             className="grid__item one-whole">
             <Progress
-              percentDone={9.441375751342353}
+              percentDone={9.441375942737166}
               style={Object {}}
               theme="dark"
               title="Columbia*"
@@ -122,7 +122,7 @@ exports[`Finances renders a layout 1`] = `
           <div
             className="grid__item one-whole">
             <Progress
-              percentDone={5.8484409106231}
+              percentDone={5.848441029182225}
               style={Object {}}
               theme="dark"
               title="Florence"
@@ -134,7 +134,7 @@ exports[`Finances renders a layout 1`] = `
           <div
             className="grid__item one-whole">
             <Progress
-              percentDone={16.67178371130902}
+              percentDone={16.67178404927808}
               style={Object {}}
               theme="dark"
               title="Greenville"
@@ -146,7 +146,7 @@ exports[`Finances renders a layout 1`] = `
           <div
             className="grid__item one-whole">
             <Progress
-              percentDone={3.6908020317994996}
+              percentDone={3.6908021066191425}
               style={Object {}}
               theme="dark"
               title="Greenwood"
@@ -158,7 +158,7 @@ exports[`Finances renders a layout 1`] = `
           <div
             className="grid__item one-whole">
             <Progress
-              percentDone={0.6854857700051813}
+              percentDone={0.6854857839012938}
               style={Object {}}
               theme="dark"
               title="Hilton Head"
@@ -170,7 +170,7 @@ exports[`Finances renders a layout 1`] = `
           <div
             className="grid__item one-whole">
             <Progress
-              percentDone={2.5644133274284364}
+              percentDone={2.5644133794140176}
               style={Object {}}
               theme="dark"
               title="Lexington*"
@@ -182,7 +182,7 @@ exports[`Finances renders a layout 1`] = `
           <div
             className="grid__item one-whole">
             <Progress
-              percentDone={4.697387929579521}
+              percentDone={4.697388024804592}
               style={Object {}}
               theme="dark"
               title="Myrtle Beach"
@@ -194,7 +194,7 @@ exports[`Finances renders a layout 1`] = `
           <div
             className="grid__item one-whole">
             <Progress
-              percentDone={1.1259059894272445}
+              percentDone={1.1259060122515203}
               style={Object {}}
               theme="dark"
               title="Northeast Columbia"
@@ -206,7 +206,7 @@ exports[`Finances renders a layout 1`] = `
           <div
             className="grid__item one-whole">
             <Progress
-              percentDone={5.237526592029776}
+              percentDone={5.237526698204494}
               style={Object {}}
               theme="dark"
               title="Powdersville"
@@ -218,7 +218,7 @@ exports[`Finances renders a layout 1`] = `
           <div
             className="grid__item one-whole">
             <Progress
-              percentDone={0.9665421673090993}
+              percentDone={0.9665421869027645}
               style={Object {}}
               theme="dark"
               title="Rock Hill"
@@ -230,7 +230,7 @@ exports[`Finances renders a layout 1`] = `
           <div
             className="grid__item one-whole">
             <Progress
-              percentDone={6.35738039993186}
+              percentDone={6.357380528808165}
               style={Object {}}
               theme="dark"
               title="Spartanburg"
@@ -242,7 +242,7 @@ exports[`Finances renders a layout 1`] = `
           <div
             className="grid__item one-whole">
             <Progress
-              percentDone={0.584237222775558}
+              percentDone={0.5842372346191681}
               style={Object {}}
               theme="dark"
               title="Sumter"
@@ -254,7 +254,7 @@ exports[`Finances renders a layout 1`] = `
           <div
             className="grid__item one-whole">
             <Progress
-              percentDone={0.7945666368147922}
+              percentDone={0.7945666529221833}
               style={Object {}}
               theme="dark"
               title="Web"
