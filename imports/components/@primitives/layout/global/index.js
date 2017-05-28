@@ -9,7 +9,8 @@ import gql from "graphql-tag";
 import createContainer from "../../../../deprecated/meteor/react-meteor-data";
 import { routeActions } from "../../../../data/store/routing";
 
-import NotificationRequest from "./NotificationRequest";
+import NotificationRequest, { UPDATE_ATTRIBUTE_MUTATION } from "./NotificationRequest";
+
 import Modal from "../../modals";
 import Meta from "../../../shared/meta";
 import Nav from "../../nav";
@@ -169,6 +170,17 @@ const GlobalData = createContainer(({ dispatch, client }) => {
     Meteor.subscribe("likes");
     const likes = Likes.find({ userId }).fetch().map((like) => like.entryId);
     if (likes.length) dispatch(likedActions.set(likes));
+
+    if (process.env.NATIVE) {
+      // update the version number in Rock
+      client.mutate({
+        mutation: UPDATE_ATTRIBUTE_MUTATION,
+        variables: {
+          key: "AppVersion",
+          value: Meteor.settings.public.version,
+        },
+      });
+    }
   }
 
   return { userId };
@@ -217,7 +229,6 @@ class GlobalWithoutData extends Component {
     universalLinks.subscribe("universalLinkRoute", this.universalLinkRouting);
     /* eslint-disable */
     FCMPlugin.onDynamicLink(({ deepLink }) => {
-      console.log(deepLink);
       // this is a free way to parse a link without requring another lib
       const parser = document.createElement("a");
       parser.href = deepLink;
