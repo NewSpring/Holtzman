@@ -98,7 +98,7 @@ const Layout = ({ group, leaders, isLeader, join, loginParam }) => (
                     target="_blank"
                     className={className}
                     href={
-                      `${rockUrl}groups/leader?GroupId=${group.entityId}&${loginParam}`
+                      `${rockUrl}page/521?GroupId=${group.entityId}&${loginParam}`
                     }
                   >
                     Manage Group
