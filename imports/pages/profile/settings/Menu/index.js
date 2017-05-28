@@ -1,11 +1,11 @@
 /* eslint-disable no-undef */
 import { Component, PropTypes } from "react";
+import { Meteor } from "meteor/meteor";
 import ReactMixin from "react-mixin";
 import { graphql } from "react-apollo";
 import { connect } from "react-redux";
 import gql from "graphql-tag";
 import { Link } from "react-router";
-import { Meteor } from "meteor/meteor";
 
 import Headerable from "../../../../deprecated/mixins/mixins.Header";
 
@@ -242,6 +242,11 @@ class MenuWithoutData extends Component {
             >
               Sign Out
             </button>
+            <div>
+              <h7><small>
+                {Meteor.settings.public.version} - {Meteor.settings.public.release}
+              </small></h7>
+            </div>
           </div>
         </section>
       </div>
