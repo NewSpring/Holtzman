@@ -1,3 +1,46 @@
+exports[`likes list should properly skip any likes with a __typename that's null 1`] = `
+<Component
+  likes={
+    Array [
+      Object {
+        "__typename": "",
+        "id": "12345",
+        "name": "hello",
+        "photo": "zookeeper",
+      },
+      Object {
+        "__typename": "Content",
+        "channelName": "study_entries",
+        "content": Object {
+          "images": Array [
+            Object {
+              "fileLabel": "1:1",
+              "url": "harambe",
+            },
+          ],
+        },
+        "id": "12345",
+        "parent": null,
+        "title": "harambe",
+      },
+    ]
+  }>
+  <div>
+    <MiniCard>
+      <div />
+    </MiniCard>
+    <MiniCard
+      category="Devotionals"
+      icon="icon-category-text"
+      image="harambe"
+      link="/studies/null/entry/12345"
+      title="harambe">
+      <div />
+    </MiniCard>
+  </div>
+</Component>
+`;
+
 exports[`likes list should render likes 1`] = `
 <Component
   likes={

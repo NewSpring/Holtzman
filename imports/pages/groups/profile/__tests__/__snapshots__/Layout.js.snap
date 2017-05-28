@@ -875,7 +875,7 @@ exports[`test renders leader version 1`] = `
           className="grid__item hard-left text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up">
           <a
             className="flush-bottom push-half-bottom@handheld btn"
-            href="http://rock.rockgroups/leader?GroupId=2"
+            href="http://rock.rockpage/521?GroupId=2&undefined"
             rel="noopener noreferrer"
             target="_blank">
             Manage Group
