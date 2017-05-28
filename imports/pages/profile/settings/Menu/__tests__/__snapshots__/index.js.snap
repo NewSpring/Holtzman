@@ -233,13 +233,6 @@ exports[`Menu renders with props 1`] = `
         onClick={[Function]}>
         Sign Out
       </button>
-      <div>
-        <h7>
-          <small>
-             - 
-          </small>
-        </h7>
-      </div>
     </div>
   </section>
 </div>

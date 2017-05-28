@@ -242,11 +242,13 @@ class MenuWithoutData extends Component {
             >
               Sign Out
             </button>
-            <div>
-              <h7><small>
-                {Meteor.settings.public.version} - {Meteor.settings.public.release}
-              </small></h7>
-            </div>
+            {process.env.APP_VERSION && (
+              <div>
+                <h7><small>
+                  {process.env.APP_VERSION} - {process.env.APP_BUILD}
+                </small></h7>
+              </div>
+            )}
           </div>
         </section>
       </div>
