@@ -149,6 +149,25 @@ exports[`Menu renders with props 1`] = `
             "borderRight": 0,
           }
         }>
+        <a
+          className="plain text-dark-secondary"
+          href="mailto:web.helpdesk@newspring.cc">
+          <RenderCell
+            last={true}
+            name="Give Feedback" />
+        </a>
+      </div>
+    </div>
+    <div
+      className="push-double-ends@lap-and-up push-half-ends">
+      <div
+        className=""
+        style={
+          Object {
+            "borderLeft": 0,
+            "borderRight": 0,
+          }
+        }>
         <Link
           className="plain text-dark-secondary"
           onlyActiveOnIndex={false}
@@ -214,6 +233,13 @@ exports[`Menu renders with props 1`] = `
         onClick={[Function]}>
         Sign Out
       </button>
+      <div>
+        <h7>
+          <small>
+             - 
+          </small>
+        </h7>
+      </div>
     </div>
   </section>
 </div>

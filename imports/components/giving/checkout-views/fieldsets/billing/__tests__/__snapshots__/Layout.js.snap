@@ -203,7 +203,7 @@ exports[`Layout renders US by default 1`] = `
       Back
     </a>
     <button
-      className="push-left btn"
+      className=" push-left btn"
       disabled={false}
       onClick={[Function]}
       type="submit">
@@ -405,7 +405,7 @@ exports[`Layout renders your country instead 1`] = `
       Back
     </a>
     <button
-      className="push-left btn"
+      className=" push-left btn"
       disabled={false}
       onClick={[Function]}
       type="submit">
@@ -417,7 +417,7 @@ exports[`Layout renders your country instead 1`] = `
 
 exports[`NextButton renders disabled styles when no city 1`] = `
 <button
-  className="push-left btn--disabled"
+  className=" push-left btn--disabled"
   disabled={true}
   onClick={[Function]}
   type="submit">
@@ -427,7 +427,7 @@ exports[`NextButton renders disabled styles when no city 1`] = `
 
 exports[`NextButton renders disabled styles when no streetAddress 1`] = `
 <button
-  className="push-left btn--disabled"
+  className=" push-left btn--disabled"
   disabled={true}
   onClick={[Function]}
   type="submit">
@@ -437,7 +437,7 @@ exports[`NextButton renders disabled styles when no streetAddress 1`] = `
 
 exports[`NextButton renders enabled styles when billing information present 1`] = `
 <button
-  className="push-left btn"
+  className=" push-left btn"
   disabled={false}
   onClick={[Function]}
   type="submit">

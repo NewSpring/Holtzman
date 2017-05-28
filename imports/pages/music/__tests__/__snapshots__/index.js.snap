@@ -445,7 +445,7 @@ exports[`test renders with props 1`] = `
         className="grid">
         <div
           className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored">
-          <FeedItem
+          <Connect(Apollo(LikesWrapper))
             item={
               Object {
                 "content": Object {
@@ -466,7 +466,7 @@ exports[`test renders with props 1`] = `
         </div>
         <div
           className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored">
-          <FeedItem
+          <Connect(Apollo(LikesWrapper))
             item={
               Object {
                 "content": Object {
