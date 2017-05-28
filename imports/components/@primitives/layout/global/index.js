@@ -171,13 +171,13 @@ const GlobalData = createContainer(({ dispatch, client }) => {
     const likes = Likes.find({ userId }).fetch().map((like) => like.entryId);
     if (likes.length) dispatch(likedActions.set(likes));
 
-    if (process.env.NATIVE) {
+    if (process.env.NATIVE && process.env.APP_VERSION) {
       // update the version number in Rock
       client.mutate({
         mutation: UPDATE_ATTRIBUTE_MUTATION,
         variables: {
           key: "AppVersion",
-          value: Meteor.settings.public.version,
+          value: process.env.APP_VERSION,
         },
       });
     }
