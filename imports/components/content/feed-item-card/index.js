@@ -139,7 +139,6 @@ type IFeedItem = {
 };
 
 export const stopClick = (fn: () => void) => (e: Event) => {
-  console.log(e);
   if (e && e.stopPropagation) {
     e.preventDefault();
     e.stopPropagation();

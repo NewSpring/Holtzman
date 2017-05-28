@@ -160,6 +160,17 @@ const GlobalData = createContainer(({ dispatch, client }) => {
       document.addEventListener("deviceready", promptNotify(client, dispatch), false);
     }
 
+    if (!hasBeenSignedIn && process.env.NATIVE && process.env.APP_VERSION) {
+      // update the version number in Rock
+      client.mutate({
+        mutation: UPDATE_ATTRIBUTE_MUTATION,
+        variables: {
+          key: "AppVersion",
+          value: process.env.APP_VERSION,
+        },
+      });
+    }
+
     hasBeenSignedIn = true;
 
     // Load in topics from user profile
@@ -170,17 +181,6 @@ const GlobalData = createContainer(({ dispatch, client }) => {
     Meteor.subscribe("likes");
     const likes = Likes.find({ userId }).fetch().map((like) => like.entryId);
     if (likes.length) dispatch(likedActions.set(likes));
-
-    if (process.env.NATIVE && process.env.APP_VERSION) {
-      // update the version number in Rock
-      client.mutate({
-        mutation: UPDATE_ATTRIBUTE_MUTATION,
-        variables: {
-          key: "AppVersion",
-          value: process.env.APP_VERSION,
-        },
-      });
-    }
   }
 
   return { userId };
