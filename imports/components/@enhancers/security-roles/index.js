@@ -14,7 +14,7 @@ export const SECURITY_ROLES_QUERY = gql`
 `;
 
 export const authorized = (data, roles) => {
-  const auth = !data.loading && data.currentPerson && data.currentPerson.roles && intersection(
+  const auth = (!data.loading && data.networkStatus !== 7) && data.currentPerson && data.currentPerson.roles && intersection(
     data.currentPerson.roles.map((x) => x.name), roles
   ).length > 0;
   return auth;
@@ -25,7 +25,7 @@ export const canSee = (roles) => graphql(SECURITY_ROLES_QUERY, {
   props: ({ data }) => ({
     person: {
       ...data,
-      authLoading: data.loading,
+      authLoading: data.loading && data.networkStatus !== 7,
       authorized: authorized(data, roles),
     },
   }),

@@ -1,11 +1,11 @@
 /* eslint-disable no-undef */
 import { Component, PropTypes } from "react";
+import { Meteor } from "meteor/meteor";
 import ReactMixin from "react-mixin";
 import { graphql } from "react-apollo";
 import { connect } from "react-redux";
 import gql from "graphql-tag";
 import { Link } from "react-router";
-import { Meteor } from "meteor/meteor";
 
 import Headerable from "../../../../deprecated/mixins/mixins.Header";
 
@@ -186,6 +186,17 @@ class MenuWithoutData extends Component {
             </div>
           </div>
 
+          <div className={this.dividerClasses()}>
+            <div className={this.outlineClasses()} style={{ borderLeft: 0, borderRight: 0 }}>
+              <a
+                href="mailto:web.helpdesk@newspring.cc"
+                className="plain text-dark-secondary"
+              >
+                <RenderCell name="Give Feedback" last />
+              </a>
+            </div>
+          </div>
+
 
           <div className={this.dividerClasses()}>
             <div className={this.outlineClasses()} style={{ borderLeft: 0, borderRight: 0 }}>
@@ -231,6 +242,13 @@ class MenuWithoutData extends Component {
             >
               Sign Out
             </button>
+            {process.env.APP_VERSION && (
+              <div>
+                <h7><small>
+                  {process.env.APP_VERSION} - {process.env.APP_BUILD}
+                </small></h7>
+              </div>
+            )}
           </div>
         </section>
       </div>
