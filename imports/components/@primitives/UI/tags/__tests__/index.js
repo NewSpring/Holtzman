@@ -206,3 +206,21 @@ it("isInQueryString return true if query contains urlKey", () => {
   const result = wrapper.instance().isInQueryString(props);
   expect(result).toBe(true);
 });
+
+// until tested
+const FAIL = () => expect(true).toBe(false);
+
+it("should not show the icon span if icon shouldn't show", () => {
+  FAIL();
+  // hint: this would be much easier with the data-spec helper
+  // "../../../../../util/tests/data-spec"
+});
+
+it("should show the icon span if iconClass is used", () => {
+  FAIL();
+  // same hint as above ;)
+});
+
+it("should show the X icon if active and clickable", () => {
+  FAIL();
+});

@@ -37,3 +37,14 @@ it("renders spinner when loading is true", () => {
   const wrapper = shallow(generateComponent(someProps));
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
+
+// until tested
+const FAIL = () => expect(true).toBe(false);
+
+it("shows up arrow on filter tag when tags are shown", () => {
+  FAIL();
+});
+
+it("shows down arrow on filter tag when tag drawer is closed", () => {
+  FAIL();
+});

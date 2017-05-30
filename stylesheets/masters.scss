@@ -127,11 +127,6 @@ blockquote p {
     color: map-get($colors, light-primary);
     background-color: $brand-color;
     padding-right: 30px;
-    &:after {
-      content: "✕";
-      position: absolute;
-      right: 8px;
-    }
   }
 
   &:hover {
@@ -142,11 +137,11 @@ blockquote p {
 
 .tag--active.tag--clickable {
   padding-right: 30px;
-  &:after {
-    content: "✕";
-    position: absolute;
-    right: 8px;
-  }
+}
+
+.tag [class^="icon-"]:before, .tag [class*=" icon-"]:before {
+  top: 0px;
+  font-weight: 900 !important;
 }
 
 @media screen and (max-width: 768px) {

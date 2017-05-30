@@ -88,9 +88,10 @@ const Layout = ({
       <Tag
         style={{ verticalAlign: "bottom" }}
         className="flush-bottom"
-        val="..."
+        val="filter"
         canBeActive={false}
         onClick={() => toggleTags()}
+        iconClass={showTags ? "icon-arrow-up" : "icon-arrow-down"}
       />
 
     </div>

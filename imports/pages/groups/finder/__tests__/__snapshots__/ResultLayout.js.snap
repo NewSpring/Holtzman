@@ -44,13 +44,14 @@ exports[`test renders spinner when loading is true 1`] = `
     <withRouter(Connect(TagWithoutData))
       canBeActive={false}
       className="flush-bottom"
+      iconClass="icon-arrow-up"
       onClick={[Function]}
       style={
         Object {
           "verticalAlign": "bottom",
         }
       }
-      val="..." />
+      val="filter" />
   </div>
   <withRouter(Apollo(Apollo(Connect(FilterWithoutData))))
     q="test"
@@ -153,13 +154,14 @@ exports[`test renders with props 1`] = `
     <withRouter(Connect(TagWithoutData))
       canBeActive={false}
       className="flush-bottom"
+      iconClass="icon-arrow-up"
       onClick={[Function]}
       style={
         Object {
           "verticalAlign": "bottom",
         }
       }
-      val="..." />
+      val="filter" />
   </div>
   <withRouter(Apollo(Apollo(Connect(FilterWithoutData))))
     q="test"

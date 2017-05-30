@@ -5,9 +5,17 @@ exports[`test renders active version 1`] = `
   style={
     Object {
       "color": "red",
+      "paddingRight": "10px",
     }
   }>
   testLabel
+  <span
+    className="push-half-left icon-close"
+    style={
+      Object {
+        "fontSize": "10px",
+      }
+    } />
 </span>
 `;
 
@@ -18,9 +26,17 @@ exports[`test renders cordova active version 1`] = `
   style={
     Object {
       "color": "red",
+      "paddingRight": "10px",
     }
   }>
   testLabel
+  <span
+    className="push-half-left icon-close"
+    style={
+      Object {
+        "fontSize": "10px",
+      }
+    } />
 </span>
 `;
 
@@ -31,9 +47,17 @@ exports[`test renders unclickeable version 1`] = `
   style={
     Object {
       "color": "red",
+      "paddingRight": "10px",
     }
   }>
   testLabel
+  <span
+    className="push-half-left icon-close"
+    style={
+      Object {
+        "fontSize": "10px",
+      }
+    } />
 </span>
 `;
 
@@ -44,9 +68,17 @@ exports[`test renders with props 1`] = `
   style={
     Object {
       "color": "red",
+      "paddingRight": "10px",
     }
   }>
   testLabel
+  <span
+    className="push-half-left icon-close"
+    style={
+      Object {
+        "fontSize": "10px",
+      }
+    } />
 </span>
 `;
 
@@ -57,8 +89,16 @@ exports[`test works with val 1`] = `
   style={
     Object {
       "color": "red",
+      "paddingRight": "10px",
     }
   }>
   testVal
+  <span
+    className="push-half-left icon-close"
+    style={
+      Object {
+        "fontSize": "10px",
+      }
+    } />
 </span>
 `;
