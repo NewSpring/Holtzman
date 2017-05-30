@@ -11,7 +11,7 @@ type IPromptModal = {
   component: Function,
   heroImage: string, // assuming this is the url to the image
   profileImage: string, // assuming this is the url to the image
-  visible: boolean,
+  visible: boolean
 };
 
 export default class PromptModal extends Component {
@@ -38,7 +38,7 @@ export default class PromptModal extends Component {
   }
 
   layoutClasses = (): string => {
-    const classList = ["hard", "flush", "background--light-primary push-half-left rounded-top"];
+    const classList = ["hard", "flush", "background--light-primary rounded-top"];
 
     classList.push(css(offsetStyles.offset));
     classList.push(css(styles["prompt-panel"]));
@@ -49,7 +49,7 @@ export default class PromptModal extends Component {
   profileImageClasses = (): Object => {
     const classes = {};
     if (this.props.heroImage && this.props.heroImage.length > 0) {
-      classes.marginTop = "-35px";
+      classes.marginTop = "-50px";
     }
     return classes;
   };
@@ -85,7 +85,7 @@ export default class PromptModal extends Component {
                 <div>
                   <img src={this.props.heroImage} alt="hero" />
                 </div>}
-              {this.props.profileImage && (
+              {this.props.profileImage &&
                 <div style={this.profileImageClasses()} className="text-center">
                   <div
                     style={{
@@ -97,9 +97,8 @@ export default class PromptModal extends Component {
                     }}
                     className="round background--fill"
                   />
-                </div>
-              )}
-              {!this.props.profileImage && (
+                </div>}
+              {!this.props.profileImage &&
                 <div style={this.profileImageClasses()} className="text-center">
                   <div
                     style={{
@@ -110,23 +109,22 @@ export default class PromptModal extends Component {
                     }}
                     className="round floating background--fill background--primary"
                   >
-                    <div 
+                    <div
                       className="icon-logo display-block floating__item"
                       style={{
                         fontSize: "40px",
                         color: "white",
-                        marginTop: "-13px"
+                        marginTop: "-13px",
                       }}
                     />
                   </div>
-                </div>
-              )}
+                </div>}
 
-              {!this.props.heroImage && this.props.profileImage && (
+              {!this.props.heroImage &&
+                this.props.profileImage &&
                 <div className="text-center">
                   <img src={this.props.profileImage} alt="default" width={size} height={size} />
-                </div>
-              )}
+                </div>}
               <div
                 style={{ marginTop: "-40px", backgroundColor: "white" }}
                 className={`soft-double-top soft-bottom soft-sides text-center ${this.props.heroImage ? "" : "rounded-top"}`}
