@@ -68,10 +68,18 @@ export const classWrapper = (
       if (Meteor.userId() && this.props.modal && this.props.modal.visible) dispatch(modal.hide());
 
       if (!Meteor.userId()) { // if not logged in, show login modal
+        /*
+          XXX removing the auto-like after login because...
+          1. User clicks login in modal
+          2. redux dispatch toggles the like briefly
+          3. meteor person data gets back and resets the likes in the store
+          4. a few seconds later (why so long??) the likes mutation gets back and re-likes the item
+          XXX until we can fix this, I think it'd be better not to auto-like
+        */
+        // onFinished: this.toggleLike,
         dispatch(modal.render(OnBoard, {
           coverHeader: true,
           modalBackground: "light",
-          onFinished: this.toggleLike,
         }));
       } else { // if logged in, toggle like state in redux, remote with gql query
         const nodeId = this.getNodeId();
