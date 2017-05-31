@@ -4,14 +4,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## UNRELEASED
-
-## [5.2.0]
+## [5.2.0] UNRELEASED
 ### Updated
 - Updated the feed card to remove the time stamp.
 - Updated the home feed to no longer have the first card be a hero card. It's now
 a regular card just like everything else.
 - Updated numbers on financial report and added button to detailed pdf
+- Removed auto-like after login
 ### Added
 - Added a "Prompt Modal" to prompt users of necessary information.
 - Push notifications!
