@@ -1,14 +1,7 @@
-import { shallow, mount } from "enzyme";
+import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import Layout from "../ResultLayout";
 import { getSingleSpecWrapper } from "../../../../util/tests/data-spec.js";
-
-// jest.mock("../../../../components/shared/meta", () => () => <div /> );
-// jest.mock("../../../../components/@primitives/UI/tags", () => () => "Tag" );
-// jest.mock("../../components/GroupCard", () => () => <div /> );
-// jest.mock("../Filter", () => () => <div /> );
-// jest.mock("../../../../components/@primitives/UI/loading", () => ({Spinner: () => <div />}) );
-// jest.mock("react-router", () => ({Link: () => <div />}));
 
 const defaultProps = {
   groups: [],

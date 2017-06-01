@@ -207,6 +207,7 @@ exports[`test renders with props 1`] = `
         12
       </h6>
     </div>
+    <LoadingComponent />
     <div
       className="one-whole text-center push-bottom">
       <div
@@ -354,6 +355,7 @@ exports[`test shows down arrow on filter tag when tag drawer is closed 1`] = `
         12
       </h6>
     </div>
+    <LoadingComponent />
     <div
       className="one-whole text-center push-bottom">
       <div
@@ -501,6 +503,7 @@ exports[`test shows up arrow on filter tag when tags are shown 1`] = `
         12
       </h6>
     </div>
+    <LoadingComponent />
     <div
       className="one-whole text-center push-bottom">
       <div
