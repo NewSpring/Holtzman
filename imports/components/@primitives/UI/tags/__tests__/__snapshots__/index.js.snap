@@ -5,9 +5,18 @@ exports[`test renders active version 1`] = `
   style={
     Object {
       "color": "red",
+      "paddingRight": "10px",
     }
   }>
   testLabel
+  <span
+    className="push-half-left icon-close"
+    data-spec="iconSpan"
+    style={
+      Object {
+        "fontSize": "10px",
+      }
+    } />
 </span>
 `;
 
@@ -18,22 +27,40 @@ exports[`test renders cordova active version 1`] = `
   style={
     Object {
       "color": "red",
+      "paddingRight": "10px",
     }
   }>
   testLabel
+  <span
+    className="push-half-left icon-close"
+    data-spec="iconSpan"
+    style={
+      Object {
+        "fontSize": "10px",
+      }
+    } />
 </span>
 `;
 
-exports[`test renders unclickeable version 1`] = `
+exports[`test renders unclickable version 1`] = `
 <span
   className="tag push-half-right tag--active test class"
   onClick={[Function]}
   style={
     Object {
       "color": "red",
+      "paddingRight": "10px",
     }
   }>
   testLabel
+  <span
+    className="push-half-left icon-close"
+    data-spec="iconSpan"
+    style={
+      Object {
+        "fontSize": "10px",
+      }
+    } />
 </span>
 `;
 
@@ -44,9 +71,75 @@ exports[`test renders with props 1`] = `
   style={
     Object {
       "color": "red",
+      "paddingRight": "10px",
     }
   }>
   testLabel
+  <span
+    className="push-half-left icon-close"
+    data-spec="iconSpan"
+    style={
+      Object {
+        "fontSize": "10px",
+      }
+    } />
+</span>
+`;
+
+exports[`test should not show the icon span if icon shouldn't show 1`] = `
+<span
+  className="tag push-half-right tag--clickable test class"
+  onClick={[Function]}
+  style={
+    Object {
+      "color": "red",
+    }
+  }>
+  testLabel
+</span>
+`;
+
+exports[`test should show the X icon if active and clickable 1`] = `
+<span
+  className="tag push-half-right tag--clickable tag--active test class"
+  onClick={[Function]}
+  style={
+    Object {
+      "color": "red",
+      "paddingRight": "10px",
+    }
+  }>
+  testLabel
+  <span
+    className="push-half-left icon-close"
+    data-spec="iconSpan"
+    style={
+      Object {
+        "fontSize": "10px",
+      }
+    } />
+</span>
+`;
+
+exports[`test should show the icon span if iconClass is used 1`] = `
+<span
+  className="tag push-half-right tag--clickable test class"
+  onClick={[Function]}
+  style={
+    Object {
+      "color": "red",
+      "paddingRight": "10px",
+    }
+  }>
+  testLabel
+  <span
+    className="push-half-left icon-arrow-up"
+    data-spec="iconSpan"
+    style={
+      Object {
+        "fontSize": "10px",
+      }
+    } />
 </span>
 `;
 
@@ -57,8 +150,17 @@ exports[`test works with val 1`] = `
   style={
     Object {
       "color": "red",
+      "paddingRight": "10px",
     }
   }>
   testVal
+  <span
+    className="push-half-left icon-close"
+    data-spec="iconSpan"
+    style={
+      Object {
+        "fontSize": "10px",
+      }
+    } />
 </span>
 `;

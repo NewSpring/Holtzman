@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { Meteor } from "meteor/meteor";
 
 class TagWithoutData extends Component {
-
   static propTypes = {
     className: PropTypes.string,
     onClick: PropTypes.func,
@@ -18,7 +17,8 @@ class TagWithoutData extends Component {
     router: PropTypes.object,
     location: PropTypes.object,
     icon: PropTypes.any,
-  }
+    iconClass: PropTypes.string,
+  };
 
   static defaultProps = {
     className: "",
@@ -26,9 +26,9 @@ class TagWithoutData extends Component {
     clickAble: true,
     canBeActive: true,
     urlKey: "tags",
-  }
+  };
 
-  state = { isActive: false }
+  state = { isActive: false };
 
   componentWillMount() {
     if ((this.props.active || this.isInQueryString(this.props)) && this.props.canBeActive) {
@@ -37,10 +37,7 @@ class TagWithoutData extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (
-        (nextProps.active || this.isInQueryString(nextProps)) &&
-        nextProps.canBeActive
-      ) {
+    if ((nextProps.active || this.isInQueryString(nextProps)) && nextProps.canBeActive) {
       this.setState({ isActive: true });
     } else if (nextProps.active && nextProps.canBeActive && !this.props.active) {
       this.setState({ isActive: true });
@@ -85,7 +82,7 @@ class TagWithoutData extends Component {
     }
     const newPath = router.createPath(location);
     router.replace(newPath);
-  }
+  };
 
   isInQueryString = (props) => {
     const { val, urlKey } = props;
@@ -94,45 +91,45 @@ class TagWithoutData extends Component {
 
     const tags = query[urlKey].toLowerCase().split(",").filter((x) => x);
     return tags.indexOf(val.toLowerCase()) > -1;
-  }
+  };
 
   render() {
     const { className, style, clickAble, val, canBeActive, label } = this.props;
-    const classes = [
-      "tag",
-      "push-half-right",
-    ];
+    const classes = ["tag", "push-half-right"];
+    const active = this.state.isActive && canBeActive;
+
     if (clickAble) classes.push("tag--clickable");
 
     // Touch enabled devices tag class overrides
     if (Meteor.isCordova) {
-      if (this.state.isActive && canBeActive) {
+      if (active) {
         classes.push("tag--nohover--active");
       } else {
         classes.push("tag--nohover");
       }
-    } else if (this.state.isActive && canBeActive) {
+    } else if (active) {
       classes.push("tag--active");
     }
 
     return (
       <span
         className={`${classes.join(" ")} ${className}`}
-        style={style}
+        style={this.props.iconClass || active ? { ...style, ...{ paddingRight: "10px" } } : style}
         onClick={this.onClick}
       >
         {label || val}{this.props.icon ? this.props.icon : ""}
+        {this.props.iconClass || active
+          ? <span
+            style={{ fontSize: "10px" }}
+            className={`push-half-left ${active ? "icon-close" : this.props.iconClass}`}
+            data-spec="iconSpan"
+          />
+          : null}
       </span>
     );
   }
 }
 
-export default withRouter(
-  connect((state) => ({ location: state.routing.location }))(
-    TagWithoutData
-  )
-);
+export default withRouter(connect((state) => ({ location: state.routing.location }))(TagWithoutData));
 
-export {
-  TagWithoutData,
-};
+export { TagWithoutData };
