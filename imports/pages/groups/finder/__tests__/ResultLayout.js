@@ -1,6 +1,14 @@
-import { shallow } from "enzyme";
+import { shallow, mount } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import Layout from "../ResultLayout";
+import { getSingleSpecWrapper } from "../../../../util/tests/data-spec.js";
+
+// jest.mock("../../../../components/shared/meta", () => () => <div /> );
+// jest.mock("../../../../components/@primitives/UI/tags", () => () => "Tag" );
+// jest.mock("../../components/GroupCard", () => () => <div /> );
+// jest.mock("../Filter", () => () => <div /> );
+// jest.mock("../../../../components/@primitives/UI/loading", () => ({Spinner: () => <div />}) );
+// jest.mock("react-router", () => ({Link: () => <div />}));
 
 const defaultProps = {
   groups: [],
@@ -15,6 +23,7 @@ const defaultProps = {
   showTags: true,
   toggleTags: true,
   onCardHover: jest.fn(),
+  LoadingComponent: () => <div>HARAMBE</div>,
 };
 
 const generateComponent = (additionalProps = {}) => {
@@ -38,13 +47,20 @@ it("renders spinner when loading is true", () => {
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 
-// until tested
-const FAIL = () => expect(true).toBe(false);
-
 it("shows up arrow on filter tag when tags are shown", () => {
-  FAIL();
+  const wrapper = shallow(generateComponent());
+  expect(shallowToJson(wrapper)).toMatchSnapshot();
+
+  const iconTag = getSingleSpecWrapper(wrapper, "iconTag").props();
+  expect(iconTag.iconClass).toEqual("icon-arrow-up");
 });
 
 it("shows down arrow on filter tag when tag drawer is closed", () => {
-  FAIL();
+  const wrapper = shallow(generateComponent({
+    showTags: false,
+  }));
+  expect(shallowToJson(wrapper)).toMatchSnapshot();
+
+  const iconTag = getSingleSpecWrapper(wrapper, "iconTag").props();
+  expect(iconTag.iconClass).toEqual("icon-arrow-down");
 });

@@ -2,6 +2,7 @@ import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import { Meteor } from "meteor/meteor";
 import { TagWithoutData as Tag } from "../";
+import { getSpecWrappers } from "../../../../../util/tests/data-spec.js";
 
 Meteor.isCordova = false;
 
@@ -39,7 +40,7 @@ it("renders with props", () => {
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 
-it("renders unclickeable version", () => {
+it("renders unclickable version", () => {
   const wrapper = shallow(generateComponent({
     clickAble: false,
   }));
@@ -207,20 +208,33 @@ it("isInQueryString return true if query contains urlKey", () => {
   expect(result).toBe(true);
 });
 
-// until tested
-const FAIL = () => expect(true).toBe(false);
-
 it("should not show the icon span if icon shouldn't show", () => {
-  FAIL();
-  // hint: this would be much easier with the data-spec helper
-  // "../../../../../util/tests/data-spec"
+  const wrapper = shallow(generateComponent({
+    active: false,
+    canBeActive: false,
+  }));
+  expect(shallowToJson(wrapper)).toMatchSnapshot();
+
+  const iconSpan = getSpecWrappers(wrapper, "iconSpan");
+  expect(iconSpan.length).toEqual(0);
 });
 
 it("should show the icon span if iconClass is used", () => {
-  FAIL();
-  // same hint as above ;)
+  const wrapper = shallow(generateComponent({
+    active: false,
+    canBeActive: false,
+    iconClass: "icon-arrow-up",
+  }));
+  expect(shallowToJson(wrapper)).toMatchSnapshot();
+
+  const iconSpan = getSpecWrappers(wrapper, "iconSpan");
+  expect(iconSpan.length).toEqual(1);
 });
 
 it("should show the X icon if active and clickable", () => {
-  FAIL();
+  const wrapper = shallow(generateComponent());
+  expect(shallowToJson(wrapper)).toMatchSnapshot();
+
+  const iconSpan = getSpecWrappers(wrapper, "iconSpan");
+  expect(iconSpan.length).toEqual(1);
 });

@@ -31,42 +31,25 @@ class TagWithoutData extends Component {
   state = { isActive: false };
 
   componentWillMount() {
-    if (
-      (this.props.active || this.isInQueryString(this.props)) &&
-      this.props.canBeActive
-    ) {
+    if ((this.props.active || this.isInQueryString(this.props)) && this.props.canBeActive) {
       this.setState({ isActive: true });
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    if (
-      (nextProps.active || this.isInQueryString(nextProps)) &&
-      nextProps.canBeActive
-    ) {
+    if ((nextProps.active || this.isInQueryString(nextProps)) && nextProps.canBeActive) {
       this.setState({ isActive: true });
-    } else if (
-      nextProps.active &&
-      nextProps.canBeActive &&
-      !this.props.active
-    ) {
+    } else if (nextProps.active && nextProps.canBeActive && !this.props.active) {
       this.setState({ isActive: true });
     } else {
       this.setState({ isActive: false });
     }
   }
 
-  onClick = e => {
+  onClick = (e) => {
     if (e) e.stopPropagation();
     let { val } = this.props;
-    const {
-      onClick,
-      router,
-      location,
-      clickAble,
-      canBeActive,
-      urlKey,
-    } = this.props;
+    const { onClick, router, location, clickAble, canBeActive, urlKey } = this.props;
 
     if (!clickAble) return;
 
@@ -90,7 +73,7 @@ class TagWithoutData extends Component {
       tags.push(val);
     }
 
-    tags = tags.filter(x => x);
+    tags = tags.filter((x) => x);
 
     if (!tags.length && location.query[urlKey]) {
       delete location.query[urlKey];
@@ -101,12 +84,12 @@ class TagWithoutData extends Component {
     router.replace(newPath);
   };
 
-  isInQueryString = props => {
+  isInQueryString = (props) => {
     const { val, urlKey } = props;
     const { query } = props.location;
     if (!query || !query[urlKey]) return false;
 
-    const tags = query[urlKey].toLowerCase().split(",").filter(x => x);
+    const tags = query[urlKey].toLowerCase().split(",").filter((x) => x);
     return tags.indexOf(val.toLowerCase()) > -1;
   };
 
@@ -131,27 +114,22 @@ class TagWithoutData extends Component {
     return (
       <span
         className={`${classes.join(" ")} ${className}`}
-        style={
-          this.props.iconClass || active
-            ? { ...style, ...{ paddingRight: "10px" } }
-            : style
-        }
+        style={this.props.iconClass || active ? { ...style, ...{ paddingRight: "10px" } } : style}
         onClick={this.onClick}
       >
         {label || val}{this.props.icon ? this.props.icon : ""}
         {this.props.iconClass || active
           ? <span
-              style={{ fontSize: "10px" }}
-              className={`push-half-left ${active ? "icon-close" : this.props.iconClass}`}
-            />
+            style={{ fontSize: "10px" }}
+            className={`push-half-left ${active ? "icon-close" : this.props.iconClass}`}
+            data-spec="iconSpan"
+          />
           : null}
       </span>
     );
   }
 }
 
-export default withRouter(
-  connect(state => ({ location: state.routing.location }))(TagWithoutData),
-);
+export default withRouter(connect((state) => ({ location: state.routing.location }))(TagWithoutData));
 
 export { TagWithoutData };
