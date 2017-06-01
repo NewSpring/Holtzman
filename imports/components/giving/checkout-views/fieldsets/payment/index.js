@@ -1,6 +1,5 @@
 // @flow
 import { Component } from "react";
-import moment from "moment";
 
 import Validate from "../../../../../util/validate";
 

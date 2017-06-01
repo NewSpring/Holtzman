@@ -6,29 +6,32 @@ import FitText from "../components/fit-text";
 import Meta from "../../../components/shared/meta";
 import ProgressBar from "../../../components/giving/giving-progress";
 import Story from "../components/story";
+import inAppLink from "../../../util/inAppLink";
 
-const generalFundAmountTotal = 49358552.46;
 const fundData = [
-  { campus: "Aiken", amount: 492416.38 },
-  { campus: "Anderson", amount: 14048984.79 },
-  { campus: "Boiling Springs", amount: 1244201.92 },
-  { campus: "Central", amount: 225890.32 },
-  { campus: "Charleston", amount: 3268933.86 },
-  { campus: "Clemson", amount: 1233130.32 },
-  { campus: "Columbia*", amount: 4658009.77 },
-  { campus: "Florence", amount: 2887143.55 },
-  { campus: "Greenville", amount: 8119037.58 },
-  { campus: "Greenwood", amount: 1820534.17 },
-  { campus: "Hilton Head", amount: 353190.47 },
-  { campus: "Lexington*", amount: 1267422.66 },
-  { campus: "Myrtle Beach", amount: 2314762.53 },
-  { campus: "Northeast Columbia", amount: 556082.77 },
-  { campus: "Powdersville", amount: 2584315.26 },
-  { campus: "Rock Hill", amount: 476888.68 },
-  { campus: "Spartanburg", amount: 3126923.59 },
-  { campus: "Sumter", amount: 288308.52 },
-  { campus: "Web", amount: 392373.32 },
+  { campus: "Aiken", amount: 492202.38 },
+  { campus: "Anderson", amount: 14034355.56 },
+  { campus: "Boiling Springs", amount: 1243993.92 },
+  { campus: "Central", amount: 118184.91 },
+  { campus: "Charleston", amount: 3268977.86 },
+  { campus: "Clemson", amount: 1232141.32 },
+  { campus: "Columbia*", amount: 4657366.47 },
+  { campus: "Florence", amount: 2884996.14 },
+  { campus: "Greenville", amount: 8224077.56 },
+  { campus: "Greenwood", amount: 1820647.55 },
+  { campus: "Hilton Head", amount: 338145.47 },
+  { campus: "Lexington*", amount: 1265007.66 },
+  { campus: "Myrtle Beach", amount: 2317189.53 },
+  { campus: "Northeast Columbia", amount: 555401.77 },
+  { campus: "Powdersville", amount: 2583636.26 },
+  { campus: "Rock Hill", amount: 476788.68 },
+  { campus: "Spartanburg", amount: 3136052.53 },
+  { campus: "Sumter", amount: 288200.25 },
+  { campus: "Web", amount: 391954.32 },
 ];
+
+// -1 for rounding correction
+const generalFundAmountTotal = fundData.reduce(((acc, fund) => acc + fund.amount), 0) - 1;
 const stepUpFundTotal = "1792258.15";
 
 /* eslint-disable max-len */
@@ -109,6 +112,8 @@ export const Finances = () => {
         </div>
         <div className="soft-sides">
           <small className="text-center"><em>Lexington campus merged with Columbia campus on Oct. 30.</em></small>
+          <br />
+          <small className="text-center"><em>Financials have been audited.</em></small>
         </div>
       </div>
       <div className="background--light-primary text-center soft-double-top">
@@ -126,61 +131,54 @@ export const Finances = () => {
         </div>
         <div className="floating">
           <div className="soft-double-sides soft-sides@handheld text-center three-quarters@lap-wide-and-up nine-tenths@lap floating__item">
-            <hr className="visuallyhidden@handheld push-ends" style={{ borderTop: "1px solid #dddddd" }} />
-            <Story
-              image={"//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/stories/story-img1.png"}
-              content={"<p>&#34;We gave to the Clemson building campaign because we saw NewSpring's impact on our own daughter when she was at college. We're excited to see the lives that will be changed in and around Clemson and from all over the world because of the new campus.&#34;</p>"}
-              name={"Carol and Laurie Brown"}
-              location={"Sumter"}
-              heading={"Meet givers"}
-            />
-          </div>
-        </div>
-      </div>
-      <div className="one-whole floating text-center background--light-secondary soft-sides soft-double-ends">
-        <div className="grid three-quarters@lap-wide-and-up floating__item push-ends">
-          <div className="grid__item one-half@lap-and-up one-whole">
-            <h3
-              className="italic"
-              style={{
-                fontFamily: "ff-meta-serif-web-pro, serif",
-              }}
-            >
-              We had
-            </h3>
-            <FitText compressor={0.5}>
-              <h1
-                className="uppercase flush-bottom soft-half-bottom"
-                style={{
-                  fontWeight: "900",
-                }}
-              >
-                5,400
-              </h1>
-            </FitText>
-            <h3>first time givers</h3>
-          </div>
-          <div className="grid__item one-half@lap-and-up">
-            <h3
-              className="italic"
-              style={{
-                fontFamily: "ff-meta-serif-web-pro, serif",
-              }}
-            >
-              and
-            </h3>
-            <FitText compressor={0.5}>
-              <h1
-                className="uppercase flush-bottom soft-half-bottom"
-                style={{
-                  fontWeight: "900",
-                }}
-              >
-                18,173
-              </h1>
-            </FitText>
-            <div className="floating text-center">
-              <h3 className="floating__item push-half-bottom">households gave.</h3>
+            <hr className="push-ends" style={{ borderTop: "1px solid #dddddd" }} />
+            <div className="soft-ends">
+              <div className="grid push-ends">
+                <div className="grid__item one-half@lap-and-up one-whole">
+                  <h3
+                    className="italic"
+                    style={{
+                      fontFamily: "ff-meta-serif-web-pro, serif",
+                    }}
+                  >
+                    We had
+                  </h3>
+                  <FitText compressor={0.5}>
+                    <h1
+                      className="uppercase flush-bottom soft-half-bottom"
+                      style={{
+                        fontWeight: "900",
+                      }}
+                    >
+                      5,400
+                    </h1>
+                  </FitText>
+                  <h3>first time givers</h3>
+                </div>
+                <div className="grid__item one-half@lap-and-up">
+                  <h3
+                    className="italic"
+                    style={{
+                      fontFamily: "ff-meta-serif-web-pro, serif",
+                    }}
+                  >
+                    and
+                  </h3>
+                  <FitText compressor={0.5}>
+                    <h1
+                      className="uppercase flush-bottom soft-half-bottom"
+                      style={{
+                        fontWeight: "900",
+                      }}
+                    >
+                      18,173
+                    </h1>
+                  </FitText>
+                  <div className="floating text-center">
+                    <h3 className="floating__item push-half-bottom">households gave.</h3>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -216,7 +214,16 @@ export const Finances = () => {
       <div className="background--light-primary soft">
         <h3 className="text-center push-top">Annual Audit</h3>
         <p className="constrain-copy push-bottom">NewSpring is audited annually by an external accounting firm according to Generally Accepted Accounting Principles. God calls His people to live above reproach, so for us, the annual audit is a financial and spiritual responsibility (<a href={"https://www.bible.com/search/bible?q=philippians%202:15&version_id=111"} alt={"Philippians 2:15"} target={"_blank"}>Philippians 2:15</a>).</p>
-        <p className="constrain-copy push-bottom soft-half-bottom">We&#39;ll update this section in May after the audit is complete. If you have any questions not answered here, please email us at <a href={"mailto:finance@newspring.cc"}>finance@newspring.cc</a>.</p>
+        <div className="text-center">
+          <a
+            className="btn push-bottom"
+            target="_blank"
+            href="https://s3.amazonaws.com/ns.assets/apollos/annual+report/2016/2016+Audit.pdf"
+            onClick={inAppLink}
+          >
+            Detailed Report
+          </a>
+        </div>
       </div>
       <div className="background--primary text-center text-light-primary soft">
         <h3 className="push-double-top">Keep Reading</h3>

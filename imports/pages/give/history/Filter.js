@@ -333,7 +333,7 @@ export default class Filter extends Component {
                       !this.state.customStartActive &&
                       scheduleIcon
                   }
-                  clickAble={!Boolean(this.state.dateRangeActive)}
+                  clickAble={!this.state.dateRangeActive}
                 />
                 <Tag
                   key={2}
@@ -351,7 +351,7 @@ export default class Filter extends Component {
                       !this.state.customEndActive &&
                       scheduleIcon
                   }
-                  clickAble={!Boolean(this.state.dateRangeActive)}
+                  clickAble={!this.state.dateRangeActive}
                 />
               </div>
             </div>

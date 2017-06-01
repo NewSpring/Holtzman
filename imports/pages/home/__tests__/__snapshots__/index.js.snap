@@ -1,37 +1,6 @@
 exports[`test renders feed skeleton if loading 1`] = `
 <Connect(ApollosPullToRefreshWithoutData)
   handleRefresh={[Function]}>
-  <Connect(SplitContainerWithoutData)
-    classes={
-      Array [
-        "background--light-primary",
-      ]
-    }
-    nav={true}>
-    <Right
-      aspect="square"
-      classes={
-        Array [
-          "floating--bottom",
-          "text-left",
-          "background--dark-primary",
-        ]
-      }
-      mobile={true}
-      ratioClasses={
-        Array [
-          "floating__item",
-          "overlay__item",
-          "one-whole",
-          "soft@lap-and-up",
-          "floating--bottom",
-          "text-left",
-        ]
-      }>
-      <HomeHero
-        item={Object {}} />
-    </Right>
-  </Connect(SplitContainerWithoutData)>
   <Left
     scroll={true}>
     <section
@@ -67,52 +36,6 @@ exports[`test renders feed skeleton if loading 1`] = `
 exports[`test renders with props 1`] = `
 <Connect(ApollosPullToRefreshWithoutData)
   handleRefresh={[Function]}>
-  <Connect(SplitContainerWithoutData)
-    classes={
-      Array [
-        "background--light-primary",
-      ]
-    }
-    nav={true}>
-    <Right
-      aspect="square"
-      background="http://test.com/1x1.jpg"
-      classes={
-        Array [
-          "floating--bottom",
-          "text-left",
-          "background--dark-primary",
-        ]
-      }
-      link="/articles/1"
-      mobile={true}
-      ratioClasses={
-        Array [
-          "floating__item",
-          "overlay__item",
-          "one-whole",
-          "soft@lap-and-up",
-          "floating--bottom",
-          "text-left",
-        ]
-      }>
-      <HomeHero
-        item={
-          Object {
-            "channelName": "articles",
-            "content": Object {
-              "images": Array [
-                Object {
-                  "fileLabel": "1:1",
-                  "url": "http://test.com/1x1.jpg",
-                },
-              ],
-            },
-            "entryId": "1",
-          }
-        } />
-    </Right>
-  </Connect(SplitContainerWithoutData)>
   <Left
     scroll={true}>
     <section
@@ -121,7 +44,25 @@ exports[`test renders with props 1`] = `
         className="grid">
         <div
           className="grid__item one-half@palm-wide-and-up flush-bottom@palm push-half-bottom@palm-wide push-bottom@portable push-bottom@anchored">
-          <FeedItem
+          <Connect(Apollo(LikesWrapper))
+            item={
+              Object {
+                "channelName": "articles",
+                "content": Object {
+                  "images": Array [
+                    Object {
+                      "fileLabel": "1:1",
+                      "url": "http://test.com/1x1.jpg",
+                    },
+                  ],
+                },
+                "entryId": "1",
+              }
+            } />
+        </div>
+        <div
+          className="grid__item one-half@palm-wide-and-up flush-bottom@palm push-half-bottom@palm-wide push-bottom@portable push-bottom@anchored">
+          <Connect(Apollo(LikesWrapper))
             item={
               Object {
                 "channelName": "articles",
