@@ -10,6 +10,8 @@ import { GraphQL } from "../graphql";
 import { reducers, middlewares, sagas } from "./utilities";
 import { syncHistory, routeReducer } from "./routing";
 
+console.log({ middlewares })
+
 const createReduxStore = (initialState, history) => {
   if (initialState) {
     // bug with SSR
@@ -23,8 +25,9 @@ const createReduxStore = (initialState, history) => {
     },
   };
 
-  const sharedMiddlewares = [...middlewares, ...GraphQL.middleware()];
+  const sharedMiddlewares = [...middlewares, ...GraphQL.middleware()].filter(x => !!x);
 
+  console.log({ sharedMiddlewares })
   const reduxRouterMiddleware = syncHistory(history);
 
   const sagaMiddleware = createSagaMiddleware();

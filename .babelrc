@@ -1,7 +1,6 @@
 {
   "presets": [
     "meteor",
-    "es2015-loose",
     "stage-0",
     "react"
   ],
