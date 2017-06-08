@@ -117,7 +117,7 @@ class TagWithoutData extends Component {
         style={
           this.props.iconClass || active
             ? { ...style, ...{ paddingRight: "10px", paddingTop: "6px" } }
-            : style
+            : { ...style, ...{ paddingTop: "6px" } }
         }
         onClick={this.onClick}
       >
