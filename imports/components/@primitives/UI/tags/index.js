@@ -114,7 +114,11 @@ class TagWithoutData extends Component {
     return (
       <span
         className={`${classes.join(" ")} ${className}`}
-        style={this.props.iconClass || active ? { ...style, ...{ paddingRight: "10px" } } : style}
+        style={
+          this.props.iconClass || active
+            ? { ...style, ...{ paddingRight: "10px", paddingTop: "6px" } }
+            : style
+        }
         onClick={this.onClick}
       >
         {label || val}{this.props.icon ? this.props.icon : ""}

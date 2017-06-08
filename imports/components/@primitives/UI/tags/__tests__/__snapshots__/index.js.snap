@@ -6,6 +6,7 @@ exports[`test renders active version 1`] = `
     Object {
       "color": "red",
       "paddingRight": "10px",
+      "paddingTop": "6px",
     }
   }>
   testLabel
@@ -28,6 +29,7 @@ exports[`test renders cordova active version 1`] = `
     Object {
       "color": "red",
       "paddingRight": "10px",
+      "paddingTop": "6px",
     }
   }>
   testLabel
@@ -50,6 +52,7 @@ exports[`test renders unclickable version 1`] = `
     Object {
       "color": "red",
       "paddingRight": "10px",
+      "paddingTop": "6px",
     }
   }>
   testLabel
@@ -72,6 +75,7 @@ exports[`test renders with props 1`] = `
     Object {
       "color": "red",
       "paddingRight": "10px",
+      "paddingTop": "6px",
     }
   }>
   testLabel
@@ -107,6 +111,7 @@ exports[`test should show the X icon if active and clickable 1`] = `
     Object {
       "color": "red",
       "paddingRight": "10px",
+      "paddingTop": "6px",
     }
   }>
   testLabel
@@ -129,6 +134,7 @@ exports[`test should show the icon span if iconClass is used 1`] = `
     Object {
       "color": "red",
       "paddingRight": "10px",
+      "paddingTop": "6px",
     }
   }>
   testLabel
@@ -151,6 +157,7 @@ exports[`test works with val 1`] = `
     Object {
       "color": "red",
       "paddingRight": "10px",
+      "paddingTop": "6px",
     }
   }>
   testVal
