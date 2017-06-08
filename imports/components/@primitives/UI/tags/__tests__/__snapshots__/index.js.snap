@@ -97,6 +97,7 @@ exports[`test should not show the icon span if icon shouldn't show 1`] = `
   style={
     Object {
       "color": "red",
+      "paddingTop": "6px",
     }
   }>
   testLabel
