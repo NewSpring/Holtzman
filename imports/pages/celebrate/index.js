@@ -3,12 +3,12 @@ import React, { Component } from "react";
 import scriptLoader from "react-async-script-loader";
 
 import DashboardLayout from "../../components/@primitives/layout/dashboard";
-import FinancesPage from "./finances";
+// import FinancesPage from "./finances";
 import { Leaves } from "./components/layout";
 import Meta from "../../components/shared/meta";
-import MinistriesPage from "./ministries";
-import NextStepsPage from "./next-steps";
-import ShaneTemplate from "./message-from-shane";
+// import MinistriesPage from "./ministries";
+// import NextStepsPage from "./next-steps";
+// import ShaneTemplate from "./message-from-shane";
 import SmallButton from "../../components/@primitives/UI/buttons/SmallButton";
 import {
   SolidLeaf,
@@ -169,16 +169,38 @@ const scripts = [
 ];
 
 const Routes = [
-  { path: "annualreport/message-from-shane", component: ShaneTemplate.Template },
+  {
+    path: "annualreport/message-from-shane",
+    // component: ShaneTemplate.Template,
+    getComponents(nextState, cb) {
+      console.log("HERE");
+      import("./message-from-shane")
+        .then((x) => {
+          console.log(x);
+          cb(null, x.default.Template);
+        })
+        .catch(console.error);
+    },
+  },
   {
     path: "annualreport",
     component: scriptLoader(...scripts)(Template),
     indexRoute: { onEnter: (nextState: Object, replace: Function) => replace("/annualreport/finances") },
-    childRoutes: [
-      ...FinancesPage.Routes,
-      ...NextStepsPage.Routes,
-      ...MinistriesPage.Routes,
-    ],
+    // childRoutes: [
+    //   ...FinancesPage.Routes,
+    //   ...NextStepsPage.Routes,
+    //   ...MinistriesPage.Routes,
+    // ],
+    getChildRoutes(partialNextState, cb) {
+      Promise.all([
+        import("./finances"),
+        import("./next-steps"),
+        import("./ministries"),
+      ])
+        .then((x) => x.map((y) => y.default.Routes))
+        .then((routes) => cb(null, routes))
+        .catch(console.error);
+    },
   },
   {
     path: "celebrate",

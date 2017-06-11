@@ -2,7 +2,7 @@
 // used to create the wrapper
 import React from "react";
 import ReactDOM from "react-dom";
-import { applyRouterMiddleware, browserHistory, Router } from "react-router";
+import { match, applyRouterMiddleware, browserHistory, Router } from "react-router";
 import useScroll from "react-router-scroll";
 import InjectData from "./inject-data";
 
@@ -23,52 +23,51 @@ export default function run(routes, clientOptions = {}) {
       document.body.appendChild(rootElement);
     }
 
-    // If using redux, create the store with the initial state injected by the server.
-    let reduxStore;
-    if (typeof clientOptions.createReduxStore !== "undefined") {
-      InjectData.getData("redux-initial-state", (data) => {
-        const initialState = data ? JSON.parse(data) : undefined;
-        // XXX why does this not get mapped correctly in AC?
-        if (initialState) initialState.apollo.queries = {};
-        reduxStore = clientOptions.createReduxStore(initialState, history);
-      });
-    }
+    
 
-    /* eslint-disable react/no-children-prop */
-    let app = (
-      <Router
-        history={history}
-        children={routes}
-        render={applyRouterMiddleware(useScroll())}
-        {...clientOptions.props}
-      />
-    );
-    /* eslint-enable react/no-children-prop */
+    match({ history, routes }, (error, redirectLocation, renderProps) => {
 
-    if (clientOptions.wrapper) {
-      const wrapperProps = clientOptions.wrapperProps || {};
-      // Pass the redux store to the wrapper, which is supposed to be some
-      // flavour of react-redux's <Provider>.
-      if (reduxStore) {
-        wrapperProps.store = reduxStore;
+      // If using redux, create the store with the initial state injected by the server.
+      let reduxStore;
+      if (typeof clientOptions.createReduxStore !== "undefined") {
+        InjectData.getData("redux-initial-state", (data) => {
+          const initialState = data ? JSON.parse(data) : undefined;
+          console.log(initialState);
+          // XXX why does this not get mapped correctly in AC?
+          if (initialState) initialState.apollo.queries = {};
+          reduxStore = clientOptions.createReduxStore(initialState, history);
+        });
       }
 
-      app = <clientOptions.wrapper {...wrapperProps}>{app}</clientOptions.wrapper>;
-    }
+      /* eslint-disable react/no-children-prop */
+      let app = (
+        <Router
+          render={applyRouterMiddleware(useScroll())}
+          {...renderProps}
+          {...clientOptions.props}
+        />
+      );
+      /* eslint-enable react/no-children-prop */
 
-    // let css;
-    // InjectData.getData("aphrodite-classes", (data) => {
-    //   css = data ? JSON.parse(data) : {};
-    // });
+      if (clientOptions.wrapper) {
+        const wrapperProps = clientOptions.wrapperProps || {};
+        // Pass the redux store to the wrapper, which is supposed to be some
+        // flavour of react-redux's <Provider>.
+        if (reduxStore) {
+          wrapperProps.store = reduxStore;
+        }
 
-    // StyleSheet.rehydrate(css.renderedClassNames);
+        app = <clientOptions.wrapper {...wrapperProps}>{app}</clientOptions.wrapper>;
+      }
 
-    ReactDOM.render(app, rootElement);
+      ReactDOM.render(app, rootElement);
 
-    const collectorEl = document.getElementById(
-      clientOptions.styleCollectorId ||
-      "css-style-collector-data"
-    );
-    if (collectorEl) collectorEl.parentNode.removeChild(collectorEl);
+      const collectorEl = document.getElementById(
+        clientOptions.styleCollectorId ||
+        "css-style-collector-data"
+      );
+      if (collectorEl) collectorEl.parentNode.removeChild(collectorEl);
+
+    })
   });
 }

@@ -1,7 +1,12 @@
 // @flow
 import { Link } from "react-router";
-import LineGraph from "../../../components/@primitives/UI/graphs/LineGraph";
+import { asyncComponent } from "react-async-component";
 import YTDTotal from "../../../components/@primitives/typography/currency";
+
+const LineGraph = asyncComponent({
+  resolve: () => import("../../../components/@primitives/UI/graphs/LineGraph")
+    .then((x) => x.default),
+});
 
 const styles = {
   lineColor: "#ffffff",

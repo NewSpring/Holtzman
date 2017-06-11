@@ -1,6 +1,6 @@
 // @flow
 import { Link } from "react-router";
-import { VictoryPie } from "victory";
+import { asyncComponent } from "react-async-component";
 import { css, StyleSheet } from "aphrodite";
 
 import CardSlider from "../../../components/@primitives/UI/card-slider";
@@ -9,6 +9,11 @@ import FitText from "../components/fit-text";
 import Meta from "../../../components/shared/meta";
 import MetricCard from "../components/metricCard";
 import Story from "../components/story";
+
+// async this giant library
+const VictoryPie = asyncComponent({
+  resolve: () => import("victory").then((x) => x.VictoryPie),
+});
 
 const styles = StyleSheet.create({
   darkTertiaryColor: {

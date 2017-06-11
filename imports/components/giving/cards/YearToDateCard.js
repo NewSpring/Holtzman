@@ -1,7 +1,12 @@
 // @flow
 import { Link } from "react-router";
-import LineGraph from "../../@primitives/UI/graphs/LineGraph";
+import { asyncComponent } from "react-async-component";
 import Currency from "../../@primitives/typography/currency";
+
+// async this giant library
+const LineGraph = asyncComponent({
+  resolve: () => import("../../@primitives/UI/graphs/LineGraph").then((x) => x.default),
+});
 
 type IYearToDateCard = {
   amount: string,
