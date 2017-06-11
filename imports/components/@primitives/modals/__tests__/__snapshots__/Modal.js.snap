@@ -1,3 +1,158 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`childClasses adjusts for float 1`] = `"hard one-whole interior_9nddxf scrollable floating__item"`;
+
+exports[`childClasses appends additional childClasses 1`] = `"hard one-whole interior_9nddxf scrollable one two inline-block locked-top"`;
+
+exports[`childClasses returns default 1`] = `"hard one-whole interior_9nddxf scrollable inline-block locked-top"`;
+
+exports[`does not render if no component 1`] = `<div />`;
+
+exports[`does not render if not visible 1`] = `<div />`;
+
+exports[`layoutClasses appends additional classes 1`] = `"hard flush one two background--light-primary"`;
+
+exports[`layoutClasses appends layout overrides 1`] = `"hard flush side-panel_x7puo background--light-primary three four"`;
+
+exports[`layoutClasses handles float 1`] = `"hard flush side-panel_x7puo background--light-primary floating"`;
+
+exports[`layoutClasses handles offset 1`] = `"hard flush side-panel_x7puo background--light-primary offset_b736ty"`;
+
+exports[`layoutClasses has dark version 1`] = `"hard flush side-panel_x7puo background--dark-primary"`;
+
+exports[`layoutClasses returns default 1`] = `"hard flush side-panel_x7puo background--light-primary"`;
+
+exports[`overrides with theme 1`] = `
+<div
+  className="panel overlay--solid-dark fixed"
+  data-side-modal={true}
+  id="@@modal"
+  onClick={[Function]}
+  style={
+    Object {
+      "position": "fixed",
+      "zIndex": 100,
+    }
+  }
+>
+  <VelocityComponent
+    animation={
+      Object {
+        "opacity": Array [
+          1,
+          0,
+        ],
+        "translateX": Array [
+          0,
+          -20,
+        ],
+        "translateZ": 0,
+      }
+    }
+    duration={300}
+    interruptBehavior="stop"
+    runOnMount={true}
+    targetQuerySelector={null}
+  >
+    <section
+      className="mytheme"
+      style={
+        Object {
+          "opacity": 0,
+          "top": "46px",
+          "transform": "translateY(-20px)",
+        }
+      }
+    >
+      <div
+        className="hard one-whole interior_9nddxf scrollable inline-block locked-top"
+        style={
+          Object {
+            "height": "100%",
+          }
+        }
+      >
+        <component />
+      </div>
+    </section>
+  </VelocityComponent>
+</div>
+`;
+
+exports[`renders with props 1`] = `
+<div
+  className="panel overlay--solid-dark fixed"
+  data-side-modal={true}
+  id="@@modal"
+  onClick={[Function]}
+  style={
+    Object {
+      "position": "fixed",
+      "zIndex": 100,
+    }
+  }
+>
+  <VelocityComponent
+    animation={
+      Object {
+        "opacity": Array [
+          1,
+          0,
+        ],
+        "translateX": Array [
+          0,
+          -20,
+        ],
+        "translateZ": 0,
+      }
+    }
+    duration={300}
+    interruptBehavior="stop"
+    runOnMount={true}
+    targetQuerySelector={null}
+  >
+    <section
+      className="hard flush side-panel_x7puo background--light-primary"
+      style={
+        Object {
+          "opacity": 0,
+          "top": "46px",
+          "transform": "translateY(-20px)",
+        }
+      }
+    >
+      <div
+        className="hard one-whole interior_9nddxf scrollable inline-block locked-top"
+        style={
+          Object {
+            "height": "100%",
+          }
+        }
+      >
+        <component />
+      </div>
+    </section>
+  </VelocityComponent>
+</div>
+`;
+
+exports[`styles accounts for coverHeader 1`] = `
+Object {
+  "opacity": 0,
+  "top": "0px",
+  "transform": "translateY(-20px)",
+}
+`;
+
+exports[`styles returns styles if styles 1`] = `
+Object {
+  "color": "red",
+  "opacity": 0,
+  "top": "46px",
+  "transform": "translateY(-20px)",
+}
+`;
+
 exports[`test childClasses adjusts for float 1`] = `"hard one-whole interior_9nddxf scrollable floating__item"`;
 
 exports[`test childClasses appends additional childClasses 1`] = `"hard one-whole interior_9nddxf scrollable one two inline-block locked-top"`;
@@ -238,6 +393,120 @@ exports[`test updates styles with non mobile styles 1`] = `
             "height": "100%",
           }
         }>
+        <component />
+      </div>
+    </section>
+  </VelocityComponent>
+</div>
+`;
+
+exports[`updates styles with mobile styles 1`] = `
+<div
+  className="panel overlay--solid-dark fixed"
+  data-side-modal={true}
+  id="@@modal"
+  onClick={[Function]}
+  style={
+    Object {
+      "position": "fixed",
+      "zIndex": 100,
+    }
+  }
+>
+  <VelocityComponent
+    animation={
+      Object {
+        "opacity": Array [
+          1,
+          0,
+        ],
+        "translateY": Array [
+          0,
+          80,
+        ],
+        "translateZ": 0,
+      }
+    }
+    duration={300}
+    interruptBehavior="stop"
+    runOnMount={true}
+    targetQuerySelector={null}
+  >
+    <section
+      className="hard flush side-panel_x7puo background--light-primary"
+      style={
+        Object {
+          "opacity": 0,
+          "top": "46px",
+          "transform": "translateY(80px)",
+        }
+      }
+    >
+      <div
+        className="hard one-whole interior_9nddxf scrollable inline-block locked-top"
+        style={
+          Object {
+            "height": "100%",
+          }
+        }
+      >
+        <component />
+      </div>
+    </section>
+  </VelocityComponent>
+</div>
+`;
+
+exports[`updates styles with non mobile styles 1`] = `
+<div
+  className="panel overlay--solid-dark fixed"
+  data-side-modal={true}
+  id="@@modal"
+  onClick={[Function]}
+  style={
+    Object {
+      "position": "fixed",
+      "zIndex": 100,
+    }
+  }
+>
+  <VelocityComponent
+    animation={
+      Object {
+        "opacity": Array [
+          1,
+          0,
+        ],
+        "translateX": Array [
+          0,
+          -20,
+        ],
+        "translateZ": 0,
+      }
+    }
+    duration={300}
+    interruptBehavior="stop"
+    runOnMount={true}
+    targetQuerySelector={null}
+  >
+    <section
+      className="hard flush side-panel_x7puo background--light-primary"
+      style={
+        Object {
+          "opacity": 0,
+          "top": "46px",
+          "transform": "translateY(-20px)",
+        }
+      }
+    >
+      <div
+        className="hard one-whole interior_9nddxf scrollable inline-block locked-top"
+        style={
+          Object {
+            "height": "100%",
+          }
+        }
+      >
         <component />
       </div>
     </section>

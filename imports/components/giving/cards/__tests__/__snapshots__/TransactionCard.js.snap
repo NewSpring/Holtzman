@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`TransactionCard renders failed version 1`] = `
 <FailedWrapper>
   <DetailCard
@@ -73,7 +75,7 @@ exports[`TransactionDetail renders with failure 1`] = `
         className="background--fill soft visuallyhidden@palm float-left round push-half-top"
         style={
           Object {
-            "backgroundImage": "url(\"http://test.com/test.jpg\")",
+            "backgroundImage": "url("http://test.com/test.jpg")",
           }
         } />
       <div
@@ -150,7 +152,7 @@ exports[`TransactionDetail renders with failure and status 1`] = `
         className="background--fill soft visuallyhidden@palm float-left round push-half-top"
         style={
           Object {
-            "backgroundImage": "url(\"http://test.com/test.jpg\")",
+            "backgroundImage": "url("http://test.com/test.jpg")",
           }
         } />
       <div
@@ -228,7 +230,7 @@ exports[`TransactionDetail renders with props 1`] = `
         className="background--fill soft visuallyhidden@palm float-left round push-half-top"
         style={
           Object {
-            "backgroundImage": "url(\"http://test.com/test.jpg\")",
+            "backgroundImage": "url("http://test.com/test.jpg")",
           }
         } />
       <div
@@ -305,7 +307,7 @@ exports[`TransactionDetail renders without icon 1`] = `
         className="background--fill soft visuallyhidden@palm float-left round push-half-top"
         style={
           Object {
-            "backgroundImage": "url(\"http://test.com/test.jpg\")",
+            "backgroundImage": "url("http://test.com/test.jpg")",
           }
         } />
       <div

@@ -1,3 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders with mini player 1`] = `
+<div>
+  <Connect(MiniPlayerWithoutData)
+    audio={
+      Object {
+        "playing": Object {
+          "album": Object {
+            "content": Object {
+              "isLight": false,
+            },
+          },
+          "track": Object {
+            "file": "http://test.com/test.mp3",
+          },
+        },
+        "visibility": "dock",
+      }
+    }
+    dispatch={[Function]}
+    modal={
+      Object {
+        "retrigger": false,
+        "visible": false,
+      }
+    }
+  />
+  <Connect(AudioPlayerUtilityWithoutData) />
+</div>
+`;
+
+exports[`renders with props 1`] = `
+<div>
+  <Connect(AudioPlayerUtilityWithoutData) />
+</div>
+`;
+
 exports[`test renders with mini player 1`] = `
 <div>
   <Connect(MiniPlayerWithoutData)

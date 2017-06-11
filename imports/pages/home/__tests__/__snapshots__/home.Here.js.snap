@@ -1,3 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders unready version 1`] = `
+<section
+  className="hard"
+>
+  <div
+    className="one-whole overlay__item floating__item soft"
+  >
+    <h3
+      className="text-light-primary flush soft-half-bottom capitalize"
+    />
+    <i
+      className="text-light-primary soft-half-right"
+    />
+    <h7
+      className="text-light-primary"
+    />
+    <h7
+      className="text-light-primary text-right float-right"
+      style={
+        Object {
+          "marginTop": "5px",
+        }
+      }
+    />
+  </div>
+</section>
+`;
+
+exports[`renders with props 1`] = `
+<section
+  className="hard"
+>
+  <div
+    className="one-whole overlay__item floating__item soft"
+  >
+    <h3
+      className="text-light-primary flush soft-half-bottom capitalize"
+    >
+      test
+    </h3>
+    <i
+      className="text-light-primary soft-half-right icon-category-text "
+    />
+    <h7
+      className="text-light-primary"
+    >
+      Articles
+    </h7>
+    <h7
+      className="text-light-primary text-right float-right"
+      style={
+        Object {
+          "marginTop": "5px",
+        }
+      }
+    >
+      5y
+    </h7>
+  </div>
+</section>
+`;
+
 exports[`test renders unready version 1`] = `
 <section
   className="hard">

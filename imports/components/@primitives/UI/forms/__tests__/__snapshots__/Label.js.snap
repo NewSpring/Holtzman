@@ -1,3 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`disables the label 1`] = `
+<label
+  htmlFor={undefined}
+  style={
+    Object {
+      "cursor": "inherit",
+    }
+  }
+/>
+`;
+
+exports[`displays a form label to the user 1`] = `
+<label
+  htmlFor={undefined}
+  style={Object {}}
+/>
+`;
+
+exports[`displays a label name to the user 1`] = `
+<label
+  htmlFor={undefined}
+  style={Object {}}
+>
+  label
+</label>
+`;
+
+exports[`passes the label for to the component 1`] = `
+<label
+  htmlFor="goGoGadget"
+  style={Object {}}
+/>
+`;
+
 exports[`test disables the label 1`] = `
 <label
   htmlFor={undefined}

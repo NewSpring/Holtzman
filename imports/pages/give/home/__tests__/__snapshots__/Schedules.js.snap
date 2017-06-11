@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Giving Schedules List should render properly with data 1`] = `
 <SchedulesList
   schedules={

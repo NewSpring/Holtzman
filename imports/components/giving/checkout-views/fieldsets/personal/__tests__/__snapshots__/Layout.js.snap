@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Header renders default if no override 1`] = `
 <h4
   className="text-center">

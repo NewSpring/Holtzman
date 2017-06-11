@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`SmallButton should accept a className prop 1`] = `
 <SmallButton
   className="harambe"

@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Template accepts account object with complete data 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)
@@ -8,7 +10,7 @@ exports[`Template accepts account object with complete data 1`] = `
     }
     nav={true}>
     <Meta
-      description="Tesla, because they\'re awesome!"
+      description="Tesla, because they're awesome!"
       image="https://cl.ly/i26e/Image%202016-11-07%20at%202.38.14%20PM.png"
       meta={
         Array [
@@ -95,7 +97,7 @@ exports[`Template accepts account object with complete data 1`] = `
                   ],
                   "name": "Tesla Fund",
                   "order": 0,
-                  "summary": "Tesla, because they\'re awesome!",
+                  "summary": "Tesla, because they're awesome!",
                 },
               ]
             }
@@ -117,7 +119,7 @@ exports[`Template accepts account object without image data 1`] = `
     }
     nav={true}>
     <Meta
-      description="Tesla, because they\'re awesome!"
+      description="Tesla, because they're awesome!"
       image="https://cl.ly/i26e/Image%202016-11-07%20at%202.38.14%20PM.png"
       meta={
         Array [
@@ -195,7 +197,7 @@ exports[`Template accepts account object without image data 1`] = `
                   "image": "https://cl.ly/i26e/Image%202016-11-07%20at%202.38.14%20PM.png",
                   "name": "Tesla Fund",
                   "order": 0,
-                  "summary": "Tesla, because they\'re awesome!",
+                  "summary": "Tesla, because they're awesome!",
                 },
               ]
             }

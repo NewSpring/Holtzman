@@ -1,3 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render with props 1`] = `
+<SideModal
+  captureRef={[Function]}
+  childClasses={Array []}
+  close={[Function]}
+  component={Object {}}
+  dispatch={[Function]}
+  float={false}
+  modal={
+    Object {
+      "content": Object {},
+      "props": Object {
+        "keepNav": false,
+        "promptModal": false,
+      },
+      "visible": false,
+    }
+  }
+  navigation={
+    Object {
+      "level": "default",
+    }
+  }
+  offset={true}
+  path="/test"
+  props={
+    Object {
+      "keepNav": false,
+      "promptModal": false,
+    }
+  }
+  styles={Object {}}
+  visible={false}
+/>
+`;
+
 exports[`test render with props 1`] = `
 <SideModal
   captureRef={[Function]}

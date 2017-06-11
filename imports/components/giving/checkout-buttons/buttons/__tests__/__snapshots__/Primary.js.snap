@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`ButtonText overrides if signed in and override 1`] = `
 <button
   className="btn"

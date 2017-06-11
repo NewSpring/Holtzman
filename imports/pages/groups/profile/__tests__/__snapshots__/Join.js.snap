@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Join renders with props 1`] = `
 <div
   className="soft soft-double-ends one-whole text-center">
@@ -24,7 +26,7 @@ exports[`Join renders with props 1`] = `
       defaultValue="
     Hey jim, bob,
     
-    I\'m interested in learning more about your group and looking forward to hearing from you soon!
+    I'm interested in learning more about your group and looking forward to hearing from you soon!
     
     Thanks!"
       inputClasses="text-dark-secondary"

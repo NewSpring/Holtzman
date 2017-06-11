@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`RightPanel Layout should render a loading state 1`] = `
 <RightPanel
   changeYear={[Function]}

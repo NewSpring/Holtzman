@@ -1,3 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`adds appends additional classes 1`] = `
+<section
+  className="relative hard flush seven-twelfths@lap-and-up one two"
+  style={Object {}}
+>
+  <h1>
+    test
+  </h1>
+</section>
+`;
+
+exports[`adds background class and image 1`] = `
+<section
+  className="relative hard flush seven-twelfths@lap-and-up background--fill"
+  style={
+    Object {
+      "backgroundImage": "url('https://test.com/test.jpg')",
+    }
+  }
+>
+  <h1>
+    test
+  </h1>
+</section>
+`;
+
+exports[`adds scrollable class 1`] = `
+<section
+  className="relative hard flush scrollable seven-twelfths@lap-and-up"
+  style={Object {}}
+>
+  <h1>
+    test
+  </h1>
+</section>
+`;
+
+exports[`adds width class 1`] = `
+<section
+  className="relative hard flush my-width-class"
+  style={Object {}}
+>
+  <h1>
+    test
+  </h1>
+</section>
+`;
+
+exports[`renders with props 1`] = `
+<section
+  className="relative hard flush seven-twelfths@lap-and-up"
+  style={Object {}}
+>
+  <h1>
+    test
+  </h1>
+</section>
+`;
+
 exports[`test adds appends additional classes 1`] = `
 <section
   className="relative hard flush seven-twelfths@lap-and-up one two"
@@ -13,7 +74,7 @@ exports[`test adds background class and image 1`] = `
   className="relative hard flush seven-twelfths@lap-and-up background--fill"
   style={
     Object {
-      "backgroundImage": "url(\'https://test.com/test.jpg\')",
+      "backgroundImage": "url('https://test.com/test.jpg')",
     }
   }>
   <h1>

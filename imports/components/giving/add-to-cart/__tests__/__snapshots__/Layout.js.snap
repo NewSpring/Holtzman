@@ -1,3 +1,126 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render with minimal props 1`] = `
+<div
+  className="push-top@handheld soft-half-top@lap-and-up"
+>
+  <Form
+    classes={
+      Array [
+        "text-left",
+        "hard",
+      ]
+    }
+    id="add-to-cart"
+    submit={[Function]}
+  >
+    <div
+      className="display-inline-block"
+    >
+      <mockConstructor
+        accounts={Array []}
+        changeAmount={[Function]}
+        changeFund={[Function]}
+        id={1}
+        preFill={[Function]}
+      />
+      <div
+        className="display-block one-whole soft-bottom"
+      />
+      <Connect(Schedule) />
+      <h3
+        className="display-inline-block text-dark-primary push-half-bottom push-half-right"
+        style={
+          Object {
+            "verticalAlign": "middle",
+          }
+        }
+      >
+        my total is
+      </h3>
+      <span
+        className="display-inline-block text-dark-primary push-half-bottom"
+        style={
+          Object {
+            "verticalAlign": "middle",
+          }
+        }
+      >
+        <Currency
+          amount="$0.00"
+          baseHeadingSize="1"
+          className="text-left"
+        />
+      </span>
+    </div>
+    <div
+      className="push-top"
+    >
+      <mockConstructor
+        disabled={true}
+      />
+    </div>
+  </Form>
+</div>
+`;
+
+exports[`should render without subfunds  1`] = `
+<div
+  className="push-top@handheld soft-half-top@lap-and-up"
+>
+  <Form
+    classes={
+      Array [
+        "text-left",
+        "hard",
+      ]
+    }
+    id="add-to-cart"
+    submit={[Function]}
+  >
+    <div
+      className="display-inline-block"
+    >
+      <div
+        className="display-block one-whole soft-bottom"
+      />
+      <Connect(Schedule) />
+      <h3
+        className="display-inline-block text-dark-primary push-half-bottom push-half-right"
+        style={
+          Object {
+            "verticalAlign": "middle",
+          }
+        }
+      >
+        my total is
+      </h3>
+      <span
+        className="display-inline-block text-dark-primary push-half-bottom"
+        style={
+          Object {
+            "verticalAlign": "middle",
+          }
+        }
+      >
+        <Currency
+          amount="$0.00"
+          baseHeadingSize="1"
+          className="text-left"
+        />
+      </span>
+    </div>
+    <div
+      className="push-top"
+    >
+      <mockConstructor
+        disabled={true}
+      />
+    </div>
+  </Form>
+</div>
+`;
+
 exports[`test should render with minimal props 1`] = `
 <div
   className="push-top@handheld soft-half-top@lap-and-up">

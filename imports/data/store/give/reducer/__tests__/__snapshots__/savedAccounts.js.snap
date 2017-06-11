@@ -1,3 +1,110 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`allows adding a saved account 1`] = `
+Object {
+  "accounts": Object {},
+  "attempts": 0,
+  "data": Object {
+    "billing": Object {
+      "city": null,
+      "country": null,
+      "state": null,
+      "streetAddress": null,
+      "streetAddress2": null,
+      "zip": null,
+    },
+    "payment": Object {
+      "account": null,
+      "cardNumber": null,
+      "ccv": null,
+      "expiration": null,
+      "name": null,
+      "routing": null,
+      "type": "cc",
+    },
+    "personal": Object {
+      "campus": null,
+      "campusId": null,
+      "email": null,
+      "firstName": null,
+      "lastName": null,
+    },
+  },
+  "errors": Object {},
+  "recoverableSchedules": Object {},
+  "reminderDate": null,
+  "savedAccount": "add",
+  "schedule": Object {
+    "frequency": null,
+    "start": null,
+  },
+  "scheduleToRecover": null,
+  "state": "default",
+  "step": 1,
+  "total": 0,
+  "transactionType": "default",
+  "transactions": Object {},
+  "url": "",
+  "userId": null,
+}
+`;
+
+exports[`allows clearing a saved account 1`] = `
+Object {
+  "accounts": Object {},
+  "attempts": 0,
+  "data": Object {
+    "billing": Object {
+      "city": null,
+      "country": null,
+      "state": null,
+      "streetAddress": null,
+      "streetAddress2": null,
+      "zip": null,
+    },
+    "payment": Object {
+      "account": null,
+      "cardNumber": null,
+      "ccv": null,
+      "expiration": null,
+      "name": null,
+      "routing": null,
+      "type": "cc",
+    },
+    "personal": Object {
+      "campus": null,
+      "campusId": null,
+      "email": null,
+      "firstName": null,
+      "lastName": null,
+    },
+  },
+  "errors": Object {},
+  "recoverableSchedules": Object {},
+  "reminderDate": null,
+  "savedAccount": Object {
+    "id": null,
+    "name": null,
+    "payment": Object {
+      "accountNumber": null,
+      "paymentType": null,
+    },
+  },
+  "schedule": Object {
+    "frequency": null,
+    "start": null,
+  },
+  "scheduleToRecover": null,
+  "state": "default",
+  "step": 1,
+  "total": 0,
+  "transactionType": "default",
+  "transactions": Object {},
+  "url": "",
+  "userId": null,
+}
+`;
+
 exports[`test allows adding a saved account 1`] = `
 Object {
   "accounts": Object {},

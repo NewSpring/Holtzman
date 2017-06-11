@@ -1,3 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders account version 1`] = `
+<Loading
+  classes={
+    Array [
+      "background--primary",
+    ]
+  }
+>
+  <div
+    className="locked-top locked-bottom one-whole floating"
+  >
+    <div
+      className="floating__item"
+    >
+      <Spinner />
+      <h4
+        className="text-light-primary"
+      >
+        Signing you in...
+      </h4>
+    </div>
+  </div>
+</Loading>
+`;
+
+exports[`renders no account version 1`] = `
+<Loading
+  classes={
+    Array [
+      "background--primary",
+    ]
+  }
+>
+  <div
+    className="locked-top locked-bottom one-whole floating"
+  >
+    <div
+      className="floating__item"
+    >
+      <Spinner />
+      <h4
+        className="text-light-primary"
+      >
+        Creating your account
+      </h4>
+    </div>
+  </div>
+</Loading>
+`;
+
 exports[`test renders account version 1`] = `
 <Loading
   classes={

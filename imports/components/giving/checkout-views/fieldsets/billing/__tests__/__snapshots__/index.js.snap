@@ -1,3 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders with props 1`] = `
+<Layout
+  back={[Function]}
+  billing={Object {}}
+  city={[Function]}
+  countries={
+    Array [
+      "USA",
+      "CA",
+    ]
+  }
+  header={
+    <span>
+      header
+    </span>
+  }
+  next={[Function]}
+  saveCountry={[Function]}
+  saveState={[Function]}
+  states={
+    Array [
+      "SC",
+      "NC",
+    ]
+  }
+  streetAddress={[Function]}
+  streetAddress2={[Function]}
+  zip={[Function]}
+>
+  <span>
+    hey
+  </span>
+</Layout>
+`;
+
 exports[`test renders with props 1`] = `
 <Layout
   back={[Function]}

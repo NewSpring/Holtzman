@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Layout disables checkout when not ready 1`] = `
 <div
   className="push-top@handheld soft-half-top@lap-and-up">
@@ -12,7 +14,7 @@ exports[`Layout disables checkout when not ready 1`] = `
     submit={[Function]}>
     <TertiaryPhrase
       additionalClasses="push-half-right"
-      text="I\'d like to give " />
+      text="I'd like to give " />
     <Input
       classes={
         Array [
@@ -117,7 +119,7 @@ exports[`Layout disables checkout when total is negative 1`] = `
     submit={[Function]}>
     <TertiaryPhrase
       additionalClasses="push-half-right"
-      text="I\'d like to give " />
+      text="I'd like to give " />
     <Input
       classes={
         Array [
@@ -222,7 +224,7 @@ exports[`Layout disables checkout when total is positive but not ready 1`] = `
     submit={[Function]}>
     <TertiaryPhrase
       additionalClasses="push-half-right"
-      text="I\'d like to give " />
+      text="I'd like to give " />
     <Input
       classes={
         Array [
@@ -327,7 +329,7 @@ exports[`Layout disables checkout when total is undefined 1`] = `
     submit={[Function]}>
     <TertiaryPhrase
       additionalClasses="push-half-right"
-      text="I\'d like to give " />
+      text="I'd like to give " />
     <Input
       classes={
         Array [
@@ -432,7 +434,7 @@ exports[`Layout enables checkout when total is positive and ready 1`] = `
     submit={[Function]}>
     <TertiaryPhrase
       additionalClasses="push-half-right"
-      text="I\'d like to give " />
+      text="I'd like to give " />
     <Input
       classes={
         Array [
@@ -539,7 +541,7 @@ exports[`Layout renders the prefilled amount for an existing schedule 1`] = `
     submit={[Function]}>
     <TertiaryPhrase
       additionalClasses="push-half-right"
-      text="I\'d like to give " />
+      text="I'd like to give " />
     <Input
       classes={
         Array [
@@ -644,7 +646,7 @@ exports[`Layout renders the prefilled date for an existing schedule  1`] = `
     submit={[Function]}>
     <TertiaryPhrase
       additionalClasses="push-half-right"
-      text="I\'d like to give " />
+      text="I'd like to give " />
     <Input
       classes={
         Array [
@@ -749,7 +751,7 @@ exports[`Layout renders the prefilled frequency for an existing schedule  1`] = 
     submit={[Function]}>
     <TertiaryPhrase
       additionalClasses="push-half-right"
-      text="I\'d like to give " />
+      text="I'd like to give " />
     <Input
       classes={
         Array [
@@ -854,7 +856,7 @@ exports[`Layout renders the prefilled fund for an existing schedule  1`] = `
     submit={[Function]}>
     <TertiaryPhrase
       additionalClasses="push-half-right"
-      text="I\'d like to give " />
+      text="I'd like to give " />
     <Input
       classes={
         Array [
@@ -959,7 +961,7 @@ exports[`Layout renders when accounts & state exist 1`] = `
     submit={[Function]}>
     <TertiaryPhrase
       additionalClasses="push-half-right"
-      text="I\'d like to give " />
+      text="I'd like to give " />
     <Input
       classes={
         Array [
@@ -1064,7 +1066,7 @@ exports[`Layout renders with custom text 1`] = `
     submit={[Function]}>
     <TertiaryPhrase
       additionalClasses="push-half-right"
-      text="I\'d like to give " />
+      text="I'd like to give " />
     <Input
       classes={
         Array [

@@ -1,3 +1,715 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`can override header with prop 1`] = `
+<div>
+  <div
+    className="soft-double-ends soft-sides background--primary"
+  >
+    <h1>
+      override
+    </h1>
+  </div>
+  <Tabs
+    items={
+      Array [
+        "Sign In",
+        "Register",
+      ]
+    }
+    state={1}
+    toggle={[Function]}
+  />
+  <Form
+    classes={
+      Array [
+        "soft-double-sides@palm-wide-and-up",
+        "soft-sides",
+      ]
+    }
+    fieldsetTheme="flush soft-top"
+    id="accounts"
+    submit={[Function]}
+  >
+    <div>
+      <Input
+        errorText="Please enter a valid email"
+        label="Email"
+        name="email"
+        placeholder="user@email.com"
+        type="email"
+        validation={[Function]}
+      />
+    </div>
+    <div>
+      <Input
+        errorText="Password may not be empty"
+        format={[Function]}
+        label="Password"
+        name="password"
+        placeholder="password"
+        type="password"
+        validation={[Function]}
+      />
+      <div>
+        <Input
+          errorText="Please enter your first name"
+          label="First Name"
+          name="firstName"
+          validation={[Function]}
+        />
+        <Input
+          errorText="Please enter your last name"
+          label="Last Name"
+          name="lastName"
+          validation={[Function]}
+        />
+      </div>
+      <Checkbox
+        clicked={[Function]}
+        defaultValue={true}
+        name="terms"
+      >
+        By signing up you agree to our 
+        <a
+          href="//newspring.cc/terms"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          terms of use
+        </a>
+      </Checkbox>
+      <button
+        className="push-double-bottom btn--disabled"
+        type="submit"
+      >
+        Enter
+      </button>
+    </div>
+  </Form>
+</div>
+`;
+
+exports[`header renders default header 1`] = `
+<div
+  className="text-center"
+>
+  <h3
+    className="uppercase text-light-primary flush-bottom push-half-bottom"
+    style={
+      Object {
+        "fontWeight": "900",
+      }
+    }
+  >
+    Welcome To NewSpring
+  </h3>
+  <p
+    className="flush-bottom"
+  >
+    <em
+      className="text-light-primary small"
+    >
+      Sign In or Create your NewSpring Account
+    </em>
+  </p>
+</div>
+`;
+
+exports[`renders account version 1`] = `
+<div>
+  <div
+    className="soft-double-ends soft-sides background--primary"
+  >
+    <div
+      className="text-center"
+    >
+      <h3
+        className="uppercase text-light-primary flush-bottom push-half-bottom"
+        style={
+          Object {
+            "fontWeight": "900",
+          }
+        }
+      >
+        Welcome To NewSpring
+      </h3>
+      <p
+        className="flush-bottom"
+      >
+        <em
+          className="text-light-primary small"
+        >
+          Sign In or Create your NewSpring Account
+        </em>
+      </p>
+    </div>
+  </div>
+  <Tabs
+    items={
+      Array [
+        "Sign In",
+        "Register",
+      ]
+    }
+    state={0}
+    toggle={[Function]}
+  />
+  <Form
+    classes={
+      Array [
+        "soft-double-sides@palm-wide-and-up",
+        "soft-sides",
+      ]
+    }
+    fieldsetTheme="flush soft-top"
+    id="accounts"
+    submit={[Function]}
+  >
+    <div>
+      <Input
+        errorText="Please enter a valid email"
+        label="Email"
+        name="email"
+        placeholder="user@email.com"
+        type="email"
+        validation={[Function]}
+      />
+    </div>
+    <div>
+      <Input
+        errorText="Password may not be empty"
+        format={[Function]}
+        label="Password"
+        name="password"
+        placeholder="password"
+        type="password"
+        validation={[Function]}
+      />
+      <div
+        className="push-bottom"
+      >
+        <h7>
+          <small>
+            <a
+              className="text-primary"
+              href="/profile/forgot-password"
+              onClick={[Function]}
+            >
+              Forgot Password?
+            </a>
+          </small>
+        </h7>
+      </div>
+      <button
+        className="push-double-bottom btn--disabled"
+        type="submit"
+      >
+        Enter
+      </button>
+    </div>
+  </Form>
+</div>
+`;
+
+exports[`renders alternate account version 1`] = `
+<div>
+  <div
+    className="soft-double-ends soft-sides background--primary"
+  >
+    <div
+      className="text-center"
+    >
+      <h3
+        className="uppercase text-light-primary flush-bottom push-half-bottom"
+        style={
+          Object {
+            "fontWeight": "900",
+          }
+        }
+      >
+        Welcome To NewSpring
+      </h3>
+      <p
+        className="flush-bottom"
+      >
+        <em
+          className="text-light-primary small"
+        >
+          Sign In or Create your NewSpring Account
+        </em>
+      </p>
+    </div>
+  </div>
+  <Tabs
+    items={
+      Array [
+        "Sign In",
+        "Register",
+      ]
+    }
+    state={1}
+    toggle={[Function]}
+  />
+  <Form
+    classes={
+      Array [
+        "soft-double-sides@palm-wide-and-up",
+        "soft-sides",
+      ]
+    }
+    fieldsetTheme="flush soft-top"
+    id="accounts"
+    submit={[Function]}
+  >
+    <div>
+      <Input
+        errorText="Please enter a valid email"
+        label="Email"
+        name="email"
+        placeholder="user@email.com"
+        type="email"
+        validation={[Function]}
+      />
+    </div>
+    <div>
+      <div
+        className="push-back-double-top soft-bottom one-whole text-left"
+      >
+        <h6
+          className="flush-bottom text-dark-primary push-back-half-top"
+        >
+          It looks like you may have a NewSpring account already!
+          <span>
+              Is this your email?
+            <br />
+            <br />
+            <a
+              data-email="alternate@account.com"
+              href=""
+              onClick={[Function]}
+            >
+              alternate@account.com
+            </a>
+            ?
+          </span>
+          <br />
+          <br />
+          Click below to sign in with this email.
+        </h6>
+      </div>
+      <div
+        className="push-half-top push-bottom soft-half-bottom one-whole text-center"
+      >
+        <button
+          className="btn"
+          data-email="alternate@account.com"
+          onClick={[Function]}
+          type="submit"
+        >
+          Sign In
+        </button>
+      </div>
+    </div>
+  </Form>
+</div>
+`;
+
+exports[`renders enabled button if has email, password, and terms 1`] = `
+<div>
+  <div
+    className="soft-double-ends soft-sides background--primary"
+  >
+    <div
+      className="text-center"
+    >
+      <h3
+        className="uppercase text-light-primary flush-bottom push-half-bottom"
+        style={
+          Object {
+            "fontWeight": "900",
+          }
+        }
+      >
+        Welcome To NewSpring
+      </h3>
+      <p
+        className="flush-bottom"
+      >
+        <em
+          className="text-light-primary small"
+        >
+          Sign In or Create your NewSpring Account
+        </em>
+      </p>
+    </div>
+  </div>
+  <Tabs
+    items={
+      Array [
+        "Sign In",
+        "Register",
+      ]
+    }
+    state={0}
+    toggle={[Function]}
+  />
+  <Form
+    classes={
+      Array [
+        "soft-double-sides@palm-wide-and-up",
+        "soft-sides",
+      ]
+    }
+    fieldsetTheme="flush soft-top"
+    id="accounts"
+    submit={[Function]}
+  >
+    <div>
+      <Input
+        defaultValue="tim@bob.com"
+        errorText="Please enter a valid email"
+        label="Email"
+        name="email"
+        placeholder="user@email.com"
+        type="email"
+        validation={[Function]}
+      />
+    </div>
+    <div>
+      <Input
+        errorText="Password may not be empty"
+        format={[Function]}
+        label="Password"
+        name="password"
+        placeholder="password"
+        type="password"
+        validation={[Function]}
+      />
+      <div
+        className="push-bottom"
+      >
+        <h7>
+          <small>
+            <a
+              className="text-primary"
+              href="/profile/forgot-password"
+              onClick={[Function]}
+            >
+              Forgot Password?
+            </a>
+          </small>
+        </h7>
+      </div>
+      <button
+        className="push-double-bottom btn"
+        type="submit"
+      >
+        Enter
+      </button>
+    </div>
+  </Form>
+</div>
+`;
+
+exports[`renders people without accounts version 1`] = `
+<div>
+  <div
+    className="soft-double-ends soft-sides background--primary"
+  >
+    <div
+      className="text-center"
+    >
+      <h3
+        className="uppercase text-light-primary flush-bottom push-half-bottom"
+        style={
+          Object {
+            "fontWeight": "900",
+          }
+        }
+      >
+        Welcome To NewSpring
+      </h3>
+      <p
+        className="flush-bottom"
+      >
+        <em
+          className="text-light-primary small"
+        >
+          Sign In or Create your NewSpring Account
+        </em>
+      </p>
+    </div>
+  </div>
+  <Tabs
+    items={
+      Array [
+        "Sign In",
+        "Register",
+      ]
+    }
+    state={1}
+    toggle={[Function]}
+  />
+  <Form
+    classes={
+      Array [
+        "soft-double-sides@palm-wide-and-up",
+        "soft-sides",
+      ]
+    }
+    fieldsetTheme="flush soft-top"
+    id="accounts"
+    submit={[Function]}
+  >
+    <div>
+      <Input
+        errorText="Please enter a valid email"
+        label="Email"
+        name="email"
+        placeholder="user@email.com"
+        type="email"
+        validation={[Function]}
+      />
+    </div>
+    <div
+      className="one-whole text-left push-back-double-top"
+    >
+      <h6
+        className="text-dark-primary soft-top flush-bottom soft-half-bottom push-back-double-top"
+      >
+        It looks like you already have a NewSpring account started! To finish setting it up, select your person and click complete account.
+      </h6>
+      <div
+        className="text-left soft-double-left push-top relative"
+        onClick={[Function]}
+      >
+        <div
+          className="locked-left"
+        >
+          <Checkbox
+            classes={
+              Array [
+                "push-top",
+                "hard-bottom",
+              ]
+            }
+            defaultValue={false}
+          />
+        </div>
+        <div
+          className="round background--fill display-inline-block push-half-right"
+          style={
+            Object {
+              "backgroundImage": "url('undefined')",
+              "height": "70px",
+              "verticalAlign": "middle",
+              "width": "70px",
+            }
+          }
+        />
+        <div
+          className="flush hard display-inline-block"
+          style={
+            Object {
+              "verticalAlign": "middle",
+            }
+          }
+        >
+          <h5
+            className="flush-bottom"
+          >
+            jim
+             
+            bob
+          </h5>
+          <h7
+            className="flush-bottom em text-dark-tertiary"
+          >
+            jim@bob.com
+          </h7>
+        </div>
+      </div>
+      <div
+        className="text-left soft-double-left push-top relative"
+        onClick={[Function]}
+      >
+        <div
+          className="locked-left"
+        >
+          <Checkbox
+            classes={
+              Array [
+                "push-top",
+                "hard-bottom",
+              ]
+            }
+            defaultValue={false}
+          />
+        </div>
+        <div
+          className="round background--fill display-inline-block push-half-right"
+          style={
+            Object {
+              "backgroundImage": "url('undefined')",
+              "height": "70px",
+              "verticalAlign": "middle",
+              "width": "70px",
+            }
+          }
+        />
+        <div
+          className="flush hard display-inline-block"
+          style={
+            Object {
+              "verticalAlign": "middle",
+            }
+          }
+        >
+          <h5
+            className="flush-bottom"
+          >
+            steve
+             
+            bob
+          </h5>
+          <h7
+            className="flush-bottom em text-dark-tertiary"
+          >
+            steve@bob.com
+          </h7>
+        </div>
+      </div>
+      <div
+        className="one-whole text-center push-top"
+      >
+        <button
+          className="btn push-top push-bottom"
+          onClick={[Function]}
+        >
+          Complete Account
+        </button>
+        <a
+          className="h7 soft-double-bottom text-dark-secondary display-block"
+          href=""
+          onClick={[Function]}
+        >
+          Register new account
+        </a>
+      </div>
+    </div>
+  </Form>
+</div>
+`;
+
+exports[`renders with props 1`] = `
+<div>
+  <div
+    className="soft-double-ends soft-sides background--primary"
+  >
+    <div
+      className="text-center"
+    >
+      <h3
+        className="uppercase text-light-primary flush-bottom push-half-bottom"
+        style={
+          Object {
+            "fontWeight": "900",
+          }
+        }
+      >
+        Welcome To NewSpring
+      </h3>
+      <p
+        className="flush-bottom"
+      >
+        <em
+          className="text-light-primary small"
+        >
+          Sign In or Create your NewSpring Account
+        </em>
+      </p>
+    </div>
+  </div>
+  <Tabs
+    items={
+      Array [
+        "Sign In",
+        "Register",
+      ]
+    }
+    state={1}
+    toggle={[Function]}
+  />
+  <Form
+    classes={
+      Array [
+        "soft-double-sides@palm-wide-and-up",
+        "soft-sides",
+      ]
+    }
+    fieldsetTheme="flush soft-top"
+    id="accounts"
+    submit={[Function]}
+  >
+    <div>
+      <Input
+        errorText="Please enter a valid email"
+        label="Email"
+        name="email"
+        placeholder="user@email.com"
+        type="email"
+        validation={[Function]}
+      />
+    </div>
+    <div>
+      <Input
+        errorText="Password may not be empty"
+        format={[Function]}
+        label="Password"
+        name="password"
+        placeholder="password"
+        type="password"
+        validation={[Function]}
+      />
+      <div>
+        <Input
+          errorText="Please enter your first name"
+          label="First Name"
+          name="firstName"
+          validation={[Function]}
+        />
+        <Input
+          errorText="Please enter your last name"
+          label="Last Name"
+          name="lastName"
+          validation={[Function]}
+        />
+      </div>
+      <Checkbox
+        clicked={[Function]}
+        defaultValue={true}
+        name="terms"
+      >
+        By signing up you agree to our 
+        <a
+          href="//newspring.cc/terms"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          terms of use
+        </a>
+      </Checkbox>
+      <button
+        className="push-double-bottom btn--disabled"
+        type="submit"
+      >
+        Enter
+      </button>
+    </div>
+  </Form>
+</div>
+`;
+
 exports[`test can override header with prop 1`] = `
 <div>
   <div
@@ -434,7 +1146,7 @@ exports[`test renders people without accounts version 1`] = `
           className="round background--fill display-inline-block push-half-right"
           style={
             Object {
-              "backgroundImage": "url(\'undefined\')",
+              "backgroundImage": "url('undefined')",
               "height": "70px",
               "verticalAlign": "middle",
               "width": "70px",
@@ -477,7 +1189,7 @@ exports[`test renders people without accounts version 1`] = `
           className="round background--fill display-inline-block push-half-right"
           style={
             Object {
-              "backgroundImage": "url(\'undefined\')",
+              "backgroundImage": "url('undefined')",
               "height": "70px",
               "verticalAlign": "middle",
               "width": "70px",

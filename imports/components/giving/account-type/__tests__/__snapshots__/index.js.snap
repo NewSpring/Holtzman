@@ -1,3 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`handles ACH case 1`] = `
+<Bank
+  height={20}
+  style={
+    Object {
+      "marginBottom": "-2px",
+      "marginLeft": "6px",
+      "marginRight": "-6px",
+    }
+  }
+  width={20}
+/>
+`;
+
+exports[`handles AmEx case 1`] = `
+<AmEx
+  height={20}
+  style={
+    Object {
+      "marginBottom": "-2px",
+      "marginLeft": "6px",
+      "marginRight": "-6px",
+    }
+  }
+  width={20}
+/>
+`;
+
+exports[`renders with props 1`] = `
+<Bank
+  height={20}
+  style={
+    Object {
+      "marginBottom": "-2px",
+      "marginLeft": "6px",
+      "marginRight": "-6px",
+    }
+  }
+  width={20}
+/>
+`;
+
 exports[`test handles ACH case 1`] = `
 <Bank
   height={20}

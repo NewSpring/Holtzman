@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`DefaultWrapper renders with props 1`] = `
 <section
   className="one two">
@@ -216,7 +218,7 @@ exports[`Right renders background image version 1`] = `
   src="//test.com/background.jpg"
   style={
     Object {
-      "backgroundImage": "url(\'//test.com/background.jpg\')",
+      "backgroundImage": "url('//test.com/background.jpg')",
     }
   }
   wrapper={[Function]}>

@@ -1,3 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`supplies the routes 1`] = `
+Array [
+  Object {
+    "getComponents": [Function],
+    "path": "groups/finder",
+  },
+  Object {
+    "getComponents": [Function],
+    "path": "groups/:id",
+  },
+]
+`;
+
 exports[`test has a template for some reason 1`] = `
 <h1>
   Lets find some groups!

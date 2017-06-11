@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`ContactLink renders 1`] = `
 <a
   href="//rock.newspring.cc/workflows/152?Topic=Stewardship"

@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Meta should have an id 1`] = `
 <HelmetWrapper
   id="article.id"

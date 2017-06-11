@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Related content <Layout> has a title 1`] = `
 <section
   className="soft-half-sides@palm soft-double@palm-wide soft-top soft-half-bottom background--light-secondary">
@@ -46,7 +48,7 @@ exports[`Related content <Layout> renders minicards correctly 1`] = `
             }>
             <h6
               className="text-dark-primary capitalize push-half-top">
-              The worst thing about America isn\'t what you think
+              The worst thing about America isn't what you think
             </h6>
             <div
               className="display-inline-block">
@@ -62,7 +64,7 @@ exports[`Related content <Layout> renders minicards correctly 1`] = `
             className="locked-ends locked-right card__image one-third background--fill"
             style={
               Object {
-                "backgroundImage": "url(\'//drhztd8q3iayu.cloudfront.net/newspring/editorial/newspring.blog.hero.gingergirl.medium.jpg\')",
+                "backgroundImage": "url('//drhztd8q3iayu.cloudfront.net/newspring/editorial/newspring.blog.hero.gingergirl.medium.jpg')",
                 "verticalAlign": "middle",
               }
             } />

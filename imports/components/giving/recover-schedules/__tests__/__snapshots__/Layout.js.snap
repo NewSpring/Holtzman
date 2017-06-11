@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Layout should render the Later component if state is set to 'later' 1`] = `
 <div
   className="soft soft-double-ends one-whole text-center">
@@ -36,7 +38,7 @@ exports[`Layout should render the Recover component if no props are passed 1`] =
   </h4>
   <p
     className="push-bottom text-left">
-    Our records show that you have active giving schedules in our previous system. To access your schedule within our new system, simply review your schedule and re-enter your payment details. If you\'re not ready to do this, your schedule will continue in our previous system until you transfer it.
+    Our records show that you have active giving schedules in our previous system. To access your schedule within our new system, simply review your schedule and re-enter your payment details. If you're not ready to do this, your schedule will continue in our previous system until you transfer it.
   </p>
   <a
     className="btn one-whole push-ends"
@@ -93,7 +95,7 @@ exports[`Layout should render the Remind component if state is set to 'remind' 1
       className="flush-bottom">
       <h3
         className="text-dark-tertiary display-inline-block push-half-bottom push-half-right">
-        I\'d like to be reminded
+        I'd like to be reminded
       </h3>
       <div
         className="input input--active soft-bottom display-inline-block select_15p0e27">

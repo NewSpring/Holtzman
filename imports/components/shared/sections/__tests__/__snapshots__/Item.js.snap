@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`ChildItem does not render if no section 1`] = `
 <div
   className="one-whole grid__item">
@@ -53,7 +55,7 @@ exports[`ChildItem render with props 1`] = `
           src="http://test.com/test.jpg"
           style={
             Object {
-              "backgroundImage": "url(\'http://test.com/test.jpg\')",
+              "backgroundImage": "url('http://test.com/test.jpg')",
               "borderRadius": "0px 6px 6px 0px",
             }
           }
@@ -272,7 +274,7 @@ exports[`SingleItem renders with props 1`] = `
       src="http://test.com/test.jpg"
       style={
         Object {
-          "backgroundImage": "url(\'http://test.com/test.jpg\')",
+          "backgroundImage": "url('http://test.com/test.jpg')",
         }
       }
       wrapper={[Function]}>

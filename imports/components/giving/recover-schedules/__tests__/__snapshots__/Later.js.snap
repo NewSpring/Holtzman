@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Later should show the date that is passed in as a prop 1`] = `
 <div
   className="soft soft-double-ends one-whole text-center">

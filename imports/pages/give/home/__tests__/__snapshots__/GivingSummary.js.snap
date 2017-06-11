@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`GivingSummary should pass correct props to graph with data 1`] = `
 <Display
   data={

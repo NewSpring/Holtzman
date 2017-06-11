@@ -1,3 +1,155 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders loading if no content 1`] = `
+<div
+  className="locked-ends locked-sides floating"
+>
+  <div
+    className="floating__item"
+  >
+    <Loading />
+  </div>
+</div>
+`;
+
+exports[`renders video if ooyalaId 1`] = `
+<div>
+  <Meta
+    id="1"
+    image=""
+    meta={
+      Array [
+        Object {
+          "content": "article",
+          "property": "og:type",
+        },
+      ]
+    }
+  />
+  <Connect(SplitContainerWithoutData)
+    classes={
+      Array [
+        "background--light-primary",
+      ]
+    }
+    nav={true}
+  >
+    <SingleVideoPlayer
+      ooyalaId="id"
+    />
+  </Connect(SplitContainerWithoutData)>
+  <Left
+    scroll={true}
+  >
+    <div
+      className="one-whole"
+    >
+      <section
+        className="soft@palm soft-double-sides@palm-wide-and-up soft@lap soft-double@lap-wide-and-up push-top push-double-top@lap-and-up"
+      >
+        <ArticlesContent
+          article={
+            Object {
+              "content": Object {
+                "body": "<h1>article</h1>",
+                "images": Array [],
+                "ooyalaId": "id",
+              },
+              "id": "1",
+            }
+          }
+        />
+      </section>
+      <Apollo(Connect(Template))
+        excludedIds={
+          Array [
+            "1",
+          ]
+        }
+        tags={Array []}
+      />
+    </div>
+  </Left>
+</div>
+`;
+
+exports[`renders with props 1`] = `
+<div>
+  <Meta
+    id="1"
+    image=""
+    meta={
+      Array [
+        Object {
+          "content": "article",
+          "property": "og:type",
+        },
+      ]
+    }
+  />
+  <Connect(SplitContainerWithoutData)
+    classes={
+      Array [
+        "background--light-primary",
+      ]
+    }
+    nav={true}
+  >
+    <Right
+      aspect="square"
+      background=""
+      classes={
+        Array [
+          "floating--bottom",
+          "overlay--gradient@lap-and-up",
+        ]
+      }
+      mobile={true}
+      ratioClasses={
+        Array [
+          "floating__item",
+          "overlay__item",
+          "one-whole",
+          "soft@lap-and-up",
+        ]
+      }
+    />
+  </Connect(SplitContainerWithoutData)>
+  <Left
+    scroll={true}
+  >
+    <div
+      className="one-whole"
+    >
+      <section
+        className="soft@palm soft-double-sides@palm-wide-and-up soft@lap soft-double@lap-wide-and-up push-top push-double-top@lap-and-up"
+      >
+        <ArticlesContent
+          article={
+            Object {
+              "content": Object {
+                "body": "<h1>article</h1>",
+                "images": Array [],
+                "ooyalaId": "",
+              },
+              "id": "1",
+            }
+          }
+        />
+      </section>
+      <Apollo(Connect(Template))
+        excludedIds={
+          Array [
+            "1",
+          ]
+        }
+        tags={Array []}
+      />
+    </div>
+  </Left>
+</div>
+`;
+
 exports[`test renders loading if no content 1`] = `
 <div
   className="locked-ends locked-sides floating">

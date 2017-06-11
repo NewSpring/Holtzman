@@ -1,3 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders with props 1`] = `
+<div>
+  <Component
+    active={false}
+    label="foo"
+    onClick={[Function]}
+    val="bar"
+  />
+  <Component
+    active={false}
+    label="baz"
+    onClick={[Function]}
+    val="zoo"
+  />
+</div>
+`;
+
 exports[`test renders with props 1`] = `
 <div>
   <Component

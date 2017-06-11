@@ -1,3 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders error version 1`] = `
+<div
+  style={
+    Object {
+      "bottom": 0,
+      "position": "fixed",
+      "top": 0,
+      "width": "100%",
+    }
+  }
+>
+  <Err
+    error={[Function]}
+    msg="Looks like there was a problem"
+  />
+  ;
+</div>
+`;
+
+exports[`renders loading version 1`] = `
+<div
+  style={
+    Object {
+      "bottom": 0,
+      "position": "fixed",
+      "top": 0,
+      "width": "100%",
+    }
+  }
+>
+  <Loading
+    msg="Updating your password..."
+  />
+  ;
+</div>
+`;
+
+exports[`renders success version 1`] = `
+<Success
+  msg="Your password has been updated!"
+/>
+`;
+
+exports[`renders with props 1`] = `
+<Layout
+  save={[Function]}
+  state={
+    Object {
+      "current": null,
+      "newP": null,
+      "newPDup": null,
+      "state": "default",
+    }
+  }
+  submit={[Function]}
+/>
+`;
+
 exports[`test renders error version 1`] = `
 <div
   style={

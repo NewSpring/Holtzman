@@ -1,3 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render with no props 1`] = `
+<Input>
+  <div
+    className="input"
+    data-spec="input-wrapper"
+    style={Object {}}
+  >
+    <RenderLabel>
+      <Label
+        disabed={false}
+      >
+        <label
+          style={Object {}}
+        />
+      </Label>
+    </RenderLabel>
+    <input
+      data-spec="input"
+      maxLength=""
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      style={Object {}}
+    />
+  </div>
+</Input>
+`;
+
 exports[`test should render with no props 1`] = `
 <Input>
   <div

@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`FeedItem should have styles based on a channelName of 'articles' 1`] = `
 <a
   className="card rounded-top"
@@ -20,14 +22,14 @@ exports[`FeedItem should have styles based on a channelName of 'articles' 1`] = 
         className="imageloader loaded"
         style={
           Object {
-            "backgroundImage": "url(\'https://images.unsplash.com/24/5895672523_2e8ce56485_o.jpg\')",
+            "backgroundImage": "url('https://images.unsplash.com/24/5895672523_2e8ce56485_o.jpg')",
           }
         }>
         <div
           className="background--fill card__image background-light-tertiary ratio--square rounded-top"
           style={
             Object {
-              "backgroundImage": "url(\'https://images.unsplash.com/24/5895672523_2e8ce56485_o.jpg\')",
+              "backgroundImage": "url('https://images.unsplash.com/24/5895672523_2e8ce56485_o.jpg')",
             }
           }>
           <div
@@ -98,7 +100,7 @@ exports[`FeedItem should have styles based on a channelName of 'series_newspring
     data-spec="card-image-wrapper"
     style={
       Object {
-        "backgroundImage": "url(\'https://images.unsplash.com/24/5895672523_2e8ce56485_o.jpg\')",
+        "backgroundImage": "url('https://images.unsplash.com/24/5895672523_2e8ce56485_o.jpg')",
       }
     }>
     <span>
@@ -184,7 +186,7 @@ exports[`FeedItem should pull the parent color if the channelName is 'sermons' 1
     data-spec="card-image-wrapper"
     style={
       Object {
-        "backgroundImage": "url(\'https://images.unsplash.com/24/5895672523_2e8ce56485_o.jpg\')",
+        "backgroundImage": "url('https://images.unsplash.com/24/5895672523_2e8ce56485_o.jpg')",
       }
     }>
     <span>
@@ -270,7 +272,7 @@ exports[`FeedItem should pull the parent image if the channelName is 'sermons' a
     data-spec="card-image-wrapper"
     style={
       Object {
-        "backgroundImage": "url(\'https://images.unsplash.com/photo-1418985991508-e47386d96a71\')",
+        "backgroundImage": "url('https://images.unsplash.com/photo-1418985991508-e47386d96a71')",
       }
     }>
     <span>
@@ -356,7 +358,7 @@ exports[`FeedItem should pull the regular image if the channelName is 'sermons' 
     data-spec="card-image-wrapper"
     style={
       Object {
-        "backgroundImage": "url(\'https://images.unsplash.com/24/5895672523_2e8ce56485_o.jpg\')",
+        "backgroundImage": "url('https://images.unsplash.com/24/5895672523_2e8ce56485_o.jpg')",
       }
     }>
     <span>

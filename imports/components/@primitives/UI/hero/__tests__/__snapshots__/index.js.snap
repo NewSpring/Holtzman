@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Hero should render with content object passed in 1`] = `
 <Hero
   content={
@@ -30,7 +32,7 @@ exports[`Hero should render with content object passed in 1`] = `
         style={
           Object {
             "backgroundImage": "
-                    url(\'harambe-square.jpg\')
+                    url('harambe-square.jpg')
                   ",
           }
         }>
@@ -76,7 +78,7 @@ exports[`Hero should render with data passed as separate props 1`] = `
         style={
           Object {
             "backgroundImage": "
-                    url(\'harambe.jpg\')
+                    url('harambe.jpg')
                   ",
           }
         }>
@@ -112,7 +114,7 @@ exports[`Hero should render with no props 1`] = `
           style={
             Object {
               "backgroundImage": "
-                      url(\'\')
+                      url('')
                     ",
             }
           }>

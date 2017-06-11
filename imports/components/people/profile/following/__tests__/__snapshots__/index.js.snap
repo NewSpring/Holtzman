@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Following renders the 'following' items with authorization 1`] = `
 <section
   className="background--light-secondary hard-sides"

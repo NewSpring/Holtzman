@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`regular transactions handles a single fund gift 1`] = `
 Object {
   "amount": 0,
@@ -54,6 +56,23 @@ Object {
       "unit-cost": 100000000,
     },
   ],
+}
+`;
+
+exports[`returns a default shape with inital state data 1`] = `
+Object {
+  "amount": 0,
+  "billing": Object {
+    "address1": "1 Linwa Blvd",
+    "address2": "",
+    "city": "Anderson",
+    "email": "james.baxley@newspring.cc",
+    "first-name": "James",
+    "last-name": "Baxley",
+    "postal": 29621,
+    "state": "SC",
+  },
+  "merchant-defined-field-2": 1,
 }
 `;
 

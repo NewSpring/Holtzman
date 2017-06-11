@@ -1,3 +1,312 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NAV.ANYTHING_ELSE 1`] = `
+Object {
+  "bgColor": "#202020",
+  "fgColor": "dark",
+  "level": "TOP",
+  "links": Array [
+    Object {
+      "icon": "icon-logo",
+      "id": 1,
+      "isActive": [Function],
+      "label": "Home",
+      "link": "/",
+    },
+    Object {
+      "action": [Function],
+      "icon": "icon-sections",
+      "id": 2,
+      "isActive": [Function],
+      "label": "Sections",
+    },
+    Object {
+      "icon": "icon-groups",
+      "id": 3,
+      "isActive": [Function],
+      "label": "Groups",
+      "link": "/groups/finder",
+    },
+    Object {
+      "action": [Function],
+      "icon": "icon-search",
+      "id": 4,
+      "isActive": [Function],
+      "label": "Discover",
+    },
+    Object {
+      "icon": "icon-profile",
+      "id": 5,
+      "isActive": [Function],
+      "label": "Profile",
+      "link": "/profile/settings",
+    },
+  ],
+  "visible": true,
+}
+`;
+
+exports[`NAV.RESET_COLOR 1`] = `
+Object {
+  "bgColor": "#202020",
+  "fgColor": "dark",
+  "level": "TOP",
+  "links": Array [
+    Object {
+      "icon": "icon-logo",
+      "id": 1,
+      "isActive": [Function],
+      "label": "Home",
+      "link": "/",
+    },
+    Object {
+      "action": [Function],
+      "icon": "icon-sections",
+      "id": 2,
+      "isActive": [Function],
+      "label": "Sections",
+    },
+    Object {
+      "icon": "icon-groups",
+      "id": 3,
+      "isActive": [Function],
+      "label": "Groups",
+      "link": "/groups/finder",
+    },
+    Object {
+      "action": [Function],
+      "icon": "icon-search",
+      "id": 4,
+      "isActive": [Function],
+      "label": "Discover",
+    },
+    Object {
+      "icon": "icon-profile",
+      "id": 5,
+      "isActive": [Function],
+      "label": "Profile",
+      "link": "/profile/settings",
+    },
+  ],
+  "visible": true,
+}
+`;
+
+exports[`NAV.SET_ACTION 1`] = `
+Object {
+  "bgColor": "#202020",
+  "fgColor": "dark",
+  "level": "TOP",
+  "links": Array [
+    Object {
+      "action": "test",
+      "icon": "icon-logo",
+      "id": 1,
+      "isActive": [Function],
+      "label": "Home",
+      "link": "/",
+    },
+    Object {
+      "action": [Function],
+      "icon": "icon-sections",
+      "id": 2,
+      "isActive": [Function],
+      "label": "Sections",
+    },
+    Object {
+      "icon": "icon-groups",
+      "id": 3,
+      "isActive": [Function],
+      "label": "Groups",
+      "link": "/groups/finder",
+    },
+    Object {
+      "action": [Function],
+      "icon": "icon-search",
+      "id": 4,
+      "isActive": [Function],
+      "label": "Discover",
+    },
+    Object {
+      "icon": "icon-profile",
+      "id": 5,
+      "isActive": [Function],
+      "label": "Profile",
+      "link": "/profile/settings",
+    },
+  ],
+  "visible": true,
+}
+`;
+
+exports[`NAV.SET_COLOR 1`] = `
+Object {
+  "bgColor": "orange",
+  "fgColor": "purple",
+  "level": "TOP",
+  "links": Array [
+    Object {
+      "icon": "icon-logo",
+      "id": 1,
+      "isActive": [Function],
+      "label": "Home",
+      "link": "/",
+    },
+    Object {
+      "action": [Function],
+      "icon": "icon-sections",
+      "id": 2,
+      "isActive": [Function],
+      "label": "Sections",
+    },
+    Object {
+      "icon": "icon-groups",
+      "id": 3,
+      "isActive": [Function],
+      "label": "Groups",
+      "link": "/groups/finder",
+    },
+    Object {
+      "action": [Function],
+      "icon": "icon-search",
+      "id": 4,
+      "isActive": [Function],
+      "label": "Discover",
+    },
+    Object {
+      "icon": "icon-profile",
+      "id": 5,
+      "isActive": [Function],
+      "label": "Profile",
+      "link": "/profile/settings",
+    },
+  ],
+  "visible": true,
+}
+`;
+
+exports[`NAV.SET_LEVEL 1`] = `
+Object {
+  "bgColor": "red",
+  "fgColor": "blue",
+  "level": "CONTENT",
+  "links": Array [
+    Object {
+      "action": [Function],
+      "icon": "icon-arrow-back",
+      "id": 1,
+    },
+    Object {
+      "action": false,
+      "activeIcon": "icon-like-solid",
+      "icon": "icon-like",
+      "id": 2,
+      "isActive": [Function],
+    },
+    Object {
+      "action": [Function],
+      "icon": "icon-share",
+      "id": 3,
+    },
+  ],
+  "visible": true,
+}
+`;
+
+exports[`NAV.SET_LINKS 1`] = `
+Object {
+  "bgColor": "#202020",
+  "fgColor": "dark",
+  "level": "TOP",
+  "links": Array [
+    Object {
+      "icon": "icon-logo",
+      "id": 1,
+      "isActive": [Function],
+      "label": "Home",
+      "link": "/",
+    },
+    Object {
+      "action": [Function],
+      "icon": "icon-sections",
+      "id": 2,
+      "isActive": [Function],
+      "label": "Sections",
+    },
+    Object {
+      "icon": "icon-groups",
+      "id": 3,
+      "isActive": [Function],
+      "label": "Groups",
+      "link": "/groups/finder",
+    },
+    Object {
+      "action": [Function],
+      "icon": "icon-search",
+      "id": 4,
+      "isActive": [Function],
+      "label": "Discover",
+    },
+    Object {
+      "icon": "icon-profile",
+      "id": 5,
+      "isActive": [Function],
+      "label": "Profile",
+      "link": "/profile/settings",
+    },
+    "one",
+    "two",
+  ],
+  "visible": true,
+}
+`;
+
+exports[`NAV.SET_VISIBILITY 1`] = `
+Object {
+  "bgColor": "#202020",
+  "fgColor": "dark",
+  "level": "TOP",
+  "links": Array [
+    Object {
+      "icon": "icon-logo",
+      "id": 1,
+      "isActive": [Function],
+      "label": "Home",
+      "link": "/",
+    },
+    Object {
+      "action": [Function],
+      "icon": "icon-sections",
+      "id": 2,
+      "isActive": [Function],
+      "label": "Sections",
+    },
+    Object {
+      "icon": "icon-groups",
+      "id": 3,
+      "isActive": [Function],
+      "label": "Groups",
+      "link": "/groups/finder",
+    },
+    Object {
+      "action": [Function],
+      "icon": "icon-search",
+      "id": 4,
+      "isActive": [Function],
+      "label": "Discover",
+    },
+    Object {
+      "icon": "icon-profile",
+      "id": 5,
+      "isActive": [Function],
+      "label": "Profile",
+      "link": "/profile/settings",
+    },
+  ],
+  "visible": false,
+}
+`;
+
 exports[`test NAV.ANYTHING_ELSE 1`] = `
 Object {
   "bgColor": "#202020",

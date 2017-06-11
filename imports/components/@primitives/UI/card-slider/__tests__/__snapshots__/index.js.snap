@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`CardSlider should render with default props 1`] = `
 <div
   style={

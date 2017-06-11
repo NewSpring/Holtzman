@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`GivingActivity should render with data 1`] = `
 <GivingActivity
   feed={
@@ -99,7 +101,7 @@ exports[`GivingActivity should render with data 1`] = `
           "expirationMonth": null,
           "expirationYear": null,
           "id": "111",
-          "name": "Harambe\'s Card",
+          "name": "Harambe's Card",
         },
       ],
     }

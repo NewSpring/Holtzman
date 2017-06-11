@@ -1,3 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders PaymentOptionsLayout when state is true 1`] = `
+<PaymentOptionsLayout
+  changeAccounts={[Function]}
+  choose={[Function]}
+  goToStepOne={[Function]}
+  savedAccount={Object {}}
+  savedAccounts={Array []}
+/>
+`;
+
+exports[`renders ScheduleLayout if schedules 1`] = `
+<TransactionLayout
+  back={[Function]}
+  changeAccounts={[Function]}
+  completeGift={[Function]}
+  goToStepOne={[Function]}
+  header={
+    <span>
+      header
+    </span>
+  }
+  payment={Object {}}
+  savedAccount={Object {}}
+  schedule={
+    Object {
+      "frequency": null,
+      "start": null,
+    }
+  }
+  scheduleToRecover={false}
+  total={12}
+  transactions={
+    Array [
+      "1",
+    ]
+  }
+/>
+`;
+
+exports[`renders TransactionLayout by default 1`] = `
+<TransactionLayout
+  back={[Function]}
+  changeAccounts={[Function]}
+  completeGift={[Function]}
+  goToStepOne={[Function]}
+  header={
+    <span>
+      header
+    </span>
+  }
+  payment={Object {}}
+  savedAccount={Object {}}
+  schedule={
+    Object {
+      "frequency": null,
+      "start": null,
+    }
+  }
+  scheduleToRecover={false}
+  total={12}
+  transactions={
+    Array [
+      "1",
+    ]
+  }
+/>
+`;
+
 exports[`test renders PaymentOptionsLayout when state is true 1`] = `
 <PaymentOptionsLayout
   changeAccounts={[Function]}

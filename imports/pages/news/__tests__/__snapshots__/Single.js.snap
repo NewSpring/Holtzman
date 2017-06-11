@@ -1,3 +1,395 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`parses query correctly 1`] = `
+Object {
+  "definitions": Array [
+    Object {
+      "directives": Array [],
+      "kind": "OperationDefinition",
+      "name": Object {
+        "kind": "Name",
+        "value": "getNews",
+      },
+      "operation": "query",
+      "selectionSet": Object {
+        "kind": "SelectionSet",
+        "selections": Array [
+          Object {
+            "alias": Object {
+              "kind": "Name",
+              "value": "content",
+            },
+            "arguments": Array [
+              Object {
+                "kind": "Argument",
+                "name": Object {
+                  "kind": "Name",
+                  "value": "id",
+                },
+                "value": Object {
+                  "kind": "Variable",
+                  "name": Object {
+                    "kind": "Name",
+                    "value": "id",
+                  },
+                },
+              },
+            ],
+            "directives": Array [],
+            "kind": "Field",
+            "name": Object {
+              "kind": "Name",
+              "value": "node",
+            },
+            "selectionSet": Object {
+              "kind": "SelectionSet",
+              "selections": Array [
+                Object {
+                  "alias": null,
+                  "arguments": Array [],
+                  "directives": Array [],
+                  "kind": "Field",
+                  "name": Object {
+                    "kind": "Name",
+                    "value": "id",
+                  },
+                  "selectionSet": null,
+                },
+                Object {
+                  "directives": Array [],
+                  "kind": "InlineFragment",
+                  "selectionSet": Object {
+                    "kind": "SelectionSet",
+                    "selections": Array [
+                      Object {
+                        "alias": Object {
+                          "kind": "Name",
+                          "value": "entryId",
+                        },
+                        "arguments": Array [],
+                        "directives": Array [],
+                        "kind": "Field",
+                        "name": Object {
+                          "kind": "Name",
+                          "value": "id",
+                        },
+                        "selectionSet": null,
+                      },
+                      Object {
+                        "alias": null,
+                        "arguments": Array [],
+                        "directives": Array [],
+                        "kind": "Field",
+                        "name": Object {
+                          "kind": "Name",
+                          "value": "title",
+                        },
+                        "selectionSet": null,
+                      },
+                      Object {
+                        "alias": null,
+                        "arguments": Array [],
+                        "directives": Array [],
+                        "kind": "Field",
+                        "name": Object {
+                          "kind": "Name",
+                          "value": "status",
+                        },
+                        "selectionSet": null,
+                      },
+                      Object {
+                        "alias": null,
+                        "arguments": Array [],
+                        "directives": Array [],
+                        "kind": "Field",
+                        "name": Object {
+                          "kind": "Name",
+                          "value": "channelName",
+                        },
+                        "selectionSet": null,
+                      },
+                      Object {
+                        "alias": null,
+                        "arguments": Array [],
+                        "directives": Array [],
+                        "kind": "Field",
+                        "name": Object {
+                          "kind": "Name",
+                          "value": "meta",
+                        },
+                        "selectionSet": Object {
+                          "kind": "SelectionSet",
+                          "selections": Array [
+                            Object {
+                              "alias": null,
+                              "arguments": Array [],
+                              "directives": Array [],
+                              "kind": "Field",
+                              "name": Object {
+                                "kind": "Name",
+                                "value": "urlTitle",
+                              },
+                              "selectionSet": null,
+                            },
+                            Object {
+                              "alias": null,
+                              "arguments": Array [],
+                              "directives": Array [],
+                              "kind": "Field",
+                              "name": Object {
+                                "kind": "Name",
+                                "value": "siteId",
+                              },
+                              "selectionSet": null,
+                            },
+                            Object {
+                              "alias": null,
+                              "arguments": Array [],
+                              "directives": Array [],
+                              "kind": "Field",
+                              "name": Object {
+                                "kind": "Name",
+                                "value": "date",
+                              },
+                              "selectionSet": null,
+                            },
+                            Object {
+                              "alias": null,
+                              "arguments": Array [],
+                              "directives": Array [],
+                              "kind": "Field",
+                              "name": Object {
+                                "kind": "Name",
+                                "value": "channelId",
+                              },
+                              "selectionSet": null,
+                            },
+                          ],
+                        },
+                      },
+                      Object {
+                        "alias": null,
+                        "arguments": Array [],
+                        "directives": Array [],
+                        "kind": "Field",
+                        "name": Object {
+                          "kind": "Name",
+                          "value": "content",
+                        },
+                        "selectionSet": Object {
+                          "kind": "SelectionSet",
+                          "selections": Array [
+                            Object {
+                              "alias": null,
+                              "arguments": Array [],
+                              "directives": Array [],
+                              "kind": "Field",
+                              "name": Object {
+                                "kind": "Name",
+                                "value": "body",
+                              },
+                              "selectionSet": null,
+                            },
+                            Object {
+                              "alias": null,
+                              "arguments": Array [],
+                              "directives": Array [],
+                              "kind": "Field",
+                              "name": Object {
+                                "kind": "Name",
+                                "value": "ooyalaId",
+                              },
+                              "selectionSet": null,
+                            },
+                            Object {
+                              "alias": null,
+                              "arguments": Array [],
+                              "directives": Array [],
+                              "kind": "Field",
+                              "name": Object {
+                                "kind": "Name",
+                                "value": "tags",
+                              },
+                              "selectionSet": null,
+                            },
+                            Object {
+                              "alias": null,
+                              "arguments": Array [
+                                Object {
+                                  "kind": "Argument",
+                                  "name": Object {
+                                    "kind": "Name",
+                                    "value": "sizes",
+                                  },
+                                  "value": Object {
+                                    "kind": "ListValue",
+                                    "values": Array [
+                                      Object {
+                                        "kind": "StringValue",
+                                        "value": "large",
+                                      },
+                                    ],
+                                  },
+                                },
+                              ],
+                              "directives": Array [],
+                              "kind": "Field",
+                              "name": Object {
+                                "kind": "Name",
+                                "value": "images",
+                              },
+                              "selectionSet": Object {
+                                "kind": "SelectionSet",
+                                "selections": Array [
+                                  Object {
+                                    "alias": null,
+                                    "arguments": Array [],
+                                    "directives": Array [],
+                                    "kind": "Field",
+                                    "name": Object {
+                                      "kind": "Name",
+                                      "value": "fileName",
+                                    },
+                                    "selectionSet": null,
+                                  },
+                                  Object {
+                                    "alias": null,
+                                    "arguments": Array [],
+                                    "directives": Array [],
+                                    "kind": "Field",
+                                    "name": Object {
+                                      "kind": "Name",
+                                      "value": "fileType",
+                                    },
+                                    "selectionSet": null,
+                                  },
+                                  Object {
+                                    "alias": null,
+                                    "arguments": Array [],
+                                    "directives": Array [],
+                                    "kind": "Field",
+                                    "name": Object {
+                                      "kind": "Name",
+                                      "value": "fileLabel",
+                                    },
+                                    "selectionSet": null,
+                                  },
+                                  Object {
+                                    "alias": null,
+                                    "arguments": Array [],
+                                    "directives": Array [],
+                                    "kind": "Field",
+                                    "name": Object {
+                                      "kind": "Name",
+                                      "value": "url",
+                                    },
+                                    "selectionSet": null,
+                                  },
+                                ],
+                              },
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                  "typeCondition": Object {
+                    "kind": "NamedType",
+                    "name": Object {
+                      "kind": "Name",
+                      "value": "Content",
+                    },
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+      "variableDefinitions": Array [
+        Object {
+          "defaultValue": null,
+          "kind": "VariableDefinition",
+          "type": Object {
+            "kind": "NonNullType",
+            "type": Object {
+              "kind": "NamedType",
+              "name": Object {
+                "kind": "Name",
+                "value": "ID",
+              },
+            },
+          },
+          "variable": Object {
+            "kind": "Variable",
+            "name": Object {
+              "kind": "Name",
+              "value": "id",
+            },
+          },
+        },
+      ],
+    },
+  ],
+  "kind": "Document",
+  "loc": Object {
+    "end": 479,
+    "source": Source {
+      "body": "
+  query getNews($id: ID!) {
+    content: node(id: $id) {
+      id
+      ... on Content {
+        entryId: id
+        title
+        status
+        channelName
+        meta {
+          urlTitle
+          siteId
+          date
+          channelId
+        }
+        content {
+          body
+          ooyalaId
+          tags
+          images(sizes: [\\"large\\"]) {
+            fileName
+            fileType
+            fileLabel
+            url
+          }
+        }
+      }
+    }
+  }
+",
+      "name": "GraphQL",
+    },
+    "start": 3,
+  },
+}
+`;
+
+exports[`renders loading if no content 1`] = `
+<div
+  className="locked-ends locked-sides floating"
+>
+  <div
+    className="floating__item"
+  >
+    <Loading />
+  </div>
+</div>
+`;
+
+exports[`renders with props 1`] = `
+<StoriesContent
+  story={Object {}}
+/>
+`;
+
 exports[`test parses query correctly 1`] = `
 Object {
   "definitions": Array [
@@ -352,7 +744,7 @@ Object {
           body
           ooyalaId
           tags
-          images(sizes: [\"large\"]) {
+          images(sizes: ["large"]) {
             fileName
             fileType
             fileLabel

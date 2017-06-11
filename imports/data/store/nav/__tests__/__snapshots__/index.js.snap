@@ -1,3 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`hide 1`] = `
+Object {
+  "type": "NAV.SET_VISIBILITY",
+  "visible": false,
+}
+`;
+
+exports[`reset 1`] = `
+Object {
+  "level": "TOP",
+  "type": "NAV.SET_LEVEL",
+}
+`;
+
+exports[`setAction 1`] = `
+Object {
+  "level": Object {
+    "level": "CONTENT",
+    "props": Object {
+      "action": [Function],
+      "id": 1,
+    },
+  },
+  "props": undefined,
+  "type": "NAV.SET_ACTION",
+}
+`;
+
+exports[`setColor 1`] = `
+Object {
+  "bgColor": Object {
+    "bgColor": "red",
+    "fgColor": "white",
+  },
+  "fgColor": undefined,
+  "type": "NAV.SET_COLOR",
+}
+`;
+
+exports[`setLevel 1`] = `
+Object {
+  "level": Object {
+    "level": "CONTENT",
+  },
+  "type": "NAV.SET_LEVEL",
+}
+`;
+
+exports[`setLinks 1`] = `
+Object {
+  "links": Object {
+    "links": Array [
+      Object {
+        "icon": "test",
+        "id": 1,
+        "label": "test",
+        "link": "http://test.com",
+      },
+      Object {
+        "icon": "test",
+        "id": 2,
+        "label": "test",
+        "link": "http://test.com",
+      },
+    ],
+  },
+  "type": "NAV.SET_LINKS",
+}
+`;
+
+exports[`show 1`] = `
+Object {
+  "type": "NAV.SET_VISIBILITY",
+  "visible": true,
+}
+`;
+
 exports[`test hide 1`] = `
 Object {
   "type": "NAV.SET_VISIBILITY",

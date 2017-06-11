@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`ProgressBar should generate a proper percentDone style 1`] = `
 Object {
   "currencyText": Object {

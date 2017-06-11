@@ -1,3 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should slice a masked account number 1`] = `
+<span>
+  *********
+  1234
+</span>
+`;
+
 exports[`test should slice a masked account number 1`] = `
 <span>
   *********

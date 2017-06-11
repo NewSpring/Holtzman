@@ -1,3 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`parses query 1`] = `
+"query Search($term: String!, $first: Int, $after: Int, $site: String) {
+  search(query: $term, first: $first, after: $after, site: $site) {
+    total
+    items {
+      id
+      title
+      htmlTitle
+      htmlDescription
+      link
+      image
+      displayLink
+      description
+      type
+      section
+    }
+  }
+}
+"
+`;
+
+exports[`renders with props 1`] = `
+<SearchLayout
+  hide={[Function]}
+  loadMore={[Function]}
+  search={
+    Object {
+      "page": 1,
+      "pageSize": 10,
+      "term": "hey",
+    }
+  }
+/>
+`;
+
 exports[`test parses query 1`] = `
 "query Search($term: String!, $first: Int, $after: Int, $site: String) {
   search(query: $term, first: $first, after: $after, site: $site) {

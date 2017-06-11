@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Line Graph renders correctly with default props 1`] = `
 <div
   className="">

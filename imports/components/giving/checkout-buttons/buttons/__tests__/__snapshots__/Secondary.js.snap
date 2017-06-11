@@ -1,3 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`has dark styles if not disabled 1`] = `
+<button
+  className="btn--thin btn--small display-inline-block push-left@lap-and-up push-half-left@handheld btn--dark-tertiary"
+  disabled={false}
+  onClick={[Function]}
+  style={Object {}}
+>
+  Register
+</button>
+`;
+
+exports[`has disabled styles if disabled 1`] = `
+<button
+  className="btn--thin btn--small display-inline-block push-left@lap-and-up push-half-left@handheld btn--disabled"
+  disabled={true}
+  onClick={[Function]}
+  style={
+    Object {
+      "backgroundColor": "transparent !important",
+    }
+  }
+>
+  Register
+</button>
+`;
+
 exports[`test has dark styles if not disabled 1`] = `
 <button
   className="btn--thin btn--small display-inline-block push-left@lap-and-up push-half-left@handheld btn--dark-tertiary"

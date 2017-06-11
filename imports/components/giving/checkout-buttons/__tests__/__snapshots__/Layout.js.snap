@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`ChangePaymentsLayout does not render if no saved payments 1`] = `null`;
 
 exports[`ChangePaymentsLayout does not render if saved payments and not hide card but not logged in 1`] = `null`;

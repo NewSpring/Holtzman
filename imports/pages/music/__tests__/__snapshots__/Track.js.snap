@@ -1,3 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListDetail renders the modal 1`] = `
+Object {
+  "album": Object {
+    "content": Object {
+      "tracks": Array [
+        Object {
+          "file": "http://test.com/test.mp3",
+        },
+        Object {
+          "file": "http://test.com/test.mp3",
+        },
+        Object {
+          "file": "http://test.com/test.mp3",
+        },
+      ],
+    },
+  },
+  "coverHeader": true,
+  "coverMiniPlayer": true,
+  "modalBackground": "dark",
+  "style": Object {
+    "opacity": 0.9,
+  },
+  "trackNumber": 2,
+}
+`;
+
+exports[`play prevents default and updates audio store 1`] = `
+Object {
+  "album": Object {
+    "content": Object {
+      "tracks": Array [
+        Object {
+          "file": "http://test.com/test.mp3",
+        },
+        Object {
+          "file": "http://test.com/test.mp3",
+        },
+        Object {
+          "file": "http://test.com/test.mp3",
+        },
+      ],
+    },
+  },
+  "track": Object {
+    "file": "http://test.com/test.mp3",
+    "title": "test",
+  },
+}
+`;
+
+exports[`play prevents default and updates audio store 2`] = `
+Array [
+  Object {
+    "file": "http://test.com/test.mp3",
+  },
+  Object {
+    "file": "http://test.com/test.mp3",
+  },
+  Object {
+    "file": "http://test.com/test.mp3",
+  },
+]
+`;
+
+exports[`renders with props 1`] = `
+<div
+  className="grid floating"
+>
+  <p
+    className="grid__item text-left eight-ninths ellipsis push-half-ends"
+    onClick={[Function]}
+  >
+    test
+    <span
+      className="text-dark-tertiary display-block small flush"
+    >
+      test title
+    </span>
+  </p>
+  <span
+    className="text-dark-tertiary grid__item one-tenth floating__item"
+    data-track={2}
+    onClick={[Function]}
+  >
+    •••
+  </span>
+</div>
+`;
+
 exports[`test ListDetail renders the modal 1`] = `
 Object {
   "album": Object {
@@ -91,3 +183,11 @@ exports[`test textClasses returns inactive classes 1`] = `"float-left truncate"`
 exports[`test trackClasses returns active classes 1`] = `"background--primary round push-half-top push-half-right unread-notification"`;
 
 exports[`test trackClasses returns inactive classes 1`] = `"background--primary round push-half-top push-half-right"`;
+
+exports[`textClasses returns active classes 1`] = `"float-left truncate strong"`;
+
+exports[`textClasses returns inactive classes 1`] = `"float-left truncate"`;
+
+exports[`trackClasses returns active classes 1`] = `"background--primary round push-half-top push-half-right unread-notification"`;
+
+exports[`trackClasses returns inactive classes 1`] = `"background--primary round push-half-top push-half-right"`;

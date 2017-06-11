@@ -1,3 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders with props 1`] = `
+<div>
+  <div
+    className="ptr-fake-background"
+  />
+  <ReactPullToRefresh
+    className="relative"
+    hammerOptions={
+      Object {
+        "touchAction": "auto",
+      }
+    }
+    icon={
+      <i
+        className="icon-leaf-outline"
+        style={
+          Object {
+            "marginLeft": "-17px",
+            "marginTop": "-8px",
+            "transformOrigin": "17px 21px",
+          }
+        }
+      />
+    }
+    loading={
+      <i
+        className="loading icon-leaf-outline"
+        style={
+          Object {
+            "marginLeft": "-17px",
+            "marginTop": "-8px",
+            "transformOrigin": "17px 21px",
+          }
+        }
+      />
+    }
+    onRefresh={[Function]}
+  >
+    <h1>
+      test
+    </h1>
+  </ReactPullToRefresh>
+</div>
+`;
+
 exports[`test renders with props 1`] = `
 <div>
   <div

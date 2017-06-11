@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Page renders with props 1`] = `
 <Layout
   dispatch={[Function]}

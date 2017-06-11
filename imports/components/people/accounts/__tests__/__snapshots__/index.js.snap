@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Accounts renders with props 1`] = `
 <withApollo(Connect(AccountsContainer))
   peopleWithoutAccountEmails={[Function]}

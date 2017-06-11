@@ -1,3 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders feed skeleton if loading 1`] = `
+<Connect(ApollosPullToRefreshWithoutData)
+  handleRefresh={[Function]}
+>
+  <Left
+    scroll={true}
+  >
+    <section
+      className="background--light-secondary soft-half@palm soft@palm-wide-and-up soft-double@anchored"
+    >
+      <div
+        className="grid"
+      >
+        <div
+          className="grid__item one-half@palm-wide-and-up flush-bottom@palm push-half-bottom@palm-wide push-bottom@portable push-bottom@anchored"
+        >
+          <FeedItemSkeleton />
+        </div>
+        <div
+          className="grid__item one-half@palm-wide-and-up flush-bottom@palm push-half-bottom@palm-wide push-bottom@portable push-bottom@anchored"
+        >
+          <FeedItemSkeleton />
+        </div>
+        <div
+          className="grid__item one-half@palm-wide-and-up flush-bottom@palm push-half-bottom@palm-wide push-bottom@portable push-bottom@anchored"
+        >
+          <FeedItemSkeleton />
+        </div>
+        <div
+          className="grid__item one-half@palm-wide-and-up flush-bottom@palm push-half-bottom@palm-wide push-bottom@portable push-bottom@anchored"
+        >
+          <FeedItemSkeleton />
+        </div>
+        <div
+          className="grid__item one-half@palm-wide-and-up flush-bottom@palm push-half-bottom@palm-wide push-bottom@portable push-bottom@anchored"
+        >
+          <FeedItemSkeleton />
+        </div>
+      </div>
+    </section>
+  </Left>
+</Connect(ApollosPullToRefreshWithoutData)>
+`;
+
+exports[`renders with props 1`] = `
+<Connect(ApollosPullToRefreshWithoutData)
+  handleRefresh={[Function]}
+>
+  <Left
+    scroll={true}
+  >
+    <section
+      className="background--light-secondary soft-half@palm soft@palm-wide-and-up soft-double@anchored"
+    >
+      <div
+        className="grid"
+      >
+        <div
+          className="grid__item one-half@palm-wide-and-up flush-bottom@palm push-half-bottom@palm-wide push-bottom@portable push-bottom@anchored"
+        >
+          <Connect(Apollo(LikesWrapper))
+            item={
+              Object {
+                "channelName": "articles",
+                "content": Object {
+                  "images": Array [
+                    Object {
+                      "fileLabel": "1:1",
+                      "url": "http://test.com/1x1.jpg",
+                    },
+                  ],
+                },
+                "entryId": "1",
+              }
+            }
+          />
+        </div>
+        <div
+          className="grid__item one-half@palm-wide-and-up flush-bottom@palm push-half-bottom@palm-wide push-bottom@portable push-bottom@anchored"
+        >
+          <Connect(Apollo(LikesWrapper))
+            item={
+              Object {
+                "channelName": "articles",
+                "content": Object {
+                  "images": Array [
+                    Object {
+                      "fileLabel": "1:1",
+                      "url": "http://test.com/1x1.jpg",
+                    },
+                  ],
+                },
+                "entryId": "2",
+              }
+            }
+          />
+        </div>
+      </div>
+    </section>
+  </Left>
+</Connect(ApollosPullToRefreshWithoutData)>
+`;
+
 exports[`test renders feed skeleton if loading 1`] = `
 <Connect(ApollosPullToRefreshWithoutData)
   handleRefresh={[Function]}>

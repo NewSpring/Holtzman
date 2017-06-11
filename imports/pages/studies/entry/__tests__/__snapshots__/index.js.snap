@@ -1,3 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders loading with no studyEntry 1`] = `
+<div
+  className="locked-ends locked-sides floating"
+>
+  <div
+    className="floating__item"
+  >
+    <Loading />
+  </div>
+</div>
+`;
+
+exports[`renders without scripture or image 1`] = `
+<StudyEntrySingle
+  dispatch={[Function]}
+  live={Object {}}
+  params={Object {}}
+  study={Object {}}
+  studyEntry={
+    Object {
+      "content": Object {
+        "content": Object {
+          "body": "<h1>devotion</h1>",
+          "images": Array [],
+        },
+        "id": "1",
+      },
+    }
+  }
+>
+  <div
+    className="locked-ends locked-sides floating"
+  >
+    <div
+      className="floating__item"
+    >
+      <Loading>
+        <Spinner>
+          <div
+            className="loader_9h6gj"
+            style={Object {}}
+          />
+        </Spinner>
+      </Loading>
+    </div>
+  </div>
+</StudyEntrySingle>
+`;
+
 exports[`test renders loading with no studyEntry 1`] = `
 <div
   className="locked-ends locked-sides floating">

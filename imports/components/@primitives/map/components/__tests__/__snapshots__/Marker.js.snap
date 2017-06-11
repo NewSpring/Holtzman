@@ -1,3 +1,105 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders $hover version 1`] = `
+<div
+  className="relative"
+  style={
+    Object {
+      "backgroundColor": "#6bac43",
+      "border": "3px solid white",
+      "borderRadius": 30,
+      "boxShadow": "0px 1px 2px #858585",
+      "color": "#6bac43",
+      "cursor": "pointer",
+      "fontSize": 16,
+      "fontWeight": "bold",
+      "height": 22,
+      "left": -15,
+      "padding": 4,
+      "position": "absolute",
+      "textAlign": "center",
+      "top": -15,
+      "width": 22,
+    }
+  }
+/>
+`;
+
+exports[`renders active version 1`] = `
+<div
+  className="relative"
+  style={
+    Object {
+      "backgroundColor": "#6bac43",
+      "border": "3px solid white",
+      "borderRadius": 30,
+      "boxShadow": "0px 1px 2px #858585",
+      "color": "#6bac43",
+      "cursor": "pointer",
+      "fontSize": 16,
+      "fontWeight": "bold",
+      "height": 22,
+      "left": -15,
+      "padding": 4,
+      "position": "absolute",
+      "textAlign": "center",
+      "top": -15,
+      "width": 22,
+    }
+  }
+/>
+`;
+
+exports[`renders hover version 1`] = `
+<div
+  className="relative"
+  style={
+    Object {
+      "backgroundColor": "#6bac43",
+      "border": "3px solid white",
+      "borderRadius": 30,
+      "boxShadow": "0px 1px 2px #858585",
+      "color": "#6bac43",
+      "cursor": "pointer",
+      "fontSize": 16,
+      "fontWeight": "bold",
+      "height": 22,
+      "left": -15,
+      "padding": 4,
+      "position": "absolute",
+      "textAlign": "center",
+      "top": -15,
+      "width": 22,
+    }
+  }
+/>
+`;
+
+exports[`renders with props 1`] = `
+<div
+  className="relative"
+  style={
+    Object {
+      "backgroundColor": "#2a4930",
+      "border": "3px solid white",
+      "borderRadius": 30,
+      "boxShadow": "0px 1px 2px #858585",
+      "color": "#1c683e",
+      "cursor": "pointer",
+      "fontSize": 16,
+      "fontWeight": "bold",
+      "height": 22,
+      "left": -15,
+      "padding": 4,
+      "position": "absolute",
+      "textAlign": "center",
+      "top": -15,
+      "width": 22,
+    }
+  }
+/>
+`;
+
 exports[`test renders $hover version 1`] = `
 <div
   className="relative"

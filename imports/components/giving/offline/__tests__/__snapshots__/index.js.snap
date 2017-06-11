@@ -1,3 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`allows a custom link 1`] = `
+<div>
+  <h3
+    className="text-dark-tertiary"
+  >
+    Unfortunately our giving service is offline.
+  </h3>
+  <p>
+    We are working to resolve this as fast as possible. We are sorry for any inconvience this may have caused.
+  </p>
+  <p>
+    <em>
+      We appreciate your patience. If you have any questions please contact us at 
+      <a
+        href="mailto:hello@newspring.cc"
+      >
+        hello@newspring.cc
+      </a>
+    </em>
+  </p>
+</div>
+`;
+
+exports[`displays a message to the user 1`] = `
+<div>
+  <h3
+    className="text-dark-tertiary"
+  >
+    Unfortunately our giving service is offline.
+  </h3>
+  <p>
+    We are working to resolve this as fast as possible. We are sorry for any inconvience this may have caused.
+  </p>
+  <p>
+    <em>
+      We appreciate your patience. If you have any questions please contact us at 
+      <a
+        href="mailto:finance@newspring.cc"
+      >
+        finance@newspring.cc
+      </a>
+    </em>
+  </p>
+</div>
+`;
+
 exports[`test allows a custom link 1`] = `
 <div>
   <h3

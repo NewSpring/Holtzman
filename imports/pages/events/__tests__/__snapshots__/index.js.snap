@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Event 1. renders with props 1`] = `<Connect(Apollo(EventSingleWithoutData)) />`;
 
 exports[`Event 2. pulls the route and snapshots it 1`] = `

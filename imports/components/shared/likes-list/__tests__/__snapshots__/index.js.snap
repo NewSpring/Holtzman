@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`likes list should properly skip any likes with a __typename that's null 1`] = `
 <Component
   likes={

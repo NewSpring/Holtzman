@@ -1,3 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`doesn't render if loading 1`] = `
+<Layout
+  recentLikedLoading={false}
+/>
+`;
+
+exports[`parses query correctly 1`] = `
+"query GetPromotions($setName: String!) {
+  items: lowReorderSets(setName: $setName) {
+    title
+    id
+    status
+    channelName
+    meta {
+      urlTitle
+      date
+    }
+    content {
+      images(sizes: [\\"large\\"]) {
+        fileName
+        fileLabel
+        url
+      }
+    }
+  }
+}
+"
+`;
+
+exports[`renders with props 1`] = `
+<Layout
+  featuredItem={
+    Object {
+      "status": "featured",
+    }
+  }
+  recentLikedLoading={false}
+  recommendedItems={
+    Array [
+      Object {
+        "status": "featured",
+      },
+      Object {
+        "status": "featured",
+      },
+    ]
+  }
+  textItems={
+    Array [
+      Object {
+        "status": "open",
+      },
+      Object {
+        "status": "open",
+      },
+      Object {
+        "status": "open",
+      },
+    ]
+  }
+/>
+`;
+
 exports[`test doesn't render if loading 1`] = `
 <Layout
   recentLikedLoading={false} />
@@ -15,7 +80,7 @@ exports[`test parses query correctly 1`] = `
       date
     }
     content {
-      images(sizes: [\"large\"]) {
+      images(sizes: ["large"]) {
         fileName
         fileLabel
         url

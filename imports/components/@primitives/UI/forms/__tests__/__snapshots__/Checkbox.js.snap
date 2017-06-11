@@ -1,3 +1,564 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pushes type prop to inputclasses 1`] = `
+<div
+  className="input mytype"
+  data-spec="input-wrapper"
+>
+  <label
+    className="h6 soft-half-left push-half-left flush-bottom text-left float-left locked-top"
+    style={
+      Object {
+        "cursor": "pointer",
+        "marginTop": "-1px",
+      }
+    }
+  >
+    <small
+      data-spec="input-label"
+      style={Object {}}
+    />
+  </label>
+  <input
+    checked=""
+    data-spec="input"
+    style={
+      Object {
+        "width": 0,
+      }
+    }
+    type="mytype"
+  />
+  <Label />
+</div>
+`;
+
+exports[`renderHelpText renders when error and errorText 1`] = `
+<span
+  className="input__status"
+>
+  test
+</span>
+`;
+
+exports[`renderHelpText renders when status 1`] = `
+<span
+  className="input__status"
+>
+  this is my status
+</span>
+`;
+
+exports[`should accept a default value 1`] = `
+<Checkbox
+  defaultValue={true}
+>
+  <div
+    className="input checkbox"
+    data-spec="input-wrapper"
+  >
+    <label
+      className="h6 soft-half-left push-half-left flush-bottom text-left float-left locked-top"
+      style={
+        Object {
+          "cursor": "pointer",
+          "marginTop": "-1px",
+        }
+      }
+    >
+      <small
+        data-spec="input-label"
+        style={Object {}}
+      />
+    </label>
+    <input
+      checked="checked"
+      data-spec="input"
+      style={
+        Object {
+          "width": 0,
+        }
+      }
+      type="checkbox"
+    />
+    <Label>
+      <label
+        style={Object {}}
+      />
+    </Label>
+  </div>
+</Checkbox>
+`;
+
+exports[`should accept an id 1`] = `
+<Checkbox
+  id="harambe"
+>
+  <div
+    className="input checkbox"
+    data-spec="input-wrapper"
+  >
+    <label
+      className="h6 soft-half-left push-half-left flush-bottom text-left float-left locked-top"
+      htmlFor="harambe"
+      style={
+        Object {
+          "cursor": "pointer",
+          "marginTop": "-1px",
+        }
+      }
+    >
+      <small
+        data-spec="input-label"
+        style={Object {}}
+      />
+    </label>
+    <input
+      checked=""
+      data-spec="input"
+      id="harambe"
+      style={
+        Object {
+          "width": 0,
+        }
+      }
+      type="checkbox"
+    />
+    <Label
+      labelFor="harambe"
+    >
+      <label
+        htmlFor="harambe"
+        style={Object {}}
+      />
+    </Label>
+  </div>
+</Checkbox>
+`;
+
+exports[`should accept label 1`] = `
+<Checkbox
+  label="harambe"
+>
+  <div
+    className="input checkbox"
+    data-spec="input-wrapper"
+  >
+    <label
+      className="h6 soft-half-left push-half-left flush-bottom text-left float-left locked-top"
+      htmlFor="harambe"
+      style={
+        Object {
+          "cursor": "pointer",
+          "marginTop": "-1px",
+        }
+      }
+    >
+      <small
+        data-spec="input-label"
+        style={Object {}}
+      />
+    </label>
+    <input
+      checked=""
+      data-spec="input"
+      id="harambe"
+      name="harambe"
+      style={
+        Object {
+          "width": 0,
+        }
+      }
+      type="checkbox"
+    />
+    <Label
+      labelFor="harambe"
+    >
+      <label
+        htmlFor="harambe"
+        style={Object {}}
+      />
+    </Label>
+  </div>
+</Checkbox>
+`;
+
+exports[`should accept name prop 1`] = `
+<Checkbox
+  name="harambe"
+>
+  <div
+    className="input checkbox"
+    data-spec="input-wrapper"
+  >
+    <label
+      className="h6 soft-half-left push-half-left flush-bottom text-left float-left locked-top"
+      htmlFor="harambe"
+      style={
+        Object {
+          "cursor": "pointer",
+          "marginTop": "-1px",
+        }
+      }
+    >
+      <small
+        data-spec="input-label"
+        style={Object {}}
+      />
+    </label>
+    <input
+      checked=""
+      data-spec="input"
+      id="harambe"
+      name="harambe"
+      style={
+        Object {
+          "width": 0,
+        }
+      }
+      type="checkbox"
+    />
+    <Label
+      labelFor="harambe"
+    >
+      <label
+        htmlFor="harambe"
+        style={Object {}}
+      />
+    </Label>
+  </div>
+</Checkbox>
+`;
+
+exports[`should add classes with classes prop 1`] = `
+<Checkbox
+  classes={
+    Array [
+      "test1",
+      "harambe",
+    ]
+  }
+>
+  <div
+    className="input checkbox test1 harambe"
+    data-spec="input-wrapper"
+  >
+    <label
+      className="h6 soft-half-left push-half-left flush-bottom text-left float-left locked-top"
+      style={
+        Object {
+          "cursor": "pointer",
+          "marginTop": "-1px",
+        }
+      }
+    >
+      <small
+        data-spec="input-label"
+        style={Object {}}
+      />
+    </label>
+    <input
+      checked=""
+      data-spec="input"
+      style={
+        Object {
+          "width": 0,
+        }
+      }
+      type="checkbox"
+    />
+    <Label>
+      <label
+        style={Object {}}
+      />
+    </Label>
+  </div>
+</Checkbox>
+`;
+
+exports[`should add classes with classes prop 2`] = `
+<Checkbox
+  classes="test1 harambe"
+>
+  <div
+    className="input checkbox test1 harambe"
+    data-spec="input-wrapper"
+  >
+    <label
+      className="h6 soft-half-left push-half-left flush-bottom text-left float-left locked-top"
+      style={
+        Object {
+          "cursor": "pointer",
+          "marginTop": "-1px",
+        }
+      }
+    >
+      <small
+        data-spec="input-label"
+        style={Object {}}
+      />
+    </label>
+    <input
+      checked=""
+      data-spec="input"
+      style={
+        Object {
+          "width": 0,
+        }
+      }
+      type="checkbox"
+    />
+    <Label>
+      <label
+        style={Object {}}
+      />
+    </Label>
+  </div>
+</Checkbox>
+`;
+
+exports[`should add inputClasses with inputClasses prop 1`] = `
+<Checkbox
+  inputClasses="test1 harambe"
+>
+  <div
+    className="input checkbox"
+    data-spec="input-wrapper"
+  >
+    <label
+      className="h6 soft-half-left push-half-left flush-bottom text-left float-left locked-top"
+      style={
+        Object {
+          "cursor": "pointer",
+          "marginTop": "-1px",
+        }
+      }
+    >
+      <small
+        data-spec="input-label"
+        style={Object {}}
+      />
+    </label>
+    <input
+      checked=""
+      className="test1 harambe"
+      data-spec="input"
+      style={
+        Object {
+          "width": 0,
+        }
+      }
+      type="checkbox"
+    />
+    <Label>
+      <label
+        style={Object {}}
+      />
+    </Label>
+  </div>
+</Checkbox>
+`;
+
+exports[`should disable input with disabled prop 1`] = `
+<Checkbox
+  disabled={true}
+>
+  <div
+    className="input checkbox"
+    data-spec="input-wrapper"
+  >
+    <label
+      className="h6 soft-half-left push-half-left flush-bottom text-left float-left locked-top"
+      style={
+        Object {
+          "cursor": "pointer",
+          "marginTop": "-1px",
+        }
+      }
+    >
+      <small
+        data-spec="input-label"
+        style={Object {}}
+      />
+    </label>
+    <input
+      checked=""
+      data-spec="input"
+      disabled={true}
+      style={
+        Object {
+          "width": 0,
+        }
+      }
+      type="checkbox"
+    />
+    <Label>
+      <label
+        style={Object {}}
+      />
+    </Label>
+  </div>
+</Checkbox>
+`;
+
+exports[`should display children 1`] = `
+<Checkbox>
+  <div
+    className="input checkbox"
+    data-spec="input-wrapper"
+  >
+    <label
+      className="h6 soft-half-left push-half-left flush-bottom text-left float-left locked-top"
+      style={
+        Object {
+          "cursor": "pointer",
+          "marginTop": "-1px",
+        }
+      }
+    >
+      <small
+        data-spec="input-label"
+        style={Object {}}
+      >
+        this is a test
+      </small>
+    </label>
+    <input
+      checked=""
+      data-spec="input"
+      style={
+        Object {
+          "width": 0,
+        }
+      }
+      type="checkbox"
+    />
+    <Label>
+      <label
+        style={Object {}}
+      />
+    </Label>
+  </div>
+</Checkbox>
+`;
+
+exports[`should hide label with hideLabel prop 1`] = `
+<Checkbox
+  hideLabel={true}
+>
+  <div
+    className="input checkbox"
+    data-spec="input-wrapper"
+  >
+    <label
+      className="h6 soft-half-left push-half-left flush-bottom text-left float-left locked-top"
+      style={
+        Object {
+          "cursor": "pointer",
+          "marginTop": "-1px",
+        }
+      }
+    >
+      <small
+        data-spec="input-label"
+        style={Object {}}
+      />
+    </label>
+    <input
+      checked=""
+      data-spec="input"
+      style={
+        Object {
+          "width": 0,
+        }
+      }
+      type="checkbox"
+    />
+  </div>
+</Checkbox>
+`;
+
+exports[`should render with minimal props 1`] = `
+<Checkbox>
+  <div
+    className="input checkbox"
+    data-spec="input-wrapper"
+  >
+    <label
+      className="h6 soft-half-left push-half-left flush-bottom text-left float-left locked-top"
+      style={
+        Object {
+          "cursor": "pointer",
+          "marginTop": "-1px",
+        }
+      }
+    >
+      <small
+        data-spec="input-label"
+        style={Object {}}
+      />
+    </label>
+    <input
+      checked=""
+      data-spec="input"
+      style={
+        Object {
+          "width": 0,
+        }
+      }
+      type="checkbox"
+    />
+    <Label>
+      <label
+        style={Object {}}
+      />
+    </Label>
+  </div>
+</Checkbox>
+`;
+
+exports[`should respond to onclick prop 1`] = `
+<Checkbox
+  clicked={[Function]}
+>
+  <div
+    className="input checkbox"
+    data-spec="input-wrapper"
+  >
+    <label
+      className="h6 soft-half-left push-half-left flush-bottom text-left float-left locked-top"
+      style={
+        Object {
+          "cursor": "pointer",
+          "marginTop": "-1px",
+        }
+      }
+    >
+      <small
+        data-spec="input-label"
+        style={Object {}}
+      />
+    </label>
+    <input
+      checked=""
+      data-spec="input"
+      onClick={[Function]}
+      style={
+        Object {
+          "width": 0,
+        }
+      }
+      type="checkbox"
+    />
+    <Label>
+      <label
+        style={Object {}}
+      />
+    </Label>
+  </div>
+</Checkbox>
+`;
+
 exports[`test pushes type prop to inputclasses 1`] = `
 <div
   className="input mytype"

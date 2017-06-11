@@ -1,3 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders when complete 1`] = `
+<Component
+  active={true}
+  complete={true}
+  ready={true}
+  schedule={
+    Object {
+      "next": "2012-12-12",
+      "schedule": Object {
+        "value": "One-Time",
+      },
+    }
+  }
+  state={
+    Object {
+      "isActive": true,
+      "removed": null,
+    }
+  }
+  stop={[Function]}
+/>
+`;
+
+exports[`renders with props 1`] = `
+<Component
+  active={true}
+  complete={false}
+  ready={true}
+  schedule={
+    Object {
+      "gateway": "testGateway",
+      "id": "1",
+      "next": "2012-12-12",
+      "schedule": Object {
+        "value": "test",
+      },
+    }
+  }
+  state={
+    Object {
+      "isActive": true,
+      "removed": null,
+    }
+  }
+  stop={[Function]}
+/>
+`;
+
+exports[`renders without transaction 1`] = `
+<Component
+  active={true}
+  complete={false}
+  ready={true}
+  schedule={false}
+  state={
+    Object {
+      "isActive": true,
+      "removed": null,
+    }
+  }
+  stop={[Function]}
+/>
+`;
+
 exports[`test renders when complete 1`] = `
 <Component
   active={true}

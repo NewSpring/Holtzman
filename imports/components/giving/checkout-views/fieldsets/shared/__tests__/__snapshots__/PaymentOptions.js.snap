@@ -1,3 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders \`Change Payment Accounts\` and \`Enter New Payment\` if savedAccount 1`] = `
+<div
+  className="display-block soft-half-top text-center"
+>
+  <h6
+    className="outlined--light outlined--bottom display-inline-block text-dark-tertiary"
+    onClick={[Function]}
+    style={
+      Object {
+        "cursor": "pointer",
+      }
+    }
+  >
+    Change Payment Accounts
+  </h6>
+</div>
+`;
+
+exports[`renders \`Edit Contribution Details\` if no saved account 1`] = `null`;
+
 exports[`test renders \`Change Payment Accounts\` and \`Enter New Payment\` if savedAccount 1`] = `
 <div
   className="display-block soft-half-top text-center">

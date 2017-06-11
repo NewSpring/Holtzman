@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Year To Date should render with the default set of props 1`] = `
 <div
   className="card">

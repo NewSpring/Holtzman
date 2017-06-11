@@ -1,3 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should not include a ccv input if not passed in 1`] = `
+<fieldset>
+  <input
+    name="billing-cc-number"
+    readOnly={true}
+    value="41111111111111"
+  />
+  <input
+    name="billing-cc-exp"
+    readOnly={true}
+    value="09/22"
+  />
+</fieldset>
+`;
+
+exports[`should render all bank details when provided 1`] = `
+<fieldset>
+  <input
+    name="billing-account-number"
+    readOnly={true}
+    value="111111111111"
+  />
+  <input
+    name="billing-routing-number"
+    readOnly={true}
+    value="111111111112"
+  />
+  <input
+    name="billing-account-name"
+    readOnly={true}
+    value="Savings Account"
+  />
+  <input
+    name="billing-account-type"
+    readOnly={true}
+    value="Savings"
+  />
+  <input
+    name="billing-entity-type"
+    readOnly={true}
+    value="personal"
+  />
+</fieldset>
+`;
+
+exports[`should render all credit details when provided 1`] = `
+<fieldset>
+  <input
+    name="billing-cc-number"
+    readOnly={true}
+    value="41111111111111"
+  />
+  <input
+    name="billing-cc-exp"
+    readOnly={true}
+    value="09/22"
+  />
+  <input
+    name="billing-cvv"
+    readOnly={true}
+    value="001"
+  />
+</fieldset>
+`;
+
 exports[`test should not include a ccv input if not passed in 1`] = `
 <fieldset>
   <input

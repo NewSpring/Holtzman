@@ -1,3 +1,420 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`allows for adding a single transaction 1`] = `
+Object {
+  "accounts": Object {},
+  "attempts": 0,
+  "data": Object {
+    "billing": Object {
+      "city": null,
+      "country": null,
+      "state": null,
+      "streetAddress": null,
+      "streetAddress2": null,
+      "zip": null,
+    },
+    "payment": Object {
+      "account": null,
+      "cardNumber": null,
+      "ccv": null,
+      "expiration": null,
+      "name": null,
+      "routing": null,
+      "type": "cc",
+    },
+    "personal": Object {
+      "campus": null,
+      "campusId": null,
+      "email": null,
+      "firstName": null,
+      "lastName": null,
+    },
+  },
+  "errors": Object {},
+  "recoverableSchedules": Object {},
+  "reminderDate": null,
+  "savedAccount": Object {
+    "id": null,
+    "name": null,
+    "payment": Object {
+      "accountNumber": null,
+      "paymentType": null,
+    },
+  },
+  "schedule": Object {
+    "frequency": null,
+    "start": null,
+  },
+  "scheduleToRecover": null,
+  "state": "default",
+  "step": 1,
+  "total": 10,
+  "transactionType": "default",
+  "transactions": Object {
+    "1": Object {
+      "value": 10,
+    },
+  },
+  "url": "",
+  "userId": null,
+}
+`;
+
+exports[`allows for adding multiple transaction 1`] = `
+Object {
+  "accounts": Object {},
+  "attempts": 0,
+  "data": Object {
+    "billing": Object {
+      "city": null,
+      "country": null,
+      "state": null,
+      "streetAddress": null,
+      "streetAddress2": null,
+      "zip": null,
+    },
+    "payment": Object {
+      "account": null,
+      "cardNumber": null,
+      "ccv": null,
+      "expiration": null,
+      "name": null,
+      "routing": null,
+      "type": "cc",
+    },
+    "personal": Object {
+      "campus": null,
+      "campusId": null,
+      "email": null,
+      "firstName": null,
+      "lastName": null,
+    },
+  },
+  "errors": Object {},
+  "recoverableSchedules": Object {},
+  "reminderDate": null,
+  "savedAccount": Object {
+    "id": null,
+    "name": null,
+    "payment": Object {
+      "accountNumber": null,
+      "paymentType": null,
+    },
+  },
+  "schedule": Object {
+    "frequency": null,
+    "start": null,
+  },
+  "scheduleToRecover": null,
+  "state": "default",
+  "step": 1,
+  "total": 110,
+  "transactionType": "default",
+  "transactions": Object {
+    "1": Object {
+      "value": 10,
+    },
+    "2": Object {
+      "value": 100,
+    },
+  },
+  "url": "",
+  "userId": null,
+}
+`;
+
+exports[`allows for clearing a single transaction 1`] = `
+Object {
+  "accounts": Object {},
+  "attempts": 0,
+  "data": Object {
+    "billing": Object {
+      "city": null,
+      "country": null,
+      "state": null,
+      "streetAddress": null,
+      "streetAddress2": null,
+      "zip": null,
+    },
+    "payment": Object {
+      "account": null,
+      "cardNumber": null,
+      "ccv": null,
+      "expiration": null,
+      "name": null,
+      "routing": null,
+      "type": "cc",
+    },
+    "personal": Object {
+      "campus": null,
+      "campusId": null,
+      "email": null,
+      "firstName": null,
+      "lastName": null,
+    },
+  },
+  "errors": Object {},
+  "recoverableSchedules": Object {},
+  "reminderDate": null,
+  "savedAccount": Object {
+    "id": null,
+    "name": null,
+    "payment": Object {
+      "accountNumber": null,
+      "paymentType": null,
+    },
+  },
+  "schedule": Object {
+    "frequency": null,
+    "start": null,
+  },
+  "scheduleToRecover": null,
+  "state": "default",
+  "step": 1,
+  "total": 0,
+  "transactionType": "default",
+  "transactions": Object {},
+  "url": "",
+  "userId": null,
+}
+`;
+
+exports[`allows reseting the transactions 1`] = `
+Object {
+  "accounts": Object {},
+  "attempts": 0,
+  "data": Object {
+    "billing": Object {
+      "city": null,
+      "country": null,
+      "state": null,
+      "streetAddress": null,
+      "streetAddress2": null,
+      "zip": null,
+    },
+    "payment": Object {
+      "account": null,
+      "cardNumber": null,
+      "ccv": null,
+      "expiration": null,
+      "name": null,
+      "routing": null,
+      "type": "cc",
+    },
+    "personal": Object {
+      "campus": null,
+      "campusId": null,
+      "email": null,
+      "firstName": null,
+      "lastName": null,
+    },
+  },
+  "errors": Object {},
+  "recoverableSchedules": Object {},
+  "reminderDate": null,
+  "savedAccount": Object {
+    "id": null,
+    "name": null,
+    "payment": Object {
+      "accountNumber": null,
+      "paymentType": null,
+    },
+  },
+  "schedule": Object {
+    "frequency": null,
+    "start": null,
+  },
+  "scheduleToRecover": null,
+  "state": "default",
+  "step": 1,
+  "total": 0,
+  "transactionType": "default",
+  "transactions": Object {},
+  "url": "",
+  "userId": null,
+}
+`;
+
+exports[`correctly updates the total after clearing a transaction 1`] = `
+Object {
+  "accounts": Object {},
+  "attempts": 0,
+  "data": Object {
+    "billing": Object {
+      "city": null,
+      "country": null,
+      "state": null,
+      "streetAddress": null,
+      "streetAddress2": null,
+      "zip": null,
+    },
+    "payment": Object {
+      "account": null,
+      "cardNumber": null,
+      "ccv": null,
+      "expiration": null,
+      "name": null,
+      "routing": null,
+      "type": "cc",
+    },
+    "personal": Object {
+      "campus": null,
+      "campusId": null,
+      "email": null,
+      "firstName": null,
+      "lastName": null,
+    },
+  },
+  "errors": Object {},
+  "recoverableSchedules": Object {},
+  "reminderDate": null,
+  "savedAccount": Object {
+    "id": null,
+    "name": null,
+    "payment": Object {
+      "accountNumber": null,
+      "paymentType": null,
+    },
+  },
+  "schedule": Object {
+    "frequency": null,
+    "start": null,
+  },
+  "scheduleToRecover": null,
+  "state": "default",
+  "step": 1,
+  "total": 10,
+  "transactionType": "default",
+  "transactions": Object {
+    "1": Object {
+      "value": 10,
+    },
+  },
+  "url": "",
+  "userId": null,
+}
+`;
+
+exports[`doesn't change if id isn't found in the store 1`] = `
+Object {
+  "accounts": Object {},
+  "attempts": 0,
+  "data": Object {
+    "billing": Object {
+      "city": null,
+      "country": null,
+      "state": null,
+      "streetAddress": null,
+      "streetAddress2": null,
+      "zip": null,
+    },
+    "payment": Object {
+      "account": null,
+      "cardNumber": null,
+      "ccv": null,
+      "expiration": null,
+      "name": null,
+      "routing": null,
+      "type": "cc",
+    },
+    "personal": Object {
+      "campus": null,
+      "campusId": null,
+      "email": null,
+      "firstName": null,
+      "lastName": null,
+    },
+  },
+  "errors": Object {},
+  "recoverableSchedules": Object {},
+  "reminderDate": null,
+  "savedAccount": Object {
+    "id": null,
+    "name": null,
+    "payment": Object {
+      "accountNumber": null,
+      "paymentType": null,
+    },
+  },
+  "schedule": Object {
+    "frequency": null,
+    "start": null,
+  },
+  "scheduleToRecover": null,
+  "state": "default",
+  "step": 1,
+  "total": 10,
+  "transactionType": "default",
+  "transactions": Object {
+    "1": Object {
+      "value": 10,
+    },
+  },
+  "url": "",
+  "userId": null,
+}
+`;
+
+exports[`removes transactions without correct values 1`] = `
+Object {
+  "accounts": Object {},
+  "attempts": 0,
+  "data": Object {
+    "billing": Object {
+      "city": null,
+      "country": null,
+      "state": null,
+      "streetAddress": null,
+      "streetAddress2": null,
+      "zip": null,
+    },
+    "payment": Object {
+      "account": null,
+      "cardNumber": null,
+      "ccv": null,
+      "expiration": null,
+      "name": null,
+      "routing": null,
+      "type": "cc",
+    },
+    "personal": Object {
+      "campus": null,
+      "campusId": null,
+      "email": null,
+      "firstName": null,
+      "lastName": null,
+    },
+  },
+  "errors": Object {},
+  "recoverableSchedules": Object {},
+  "reminderDate": null,
+  "savedAccount": Object {
+    "id": null,
+    "name": null,
+    "payment": Object {
+      "accountNumber": null,
+      "paymentType": null,
+    },
+  },
+  "schedule": Object {
+    "frequency": null,
+    "start": null,
+  },
+  "scheduleToRecover": null,
+  "state": "default",
+  "step": 1,
+  "total": 10,
+  "transactionType": "default",
+  "transactions": Object {
+    "1": Object {
+      "value": 10,
+    },
+  },
+  "url": "",
+  "userId": null,
+}
+`;
+
 exports[`test allows for adding a single transaction 1`] = `
 Object {
   "accounts": Object {},

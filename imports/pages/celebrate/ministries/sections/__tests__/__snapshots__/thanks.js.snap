@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Thanks renders a layout 1`] = `
 <div
   className="background--primary text-center text-light-primary soft">
@@ -7,7 +9,7 @@ exports[`Thanks renders a layout 1`] = `
   </h3>
   <p
     className="constrain-copy">
-    Thanks so much for taking the time to read our Annual Report. We hope you\'re as excited as we are about what God is doing in South Carolina, and around the world.
+    Thanks so much for taking the time to read our Annual Report. We hope you're as excited as we are about what God is doing in South Carolina, and around the world.
   </p>
   <a
     className="btn--light push-top push-double-bottom"

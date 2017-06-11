@@ -1,3 +1,116 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should not render if not ach type 1`] = `null`;
+
+exports[`should render with props 1`] = `
+<div>
+  <div
+    className="input input--active"
+    data-spec="input-wrapper"
+    style={Object {}}
+  >
+    <label
+      htmlFor="routingNumber"
+      style={Object {}}
+    >
+      Routing Number
+    </label>
+    <input
+      className={undefined}
+      data-spec="input"
+      defaultValue="123456789"
+      disabled={undefined}
+      id="routingNumber"
+      maxLength=""
+      name="billing-routing-number"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      placeholder="Routing Number"
+      style={Object {}}
+      type="tel"
+    />
+  </div>
+  <div
+    className="input input--active"
+    data-spec="input-wrapper"
+    style={Object {}}
+  >
+    <label
+      htmlFor="accountNumber"
+      style={Object {}}
+    >
+      Account Number
+    </label>
+    <input
+      className={undefined}
+      data-spec="input"
+      defaultValue="987654321"
+      disabled={undefined}
+      id="accountNumber"
+      maxLength=""
+      name="billing-account-number"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      placeholder="Account Number"
+      style={Object {}}
+      type="tel"
+    />
+  </div>
+  <div
+    className="grid"
+  >
+    <div
+      className="grid__item one-whole"
+    >
+      <div
+        className="input input--active select_15p0e27"
+      >
+        <label
+          htmlFor="accountType"
+          style={Object {}}
+        >
+          Account Type
+        </label>
+        <select
+          className={undefined}
+          defaultValue="checking"
+          disabled={undefined}
+          id="accountType"
+          name="billing-account-type"
+          onChange={[Function]}
+          onFocus={[Function]}
+          placeholder="Account Type"
+        >
+          <option
+            style={
+              Object {
+                "display": "none",
+              }
+            }
+          >
+            
+          </option>
+          <option
+            className={undefined}
+            value="checking"
+          >
+            Checking
+          </option>
+          <option
+            className={undefined}
+            value="savings"
+          >
+            Savings
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`test should not render if not ach type 1`] = `null`;
 
 exports[`test should render with props 1`] = `

@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Layout renders with props 1`] = `
 <div
   className="background--light-primary"

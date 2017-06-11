@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`GiveReviewTemplate returns <Error /> component based on state 1`] = `
 <div
   className="one-whole one-half@palm-wide-and-up"
@@ -7,7 +9,7 @@ exports[`GiveReviewTemplate returns <Error /> component based on state 1`] = `
     }
   }>
   <Err
-    additionalMessage="Please click \'Done\' in the top left of your screen to get back to the app"
+    additionalMessage="Please click 'Done' in the top left of your screen to get back to the app"
     msg="must go faster!" />
 </div>
 `;
@@ -59,7 +61,7 @@ exports[`GiveReviewTemplate returns <Loading /> component based on state 1`] = `
 <div
   className="fixed-ends fixed-sides">
   <Loading
-    msg="We\'re Processing Your Contribution" />
+    msg="We're Processing Your Contribution" />
   ;
 </div>
 `;
@@ -73,7 +75,7 @@ exports[`GiveReviewTemplate returns <Success /> component based on state 1`] = `
     }
   }>
   <Success
-    additionalMessage="Please click \'Done\' in the top left of your screen to get back to the app"
+    additionalMessage="Please click 'Done' in the top left of your screen to get back to the app"
     email="web@newspring.cc"
     guest={false}
     onClick={[Function]}

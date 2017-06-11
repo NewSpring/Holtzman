@@ -1,3 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders active version 1`] = `
+<span
+  className="tag push-half-right tag--clickable tag--active test class"
+  onClick={[Function]}
+  style={
+    Object {
+      "color": "red",
+    }
+  }
+>
+  testLabel
+</span>
+`;
+
+exports[`renders cordova active version 1`] = `
+<span
+  className="tag push-half-right tag--clickable tag--nohover--active test class"
+  onClick={[Function]}
+  style={
+    Object {
+      "color": "red",
+    }
+  }
+>
+  testLabel
+</span>
+`;
+
+exports[`renders unclickeable version 1`] = `
+<span
+  className="tag push-half-right tag--active test class"
+  onClick={[Function]}
+  style={
+    Object {
+      "color": "red",
+    }
+  }
+>
+  testLabel
+</span>
+`;
+
+exports[`renders with props 1`] = `
+<span
+  className="tag push-half-right tag--clickable tag--active test class"
+  onClick={[Function]}
+  style={
+    Object {
+      "color": "red",
+    }
+  }
+>
+  testLabel
+</span>
+`;
+
 exports[`test renders active version 1`] = `
 <span
   className="tag push-half-right tag--clickable tag--active test class"
@@ -59,6 +117,20 @@ exports[`test works with val 1`] = `
       "color": "red",
     }
   }>
+  testVal
+</span>
+`;
+
+exports[`works with val 1`] = `
+<span
+  className="tag push-half-right tag--clickable tag--active test class"
+  onClick={[Function]}
+  style={
+    Object {
+      "color": "red",
+    }
+  }
+>
   testVal
 </span>
 `;

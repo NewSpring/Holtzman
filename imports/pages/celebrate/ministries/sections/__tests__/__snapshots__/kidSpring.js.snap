@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`KidSpring renders a layout 1`] = `
 <div>
   <div
@@ -16,7 +18,7 @@ exports[`KidSpring renders a layout 1`] = `
             </h1>
             <p
               className="text-left">
-              KidSpring is the children\'s ministry at NewSpring Church.  Every Sunday, children from birth through fifth grade experience Jesus on their level in environments that are safe, fun, and age-appropriate.
+              KidSpring is the children's ministry at NewSpring Church.  Every Sunday, children from birth through fifth grade experience Jesus on their level in environments that are safe, fun, and age-appropriate.
             </p>
           </div>
         </div>

@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`LoadMore doesn't render if done 1`] = `<div />`;
 
 exports[`LoadMore renders with props 1`] = `

@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Menu dividerClasses return web classes 1`] = `"push-double-ends@lap-and-up push-half-ends"`;
 
 exports[`Menu parses query 1`] = `

@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`AdditionalMessage does not render if no additional message 1`] = `null`;
 
 exports[`AdditionalMessage renders if additional message 1`] = `

@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Remind should give default info if no props are passed 1`] = `
 <div
   className="soft soft-double-ends one-whole text-center">
@@ -24,7 +26,7 @@ exports[`Remind should give default info if no props are passed 1`] = `
     id="remind">
     <h3
       className="text-dark-tertiary display-inline-block push-half-bottom push-half-right">
-      I\'d like to be reminded
+      I'd like to be reminded
     </h3>
     <Select
       classes={

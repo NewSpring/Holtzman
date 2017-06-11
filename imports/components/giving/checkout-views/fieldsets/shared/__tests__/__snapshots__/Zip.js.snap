@@ -1,3 +1,141 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders one-half if country is \`CA\` 1`] = `
+<div
+  className="grid__item one-half"
+>
+  <div
+    className="input input--active"
+    data-spec="input-wrapper"
+    style={Object {}}
+  >
+    <label
+      htmlFor="zip"
+      style={Object {}}
+    >
+      Zip/Postal
+    </label>
+    <input
+      className={undefined}
+      data-spec="input"
+      defaultValue="23456"
+      disabled={undefined}
+      id="zip"
+      maxLength=""
+      name="zip"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      placeholder="Zip/Postal"
+      style={Object {}}
+      type={undefined}
+    />
+  </div>
+</div>
+`;
+
+exports[`renders one-half if country is \`US\` 1`] = `
+<div
+  className="grid__item one-half"
+>
+  <div
+    className="input input--active"
+    data-spec="input-wrapper"
+    style={Object {}}
+  >
+    <label
+      htmlFor="zip"
+      style={Object {}}
+    >
+      Zip/Postal
+    </label>
+    <input
+      className={undefined}
+      data-spec="input"
+      defaultValue="12345"
+      disabled={undefined}
+      id="zip"
+      maxLength=""
+      name="zip"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      placeholder="Zip/Postal"
+      style={Object {}}
+      type={undefined}
+    />
+  </div>
+</div>
+`;
+
+exports[`renders one-half if no country 1`] = `
+<div
+  className="grid__item one-half"
+>
+  <div
+    className="input"
+    data-spec="input-wrapper"
+    style={Object {}}
+  >
+    <label
+      htmlFor="zip"
+      style={Object {}}
+    >
+      Zip/Postal
+    </label>
+    <input
+      className={undefined}
+      data-spec="input"
+      defaultValue={undefined}
+      disabled={undefined}
+      id="zip"
+      maxLength=""
+      name="zip"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      placeholder="Zip/Postal"
+      style={Object {}}
+      type={undefined}
+    />
+  </div>
+</div>
+`;
+
+exports[`renders one-whole for countries with no states 1`] = `
+<div
+  className="grid__item one-whole"
+>
+  <div
+    className="input"
+    data-spec="input-wrapper"
+    style={Object {}}
+  >
+    <label
+      htmlFor="zip"
+      style={Object {}}
+    >
+      Zip/Postal
+    </label>
+    <input
+      className={undefined}
+      data-spec="input"
+      defaultValue={undefined}
+      disabled={undefined}
+      id="zip"
+      maxLength=""
+      name="zip"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      placeholder="Zip/Postal"
+      style={Object {}}
+      type={undefined}
+    />
+  </div>
+</div>
+`;
+
 exports[`test renders one-half if country is \`CA\` 1`] = `
 <div
   className="grid__item one-half">

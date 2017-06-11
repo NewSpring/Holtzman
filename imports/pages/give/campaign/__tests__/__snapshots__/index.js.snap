@@ -1,3 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Loading if account not found 1`] = `<Loading />`;
+
+exports[`renders Loading if loading 1`] = `<Loading />`;
+
+exports[`renders with props 1`] = `
+<Layout
+  account={
+    Object {
+      "name": "General Fund",
+    }
+  }
+/>
+`;
+
 exports[`test renders Loading if account not found 1`] = `<Loading />`;
 
 exports[`test renders Loading if loading 1`] = `<Loading />`;

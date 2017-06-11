@@ -1,3 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders with props 1`] = `
+<div>
+  <div
+    className="push-double-ends soft-half-sides"
+  >
+    <h4
+      className="text-center"
+    >
+      Sign out of your NewSpring profile
+    </h4>
+  </div>
+  <div
+    className="one-whole text-center"
+  >
+    <button
+      className="btn"
+      onClick={[Function]}
+    >
+      Sign Out
+    </button>
+  </div>
+</div>
+`;
+
 exports[`test renders with props 1`] = `
 <div>
   <div

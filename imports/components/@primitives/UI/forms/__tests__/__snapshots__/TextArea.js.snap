@@ -1,3 +1,241 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`appends extra classes 1`] = `
+<div
+  className="input append me"
+  style={
+    Object {
+      "color": "green",
+    }
+  }
+>
+  <Label
+    labelFor="2"
+    labelName="myLabel"
+  />
+  <textarea
+    className="input classes"
+    defaultValue={null}
+    id="2"
+    name="myName"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    placeholder="myPlaceholder"
+    rows={10}
+    style={
+      Object {
+        "color": "green",
+      }
+    }
+  />
+</div>
+`;
+
+exports[`can hide the label 1`] = `
+<div
+  className="input"
+  style={
+    Object {
+      "color": "green",
+    }
+  }
+>
+  <textarea
+    className="input classes"
+    defaultValue={null}
+    id="2"
+    name="myName"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    placeholder="myPlaceholder"
+    rows={10}
+    style={
+      Object {
+        "color": "green",
+      }
+    }
+  />
+</div>
+`;
+
+exports[`has active state 1`] = `
+<div
+  className="input input--active"
+  style={
+    Object {
+      "color": "green",
+    }
+  }
+>
+  <Label
+    labelFor="2"
+    labelName="myLabel"
+  />
+  <textarea
+    className="input classes"
+    defaultValue={null}
+    id="2"
+    name="myName"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    placeholder="myPlaceholder"
+    rows={10}
+    style={
+      Object {
+        "color": "green",
+      }
+    }
+  />
+</div>
+`;
+
+exports[`has error state 1`] = `
+<div
+  className="input input--alert"
+  style={
+    Object {
+      "color": "green",
+    }
+  }
+>
+  <Label
+    labelFor="2"
+    labelName="myLabel"
+  />
+  <textarea
+    className="input classes"
+    defaultValue={null}
+    id="2"
+    name="myName"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    placeholder="myPlaceholder"
+    rows={10}
+    style={
+      Object {
+        "color": "green",
+      }
+    }
+  />
+</div>
+`;
+
+exports[`has focused state 1`] = `
+<div
+  className="input input--focused"
+  style={
+    Object {
+      "color": "green",
+    }
+  }
+>
+  <Label
+    labelFor="2"
+    labelName="myLabel"
+  />
+  <textarea
+    className="input classes"
+    defaultValue={null}
+    id="2"
+    name="myName"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    placeholder="myPlaceholder"
+    rows={10}
+    style={
+      Object {
+        "color": "green",
+      }
+    }
+  />
+</div>
+`;
+
+exports[`overrides with theme if present 1`] = `
+<div
+  className="override"
+  style={
+    Object {
+      "color": "green",
+    }
+  }
+>
+  <Label
+    labelFor="2"
+    labelName="myLabel"
+  />
+  <textarea
+    className="input classes"
+    defaultValue={null}
+    id="2"
+    name="myName"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    placeholder="myPlaceholder"
+    rows={10}
+    style={
+      Object {
+        "color": "green",
+      }
+    }
+  />
+</div>
+`;
+
+exports[`renderHepText returns when error and error text 1`] = `
+<span
+  className="input__status"
+>
+  error
+</span>
+`;
+
+exports[`renderHepText returns when status 1`] = `
+<span
+  className="input__status"
+>
+  some status
+</span>
+`;
+
+exports[`renders with props 1`] = `
+<div
+  className="input"
+  style={
+    Object {
+      "color": "green",
+    }
+  }
+>
+  <Label
+    labelFor="2"
+    labelName="myLabel"
+  />
+  <textarea
+    className="input classes"
+    defaultValue={null}
+    id="2"
+    name="myName"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    placeholder="myPlaceholder"
+    rows={10}
+    style={
+      Object {
+        "color": "green",
+      }
+    }
+  />
+</div>
+`;
+
 exports[`test appends extra classes 1`] = `
 <div
   className="input append me"

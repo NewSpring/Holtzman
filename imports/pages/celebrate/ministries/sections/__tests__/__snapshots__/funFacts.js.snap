@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Fun Facts renders a layout 1`] = `
 <div
   className="background--light-secondary">

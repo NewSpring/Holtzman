@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`App renders header when native 1`] = `
 <div
   className="push-double-bottom@palm soft-half-bottom@palm push-double-left@palm-wide-and-up soft-double-left@palm-wide-and-up">
@@ -55,7 +57,7 @@ Array [
 `;
 
 exports[`GlobalWithoutData parses URL_TITLE_QUERY correctly 1`] = `
-"query contentWithUrlTitle($parentChannel: String!, $parentUrl: String!, $childChannel: String = \"\", $childUrl: String = \"\", $hasChild: Boolean = false) {
+"query contentWithUrlTitle($parentChannel: String!, $parentUrl: String!, $childChannel: String = "", $childUrl: String = "", $hasChild: Boolean = false) {
   parent: contentWithUrlTitle(channel: $parentChannel, urlTitle: $parentUrl)
   child: contentWithUrlTitle(channel: $childChannel, urlTitle: $childUrl) @include(if: $hasChild)
 }

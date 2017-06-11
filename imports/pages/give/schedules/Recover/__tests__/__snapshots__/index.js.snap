@@ -1,3 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders with props 1`] = `
+<Layout
+  accounts={
+    Array [
+      Object {},
+    ]
+  }
+  cancelSchedule={[Function]}
+  confirm={[Function]}
+  person={Object {}}
+  ready={true}
+  recoverableSchedules={
+    Array [
+      Object {},
+      Object {},
+    ]
+  }
+/>
+`;
+
+exports[`renders without accounts 1`] = `
+<Layout
+  accounts={Array []}
+  cancelSchedule={[Function]}
+  confirm={[Function]}
+  person={Object {}}
+  ready={true}
+  recoverableSchedules={
+    Array [
+      Object {},
+      Object {},
+    ]
+  }
+/>
+`;
+
+exports[`renders without person 1`] = `
+<Layout
+  accounts={
+    Array [
+      Object {},
+    ]
+  }
+  cancelSchedule={[Function]}
+  confirm={[Function]}
+  person={Object {}}
+  ready={true}
+  recoverableSchedules={
+    Array [
+      Object {},
+      Object {},
+    ]
+  }
+/>
+`;
+
+exports[`renders without transactions 1`] = `
+<Layout
+  accounts={
+    Array [
+      Object {},
+    ]
+  }
+  cancelSchedule={[Function]}
+  confirm={[Function]}
+  person={Object {}}
+  ready={true}
+  recoverableSchedules={Array []}
+/>
+`;
+
 exports[`test renders with props 1`] = `
 <Layout
   accounts={

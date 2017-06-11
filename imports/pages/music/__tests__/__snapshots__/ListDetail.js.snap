@@ -1,3 +1,144 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders default artist 1`] = `
+<div
+  className="one-whole soft background--dark-primary"
+  style={
+    Object {
+      "bottom": "60px",
+      "position": "absolute",
+    }
+  }
+>
+  <div
+    className="text-light-primary"
+  >
+    <div
+      className="grid floating push-bottom"
+    >
+      <div
+        className="grid__item background--fill floating__item text-left hard push-left ratio--square background--light-secondary one-eighth"
+        style={
+          Object {
+            "backgroundImage": "url(http://test.com/small.jpg)",
+          }
+        }
+      />
+      <div
+        className="floating__item text-left grid__item eight-tenths"
+      >
+        <h5
+          className="flush"
+        >
+          three
+        </h5>
+        <h7
+          className="text-light-tertiary"
+        >
+          <span>
+            test album
+             – 
+          </span>
+          <span>
+            NewSpring
+          </span>
+        </h7>
+      </div>
+    </div>
+    <Link
+      className="text-light-primary soft-half-top push-ends plain"
+      onClick={[Function]}
+      onlyActiveOnIndex={false}
+      style={Object {}}
+      to="/music/1"
+    >
+      <h5>
+        View Album
+      </h5>
+    </Link>
+    <h5
+      className="push-ends"
+      onClick={[Function]}
+    >
+      Share
+    </h5>
+  </div>
+</div>
+`;
+
+exports[`renders with props 1`] = `
+<div
+  className="one-whole soft background--dark-primary"
+  style={
+    Object {
+      "bottom": "60px",
+      "position": "absolute",
+    }
+  }
+>
+  <div
+    className="text-light-primary"
+  >
+    <div
+      className="grid floating push-bottom"
+    >
+      <div
+        className="grid__item background--fill floating__item text-left hard push-left ratio--square background--light-secondary one-eighth"
+        style={
+          Object {
+            "backgroundImage": "url(http://test.com/small.jpg)",
+          }
+        }
+      />
+      <div
+        className="floating__item text-left grid__item eight-tenths"
+      >
+        <h5
+          className="flush"
+        >
+          three
+        </h5>
+        <h7
+          className="text-light-tertiary"
+        >
+          <span>
+            test album
+             – 
+          </span>
+          <span>
+            test artist
+          </span>
+        </h7>
+      </div>
+    </div>
+    <Link
+      className="text-light-primary soft-half-top push-ends plain"
+      onClick={[Function]}
+      onlyActiveOnIndex={false}
+      style={Object {}}
+      to="/music/1"
+    >
+      <h5>
+        View Album
+      </h5>
+    </Link>
+    <h5
+      className="push-ends"
+      onClick={[Function]}
+    >
+      Share
+    </h5>
+  </div>
+</div>
+`;
+
+exports[`sectionStyles returns styles 1`] = `
+Object {
+  "bottom": "60px",
+  "position": "absolute",
+}
+`;
+
 exports[`test renders default artist 1`] = `
 <div
   className="one-whole soft background--dark-primary"

@@ -1,3 +1,129 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders date picker 1`] = `
+<div
+  className="display-inline-block"
+  style={
+    Object {
+      "position": "relative",
+    }
+  }
+>
+  <Styles />
+  <div
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <Input
+      format={[Function]}
+      past={true}
+      today={true}
+    />
+    <div
+      className="locked-ends locked-sides"
+      onClick={[Function]}
+    />
+  </div>
+  <div
+    id="datepicker"
+  >
+    <div
+      style={
+        Object {
+          "border": "1px solid #ddd",
+          "borderRadius": "4px",
+          "left": 0,
+          "margin": "0 auto",
+          "marginTop": "-250px",
+          "maxWidth": "300px",
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+          "zIndex": 999,
+        }
+      }
+    >
+      <mockConstructor
+        locale="en"
+        localeUtils={
+          Object {
+            "formatDay": [Function],
+            "formatMonthTitle": [Function],
+            "formatWeekdayLong": [Function],
+            "formatWeekdayShort": [Function],
+            "getFirstDayOfWeek": [Function],
+          }
+        }
+        modifiers={
+          Object {
+            "disabled": [Function],
+            "selected": [Function],
+          }
+        }
+        onDayClick={[Function]}
+      />
+      <div
+        className="background--light-secondary soft text-center"
+      >
+        <button
+          className="btn flush btn--small"
+          onClick={[Function]}
+        >
+          Done
+        </button>
+      </div>
+    </div>
+    <div
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "rgba(0,0,0,.75)",
+          "bottom": 0,
+          "left": 0,
+          "position": "fixed",
+          "right": 0,
+          "top": 0,
+          "zIndex": 998,
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`renders with props 1`] = `
+<div
+  className="display-inline-block"
+  style={
+    Object {
+      "position": "relative",
+    }
+  }
+>
+  <Styles />
+  <div
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <Input
+      format={[Function]}
+      past={true}
+      today={true}
+    />
+    <div
+      className="locked-ends locked-sides"
+      onClick={[Function]}
+    />
+  </div>
+</div>
+`;
+
 exports[`test renders date picker 1`] = `
 <div
   className="display-inline-block"

@@ -1,3 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`does not render if not visible 1`] = `null`;
+
+exports[`renders with props 1`] = `
+<NavLayout
+  handleAction={[Function]}
+  liked={Object {}}
+  modal={Object {}}
+  path="path"
+  reset={[Function]}
+/>
+`;
+
 exports[`test does not render if not visible 1`] = `null`;
 
 exports[`test renders with props 1`] = `

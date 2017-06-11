@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`NewSpring Averages renders a layout 1`] = `
 <div
   className="background--light-secondary text-dark-primary soft-double-ends push-ends@lap-and-up soft-ends text-center">

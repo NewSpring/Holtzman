@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Fuse renders a layout 1`] = `
 <div>
   <div
@@ -19,7 +21,7 @@ exports[`Fuse renders a layout 1`] = `
           </h1>
           <p
             className="text-left">
-            Fuse is NewSpring\'s student ministry. Fuse is a place where middle and high school students can have fun while connecting to Jesus and to each other.
+            Fuse is NewSpring's student ministry. Fuse is a place where middle and high school students can have fun while connecting to Jesus and to each other.
           </p>
         </div>
         <div

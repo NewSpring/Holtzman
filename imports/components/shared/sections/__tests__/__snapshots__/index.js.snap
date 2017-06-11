@@ -1,3 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders with props 1`] = `
+<section
+  className="hard"
+>
+  <Groups
+    hide={[Function]}
+    items={
+      Array [
+        Array [
+          Object {},
+          Object {},
+        ],
+      ]
+    }
+  />
+</section>
+`;
+
 exports[`test renders with props 1`] = `
 <section
   className="hard">

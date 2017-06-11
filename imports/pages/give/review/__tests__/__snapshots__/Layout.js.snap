@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`GiveReview renders a transaction review 1`] = `
 <div
   className="one-whole one-half@palm-wide-and-up soft-double-ends@palm-wide-and-up"

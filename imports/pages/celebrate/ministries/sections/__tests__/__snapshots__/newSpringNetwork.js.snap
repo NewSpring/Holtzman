@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`NewSpring Network renders a layout 1`] = `
 <div
   className="background--light-secondary soft-double-ends@lap-and-up soft-top text-center">
@@ -15,7 +17,7 @@ exports[`NewSpring Network renders a layout 1`] = `
           </h1>
           <p
             className="text-left">
-            NewSpring Network equips church leaders with resources, coaching opportunities, and leadership training. Through NewSpring Network, our church provides free children\'s ministry curriculum, series graphics, and videos, chord charts, and volunteer training.
+            NewSpring Network equips church leaders with resources, coaching opportunities, and leadership training. Through NewSpring Network, our church provides free children's ministry curriculum, series graphics, and videos, chord charts, and volunteer training.
           </p>
         </div>
       </div>
@@ -37,7 +39,7 @@ exports[`NewSpring Network renders a layout 1`] = `
     <div
       className="one-whole">
       <Story
-        content="<p>&#34;We\'ve been using NewSpring\'s free children\'s curriculum exclusively since the beginning of 2016, and the kids love it, especially the acting and the games! Our kids leave excited to tell their friends about church and want to come back every week.&#34;</p>"
+        content="<p>&#34;We've been using NewSpring's free children's curriculum exclusively since the beginning of 2016, and the kids love it, especially the acting and the games! Our kids leave excited to tell their friends about church and want to come back every week.&#34;</p>"
         heading="Hear from childrens ministry director"
         image="//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/stories/story-img7.1.png"
         location="Arkansas"

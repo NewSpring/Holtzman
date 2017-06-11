@@ -1,3 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`appends classes if present 1`] = `
+<form
+  action={true}
+  className="hard-ends append me"
+  id="2"
+  method="POST"
+  onSubmit={[Function]}
+  style={
+    Object {
+      "color": "green",
+    }
+  }
+>
+  <FieldSet
+    theme="fieldsetTheme"
+  >
+    <h1>
+      test
+    </h1>
+  </FieldSet>
+</form>
+`;
+
+exports[`overrides with theme if theme 1`] = `
+<form
+  action={true}
+  className="override"
+  id="2"
+  method="POST"
+  onSubmit={[Function]}
+  style={
+    Object {
+      "color": "green",
+    }
+  }
+>
+  <FieldSet
+    theme="fieldsetTheme"
+  >
+    <h1>
+      test
+    </h1>
+  </FieldSet>
+</form>
+`;
+
+exports[`renders with props 1`] = `
+<form
+  action={true}
+  className="hard-ends"
+  id="2"
+  method="POST"
+  onSubmit={[Function]}
+  style={
+    Object {
+      "color": "green",
+    }
+  }
+>
+  <FieldSet
+    theme="fieldsetTheme"
+  >
+    <h1>
+      test
+    </h1>
+  </FieldSet>
+</form>
+`;
+
 exports[`test appends classes if present 1`] = `
 <form
   action={true}

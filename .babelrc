@@ -2,6 +2,7 @@
   "presets": [
     "meteor",
     "stage-0",
+    "es2015",
     "react"
   ],
   "plugins": [

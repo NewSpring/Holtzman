@@ -1,3 +1,178 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`appends classes 1`] = `
+<div
+  className="input append me"
+  style={Object {}}
+>
+  <Label
+    disabed={false}
+    labelFor="2"
+    labelName="Test Name"
+  />
+  <input
+    autoFocus={false}
+    className={null}
+    defaultValue={null}
+    disabled={false}
+    id="2"
+    name="testname"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    placeholder="testholder"
+    style={Object {}}
+    type="file"
+  />
+</div>
+`;
+
+exports[`has error state 1`] = `
+<div
+  className="input input--alert"
+  style={Object {}}
+>
+  <Label
+    disabed={false}
+    labelFor="2"
+    labelName="Test Name"
+  />
+  <input
+    autoFocus={false}
+    className={null}
+    defaultValue={null}
+    disabled={false}
+    id="2"
+    name="testname"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    placeholder="testholder"
+    style={Object {}}
+    type="file"
+  />
+</div>
+`;
+
+exports[`has focused state 1`] = `
+<div
+  className="input input--focused"
+  style={Object {}}
+>
+  <Label
+    disabed={false}
+    labelFor="2"
+    labelName="Test Name"
+  />
+  <input
+    autoFocus={false}
+    className={null}
+    defaultValue={null}
+    disabled={false}
+    id="2"
+    name="testname"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    placeholder="testholder"
+    style={Object {}}
+    type="file"
+  />
+</div>
+`;
+
+exports[`hides the label 1`] = `
+<div
+  className="input"
+  style={Object {}}
+>
+  <input
+    autoFocus={false}
+    className={null}
+    defaultValue={null}
+    disabled={false}
+    id="2"
+    name="testname"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    placeholder="testholder"
+    style={Object {}}
+    type="file"
+  />
+</div>
+`;
+
+exports[`overrides with theme 1`] = `
+<div
+  className="mytheme"
+  style={Object {}}
+>
+  <Label
+    disabed={false}
+    labelFor="2"
+    labelName="Test Name"
+  />
+  <input
+    autoFocus={false}
+    className={null}
+    defaultValue={null}
+    disabled={false}
+    id="2"
+    name="testname"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    placeholder="testholder"
+    style={Object {}}
+    type="file"
+  />
+</div>
+`;
+
+exports[`renderHelpText renders if error and error text 1`] = `
+<span
+  className="input__status"
+>
+  error
+</span>
+`;
+
+exports[`renderHelpText renders if status 1`] = `
+<span
+  className="input__status"
+>
+  status message
+</span>
+`;
+
+exports[`renders with props 1`] = `
+<div
+  className="input"
+  style={Object {}}
+>
+  <Label
+    disabed={false}
+    labelFor="2"
+    labelName="Test Name"
+  />
+  <input
+    autoFocus={false}
+    className={null}
+    defaultValue={null}
+    disabled={false}
+    id="2"
+    name="testname"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    placeholder="testholder"
+    style={Object {}}
+    type="file"
+  />
+</div>
+`;
+
 exports[`test appends classes 1`] = `
 <div
   className="input append me"

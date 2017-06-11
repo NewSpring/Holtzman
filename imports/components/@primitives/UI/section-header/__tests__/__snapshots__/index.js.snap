@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`SectionHeader should accept a link prop 1`] = `
 <SectionHeader
   link={

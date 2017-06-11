@@ -1,3 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`adds nav styles if nav visible 1`] = `
+<div
+  className="panel fixed@lap-and-up panel_s3huuu offset_9w2pph"
+  style={
+    Object {
+      "color": "red",
+    }
+  }
+>
+  <h1>
+    test
+  </h1>
+</div>
+`;
+
+exports[`appends additional classes 1`] = `
+<div
+  className="panel fixed@lap-and-up panel_s3huuu one two"
+  style={
+    Object {
+      "color": "red",
+    }
+  }
+>
+  <h1>
+    test
+  </h1>
+</div>
+`;
+
+exports[`overrides with theme 1`] = `
+<div
+  className="override"
+  style={
+    Object {
+      "color": "red",
+    }
+  }
+>
+  <h1>
+    test
+  </h1>
+</div>
+`;
+
+exports[`renders with props 1`] = `
+<div
+  className="panel fixed@lap-and-up panel_s3huuu"
+  style={
+    Object {
+      "color": "red",
+    }
+  }
+>
+  <h1>
+    test
+  </h1>
+</div>
+`;
+
 exports[`test adds nav styles if nav visible 1`] = `
 <div
   className="panel fixed@lap-and-up panel_s3huuu offset_9w2pph"

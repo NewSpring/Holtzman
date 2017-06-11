@@ -1,3 +1,135 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders if content loading 1`] = `
+<div>
+  <Connect(SplitContainerWithoutData)>
+    <Right
+      background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/groups/groups.1x1_1700_1700_90_c1.jpg"
+      classes={
+        Array [
+          "background--left",
+        ]
+      }
+      mobile={false}
+    />
+  </Connect(SplitContainerWithoutData)>
+  <Left
+    classes={
+      Array [
+        "background--light-secondary",
+      ]
+    }
+    scroll={true}
+  >
+    <Layout
+      canSearchTags={null}
+      content={Array []}
+      findByQuery={[Function]}
+      inputOnChange={[Function]}
+      submitTags={[Function]}
+      tagOnClick={[Function]}
+      tags={
+        Array [
+          Object {},
+          Object {},
+        ]
+      }
+    />
+  </Left>
+</div>
+`;
+
+exports[`renders result if campuses 1`] = `<withRouter(Apollo(Connect(Apollo(InfiniteScrollContainer)))) />`;
+
+exports[`renders result if q 1`] = `<withRouter(Apollo(Connect(Apollo(InfiniteScrollContainer)))) />`;
+
+exports[`renders result if schedules 1`] = `<withRouter(Apollo(Connect(Apollo(InfiniteScrollContainer)))) />`;
+
+exports[`renders result if tags 1`] = `<withRouter(Apollo(Connect(Apollo(InfiniteScrollContainer)))) />`;
+
+exports[`renders with props 1`] = `
+<div>
+  <Connect(SplitContainerWithoutData)>
+    <Right
+      background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/groups/groups.1x1_1700_1700_90_c1.jpg"
+      classes={
+        Array [
+          "background--left",
+        ]
+      }
+      mobile={false}
+    />
+  </Connect(SplitContainerWithoutData)>
+  <Left
+    classes={
+      Array [
+        "background--light-secondary",
+      ]
+    }
+    scroll={true}
+  >
+    <Layout
+      canSearchTags={null}
+      content={
+        Array [
+          Object {},
+          Object {},
+        ]
+      }
+      findByQuery={[Function]}
+      inputOnChange={[Function]}
+      submitTags={[Function]}
+      tagOnClick={[Function]}
+      tags={
+        Array [
+          Object {},
+          Object {},
+        ]
+      }
+    />
+  </Left>
+</div>
+`;
+
+exports[`renders without attributes 1`] = `
+<div>
+  <Connect(SplitContainerWithoutData)>
+    <Right
+      background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/groups/groups.1x1_1700_1700_90_c1.jpg"
+      classes={
+        Array [
+          "background--left",
+        ]
+      }
+      mobile={false}
+    />
+  </Connect(SplitContainerWithoutData)>
+  <Left
+    classes={
+      Array [
+        "background--light-secondary",
+      ]
+    }
+    scroll={true}
+  >
+    <Layout
+      canSearchTags={null}
+      content={
+        Array [
+          Object {},
+          Object {},
+        ]
+      }
+      findByQuery={[Function]}
+      inputOnChange={[Function]}
+      submitTags={[Function]}
+      tagOnClick={[Function]}
+      tags={Array []}
+    />
+  </Left>
+</div>
+`;
+
 exports[`test renders if content loading 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)>

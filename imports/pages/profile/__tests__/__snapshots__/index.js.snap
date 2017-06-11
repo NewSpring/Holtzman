@@ -1,3 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders with children 1`] = `
+<Connect(Authorized)>
+  <h1>
+    test
+  </h1>
+</Connect(Authorized)>
+`;
+
 exports[`test renders with children 1`] = `
 <Connect(Authorized)>
   <h1>

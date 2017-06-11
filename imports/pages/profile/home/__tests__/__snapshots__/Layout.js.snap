@@ -1,3 +1,192 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders cordova version 1`] = `
+<div>
+  <Connect(SplitContainerWithoutData)
+    classes={
+      Array [
+        "background--light-primary",
+      ]
+    }
+    nav={true}
+  >
+    <Meta
+      title="jim bob"
+    />
+    <Right
+      background="http://test.com/photo.jpg"
+      blur={true}
+      classes={
+        Array [
+          "floating",
+          "overlay--solid-dark",
+        ]
+      }
+      mobile={true}
+      ratioClasses={
+        Array [
+          "floating__item",
+          "overlay__item",
+          "one-whole",
+          "text-center",
+        ]
+      }
+    >
+      <div
+        className="soft one-whole"
+      >
+        <label
+          className="background--fill ratio--square round two-fifths display-inline-block"
+          htmlFor="file"
+          style={
+            Object {
+              "backgroundImage": "url('http://test.com/photo.jpg')",
+              "position": "relative",
+            }
+          }
+        >
+          <div
+            className="locked-ends locked-sides"
+            onClick={[Function]}
+            style={
+              Object {
+                "opacity": 0,
+              }
+            }
+          />
+        </label>
+        <h4
+          className="text-light-primary soft-half-top flush-bottom"
+        >
+          jim
+           
+          bob
+        </h4>
+        <p
+          className="text-light-primary flush"
+        >
+          <em>
+            anderson
+          </em>
+        </p>
+      </div>
+    </Right>
+  </Connect(SplitContainerWithoutData)>
+  <Left
+    scroll={true}
+  >
+    <Tabs
+      items={
+        Array [
+          "Likes",
+          "Following",
+        ]
+      }
+      toggle={[Function]}
+    />
+    <div>
+      <h1>
+        test
+      </h1>
+    </div>
+  </Left>
+</div>
+`;
+
+exports[`renders with props 1`] = `
+<div>
+  <Connect(SplitContainerWithoutData)
+    classes={
+      Array [
+        "background--light-primary",
+      ]
+    }
+    nav={true}
+  >
+    <Meta
+      title="jim bob"
+    />
+    <Right
+      background="http://test.com/photo.jpg"
+      blur={true}
+      classes={
+        Array [
+          "floating",
+          "overlay--solid-dark",
+        ]
+      }
+      mobile={true}
+      ratioClasses={
+        Array [
+          "floating__item",
+          "overlay__item",
+          "one-whole",
+          "text-center",
+        ]
+      }
+    >
+      <div
+        className="soft one-whole"
+      >
+        <label
+          className="background--fill ratio--square round two-fifths display-inline-block"
+          htmlFor="file"
+          style={
+            Object {
+              "backgroundImage": "url('http://test.com/photo.jpg')",
+              "position": "relative",
+            }
+          }
+        >
+          <input
+            className="locked-ends locked-sides"
+            onChange={[Function]}
+            style={
+              Object {
+                "opacity": 0,
+              }
+            }
+            type="file"
+          />
+        </label>
+        <h4
+          className="text-light-primary soft-half-top flush-bottom"
+        >
+          jim
+           
+          bob
+        </h4>
+        <p
+          className="text-light-primary flush"
+        >
+          <em>
+            anderson
+          </em>
+        </p>
+      </div>
+    </Right>
+  </Connect(SplitContainerWithoutData)>
+  <Left
+    scroll={true}
+  >
+    <Tabs
+      items={
+        Array [
+          "Likes",
+          "Following",
+        ]
+      }
+      toggle={[Function]}
+    />
+    <div>
+      <h1>
+        test
+      </h1>
+    </div>
+  </Left>
+</div>
+`;
+
 exports[`test renders cordova version 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)
@@ -34,7 +223,7 @@ exports[`test renders cordova version 1`] = `
           htmlFor="file"
           style={
             Object {
-              "backgroundImage": "url(\'http://test.com/photo.jpg\')",
+              "backgroundImage": "url('http://test.com/photo.jpg')",
               "position": "relative",
             }
           }>
@@ -117,7 +306,7 @@ exports[`test renders with props 1`] = `
           htmlFor="file"
           style={
             Object {
-              "backgroundImage": "url(\'http://test.com/photo.jpg\')",
+              "backgroundImage": "url('http://test.com/photo.jpg')",
               "position": "relative",
             }
           }>
@@ -201,7 +390,7 @@ exports[`test works without city 1`] = `
           htmlFor="file"
           style={
             Object {
-              "backgroundImage": "url(\'http://test.com/photo.jpg\')",
+              "backgroundImage": "url('http://test.com/photo.jpg')",
               "position": "relative",
             }
           }>
@@ -233,6 +422,92 @@ exports[`test works without city 1`] = `
         ]
       }
       toggle={[Function]} />
+    <div>
+      <h1>
+        test
+      </h1>
+    </div>
+  </Left>
+</div>
+`;
+
+exports[`works without city 1`] = `
+<div>
+  <Connect(SplitContainerWithoutData)
+    classes={
+      Array [
+        "background--light-primary",
+      ]
+    }
+    nav={true}
+  >
+    <Meta
+      title="jim bob"
+    />
+    <Right
+      background="http://test.com/photo.jpg"
+      blur={true}
+      classes={
+        Array [
+          "floating",
+          "overlay--solid-dark",
+        ]
+      }
+      mobile={true}
+      ratioClasses={
+        Array [
+          "floating__item",
+          "overlay__item",
+          "one-whole",
+          "text-center",
+        ]
+      }
+    >
+      <div
+        className="soft one-whole"
+      >
+        <label
+          className="background--fill ratio--square round two-fifths display-inline-block"
+          htmlFor="file"
+          style={
+            Object {
+              "backgroundImage": "url('http://test.com/photo.jpg')",
+              "position": "relative",
+            }
+          }
+        >
+          <div
+            className="locked-ends locked-sides"
+            onClick={[Function]}
+            style={
+              Object {
+                "opacity": 0,
+              }
+            }
+          />
+        </label>
+        <h4
+          className="text-light-primary soft-half-top flush-bottom"
+        >
+          jim
+           
+          bob
+        </h4>
+      </div>
+    </Right>
+  </Connect(SplitContainerWithoutData)>
+  <Left
+    scroll={true}
+  >
+    <Tabs
+      items={
+        Array [
+          "Likes",
+          "Following",
+        ]
+      }
+      toggle={[Function]}
+    />
     <div>
       <h1>
         test

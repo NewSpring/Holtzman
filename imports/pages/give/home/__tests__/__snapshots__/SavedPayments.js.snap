@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Saved Payments List should render a loading state 1`] = `
 <SavedPaymentsList
   payments={
@@ -34,7 +36,7 @@ exports[`Saved Payments List should render properly with data 1`] = `
       "savedPayments": Array [
         Object {
           "id": 1,
-          "name": "Harambe\'s Card",
+          "name": "Harambe's Card",
           "payment": Object {
             "accountNumber": "123456******1234",
             "paymentType": "Visa",
@@ -93,7 +95,7 @@ exports[`Saved Payments List should render properly with data 1`] = `
         payment={
           Object {
             "id": 1,
-            "name": "Harambe\'s Card",
+            "name": "Harambe's Card",
             "payment": Object {
               "accountNumber": "123456******1234",
               "paymentType": "Visa",

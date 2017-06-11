@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Header renders default if no override 1`] = `
 <div
   className="grid one-whole text-left flush">
@@ -288,7 +290,7 @@ exports[`TransactionLayout should render with a schedule props 1`] = `
         className="background--fill display-inline-block"
         style={
           Object {
-            "backgroundImage": "url(\'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAA8CAYAAADxJz2MAAAABGdBTUEAALGPC/xhBQAAAc9JREFUeAHt3DFOwzAUxnGcROoMEx04Q4/AoSraoXMWqp4DjgFH4AwgdWvnDlV4FoyOn+xPlVrlnwEJ+32h/eWlcqjkcGfHbrd7Op1Or8MwPNuv8zjGMSqwDyF8tG27Wq/XP+Ef78vw7kcjTKQEDl3XLRrrvC14KR937OF8Pm8bK4u3LUeFQPzIa+zHY0WWyJ/APHYghyDQjWU3m00Ym5vieN/3Q+p904EplYIxAAuwUqUAplQKxgAswEqVAphSKRgDsAArVQpgSqVgDMACrFQpgCmVgrHRJxHvHGMrcy93rfO1T150oHhFAQRQFBDjdCCAooAYpwMBFAXEePU6sHbdJL7eq4tzC4uXBEAARQExTgcCKAqIcToQQFFAjNOBAIoCYrz6SeTS/5G+lScdbmGxAwEEUBQQ43QggKKAGKcDARQFxHj1OvBW1mmijxvnFnaJ8gUA5n3cWQBdonwBgHkfdxZAlyhfAGDex50F0CXKFwCY93FnAXSJ8gUA5n3cWQBdonxBuPR3G/k/f/uzdKB4DSPgXjzHlOP7xjaR+ZyygPLeo11jO/C82EkOyommmDW842w2WzVx+6K4A48NvBkEt7PfDXHrp3fDWyyXy+9ftplH0FR79EYAAAAASUVORK5CYII=\')",
+            "backgroundImage": "url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAA8CAYAAADxJz2MAAAABGdBTUEAALGPC/xhBQAAAc9JREFUeAHt3DFOwzAUxnGcROoMEx04Q4/AoSraoXMWqp4DjgFH4AwgdWvnDlV4FoyOn+xPlVrlnwEJ+32h/eWlcqjkcGfHbrd7Op1Or8MwPNuv8zjGMSqwDyF8tG27Wq/XP+Ef78vw7kcjTKQEDl3XLRrrvC14KR937OF8Pm8bK4u3LUeFQPzIa+zHY0WWyJ/APHYghyDQjWU3m00Ym5vieN/3Q+p904EplYIxAAuwUqUAplQKxgAswEqVAphSKRgDsAArVQpgSqVgDMACrFQpgCmVgrHRJxHvHGMrcy93rfO1T150oHhFAQRQFBDjdCCAooAYpwMBFAXEePU6sHbdJL7eq4tzC4uXBEAARQExTgcCKAqIcToQQFFAjNOBAIoCYrz6SeTS/5G+lScdbmGxAwEEUBQQ43QggKKAGKcDARQFxHj1OvBW1mmijxvnFnaJ8gUA5n3cWQBdonwBgHkfdxZAlyhfAGDex50F0CXKFwCY93FnAXSJ8gUA5n3cWQBdonxBuPR3G/k/f/uzdKB4DSPgXjzHlOP7xjaR+ZyygPLeo11jO/C82EkOyommmDW842w2WzVx+6K4A48NvBkEt7PfDXHrp3fDWyyXy+9ftplH0FR79EYAAAAASUVORK5CYII=')",
             "borderRadius": "3px",
             "height": "21px",
             "position": "inherit",
@@ -522,7 +524,7 @@ exports[`TransactionLayout should render with props 1`] = `
         className="background--fill display-inline-block"
         style={
           Object {
-            "backgroundImage": "url(\'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAA8CAYAAADxJz2MAAAABGdBTUEAALGPC/xhBQAAAc9JREFUeAHt3DFOwzAUxnGcROoMEx04Q4/AoSraoXMWqp4DjgFH4AwgdWvnDlV4FoyOn+xPlVrlnwEJ+32h/eWlcqjkcGfHbrd7Op1Or8MwPNuv8zjGMSqwDyF8tG27Wq/XP+Ef78vw7kcjTKQEDl3XLRrrvC14KR937OF8Pm8bK4u3LUeFQPzIa+zHY0WWyJ/APHYghyDQjWU3m00Ym5vieN/3Q+p904EplYIxAAuwUqUAplQKxgAswEqVAphSKRgDsAArVQpgSqVgDMACrFQpgCmVgrHRJxHvHGMrcy93rfO1T150oHhFAQRQFBDjdCCAooAYpwMBFAXEePU6sHbdJL7eq4tzC4uXBEAARQExTgcCKAqIcToQQFFAjNOBAIoCYrz6SeTS/5G+lScdbmGxAwEEUBQQ43QggKKAGKcDARQFxHj1OvBW1mmijxvnFnaJ8gUA5n3cWQBdonwBgHkfdxZAlyhfAGDex50F0CXKFwCY93FnAXSJ8gUA5n3cWQBdonxBuPR3G/k/f/uzdKB4DSPgXjzHlOP7xjaR+ZyygPLeo11jO/C82EkOyommmDW842w2WzVx+6K4A48NvBkEt7PfDXHrp3fDWyyXy+9ftplH0FR79EYAAAAASUVORK5CYII=\')",
+            "backgroundImage": "url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAA8CAYAAADxJz2MAAAABGdBTUEAALGPC/xhBQAAAc9JREFUeAHt3DFOwzAUxnGcROoMEx04Q4/AoSraoXMWqp4DjgFH4AwgdWvnDlV4FoyOn+xPlVrlnwEJ+32h/eWlcqjkcGfHbrd7Op1Or8MwPNuv8zjGMSqwDyF8tG27Wq/XP+Ef78vw7kcjTKQEDl3XLRrrvC14KR937OF8Pm8bK4u3LUeFQPzIa+zHY0WWyJ/APHYghyDQjWU3m00Ym5vieN/3Q+p904EplYIxAAuwUqUAplQKxgAswEqVAphSKRgDsAArVQpgSqVgDMACrFQpgCmVgrHRJxHvHGMrcy93rfO1T150oHhFAQRQFBDjdCCAooAYpwMBFAXEePU6sHbdJL7eq4tzC4uXBEAARQExTgcCKAqIcToQQFFAjNOBAIoCYrz6SeTS/5G+lScdbmGxAwEEUBQQ43QggKKAGKcDARQFxHj1OvBW1mmijxvnFnaJ8gUA5n3cWQBdonwBgHkfdxZAlyhfAGDex50F0CXKFwCY93FnAXSJ8gUA5n3cWQBdonxBuPR3G/k/f/uzdKB4DSPgXjzHlOP7xjaR+ZyygPLeo11jO/C82EkOyommmDW842w2WzVx+6K4A48NvBkEt7PfDXHrp3fDWyyXy+9ftplH0FR79EYAAAAASUVORK5CYII=')",
             "borderRadius": "3px",
             "height": "21px",
             "position": "inherit",

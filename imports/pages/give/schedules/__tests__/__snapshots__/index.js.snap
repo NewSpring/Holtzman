@@ -1,3 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders with props 1`] = `
+<Layout
+  accounts={Array []}
+  accountsReady={true}
+  cancelSchedule={[Function]}
+  confirm={[Function]}
+  recoverableSchedules={Array []}
+  schedules={Array []}
+  schedulesReady={true}
+/>
+`;
+
 exports[`test renders with props 1`] = `
 <Layout
   accounts={Array []}

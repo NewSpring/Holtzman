@@ -1,3 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders with props 1`] = `
+<Layout
+  back={[Function]}
+  campuses={Array []}
+  changeSavedAccount={[Function]}
+  clear={[Function]}
+  clearData={[Function]}
+  countries={Array []}
+  data={
+    Object {
+      "campuses": Array [],
+      "countries": Array [],
+      "savedPayments": Array [],
+      "states": Array [],
+    }
+  }
+  give={
+    Object {
+      "savedAccount": Object {},
+    }
+  }
+  goToAccounts={[Function]}
+  goToStepOne={[Function]}
+  next={[Function]}
+  onSubmit={[Function]}
+  save={[Function]}
+  savedPayments={Array []}
+  states={Array []}
+/>
+`;
+
 exports[`test renders with props 1`] = `
 <Layout
   back={[Function]}

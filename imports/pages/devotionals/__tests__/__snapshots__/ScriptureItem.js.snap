@@ -1,3 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders loading without scriptureData 1`] = `
+<div
+  className="soft push-top"
+>
+  <h4
+    className="soft-bottom display-inline-block"
+  >
+    Job 2
+  </h4>
+  <p
+    className="small push-half-left display-inline-block"
+  >
+    ESV
+  </p>
+  <div
+    className="one-whole text-center"
+  >
+    <Loading />
+  </div>
+</div>
+`;
+
+exports[`renders scripture when state updated 1`] = `
+<div
+  className="soft push-top"
+>
+  <h4
+    className="soft-bottom display-inline-block"
+  >
+    Job 2
+  </h4>
+  <p
+    className="small push-half-left display-inline-block"
+  >
+    ESV
+  </p>
+  <div
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "<h1>scipture</h1>",
+      }
+    }
+  />
+</div>
+`;
+
 exports[`test renders loading without scriptureData 1`] = `
 <div
   className="soft push-top">

@@ -1,3 +1,134 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`appends with classes 1`] = `
+<div
+  className="test-container"
+  style={
+    Object {
+      "color": "red",
+    }
+  }
+>
+  <input
+    checked={true}
+    className="toggle-switch one two"
+    id="switch-1"
+    name="switch-1"
+    onChange={[Function]}
+    styles={Object {}}
+    type="checkbox"
+  />
+  <label
+    className="float-right"
+    htmlFor="switch-1"
+  />
+</div>
+`;
+
+exports[`overrides with name 1`] = `
+<div
+  className="test-container"
+  style={
+    Object {
+      "color": "red",
+    }
+  }
+>
+  <input
+    checked={true}
+    className="toggle-switch"
+    id="switch-1"
+    name="my name"
+    onChange={[Function]}
+    styles={Object {}}
+    type="checkbox"
+  />
+  <label
+    className="float-right"
+    htmlFor="switch-1"
+  />
+</div>
+`;
+
+exports[`overrides with theme 1`] = `
+<div
+  className="test-container"
+  style={
+    Object {
+      "color": "red",
+    }
+  }
+>
+  <input
+    checked={true}
+    className="my theme"
+    id="switch-1"
+    name="switch-1"
+    onChange={[Function]}
+    styles={Object {}}
+    type="checkbox"
+  />
+  <label
+    className="float-right"
+    htmlFor="switch-1"
+  />
+</div>
+`;
+
+exports[`renders with props 1`] = `
+<div
+  className="test-container"
+  style={
+    Object {
+      "color": "red",
+    }
+  }
+>
+  <input
+    checked={true}
+    className="toggle-switch"
+    id="switch-1"
+    name="switch-1"
+    onChange={[Function]}
+    styles={Object {}}
+    type="checkbox"
+  />
+  <label
+    className="float-right"
+    htmlFor="switch-1"
+  />
+</div>
+`;
+
+exports[`renders with styles 1`] = `
+<div
+  className="test-container"
+  style={
+    Object {
+      "color": "red",
+    }
+  }
+>
+  <input
+    checked={true}
+    className="toggle-switch"
+    id="switch-1"
+    name="switch-1"
+    onChange={[Function]}
+    styles={
+      Object {
+        "color": "red",
+      }
+    }
+    type="checkbox"
+  />
+  <label
+    className="float-right"
+    htmlFor="switch-1"
+  />
+</div>
+`;
+
 exports[`test appends with classes 1`] = `
 <div
   className="test-container"

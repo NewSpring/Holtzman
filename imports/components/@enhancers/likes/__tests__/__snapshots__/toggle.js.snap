@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Likes Wrapper should contain mutation 1`] = `
 "mutation ToggleLike($nodeId: String!) {
   toggleLike(nodeId: $nodeId) {

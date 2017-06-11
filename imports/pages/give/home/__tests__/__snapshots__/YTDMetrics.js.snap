@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`YTDMetrics returns a linegraph of data 1`] = `
 <div>
   <div
@@ -5,81 +7,81 @@ exports[`YTDMetrics returns a linegraph of data 1`] = `
     <pre>
        
       {
-        \"data\": [
+        "data": [
           {
-            \"month\": \"January\",
-            \"amount\": 1010,
-            \"tick\": \"J\"
+            "month": "January",
+            "amount": 1010,
+            "tick": "J"
           },
           {
-            \"month\": \"February\",
-            \"amount\": 332,
-            \"tick\": \"F\"
+            "month": "February",
+            "amount": 332,
+            "tick": "F"
           },
           {
-            \"month\": \"March\",
-            \"amount\": 432,
-            \"tick\": \"M\"
+            "month": "March",
+            "amount": 432,
+            "tick": "M"
           },
           {
-            \"month\": \"April\",
-            \"amount\": 832,
-            \"tick\": \"A\"
+            "month": "April",
+            "amount": 832,
+            "tick": "A"
           },
           {
-            \"month\": \"May\",
-            \"amount\": 2120,
-            \"tick\": \"M\"
+            "month": "May",
+            "amount": 2120,
+            "tick": "M"
           },
           {
-            \"month\": \"June\",
-            \"amount\": 120,
-            \"tick\": \"J\"
+            "month": "June",
+            "amount": 120,
+            "tick": "J"
           },
           {
-            \"month\": \"July\",
-            \"amount\": 1230,
-            \"tick\": \"J\"
+            "month": "July",
+            "amount": 1230,
+            "tick": "J"
           },
           {
-            \"month\": \"August\",
-            \"amount\": 110,
-            \"tick\": \"A\"
+            "month": "August",
+            "amount": 110,
+            "tick": "A"
           },
           {
-            \"month\": \"September\",
-            \"amount\": 746,
-            \"tick\": \"S\"
+            "month": "September",
+            "amount": 746,
+            "tick": "S"
           },
           {
-            \"month\": \"October\",
-            \"amount\": 574,
-            \"tick\": \"O\"
+            "month": "October",
+            "amount": 574,
+            "tick": "O"
           },
           {
-            \"month\": \"November\",
-            \"amount\": 343,
-            \"tick\": \"N\"
+            "month": "November",
+            "amount": 343,
+            "tick": "N"
           },
           {
-            \"month\": \"December\",
-            \"amount\": 233,
-            \"tick\": \"D\"
+            "month": "December",
+            "amount": 233,
+            "tick": "D"
           }
         ],
-        \"lineColor\": \"#ffffff\",
-        \"lineWidth\": \"3\",
-        \"dotColor\": \"#ffffff\",
-        \"dotSize\": \"5\",
-        \"axisStyles\": {
-          \"axis\": {
-            \"lineColor\": \"transparent\",
-            \"lineWidth\": \"0\"
+        "lineColor": "#ffffff",
+        "lineWidth": "3",
+        "dotColor": "#ffffff",
+        "dotSize": "5",
+        "axisStyles": {
+          "axis": {
+            "lineColor": "transparent",
+            "lineWidth": "0"
           },
-          \"tickLabels\": {
-            \"fontSize\": \"10\",
-            \"padding\": \"5\",
-            \"fill\": \"#ffffff\"
+          "tickLabels": {
+            "fontSize": "10",
+            "padding": "5",
+            "fill": "#ffffff"
           }
         }
       }

@@ -1,3 +1,145 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`backgroundClasses returns css class string 1`] = `"one-whole overlay--gradient ratio--square ratio--landscape@palm-wide background--fill overlay-color--0000ff"`;
+
+exports[`renders close trailer button when playing 1`] = `
+<section
+  className="relative hard"
+>
+  <div
+    className="one-whole ratio--square ratio--landscape@palm-wide"
+    style={
+      Object {
+        "position": "absolute",
+        "zIndex": "10",
+      }
+    }
+  >
+    <div
+      className="ratio__item"
+    >
+      <Connect(VideoPlayerWithoutData)
+        hide={true}
+        id="testid"
+        success={[Function]}
+      />
+    </div>
+  </div>
+  <Connect(VideoPlayerWithoutData)
+    hide={true}
+    id="testid"
+    success={[Function]}
+  />
+  <div
+    className="one-whole overlay--gradient ratio--square ratio--landscape@palm-wide background--fill overlay-color--0000ff"
+    style={
+      Object {
+        "backgroundImage": "url('http://test.com/1x1.jpg')",
+      }
+    }
+  >
+    <div
+      className="overlay__item text-dark-primary text-center soft-sides push-top"
+    >
+      <button
+        className="btn--light push-double-top@palm-wide-and-up display-inline-block one-whole@palm"
+        onClick={[Function]}
+      >
+        <i
+          className="icon-close soft-half-right"
+        />
+        Close The Trailer
+      </button>
+    </div>
+  </div>
+</section>
+`;
+
+exports[`renders with props 1`] = `
+<section
+  className="relative hard"
+>
+  <div
+    className="one-whole ratio--square ratio--landscape@palm-wide"
+    style={
+      Object {
+        "position": "absolute",
+        "zIndex": "10",
+      }
+    }
+  >
+    <div
+      className="ratio__item"
+    >
+      <Connect(VideoPlayerWithoutData)
+        hide={true}
+        id="testid"
+        success={[Function]}
+      />
+    </div>
+  </div>
+  <Connect(VideoPlayerWithoutData)
+    hide={true}
+    id="testid"
+    success={[Function]}
+  />
+  <div
+    className="one-whole overlay--gradient ratio--square ratio--landscape@palm-wide background--fill overlay-color--0000ff"
+    style={
+      Object {
+        "backgroundImage": "url('http://test.com/1x1.jpg')",
+      }
+    }
+  >
+    <div
+      className="overlay__item text-dark-primary text-center soft-sides push-top"
+    >
+      <button
+        className="btn--light display-inline-block one-whole@palm"
+        onClick={[Function]}
+      >
+        <i
+          className="icon-play soft-half-right"
+        />
+        Watch The Trailer
+      </button>
+    </div>
+  </div>
+</section>
+`;
+
+exports[`renders without video 1`] = `
+<section
+  className="relative hard"
+>
+  <div
+    className="one-whole ratio--square ratio--landscape@palm-wide"
+    style={
+      Object {
+        "position": "absolute",
+        "zIndex": "10",
+      }
+    }
+  >
+    <div
+      className="ratio__item"
+    />
+  </div>
+  <div
+    className="one-whole overlay--gradient ratio--square ratio--landscape@palm-wide background--fill overlay-color--0000ff"
+    style={
+      Object {
+        "backgroundImage": "url('http://test.com/1x1.jpg')",
+      }
+    }
+  >
+    <div
+      className="overlay__item text-dark-primary text-center soft-sides push-top"
+    />
+  </div>
+</section>
+`;
+
 exports[`test backgroundClasses returns css class string 1`] = `"one-whole overlay--gradient ratio--square ratio--landscape@palm-wide background--fill overlay-color--0000ff"`;
 
 exports[`test renders close trailer button when playing 1`] = `
@@ -27,7 +169,7 @@ exports[`test renders close trailer button when playing 1`] = `
     className="one-whole overlay--gradient ratio--square ratio--landscape@palm-wide background--fill overlay-color--0000ff"
     style={
       Object {
-        "backgroundImage": "url(\'http://test.com/1x1.jpg\')",
+        "backgroundImage": "url('http://test.com/1x1.jpg')",
       }
     }>
     <div
@@ -71,7 +213,7 @@ exports[`test renders with props 1`] = `
     className="one-whole overlay--gradient ratio--square ratio--landscape@palm-wide background--fill overlay-color--0000ff"
     style={
       Object {
-        "backgroundImage": "url(\'http://test.com/1x1.jpg\')",
+        "backgroundImage": "url('http://test.com/1x1.jpg')",
       }
     }>
     <div
@@ -106,7 +248,7 @@ exports[`test renders without video 1`] = `
     className="one-whole overlay--gradient ratio--square ratio--landscape@palm-wide background--fill overlay-color--0000ff"
     style={
       Object {
-        "backgroundImage": "url(\'http://test.com/1x1.jpg\')",
+        "backgroundImage": "url('http://test.com/1x1.jpg')",
       }
     }>
     <div

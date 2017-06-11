@@ -1,3 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`buttonClasses has active state 1`] = `"plain one-whole text-dark-primary"`;
+
+exports[`buttonClasses has inactive state 1`] = `"plain one-whole text-light-tertiary"`;
+
+exports[`durationClasses has active state 1`] = `"soft-half-left small italic text-right text-dark-tertiary"`;
+
+exports[`durationClasses has inactive state 1`] = `"soft-half-left small italic text-right text-light-tertiary"`;
+
+exports[`renders with props 1`] = `
+<button
+  className="plain one-whole text-dark-primary"
+  onClick={[Function]}
+>
+  <div
+    className="song-cell soft-half-ends"
+  >
+    <div
+      className="background--primary round push-half-top push-half-right unread-notification"
+    />
+    <p
+      className="text-left truncate strong"
+    >
+      test track
+    </p>
+    <p
+      className="soft-half-left small italic text-right text-dark-tertiary"
+    >
+      12:23
+    </p>
+  </div>
+</button>
+`;
+
 exports[`test buttonClasses has active state 1`] = `"plain one-whole text-dark-primary"`;
 
 exports[`test buttonClasses has inactive state 1`] = `"plain one-whole text-light-tertiary"`;
@@ -33,3 +68,11 @@ exports[`test textClasses has inactive version 1`] = `"text-left truncate"`;
 exports[`test trackClasses has active version 1`] = `"background--primary round push-half-top push-half-right unread-notification"`;
 
 exports[`test trackClasses has inactive version 1`] = `"background--primary round push-half-top push-half-right"`;
+
+exports[`textClasses has active version 1`] = `"text-left truncate strong"`;
+
+exports[`textClasses has inactive version 1`] = `"text-left truncate"`;
+
+exports[`trackClasses has active version 1`] = `"background--primary round push-half-top push-half-right unread-notification"`;
+
+exports[`trackClasses has inactive version 1`] = `"background--primary round push-half-top push-half-right"`;

@@ -1,3 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`appends additional classes 1`] = `
+<h3
+  className="text-dark-tertiary display-inline-block push-half-bottom one two three"
+>
+  test
+</h3>
+`;
+
+exports[`renders with props 1`] = `
+<h3
+  className="text-dark-tertiary display-inline-block push-half-bottom"
+>
+  test
+</h3>
+`;
+
 exports[`test appends additional classes 1`] = `
 <h3
   className="text-dark-tertiary display-inline-block push-half-bottom one two three">

@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`NewSpring Leadership College renders a layout 1`] = `
 <div
   className="text-center background--light-primary soft-double-ends@lap-and-up soft-ends">

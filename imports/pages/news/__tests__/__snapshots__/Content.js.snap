@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`StoriesContent renders with props 1`] = `
 <div>
   <Meta
@@ -202,7 +204,7 @@ exports[`StoryImage renders non tablet version 1`] = `
   className="one-whole ratio--square ratio--landscape@palm-wide-and-up background--fill"
   style={
     Object {
-      "backgroundImage": "url(\'http://test.com/1x1.jpg\')",
+      "backgroundImage": "url('http://test.com/1x1.jpg')",
     }
   } />
 `;

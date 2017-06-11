@@ -1,1 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders nothing but span 1`] = `<span />`;
+
 exports[`test renders nothing but span 1`] = `<span />`;

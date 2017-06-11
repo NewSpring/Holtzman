@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Finances renders a layout 1`] = `
 <div>
   <Meta
@@ -418,7 +420,7 @@ exports[`Finances renders a layout 1`] = `
           <div
             className="floating__item three-quarters@lap-and-up text-left">
             <p>
-              This year\'s Christmas Offering will support these three projects:
+              This year's Christmas Offering will support these three projects:
             </p>
             <ul>
               <li>

@@ -1,3 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders 1`] = `
+<div
+  className="background--light-secondary"
+>
+  <Meta
+    title="Sections"
+  />
+  <Connect(SectionsContainerWithoutData) />
+</div>
+`;
+
 exports[`test renders 1`] = `
 <div
   className="background--light-secondary">

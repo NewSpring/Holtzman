@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`StudyHero changes class name based on props 1`] = `
 <section
   className="relative hard">
@@ -16,7 +18,7 @@ exports[`StudyHero changes class name based on props 1`] = `
     className="one-whole overlay--gradient ratio--square ratio--landscape@palm-wide background--fill overlay-color--000"
     style={
       Object {
-        "backgroundImage": "url(\'http://exampleimage.org\')",
+        "backgroundImage": "url('http://exampleimage.org')",
       }
     }>
     <div

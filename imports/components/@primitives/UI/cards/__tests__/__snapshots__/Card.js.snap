@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Card should render with no props 1`] = `
 <Component>
   <div
@@ -26,7 +28,7 @@ exports[`Card should render with no props 1`] = `
         renderElement={[Function]}
         style={
           Object {
-            "backgroundImage": "url(\'undefined\')",
+            "backgroundImage": "url('undefined')",
           }
         }
         wrapper={[Function]}>

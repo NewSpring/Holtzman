@@ -1,3 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render with props 1`] = `
+<div
+  className="soft soft-double-ends push-double-top one-whole text-center"
+>
+  <div
+    className="push-double-top"
+  >
+    <Error
+      fill="#C64F55"
+      height="61px"
+      width="60px"
+    />
+    <h3
+      className="text-alert push-ends"
+    >
+      Are you sure?
+    </h3>
+    <p
+      className="text-left"
+    >
+      Want to stop your scheduled contributions? You can always create another when you're ready.
+    </p>
+    <button
+      className="one-whole btn push-ends btn--alert"
+      onClick={[Function]}
+    >
+      Cancel Schedule
+    </button>
+    <button
+      className="btn--thin btn--small btn--dark-tertiary one-whole"
+      onClick={[Function]}
+    >
+      Back to Contributions
+    </button>
+    <p
+      className="test-dark-tertiary text-left"
+    >
+      <em>
+        If you would like a member of our customer support team to follow up with you regarding your contributions, click 
+        <a
+          href="//rock.newspring.cc/workflows/152?Topic=Stewardship"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          here
+        </a>
+      </em>
+    </p>
+  </div>
+</div>
+`;
+
 exports[`test render with props 1`] = `
 <div
   className="soft soft-double-ends push-double-top one-whole text-center">
@@ -13,7 +67,7 @@ exports[`test render with props 1`] = `
     </h3>
     <p
       className="text-left">
-      Want to stop your scheduled contributions? You can always create another when you\'re ready.
+      Want to stop your scheduled contributions? You can always create another when you're ready.
     </p>
     <button
       className="one-whole btn push-ends btn--alert"

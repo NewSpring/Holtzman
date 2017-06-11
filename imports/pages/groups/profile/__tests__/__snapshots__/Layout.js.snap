@@ -1,3 +1,2914 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`doesn't render Interest type tag 1`] = `
+<section
+  className="background--light-secondary hard"
+>
+  <Meta
+    description="test description"
+    id="1"
+    image="http://test.com/test.jpg"
+    title="test group"
+  />
+  <div
+    className="ratio--landscape background--fill"
+    style={
+      Object {
+        "backgroundImage": "url('http://test.com/test.jpg')",
+        "overflow": "visible",
+        "zIndex": 10,
+      }
+    }
+  >
+    <div
+      className="ratio__item"
+    />
+  </div>
+  <div
+    className="push-double-sides@lap-wide-and-up push-half-sides flush-ends card outlined outlined--light"
+    style={
+      Object {
+        "borderRadius": "0 0 6px 6px",
+      }
+    }
+  >
+    <div
+      className="card__item soft"
+    >
+      <h3
+        className="text-dark-primary push-half-top push-bottom"
+      >
+        test group
+      </h3>
+      <h7
+        className="text-dark-secondary"
+      >
+        <small>
+          Group Leaders
+        </small>
+      </h7>
+      <h5
+        className="text-dark-secondary soft-half-top"
+      >
+        <span>
+          jim bob, 
+        </span>
+        <span>
+          tom bob
+        </span>
+      </h5>
+      <div
+        className="ratio--square round display-inline-block push-right background--fill"
+        style={
+          Object {
+            "backgroundImage": "url('http://test.com/jim.jpg')",
+            "height": "80px",
+            "width": "80px",
+          }
+        }
+      >
+        <div
+          className="ratio__item"
+        />
+      </div>
+      <div
+        className="ratio--square round display-inline-block push-right background--fill"
+        style={
+          Object {
+            "backgroundImage": "url('http://test.com/tom.jpg')",
+            "height": "80px",
+            "width": "80px",
+          }
+        }
+      >
+        <div
+          className="ratio__item"
+        />
+      </div>
+    </div>
+  </div>
+  <section
+    className="soft-double-sides@lap-wide-and-up soft-half-sides soft-half-ends flush-sides"
+  >
+    <div
+      className="card outlined outlined--light soft-sides-@lap-and-up"
+    >
+      <div
+        className="grid card__item soft push-half flush"
+      >
+        <h4
+          className="flush-bottom hard-left push-bottom@handheld push-bottom@lap push-half-top grid__item one-half@lap-wide-and-up one-whole text-center@handheld text-center@lap text-dark-primary"
+        >
+          #TheseAreMyPeople
+        </h4>
+        <div
+          className="grid__item hard-left text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up"
+        >
+          <button
+            className="flush-bottom push-half-bottom@handheld btn"
+            onClick={[Function]}
+          >
+            Contact
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      className="card outlined outlined--light hard one-whole"
+    >
+      <div
+        className="card__item push-half-top@handheld"
+      >
+        <div
+          className="soft-left@lap-wide-and-up soft soft-double-bottom"
+        >
+          <h5
+            className="soft-half-ends"
+          >
+            Group Details
+          </h5>
+          <div
+            className="soft-bottom"
+          >
+            <h7
+              className="text-dark-secondary"
+            >
+              Time
+            </h7>
+            <h6
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
+              schedule description
+            </h6>
+          </div>
+          <div
+            className="soft-bottom"
+          >
+            <h7
+              className="text-dark-secondary"
+            >
+              Address
+            </h7>
+            <h6
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
+              anderson
+              , 
+              sc
+            </h6>
+          </div>
+          <div
+            className="soft-bottom"
+          >
+            <h7
+              className="text-dark-secondary"
+            >
+              Campus
+            </h7>
+            <h6
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
+              anderson
+            </h6>
+          </div>
+          <div>
+            <h7
+              className="text-dark-secondary"
+            >
+              Information
+            </h7>
+            <h6
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
+              Children Welcome
+              , 1 - 2
+            </h6>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="card outlined outlined--light hard one-whole"
+    >
+      <div
+        className="card__item push-half-top@handheld"
+      >
+        <div
+          className="soft-left@lap-wide-and-up soft soft-bottom"
+        >
+          <h5
+            className="soft-half-ends"
+          >
+            More Information
+          </h5>
+          <div
+            className="soft-double-bottom@lap-wide-and-up soft-bottom"
+          >
+            <h7
+              className="text-dark-secondary"
+            >
+              Description
+            </h7>
+            <p
+              className="soft-half-top flush-bottom"
+            >
+              <span>
+                test description
+                <br />
+              </span>
+            </p>
+          </div>
+          <div
+            className="soft-double-bottom@lap-wide-and-up soft-bottom"
+          >
+            <h7
+              className="text-dark-secondary"
+            >
+              Members
+            </h7>
+            <div
+              className="soft-half-top flush-bottom"
+            >
+              <div
+                className="ratio--square round display-inline-block push-half-right background--fill"
+                style={
+                  Object {
+                    "backgroundImage": "url('http://test.com/person.jpg')",
+                    "height": "40px",
+                    "width": "40px",
+                  }
+                }
+              >
+                <div
+                  className="ratio__item"
+                />
+              </div>
+              <div
+                className="ratio--square round display-inline-block push-half-right background--fill"
+                style={
+                  Object {
+                    "backgroundImage": "url('http://test.com/person.jpg')",
+                    "height": "40px",
+                    "width": "40px",
+                  }
+                }
+              >
+                <div
+                  className="ratio__item"
+                />
+              </div>
+            </div>
+          </div>
+          <div>
+            <h7
+              className="text-dark-secondary"
+            >
+              Tags
+            </h7>
+            <div
+              className="soft-half-top flush-bottom"
+            >
+              <span
+                className="tag push-half-right"
+              />
+              <span
+                className="tag push-half-right"
+              />
+              <span
+                className="tag push-half-right"
+              >
+                test
+              </span>
+              <span
+                className="tag push-half-right"
+              >
+                kid friendly
+              </span>
+              <span
+                className="tag push-half-right"
+              >
+                test
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="card outlined outlined--light soft-sides-@lap-and-up push-bottom"
+    >
+      <div
+        className="card__item soft-double"
+      >
+        <h4
+          className=" push-bottom one-whole text-center text-dark-secondary"
+        >
+          Looking for another group?
+        </h4>
+        <div
+          className="text-center one-whole"
+        >
+          <Link
+            className="flush-bottom push-half-bottom@handheld btn--dark-tertiary"
+            onlyActiveOnIndex={false}
+            style={Object {}}
+            to="/groups/finder"
+          >
+            Find A Group
+          </Link>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+`;
+
+exports[`doesn't render demographic tag if none 1`] = `
+<section
+  className="background--light-secondary hard"
+>
+  <Meta
+    description="test description"
+    id="1"
+    image="http://test.com/test.jpg"
+    title="test group"
+  />
+  <div
+    className="ratio--landscape background--fill"
+    style={
+      Object {
+        "backgroundImage": "url('http://test.com/test.jpg')",
+        "overflow": "visible",
+        "zIndex": 10,
+      }
+    }
+  >
+    <div
+      className="ratio__item"
+    />
+  </div>
+  <div
+    className="push-double-sides@lap-wide-and-up push-half-sides flush-ends card outlined outlined--light"
+    style={
+      Object {
+        "borderRadius": "0 0 6px 6px",
+      }
+    }
+  >
+    <div
+      className="card__item soft"
+    >
+      <h3
+        className="text-dark-primary push-half-top push-bottom"
+      >
+        test group
+      </h3>
+      <h7
+        className="text-dark-secondary"
+      >
+        <small>
+          Group Leaders
+        </small>
+      </h7>
+      <h5
+        className="text-dark-secondary soft-half-top"
+      >
+        <span>
+          jim bob, 
+        </span>
+        <span>
+          tom bob
+        </span>
+      </h5>
+      <div
+        className="ratio--square round display-inline-block push-right background--fill"
+        style={
+          Object {
+            "backgroundImage": "url('http://test.com/jim.jpg')",
+            "height": "80px",
+            "width": "80px",
+          }
+        }
+      >
+        <div
+          className="ratio__item"
+        />
+      </div>
+      <div
+        className="ratio--square round display-inline-block push-right background--fill"
+        style={
+          Object {
+            "backgroundImage": "url('http://test.com/tom.jpg')",
+            "height": "80px",
+            "width": "80px",
+          }
+        }
+      >
+        <div
+          className="ratio__item"
+        />
+      </div>
+    </div>
+  </div>
+  <section
+    className="soft-double-sides@lap-wide-and-up soft-half-sides soft-half-ends flush-sides"
+  >
+    <div
+      className="card outlined outlined--light soft-sides-@lap-and-up"
+    >
+      <div
+        className="grid card__item soft push-half flush"
+      >
+        <h4
+          className="flush-bottom hard-left push-bottom@handheld push-bottom@lap push-half-top grid__item one-half@lap-wide-and-up one-whole text-center@handheld text-center@lap text-dark-primary"
+        >
+          #TheseAreMyPeople
+        </h4>
+        <div
+          className="grid__item hard-left text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up"
+        >
+          <button
+            className="flush-bottom push-half-bottom@handheld btn"
+            onClick={[Function]}
+          >
+            Contact
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      className="card outlined outlined--light hard one-whole"
+    >
+      <div
+        className="card__item push-half-top@handheld"
+      >
+        <div
+          className="soft-left@lap-wide-and-up soft soft-double-bottom"
+        >
+          <h5
+            className="soft-half-ends"
+          >
+            Group Details
+          </h5>
+          <div
+            className="soft-bottom"
+          >
+            <h7
+              className="text-dark-secondary"
+            >
+              Time
+            </h7>
+            <h6
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
+              schedule description
+            </h6>
+          </div>
+          <div
+            className="soft-bottom"
+          >
+            <h7
+              className="text-dark-secondary"
+            >
+              Address
+            </h7>
+            <h6
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
+              anderson
+              , 
+              sc
+            </h6>
+          </div>
+          <div
+            className="soft-bottom"
+          >
+            <h7
+              className="text-dark-secondary"
+            >
+              Campus
+            </h7>
+            <h6
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
+              anderson
+            </h6>
+          </div>
+          <div>
+            <h7
+              className="text-dark-secondary"
+            >
+              Information
+            </h7>
+            <h6
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
+              Children Welcome
+              , 1 - 2
+            </h6>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="card outlined outlined--light hard one-whole"
+    >
+      <div
+        className="card__item push-half-top@handheld"
+      >
+        <div
+          className="soft-left@lap-wide-and-up soft soft-bottom"
+        >
+          <h5
+            className="soft-half-ends"
+          >
+            More Information
+          </h5>
+          <div
+            className="soft-double-bottom@lap-wide-and-up soft-bottom"
+          >
+            <h7
+              className="text-dark-secondary"
+            >
+              Description
+            </h7>
+            <p
+              className="soft-half-top flush-bottom"
+            >
+              <span>
+                test description
+                <br />
+              </span>
+            </p>
+          </div>
+          <div
+            className="soft-double-bottom@lap-wide-and-up soft-bottom"
+          >
+            <h7
+              className="text-dark-secondary"
+            >
+              Members
+            </h7>
+            <div
+              className="soft-half-top flush-bottom"
+            >
+              <div
+                className="ratio--square round display-inline-block push-half-right background--fill"
+                style={
+                  Object {
+                    "backgroundImage": "url('http://test.com/person.jpg')",
+                    "height": "40px",
+                    "width": "40px",
+                  }
+                }
+              >
+                <div
+                  className="ratio__item"
+                />
+              </div>
+              <div
+                className="ratio--square round display-inline-block push-half-right background--fill"
+                style={
+                  Object {
+                    "backgroundImage": "url('http://test.com/person.jpg')",
+                    "height": "40px",
+                    "width": "40px",
+                  }
+                }
+              >
+                <div
+                  className="ratio__item"
+                />
+              </div>
+            </div>
+          </div>
+          <div>
+            <h7
+              className="text-dark-secondary"
+            >
+              Tags
+            </h7>
+            <div
+              className="soft-half-top flush-bottom"
+            >
+              <span
+                className="tag push-half-right"
+              />
+              <span
+                className="tag push-half-right"
+              />
+              <span
+                className="tag push-half-right"
+              >
+                test
+              </span>
+              <span
+                className="tag push-half-right"
+              >
+                kid friendly
+              </span>
+              <span
+                className="tag push-half-right"
+              >
+                test
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="card outlined outlined--light soft-sides-@lap-and-up push-bottom"
+    >
+      <div
+        className="card__item soft-double"
+      >
+        <h4
+          className=" push-bottom one-whole text-center text-dark-secondary"
+        >
+          Looking for another group?
+        </h4>
+        <div
+          className="text-center one-whole"
+        >
+          <Link
+            className="flush-bottom push-half-bottom@handheld btn--dark-tertiary"
+            onlyActiveOnIndex={false}
+            style={Object {}}
+            to="/groups/finder"
+          >
+            Find A Group
+          </Link>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+`;
+
+exports[`renders adult only version 1`] = `
+<section
+  className="background--light-secondary hard"
+>
+  <Meta
+    description="test description"
+    id="1"
+    image="http://test.com/test.jpg"
+    title="test group"
+  />
+  <div
+    className="ratio--landscape background--fill"
+    style={
+      Object {
+        "backgroundImage": "url('http://test.com/test.jpg')",
+        "overflow": "visible",
+        "zIndex": 10,
+      }
+    }
+  >
+    <div
+      className="ratio__item"
+    />
+  </div>
+  <div
+    className="push-double-sides@lap-wide-and-up push-half-sides flush-ends card outlined outlined--light"
+    style={
+      Object {
+        "borderRadius": "0 0 6px 6px",
+      }
+    }
+  >
+    <div
+      className="card__item soft"
+    >
+      <h3
+        className="text-dark-primary push-half-top push-bottom"
+      >
+        test group
+      </h3>
+      <h7
+        className="text-dark-secondary"
+      >
+        <small>
+          Group Leaders
+        </small>
+      </h7>
+      <h5
+        className="text-dark-secondary soft-half-top"
+      >
+        <span>
+          jim bob, 
+        </span>
+        <span>
+          tom bob
+        </span>
+      </h5>
+      <div
+        className="ratio--square round display-inline-block push-right background--fill"
+        style={
+          Object {
+            "backgroundImage": "url('http://test.com/jim.jpg')",
+            "height": "80px",
+            "width": "80px",
+          }
+        }
+      >
+        <div
+          className="ratio__item"
+        />
+      </div>
+      <div
+        className="ratio--square round display-inline-block push-right background--fill"
+        style={
+          Object {
+            "backgroundImage": "url('http://test.com/tom.jpg')",
+            "height": "80px",
+            "width": "80px",
+          }
+        }
+      >
+        <div
+          className="ratio__item"
+        />
+      </div>
+    </div>
+  </div>
+  <section
+    className="soft-double-sides@lap-wide-and-up soft-half-sides soft-half-ends flush-sides"
+  >
+    <div
+      className="card outlined outlined--light soft-sides-@lap-and-up"
+    >
+      <div
+        className="grid card__item soft push-half flush"
+      >
+        <h4
+          className="flush-bottom hard-left push-bottom@handheld push-bottom@lap push-half-top grid__item one-half@lap-wide-and-up one-whole text-center@handheld text-center@lap text-dark-primary"
+        >
+          #TheseAreMyPeople
+        </h4>
+        <div
+          className="grid__item hard-left text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up"
+        >
+          <button
+            className="flush-bottom push-half-bottom@handheld btn"
+            onClick={[Function]}
+          >
+            Contact
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      className="card outlined outlined--light hard one-whole"
+    >
+      <div
+        className="card__item push-half-top@handheld"
+      >
+        <div
+          className="soft-left@lap-wide-and-up soft soft-double-bottom"
+        >
+          <h5
+            className="soft-half-ends"
+          >
+            Group Details
+          </h5>
+          <div
+            className="soft-bottom"
+          >
+            <h7
+              className="text-dark-secondary"
+            >
+              Time
+            </h7>
+            <h6
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
+              schedule description
+            </h6>
+          </div>
+          <div
+            className="soft-bottom"
+          >
+            <h7
+              className="text-dark-secondary"
+            >
+              Address
+            </h7>
+            <h6
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
+              anderson
+              , 
+              sc
+            </h6>
+          </div>
+          <div
+            className="soft-bottom"
+          >
+            <h7
+              className="text-dark-secondary"
+            >
+              Campus
+            </h7>
+            <h6
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
+              anderson
+            </h6>
+          </div>
+          <div>
+            <h7
+              className="text-dark-secondary"
+            >
+              Information
+            </h7>
+            <h6
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
+              Children Welcome
+              , 1 - 2
+            </h6>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="card outlined outlined--light hard one-whole"
+    >
+      <div
+        className="card__item push-half-top@handheld"
+      >
+        <div
+          className="soft-left@lap-wide-and-up soft soft-bottom"
+        >
+          <h5
+            className="soft-half-ends"
+          >
+            More Information
+          </h5>
+          <div
+            className="soft-double-bottom@lap-wide-and-up soft-bottom"
+          >
+            <h7
+              className="text-dark-secondary"
+            >
+              Description
+            </h7>
+            <p
+              className="soft-half-top flush-bottom"
+            >
+              <span>
+                test description
+                <br />
+              </span>
+            </p>
+          </div>
+          <div
+            className="soft-double-bottom@lap-wide-and-up soft-bottom"
+          >
+            <h7
+              className="text-dark-secondary"
+            >
+              Members
+            </h7>
+            <div
+              className="soft-half-top flush-bottom"
+            >
+              <div
+                className="ratio--square round display-inline-block push-half-right background--fill"
+                style={
+                  Object {
+                    "backgroundImage": "url('http://test.com/person.jpg')",
+                    "height": "40px",
+                    "width": "40px",
+                  }
+                }
+              >
+                <div
+                  className="ratio__item"
+                />
+              </div>
+              <div
+                className="ratio--square round display-inline-block push-half-right background--fill"
+                style={
+                  Object {
+                    "backgroundImage": "url('http://test.com/person.jpg')",
+                    "height": "40px",
+                    "width": "40px",
+                  }
+                }
+              >
+                <div
+                  className="ratio__item"
+                />
+              </div>
+            </div>
+          </div>
+          <div>
+            <h7
+              className="text-dark-secondary"
+            >
+              Tags
+            </h7>
+            <div
+              className="soft-half-top flush-bottom"
+            >
+              <span
+                className="tag push-half-right"
+              />
+              <span
+                className="tag push-half-right"
+              />
+              <span
+                className="tag push-half-right"
+              >
+                test
+              </span>
+              <span
+                className="tag push-half-right"
+              >
+                kid friendly
+              </span>
+              <span
+                className="tag push-half-right"
+              >
+                test
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="card outlined outlined--light soft-sides-@lap-and-up push-bottom"
+    >
+      <div
+        className="card__item soft-double"
+      >
+        <h4
+          className=" push-bottom one-whole text-center text-dark-secondary"
+        >
+          Looking for another group?
+        </h4>
+        <div
+          className="text-center one-whole"
+        >
+          <Link
+            className="flush-bottom push-half-bottom@handheld btn--dark-tertiary"
+            onlyActiveOnIndex={false}
+            style={Object {}}
+            to="/groups/finder"
+          >
+            Find A Group
+          </Link>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+`;
+
+exports[`renders leader version 1`] = `
+<section
+  className="background--light-secondary hard"
+>
+  <Meta
+    description="test description"
+    id="1"
+    image="http://test.com/test.jpg"
+    title="test group"
+  />
+  <div
+    className="ratio--landscape background--fill"
+    style={
+      Object {
+        "backgroundImage": "url('http://test.com/test.jpg')",
+        "overflow": "visible",
+        "zIndex": 10,
+      }
+    }
+  >
+    <div
+      className="ratio__item"
+    />
+  </div>
+  <div
+    className="push-double-sides@lap-wide-and-up push-half-sides flush-ends card outlined outlined--light"
+    style={
+      Object {
+        "borderRadius": "0 0 6px 6px",
+      }
+    }
+  >
+    <div
+      className="card__item soft"
+    >
+      <h3
+        className="text-dark-primary push-half-top push-bottom"
+      >
+        test group
+      </h3>
+      <h7
+        className="text-dark-secondary"
+      >
+        <small>
+          Group Leaders
+        </small>
+      </h7>
+      <h5
+        className="text-dark-secondary soft-half-top"
+      >
+        <span>
+          jim bob, 
+        </span>
+        <span>
+          tom bob
+        </span>
+      </h5>
+      <div
+        className="ratio--square round display-inline-block push-right background--fill"
+        style={
+          Object {
+            "backgroundImage": "url('http://test.com/jim.jpg')",
+            "height": "80px",
+            "width": "80px",
+          }
+        }
+      >
+        <div
+          className="ratio__item"
+        />
+      </div>
+      <div
+        className="ratio--square round display-inline-block push-right background--fill"
+        style={
+          Object {
+            "backgroundImage": "url('http://test.com/tom.jpg')",
+            "height": "80px",
+            "width": "80px",
+          }
+        }
+      >
+        <div
+          className="ratio__item"
+        />
+      </div>
+    </div>
+  </div>
+  <section
+    className="soft-double-sides@lap-wide-and-up soft-half-sides soft-half-ends flush-sides"
+  >
+    <div
+      className="card outlined outlined--light soft-sides-@lap-and-up"
+    >
+      <div
+        className="grid card__item soft push-half flush"
+      >
+        <h4
+          className="flush-bottom hard-left push-bottom@handheld push-bottom@lap push-half-top grid__item one-half@lap-wide-and-up one-whole text-center@handheld text-center@lap text-dark-primary"
+        >
+          #TheseAreMyPeople
+        </h4>
+        <div
+          className="grid__item hard-left text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up"
+        >
+          <a
+            className="flush-bottom push-half-bottom@handheld btn"
+            href="http://rock.rockpage/521?GroupId=2&undefined"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Manage Group
+          </a>
+        </div>
+      </div>
+    </div>
+    <div
+      className="card outlined outlined--light hard one-whole"
+    >
+      <div
+        className="card__item push-half-top@handheld"
+      >
+        <div
+          className="soft-left@lap-wide-and-up soft soft-double-bottom"
+        >
+          <h5
+            className="soft-half-ends"
+          >
+            Group Details
+          </h5>
+          <div
+            className="soft-bottom"
+          >
+            <h7
+              className="text-dark-secondary"
+            >
+              Time
+            </h7>
+            <h6
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
+              schedule description
+            </h6>
+          </div>
+          <div
+            className="soft-bottom"
+          >
+            <h7
+              className="text-dark-secondary"
+            >
+              Address
+            </h7>
+            <h6
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
+              anderson
+              , 
+              sc
+            </h6>
+          </div>
+          <div
+            className="soft-bottom"
+          >
+            <h7
+              className="text-dark-secondary"
+            >
+              Campus
+            </h7>
+            <h6
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
+              anderson
+            </h6>
+          </div>
+          <div>
+            <h7
+              className="text-dark-secondary"
+            >
+              Information
+            </h7>
+            <h6
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
+              Children Welcome
+              , 1 - 2
+            </h6>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="card outlined outlined--light hard one-whole"
+    >
+      <div
+        className="card__item push-half-top@handheld"
+      >
+        <div
+          className="soft-left@lap-wide-and-up soft soft-bottom"
+        >
+          <h5
+            className="soft-half-ends"
+          >
+            More Information
+          </h5>
+          <div
+            className="soft-double-bottom@lap-wide-and-up soft-bottom"
+          >
+            <h7
+              className="text-dark-secondary"
+            >
+              Description
+            </h7>
+            <p
+              className="soft-half-top flush-bottom"
+            >
+              <span>
+                test description
+                <br />
+              </span>
+            </p>
+          </div>
+          <div
+            className="soft-double-bottom@lap-wide-and-up soft-bottom"
+          >
+            <h7
+              className="text-dark-secondary"
+            >
+              Members
+            </h7>
+            <div
+              className="soft-half-top flush-bottom"
+            >
+              <div
+                className="ratio--square round display-inline-block push-half-right background--fill"
+                style={
+                  Object {
+                    "backgroundImage": "url('http://test.com/person.jpg')",
+                    "height": "40px",
+                    "width": "40px",
+                  }
+                }
+              >
+                <div
+                  className="ratio__item"
+                />
+              </div>
+              <div
+                className="ratio--square round display-inline-block push-half-right background--fill"
+                style={
+                  Object {
+                    "backgroundImage": "url('http://test.com/person.jpg')",
+                    "height": "40px",
+                    "width": "40px",
+                  }
+                }
+              >
+                <div
+                  className="ratio__item"
+                />
+              </div>
+            </div>
+          </div>
+          <div>
+            <h7
+              className="text-dark-secondary"
+            >
+              Tags
+            </h7>
+            <div
+              className="soft-half-top flush-bottom"
+            >
+              <span
+                className="tag push-half-right"
+              />
+              <span
+                className="tag push-half-right"
+              />
+              <span
+                className="tag push-half-right"
+              >
+                test
+              </span>
+              <span
+                className="tag push-half-right"
+              >
+                kid friendly
+              </span>
+              <span
+                className="tag push-half-right"
+              >
+                test
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="card outlined outlined--light soft-sides-@lap-and-up push-bottom"
+    >
+      <div
+        className="card__item soft-double"
+      >
+        <h4
+          className=" push-bottom one-whole text-center text-dark-secondary"
+        >
+          Looking for another group?
+        </h4>
+        <div
+          className="text-center one-whole"
+        >
+          <Link
+            className="flush-bottom push-half-bottom@handheld btn--dark-tertiary"
+            onlyActiveOnIndex={false}
+            style={Object {}}
+            to="/groups/finder"
+          >
+            Find A Group
+          </Link>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+`;
+
+exports[`renders with props 1`] = `
+<section
+  className="background--light-secondary hard"
+>
+  <Meta
+    description="test description"
+    id="1"
+    image="http://test.com/test.jpg"
+    title="test group"
+  />
+  <div
+    className="ratio--landscape background--fill"
+    style={
+      Object {
+        "backgroundImage": "url('http://test.com/test.jpg')",
+        "overflow": "visible",
+        "zIndex": 10,
+      }
+    }
+  >
+    <div
+      className="ratio__item"
+    />
+  </div>
+  <div
+    className="push-double-sides@lap-wide-and-up push-half-sides flush-ends card outlined outlined--light"
+    style={
+      Object {
+        "borderRadius": "0 0 6px 6px",
+      }
+    }
+  >
+    <div
+      className="card__item soft"
+    >
+      <h3
+        className="text-dark-primary push-half-top push-bottom"
+      >
+        test group
+      </h3>
+      <h7
+        className="text-dark-secondary"
+      >
+        <small>
+          Group Leaders
+        </small>
+      </h7>
+      <h5
+        className="text-dark-secondary soft-half-top"
+      >
+        <span>
+          jim bob, 
+        </span>
+        <span>
+          tom bob
+        </span>
+      </h5>
+      <div
+        className="ratio--square round display-inline-block push-right background--fill"
+        style={
+          Object {
+            "backgroundImage": "url('http://test.com/jim.jpg')",
+            "height": "80px",
+            "width": "80px",
+          }
+        }
+      >
+        <div
+          className="ratio__item"
+        />
+      </div>
+      <div
+        className="ratio--square round display-inline-block push-right background--fill"
+        style={
+          Object {
+            "backgroundImage": "url('http://test.com/tom.jpg')",
+            "height": "80px",
+            "width": "80px",
+          }
+        }
+      >
+        <div
+          className="ratio__item"
+        />
+      </div>
+    </div>
+  </div>
+  <section
+    className="soft-double-sides@lap-wide-and-up soft-half-sides soft-half-ends flush-sides"
+  >
+    <div
+      className="card outlined outlined--light soft-sides-@lap-and-up"
+    >
+      <div
+        className="grid card__item soft push-half flush"
+      >
+        <h4
+          className="flush-bottom hard-left push-bottom@handheld push-bottom@lap push-half-top grid__item one-half@lap-wide-and-up one-whole text-center@handheld text-center@lap text-dark-primary"
+        >
+          #TheseAreMyPeople
+        </h4>
+        <div
+          className="grid__item hard-left text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up"
+        >
+          <button
+            className="flush-bottom push-half-bottom@handheld btn"
+            onClick={[Function]}
+          >
+            Contact
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      className="card outlined outlined--light hard one-whole"
+    >
+      <div
+        className="card__item push-half-top@handheld"
+      >
+        <div
+          className="soft-left@lap-wide-and-up soft soft-double-bottom"
+        >
+          <h5
+            className="soft-half-ends"
+          >
+            Group Details
+          </h5>
+          <div
+            className="soft-bottom"
+          >
+            <h7
+              className="text-dark-secondary"
+            >
+              Time
+            </h7>
+            <h6
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
+              schedule description
+            </h6>
+          </div>
+          <div
+            className="soft-bottom"
+          >
+            <h7
+              className="text-dark-secondary"
+            >
+              Address
+            </h7>
+            <h6
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
+              anderson
+              , 
+              sc
+            </h6>
+          </div>
+          <div
+            className="soft-bottom"
+          >
+            <h7
+              className="text-dark-secondary"
+            >
+              Campus
+            </h7>
+            <h6
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
+              anderson
+            </h6>
+          </div>
+          <div>
+            <h7
+              className="text-dark-secondary"
+            >
+              Information
+            </h7>
+            <h6
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
+              Children Welcome
+              , 1 - 2
+            </h6>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="card outlined outlined--light hard one-whole"
+    >
+      <div
+        className="card__item push-half-top@handheld"
+      >
+        <div
+          className="soft-left@lap-wide-and-up soft soft-bottom"
+        >
+          <h5
+            className="soft-half-ends"
+          >
+            More Information
+          </h5>
+          <div
+            className="soft-double-bottom@lap-wide-and-up soft-bottom"
+          >
+            <h7
+              className="text-dark-secondary"
+            >
+              Description
+            </h7>
+            <p
+              className="soft-half-top flush-bottom"
+            >
+              <span>
+                test description
+                <br />
+              </span>
+            </p>
+          </div>
+          <div
+            className="soft-double-bottom@lap-wide-and-up soft-bottom"
+          >
+            <h7
+              className="text-dark-secondary"
+            >
+              Members
+            </h7>
+            <div
+              className="soft-half-top flush-bottom"
+            >
+              <div
+                className="ratio--square round display-inline-block push-half-right background--fill"
+                style={
+                  Object {
+                    "backgroundImage": "url('http://test.com/person.jpg')",
+                    "height": "40px",
+                    "width": "40px",
+                  }
+                }
+              >
+                <div
+                  className="ratio__item"
+                />
+              </div>
+              <div
+                className="ratio--square round display-inline-block push-half-right background--fill"
+                style={
+                  Object {
+                    "backgroundImage": "url('http://test.com/person.jpg')",
+                    "height": "40px",
+                    "width": "40px",
+                  }
+                }
+              >
+                <div
+                  className="ratio__item"
+                />
+              </div>
+            </div>
+          </div>
+          <div>
+            <h7
+              className="text-dark-secondary"
+            >
+              Tags
+            </h7>
+            <div
+              className="soft-half-top flush-bottom"
+            >
+              <span
+                className="tag push-half-right"
+              />
+              <span
+                className="tag push-half-right"
+              />
+              <span
+                className="tag push-half-right"
+              >
+                test
+              </span>
+              <span
+                className="tag push-half-right"
+              >
+                kid friendly
+              </span>
+              <span
+                className="tag push-half-right"
+              >
+                test
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="card outlined outlined--light soft-sides-@lap-and-up push-bottom"
+    >
+      <div
+        className="card__item soft-double"
+      >
+        <h4
+          className=" push-bottom one-whole text-center text-dark-secondary"
+        >
+          Looking for another group?
+        </h4>
+        <div
+          className="text-center one-whole"
+        >
+          <Link
+            className="flush-bottom push-half-bottom@handheld btn--dark-tertiary"
+            onlyActiveOnIndex={false}
+            style={Object {}}
+            to="/groups/finder"
+          >
+            Find A Group
+          </Link>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+`;
+
+exports[`renders without campus 1`] = `
+<section
+  className="background--light-secondary hard"
+>
+  <Meta
+    description="test description"
+    id="1"
+    image="http://test.com/test.jpg"
+    title="test group"
+  />
+  <div
+    className="ratio--landscape background--fill"
+    style={
+      Object {
+        "backgroundImage": "url('http://test.com/test.jpg')",
+        "overflow": "visible",
+        "zIndex": 10,
+      }
+    }
+  >
+    <div
+      className="ratio__item"
+    />
+  </div>
+  <div
+    className="push-double-sides@lap-wide-and-up push-half-sides flush-ends card outlined outlined--light"
+    style={
+      Object {
+        "borderRadius": "0 0 6px 6px",
+      }
+    }
+  >
+    <div
+      className="card__item soft"
+    >
+      <h3
+        className="text-dark-primary push-half-top push-bottom"
+      >
+        test group
+      </h3>
+      <h7
+        className="text-dark-secondary"
+      >
+        <small>
+          Group Leaders
+        </small>
+      </h7>
+      <h5
+        className="text-dark-secondary soft-half-top"
+      >
+        <span>
+          jim bob, 
+        </span>
+        <span>
+          tom bob
+        </span>
+      </h5>
+      <div
+        className="ratio--square round display-inline-block push-right background--fill"
+        style={
+          Object {
+            "backgroundImage": "url('http://test.com/jim.jpg')",
+            "height": "80px",
+            "width": "80px",
+          }
+        }
+      >
+        <div
+          className="ratio__item"
+        />
+      </div>
+      <div
+        className="ratio--square round display-inline-block push-right background--fill"
+        style={
+          Object {
+            "backgroundImage": "url('http://test.com/tom.jpg')",
+            "height": "80px",
+            "width": "80px",
+          }
+        }
+      >
+        <div
+          className="ratio__item"
+        />
+      </div>
+    </div>
+  </div>
+  <section
+    className="soft-double-sides@lap-wide-and-up soft-half-sides soft-half-ends flush-sides"
+  >
+    <div
+      className="card outlined outlined--light soft-sides-@lap-and-up"
+    >
+      <div
+        className="grid card__item soft push-half flush"
+      >
+        <h4
+          className="flush-bottom hard-left push-bottom@handheld push-bottom@lap push-half-top grid__item one-half@lap-wide-and-up one-whole text-center@handheld text-center@lap text-dark-primary"
+        >
+          #TheseAreMyPeople
+        </h4>
+        <div
+          className="grid__item hard-left text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up"
+        >
+          <button
+            className="flush-bottom push-half-bottom@handheld btn"
+            onClick={[Function]}
+          >
+            Contact
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      className="card outlined outlined--light hard one-whole"
+    >
+      <div
+        className="card__item push-half-top@handheld"
+      >
+        <div
+          className="soft-left@lap-wide-and-up soft soft-double-bottom"
+        >
+          <h5
+            className="soft-half-ends"
+          >
+            Group Details
+          </h5>
+          <div
+            className="soft-bottom"
+          >
+            <h7
+              className="text-dark-secondary"
+            >
+              Time
+            </h7>
+            <h6
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
+              schedule description
+            </h6>
+          </div>
+          <div
+            className="soft-bottom"
+          >
+            <h7
+              className="text-dark-secondary"
+            >
+              Address
+            </h7>
+            <h6
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
+              anderson
+              , 
+              sc
+            </h6>
+          </div>
+          <div
+            className="soft-bottom"
+          >
+            <h7
+              className="text-dark-secondary"
+            >
+              Campus
+            </h7>
+            <h6
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
+              anderson
+            </h6>
+          </div>
+          <div>
+            <h7
+              className="text-dark-secondary"
+            >
+              Information
+            </h7>
+            <h6
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
+              Children Welcome
+              , 1 - 2
+            </h6>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="card outlined outlined--light hard one-whole"
+    >
+      <div
+        className="card__item push-half-top@handheld"
+      >
+        <div
+          className="soft-left@lap-wide-and-up soft soft-bottom"
+        >
+          <h5
+            className="soft-half-ends"
+          >
+            More Information
+          </h5>
+          <div
+            className="soft-double-bottom@lap-wide-and-up soft-bottom"
+          >
+            <h7
+              className="text-dark-secondary"
+            >
+              Description
+            </h7>
+            <p
+              className="soft-half-top flush-bottom"
+            >
+              <span>
+                test description
+                <br />
+              </span>
+            </p>
+          </div>
+          <div
+            className="soft-double-bottom@lap-wide-and-up soft-bottom"
+          >
+            <h7
+              className="text-dark-secondary"
+            >
+              Members
+            </h7>
+            <div
+              className="soft-half-top flush-bottom"
+            >
+              <div
+                className="ratio--square round display-inline-block push-half-right background--fill"
+                style={
+                  Object {
+                    "backgroundImage": "url('http://test.com/person.jpg')",
+                    "height": "40px",
+                    "width": "40px",
+                  }
+                }
+              >
+                <div
+                  className="ratio__item"
+                />
+              </div>
+              <div
+                className="ratio--square round display-inline-block push-half-right background--fill"
+                style={
+                  Object {
+                    "backgroundImage": "url('http://test.com/person.jpg')",
+                    "height": "40px",
+                    "width": "40px",
+                  }
+                }
+              >
+                <div
+                  className="ratio__item"
+                />
+              </div>
+            </div>
+          </div>
+          <div>
+            <h7
+              className="text-dark-secondary"
+            >
+              Tags
+            </h7>
+            <div
+              className="soft-half-top flush-bottom"
+            >
+              <span
+                className="tag push-half-right"
+              />
+              <span
+                className="tag push-half-right"
+              />
+              <span
+                className="tag push-half-right"
+              >
+                test
+              </span>
+              <span
+                className="tag push-half-right"
+              >
+                kid friendly
+              </span>
+              <span
+                className="tag push-half-right"
+              >
+                test
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="card outlined outlined--light soft-sides-@lap-and-up push-bottom"
+    >
+      <div
+        className="card__item soft-double"
+      >
+        <h4
+          className=" push-bottom one-whole text-center text-dark-secondary"
+        >
+          Looking for another group?
+        </h4>
+        <div
+          className="text-center one-whole"
+        >
+          <Link
+            className="flush-bottom push-half-bottom@handheld btn--dark-tertiary"
+            onlyActiveOnIndex={false}
+            style={Object {}}
+            to="/groups/finder"
+          >
+            Find A Group
+          </Link>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+`;
+
+exports[`renders without group locations 1`] = `
+<section
+  className="background--light-secondary hard"
+>
+  <Meta
+    description="test description"
+    id="1"
+    image="http://test.com/test.jpg"
+    title="test group"
+  />
+  <div
+    className="ratio--landscape background--fill"
+    style={
+      Object {
+        "backgroundImage": "url('http://test.com/test.jpg')",
+        "overflow": "visible",
+        "zIndex": 10,
+      }
+    }
+  >
+    <div
+      className="ratio__item"
+    />
+  </div>
+  <div
+    className="push-double-sides@lap-wide-and-up push-half-sides flush-ends card outlined outlined--light"
+    style={
+      Object {
+        "borderRadius": "0 0 6px 6px",
+      }
+    }
+  >
+    <div
+      className="card__item soft"
+    >
+      <h3
+        className="text-dark-primary push-half-top push-bottom"
+      >
+        test group
+      </h3>
+      <h7
+        className="text-dark-secondary"
+      >
+        <small>
+          Group Leaders
+        </small>
+      </h7>
+      <h5
+        className="text-dark-secondary soft-half-top"
+      >
+        <span>
+          jim bob, 
+        </span>
+        <span>
+          tom bob
+        </span>
+      </h5>
+      <div
+        className="ratio--square round display-inline-block push-right background--fill"
+        style={
+          Object {
+            "backgroundImage": "url('http://test.com/jim.jpg')",
+            "height": "80px",
+            "width": "80px",
+          }
+        }
+      >
+        <div
+          className="ratio__item"
+        />
+      </div>
+      <div
+        className="ratio--square round display-inline-block push-right background--fill"
+        style={
+          Object {
+            "backgroundImage": "url('http://test.com/tom.jpg')",
+            "height": "80px",
+            "width": "80px",
+          }
+        }
+      >
+        <div
+          className="ratio__item"
+        />
+      </div>
+    </div>
+  </div>
+  <section
+    className="soft-double-sides@lap-wide-and-up soft-half-sides soft-half-ends flush-sides"
+  >
+    <div
+      className="card outlined outlined--light soft-sides-@lap-and-up"
+    >
+      <div
+        className="grid card__item soft push-half flush"
+      >
+        <h4
+          className="flush-bottom hard-left push-bottom@handheld push-bottom@lap push-half-top grid__item one-half@lap-wide-and-up one-whole text-center@handheld text-center@lap text-dark-primary"
+        >
+          #TheseAreMyPeople
+        </h4>
+        <div
+          className="grid__item hard-left text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up"
+        >
+          <button
+            className="flush-bottom push-half-bottom@handheld btn"
+            onClick={[Function]}
+          >
+            Contact
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      className="card outlined outlined--light hard one-whole"
+    >
+      <div
+        className="card__item push-half-top@handheld"
+      >
+        <div
+          className="soft-left@lap-wide-and-up soft soft-double-bottom"
+        >
+          <h5
+            className="soft-half-ends"
+          >
+            Group Details
+          </h5>
+          <div
+            className="soft-bottom"
+          >
+            <h7
+              className="text-dark-secondary"
+            >
+              Time
+            </h7>
+            <h6
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
+              schedule description
+            </h6>
+          </div>
+          <div
+            className="soft-bottom"
+          >
+            <h7
+              className="text-dark-secondary"
+            >
+              Address
+            </h7>
+            <h6
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
+              anderson
+              , 
+              sc
+            </h6>
+          </div>
+          <div
+            className="soft-bottom"
+          >
+            <h7
+              className="text-dark-secondary"
+            >
+              Campus
+            </h7>
+            <h6
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
+              anderson
+            </h6>
+          </div>
+          <div>
+            <h7
+              className="text-dark-secondary"
+            >
+              Information
+            </h7>
+            <h6
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
+              Children Welcome
+              , 1 - 2
+            </h6>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="card outlined outlined--light hard one-whole"
+    >
+      <div
+        className="card__item push-half-top@handheld"
+      >
+        <div
+          className="soft-left@lap-wide-and-up soft soft-bottom"
+        >
+          <h5
+            className="soft-half-ends"
+          >
+            More Information
+          </h5>
+          <div
+            className="soft-double-bottom@lap-wide-and-up soft-bottom"
+          >
+            <h7
+              className="text-dark-secondary"
+            >
+              Description
+            </h7>
+            <p
+              className="soft-half-top flush-bottom"
+            >
+              <span>
+                test description
+                <br />
+              </span>
+            </p>
+          </div>
+          <div
+            className="soft-double-bottom@lap-wide-and-up soft-bottom"
+          >
+            <h7
+              className="text-dark-secondary"
+            >
+              Members
+            </h7>
+            <div
+              className="soft-half-top flush-bottom"
+            >
+              <div
+                className="ratio--square round display-inline-block push-half-right background--fill"
+                style={
+                  Object {
+                    "backgroundImage": "url('http://test.com/person.jpg')",
+                    "height": "40px",
+                    "width": "40px",
+                  }
+                }
+              >
+                <div
+                  className="ratio__item"
+                />
+              </div>
+              <div
+                className="ratio--square round display-inline-block push-half-right background--fill"
+                style={
+                  Object {
+                    "backgroundImage": "url('http://test.com/person.jpg')",
+                    "height": "40px",
+                    "width": "40px",
+                  }
+                }
+              >
+                <div
+                  className="ratio__item"
+                />
+              </div>
+            </div>
+          </div>
+          <div>
+            <h7
+              className="text-dark-secondary"
+            >
+              Tags
+            </h7>
+            <div
+              className="soft-half-top flush-bottom"
+            >
+              <span
+                className="tag push-half-right"
+              />
+              <span
+                className="tag push-half-right"
+              />
+              <span
+                className="tag push-half-right"
+              >
+                test
+              </span>
+              <span
+                className="tag push-half-right"
+              >
+                kid friendly
+              </span>
+              <span
+                className="tag push-half-right"
+              >
+                test
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="card outlined outlined--light soft-sides-@lap-and-up push-bottom"
+    >
+      <div
+        className="card__item soft-double"
+      >
+        <h4
+          className=" push-bottom one-whole text-center text-dark-secondary"
+        >
+          Looking for another group?
+        </h4>
+        <div
+          className="text-center one-whole"
+        >
+          <Link
+            className="flush-bottom push-half-bottom@handheld btn--dark-tertiary"
+            onlyActiveOnIndex={false}
+            style={Object {}}
+            to="/groups/finder"
+          >
+            Find A Group
+          </Link>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+`;
+
+exports[`renders without schedule 1`] = `
+<section
+  className="background--light-secondary hard"
+>
+  <Meta
+    description="test description"
+    id="1"
+    image="http://test.com/test.jpg"
+    title="test group"
+  />
+  <div
+    className="ratio--landscape background--fill"
+    style={
+      Object {
+        "backgroundImage": "url('http://test.com/test.jpg')",
+        "overflow": "visible",
+        "zIndex": 10,
+      }
+    }
+  >
+    <div
+      className="ratio__item"
+    />
+  </div>
+  <div
+    className="push-double-sides@lap-wide-and-up push-half-sides flush-ends card outlined outlined--light"
+    style={
+      Object {
+        "borderRadius": "0 0 6px 6px",
+      }
+    }
+  >
+    <div
+      className="card__item soft"
+    >
+      <h3
+        className="text-dark-primary push-half-top push-bottom"
+      >
+        test group
+      </h3>
+      <h7
+        className="text-dark-secondary"
+      >
+        <small>
+          Group Leaders
+        </small>
+      </h7>
+      <h5
+        className="text-dark-secondary soft-half-top"
+      >
+        <span>
+          jim bob, 
+        </span>
+        <span>
+          tom bob
+        </span>
+      </h5>
+      <div
+        className="ratio--square round display-inline-block push-right background--fill"
+        style={
+          Object {
+            "backgroundImage": "url('http://test.com/jim.jpg')",
+            "height": "80px",
+            "width": "80px",
+          }
+        }
+      >
+        <div
+          className="ratio__item"
+        />
+      </div>
+      <div
+        className="ratio--square round display-inline-block push-right background--fill"
+        style={
+          Object {
+            "backgroundImage": "url('http://test.com/tom.jpg')",
+            "height": "80px",
+            "width": "80px",
+          }
+        }
+      >
+        <div
+          className="ratio__item"
+        />
+      </div>
+    </div>
+  </div>
+  <section
+    className="soft-double-sides@lap-wide-and-up soft-half-sides soft-half-ends flush-sides"
+  >
+    <div
+      className="card outlined outlined--light soft-sides-@lap-and-up"
+    >
+      <div
+        className="grid card__item soft push-half flush"
+      >
+        <h4
+          className="flush-bottom hard-left push-bottom@handheld push-bottom@lap push-half-top grid__item one-half@lap-wide-and-up one-whole text-center@handheld text-center@lap text-dark-primary"
+        >
+          #TheseAreMyPeople
+        </h4>
+        <div
+          className="grid__item hard-left text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up"
+        >
+          <button
+            className="flush-bottom push-half-bottom@handheld btn"
+            onClick={[Function]}
+          >
+            Contact
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      className="card outlined outlined--light hard one-whole"
+    >
+      <div
+        className="card__item push-half-top@handheld"
+      >
+        <div
+          className="soft-left@lap-wide-and-up soft soft-double-bottom"
+        >
+          <h5
+            className="soft-half-ends"
+          >
+            Group Details
+          </h5>
+          <div
+            className="soft-bottom"
+          >
+            <h7
+              className="text-dark-secondary"
+            >
+              Time
+            </h7>
+            <h6
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
+              schedule description
+            </h6>
+          </div>
+          <div
+            className="soft-bottom"
+          >
+            <h7
+              className="text-dark-secondary"
+            >
+              Address
+            </h7>
+            <h6
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
+              anderson
+              , 
+              sc
+            </h6>
+          </div>
+          <div
+            className="soft-bottom"
+          >
+            <h7
+              className="text-dark-secondary"
+            >
+              Campus
+            </h7>
+            <h6
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
+              anderson
+            </h6>
+          </div>
+          <div>
+            <h7
+              className="text-dark-secondary"
+            >
+              Information
+            </h7>
+            <h6
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
+              Children Welcome
+              , 1 - 2
+            </h6>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="card outlined outlined--light hard one-whole"
+    >
+      <div
+        className="card__item push-half-top@handheld"
+      >
+        <div
+          className="soft-left@lap-wide-and-up soft soft-bottom"
+        >
+          <h5
+            className="soft-half-ends"
+          >
+            More Information
+          </h5>
+          <div
+            className="soft-double-bottom@lap-wide-and-up soft-bottom"
+          >
+            <h7
+              className="text-dark-secondary"
+            >
+              Description
+            </h7>
+            <p
+              className="soft-half-top flush-bottom"
+            >
+              <span>
+                test description
+                <br />
+              </span>
+            </p>
+          </div>
+          <div
+            className="soft-double-bottom@lap-wide-and-up soft-bottom"
+          >
+            <h7
+              className="text-dark-secondary"
+            >
+              Members
+            </h7>
+            <div
+              className="soft-half-top flush-bottom"
+            >
+              <div
+                className="ratio--square round display-inline-block push-half-right background--fill"
+                style={
+                  Object {
+                    "backgroundImage": "url('http://test.com/person.jpg')",
+                    "height": "40px",
+                    "width": "40px",
+                  }
+                }
+              >
+                <div
+                  className="ratio__item"
+                />
+              </div>
+              <div
+                className="ratio--square round display-inline-block push-half-right background--fill"
+                style={
+                  Object {
+                    "backgroundImage": "url('http://test.com/person.jpg')",
+                    "height": "40px",
+                    "width": "40px",
+                  }
+                }
+              >
+                <div
+                  className="ratio__item"
+                />
+              </div>
+            </div>
+          </div>
+          <div>
+            <h7
+              className="text-dark-secondary"
+            >
+              Tags
+            </h7>
+            <div
+              className="soft-half-top flush-bottom"
+            >
+              <span
+                className="tag push-half-right"
+              />
+              <span
+                className="tag push-half-right"
+              />
+              <span
+                className="tag push-half-right"
+              >
+                test
+              </span>
+              <span
+                className="tag push-half-right"
+              >
+                kid friendly
+              </span>
+              <span
+                className="tag push-half-right"
+              >
+                test
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="card outlined outlined--light soft-sides-@lap-and-up push-bottom"
+    >
+      <div
+        className="card__item soft-double"
+      >
+        <h4
+          className=" push-bottom one-whole text-center text-dark-secondary"
+        >
+          Looking for another group?
+        </h4>
+        <div
+          className="text-center one-whole"
+        >
+          <Link
+            className="flush-bottom push-half-bottom@handheld btn--dark-tertiary"
+            onlyActiveOnIndex={false}
+            style={Object {}}
+            to="/groups/finder"
+          >
+            Find A Group
+          </Link>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+`;
+
+exports[`renders without schedule description 1`] = `
+<section
+  className="background--light-secondary hard"
+>
+  <Meta
+    description="test description"
+    id="1"
+    image="http://test.com/test.jpg"
+    title="test group"
+  />
+  <div
+    className="ratio--landscape background--fill"
+    style={
+      Object {
+        "backgroundImage": "url('http://test.com/test.jpg')",
+        "overflow": "visible",
+        "zIndex": 10,
+      }
+    }
+  >
+    <div
+      className="ratio__item"
+    />
+  </div>
+  <div
+    className="push-double-sides@lap-wide-and-up push-half-sides flush-ends card outlined outlined--light"
+    style={
+      Object {
+        "borderRadius": "0 0 6px 6px",
+      }
+    }
+  >
+    <div
+      className="card__item soft"
+    >
+      <h3
+        className="text-dark-primary push-half-top push-bottom"
+      >
+        test group
+      </h3>
+      <h7
+        className="text-dark-secondary"
+      >
+        <small>
+          Group Leaders
+        </small>
+      </h7>
+      <h5
+        className="text-dark-secondary soft-half-top"
+      >
+        <span>
+          jim bob, 
+        </span>
+        <span>
+          tom bob
+        </span>
+      </h5>
+      <div
+        className="ratio--square round display-inline-block push-right background--fill"
+        style={
+          Object {
+            "backgroundImage": "url('http://test.com/jim.jpg')",
+            "height": "80px",
+            "width": "80px",
+          }
+        }
+      >
+        <div
+          className="ratio__item"
+        />
+      </div>
+      <div
+        className="ratio--square round display-inline-block push-right background--fill"
+        style={
+          Object {
+            "backgroundImage": "url('http://test.com/tom.jpg')",
+            "height": "80px",
+            "width": "80px",
+          }
+        }
+      >
+        <div
+          className="ratio__item"
+        />
+      </div>
+    </div>
+  </div>
+  <section
+    className="soft-double-sides@lap-wide-and-up soft-half-sides soft-half-ends flush-sides"
+  >
+    <div
+      className="card outlined outlined--light soft-sides-@lap-and-up"
+    >
+      <div
+        className="grid card__item soft push-half flush"
+      >
+        <h4
+          className="flush-bottom hard-left push-bottom@handheld push-bottom@lap push-half-top grid__item one-half@lap-wide-and-up one-whole text-center@handheld text-center@lap text-dark-primary"
+        >
+          #TheseAreMyPeople
+        </h4>
+        <div
+          className="grid__item hard-left text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up"
+        >
+          <button
+            className="flush-bottom push-half-bottom@handheld btn"
+            onClick={[Function]}
+          >
+            Contact
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      className="card outlined outlined--light hard one-whole"
+    >
+      <div
+        className="card__item push-half-top@handheld"
+      >
+        <div
+          className="soft-left@lap-wide-and-up soft soft-double-bottom"
+        >
+          <h5
+            className="soft-half-ends"
+          >
+            Group Details
+          </h5>
+          <div
+            className="soft-bottom"
+          >
+            <h7
+              className="text-dark-secondary"
+            >
+              Time
+            </h7>
+            <h6
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
+              schedule description
+            </h6>
+          </div>
+          <div
+            className="soft-bottom"
+          >
+            <h7
+              className="text-dark-secondary"
+            >
+              Address
+            </h7>
+            <h6
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
+              anderson
+              , 
+              sc
+            </h6>
+          </div>
+          <div
+            className="soft-bottom"
+          >
+            <h7
+              className="text-dark-secondary"
+            >
+              Campus
+            </h7>
+            <h6
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
+              anderson
+            </h6>
+          </div>
+          <div>
+            <h7
+              className="text-dark-secondary"
+            >
+              Information
+            </h7>
+            <h6
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
+              Children Welcome
+              , 1 - 2
+            </h6>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="card outlined outlined--light hard one-whole"
+    >
+      <div
+        className="card__item push-half-top@handheld"
+      >
+        <div
+          className="soft-left@lap-wide-and-up soft soft-bottom"
+        >
+          <h5
+            className="soft-half-ends"
+          >
+            More Information
+          </h5>
+          <div
+            className="soft-double-bottom@lap-wide-and-up soft-bottom"
+          >
+            <h7
+              className="text-dark-secondary"
+            >
+              Description
+            </h7>
+            <p
+              className="soft-half-top flush-bottom"
+            >
+              <span>
+                test description
+                <br />
+              </span>
+            </p>
+          </div>
+          <div
+            className="soft-double-bottom@lap-wide-and-up soft-bottom"
+          >
+            <h7
+              className="text-dark-secondary"
+            >
+              Members
+            </h7>
+            <div
+              className="soft-half-top flush-bottom"
+            >
+              <div
+                className="ratio--square round display-inline-block push-half-right background--fill"
+                style={
+                  Object {
+                    "backgroundImage": "url('http://test.com/person.jpg')",
+                    "height": "40px",
+                    "width": "40px",
+                  }
+                }
+              >
+                <div
+                  className="ratio__item"
+                />
+              </div>
+              <div
+                className="ratio--square round display-inline-block push-half-right background--fill"
+                style={
+                  Object {
+                    "backgroundImage": "url('http://test.com/person.jpg')",
+                    "height": "40px",
+                    "width": "40px",
+                  }
+                }
+              >
+                <div
+                  className="ratio__item"
+                />
+              </div>
+            </div>
+          </div>
+          <div>
+            <h7
+              className="text-dark-secondary"
+            >
+              Tags
+            </h7>
+            <div
+              className="soft-half-top flush-bottom"
+            >
+              <span
+                className="tag push-half-right"
+              />
+              <span
+                className="tag push-half-right"
+              />
+              <span
+                className="tag push-half-right"
+              >
+                test
+              </span>
+              <span
+                className="tag push-half-right"
+              >
+                kid friendly
+              </span>
+              <span
+                className="tag push-half-right"
+              >
+                test
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="card outlined outlined--light soft-sides-@lap-and-up push-bottom"
+    >
+      <div
+        className="card__item soft-double"
+      >
+        <h4
+          className=" push-bottom one-whole text-center text-dark-secondary"
+        >
+          Looking for another group?
+        </h4>
+        <div
+          className="text-center one-whole"
+        >
+          <Link
+            className="flush-bottom push-half-bottom@handheld btn--dark-tertiary"
+            onlyActiveOnIndex={false}
+            style={Object {}}
+            to="/groups/finder"
+          >
+            Find A Group
+          </Link>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+`;
+
 exports[`test doesn't render Interest type tag 1`] = `
 <section
   className="background--light-secondary hard">
@@ -10,7 +2921,7 @@ exports[`test doesn't render Interest type tag 1`] = `
     className="ratio--landscape background--fill"
     style={
       Object {
-        "backgroundImage": "url(\'http://test.com/test.jpg\')",
+        "backgroundImage": "url('http://test.com/test.jpg')",
         "overflow": "visible",
         "zIndex": 10,
       }
@@ -50,7 +2961,7 @@ exports[`test doesn't render Interest type tag 1`] = `
         className="ratio--square round display-inline-block push-right background--fill"
         style={
           Object {
-            "backgroundImage": "url(\'http://test.com/jim.jpg\')",
+            "backgroundImage": "url('http://test.com/jim.jpg')",
             "height": "80px",
             "width": "80px",
           }
@@ -62,7 +2973,7 @@ exports[`test doesn't render Interest type tag 1`] = `
         className="ratio--square round display-inline-block push-right background--fill"
         style={
           Object {
-            "backgroundImage": "url(\'http://test.com/tom.jpg\')",
+            "backgroundImage": "url('http://test.com/tom.jpg')",
             "height": "80px",
             "width": "80px",
           }
@@ -187,7 +3098,7 @@ exports[`test doesn't render Interest type tag 1`] = `
                 className="ratio--square round display-inline-block push-half-right background--fill"
                 style={
                   Object {
-                    "backgroundImage": "url(\'http://test.com/person.jpg\')",
+                    "backgroundImage": "url('http://test.com/person.jpg')",
                     "height": "40px",
                     "width": "40px",
                   }
@@ -199,7 +3110,7 @@ exports[`test doesn't render Interest type tag 1`] = `
                 className="ratio--square round display-inline-block push-half-right background--fill"
                 style={
                   Object {
-                    "backgroundImage": "url(\'http://test.com/person.jpg\')",
+                    "backgroundImage": "url('http://test.com/person.jpg')",
                     "height": "40px",
                     "width": "40px",
                   }
@@ -273,7 +3184,7 @@ exports[`test doesn't render demographic tag if none 1`] = `
     className="ratio--landscape background--fill"
     style={
       Object {
-        "backgroundImage": "url(\'http://test.com/test.jpg\')",
+        "backgroundImage": "url('http://test.com/test.jpg')",
         "overflow": "visible",
         "zIndex": 10,
       }
@@ -313,7 +3224,7 @@ exports[`test doesn't render demographic tag if none 1`] = `
         className="ratio--square round display-inline-block push-right background--fill"
         style={
           Object {
-            "backgroundImage": "url(\'http://test.com/jim.jpg\')",
+            "backgroundImage": "url('http://test.com/jim.jpg')",
             "height": "80px",
             "width": "80px",
           }
@@ -325,7 +3236,7 @@ exports[`test doesn't render demographic tag if none 1`] = `
         className="ratio--square round display-inline-block push-right background--fill"
         style={
           Object {
-            "backgroundImage": "url(\'http://test.com/tom.jpg\')",
+            "backgroundImage": "url('http://test.com/tom.jpg')",
             "height": "80px",
             "width": "80px",
           }
@@ -450,7 +3361,7 @@ exports[`test doesn't render demographic tag if none 1`] = `
                 className="ratio--square round display-inline-block push-half-right background--fill"
                 style={
                   Object {
-                    "backgroundImage": "url(\'http://test.com/person.jpg\')",
+                    "backgroundImage": "url('http://test.com/person.jpg')",
                     "height": "40px",
                     "width": "40px",
                   }
@@ -462,7 +3373,7 @@ exports[`test doesn't render demographic tag if none 1`] = `
                 className="ratio--square round display-inline-block push-half-right background--fill"
                 style={
                   Object {
-                    "backgroundImage": "url(\'http://test.com/person.jpg\')",
+                    "backgroundImage": "url('http://test.com/person.jpg')",
                     "height": "40px",
                     "width": "40px",
                   }
@@ -536,7 +3447,7 @@ exports[`test renders adult only version 1`] = `
     className="ratio--landscape background--fill"
     style={
       Object {
-        "backgroundImage": "url(\'http://test.com/test.jpg\')",
+        "backgroundImage": "url('http://test.com/test.jpg')",
         "overflow": "visible",
         "zIndex": 10,
       }
@@ -576,7 +3487,7 @@ exports[`test renders adult only version 1`] = `
         className="ratio--square round display-inline-block push-right background--fill"
         style={
           Object {
-            "backgroundImage": "url(\'http://test.com/jim.jpg\')",
+            "backgroundImage": "url('http://test.com/jim.jpg')",
             "height": "80px",
             "width": "80px",
           }
@@ -588,7 +3499,7 @@ exports[`test renders adult only version 1`] = `
         className="ratio--square round display-inline-block push-right background--fill"
         style={
           Object {
-            "backgroundImage": "url(\'http://test.com/tom.jpg\')",
+            "backgroundImage": "url('http://test.com/tom.jpg')",
             "height": "80px",
             "width": "80px",
           }
@@ -713,7 +3624,7 @@ exports[`test renders adult only version 1`] = `
                 className="ratio--square round display-inline-block push-half-right background--fill"
                 style={
                   Object {
-                    "backgroundImage": "url(\'http://test.com/person.jpg\')",
+                    "backgroundImage": "url('http://test.com/person.jpg')",
                     "height": "40px",
                     "width": "40px",
                   }
@@ -725,7 +3636,7 @@ exports[`test renders adult only version 1`] = `
                 className="ratio--square round display-inline-block push-half-right background--fill"
                 style={
                   Object {
-                    "backgroundImage": "url(\'http://test.com/person.jpg\')",
+                    "backgroundImage": "url('http://test.com/person.jpg')",
                     "height": "40px",
                     "width": "40px",
                   }
@@ -799,7 +3710,7 @@ exports[`test renders leader version 1`] = `
     className="ratio--landscape background--fill"
     style={
       Object {
-        "backgroundImage": "url(\'http://test.com/test.jpg\')",
+        "backgroundImage": "url('http://test.com/test.jpg')",
         "overflow": "visible",
         "zIndex": 10,
       }
@@ -839,7 +3750,7 @@ exports[`test renders leader version 1`] = `
         className="ratio--square round display-inline-block push-right background--fill"
         style={
           Object {
-            "backgroundImage": "url(\'http://test.com/jim.jpg\')",
+            "backgroundImage": "url('http://test.com/jim.jpg')",
             "height": "80px",
             "width": "80px",
           }
@@ -851,7 +3762,7 @@ exports[`test renders leader version 1`] = `
         className="ratio--square round display-inline-block push-right background--fill"
         style={
           Object {
-            "backgroundImage": "url(\'http://test.com/tom.jpg\')",
+            "backgroundImage": "url('http://test.com/tom.jpg')",
             "height": "80px",
             "width": "80px",
           }
@@ -978,7 +3889,7 @@ exports[`test renders leader version 1`] = `
                 className="ratio--square round display-inline-block push-half-right background--fill"
                 style={
                   Object {
-                    "backgroundImage": "url(\'http://test.com/person.jpg\')",
+                    "backgroundImage": "url('http://test.com/person.jpg')",
                     "height": "40px",
                     "width": "40px",
                   }
@@ -990,7 +3901,7 @@ exports[`test renders leader version 1`] = `
                 className="ratio--square round display-inline-block push-half-right background--fill"
                 style={
                   Object {
-                    "backgroundImage": "url(\'http://test.com/person.jpg\')",
+                    "backgroundImage": "url('http://test.com/person.jpg')",
                     "height": "40px",
                     "width": "40px",
                   }
@@ -1064,7 +3975,7 @@ exports[`test renders with props 1`] = `
     className="ratio--landscape background--fill"
     style={
       Object {
-        "backgroundImage": "url(\'http://test.com/test.jpg\')",
+        "backgroundImage": "url('http://test.com/test.jpg')",
         "overflow": "visible",
         "zIndex": 10,
       }
@@ -1104,7 +4015,7 @@ exports[`test renders with props 1`] = `
         className="ratio--square round display-inline-block push-right background--fill"
         style={
           Object {
-            "backgroundImage": "url(\'http://test.com/jim.jpg\')",
+            "backgroundImage": "url('http://test.com/jim.jpg')",
             "height": "80px",
             "width": "80px",
           }
@@ -1116,7 +4027,7 @@ exports[`test renders with props 1`] = `
         className="ratio--square round display-inline-block push-right background--fill"
         style={
           Object {
-            "backgroundImage": "url(\'http://test.com/tom.jpg\')",
+            "backgroundImage": "url('http://test.com/tom.jpg')",
             "height": "80px",
             "width": "80px",
           }
@@ -1241,7 +4152,7 @@ exports[`test renders with props 1`] = `
                 className="ratio--square round display-inline-block push-half-right background--fill"
                 style={
                   Object {
-                    "backgroundImage": "url(\'http://test.com/person.jpg\')",
+                    "backgroundImage": "url('http://test.com/person.jpg')",
                     "height": "40px",
                     "width": "40px",
                   }
@@ -1253,7 +4164,7 @@ exports[`test renders with props 1`] = `
                 className="ratio--square round display-inline-block push-half-right background--fill"
                 style={
                   Object {
-                    "backgroundImage": "url(\'http://test.com/person.jpg\')",
+                    "backgroundImage": "url('http://test.com/person.jpg')",
                     "height": "40px",
                     "width": "40px",
                   }
@@ -1327,7 +4238,7 @@ exports[`test renders without campus 1`] = `
     className="ratio--landscape background--fill"
     style={
       Object {
-        "backgroundImage": "url(\'http://test.com/test.jpg\')",
+        "backgroundImage": "url('http://test.com/test.jpg')",
         "overflow": "visible",
         "zIndex": 10,
       }
@@ -1367,7 +4278,7 @@ exports[`test renders without campus 1`] = `
         className="ratio--square round display-inline-block push-right background--fill"
         style={
           Object {
-            "backgroundImage": "url(\'http://test.com/jim.jpg\')",
+            "backgroundImage": "url('http://test.com/jim.jpg')",
             "height": "80px",
             "width": "80px",
           }
@@ -1379,7 +4290,7 @@ exports[`test renders without campus 1`] = `
         className="ratio--square round display-inline-block push-right background--fill"
         style={
           Object {
-            "backgroundImage": "url(\'http://test.com/tom.jpg\')",
+            "backgroundImage": "url('http://test.com/tom.jpg')",
             "height": "80px",
             "width": "80px",
           }
@@ -1504,7 +4415,7 @@ exports[`test renders without campus 1`] = `
                 className="ratio--square round display-inline-block push-half-right background--fill"
                 style={
                   Object {
-                    "backgroundImage": "url(\'http://test.com/person.jpg\')",
+                    "backgroundImage": "url('http://test.com/person.jpg')",
                     "height": "40px",
                     "width": "40px",
                   }
@@ -1516,7 +4427,7 @@ exports[`test renders without campus 1`] = `
                 className="ratio--square round display-inline-block push-half-right background--fill"
                 style={
                   Object {
-                    "backgroundImage": "url(\'http://test.com/person.jpg\')",
+                    "backgroundImage": "url('http://test.com/person.jpg')",
                     "height": "40px",
                     "width": "40px",
                   }
@@ -1590,7 +4501,7 @@ exports[`test renders without group locations 1`] = `
     className="ratio--landscape background--fill"
     style={
       Object {
-        "backgroundImage": "url(\'http://test.com/test.jpg\')",
+        "backgroundImage": "url('http://test.com/test.jpg')",
         "overflow": "visible",
         "zIndex": 10,
       }
@@ -1630,7 +4541,7 @@ exports[`test renders without group locations 1`] = `
         className="ratio--square round display-inline-block push-right background--fill"
         style={
           Object {
-            "backgroundImage": "url(\'http://test.com/jim.jpg\')",
+            "backgroundImage": "url('http://test.com/jim.jpg')",
             "height": "80px",
             "width": "80px",
           }
@@ -1642,7 +4553,7 @@ exports[`test renders without group locations 1`] = `
         className="ratio--square round display-inline-block push-right background--fill"
         style={
           Object {
-            "backgroundImage": "url(\'http://test.com/tom.jpg\')",
+            "backgroundImage": "url('http://test.com/tom.jpg')",
             "height": "80px",
             "width": "80px",
           }
@@ -1767,7 +4678,7 @@ exports[`test renders without group locations 1`] = `
                 className="ratio--square round display-inline-block push-half-right background--fill"
                 style={
                   Object {
-                    "backgroundImage": "url(\'http://test.com/person.jpg\')",
+                    "backgroundImage": "url('http://test.com/person.jpg')",
                     "height": "40px",
                     "width": "40px",
                   }
@@ -1779,7 +4690,7 @@ exports[`test renders without group locations 1`] = `
                 className="ratio--square round display-inline-block push-half-right background--fill"
                 style={
                   Object {
-                    "backgroundImage": "url(\'http://test.com/person.jpg\')",
+                    "backgroundImage": "url('http://test.com/person.jpg')",
                     "height": "40px",
                     "width": "40px",
                   }
@@ -1853,7 +4764,7 @@ exports[`test renders without schedule 1`] = `
     className="ratio--landscape background--fill"
     style={
       Object {
-        "backgroundImage": "url(\'http://test.com/test.jpg\')",
+        "backgroundImage": "url('http://test.com/test.jpg')",
         "overflow": "visible",
         "zIndex": 10,
       }
@@ -1893,7 +4804,7 @@ exports[`test renders without schedule 1`] = `
         className="ratio--square round display-inline-block push-right background--fill"
         style={
           Object {
-            "backgroundImage": "url(\'http://test.com/jim.jpg\')",
+            "backgroundImage": "url('http://test.com/jim.jpg')",
             "height": "80px",
             "width": "80px",
           }
@@ -1905,7 +4816,7 @@ exports[`test renders without schedule 1`] = `
         className="ratio--square round display-inline-block push-right background--fill"
         style={
           Object {
-            "backgroundImage": "url(\'http://test.com/tom.jpg\')",
+            "backgroundImage": "url('http://test.com/tom.jpg')",
             "height": "80px",
             "width": "80px",
           }
@@ -2030,7 +4941,7 @@ exports[`test renders without schedule 1`] = `
                 className="ratio--square round display-inline-block push-half-right background--fill"
                 style={
                   Object {
-                    "backgroundImage": "url(\'http://test.com/person.jpg\')",
+                    "backgroundImage": "url('http://test.com/person.jpg')",
                     "height": "40px",
                     "width": "40px",
                   }
@@ -2042,7 +4953,7 @@ exports[`test renders without schedule 1`] = `
                 className="ratio--square round display-inline-block push-half-right background--fill"
                 style={
                   Object {
-                    "backgroundImage": "url(\'http://test.com/person.jpg\')",
+                    "backgroundImage": "url('http://test.com/person.jpg')",
                     "height": "40px",
                     "width": "40px",
                   }
@@ -2116,7 +5027,7 @@ exports[`test renders without schedule description 1`] = `
     className="ratio--landscape background--fill"
     style={
       Object {
-        "backgroundImage": "url(\'http://test.com/test.jpg\')",
+        "backgroundImage": "url('http://test.com/test.jpg')",
         "overflow": "visible",
         "zIndex": 10,
       }
@@ -2156,7 +5067,7 @@ exports[`test renders without schedule description 1`] = `
         className="ratio--square round display-inline-block push-right background--fill"
         style={
           Object {
-            "backgroundImage": "url(\'http://test.com/jim.jpg\')",
+            "backgroundImage": "url('http://test.com/jim.jpg')",
             "height": "80px",
             "width": "80px",
           }
@@ -2168,7 +5079,7 @@ exports[`test renders without schedule description 1`] = `
         className="ratio--square round display-inline-block push-right background--fill"
         style={
           Object {
-            "backgroundImage": "url(\'http://test.com/tom.jpg\')",
+            "backgroundImage": "url('http://test.com/tom.jpg')",
             "height": "80px",
             "width": "80px",
           }
@@ -2293,7 +5204,7 @@ exports[`test renders without schedule description 1`] = `
                 className="ratio--square round display-inline-block push-half-right background--fill"
                 style={
                   Object {
-                    "backgroundImage": "url(\'http://test.com/person.jpg\')",
+                    "backgroundImage": "url('http://test.com/person.jpg')",
                     "height": "40px",
                     "width": "40px",
                   }
@@ -2305,7 +5216,7 @@ exports[`test renders without schedule description 1`] = `
                 className="ratio--square round display-inline-block push-half-right background--fill"
                 style={
                   Object {
-                    "backgroundImage": "url(\'http://test.com/person.jpg\')",
+                    "backgroundImage": "url('http://test.com/person.jpg')",
                     "height": "40px",
                     "width": "40px",
                   }

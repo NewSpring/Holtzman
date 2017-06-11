@@ -1,1 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`provides routes 1`] = `undefined`;
+
 exports[`test provides routes 1`] = `undefined`;
