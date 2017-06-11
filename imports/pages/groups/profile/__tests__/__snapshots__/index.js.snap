@@ -1,4 +1,6 @@
-exports[`test renders loading 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders loading 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)>
     <Right
@@ -7,7 +9,8 @@ exports[`test renders loading 1`] = `
           "background--left",
         ]
       }
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -15,16 +18,18 @@ exports[`test renders loading 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <div
-      className="soft-double text-center">
+      className="soft-double text-center"
+    >
       <Loading />
     </div>
   </Left>
 </div>
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)>
     <Right
@@ -33,7 +38,8 @@ exports[`test renders with props 1`] = `
           "background--left",
         ]
       }
-      mobile={false}>
+      mobile={false}
+    >
       <ControllableWrapper
         autoCenter={true}
         markers={
@@ -43,7 +49,8 @@ exports[`test renders with props 1`] = `
               "longitude": 2,
             },
           ]
-        } />
+        }
+      />
     </Right>
   </Connect(SplitContainerWithoutData)>
   <Left
@@ -52,7 +59,8 @@ exports[`test renders with props 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <Layout
       group={
         Object {
@@ -67,9 +75,15 @@ exports[`test renders with props 1`] = `
           ],
           "members": Array [
             Object {
+              "person": Object {
+                "id": 200,
+              },
               "role": "default",
             },
             Object {
+              "person": Object {
+                "id": 100,
+              },
               "role": "leader",
             },
           ],
@@ -81,15 +95,19 @@ exports[`test renders with props 1`] = `
       leaders={
         Array [
           Object {
+            "person": Object {
+              "id": 100,
+            },
             "role": "leader",
           },
         ]
-      } />
+      }
+    />
   </Left>
 </div>
 `;
 
-exports[`test renders without map on mobile 1`] = `
+exports[`renders without map on mobile 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)>
     <Right
@@ -98,7 +116,8 @@ exports[`test renders without map on mobile 1`] = `
           "background--left",
         ]
       }
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -106,7 +125,8 @@ exports[`test renders without map on mobile 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <Layout
       group={
         Object {
@@ -121,9 +141,15 @@ exports[`test renders without map on mobile 1`] = `
           ],
           "members": Array [
             Object {
+              "person": Object {
+                "id": 200,
+              },
               "role": "default",
             },
             Object {
+              "person": Object {
+                "id": 100,
+              },
               "role": "leader",
             },
           ],
@@ -135,15 +161,19 @@ exports[`test renders without map on mobile 1`] = `
       leaders={
         Array [
           Object {
+            "person": Object {
+              "id": 100,
+            },
             "role": "leader",
           },
         ]
-      } />
+      }
+    />
   </Left>
 </div>
 `;
 
-exports[`test renders without map on server 1`] = `
+exports[`renders without map on server 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)>
     <Right
@@ -152,7 +182,8 @@ exports[`test renders without map on server 1`] = `
           "background--left",
         ]
       }
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -160,7 +191,8 @@ exports[`test renders without map on server 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <Layout
       group={
         Object {
@@ -175,9 +207,15 @@ exports[`test renders without map on server 1`] = `
           ],
           "members": Array [
             Object {
+              "person": Object {
+                "id": 200,
+              },
               "role": "default",
             },
             Object {
+              "person": Object {
+                "id": 100,
+              },
               "role": "leader",
             },
           ],
@@ -189,15 +227,19 @@ exports[`test renders without map on server 1`] = `
       leaders={
         Array [
           Object {
+            "person": Object {
+              "id": 100,
+            },
             "role": "leader",
           },
         ]
-      } />
+      }
+    />
   </Left>
 </div>
 `;
 
-exports[`test should contain a group mutation 1`] = `
+exports[`should contain a group mutation 1`] = `
 "mutation AddToGroup($groupId: ID!, $message: String!, $communicationPreference: String!) {
   requestGroupInfo(groupId: $groupId, message: $message, communicationPreference: $communicationPreference) {
     error
@@ -208,7 +250,7 @@ exports[`test should contain a group mutation 1`] = `
 "
 `;
 
-exports[`test should contain a phone number mutation 1`] = `
+exports[`should contain a phone number mutation 1`] = `
 "mutation SetPhoneNumber($phoneNumber: String!) {
   setPhoneNumber(phoneNumber: $phoneNumber) {
     error
@@ -217,4 +259,127 @@ exports[`test should contain a phone number mutation 1`] = `
   }
 }
 "
+`;
+
+exports[`should render contact if member is a leader 1`] = `
+<div>
+  <Connect(SplitContainerWithoutData)>
+    <Right
+      classes={
+        Array [
+          "background--left",
+        ]
+      }
+      mobile={false}
+    />
+  </Connect(SplitContainerWithoutData)>
+  <Left
+    classes={
+      Array [
+        "background--light-secondary",
+      ]
+    }
+    scroll={true}
+  >
+    <Layout
+      group={
+        Object {
+          "members": Array [
+            Object {
+              "person": Object {
+                "id": 200,
+              },
+              "role": "default",
+            },
+            Object {
+              "person": Object {
+                "id": 500,
+              },
+              "role": "leader",
+            },
+          ],
+          "photo": "//s3.amazonaws.com/ns.assets/apollos/group-profile-placeholder.png",
+        }
+      }
+      join={[Function]}
+      leaders={
+        Array [
+          Object {
+            "person": Object {
+              "id": 500,
+            },
+            "role": "leader",
+          },
+        ]
+      }
+      loginParam=""
+    />
+  </Left>
+</div>
+`;
+
+exports[`should render manage if member is a leader 1`] = `
+<div>
+  <Connect(SplitContainerWithoutData)>
+    <Right
+      classes={
+        Array [
+          "background--left",
+        ]
+      }
+      mobile={false}
+    />
+  </Connect(SplitContainerWithoutData)>
+  <Left
+    classes={
+      Array [
+        "background--light-secondary",
+      ]
+    }
+    scroll={true}
+  >
+    <Layout
+      group={
+        Object {
+          "entityId": "1",
+          "locations": Array [
+            Object {
+              "location": Object {
+                "latitude": 2,
+                "longitude": 2,
+              },
+            },
+          ],
+          "members": Array [
+            Object {
+              "person": Object {
+                "id": 200,
+              },
+              "role": "default",
+            },
+            Object {
+              "person": Object {
+                "id": 100,
+              },
+              "role": "leader",
+            },
+          ],
+          "photo": "http://test.com/test.jpg",
+        }
+      }
+      isLeader={1}
+      join={[Function]}
+      leaders={
+        Array [
+          Object {
+            "person": Object {
+              "id": 100,
+            },
+            "role": "leader",
+          },
+        ]
+      }
+    />
+  </Left>
+</div>
 `;

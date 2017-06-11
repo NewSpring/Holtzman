@@ -1,55 +1,68 @@
-exports[`test renders Billing form 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Billing form 1`] = `
 <Form
   fieldsetTheme="flush soft-top@handheld scrollable soft-double-bottom"
   id="give"
   method="POST"
   submit={[Function]}
-  theme="hard">
+  theme="hard"
+>
   <div>
     <div
-      className="push-double@lap-and-up push">
+      className="push-double@lap-and-up push"
+    >
       <h4
-        className="text-center">
+        className="text-center"
+      >
         Billing Address
       </h4>
     </div>
     <div
-      className="progress-bar text-center">
+      className="progress-bar text-center"
+    >
       <div
-        className="progress">
+        className="progress"
+      >
         <div
           className="progress__item--active"
           style={
             Object {
               "zIndex": 1,
             }
-          } />
+          }
+        />
         <div
           className="progress__item--active"
           style={
             Object {
               "zIndex": 1,
             }
-          } />
+          }
+        />
         <div
           className="progress__item"
           style={
             Object {
               "zIndex": 1,
             }
-          } />
+          }
+        />
         <div
           className="progress__item"
           style={
             Object {
               "zIndex": 1,
             }
-          } />
+          }
+        />
       </div>
       <p
-        className="flush-bottom">
+        className="flush-bottom"
+      >
         <small
-          className="italic display-inline-block push-half-top">
+          className="italic display-inline-block push-half-top"
+        >
           Step 
           2
            of 
@@ -58,19 +71,22 @@ exports[`test renders Billing form 1`] = `
       </p>
     </div>
     <div
-      className="soft-sides">
+      className="soft-sides"
+    >
       <Input
         autoFocus={true}
         defaultValue={undefined}
         errorText="Please enter your address"
         label="Street Address"
         name="streetAddress"
-        validation={[Function]} />
+        validation={[Function]}
+      />
       <Input
         defaultValue={undefined}
         label="Street Address (optional)"
         name="streetAddress2"
-        validation={[Function]} />
+        validation={[Function]}
+      />
       <Select
         defaultValue="US"
         errorText="Please enter your country"
@@ -83,17 +99,21 @@ exports[`test renders Billing form 1`] = `
         }
         label="Country"
         name="country"
-        validation={[Function]} />
+        validation={[Function]}
+      />
       <Input
         defaultValue={undefined}
         errorText="Please enter your city"
         label="City"
         name="city"
-        validation={[Function]} />
+        validation={[Function]}
+      />
       <div
-        className="grid">
+        className="grid"
+      >
         <div
-          className="grid__item one-half">
+          className="grid__item one-half"
+        >
           <Select
             defaultValue="SC"
             errorText="Please enter your state"
@@ -106,17 +126,20 @@ exports[`test renders Billing form 1`] = `
             }
             label="State/Territory"
             name="state"
-            validation={[Function]} />
+            validation={[Function]}
+          />
         </div>
         <div
-          className="grid__item one-half">
+          className="grid__item one-half"
+        >
           <Input
             defaultValue={undefined}
             errorText="Please enter your zip"
             label="Zip/Postal"
             name="zip"
             onChange={[Function]}
-            validation={[Function]} />
+            validation={[Function]}
+          />
         </div>
       </div>
     </div>
@@ -125,14 +148,16 @@ exports[`test renders Billing form 1`] = `
         className="btn--small btn--dark-tertiary display-inline-block"
         href=""
         onClick={[Function]}
-        tabIndex={-1}>
+        tabIndex={-1}
+      >
         Back
       </a>
       <button
-        className="push-left btn--disabled"
+        className=" push-left btn--disabled"
         disabled={true}
         onClick={[Function]}
-        type="submit">
+        type="submit"
+      >
         Next
       </button>
     </div>
@@ -140,27 +165,32 @@ exports[`test renders Billing form 1`] = `
 </Form>
 `;
 
-exports[`test renders Confirm form 1`] = `
+exports[`renders Confirm form 1`] = `
 <Form
   fieldsetTheme="flush soft-top@handheld scrollable soft-double-bottom"
   id="give"
   method="POST"
   submit={[Function]}
-  theme="hard">
+  theme="hard"
+>
   <div>
     <div
-      className="push-double-top@lap-and-up push">
+      className="push-double-top@lap-and-up push"
+    >
       <div
-        className="grid one-whole text-left flush">
+        className="grid one-whole text-left flush"
+      >
         <div
           className="grid__item three-quarters text-left hard"
           style={
             Object {
               "verticalAlign": "middle",
             }
-          }>
+          }
+        >
           <h3
-            className="flush-bottom">
+            className="flush-bottom"
+          >
             Review Contribution
           </h3>
         </div>
@@ -170,7 +200,8 @@ exports[`test renders Confirm form 1`] = `
             Object {
               "verticalAlign": "middle",
             }
-          }>
+          }
+        >
           <button
             className="
               btn btn--small@next
@@ -179,39 +210,46 @@ exports[`test renders Confirm form 1`] = `
             "
             disabled={undefined}
             onClick={[Function]}
-            style={Object {}}>
+            style={Object {}}
+          >
             Edit
           </button>
         </div>
       </div>
     </div>
     <div
-      className="soft-sides">
+      className="soft-sides"
+    >
       <div
-        className="one-whole push-bottom" />
+        className="one-whole push-bottom"
+      />
       <div
         className="soft-half-ends push-bottom hard-sides outlined--light outlined--bottom"
         style={
           Object {
             "borderWidth": "1px",
           }
-        }>
+        }
+      >
         <div
           className="grid"
           style={
             Object {
               "verticalAlign": "middle",
             }
-          }>
+          }
+        >
           <div
             className="grid__item one-quarter"
             style={
               Object {
                 "verticalAlign": "middle",
               }
-            }>
+            }
+          >
             <h5
-              className="text-dark-secondary flush text-left">
+              className="text-dark-secondary flush text-left"
+            >
               Total
             </h5>
           </div>
@@ -221,27 +259,33 @@ exports[`test renders Confirm form 1`] = `
               Object {
                 "verticalAlign": "middle",
               }
-            }>
+            }
+          >
             <div
-              className="display-inline-block">
+              className="display-inline-block"
+            >
               <div
-                className="floating text-dark-primary text-left">
+                className="floating text-dark-primary text-left"
+              >
                 <h4
                   className="floating__item flush"
                   style={
                     Object {
                       "paddingRight": "5px",
                     }
-                  }>
+                  }
+                >
                   $
                 </h4>
                 <h2
                   className="floating__item flush"
-                  style={undefined}>
+                  style={undefined}
+                >
                   0
                 </h2>
                 <h4
-                  className="floating__item flush">
+                  className="floating__item flush"
+                >
                   .
                   00
                 </h4>
@@ -251,10 +295,12 @@ exports[`test renders Confirm form 1`] = `
         </div>
       </div>
       <div
-        className="one-whole soft-half-top" />
+        className="one-whole soft-half-top"
+      />
       <button
         className="btn soft-half-top one-whole"
-        type="submit">
+        type="submit"
+      >
         <span>
           Give
         </span>
@@ -263,17 +309,19 @@ exports[`test renders Confirm form 1`] = `
           className="background--fill display-inline-block"
           style={
             Object {
-              "backgroundImage": "url(\'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAA8CAYAAADxJz2MAAAABGdBTUEAALGPC/xhBQAAAc9JREFUeAHt3DFOwzAUxnGcROoMEx04Q4/AoSraoXMWqp4DjgFH4AwgdWvnDlV4FoyOn+xPlVrlnwEJ+32h/eWlcqjkcGfHbrd7Op1Or8MwPNuv8zjGMSqwDyF8tG27Wq/XP+Ef78vw7kcjTKQEDl3XLRrrvC14KR937OF8Pm8bK4u3LUeFQPzIa+zHY0WWyJ/APHYghyDQjWU3m00Ym5vieN/3Q+p904EplYIxAAuwUqUAplQKxgAswEqVAphSKRgDsAArVQpgSqVgDMACrFQpgCmVgrHRJxHvHGMrcy93rfO1T150oHhFAQRQFBDjdCCAooAYpwMBFAXEePU6sHbdJL7eq4tzC4uXBEAARQExTgcCKAqIcToQQFFAjNOBAIoCYrz6SeTS/5G+lScdbmGxAwEEUBQQ43QggKKAGKcDARQFxHj1OvBW1mmijxvnFnaJ8gUA5n3cWQBdonwBgHkfdxZAlyhfAGDex50F0CXKFwCY93FnAXSJ8gUA5n3cWQBdonxBuPR3G/k/f/uzdKB4DSPgXjzHlOP7xjaR+ZyygPLeo11jO/C82EkOyommmDW842w2WzVx+6K4A48NvBkEt7PfDXHrp3fDWyyXy+9ftplH0FR79EYAAAAASUVORK5CYII=\')",
+              "backgroundImage": "url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAA8CAYAAADxJz2MAAAABGdBTUEAALGPC/xhBQAAAc9JREFUeAHt3DFOwzAUxnGcROoMEx04Q4/AoSraoXMWqp4DjgFH4AwgdWvnDlV4FoyOn+xPlVrlnwEJ+32h/eWlcqjkcGfHbrd7Op1Or8MwPNuv8zjGMSqwDyF8tG27Wq/XP+Ef78vw7kcjTKQEDl3XLRrrvC14KR937OF8Pm8bK4u3LUeFQPzIa+zHY0WWyJ/APHYghyDQjWU3m00Ym5vieN/3Q+p904EplYIxAAuwUqUAplQKxgAswEqVAphSKRgDsAArVQpgSqVgDMACrFQpgCmVgrHRJxHvHGMrcy93rfO1T150oHhFAQRQFBDjdCCAooAYpwMBFAXEePU6sHbdJL7eq4tzC4uXBEAARQExTgcCKAqIcToQQFFAjNOBAIoCYrz6SeTS/5G+lScdbmGxAwEEUBQQ43QggKKAGKcDARQFxHj1OvBW1mmijxvnFnaJ8gUA5n3cWQBdonwBgHkfdxZAlyhfAGDex50F0CXKFwCY93FnAXSJ8gUA5n3cWQBdonxBuPR3G/k/f/uzdKB4DSPgXjzHlOP7xjaR+ZyygPLeo11jO/C82EkOyommmDW842w2WzVx+6K4A48NvBkEt7PfDXHrp3fDWyyXy+9ftplH0FR79EYAAAAASUVORK5CYII=')",
               "borderRadius": "3px",
               "height": "21px",
               "position": "inherit",
               "top": "3px",
               "width": "30px",
             }
-          } />
+          }
+        />
       </button>
       <div
-        className="display-block soft-half-top text-center">
+        className="display-block soft-half-top text-center"
+      >
         <h6
           className="outlined--light outlined--bottom display-inline-block text-dark-tertiary"
           onClick={[Function]}
@@ -281,7 +329,8 @@ exports[`test renders Confirm form 1`] = `
             Object {
               "cursor": "pointer",
             }
-          }>
+          }
+        >
           Change Payment Accounts
         </h6>
       </div>
@@ -290,64 +339,79 @@ exports[`test renders Confirm form 1`] = `
 </Form>
 `;
 
-exports[`test renders Error 1`] = `
+exports[`renders Error 1`] = `
 <div
-  className="soft soft-double-ends push-double-top@anchored one-whole text-center">
+  className="soft soft-double-ends push-double-top@anchored one-whole text-center"
+>
   <div
-    className="push-double-top">
+    className="push-double-top"
+  >
     <svg
       height="61px"
       version="1.1"
       viewBox="0 0 60 61"
-      width="60px">
+      width="60px"
+    >
       <g
         fill="none"
         fillRule="evenodd"
         stroke="none"
-        strokeWidth="1">
+        strokeWidth="1"
+      >
         <g
           fill="#C64F55"
-          transform="translate(-90.000000, -163.000000)">
+          transform="translate(-90.000000, -163.000000)"
+        >
           <g
-            transform="translate(60.000000, 0.000000)">
+            transform="translate(60.000000, 0.000000)"
+          >
             <g
-              transform="translate(30.000000, 163.000000)">
+              transform="translate(30.000000, 163.000000)"
+            >
               <path
                 d="M30,54.33 L30,54.33 C43.254834,54.33 54,43.584834 54,30.33 C54,17.075166 43.254834,6.33 30,6.33 C16.745166,6.33 6,17.075166 6,30.33 C6,43.584834 16.745166,54.33 30,54.33 L30,54.33 Z M30,60.33 L30,60.33 C13.4314575,60.33 0,46.8985425 0,30.33 C0,13.7614575 13.4314575,0.33 30,0.33 C46.5685425,0.33 60,13.7614575 60,30.33 C60,46.8985425 46.5685425,60.33 30,60.33 L30,60.33 Z"
-                id="Shape" />
+                id="Shape"
+              />
               <path
                 d="M28.784,33.438 L28.784,33.438 L27.9222343,33.438 L27.7949654,32.5856839 L26.7389654,25.5136839 L26.728,25.366 L26.728,16.502 L26.728,15.502 L27.728,15.502 L32.272,15.502 L33.272,15.502 L33.272,16.502 L33.272,25.366 L33.2610346,25.5136839 L32.2050346,32.5856839 L32.0777657,33.438 L31.216,33.438 L28.784,33.438 Z M26.504,41.662 L26.504,41.662 C26.504,39.6282997 27.9530061,38.166 30,38.166 C32.0469939,38.166 33.496,39.6282997 33.496,41.662 C33.496,43.6957003 32.0469939,45.158 30,45.158 C27.9530061,45.158 26.504,43.6957003 26.504,41.662 L26.504,41.662 Z"
-                id="Shape" />
+                id="Shape"
+              />
             </g>
           </g>
         </g>
       </g>
     </svg>
     <h3
-      className="text-alert push-ends">
+      className="text-alert push-ends"
+    >
       Uh Oh! Looks like there was a problem processing your contribution!
     </h3>
     <p
-      className="text-left">
+      className="text-left"
+    >
       error
     </p>
     <div
-      className="one-whole text-center soft-ends">
+      className="one-whole text-center soft-ends"
+    >
       <button
         className="btn--small btn--dark-tertiary one-whole"
-        onClick={[Function]}>
+        onClick={[Function]}
+      >
         Try Again
       </button>
     </div>
     <p
-      className="test-dark-tertiary text-left">
+      className="test-dark-tertiary text-left"
+    >
       <em>
         If you would like a member of our customer support team to follow up with you regarding this error, click
          
         <a
           href="//rock.newspring.cc/workflows/152?Topic=Stewardship"
           rel="noopener noreferrer"
-          target="_blank">
+          target="_blank"
+        >
           here
         </a>
       </em>
@@ -356,7 +420,7 @@ exports[`test renders Error 1`] = `
 </div>
 `;
 
-exports[`test renders Loading 1`] = `
+exports[`renders Loading 1`] = `
 <div
   className="background--primary"
   style={
@@ -368,11 +432,14 @@ exports[`test renders Loading 1`] = `
       "top": 0,
       "zIndex": 9999,
     }
-  }>
+  }
+>
   <div
-    className="soft soft-double-ends push-double-top one-whole text-center">
+    className="soft soft-double-ends push-double-top one-whole text-center"
+  >
     <div
-      className="push-double-top">
+      className="push-double-top"
+    >
       <div
         className="loader_9h6gj"
         style={
@@ -380,72 +447,86 @@ exports[`test renders Loading 1`] = `
             "borderColor": "#fff #6BAC43 #fff #fff",
             "borderWidth": "7px",
           }
-        } />
+        }
+      />
       <h3
-        className="text-light-primary push-top">
-        We\'re Processing Your Contribution
+        className="text-light-primary push-top"
+      >
+        We're Processing Your Contribution
       </h3>
       <p
-        className="text-light-primary">
-        Please don\'t close this window while your contribution is being processed.
+        className="text-light-primary"
+      >
+        Please don't close this window while your contribution is being processed.
       </p>
     </div>
   </div>
 </div>
 `;
 
-exports[`test renders Payment form 1`] = `
+exports[`renders Payment form 1`] = `
 <Form
   fieldsetTheme="flush soft-top@handheld scrollable soft-double-bottom"
   id="give"
   method="POST"
   submit={[Function]}
-  theme="hard">
+  theme="hard"
+>
   <div>
     <div
-      className="push-double@lap-and-up push">
+      className="push-double@lap-and-up push"
+    >
       <h4
-        className="text-center">
+        className="text-center"
+      >
         Payment Details
       </h4>
     </div>
     <div
-      className="progress-bar text-center">
+      className="progress-bar text-center"
+    >
       <div
-        className="progress">
+        className="progress"
+      >
         <div
           className="progress__item--active"
           style={
             Object {
               "zIndex": 1,
             }
-          } />
+          }
+        />
         <div
           className="progress__item--active"
           style={
             Object {
               "zIndex": 1,
             }
-          } />
+          }
+        />
         <div
           className="progress__item--active"
           style={
             Object {
               "zIndex": 1,
             }
-          } />
+          }
+        />
         <div
           className="progress__item"
           style={
             Object {
               "zIndex": 1,
             }
-          } />
+          }
+        />
       </div>
       <p
-        className="flush-bottom">
+        className="flush-bottom"
+      >
         <small
-          className="italic display-inline-block push-half-top">
+          className="italic display-inline-block push-half-top"
+        >
           Step 
           3
            of 
@@ -459,7 +540,8 @@ exports[`test renders Payment form 1`] = `
         Object {
           "backgroundColor": "#fff",
         }
-      }>
+      }
+    >
       <div
         className="transition text-center toggle__item"
         data-toggle={0}
@@ -468,7 +550,8 @@ exports[`test renders Payment form 1`] = `
           Object {
             "width": "50%",
           }
-        }>
+        }
+      >
         Credit Card
       </div>
       <div
@@ -479,22 +562,26 @@ exports[`test renders Payment form 1`] = `
           Object {
             "width": "50%",
           }
-        }>
+        }
+      >
         Bank Account
       </div>
       <div
-        className="grid text-left toggle-arrow soft-sides">
+        className="grid text-left toggle-arrow soft-sides"
+      >
         <div
           className="transition grid__item hard one-half toggle-arrow__item "
           style={
             Object {
               "marginLeft": "0%",
             }
-          } />
+          }
+        />
       </div>
     </div>
     <div
-      className="soft">
+      className="soft"
+    >
       <div>
         <Input
           defaultValue={undefined}
@@ -505,19 +592,23 @@ exports[`test renders Payment form 1`] = `
           name="billing-cc-number"
           onChange={[Function]}
           type="tel"
-          validation={[Function]}>
+          validation={[Function]}
+        >
           <div
             className="locked locked-right soft-double-right locked-top"
             style={
               Object {
                 "top": "-3px",
               }
-            } />
+            }
+          />
         </Input>
         <div
-          className="grid">
+          className="grid"
+        >
           <div
-            className="grid__item one-half">
+            className="grid__item one-half"
+          >
             <Input
               data-expiry-input={true}
               defaultValue={undefined}
@@ -528,10 +619,12 @@ exports[`test renders Payment form 1`] = `
               name="billing-cc-exp"
               onChange={[Function]}
               type="tel"
-              validation={[Function]} />
+              validation={[Function]}
+            />
           </div>
           <div
-            className="grid__item one-half">
+            className="grid__item one-half"
+          >
             <Input
               defaultValue={undefined}
               errorText="Please enter a valid ccv number"
@@ -540,14 +633,16 @@ exports[`test renders Payment form 1`] = `
               name="billing-cvv"
               onChange={[Function]}
               type="tel"
-              validation={[Function]} />
+              validation={[Function]}
+            />
           </div>
         </div>
       </div>
       <Checkbox
         clicked={[Function]}
         defaultValue={true}
-        name="savePayment">
+        name="savePayment"
+      >
         Save this payment for future contributions
       </Checkbox>
       <Input
@@ -561,21 +656,24 @@ exports[`test renders Payment form 1`] = `
         errorText="Please enter a name for the account"
         label="Saved Account Name"
         name="accountName"
-        validation={[Function]} />
+        validation={[Function]}
+      />
     </div>
     <div>
       <a
         className="btn--small btn--dark-tertiary display-inline-block"
         href=""
         onClick={[Function]}
-        tabIndex={-1}>
+        tabIndex={-1}
+      >
         Back
       </a>
       <button
         className="push-left btn--disabled"
         disabled={true}
         onClick={[Function]}
-        type="submit">
+        type="submit"
+      >
         Next
       </button>
     </div>
@@ -583,58 +681,69 @@ exports[`test renders Payment form 1`] = `
 </Form>
 `;
 
-exports[`test renders Personal form 1`] = `
+exports[`renders Personal form 1`] = `
 <Form
   fieldsetTheme="flush soft-top@handheld scrollable soft-double-bottom"
   id="give"
   method="POST"
   submit={[Function]}
-  theme="hard">
+  theme="hard"
+>
   <div>
     <div
-      className="push-double@lap-and-up push">
+      className="push-double@lap-and-up push"
+    >
       <h4
-        className="text-center">
+        className="text-center"
+      >
         Personal Details
       </h4>
     </div>
     <div
-      className="progress-bar text-center">
+      className="progress-bar text-center"
+    >
       <div
-        className="progress">
+        className="progress"
+      >
         <div
           className="progress__item--active"
           style={
             Object {
               "zIndex": 1,
             }
-          } />
+          }
+        />
         <div
           className="progress__item"
           style={
             Object {
               "zIndex": 1,
             }
-          } />
+          }
+        />
         <div
           className="progress__item"
           style={
             Object {
               "zIndex": 1,
             }
-          } />
+          }
+        />
         <div
           className="progress__item"
           style={
             Object {
               "zIndex": 1,
             }
-          } />
+          }
+        />
       </div>
       <p
-        className="flush-bottom">
+        className="flush-bottom"
+      >
         <small
-          className="italic display-inline-block push-half-top">
+          className="italic display-inline-block push-half-top"
+        >
           Step 
           1
            of 
@@ -643,26 +752,32 @@ exports[`test renders Personal form 1`] = `
       </p>
     </div>
     <div
-      className="soft-sides">
+      className="soft-sides"
+    >
       <div
-        className="grid">
+        className="grid"
+      >
         <div
-          className="grid__item one-half">
+          className="grid__item one-half"
+        >
           <Input
             defaultValue={undefined}
             errorText="Please enter your first name"
             label="First Name"
             name="firstName"
-            validation={[Function]} />
+            validation={[Function]}
+          />
         </div>
         <div
-          className="grid__item one-half">
+          className="grid__item one-half"
+        >
           <Input
             defaultValue={undefined}
             errorText="Please enter your last name"
             label="Last Name"
             name="lastName"
-            validation={[Function]} />
+            validation={[Function]}
+          />
         </div>
       </div>
       <Input
@@ -672,7 +787,8 @@ exports[`test renders Personal form 1`] = `
         name="email"
         placeholder="user@email.com"
         type="email"
-        validation={[Function]} />
+        validation={[Function]}
+      />
       <style>
         .input--active select { color: #303030 }; .input--focused label { color: #858585 }
       </style>
@@ -688,13 +804,15 @@ exports[`test renders Personal form 1`] = `
         label="Campus"
         name="campus"
         type="campus"
-        validation={[Function]} />
+        validation={[Function]}
+      />
     </div>
     <div>
       <button
         className="btn"
         disabled={false}
-        onClick={[Function]}>
+        onClick={[Function]}
+      >
         Next
       </button>
     </div>
@@ -702,47 +820,58 @@ exports[`test renders Personal form 1`] = `
 </Form>
 `;
 
-exports[`test renders Success 1`] = `
+exports[`renders Success 1`] = `
 <div
-  className="soft soft-double-ends push-double-top@anchored one-whole text-center">
+  className="soft soft-double-ends push-double-top@anchored one-whole text-center"
+>
   <div
-    className="push-double-top">
+    className="push-double-top"
+  >
     <svg
       height="61px"
       version="1.1"
       viewBox="0 0 60 61"
-      width="60px">
+      width="60px"
+    >
       <g
         fill="none"
         fillRule="evenodd"
         stroke="none"
-        strokeWidth="1">
+        strokeWidth="1"
+      >
         <g
           fill="#6BAC43"
-          transform="translate(-90.000000, -159.000000)">
+          transform="translate(-90.000000, -159.000000)"
+        >
           <g
-            transform="translate(90.000000, 159.903000)">
+            transform="translate(90.000000, 159.903000)"
+          >
             <path
-              d="M25.9570657,38.8180789 L26.6666667,39.5327125 L27.3762676,38.8180789 L40.709601,25.390183 L41.4092427,24.6855792 L40.709601,23.9809754 L38.0429343,21.2953962 L37.3333333,20.5807626 L36.6237324,21.2953962 L25.9570657,32.037713 L27.3762676,32.037713 L23.3762676,28.0093442 L22.6666667,27.2947106 L21.9570657,28.0093442 L19.290399,30.6949234 L18.5907573,31.3995272 L19.290399,32.104131 L25.9570657,38.8180789 L25.9570657,38.8180789 Z" />
+              d="M25.9570657,38.8180789 L26.6666667,39.5327125 L27.3762676,38.8180789 L40.709601,25.390183 L41.4092427,24.6855792 L40.709601,23.9809754 L38.0429343,21.2953962 L37.3333333,20.5807626 L36.6237324,21.2953962 L25.9570657,32.037713 L27.3762676,32.037713 L23.3762676,28.0093442 L22.6666667,27.2947106 L21.9570657,28.0093442 L19.290399,30.6949234 L18.5907573,31.3995272 L19.290399,32.104131 L25.9570657,38.8180789 L25.9570657,38.8180789 Z"
+            />
             <path
-              d="M30,54 L30,54 C43.254834,54 54,43.254834 54,30 C54,16.745166 43.254834,6 30,6 C16.745166,6 6,16.745166 6,30 C6,43.254834 16.745166,54 30,54 L30,54 Z M30,60 L30,60 C13.4314575,60 0,46.5685425 0,30 C0,13.4314575 13.4314575,0 30,0 C46.5685425,0 60,13.4314575 60,30 C60,46.5685425 46.5685425,60 30,60 L30,60 Z" />
+              d="M30,54 L30,54 C43.254834,54 54,43.254834 54,30 C54,16.745166 43.254834,6 30,6 C16.745166,6 6,16.745166 6,30 C6,43.254834 16.745166,54 30,54 L30,54 Z M30,60 L30,60 C13.4314575,60 0,46.5685425 0,30 C0,13.4314575 13.4314575,0 30,0 C46.5685425,0 60,13.4314575 60,30 C60,46.5685425 46.5685425,60 30,60 L30,60 Z"
+            />
           </g>
         </g>
       </g>
     </svg>
     <h3
-      className="text-primary push-ends">
+      className="text-primary push-ends"
+    >
       Success!
     </h3>
     <p
-      className="test-dark-tertiary text-left">
+      className="test-dark-tertiary text-left"
+    >
       <em>
         If you have any questions please call our Finance Team at 864-965-9990 or
          
         <a
           href="//rock.newspring.cc/workflows/152?Topic=Stewardship"
           rel="noopener noreferrer"
-          target="_blank">
+          target="_blank"
+        >
           contact us
         </a>
          
@@ -753,7 +882,7 @@ exports[`test renders Success 1`] = `
 </div>
 `;
 
-exports[`test should show loading state with no campus info 1`] = `
+exports[`should show loading state with no campus info 1`] = `
 <div
   className="background--primary"
   style={
@@ -765,11 +894,14 @@ exports[`test should show loading state with no campus info 1`] = `
       "top": 0,
       "zIndex": 9999,
     }
-  }>
+  }
+>
   <div
-    className="soft soft-double-ends push-double-top one-whole text-center">
+    className="soft soft-double-ends push-double-top one-whole text-center"
+  >
     <div
-      className="push-double-top">
+      className="push-double-top"
+    >
       <div
         className="loader_9h6gj"
         style={
@@ -777,14 +909,17 @@ exports[`test should show loading state with no campus info 1`] = `
             "borderColor": "#fff #6BAC43 #fff #fff",
             "borderWidth": "7px",
           }
-        } />
+        }
+      />
       <h3
-        className="text-light-primary push-top">
-        We\'re Preparing Your Contribution
+        className="text-light-primary push-top"
+      >
+        We're Preparing Your Contribution
       </h3>
       <p
-        className="text-light-primary">
-        Please don\'t close this window while your contribution is being prepared.
+        className="text-light-primary"
+      >
+        Please don't close this window while your contribution is being prepared.
       </p>
     </div>
   </div>

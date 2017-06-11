@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`giving homepage layout should have a consistent data shape 1`] = `
 Object {
   "definitions": Array [

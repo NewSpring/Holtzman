@@ -1,9 +1,12 @@
-exports[`test doesn't render if loading 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`doesn't render if loading 1`] = `
 <Layout
-  recentLikedLoading={false} />
+  recentLikedLoading={false}
+/>
 `;
 
-exports[`test parses query correctly 1`] = `
+exports[`parses query correctly 1`] = `
 "query GetPromotions($setName: String!) {
   items: lowReorderSets(setName: $setName) {
     title
@@ -15,7 +18,7 @@ exports[`test parses query correctly 1`] = `
       date
     }
     content {
-      images(sizes: [\"large\"]) {
+      images(sizes: [\\"large\\"]) {
         fileName
         fileLabel
         url
@@ -26,7 +29,7 @@ exports[`test parses query correctly 1`] = `
 "
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <Layout
   featuredItem={
     Object {
@@ -56,5 +59,6 @@ exports[`test renders with props 1`] = `
         "status": "open",
       },
     ]
-  } />
+  }
+/>
 `;

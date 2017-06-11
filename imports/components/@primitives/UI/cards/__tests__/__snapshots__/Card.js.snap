@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Card should render with no props 1`] = `
 <Component>
   <div
@@ -8,10 +10,12 @@ exports[`Card should render with no props 1`] = `
         "display": "block",
         "overflow": "hidden",
       }
-    }>
+    }
+  >
     <div
       className="plain undefined"
-      data-spec="card-image-wrapper">
+      data-spec="card-image-wrapper"
+    >
       <ImageLoader
         data-spec="card-image-loader"
         imageclasses={
@@ -26,18 +30,22 @@ exports[`Card should render with no props 1`] = `
         renderElement={[Function]}
         style={
           Object {
-            "backgroundImage": "url(\'undefined\')",
+            "backgroundImage": "url('undefined')",
           }
         }
-        wrapper={[Function]}>
+        wrapper={[Function]}
+      >
         <span>
           <span
             className="imageloader pending"
-            style={Object {}}>
+            style={Object {}}
+          >
             <div
-              className="background--fill card__image background-light-tertiary ratio--landscape">
+              className="background--fill card__image background-light-tertiary ratio--landscape"
+            >
               <div
-                className="ratio__item" />
+                className="ratio__item"
+              />
             </div>
           </span>
         </span>
@@ -45,7 +53,8 @@ exports[`Card should render with no props 1`] = `
     </div>
     <div
       className="card__item soft text-center soft-double-ends"
-      data-spec="card-item" />
+      data-spec="card-item"
+    />
   </div>
 </Component>
 `;

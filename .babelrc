@@ -1,8 +1,8 @@
 {
   "presets": [
     "meteor",
-    "es2015-loose",
     "stage-0",
+    "es2015",
     "react"
   ],
   "plugins": [
@@ -15,5 +15,12 @@
     "transform-react-remove-prop-types",
     "transform-dead-code-elimination",
     "transform-flow-strip-types"
-  ]
+  ],
+  "env": {
+    "test": {
+      "plugins": [
+        "babel-plugin-dynamic-import-node"
+      ]
+    }
+  }
 }

@@ -1,6 +1,8 @@
-exports[`test doesn't render on cordova 1`] = `null`;
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`test renders 1`] = `
+exports[`doesn't render on cordova 1`] = `null`;
+
+exports[`renders 1`] = `
 <Link
   className="locked-top locked-left soft-double@lap-and-up soft h7 text-dark-secondary plain"
   onlyActiveOnIndex={false}
@@ -9,14 +11,16 @@ exports[`test renders 1`] = `
       "zIndex": 10,
     }
   }
-  to="/profile/settings">
+  to="/profile/settings"
+>
   <i
     className="icon-arrow-back soft-half-right display-inline-block"
     style={
       Object {
         "verticalAlign": "middle",
       }
-    } />
+    }
+  />
   <span
     className="display-inline-block"
     style={
@@ -24,7 +28,8 @@ exports[`test renders 1`] = `
         "marginTop": "3px",
         "verticalAlign": "middle",
       }
-    }>
+    }
+  >
     Back
   </span>
 </Link>

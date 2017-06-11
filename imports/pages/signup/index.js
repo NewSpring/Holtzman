@@ -1,5 +1,6 @@
+import PropTypes from "prop-types";
 /* eslint-disable react/prefer-stateless-function */
-import { Component, PropTypes } from "react";
+import { Component } from "react";
 import { connect } from "react-redux";
 import { Meteor } from "meteor/meteor";
 import gql from "graphql-tag";
@@ -97,7 +98,15 @@ const Routes = [
     component: Template,
     onEnter: (nextState, replace, callback) => {
       const { query } = nextState.location;
-      if (!query.redirect) { callback(); return; }
+
+      // XXX no query param - check if logged in. redirect to profile if so
+      if (!query.redirect) {
+        if (!Meteor.userId()) { callback(); return; }
+        replace({ pathname: Meteor.isCordova ? "profile" : "profile/settings" });
+        callback();
+        return;
+      }
+
       if (typeof query.return_person_guid === "undefined" || !Meteor.userId()) {
         callback();
         return;

@@ -1,25 +1,24 @@
-
 import { Meteor } from "meteor/meteor";
-import { Component, PropTypes } from "react";
+import PropTypes from "prop-types";
+import { Component } from "react";
 import { connect } from "react-redux";
 
 import { modal as modalActions, nav as navActions } from "../../../data/store";
 
 import Modal from "./SideModal";
+import PromptModal from "./PromptModal";
 
 class SideModalContainerWithoutData extends Component {
-
   static propTypes = {
     dispatch: PropTypes.func,
-    modal: PropTypes.object, // eslint-disable-line
-    navigation: PropTypes.object, // eslint-disable-line
+    modal: PropTypes.object,
+    navigation: PropTypes.object,
     path: PropTypes.string,
-  }
-
+  };
 
   state = {
     previous: null,
-  }
+  };
 
   componentDidMount() {
     if (!this.props.modal.props.keepNav && this.props.modal.visible) {
@@ -40,10 +39,7 @@ class SideModalContainerWithoutData extends Component {
     ) {
       this.props.dispatch(navActions.setLevel("MODAL"));
       this.setState({ previous: this.props.navigation.level });
-    } else if (
-      nextProps.modal.visible &&
-      nextProps.navigation.level === "DOWN"
-    ) {
+    } else if (nextProps.modal.visible && nextProps.navigation.level === "DOWN") {
       this.setState({ previous: this.props.navigation.level });
     }
 
@@ -59,7 +55,12 @@ class SideModalContainerWithoutData extends Component {
       this.props.dispatch(navActions.setLevel(previous));
     }
 
-    if (!nextProps.modal.visible && (this.props.path !== nextProps.path)) {
+    if (this.props.modal.visible && !nextProps.modal.visible) {
+      // never stay in prompt modal mode on modal close
+      this.props.dispatch(modalActions.update({ promptModal: false }));
+    }
+
+    if (!nextProps.modal.visible && this.props.path !== nextProps.path) {
       this.props.dispatch(modalActions.hide());
     }
   }
@@ -69,9 +70,10 @@ class SideModalContainerWithoutData extends Component {
       const root = document.documentElement;
 
       if (!nextProps.modal.visible) {
-        root.className = root.className.split(" ").filter((className) =>
-          className !== "modal--opened"
-        ).join(" ");
+        root.className = root.className
+          .split(" ")
+          .filter((className) => className !== "modal--opened")
+          .join(" ");
       } else if (!this.props.modal.visible && nextProps.modal.visible) {
         root.className += " modal--opened";
       }
@@ -82,7 +84,7 @@ class SideModalContainerWithoutData extends Component {
     if (Meteor.isClient) {
       document.removeEventListener("keyup", this.bindEsc, false);
     }
-    this.props.dispatch(navActions.resetColor());
+   this.props.dispatch(navActions.resetColor());
   }
 
   handleKeyPress = ({ keyCode }) => {
@@ -94,7 +96,7 @@ class SideModalContainerWithoutData extends Component {
 
     // up arrow
     if (keyCode === 38 && this.scrollElement) this.scrollElement.scrollTop -= 10;
-  }
+  };
 
   close = (e) => {
     const { target } = e;
@@ -103,14 +105,28 @@ class SideModalContainerWithoutData extends Component {
     if (this.props.modal.props.forceOpen) return;
 
     this.props.dispatch(modalActions.hide());
-  }
+  };
 
   captureRef = (ref) => {
     this.scrollElement = ref;
-  }
+  };
 
   render() {
     const { visible, content, props } = this.props.modal;
+    if (props && props.promptModal) {
+      const { profile, hero } = props;
+      const userProfile = hero && !profile ? null : profile;
+      return (
+        <PromptModal
+          close={this.close}
+          profileImage={userProfile}
+          heroImage={hero}
+          component={content}
+          visible={visible}
+          {...this.props}
+        />
+      );
+    }
     return (
       <Modal
         close={this.close}
@@ -134,8 +150,4 @@ const withRedux = connect(map);
 
 export default withRedux(SideModalContainerWithoutData);
 
-export {
-  SideModalContainerWithoutData,
-  map,
-  withRedux,
-};
+export { SideModalContainerWithoutData, map, withRedux };

@@ -1,4 +1,6 @@
-exports[`test renders with props 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders with props 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)>
     <Right
@@ -7,8 +9,9 @@ exports[`test renders with props 1`] = `
           "background--left",
         ]
       }
-      mobile={false}>
-      <ControllableWrapper
+      mobile={false}
+    >
+      <AsyncComponent
         autoCenter={true}
         hover={null}
         markers={
@@ -26,7 +29,8 @@ exports[`test renders with props 1`] = `
           ]
         }
         onChildClick={[Function]}
-        onMarkerHover={[Function]} />
+        onMarkerHover={[Function]}
+      />
     </Right>
   </Connect(SplitContainerWithoutData)>
   <Left
@@ -35,7 +39,8 @@ exports[`test renders with props 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <Layout
       LoadingComponent={[Function]}
       campusLocations={Array []}
@@ -91,12 +96,13 @@ exports[`test renders with props 1`] = `
         ]
       }
       toggleSearch={[Function]}
-      toggleTags={[Function]} />
+      toggleTags={[Function]}
+    />
   </Left>
 </div>
 `;
 
-exports[`test renders without map on mobile 1`] = `
+exports[`renders without map on mobile 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)>
     <Right
@@ -105,7 +111,8 @@ exports[`test renders without map on mobile 1`] = `
           "background--left",
         ]
       }
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -113,7 +120,8 @@ exports[`test renders without map on mobile 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <Layout
       LoadingComponent={[Function]}
       campusLocations={Array []}
@@ -169,12 +177,13 @@ exports[`test renders without map on mobile 1`] = `
         ]
       }
       toggleSearch={[Function]}
-      toggleTags={[Function]} />
+      toggleTags={[Function]}
+    />
   </Left>
 </div>
 `;
 
-exports[`test renders without map on server 1`] = `
+exports[`renders without map on server 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)>
     <Right
@@ -183,7 +192,8 @@ exports[`test renders without map on server 1`] = `
           "background--left",
         ]
       }
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -191,7 +201,8 @@ exports[`test renders without map on server 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <Layout
       LoadingComponent={[Function]}
       campusLocations={Array []}
@@ -247,7 +258,8 @@ exports[`test renders without map on server 1`] = `
         ]
       }
       toggleSearch={[Function]}
-      toggleTags={[Function]} />
+      toggleTags={[Function]}
+    />
   </Left>
 </div>
 `;

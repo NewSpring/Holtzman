@@ -1,4 +1,4 @@
-import { PropTypes } from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router";
 import { Meteor } from "meteor/meteor";
 
@@ -6,7 +6,7 @@ import Meta from "../../../components/shared/meta";
 
 const rockUrl = Meteor.settings.public.rock.baseURL;
 
-const Layout = ({ group, leaders, isLeader, join }) => (
+const Layout = ({ group, leaders, isLeader, join, loginParam }) => (
   <section className="background--light-secondary hard">
     {/* Meta */}
     <Meta
@@ -98,7 +98,7 @@ const Layout = ({ group, leaders, isLeader, join }) => (
                     target="_blank"
                     className={className}
                     href={
-                      `${rockUrl}groups/leader?GroupId=${group.entityId}`
+                      `${rockUrl}page/521?GroupId=${group.entityId}&${loginParam}`
                     }
                   >
                     Manage Group

@@ -1,5 +1,6 @@
+import PropTypes from "prop-types";
 // @flow
-import { Component, PropTypes } from "react";
+import { Component } from "react";
 // $FlowMeteor
 import { Meteor } from "meteor/meteor";
 import { graphql } from "react-apollo";

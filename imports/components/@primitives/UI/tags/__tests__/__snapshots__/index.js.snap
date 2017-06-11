@@ -1,4 +1,6 @@
-exports[`test renders active version 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders active version 1`] = `
 <span
   className="tag push-half-right tag--clickable tag--active test class"
   onClick={[Function]}
@@ -6,12 +8,13 @@ exports[`test renders active version 1`] = `
     Object {
       "color": "red",
     }
-  }>
+  }
+>
   testLabel
 </span>
 `;
 
-exports[`test renders cordova active version 1`] = `
+exports[`renders cordova active version 1`] = `
 <span
   className="tag push-half-right tag--clickable tag--nohover--active test class"
   onClick={[Function]}
@@ -19,12 +22,13 @@ exports[`test renders cordova active version 1`] = `
     Object {
       "color": "red",
     }
-  }>
+  }
+>
   testLabel
 </span>
 `;
 
-exports[`test renders unclickeable version 1`] = `
+exports[`renders unclickeable version 1`] = `
 <span
   className="tag push-half-right tag--active test class"
   onClick={[Function]}
@@ -32,12 +36,13 @@ exports[`test renders unclickeable version 1`] = `
     Object {
       "color": "red",
     }
-  }>
+  }
+>
   testLabel
 </span>
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <span
   className="tag push-half-right tag--clickable tag--active test class"
   onClick={[Function]}
@@ -45,12 +50,13 @@ exports[`test renders with props 1`] = `
     Object {
       "color": "red",
     }
-  }>
+  }
+>
   testLabel
 </span>
 `;
 
-exports[`test works with val 1`] = `
+exports[`works with val 1`] = `
 <span
   className="tag push-half-right tag--clickable tag--active test class"
   onClick={[Function]}
@@ -58,7 +64,8 @@ exports[`test works with val 1`] = `
     Object {
       "color": "red",
     }
-  }>
+  }
+>
   testVal
 </span>
 `;

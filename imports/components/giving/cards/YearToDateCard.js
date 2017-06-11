@@ -1,6 +1,7 @@
 // @flow
 import { Link } from "react-router";
 import LineGraph from "../../@primitives/UI/graphs/LineGraph";
+
 import Currency from "../../@primitives/typography/currency";
 
 type IYearToDateCard = {

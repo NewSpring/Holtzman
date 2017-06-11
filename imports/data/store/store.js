@@ -23,7 +23,7 @@ const createReduxStore = (initialState, history) => {
     },
   };
 
-  const sharedMiddlewares = [...middlewares, ...GraphQL.middleware()];
+  const sharedMiddlewares = [...middlewares, GraphQL.middleware()].filter(x => !!x);
 
   const reduxRouterMiddleware = syncHistory(history);
 

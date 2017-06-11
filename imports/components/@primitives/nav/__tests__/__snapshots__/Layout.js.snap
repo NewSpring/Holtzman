@@ -1,17 +1,20 @@
-exports[`test layoutClasses accounts for light nav bar 1`] = `"one-whole floating soft-half locked-left locked-bottom hard-ends@palm hard-sides@palm-wide-and-up soft-half-top@palm-wide-and-up nav-bar_7julxg nav-bar-border_m7kvnd"`;
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`test layoutClasses appends additional classes 1`] = `"one-whole floating soft-half locked-left locked-bottom hard-ends@palm hard-sides@palm-wide-and-up soft-half-top@palm-wide-and-up one two"`;
+exports[`layoutClasses accounts for light nav bar 1`] = `"one-whole floating soft-half locked-left locked-bottom hard-ends@palm hard-sides@palm-wide-and-up soft-half-top@palm-wide-and-up nav-bar_7julxg nav-bar-border_m7kvnd"`;
 
-exports[`test layoutClasses returns default 1`] = `"one-whole floating soft-half locked-left locked-bottom hard-ends@palm hard-sides@palm-wide-and-up soft-half-top@palm-wide-and-up nav-bar_7julxg"`;
+exports[`layoutClasses appends additional classes 1`] = `"one-whole floating soft-half locked-left locked-bottom hard-ends@palm hard-sides@palm-wide-and-up soft-half-top@palm-wide-and-up one two"`;
 
-exports[`test renders with props 1`] = `
+exports[`layoutClasses returns default 1`] = `"one-whole floating soft-half locked-left locked-bottom hard-ends@palm hard-sides@palm-wide-and-up soft-half-top@palm-wide-and-up nav-bar_7julxg"`;
+
+exports[`renders with props 1`] = `
 <section
   className="one-whole floating soft-half locked-left locked-bottom hard-ends@palm hard-sides@palm-wide-and-up soft-half-top@palm-wide-and-up nav-bar_7julxg"
   style={
     Object {
       "backgroundColor": "red",
     }
-  }>
+  }
+>
   <mockConstructor
     fgColor="orange"
     handleAction={[Function]}
@@ -19,7 +22,8 @@ exports[`test renders with props 1`] = `
     modal={Object {}}
     navItem={Object {}}
     path="/path"
-    reset={[Function]} />
+    reset={[Function]}
+  />
   <mockConstructor
     fgColor="orange"
     handleAction={[Function]}
@@ -27,7 +31,8 @@ exports[`test renders with props 1`] = `
     modal={Object {}}
     navItem={Object {}}
     path="/path"
-    reset={[Function]} />
+    reset={[Function]}
+  />
   <mockConstructor
     fgColor="orange"
     handleAction={[Function]}
@@ -35,7 +40,8 @@ exports[`test renders with props 1`] = `
     modal={Object {}}
     navItem={Object {}}
     path="/path"
-    reset={[Function]} />
+    reset={[Function]}
+  />
   <mockConstructor
     fgColor="orange"
     handleAction={[Function]}
@@ -43,6 +49,7 @@ exports[`test renders with props 1`] = `
     modal={Object {}}
     navItem={Object {}}
     path="/path"
-    reset={[Function]} />
+    reset={[Function]}
+  />
 </section>
 `;

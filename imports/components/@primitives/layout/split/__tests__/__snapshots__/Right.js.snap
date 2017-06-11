@@ -1,6 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`DefaultWrapper renders with props 1`] = `
 <section
-  className="one two">
+  className="one two"
+>
   <h1>
     test
   </h1>
@@ -121,9 +124,11 @@ exports[`Right overrides styles 1`] = `
     Object {
       "color": "red",
     }
-  }>
+  }
+>
   <div
-    className="ratio__item">
+    className="ratio__item"
+  >
     <h1>
       test
     </h1>
@@ -143,9 +148,11 @@ exports[`Right overrides with theme 1`] = `
   preloader={[Function]}
   renderElement={[Function]}
   src={null}
-  style={Object {}}>
+  style={Object {}}
+>
   <div
-    className="ratio__item">
+    className="ratio__item"
+  >
     <h1>
       test
     </h1>
@@ -156,7 +163,8 @@ exports[`Right overrides with theme 1`] = `
 
 exports[`Right renderInsideRatio can be overrided with theme 1`] = `
 <div
-  className="override ratio">
+  className="override ratio"
+>
   <h1>
     test
   </h1>
@@ -165,7 +173,8 @@ exports[`Right renderInsideRatio can be overrided with theme 1`] = `
 
 exports[`Right renderInsideRatio renders 1`] = `
 <div
-  className="ratio__item">
+  className="ratio__item"
+>
   <h1>
     test
   </h1>
@@ -181,7 +190,8 @@ exports[`Right renderOutSideRatio renders blur styles if blur 1`] = `
         "WebkitFilter": "blur(10px)",
         "filter": "blur(10px)",
       }
-    } />
+    }
+  />
 </div>
 `;
 
@@ -216,12 +226,14 @@ exports[`Right renders background image version 1`] = `
   src="//test.com/background.jpg"
   style={
     Object {
-      "backgroundImage": "url(\'//test.com/background.jpg\')",
+      "backgroundImage": "url('//test.com/background.jpg')",
     }
   }
-  wrapper={[Function]}>
+  wrapper={[Function]}
+>
   <div
-    className="ratio__item">
+    className="ratio__item"
+  >
     <h1>
       test
     </h1>
@@ -235,7 +247,8 @@ exports[`Right renders linked version 1`] = `
   className="panel__item--right hard flush panel_s3huuu visuallyhidden@handheld five-twelfths@lap-and-up"
   onlyActiveOnIndex={false}
   style={Object {}}
-  to="http://test.com">
+  to="http://test.com"
+>
   <DefaultWrapper
     imageclasses={
       Array [
@@ -250,9 +263,11 @@ exports[`Right renders linked version 1`] = `
     preloader={[Function]}
     renderElement={[Function]}
     src={null}
-    style={Object {}}>
+    style={Object {}}
+  >
     <div
-      className="ratio__item">
+      className="ratio__item"
+    >
       <h1>
         test
       </h1>
@@ -267,7 +282,8 @@ exports[`Right renders linked version with style override 1`] = `
   className="panel__item--right hard flush panel_s3huuu visuallyhidden@handheld five-twelfths@lap-and-up"
   onlyActiveOnIndex={false}
   style={Object {}}
-  to="http://test.com">
+  to="http://test.com"
+>
   <DefaultWrapper
     imageclasses={
       Array [
@@ -286,9 +302,11 @@ exports[`Right renders linked version with style override 1`] = `
       Object {
         "color": "blue",
       }
-    }>
+    }
+  >
     <div
-      className="ratio__item">
+      className="ratio__item"
+    >
       <h1>
         test
       </h1>
@@ -303,7 +321,8 @@ exports[`Right renders linked version with theme override 1`] = `
   className="override link"
   onlyActiveOnIndex={false}
   style={Object {}}
-  to="http://test.com">
+  to="http://test.com"
+>
   <DefaultWrapper
     imageclasses={
       Array [
@@ -318,9 +337,11 @@ exports[`Right renders linked version with theme override 1`] = `
     preloader={[Function]}
     renderElement={[Function]}
     src={null}
-    style={Object {}}>
+    style={Object {}}
+  >
     <div
-      className="ratio__item">
+      className="ratio__item"
+    >
       <h1>
         test
       </h1>
@@ -345,9 +366,11 @@ exports[`Right renders with props 1`] = `
   preloader={[Function]}
   renderElement={[Function]}
   src={null}
-  style={Object {}}>
+  style={Object {}}
+>
   <div
-    className="ratio__item">
+    className="ratio__item"
+  >
     <h1>
       test
     </h1>

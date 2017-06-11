@@ -1,5 +1,5 @@
 
-import { PropTypes } from "react";
+import PropTypes from "prop-types";
 
 import Loading from "../../../@primitives/UI/loading";
 import LikesList from "../../../shared/likes-list";

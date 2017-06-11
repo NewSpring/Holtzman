@@ -1,5 +1,6 @@
+import PropTypes from "prop-types";
 // @flow
-import { Component, PropTypes } from "react";
+import { Component } from "react";
 import moment from "moment";
 
 import TagSelect from "../../../components/@primitives/UI/forms/TagSelect";
@@ -333,7 +334,7 @@ export default class Filter extends Component {
                       !this.state.customStartActive &&
                       scheduleIcon
                   }
-                  clickAble={!Boolean(this.state.dateRangeActive)}
+                  clickAble={!this.state.dateRangeActive}
                 />
                 <Tag
                   key={2}
@@ -351,7 +352,7 @@ export default class Filter extends Component {
                       !this.state.customEndActive &&
                       scheduleIcon
                   }
-                  clickAble={!Boolean(this.state.dateRangeActive)}
+                  clickAble={!this.state.dateRangeActive}
                 />
               </div>
             </div>

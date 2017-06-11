@@ -1,4 +1,5 @@
-import { Component, PropTypes } from "react";
+import PropTypes from "prop-types";
+import { Component } from "react";
 import ReactMixin from "react-mixin";
 import { connect } from "react-redux";
 import { graphql } from "react-apollo";
@@ -7,10 +8,12 @@ import Meta from "../../components/shared/meta";
 
 import { FeedItemSkeleton } from "../../components/@primitives/UI/loading";
 import ApollosPullToRefresh from "../../components/@enhancers/pull-to-refresh";
+import infiniteScroll from "../../components/@enhancers/infinite-scroll";
+
 import FeedItem from "../../components/content/feed-item-card";
 
 import Headerable from "../../deprecated/mixins/mixins.Header";
-import Pageable from "../../deprecated/mixins/mixins.Pageable";
+
 
 import { nav as navActions } from "../../data/store";
 
@@ -116,7 +119,7 @@ const mapStateToProps = (state) => ({ paging: state.paging });
 
 const Template = connect(mapStateToProps)(
   withNews(
-    ReactMixin.decorate(Pageable)(
+    infiniteScroll((x) => x, { doneText: "End of News" })(
       ReactMixin.decorate(Headerable)(
         TemplateWithoutData
       )

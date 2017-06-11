@@ -13,6 +13,7 @@ type IBilling = {
   header?: React$Element<any>,
   states: Object[],
   countries: Object[],
+  transactionType: string,
 };
 
 export default class Billing extends Component {
@@ -92,6 +93,7 @@ export default class Billing extends Component {
         header={this.props.header}
         next={this.props.next}
         states={this.props.states}
+        transactionType={this.props.transactionType}
       >
         {this.props.children}
       </Layout>

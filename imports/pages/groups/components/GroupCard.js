@@ -1,4 +1,4 @@
-import { PropTypes } from "react";
+import PropTypes from "prop-types";
 import truncate from "truncate";
 import { withRouter } from "react-router";
 
