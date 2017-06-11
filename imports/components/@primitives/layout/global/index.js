@@ -18,7 +18,7 @@ import Nav from "../../nav";
 import Header from "../../UI/header";
 import { Loading } from "../../UI/states";
 
-import Likes from "../../../../deprecated/database/collections/likes";
+import Likes from "../../../../deprecated/database/collections/likes";		
 
 import { linkListener } from "../../../../util/inAppLink";
 

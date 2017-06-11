@@ -32,3 +32,4 @@ crosswalk@1.7.1
 shell-server@0.2.3
 dispatch:reload-on-resume
 dynamic-import
+bundle-visualizer
