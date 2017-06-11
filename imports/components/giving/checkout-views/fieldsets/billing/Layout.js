@@ -22,13 +22,15 @@ const Header = ({ override }: IHeader) => {
 type INextButton = {
   billing: Object,
   next: Function,
+  className: string
 };
 
 const NextButton = ({
   billing,
   next,
+  className = ""
 }: INextButton) => {
-  const btnClasses = ["push-left"];
+  const btnClasses = [className].concat(["push-left"]);
   let disabled = false;
   if (!billing.streetAddress || !billing.city) {
     btnClasses.push("btn--disabled");
@@ -63,6 +65,7 @@ type ILayout = {
   streetAddress: Function,
   streetAddress2: Function,
   zip: Function,
+  transactionType: string,
 };
 
 const Layout = ({
@@ -79,6 +82,7 @@ const Layout = ({
   streetAddress,
   streetAddress2,
   zip,
+  transactionType
 }: ILayout) => (
   <div>
     <div className="push-double@lap-and-up push">
@@ -136,18 +140,21 @@ const Layout = ({
     </div>
 
     <div>
-      <a
-        href=""
-        tabIndex={-1}
-        onClick={back}
-        className="btn--small btn--dark-tertiary display-inline-block"
-      >
-        Back
-      </a>
+      {transactionType !== "savedPayment" && (
+        <a
+          href=""
+          tabIndex={-1}
+          onClick={back}
+          className="btn--small btn--dark-tertiary display-inline-block"
+        >
+          Back
+        </a>
+      )}
 
       <NextButton
         billing={billing}
         next={next}
+        className={`${transactionType !== "savedPayment" ? "" : "flush-left"}`}
       />
     </div>
 

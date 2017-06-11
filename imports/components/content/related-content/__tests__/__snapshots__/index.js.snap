@@ -31,7 +31,7 @@ exports[`Related content component renders related content 1`] = `
               }
             }>
             <h6
-              className="text-dark-primary capitalize">
+              className="text-dark-primary capitalize push-half-top">
               The worst thing about America isn\'t what you think
             </h6>
             <div

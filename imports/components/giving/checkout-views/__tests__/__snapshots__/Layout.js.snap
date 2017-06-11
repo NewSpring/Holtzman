@@ -129,7 +129,7 @@ exports[`test renders Billing form 1`] = `
         Back
       </a>
       <button
-        className="push-left btn--disabled"
+        className=" push-left btn--disabled"
         disabled={true}
         onClick={[Function]}
         type="submit">
