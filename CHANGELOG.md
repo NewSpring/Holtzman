@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Updated the home feed to no longer have the first card be a hero card. It's now
 a regular card just like everything else.
 - Updated numbers on financial report and added button to detailed pdf
+- Removed auto-like after login
 ### Added
 - Added a "Prompt Modal" to prompt users of necessary information.
 - Push notifications!
