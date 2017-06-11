@@ -89,6 +89,7 @@
       "react"
     ],
     "plugins": [
+      "babel-plugin-dynamic-import-node",
       "babel-root-slash-import",
       "transform-react-router-optimize",
       "transform-inline-environment-variables",
@@ -163,7 +164,7 @@
     "@kadira/storybook-addon-options": "^1.0.1",
     "@kadira/storybook-database-cloud": "^2.3.1",
     "babel-eslint": "^7.1.0",
-    "babel-jest": "^17.0.2",
+    "babel-jest": "^20.0.3",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-dynamic-import-node": "^1.0.2",
     "babel-plugin-ramda": "^1.2.0",
@@ -199,8 +200,8 @@
     "flow-bin": "^0.34.0",
     "gagarin": "^0.4.12",
     "github-download": "^0.5.0",
-    "jest": "^19.0.0",
-    "jest-cli": "^17.0.3",
+    "jest": "^20.0.4",
+    "jest-cli": "^20.0.4",
     "json-loader": "^0.5.4",
     "lint-staged": "^3.3.1",
     "mkdirp": "^0.5.1",

@@ -14,5 +14,12 @@
     "transform-react-remove-prop-types",
     "transform-dead-code-elimination",
     "transform-flow-strip-types"
-  ]
+  ],
+  "env": {
+    "test": {
+      "plugins": [
+        "babel-plugin-dynamic-import-node"
+      ]
+    }
+  }
 }
