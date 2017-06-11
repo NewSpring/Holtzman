@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`graphql integration correctly delivers props to child component 1`] = `
 Array [
   Object {
@@ -14,7 +16,7 @@ Array [
 ]
 `;
 
-exports[`test has a known query shape 1`] = `
+exports[`has a known query shape 1`] = `
 "query GetSavedPaymentAccounts($cache: Boolean) {
   savedPayments(cache: $cache) {
     name

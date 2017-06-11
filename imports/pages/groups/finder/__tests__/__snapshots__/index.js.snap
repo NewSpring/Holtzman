@@ -1,4 +1,6 @@
-exports[`test renders if content loading 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders if content loading 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)>
     <Right
@@ -8,7 +10,8 @@ exports[`test renders if content loading 1`] = `
           "background--left",
         ]
       }
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -16,7 +19,8 @@ exports[`test renders if content loading 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <Layout
       canSearchTags={null}
       content={Array []}
@@ -29,20 +33,21 @@ exports[`test renders if content loading 1`] = `
           Object {},
           Object {},
         ]
-      } />
+      }
+    />
   </Left>
 </div>
 `;
 
-exports[`test renders result if campuses 1`] = `<withRouter(Apollo(Connect(Apollo(InfiniteScrollContainer)))) />`;
+exports[`renders result if campuses 1`] = `<withRouter(Apollo(Connect(Apollo(InfiniteScrollContainer)))) />`;
 
-exports[`test renders result if q 1`] = `<withRouter(Apollo(Connect(Apollo(InfiniteScrollContainer)))) />`;
+exports[`renders result if q 1`] = `<withRouter(Apollo(Connect(Apollo(InfiniteScrollContainer)))) />`;
 
-exports[`test renders result if schedules 1`] = `<withRouter(Apollo(Connect(Apollo(InfiniteScrollContainer)))) />`;
+exports[`renders result if schedules 1`] = `<withRouter(Apollo(Connect(Apollo(InfiniteScrollContainer)))) />`;
 
-exports[`test renders result if tags 1`] = `<withRouter(Apollo(Connect(Apollo(InfiniteScrollContainer)))) />`;
+exports[`renders result if tags 1`] = `<withRouter(Apollo(Connect(Apollo(InfiniteScrollContainer)))) />`;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)>
     <Right
@@ -52,7 +57,8 @@ exports[`test renders with props 1`] = `
           "background--left",
         ]
       }
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -60,7 +66,8 @@ exports[`test renders with props 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <Layout
       canSearchTags={null}
       content={
@@ -78,12 +85,13 @@ exports[`test renders with props 1`] = `
           Object {},
           Object {},
         ]
-      } />
+      }
+    />
   </Left>
 </div>
 `;
 
-exports[`test renders without attributes 1`] = `
+exports[`renders without attributes 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)>
     <Right
@@ -93,7 +101,8 @@ exports[`test renders without attributes 1`] = `
           "background--left",
         ]
       }
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -101,7 +110,8 @@ exports[`test renders without attributes 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <Layout
       canSearchTags={null}
       content={
@@ -114,7 +124,8 @@ exports[`test renders without attributes 1`] = `
       inputOnChange={[Function]}
       submitTags={[Function]}
       tagOnClick={[Function]}
-      tags={Array []} />
+      tags={Array []}
+    />
   </Left>
 </div>
 `;

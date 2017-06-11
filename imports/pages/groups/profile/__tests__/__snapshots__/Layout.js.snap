@@ -1,22 +1,28 @@
-exports[`test doesn't render Interest type tag 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`doesn't render Interest type tag 1`] = `
 <section
-  className="background--light-secondary hard">
+  className="background--light-secondary hard"
+>
   <Meta
     description="test description"
     id="1"
     image="http://test.com/test.jpg"
-    title="test group" />
+    title="test group"
+  />
   <div
     className="ratio--landscape background--fill"
     style={
       Object {
-        "backgroundImage": "url(\'http://test.com/test.jpg\')",
+        "backgroundImage": "url('http://test.com/test.jpg')",
         "overflow": "visible",
         "zIndex": 10,
       }
-    }>
+    }
+  >
     <div
-      className="ratio__item" />
+      className="ratio__item"
+    />
   </div>
   <div
     className="push-double-sides@lap-wide-and-up push-half-sides flush-ends card outlined outlined--light"
@@ -24,21 +30,26 @@ exports[`test doesn't render Interest type tag 1`] = `
       Object {
         "borderRadius": "0 0 6px 6px",
       }
-    }>
+    }
+  >
     <div
-      className="card__item soft">
+      className="card__item soft"
+    >
       <h3
-        className="text-dark-primary push-half-top push-bottom">
+        className="text-dark-primary push-half-top push-bottom"
+      >
         test group
       </h3>
       <h7
-        className="text-dark-secondary">
+        className="text-dark-secondary"
+      >
         <small>
           Group Leaders
         </small>
       </h7>
       <h5
-        className="text-dark-secondary soft-half-top">
+        className="text-dark-secondary soft-half-top"
+      >
         <span>
           jim bob, 
         </span>
@@ -50,100 +61,125 @@ exports[`test doesn't render Interest type tag 1`] = `
         className="ratio--square round display-inline-block push-right background--fill"
         style={
           Object {
-            "backgroundImage": "url(\'http://test.com/jim.jpg\')",
+            "backgroundImage": "url('http://test.com/jim.jpg')",
             "height": "80px",
             "width": "80px",
           }
-        }>
+        }
+      >
         <div
-          className="ratio__item" />
+          className="ratio__item"
+        />
       </div>
       <div
         className="ratio--square round display-inline-block push-right background--fill"
         style={
           Object {
-            "backgroundImage": "url(\'http://test.com/tom.jpg\')",
+            "backgroundImage": "url('http://test.com/tom.jpg')",
             "height": "80px",
             "width": "80px",
           }
-        }>
+        }
+      >
         <div
-          className="ratio__item" />
+          className="ratio__item"
+        />
       </div>
     </div>
   </div>
   <section
-    className="soft-double-sides@lap-wide-and-up soft-half-sides soft-half-ends flush-sides">
+    className="soft-double-sides@lap-wide-and-up soft-half-sides soft-half-ends flush-sides"
+  >
     <div
-      className="card outlined outlined--light soft-sides-@lap-and-up">
+      className="card outlined outlined--light soft-sides-@lap-and-up"
+    >
       <div
-        className="grid card__item soft push-half flush">
+        className="grid card__item soft push-half flush"
+      >
         <h4
-          className="flush-bottom hard-left push-bottom@handheld push-bottom@lap push-half-top grid__item one-half@lap-wide-and-up one-whole text-center@handheld text-center@lap text-dark-primary">
+          className="flush-bottom hard-left push-bottom@handheld push-bottom@lap push-half-top grid__item one-half@lap-wide-and-up one-whole text-center@handheld text-center@lap text-dark-primary"
+        >
           #TheseAreMyPeople
         </h4>
         <div
-          className="grid__item hard-left text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up">
+          className="grid__item hard-left text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up"
+        >
           <button
             className="flush-bottom push-half-bottom@handheld btn"
-            onClick={[Function]}>
+            onClick={[Function]}
+          >
             Contact
           </button>
         </div>
       </div>
     </div>
     <div
-      className="card outlined outlined--light hard one-whole">
+      className="card outlined outlined--light hard one-whole"
+    >
       <div
-        className="card__item push-half-top@handheld">
+        className="card__item push-half-top@handheld"
+      >
         <div
-          className="soft-left@lap-wide-and-up soft soft-double-bottom">
+          className="soft-left@lap-wide-and-up soft soft-double-bottom"
+        >
           <h5
-            className="soft-half-ends">
+            className="soft-half-ends"
+          >
             Group Details
           </h5>
           <div
-            className="soft-bottom">
+            className="soft-bottom"
+          >
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Time
             </h7>
             <h6
-              className="text-dark-secondary soft-half-top flush-bottom">
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
               schedule description
             </h6>
           </div>
           <div
-            className="soft-bottom">
+            className="soft-bottom"
+          >
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Address
             </h7>
             <h6
-              className="text-dark-secondary soft-half-top flush-bottom">
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
               anderson
               , 
               sc
             </h6>
           </div>
           <div
-            className="soft-bottom">
+            className="soft-bottom"
+          >
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Campus
             </h7>
             <h6
-              className="text-dark-secondary soft-half-top flush-bottom">
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
               anderson
             </h6>
           </div>
           <div>
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Information
             </h7>
             <h6
-              className="text-dark-secondary soft-half-top flush-bottom">
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
               Children Welcome
               , 1 - 2
             </h6>
@@ -152,23 +188,30 @@ exports[`test doesn't render Interest type tag 1`] = `
       </div>
     </div>
     <div
-      className="card outlined outlined--light hard one-whole">
+      className="card outlined outlined--light hard one-whole"
+    >
       <div
-        className="card__item push-half-top@handheld">
+        className="card__item push-half-top@handheld"
+      >
         <div
-          className="soft-left@lap-wide-and-up soft soft-bottom">
+          className="soft-left@lap-wide-and-up soft soft-bottom"
+        >
           <h5
-            className="soft-half-ends">
+            className="soft-half-ends"
+          >
             More Information
           </h5>
           <div
-            className="soft-double-bottom@lap-wide-and-up soft-bottom">
+            className="soft-double-bottom@lap-wide-and-up soft-bottom"
+          >
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Description
             </h7>
             <p
-              className="soft-half-top flush-bottom">
+              className="soft-half-top flush-bottom"
+            >
               <span>
                 test description
                 <br />
@@ -176,60 +219,74 @@ exports[`test doesn't render Interest type tag 1`] = `
             </p>
           </div>
           <div
-            className="soft-double-bottom@lap-wide-and-up soft-bottom">
+            className="soft-double-bottom@lap-wide-and-up soft-bottom"
+          >
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Members
             </h7>
             <div
-              className="soft-half-top flush-bottom">
+              className="soft-half-top flush-bottom"
+            >
               <div
                 className="ratio--square round display-inline-block push-half-right background--fill"
                 style={
                   Object {
-                    "backgroundImage": "url(\'http://test.com/person.jpg\')",
+                    "backgroundImage": "url('http://test.com/person.jpg')",
                     "height": "40px",
                     "width": "40px",
                   }
-                }>
+                }
+              >
                 <div
-                  className="ratio__item" />
+                  className="ratio__item"
+                />
               </div>
               <div
                 className="ratio--square round display-inline-block push-half-right background--fill"
                 style={
                   Object {
-                    "backgroundImage": "url(\'http://test.com/person.jpg\')",
+                    "backgroundImage": "url('http://test.com/person.jpg')",
                     "height": "40px",
                     "width": "40px",
                   }
-                }>
+                }
+              >
                 <div
-                  className="ratio__item" />
+                  className="ratio__item"
+                />
               </div>
             </div>
           </div>
           <div>
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Tags
             </h7>
             <div
-              className="soft-half-top flush-bottom">
+              className="soft-half-top flush-bottom"
+            >
               <span
-                className="tag push-half-right" />
+                className="tag push-half-right"
+              />
               <span
-                className="tag push-half-right" />
+                className="tag push-half-right"
+              />
               <span
-                className="tag push-half-right">
+                className="tag push-half-right"
+              >
                 test
               </span>
               <span
-                className="tag push-half-right">
+                className="tag push-half-right"
+              >
                 kid friendly
               </span>
               <span
-                className="tag push-half-right">
+                className="tag push-half-right"
+              >
                 test
               </span>
             </div>
@@ -238,20 +295,25 @@ exports[`test doesn't render Interest type tag 1`] = `
       </div>
     </div>
     <div
-      className="card outlined outlined--light soft-sides-@lap-and-up push-bottom">
+      className="card outlined outlined--light soft-sides-@lap-and-up push-bottom"
+    >
       <div
-        className="card__item soft-double">
+        className="card__item soft-double"
+      >
         <h4
-          className=" push-bottom one-whole text-center text-dark-secondary">
+          className=" push-bottom one-whole text-center text-dark-secondary"
+        >
           Looking for another group?
         </h4>
         <div
-          className="text-center one-whole">
+          className="text-center one-whole"
+        >
           <Link
             className="flush-bottom push-half-bottom@handheld btn--dark-tertiary"
             onlyActiveOnIndex={false}
             style={Object {}}
-            to="/groups/finder">
+            to="/groups/finder"
+          >
             Find A Group
           </Link>
         </div>
@@ -261,25 +323,29 @@ exports[`test doesn't render Interest type tag 1`] = `
 </section>
 `;
 
-exports[`test doesn't render demographic tag if none 1`] = `
+exports[`doesn't render demographic tag if none 1`] = `
 <section
-  className="background--light-secondary hard">
+  className="background--light-secondary hard"
+>
   <Meta
     description="test description"
     id="1"
     image="http://test.com/test.jpg"
-    title="test group" />
+    title="test group"
+  />
   <div
     className="ratio--landscape background--fill"
     style={
       Object {
-        "backgroundImage": "url(\'http://test.com/test.jpg\')",
+        "backgroundImage": "url('http://test.com/test.jpg')",
         "overflow": "visible",
         "zIndex": 10,
       }
-    }>
+    }
+  >
     <div
-      className="ratio__item" />
+      className="ratio__item"
+    />
   </div>
   <div
     className="push-double-sides@lap-wide-and-up push-half-sides flush-ends card outlined outlined--light"
@@ -287,21 +353,26 @@ exports[`test doesn't render demographic tag if none 1`] = `
       Object {
         "borderRadius": "0 0 6px 6px",
       }
-    }>
+    }
+  >
     <div
-      className="card__item soft">
+      className="card__item soft"
+    >
       <h3
-        className="text-dark-primary push-half-top push-bottom">
+        className="text-dark-primary push-half-top push-bottom"
+      >
         test group
       </h3>
       <h7
-        className="text-dark-secondary">
+        className="text-dark-secondary"
+      >
         <small>
           Group Leaders
         </small>
       </h7>
       <h5
-        className="text-dark-secondary soft-half-top">
+        className="text-dark-secondary soft-half-top"
+      >
         <span>
           jim bob, 
         </span>
@@ -313,100 +384,125 @@ exports[`test doesn't render demographic tag if none 1`] = `
         className="ratio--square round display-inline-block push-right background--fill"
         style={
           Object {
-            "backgroundImage": "url(\'http://test.com/jim.jpg\')",
+            "backgroundImage": "url('http://test.com/jim.jpg')",
             "height": "80px",
             "width": "80px",
           }
-        }>
+        }
+      >
         <div
-          className="ratio__item" />
+          className="ratio__item"
+        />
       </div>
       <div
         className="ratio--square round display-inline-block push-right background--fill"
         style={
           Object {
-            "backgroundImage": "url(\'http://test.com/tom.jpg\')",
+            "backgroundImage": "url('http://test.com/tom.jpg')",
             "height": "80px",
             "width": "80px",
           }
-        }>
+        }
+      >
         <div
-          className="ratio__item" />
+          className="ratio__item"
+        />
       </div>
     </div>
   </div>
   <section
-    className="soft-double-sides@lap-wide-and-up soft-half-sides soft-half-ends flush-sides">
+    className="soft-double-sides@lap-wide-and-up soft-half-sides soft-half-ends flush-sides"
+  >
     <div
-      className="card outlined outlined--light soft-sides-@lap-and-up">
+      className="card outlined outlined--light soft-sides-@lap-and-up"
+    >
       <div
-        className="grid card__item soft push-half flush">
+        className="grid card__item soft push-half flush"
+      >
         <h4
-          className="flush-bottom hard-left push-bottom@handheld push-bottom@lap push-half-top grid__item one-half@lap-wide-and-up one-whole text-center@handheld text-center@lap text-dark-primary">
+          className="flush-bottom hard-left push-bottom@handheld push-bottom@lap push-half-top grid__item one-half@lap-wide-and-up one-whole text-center@handheld text-center@lap text-dark-primary"
+        >
           #TheseAreMyPeople
         </h4>
         <div
-          className="grid__item hard-left text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up">
+          className="grid__item hard-left text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up"
+        >
           <button
             className="flush-bottom push-half-bottom@handheld btn"
-            onClick={[Function]}>
+            onClick={[Function]}
+          >
             Contact
           </button>
         </div>
       </div>
     </div>
     <div
-      className="card outlined outlined--light hard one-whole">
+      className="card outlined outlined--light hard one-whole"
+    >
       <div
-        className="card__item push-half-top@handheld">
+        className="card__item push-half-top@handheld"
+      >
         <div
-          className="soft-left@lap-wide-and-up soft soft-double-bottom">
+          className="soft-left@lap-wide-and-up soft soft-double-bottom"
+        >
           <h5
-            className="soft-half-ends">
+            className="soft-half-ends"
+          >
             Group Details
           </h5>
           <div
-            className="soft-bottom">
+            className="soft-bottom"
+          >
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Time
             </h7>
             <h6
-              className="text-dark-secondary soft-half-top flush-bottom">
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
               schedule description
             </h6>
           </div>
           <div
-            className="soft-bottom">
+            className="soft-bottom"
+          >
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Address
             </h7>
             <h6
-              className="text-dark-secondary soft-half-top flush-bottom">
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
               anderson
               , 
               sc
             </h6>
           </div>
           <div
-            className="soft-bottom">
+            className="soft-bottom"
+          >
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Campus
             </h7>
             <h6
-              className="text-dark-secondary soft-half-top flush-bottom">
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
               anderson
             </h6>
           </div>
           <div>
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Information
             </h7>
             <h6
-              className="text-dark-secondary soft-half-top flush-bottom">
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
               Children Welcome
               , 1 - 2
             </h6>
@@ -415,23 +511,30 @@ exports[`test doesn't render demographic tag if none 1`] = `
       </div>
     </div>
     <div
-      className="card outlined outlined--light hard one-whole">
+      className="card outlined outlined--light hard one-whole"
+    >
       <div
-        className="card__item push-half-top@handheld">
+        className="card__item push-half-top@handheld"
+      >
         <div
-          className="soft-left@lap-wide-and-up soft soft-bottom">
+          className="soft-left@lap-wide-and-up soft soft-bottom"
+        >
           <h5
-            className="soft-half-ends">
+            className="soft-half-ends"
+          >
             More Information
           </h5>
           <div
-            className="soft-double-bottom@lap-wide-and-up soft-bottom">
+            className="soft-double-bottom@lap-wide-and-up soft-bottom"
+          >
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Description
             </h7>
             <p
-              className="soft-half-top flush-bottom">
+              className="soft-half-top flush-bottom"
+            >
               <span>
                 test description
                 <br />
@@ -439,60 +542,74 @@ exports[`test doesn't render demographic tag if none 1`] = `
             </p>
           </div>
           <div
-            className="soft-double-bottom@lap-wide-and-up soft-bottom">
+            className="soft-double-bottom@lap-wide-and-up soft-bottom"
+          >
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Members
             </h7>
             <div
-              className="soft-half-top flush-bottom">
+              className="soft-half-top flush-bottom"
+            >
               <div
                 className="ratio--square round display-inline-block push-half-right background--fill"
                 style={
                   Object {
-                    "backgroundImage": "url(\'http://test.com/person.jpg\')",
+                    "backgroundImage": "url('http://test.com/person.jpg')",
                     "height": "40px",
                     "width": "40px",
                   }
-                }>
+                }
+              >
                 <div
-                  className="ratio__item" />
+                  className="ratio__item"
+                />
               </div>
               <div
                 className="ratio--square round display-inline-block push-half-right background--fill"
                 style={
                   Object {
-                    "backgroundImage": "url(\'http://test.com/person.jpg\')",
+                    "backgroundImage": "url('http://test.com/person.jpg')",
                     "height": "40px",
                     "width": "40px",
                   }
-                }>
+                }
+              >
                 <div
-                  className="ratio__item" />
+                  className="ratio__item"
+                />
               </div>
             </div>
           </div>
           <div>
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Tags
             </h7>
             <div
-              className="soft-half-top flush-bottom">
+              className="soft-half-top flush-bottom"
+            >
               <span
-                className="tag push-half-right" />
+                className="tag push-half-right"
+              />
               <span
-                className="tag push-half-right" />
+                className="tag push-half-right"
+              />
               <span
-                className="tag push-half-right">
+                className="tag push-half-right"
+              >
                 test
               </span>
               <span
-                className="tag push-half-right">
+                className="tag push-half-right"
+              >
                 kid friendly
               </span>
               <span
-                className="tag push-half-right">
+                className="tag push-half-right"
+              >
                 test
               </span>
             </div>
@@ -501,20 +618,25 @@ exports[`test doesn't render demographic tag if none 1`] = `
       </div>
     </div>
     <div
-      className="card outlined outlined--light soft-sides-@lap-and-up push-bottom">
+      className="card outlined outlined--light soft-sides-@lap-and-up push-bottom"
+    >
       <div
-        className="card__item soft-double">
+        className="card__item soft-double"
+      >
         <h4
-          className=" push-bottom one-whole text-center text-dark-secondary">
+          className=" push-bottom one-whole text-center text-dark-secondary"
+        >
           Looking for another group?
         </h4>
         <div
-          className="text-center one-whole">
+          className="text-center one-whole"
+        >
           <Link
             className="flush-bottom push-half-bottom@handheld btn--dark-tertiary"
             onlyActiveOnIndex={false}
             style={Object {}}
-            to="/groups/finder">
+            to="/groups/finder"
+          >
             Find A Group
           </Link>
         </div>
@@ -524,25 +646,29 @@ exports[`test doesn't render demographic tag if none 1`] = `
 </section>
 `;
 
-exports[`test renders adult only version 1`] = `
+exports[`renders adult only version 1`] = `
 <section
-  className="background--light-secondary hard">
+  className="background--light-secondary hard"
+>
   <Meta
     description="test description"
     id="1"
     image="http://test.com/test.jpg"
-    title="test group" />
+    title="test group"
+  />
   <div
     className="ratio--landscape background--fill"
     style={
       Object {
-        "backgroundImage": "url(\'http://test.com/test.jpg\')",
+        "backgroundImage": "url('http://test.com/test.jpg')",
         "overflow": "visible",
         "zIndex": 10,
       }
-    }>
+    }
+  >
     <div
-      className="ratio__item" />
+      className="ratio__item"
+    />
   </div>
   <div
     className="push-double-sides@lap-wide-and-up push-half-sides flush-ends card outlined outlined--light"
@@ -550,21 +676,26 @@ exports[`test renders adult only version 1`] = `
       Object {
         "borderRadius": "0 0 6px 6px",
       }
-    }>
+    }
+  >
     <div
-      className="card__item soft">
+      className="card__item soft"
+    >
       <h3
-        className="text-dark-primary push-half-top push-bottom">
+        className="text-dark-primary push-half-top push-bottom"
+      >
         test group
       </h3>
       <h7
-        className="text-dark-secondary">
+        className="text-dark-secondary"
+      >
         <small>
           Group Leaders
         </small>
       </h7>
       <h5
-        className="text-dark-secondary soft-half-top">
+        className="text-dark-secondary soft-half-top"
+      >
         <span>
           jim bob, 
         </span>
@@ -576,100 +707,125 @@ exports[`test renders adult only version 1`] = `
         className="ratio--square round display-inline-block push-right background--fill"
         style={
           Object {
-            "backgroundImage": "url(\'http://test.com/jim.jpg\')",
+            "backgroundImage": "url('http://test.com/jim.jpg')",
             "height": "80px",
             "width": "80px",
           }
-        }>
+        }
+      >
         <div
-          className="ratio__item" />
+          className="ratio__item"
+        />
       </div>
       <div
         className="ratio--square round display-inline-block push-right background--fill"
         style={
           Object {
-            "backgroundImage": "url(\'http://test.com/tom.jpg\')",
+            "backgroundImage": "url('http://test.com/tom.jpg')",
             "height": "80px",
             "width": "80px",
           }
-        }>
+        }
+      >
         <div
-          className="ratio__item" />
+          className="ratio__item"
+        />
       </div>
     </div>
   </div>
   <section
-    className="soft-double-sides@lap-wide-and-up soft-half-sides soft-half-ends flush-sides">
+    className="soft-double-sides@lap-wide-and-up soft-half-sides soft-half-ends flush-sides"
+  >
     <div
-      className="card outlined outlined--light soft-sides-@lap-and-up">
+      className="card outlined outlined--light soft-sides-@lap-and-up"
+    >
       <div
-        className="grid card__item soft push-half flush">
+        className="grid card__item soft push-half flush"
+      >
         <h4
-          className="flush-bottom hard-left push-bottom@handheld push-bottom@lap push-half-top grid__item one-half@lap-wide-and-up one-whole text-center@handheld text-center@lap text-dark-primary">
+          className="flush-bottom hard-left push-bottom@handheld push-bottom@lap push-half-top grid__item one-half@lap-wide-and-up one-whole text-center@handheld text-center@lap text-dark-primary"
+        >
           #TheseAreMyPeople
         </h4>
         <div
-          className="grid__item hard-left text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up">
+          className="grid__item hard-left text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up"
+        >
           <button
             className="flush-bottom push-half-bottom@handheld btn"
-            onClick={[Function]}>
+            onClick={[Function]}
+          >
             Contact
           </button>
         </div>
       </div>
     </div>
     <div
-      className="card outlined outlined--light hard one-whole">
+      className="card outlined outlined--light hard one-whole"
+    >
       <div
-        className="card__item push-half-top@handheld">
+        className="card__item push-half-top@handheld"
+      >
         <div
-          className="soft-left@lap-wide-and-up soft soft-double-bottom">
+          className="soft-left@lap-wide-and-up soft soft-double-bottom"
+        >
           <h5
-            className="soft-half-ends">
+            className="soft-half-ends"
+          >
             Group Details
           </h5>
           <div
-            className="soft-bottom">
+            className="soft-bottom"
+          >
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Time
             </h7>
             <h6
-              className="text-dark-secondary soft-half-top flush-bottom">
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
               schedule description
             </h6>
           </div>
           <div
-            className="soft-bottom">
+            className="soft-bottom"
+          >
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Address
             </h7>
             <h6
-              className="text-dark-secondary soft-half-top flush-bottom">
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
               anderson
               , 
               sc
             </h6>
           </div>
           <div
-            className="soft-bottom">
+            className="soft-bottom"
+          >
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Campus
             </h7>
             <h6
-              className="text-dark-secondary soft-half-top flush-bottom">
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
               anderson
             </h6>
           </div>
           <div>
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Information
             </h7>
             <h6
-              className="text-dark-secondary soft-half-top flush-bottom">
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
               Children Welcome
               , 1 - 2
             </h6>
@@ -678,23 +834,30 @@ exports[`test renders adult only version 1`] = `
       </div>
     </div>
     <div
-      className="card outlined outlined--light hard one-whole">
+      className="card outlined outlined--light hard one-whole"
+    >
       <div
-        className="card__item push-half-top@handheld">
+        className="card__item push-half-top@handheld"
+      >
         <div
-          className="soft-left@lap-wide-and-up soft soft-bottom">
+          className="soft-left@lap-wide-and-up soft soft-bottom"
+        >
           <h5
-            className="soft-half-ends">
+            className="soft-half-ends"
+          >
             More Information
           </h5>
           <div
-            className="soft-double-bottom@lap-wide-and-up soft-bottom">
+            className="soft-double-bottom@lap-wide-and-up soft-bottom"
+          >
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Description
             </h7>
             <p
-              className="soft-half-top flush-bottom">
+              className="soft-half-top flush-bottom"
+            >
               <span>
                 test description
                 <br />
@@ -702,60 +865,74 @@ exports[`test renders adult only version 1`] = `
             </p>
           </div>
           <div
-            className="soft-double-bottom@lap-wide-and-up soft-bottom">
+            className="soft-double-bottom@lap-wide-and-up soft-bottom"
+          >
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Members
             </h7>
             <div
-              className="soft-half-top flush-bottom">
+              className="soft-half-top flush-bottom"
+            >
               <div
                 className="ratio--square round display-inline-block push-half-right background--fill"
                 style={
                   Object {
-                    "backgroundImage": "url(\'http://test.com/person.jpg\')",
+                    "backgroundImage": "url('http://test.com/person.jpg')",
                     "height": "40px",
                     "width": "40px",
                   }
-                }>
+                }
+              >
                 <div
-                  className="ratio__item" />
+                  className="ratio__item"
+                />
               </div>
               <div
                 className="ratio--square round display-inline-block push-half-right background--fill"
                 style={
                   Object {
-                    "backgroundImage": "url(\'http://test.com/person.jpg\')",
+                    "backgroundImage": "url('http://test.com/person.jpg')",
                     "height": "40px",
                     "width": "40px",
                   }
-                }>
+                }
+              >
                 <div
-                  className="ratio__item" />
+                  className="ratio__item"
+                />
               </div>
             </div>
           </div>
           <div>
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Tags
             </h7>
             <div
-              className="soft-half-top flush-bottom">
+              className="soft-half-top flush-bottom"
+            >
               <span
-                className="tag push-half-right" />
+                className="tag push-half-right"
+              />
               <span
-                className="tag push-half-right" />
+                className="tag push-half-right"
+              />
               <span
-                className="tag push-half-right">
+                className="tag push-half-right"
+              >
                 test
               </span>
               <span
-                className="tag push-half-right">
+                className="tag push-half-right"
+              >
                 kid friendly
               </span>
               <span
-                className="tag push-half-right">
+                className="tag push-half-right"
+              >
                 test
               </span>
             </div>
@@ -764,20 +941,25 @@ exports[`test renders adult only version 1`] = `
       </div>
     </div>
     <div
-      className="card outlined outlined--light soft-sides-@lap-and-up push-bottom">
+      className="card outlined outlined--light soft-sides-@lap-and-up push-bottom"
+    >
       <div
-        className="card__item soft-double">
+        className="card__item soft-double"
+      >
         <h4
-          className=" push-bottom one-whole text-center text-dark-secondary">
+          className=" push-bottom one-whole text-center text-dark-secondary"
+        >
           Looking for another group?
         </h4>
         <div
-          className="text-center one-whole">
+          className="text-center one-whole"
+        >
           <Link
             className="flush-bottom push-half-bottom@handheld btn--dark-tertiary"
             onlyActiveOnIndex={false}
             style={Object {}}
-            to="/groups/finder">
+            to="/groups/finder"
+          >
             Find A Group
           </Link>
         </div>
@@ -787,25 +969,29 @@ exports[`test renders adult only version 1`] = `
 </section>
 `;
 
-exports[`test renders leader version 1`] = `
+exports[`renders leader version 1`] = `
 <section
-  className="background--light-secondary hard">
+  className="background--light-secondary hard"
+>
   <Meta
     description="test description"
     id="1"
     image="http://test.com/test.jpg"
-    title="test group" />
+    title="test group"
+  />
   <div
     className="ratio--landscape background--fill"
     style={
       Object {
-        "backgroundImage": "url(\'http://test.com/test.jpg\')",
+        "backgroundImage": "url('http://test.com/test.jpg')",
         "overflow": "visible",
         "zIndex": 10,
       }
-    }>
+    }
+  >
     <div
-      className="ratio__item" />
+      className="ratio__item"
+    />
   </div>
   <div
     className="push-double-sides@lap-wide-and-up push-half-sides flush-ends card outlined outlined--light"
@@ -813,21 +999,26 @@ exports[`test renders leader version 1`] = `
       Object {
         "borderRadius": "0 0 6px 6px",
       }
-    }>
+    }
+  >
     <div
-      className="card__item soft">
+      className="card__item soft"
+    >
       <h3
-        className="text-dark-primary push-half-top push-bottom">
+        className="text-dark-primary push-half-top push-bottom"
+      >
         test group
       </h3>
       <h7
-        className="text-dark-secondary">
+        className="text-dark-secondary"
+      >
         <small>
           Group Leaders
         </small>
       </h7>
       <h5
-        className="text-dark-secondary soft-half-top">
+        className="text-dark-secondary soft-half-top"
+      >
         <span>
           jim bob, 
         </span>
@@ -839,102 +1030,127 @@ exports[`test renders leader version 1`] = `
         className="ratio--square round display-inline-block push-right background--fill"
         style={
           Object {
-            "backgroundImage": "url(\'http://test.com/jim.jpg\')",
+            "backgroundImage": "url('http://test.com/jim.jpg')",
             "height": "80px",
             "width": "80px",
           }
-        }>
+        }
+      >
         <div
-          className="ratio__item" />
+          className="ratio__item"
+        />
       </div>
       <div
         className="ratio--square round display-inline-block push-right background--fill"
         style={
           Object {
-            "backgroundImage": "url(\'http://test.com/tom.jpg\')",
+            "backgroundImage": "url('http://test.com/tom.jpg')",
             "height": "80px",
             "width": "80px",
           }
-        }>
+        }
+      >
         <div
-          className="ratio__item" />
+          className="ratio__item"
+        />
       </div>
     </div>
   </div>
   <section
-    className="soft-double-sides@lap-wide-and-up soft-half-sides soft-half-ends flush-sides">
+    className="soft-double-sides@lap-wide-and-up soft-half-sides soft-half-ends flush-sides"
+  >
     <div
-      className="card outlined outlined--light soft-sides-@lap-and-up">
+      className="card outlined outlined--light soft-sides-@lap-and-up"
+    >
       <div
-        className="grid card__item soft push-half flush">
+        className="grid card__item soft push-half flush"
+      >
         <h4
-          className="flush-bottom hard-left push-bottom@handheld push-bottom@lap push-half-top grid__item one-half@lap-wide-and-up one-whole text-center@handheld text-center@lap text-dark-primary">
+          className="flush-bottom hard-left push-bottom@handheld push-bottom@lap push-half-top grid__item one-half@lap-wide-and-up one-whole text-center@handheld text-center@lap text-dark-primary"
+        >
           #TheseAreMyPeople
         </h4>
         <div
-          className="grid__item hard-left text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up">
+          className="grid__item hard-left text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up"
+        >
           <a
             className="flush-bottom push-half-bottom@handheld btn"
             href="http://rock.rockpage/521?GroupId=2&undefined"
             rel="noopener noreferrer"
-            target="_blank">
+            target="_blank"
+          >
             Manage Group
           </a>
         </div>
       </div>
     </div>
     <div
-      className="card outlined outlined--light hard one-whole">
+      className="card outlined outlined--light hard one-whole"
+    >
       <div
-        className="card__item push-half-top@handheld">
+        className="card__item push-half-top@handheld"
+      >
         <div
-          className="soft-left@lap-wide-and-up soft soft-double-bottom">
+          className="soft-left@lap-wide-and-up soft soft-double-bottom"
+        >
           <h5
-            className="soft-half-ends">
+            className="soft-half-ends"
+          >
             Group Details
           </h5>
           <div
-            className="soft-bottom">
+            className="soft-bottom"
+          >
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Time
             </h7>
             <h6
-              className="text-dark-secondary soft-half-top flush-bottom">
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
               schedule description
             </h6>
           </div>
           <div
-            className="soft-bottom">
+            className="soft-bottom"
+          >
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Address
             </h7>
             <h6
-              className="text-dark-secondary soft-half-top flush-bottom">
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
               anderson
               , 
               sc
             </h6>
           </div>
           <div
-            className="soft-bottom">
+            className="soft-bottom"
+          >
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Campus
             </h7>
             <h6
-              className="text-dark-secondary soft-half-top flush-bottom">
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
               anderson
             </h6>
           </div>
           <div>
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Information
             </h7>
             <h6
-              className="text-dark-secondary soft-half-top flush-bottom">
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
               Children Welcome
               , 1 - 2
             </h6>
@@ -943,23 +1159,30 @@ exports[`test renders leader version 1`] = `
       </div>
     </div>
     <div
-      className="card outlined outlined--light hard one-whole">
+      className="card outlined outlined--light hard one-whole"
+    >
       <div
-        className="card__item push-half-top@handheld">
+        className="card__item push-half-top@handheld"
+      >
         <div
-          className="soft-left@lap-wide-and-up soft soft-bottom">
+          className="soft-left@lap-wide-and-up soft soft-bottom"
+        >
           <h5
-            className="soft-half-ends">
+            className="soft-half-ends"
+          >
             More Information
           </h5>
           <div
-            className="soft-double-bottom@lap-wide-and-up soft-bottom">
+            className="soft-double-bottom@lap-wide-and-up soft-bottom"
+          >
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Description
             </h7>
             <p
-              className="soft-half-top flush-bottom">
+              className="soft-half-top flush-bottom"
+            >
               <span>
                 test description
                 <br />
@@ -967,60 +1190,74 @@ exports[`test renders leader version 1`] = `
             </p>
           </div>
           <div
-            className="soft-double-bottom@lap-wide-and-up soft-bottom">
+            className="soft-double-bottom@lap-wide-and-up soft-bottom"
+          >
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Members
             </h7>
             <div
-              className="soft-half-top flush-bottom">
+              className="soft-half-top flush-bottom"
+            >
               <div
                 className="ratio--square round display-inline-block push-half-right background--fill"
                 style={
                   Object {
-                    "backgroundImage": "url(\'http://test.com/person.jpg\')",
+                    "backgroundImage": "url('http://test.com/person.jpg')",
                     "height": "40px",
                     "width": "40px",
                   }
-                }>
+                }
+              >
                 <div
-                  className="ratio__item" />
+                  className="ratio__item"
+                />
               </div>
               <div
                 className="ratio--square round display-inline-block push-half-right background--fill"
                 style={
                   Object {
-                    "backgroundImage": "url(\'http://test.com/person.jpg\')",
+                    "backgroundImage": "url('http://test.com/person.jpg')",
                     "height": "40px",
                     "width": "40px",
                   }
-                }>
+                }
+              >
                 <div
-                  className="ratio__item" />
+                  className="ratio__item"
+                />
               </div>
             </div>
           </div>
           <div>
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Tags
             </h7>
             <div
-              className="soft-half-top flush-bottom">
+              className="soft-half-top flush-bottom"
+            >
               <span
-                className="tag push-half-right" />
+                className="tag push-half-right"
+              />
               <span
-                className="tag push-half-right" />
+                className="tag push-half-right"
+              />
               <span
-                className="tag push-half-right">
+                className="tag push-half-right"
+              >
                 test
               </span>
               <span
-                className="tag push-half-right">
+                className="tag push-half-right"
+              >
                 kid friendly
               </span>
               <span
-                className="tag push-half-right">
+                className="tag push-half-right"
+              >
                 test
               </span>
             </div>
@@ -1029,20 +1266,25 @@ exports[`test renders leader version 1`] = `
       </div>
     </div>
     <div
-      className="card outlined outlined--light soft-sides-@lap-and-up push-bottom">
+      className="card outlined outlined--light soft-sides-@lap-and-up push-bottom"
+    >
       <div
-        className="card__item soft-double">
+        className="card__item soft-double"
+      >
         <h4
-          className=" push-bottom one-whole text-center text-dark-secondary">
+          className=" push-bottom one-whole text-center text-dark-secondary"
+        >
           Looking for another group?
         </h4>
         <div
-          className="text-center one-whole">
+          className="text-center one-whole"
+        >
           <Link
             className="flush-bottom push-half-bottom@handheld btn--dark-tertiary"
             onlyActiveOnIndex={false}
             style={Object {}}
-            to="/groups/finder">
+            to="/groups/finder"
+          >
             Find A Group
           </Link>
         </div>
@@ -1052,25 +1294,29 @@ exports[`test renders leader version 1`] = `
 </section>
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <section
-  className="background--light-secondary hard">
+  className="background--light-secondary hard"
+>
   <Meta
     description="test description"
     id="1"
     image="http://test.com/test.jpg"
-    title="test group" />
+    title="test group"
+  />
   <div
     className="ratio--landscape background--fill"
     style={
       Object {
-        "backgroundImage": "url(\'http://test.com/test.jpg\')",
+        "backgroundImage": "url('http://test.com/test.jpg')",
         "overflow": "visible",
         "zIndex": 10,
       }
-    }>
+    }
+  >
     <div
-      className="ratio__item" />
+      className="ratio__item"
+    />
   </div>
   <div
     className="push-double-sides@lap-wide-and-up push-half-sides flush-ends card outlined outlined--light"
@@ -1078,21 +1324,26 @@ exports[`test renders with props 1`] = `
       Object {
         "borderRadius": "0 0 6px 6px",
       }
-    }>
+    }
+  >
     <div
-      className="card__item soft">
+      className="card__item soft"
+    >
       <h3
-        className="text-dark-primary push-half-top push-bottom">
+        className="text-dark-primary push-half-top push-bottom"
+      >
         test group
       </h3>
       <h7
-        className="text-dark-secondary">
+        className="text-dark-secondary"
+      >
         <small>
           Group Leaders
         </small>
       </h7>
       <h5
-        className="text-dark-secondary soft-half-top">
+        className="text-dark-secondary soft-half-top"
+      >
         <span>
           jim bob, 
         </span>
@@ -1104,100 +1355,125 @@ exports[`test renders with props 1`] = `
         className="ratio--square round display-inline-block push-right background--fill"
         style={
           Object {
-            "backgroundImage": "url(\'http://test.com/jim.jpg\')",
+            "backgroundImage": "url('http://test.com/jim.jpg')",
             "height": "80px",
             "width": "80px",
           }
-        }>
+        }
+      >
         <div
-          className="ratio__item" />
+          className="ratio__item"
+        />
       </div>
       <div
         className="ratio--square round display-inline-block push-right background--fill"
         style={
           Object {
-            "backgroundImage": "url(\'http://test.com/tom.jpg\')",
+            "backgroundImage": "url('http://test.com/tom.jpg')",
             "height": "80px",
             "width": "80px",
           }
-        }>
+        }
+      >
         <div
-          className="ratio__item" />
+          className="ratio__item"
+        />
       </div>
     </div>
   </div>
   <section
-    className="soft-double-sides@lap-wide-and-up soft-half-sides soft-half-ends flush-sides">
+    className="soft-double-sides@lap-wide-and-up soft-half-sides soft-half-ends flush-sides"
+  >
     <div
-      className="card outlined outlined--light soft-sides-@lap-and-up">
+      className="card outlined outlined--light soft-sides-@lap-and-up"
+    >
       <div
-        className="grid card__item soft push-half flush">
+        className="grid card__item soft push-half flush"
+      >
         <h4
-          className="flush-bottom hard-left push-bottom@handheld push-bottom@lap push-half-top grid__item one-half@lap-wide-and-up one-whole text-center@handheld text-center@lap text-dark-primary">
+          className="flush-bottom hard-left push-bottom@handheld push-bottom@lap push-half-top grid__item one-half@lap-wide-and-up one-whole text-center@handheld text-center@lap text-dark-primary"
+        >
           #TheseAreMyPeople
         </h4>
         <div
-          className="grid__item hard-left text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up">
+          className="grid__item hard-left text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up"
+        >
           <button
             className="flush-bottom push-half-bottom@handheld btn"
-            onClick={[Function]}>
+            onClick={[Function]}
+          >
             Contact
           </button>
         </div>
       </div>
     </div>
     <div
-      className="card outlined outlined--light hard one-whole">
+      className="card outlined outlined--light hard one-whole"
+    >
       <div
-        className="card__item push-half-top@handheld">
+        className="card__item push-half-top@handheld"
+      >
         <div
-          className="soft-left@lap-wide-and-up soft soft-double-bottom">
+          className="soft-left@lap-wide-and-up soft soft-double-bottom"
+        >
           <h5
-            className="soft-half-ends">
+            className="soft-half-ends"
+          >
             Group Details
           </h5>
           <div
-            className="soft-bottom">
+            className="soft-bottom"
+          >
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Time
             </h7>
             <h6
-              className="text-dark-secondary soft-half-top flush-bottom">
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
               schedule description
             </h6>
           </div>
           <div
-            className="soft-bottom">
+            className="soft-bottom"
+          >
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Address
             </h7>
             <h6
-              className="text-dark-secondary soft-half-top flush-bottom">
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
               anderson
               , 
               sc
             </h6>
           </div>
           <div
-            className="soft-bottom">
+            className="soft-bottom"
+          >
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Campus
             </h7>
             <h6
-              className="text-dark-secondary soft-half-top flush-bottom">
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
               anderson
             </h6>
           </div>
           <div>
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Information
             </h7>
             <h6
-              className="text-dark-secondary soft-half-top flush-bottom">
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
               Children Welcome
               , 1 - 2
             </h6>
@@ -1206,23 +1482,30 @@ exports[`test renders with props 1`] = `
       </div>
     </div>
     <div
-      className="card outlined outlined--light hard one-whole">
+      className="card outlined outlined--light hard one-whole"
+    >
       <div
-        className="card__item push-half-top@handheld">
+        className="card__item push-half-top@handheld"
+      >
         <div
-          className="soft-left@lap-wide-and-up soft soft-bottom">
+          className="soft-left@lap-wide-and-up soft soft-bottom"
+        >
           <h5
-            className="soft-half-ends">
+            className="soft-half-ends"
+          >
             More Information
           </h5>
           <div
-            className="soft-double-bottom@lap-wide-and-up soft-bottom">
+            className="soft-double-bottom@lap-wide-and-up soft-bottom"
+          >
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Description
             </h7>
             <p
-              className="soft-half-top flush-bottom">
+              className="soft-half-top flush-bottom"
+            >
               <span>
                 test description
                 <br />
@@ -1230,60 +1513,74 @@ exports[`test renders with props 1`] = `
             </p>
           </div>
           <div
-            className="soft-double-bottom@lap-wide-and-up soft-bottom">
+            className="soft-double-bottom@lap-wide-and-up soft-bottom"
+          >
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Members
             </h7>
             <div
-              className="soft-half-top flush-bottom">
+              className="soft-half-top flush-bottom"
+            >
               <div
                 className="ratio--square round display-inline-block push-half-right background--fill"
                 style={
                   Object {
-                    "backgroundImage": "url(\'http://test.com/person.jpg\')",
+                    "backgroundImage": "url('http://test.com/person.jpg')",
                     "height": "40px",
                     "width": "40px",
                   }
-                }>
+                }
+              >
                 <div
-                  className="ratio__item" />
+                  className="ratio__item"
+                />
               </div>
               <div
                 className="ratio--square round display-inline-block push-half-right background--fill"
                 style={
                   Object {
-                    "backgroundImage": "url(\'http://test.com/person.jpg\')",
+                    "backgroundImage": "url('http://test.com/person.jpg')",
                     "height": "40px",
                     "width": "40px",
                   }
-                }>
+                }
+              >
                 <div
-                  className="ratio__item" />
+                  className="ratio__item"
+                />
               </div>
             </div>
           </div>
           <div>
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Tags
             </h7>
             <div
-              className="soft-half-top flush-bottom">
+              className="soft-half-top flush-bottom"
+            >
               <span
-                className="tag push-half-right" />
+                className="tag push-half-right"
+              />
               <span
-                className="tag push-half-right" />
+                className="tag push-half-right"
+              />
               <span
-                className="tag push-half-right">
+                className="tag push-half-right"
+              >
                 test
               </span>
               <span
-                className="tag push-half-right">
+                className="tag push-half-right"
+              >
                 kid friendly
               </span>
               <span
-                className="tag push-half-right">
+                className="tag push-half-right"
+              >
                 test
               </span>
             </div>
@@ -1292,20 +1589,25 @@ exports[`test renders with props 1`] = `
       </div>
     </div>
     <div
-      className="card outlined outlined--light soft-sides-@lap-and-up push-bottom">
+      className="card outlined outlined--light soft-sides-@lap-and-up push-bottom"
+    >
       <div
-        className="card__item soft-double">
+        className="card__item soft-double"
+      >
         <h4
-          className=" push-bottom one-whole text-center text-dark-secondary">
+          className=" push-bottom one-whole text-center text-dark-secondary"
+        >
           Looking for another group?
         </h4>
         <div
-          className="text-center one-whole">
+          className="text-center one-whole"
+        >
           <Link
             className="flush-bottom push-half-bottom@handheld btn--dark-tertiary"
             onlyActiveOnIndex={false}
             style={Object {}}
-            to="/groups/finder">
+            to="/groups/finder"
+          >
             Find A Group
           </Link>
         </div>
@@ -1315,25 +1617,29 @@ exports[`test renders with props 1`] = `
 </section>
 `;
 
-exports[`test renders without campus 1`] = `
+exports[`renders without campus 1`] = `
 <section
-  className="background--light-secondary hard">
+  className="background--light-secondary hard"
+>
   <Meta
     description="test description"
     id="1"
     image="http://test.com/test.jpg"
-    title="test group" />
+    title="test group"
+  />
   <div
     className="ratio--landscape background--fill"
     style={
       Object {
-        "backgroundImage": "url(\'http://test.com/test.jpg\')",
+        "backgroundImage": "url('http://test.com/test.jpg')",
         "overflow": "visible",
         "zIndex": 10,
       }
-    }>
+    }
+  >
     <div
-      className="ratio__item" />
+      className="ratio__item"
+    />
   </div>
   <div
     className="push-double-sides@lap-wide-and-up push-half-sides flush-ends card outlined outlined--light"
@@ -1341,21 +1647,26 @@ exports[`test renders without campus 1`] = `
       Object {
         "borderRadius": "0 0 6px 6px",
       }
-    }>
+    }
+  >
     <div
-      className="card__item soft">
+      className="card__item soft"
+    >
       <h3
-        className="text-dark-primary push-half-top push-bottom">
+        className="text-dark-primary push-half-top push-bottom"
+      >
         test group
       </h3>
       <h7
-        className="text-dark-secondary">
+        className="text-dark-secondary"
+      >
         <small>
           Group Leaders
         </small>
       </h7>
       <h5
-        className="text-dark-secondary soft-half-top">
+        className="text-dark-secondary soft-half-top"
+      >
         <span>
           jim bob, 
         </span>
@@ -1367,100 +1678,125 @@ exports[`test renders without campus 1`] = `
         className="ratio--square round display-inline-block push-right background--fill"
         style={
           Object {
-            "backgroundImage": "url(\'http://test.com/jim.jpg\')",
+            "backgroundImage": "url('http://test.com/jim.jpg')",
             "height": "80px",
             "width": "80px",
           }
-        }>
+        }
+      >
         <div
-          className="ratio__item" />
+          className="ratio__item"
+        />
       </div>
       <div
         className="ratio--square round display-inline-block push-right background--fill"
         style={
           Object {
-            "backgroundImage": "url(\'http://test.com/tom.jpg\')",
+            "backgroundImage": "url('http://test.com/tom.jpg')",
             "height": "80px",
             "width": "80px",
           }
-        }>
+        }
+      >
         <div
-          className="ratio__item" />
+          className="ratio__item"
+        />
       </div>
     </div>
   </div>
   <section
-    className="soft-double-sides@lap-wide-and-up soft-half-sides soft-half-ends flush-sides">
+    className="soft-double-sides@lap-wide-and-up soft-half-sides soft-half-ends flush-sides"
+  >
     <div
-      className="card outlined outlined--light soft-sides-@lap-and-up">
+      className="card outlined outlined--light soft-sides-@lap-and-up"
+    >
       <div
-        className="grid card__item soft push-half flush">
+        className="grid card__item soft push-half flush"
+      >
         <h4
-          className="flush-bottom hard-left push-bottom@handheld push-bottom@lap push-half-top grid__item one-half@lap-wide-and-up one-whole text-center@handheld text-center@lap text-dark-primary">
+          className="flush-bottom hard-left push-bottom@handheld push-bottom@lap push-half-top grid__item one-half@lap-wide-and-up one-whole text-center@handheld text-center@lap text-dark-primary"
+        >
           #TheseAreMyPeople
         </h4>
         <div
-          className="grid__item hard-left text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up">
+          className="grid__item hard-left text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up"
+        >
           <button
             className="flush-bottom push-half-bottom@handheld btn"
-            onClick={[Function]}>
+            onClick={[Function]}
+          >
             Contact
           </button>
         </div>
       </div>
     </div>
     <div
-      className="card outlined outlined--light hard one-whole">
+      className="card outlined outlined--light hard one-whole"
+    >
       <div
-        className="card__item push-half-top@handheld">
+        className="card__item push-half-top@handheld"
+      >
         <div
-          className="soft-left@lap-wide-and-up soft soft-double-bottom">
+          className="soft-left@lap-wide-and-up soft soft-double-bottom"
+        >
           <h5
-            className="soft-half-ends">
+            className="soft-half-ends"
+          >
             Group Details
           </h5>
           <div
-            className="soft-bottom">
+            className="soft-bottom"
+          >
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Time
             </h7>
             <h6
-              className="text-dark-secondary soft-half-top flush-bottom">
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
               schedule description
             </h6>
           </div>
           <div
-            className="soft-bottom">
+            className="soft-bottom"
+          >
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Address
             </h7>
             <h6
-              className="text-dark-secondary soft-half-top flush-bottom">
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
               anderson
               , 
               sc
             </h6>
           </div>
           <div
-            className="soft-bottom">
+            className="soft-bottom"
+          >
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Campus
             </h7>
             <h6
-              className="text-dark-secondary soft-half-top flush-bottom">
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
               anderson
             </h6>
           </div>
           <div>
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Information
             </h7>
             <h6
-              className="text-dark-secondary soft-half-top flush-bottom">
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
               Children Welcome
               , 1 - 2
             </h6>
@@ -1469,23 +1805,30 @@ exports[`test renders without campus 1`] = `
       </div>
     </div>
     <div
-      className="card outlined outlined--light hard one-whole">
+      className="card outlined outlined--light hard one-whole"
+    >
       <div
-        className="card__item push-half-top@handheld">
+        className="card__item push-half-top@handheld"
+      >
         <div
-          className="soft-left@lap-wide-and-up soft soft-bottom">
+          className="soft-left@lap-wide-and-up soft soft-bottom"
+        >
           <h5
-            className="soft-half-ends">
+            className="soft-half-ends"
+          >
             More Information
           </h5>
           <div
-            className="soft-double-bottom@lap-wide-and-up soft-bottom">
+            className="soft-double-bottom@lap-wide-and-up soft-bottom"
+          >
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Description
             </h7>
             <p
-              className="soft-half-top flush-bottom">
+              className="soft-half-top flush-bottom"
+            >
               <span>
                 test description
                 <br />
@@ -1493,60 +1836,74 @@ exports[`test renders without campus 1`] = `
             </p>
           </div>
           <div
-            className="soft-double-bottom@lap-wide-and-up soft-bottom">
+            className="soft-double-bottom@lap-wide-and-up soft-bottom"
+          >
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Members
             </h7>
             <div
-              className="soft-half-top flush-bottom">
+              className="soft-half-top flush-bottom"
+            >
               <div
                 className="ratio--square round display-inline-block push-half-right background--fill"
                 style={
                   Object {
-                    "backgroundImage": "url(\'http://test.com/person.jpg\')",
+                    "backgroundImage": "url('http://test.com/person.jpg')",
                     "height": "40px",
                     "width": "40px",
                   }
-                }>
+                }
+              >
                 <div
-                  className="ratio__item" />
+                  className="ratio__item"
+                />
               </div>
               <div
                 className="ratio--square round display-inline-block push-half-right background--fill"
                 style={
                   Object {
-                    "backgroundImage": "url(\'http://test.com/person.jpg\')",
+                    "backgroundImage": "url('http://test.com/person.jpg')",
                     "height": "40px",
                     "width": "40px",
                   }
-                }>
+                }
+              >
                 <div
-                  className="ratio__item" />
+                  className="ratio__item"
+                />
               </div>
             </div>
           </div>
           <div>
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Tags
             </h7>
             <div
-              className="soft-half-top flush-bottom">
+              className="soft-half-top flush-bottom"
+            >
               <span
-                className="tag push-half-right" />
+                className="tag push-half-right"
+              />
               <span
-                className="tag push-half-right" />
+                className="tag push-half-right"
+              />
               <span
-                className="tag push-half-right">
+                className="tag push-half-right"
+              >
                 test
               </span>
               <span
-                className="tag push-half-right">
+                className="tag push-half-right"
+              >
                 kid friendly
               </span>
               <span
-                className="tag push-half-right">
+                className="tag push-half-right"
+              >
                 test
               </span>
             </div>
@@ -1555,20 +1912,25 @@ exports[`test renders without campus 1`] = `
       </div>
     </div>
     <div
-      className="card outlined outlined--light soft-sides-@lap-and-up push-bottom">
+      className="card outlined outlined--light soft-sides-@lap-and-up push-bottom"
+    >
       <div
-        className="card__item soft-double">
+        className="card__item soft-double"
+      >
         <h4
-          className=" push-bottom one-whole text-center text-dark-secondary">
+          className=" push-bottom one-whole text-center text-dark-secondary"
+        >
           Looking for another group?
         </h4>
         <div
-          className="text-center one-whole">
+          className="text-center one-whole"
+        >
           <Link
             className="flush-bottom push-half-bottom@handheld btn--dark-tertiary"
             onlyActiveOnIndex={false}
             style={Object {}}
-            to="/groups/finder">
+            to="/groups/finder"
+          >
             Find A Group
           </Link>
         </div>
@@ -1578,25 +1940,29 @@ exports[`test renders without campus 1`] = `
 </section>
 `;
 
-exports[`test renders without group locations 1`] = `
+exports[`renders without group locations 1`] = `
 <section
-  className="background--light-secondary hard">
+  className="background--light-secondary hard"
+>
   <Meta
     description="test description"
     id="1"
     image="http://test.com/test.jpg"
-    title="test group" />
+    title="test group"
+  />
   <div
     className="ratio--landscape background--fill"
     style={
       Object {
-        "backgroundImage": "url(\'http://test.com/test.jpg\')",
+        "backgroundImage": "url('http://test.com/test.jpg')",
         "overflow": "visible",
         "zIndex": 10,
       }
-    }>
+    }
+  >
     <div
-      className="ratio__item" />
+      className="ratio__item"
+    />
   </div>
   <div
     className="push-double-sides@lap-wide-and-up push-half-sides flush-ends card outlined outlined--light"
@@ -1604,21 +1970,26 @@ exports[`test renders without group locations 1`] = `
       Object {
         "borderRadius": "0 0 6px 6px",
       }
-    }>
+    }
+  >
     <div
-      className="card__item soft">
+      className="card__item soft"
+    >
       <h3
-        className="text-dark-primary push-half-top push-bottom">
+        className="text-dark-primary push-half-top push-bottom"
+      >
         test group
       </h3>
       <h7
-        className="text-dark-secondary">
+        className="text-dark-secondary"
+      >
         <small>
           Group Leaders
         </small>
       </h7>
       <h5
-        className="text-dark-secondary soft-half-top">
+        className="text-dark-secondary soft-half-top"
+      >
         <span>
           jim bob, 
         </span>
@@ -1630,100 +2001,125 @@ exports[`test renders without group locations 1`] = `
         className="ratio--square round display-inline-block push-right background--fill"
         style={
           Object {
-            "backgroundImage": "url(\'http://test.com/jim.jpg\')",
+            "backgroundImage": "url('http://test.com/jim.jpg')",
             "height": "80px",
             "width": "80px",
           }
-        }>
+        }
+      >
         <div
-          className="ratio__item" />
+          className="ratio__item"
+        />
       </div>
       <div
         className="ratio--square round display-inline-block push-right background--fill"
         style={
           Object {
-            "backgroundImage": "url(\'http://test.com/tom.jpg\')",
+            "backgroundImage": "url('http://test.com/tom.jpg')",
             "height": "80px",
             "width": "80px",
           }
-        }>
+        }
+      >
         <div
-          className="ratio__item" />
+          className="ratio__item"
+        />
       </div>
     </div>
   </div>
   <section
-    className="soft-double-sides@lap-wide-and-up soft-half-sides soft-half-ends flush-sides">
+    className="soft-double-sides@lap-wide-and-up soft-half-sides soft-half-ends flush-sides"
+  >
     <div
-      className="card outlined outlined--light soft-sides-@lap-and-up">
+      className="card outlined outlined--light soft-sides-@lap-and-up"
+    >
       <div
-        className="grid card__item soft push-half flush">
+        className="grid card__item soft push-half flush"
+      >
         <h4
-          className="flush-bottom hard-left push-bottom@handheld push-bottom@lap push-half-top grid__item one-half@lap-wide-and-up one-whole text-center@handheld text-center@lap text-dark-primary">
+          className="flush-bottom hard-left push-bottom@handheld push-bottom@lap push-half-top grid__item one-half@lap-wide-and-up one-whole text-center@handheld text-center@lap text-dark-primary"
+        >
           #TheseAreMyPeople
         </h4>
         <div
-          className="grid__item hard-left text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up">
+          className="grid__item hard-left text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up"
+        >
           <button
             className="flush-bottom push-half-bottom@handheld btn"
-            onClick={[Function]}>
+            onClick={[Function]}
+          >
             Contact
           </button>
         </div>
       </div>
     </div>
     <div
-      className="card outlined outlined--light hard one-whole">
+      className="card outlined outlined--light hard one-whole"
+    >
       <div
-        className="card__item push-half-top@handheld">
+        className="card__item push-half-top@handheld"
+      >
         <div
-          className="soft-left@lap-wide-and-up soft soft-double-bottom">
+          className="soft-left@lap-wide-and-up soft soft-double-bottom"
+        >
           <h5
-            className="soft-half-ends">
+            className="soft-half-ends"
+          >
             Group Details
           </h5>
           <div
-            className="soft-bottom">
+            className="soft-bottom"
+          >
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Time
             </h7>
             <h6
-              className="text-dark-secondary soft-half-top flush-bottom">
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
               schedule description
             </h6>
           </div>
           <div
-            className="soft-bottom">
+            className="soft-bottom"
+          >
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Address
             </h7>
             <h6
-              className="text-dark-secondary soft-half-top flush-bottom">
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
               anderson
               , 
               sc
             </h6>
           </div>
           <div
-            className="soft-bottom">
+            className="soft-bottom"
+          >
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Campus
             </h7>
             <h6
-              className="text-dark-secondary soft-half-top flush-bottom">
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
               anderson
             </h6>
           </div>
           <div>
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Information
             </h7>
             <h6
-              className="text-dark-secondary soft-half-top flush-bottom">
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
               Children Welcome
               , 1 - 2
             </h6>
@@ -1732,23 +2128,30 @@ exports[`test renders without group locations 1`] = `
       </div>
     </div>
     <div
-      className="card outlined outlined--light hard one-whole">
+      className="card outlined outlined--light hard one-whole"
+    >
       <div
-        className="card__item push-half-top@handheld">
+        className="card__item push-half-top@handheld"
+      >
         <div
-          className="soft-left@lap-wide-and-up soft soft-bottom">
+          className="soft-left@lap-wide-and-up soft soft-bottom"
+        >
           <h5
-            className="soft-half-ends">
+            className="soft-half-ends"
+          >
             More Information
           </h5>
           <div
-            className="soft-double-bottom@lap-wide-and-up soft-bottom">
+            className="soft-double-bottom@lap-wide-and-up soft-bottom"
+          >
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Description
             </h7>
             <p
-              className="soft-half-top flush-bottom">
+              className="soft-half-top flush-bottom"
+            >
               <span>
                 test description
                 <br />
@@ -1756,60 +2159,74 @@ exports[`test renders without group locations 1`] = `
             </p>
           </div>
           <div
-            className="soft-double-bottom@lap-wide-and-up soft-bottom">
+            className="soft-double-bottom@lap-wide-and-up soft-bottom"
+          >
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Members
             </h7>
             <div
-              className="soft-half-top flush-bottom">
+              className="soft-half-top flush-bottom"
+            >
               <div
                 className="ratio--square round display-inline-block push-half-right background--fill"
                 style={
                   Object {
-                    "backgroundImage": "url(\'http://test.com/person.jpg\')",
+                    "backgroundImage": "url('http://test.com/person.jpg')",
                     "height": "40px",
                     "width": "40px",
                   }
-                }>
+                }
+              >
                 <div
-                  className="ratio__item" />
+                  className="ratio__item"
+                />
               </div>
               <div
                 className="ratio--square round display-inline-block push-half-right background--fill"
                 style={
                   Object {
-                    "backgroundImage": "url(\'http://test.com/person.jpg\')",
+                    "backgroundImage": "url('http://test.com/person.jpg')",
                     "height": "40px",
                     "width": "40px",
                   }
-                }>
+                }
+              >
                 <div
-                  className="ratio__item" />
+                  className="ratio__item"
+                />
               </div>
             </div>
           </div>
           <div>
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Tags
             </h7>
             <div
-              className="soft-half-top flush-bottom">
+              className="soft-half-top flush-bottom"
+            >
               <span
-                className="tag push-half-right" />
+                className="tag push-half-right"
+              />
               <span
-                className="tag push-half-right" />
+                className="tag push-half-right"
+              />
               <span
-                className="tag push-half-right">
+                className="tag push-half-right"
+              >
                 test
               </span>
               <span
-                className="tag push-half-right">
+                className="tag push-half-right"
+              >
                 kid friendly
               </span>
               <span
-                className="tag push-half-right">
+                className="tag push-half-right"
+              >
                 test
               </span>
             </div>
@@ -1818,20 +2235,25 @@ exports[`test renders without group locations 1`] = `
       </div>
     </div>
     <div
-      className="card outlined outlined--light soft-sides-@lap-and-up push-bottom">
+      className="card outlined outlined--light soft-sides-@lap-and-up push-bottom"
+    >
       <div
-        className="card__item soft-double">
+        className="card__item soft-double"
+      >
         <h4
-          className=" push-bottom one-whole text-center text-dark-secondary">
+          className=" push-bottom one-whole text-center text-dark-secondary"
+        >
           Looking for another group?
         </h4>
         <div
-          className="text-center one-whole">
+          className="text-center one-whole"
+        >
           <Link
             className="flush-bottom push-half-bottom@handheld btn--dark-tertiary"
             onlyActiveOnIndex={false}
             style={Object {}}
-            to="/groups/finder">
+            to="/groups/finder"
+          >
             Find A Group
           </Link>
         </div>
@@ -1841,25 +2263,29 @@ exports[`test renders without group locations 1`] = `
 </section>
 `;
 
-exports[`test renders without schedule 1`] = `
+exports[`renders without schedule 1`] = `
 <section
-  className="background--light-secondary hard">
+  className="background--light-secondary hard"
+>
   <Meta
     description="test description"
     id="1"
     image="http://test.com/test.jpg"
-    title="test group" />
+    title="test group"
+  />
   <div
     className="ratio--landscape background--fill"
     style={
       Object {
-        "backgroundImage": "url(\'http://test.com/test.jpg\')",
+        "backgroundImage": "url('http://test.com/test.jpg')",
         "overflow": "visible",
         "zIndex": 10,
       }
-    }>
+    }
+  >
     <div
-      className="ratio__item" />
+      className="ratio__item"
+    />
   </div>
   <div
     className="push-double-sides@lap-wide-and-up push-half-sides flush-ends card outlined outlined--light"
@@ -1867,21 +2293,26 @@ exports[`test renders without schedule 1`] = `
       Object {
         "borderRadius": "0 0 6px 6px",
       }
-    }>
+    }
+  >
     <div
-      className="card__item soft">
+      className="card__item soft"
+    >
       <h3
-        className="text-dark-primary push-half-top push-bottom">
+        className="text-dark-primary push-half-top push-bottom"
+      >
         test group
       </h3>
       <h7
-        className="text-dark-secondary">
+        className="text-dark-secondary"
+      >
         <small>
           Group Leaders
         </small>
       </h7>
       <h5
-        className="text-dark-secondary soft-half-top">
+        className="text-dark-secondary soft-half-top"
+      >
         <span>
           jim bob, 
         </span>
@@ -1893,100 +2324,125 @@ exports[`test renders without schedule 1`] = `
         className="ratio--square round display-inline-block push-right background--fill"
         style={
           Object {
-            "backgroundImage": "url(\'http://test.com/jim.jpg\')",
+            "backgroundImage": "url('http://test.com/jim.jpg')",
             "height": "80px",
             "width": "80px",
           }
-        }>
+        }
+      >
         <div
-          className="ratio__item" />
+          className="ratio__item"
+        />
       </div>
       <div
         className="ratio--square round display-inline-block push-right background--fill"
         style={
           Object {
-            "backgroundImage": "url(\'http://test.com/tom.jpg\')",
+            "backgroundImage": "url('http://test.com/tom.jpg')",
             "height": "80px",
             "width": "80px",
           }
-        }>
+        }
+      >
         <div
-          className="ratio__item" />
+          className="ratio__item"
+        />
       </div>
     </div>
   </div>
   <section
-    className="soft-double-sides@lap-wide-and-up soft-half-sides soft-half-ends flush-sides">
+    className="soft-double-sides@lap-wide-and-up soft-half-sides soft-half-ends flush-sides"
+  >
     <div
-      className="card outlined outlined--light soft-sides-@lap-and-up">
+      className="card outlined outlined--light soft-sides-@lap-and-up"
+    >
       <div
-        className="grid card__item soft push-half flush">
+        className="grid card__item soft push-half flush"
+      >
         <h4
-          className="flush-bottom hard-left push-bottom@handheld push-bottom@lap push-half-top grid__item one-half@lap-wide-and-up one-whole text-center@handheld text-center@lap text-dark-primary">
+          className="flush-bottom hard-left push-bottom@handheld push-bottom@lap push-half-top grid__item one-half@lap-wide-and-up one-whole text-center@handheld text-center@lap text-dark-primary"
+        >
           #TheseAreMyPeople
         </h4>
         <div
-          className="grid__item hard-left text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up">
+          className="grid__item hard-left text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up"
+        >
           <button
             className="flush-bottom push-half-bottom@handheld btn"
-            onClick={[Function]}>
+            onClick={[Function]}
+          >
             Contact
           </button>
         </div>
       </div>
     </div>
     <div
-      className="card outlined outlined--light hard one-whole">
+      className="card outlined outlined--light hard one-whole"
+    >
       <div
-        className="card__item push-half-top@handheld">
+        className="card__item push-half-top@handheld"
+      >
         <div
-          className="soft-left@lap-wide-and-up soft soft-double-bottom">
+          className="soft-left@lap-wide-and-up soft soft-double-bottom"
+        >
           <h5
-            className="soft-half-ends">
+            className="soft-half-ends"
+          >
             Group Details
           </h5>
           <div
-            className="soft-bottom">
+            className="soft-bottom"
+          >
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Time
             </h7>
             <h6
-              className="text-dark-secondary soft-half-top flush-bottom">
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
               schedule description
             </h6>
           </div>
           <div
-            className="soft-bottom">
+            className="soft-bottom"
+          >
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Address
             </h7>
             <h6
-              className="text-dark-secondary soft-half-top flush-bottom">
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
               anderson
               , 
               sc
             </h6>
           </div>
           <div
-            className="soft-bottom">
+            className="soft-bottom"
+          >
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Campus
             </h7>
             <h6
-              className="text-dark-secondary soft-half-top flush-bottom">
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
               anderson
             </h6>
           </div>
           <div>
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Information
             </h7>
             <h6
-              className="text-dark-secondary soft-half-top flush-bottom">
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
               Children Welcome
               , 1 - 2
             </h6>
@@ -1995,23 +2451,30 @@ exports[`test renders without schedule 1`] = `
       </div>
     </div>
     <div
-      className="card outlined outlined--light hard one-whole">
+      className="card outlined outlined--light hard one-whole"
+    >
       <div
-        className="card__item push-half-top@handheld">
+        className="card__item push-half-top@handheld"
+      >
         <div
-          className="soft-left@lap-wide-and-up soft soft-bottom">
+          className="soft-left@lap-wide-and-up soft soft-bottom"
+        >
           <h5
-            className="soft-half-ends">
+            className="soft-half-ends"
+          >
             More Information
           </h5>
           <div
-            className="soft-double-bottom@lap-wide-and-up soft-bottom">
+            className="soft-double-bottom@lap-wide-and-up soft-bottom"
+          >
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Description
             </h7>
             <p
-              className="soft-half-top flush-bottom">
+              className="soft-half-top flush-bottom"
+            >
               <span>
                 test description
                 <br />
@@ -2019,60 +2482,74 @@ exports[`test renders without schedule 1`] = `
             </p>
           </div>
           <div
-            className="soft-double-bottom@lap-wide-and-up soft-bottom">
+            className="soft-double-bottom@lap-wide-and-up soft-bottom"
+          >
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Members
             </h7>
             <div
-              className="soft-half-top flush-bottom">
+              className="soft-half-top flush-bottom"
+            >
               <div
                 className="ratio--square round display-inline-block push-half-right background--fill"
                 style={
                   Object {
-                    "backgroundImage": "url(\'http://test.com/person.jpg\')",
+                    "backgroundImage": "url('http://test.com/person.jpg')",
                     "height": "40px",
                     "width": "40px",
                   }
-                }>
+                }
+              >
                 <div
-                  className="ratio__item" />
+                  className="ratio__item"
+                />
               </div>
               <div
                 className="ratio--square round display-inline-block push-half-right background--fill"
                 style={
                   Object {
-                    "backgroundImage": "url(\'http://test.com/person.jpg\')",
+                    "backgroundImage": "url('http://test.com/person.jpg')",
                     "height": "40px",
                     "width": "40px",
                   }
-                }>
+                }
+              >
                 <div
-                  className="ratio__item" />
+                  className="ratio__item"
+                />
               </div>
             </div>
           </div>
           <div>
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Tags
             </h7>
             <div
-              className="soft-half-top flush-bottom">
+              className="soft-half-top flush-bottom"
+            >
               <span
-                className="tag push-half-right" />
+                className="tag push-half-right"
+              />
               <span
-                className="tag push-half-right" />
+                className="tag push-half-right"
+              />
               <span
-                className="tag push-half-right">
+                className="tag push-half-right"
+              >
                 test
               </span>
               <span
-                className="tag push-half-right">
+                className="tag push-half-right"
+              >
                 kid friendly
               </span>
               <span
-                className="tag push-half-right">
+                className="tag push-half-right"
+              >
                 test
               </span>
             </div>
@@ -2081,20 +2558,25 @@ exports[`test renders without schedule 1`] = `
       </div>
     </div>
     <div
-      className="card outlined outlined--light soft-sides-@lap-and-up push-bottom">
+      className="card outlined outlined--light soft-sides-@lap-and-up push-bottom"
+    >
       <div
-        className="card__item soft-double">
+        className="card__item soft-double"
+      >
         <h4
-          className=" push-bottom one-whole text-center text-dark-secondary">
+          className=" push-bottom one-whole text-center text-dark-secondary"
+        >
           Looking for another group?
         </h4>
         <div
-          className="text-center one-whole">
+          className="text-center one-whole"
+        >
           <Link
             className="flush-bottom push-half-bottom@handheld btn--dark-tertiary"
             onlyActiveOnIndex={false}
             style={Object {}}
-            to="/groups/finder">
+            to="/groups/finder"
+          >
             Find A Group
           </Link>
         </div>
@@ -2104,25 +2586,29 @@ exports[`test renders without schedule 1`] = `
 </section>
 `;
 
-exports[`test renders without schedule description 1`] = `
+exports[`renders without schedule description 1`] = `
 <section
-  className="background--light-secondary hard">
+  className="background--light-secondary hard"
+>
   <Meta
     description="test description"
     id="1"
     image="http://test.com/test.jpg"
-    title="test group" />
+    title="test group"
+  />
   <div
     className="ratio--landscape background--fill"
     style={
       Object {
-        "backgroundImage": "url(\'http://test.com/test.jpg\')",
+        "backgroundImage": "url('http://test.com/test.jpg')",
         "overflow": "visible",
         "zIndex": 10,
       }
-    }>
+    }
+  >
     <div
-      className="ratio__item" />
+      className="ratio__item"
+    />
   </div>
   <div
     className="push-double-sides@lap-wide-and-up push-half-sides flush-ends card outlined outlined--light"
@@ -2130,21 +2616,26 @@ exports[`test renders without schedule description 1`] = `
       Object {
         "borderRadius": "0 0 6px 6px",
       }
-    }>
+    }
+  >
     <div
-      className="card__item soft">
+      className="card__item soft"
+    >
       <h3
-        className="text-dark-primary push-half-top push-bottom">
+        className="text-dark-primary push-half-top push-bottom"
+      >
         test group
       </h3>
       <h7
-        className="text-dark-secondary">
+        className="text-dark-secondary"
+      >
         <small>
           Group Leaders
         </small>
       </h7>
       <h5
-        className="text-dark-secondary soft-half-top">
+        className="text-dark-secondary soft-half-top"
+      >
         <span>
           jim bob, 
         </span>
@@ -2156,100 +2647,125 @@ exports[`test renders without schedule description 1`] = `
         className="ratio--square round display-inline-block push-right background--fill"
         style={
           Object {
-            "backgroundImage": "url(\'http://test.com/jim.jpg\')",
+            "backgroundImage": "url('http://test.com/jim.jpg')",
             "height": "80px",
             "width": "80px",
           }
-        }>
+        }
+      >
         <div
-          className="ratio__item" />
+          className="ratio__item"
+        />
       </div>
       <div
         className="ratio--square round display-inline-block push-right background--fill"
         style={
           Object {
-            "backgroundImage": "url(\'http://test.com/tom.jpg\')",
+            "backgroundImage": "url('http://test.com/tom.jpg')",
             "height": "80px",
             "width": "80px",
           }
-        }>
+        }
+      >
         <div
-          className="ratio__item" />
+          className="ratio__item"
+        />
       </div>
     </div>
   </div>
   <section
-    className="soft-double-sides@lap-wide-and-up soft-half-sides soft-half-ends flush-sides">
+    className="soft-double-sides@lap-wide-and-up soft-half-sides soft-half-ends flush-sides"
+  >
     <div
-      className="card outlined outlined--light soft-sides-@lap-and-up">
+      className="card outlined outlined--light soft-sides-@lap-and-up"
+    >
       <div
-        className="grid card__item soft push-half flush">
+        className="grid card__item soft push-half flush"
+      >
         <h4
-          className="flush-bottom hard-left push-bottom@handheld push-bottom@lap push-half-top grid__item one-half@lap-wide-and-up one-whole text-center@handheld text-center@lap text-dark-primary">
+          className="flush-bottom hard-left push-bottom@handheld push-bottom@lap push-half-top grid__item one-half@lap-wide-and-up one-whole text-center@handheld text-center@lap text-dark-primary"
+        >
           #TheseAreMyPeople
         </h4>
         <div
-          className="grid__item hard-left text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up">
+          className="grid__item hard-left text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up"
+        >
           <button
             className="flush-bottom push-half-bottom@handheld btn"
-            onClick={[Function]}>
+            onClick={[Function]}
+          >
             Contact
           </button>
         </div>
       </div>
     </div>
     <div
-      className="card outlined outlined--light hard one-whole">
+      className="card outlined outlined--light hard one-whole"
+    >
       <div
-        className="card__item push-half-top@handheld">
+        className="card__item push-half-top@handheld"
+      >
         <div
-          className="soft-left@lap-wide-and-up soft soft-double-bottom">
+          className="soft-left@lap-wide-and-up soft soft-double-bottom"
+        >
           <h5
-            className="soft-half-ends">
+            className="soft-half-ends"
+          >
             Group Details
           </h5>
           <div
-            className="soft-bottom">
+            className="soft-bottom"
+          >
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Time
             </h7>
             <h6
-              className="text-dark-secondary soft-half-top flush-bottom">
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
               schedule description
             </h6>
           </div>
           <div
-            className="soft-bottom">
+            className="soft-bottom"
+          >
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Address
             </h7>
             <h6
-              className="text-dark-secondary soft-half-top flush-bottom">
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
               anderson
               , 
               sc
             </h6>
           </div>
           <div
-            className="soft-bottom">
+            className="soft-bottom"
+          >
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Campus
             </h7>
             <h6
-              className="text-dark-secondary soft-half-top flush-bottom">
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
               anderson
             </h6>
           </div>
           <div>
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Information
             </h7>
             <h6
-              className="text-dark-secondary soft-half-top flush-bottom">
+              className="text-dark-secondary soft-half-top flush-bottom"
+            >
               Children Welcome
               , 1 - 2
             </h6>
@@ -2258,23 +2774,30 @@ exports[`test renders without schedule description 1`] = `
       </div>
     </div>
     <div
-      className="card outlined outlined--light hard one-whole">
+      className="card outlined outlined--light hard one-whole"
+    >
       <div
-        className="card__item push-half-top@handheld">
+        className="card__item push-half-top@handheld"
+      >
         <div
-          className="soft-left@lap-wide-and-up soft soft-bottom">
+          className="soft-left@lap-wide-and-up soft soft-bottom"
+        >
           <h5
-            className="soft-half-ends">
+            className="soft-half-ends"
+          >
             More Information
           </h5>
           <div
-            className="soft-double-bottom@lap-wide-and-up soft-bottom">
+            className="soft-double-bottom@lap-wide-and-up soft-bottom"
+          >
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Description
             </h7>
             <p
-              className="soft-half-top flush-bottom">
+              className="soft-half-top flush-bottom"
+            >
               <span>
                 test description
                 <br />
@@ -2282,60 +2805,74 @@ exports[`test renders without schedule description 1`] = `
             </p>
           </div>
           <div
-            className="soft-double-bottom@lap-wide-and-up soft-bottom">
+            className="soft-double-bottom@lap-wide-and-up soft-bottom"
+          >
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Members
             </h7>
             <div
-              className="soft-half-top flush-bottom">
+              className="soft-half-top flush-bottom"
+            >
               <div
                 className="ratio--square round display-inline-block push-half-right background--fill"
                 style={
                   Object {
-                    "backgroundImage": "url(\'http://test.com/person.jpg\')",
+                    "backgroundImage": "url('http://test.com/person.jpg')",
                     "height": "40px",
                     "width": "40px",
                   }
-                }>
+                }
+              >
                 <div
-                  className="ratio__item" />
+                  className="ratio__item"
+                />
               </div>
               <div
                 className="ratio--square round display-inline-block push-half-right background--fill"
                 style={
                   Object {
-                    "backgroundImage": "url(\'http://test.com/person.jpg\')",
+                    "backgroundImage": "url('http://test.com/person.jpg')",
                     "height": "40px",
                     "width": "40px",
                   }
-                }>
+                }
+              >
                 <div
-                  className="ratio__item" />
+                  className="ratio__item"
+                />
               </div>
             </div>
           </div>
           <div>
             <h7
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               Tags
             </h7>
             <div
-              className="soft-half-top flush-bottom">
+              className="soft-half-top flush-bottom"
+            >
               <span
-                className="tag push-half-right" />
+                className="tag push-half-right"
+              />
               <span
-                className="tag push-half-right" />
+                className="tag push-half-right"
+              />
               <span
-                className="tag push-half-right">
+                className="tag push-half-right"
+              >
                 test
               </span>
               <span
-                className="tag push-half-right">
+                className="tag push-half-right"
+              >
                 kid friendly
               </span>
               <span
-                className="tag push-half-right">
+                className="tag push-half-right"
+              >
                 test
               </span>
             </div>
@@ -2344,20 +2881,25 @@ exports[`test renders without schedule description 1`] = `
       </div>
     </div>
     <div
-      className="card outlined outlined--light soft-sides-@lap-and-up push-bottom">
+      className="card outlined outlined--light soft-sides-@lap-and-up push-bottom"
+    >
       <div
-        className="card__item soft-double">
+        className="card__item soft-double"
+      >
         <h4
-          className=" push-bottom one-whole text-center text-dark-secondary">
+          className=" push-bottom one-whole text-center text-dark-secondary"
+        >
           Looking for another group?
         </h4>
         <div
-          className="text-center one-whole">
+          className="text-center one-whole"
+        >
           <Link
             className="flush-bottom push-half-bottom@handheld btn--dark-tertiary"
             onlyActiveOnIndex={false}
             style={Object {}}
-            to="/groups/finder">
+            to="/groups/finder"
+          >
             Find A Group
           </Link>
         </div>

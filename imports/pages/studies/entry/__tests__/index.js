@@ -17,7 +17,6 @@ import StudyEntryList from "../../EntryList";
 import Content from "../Content";
 import Slider from "../Slider";
 
-jest.mock("../../../../deprecated/mixins/mixins.Likeable", () => {});
 jest.mock("../../../../deprecated/mixins/mixins.Shareable", () => {});
 jest.mock("../../../../data/store", () => ({
   nav: {

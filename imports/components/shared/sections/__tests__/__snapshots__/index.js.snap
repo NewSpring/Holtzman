@@ -1,6 +1,9 @@
-exports[`test renders with props 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders with props 1`] = `
 <section
-  className="hard">
+  className="hard"
+>
   <Groups
     hide={[Function]}
     items={
@@ -10,6 +13,7 @@ exports[`test renders with props 1`] = `
           Object {},
         ],
       ]
-    } />
+    }
+  />
 </section>
 `;

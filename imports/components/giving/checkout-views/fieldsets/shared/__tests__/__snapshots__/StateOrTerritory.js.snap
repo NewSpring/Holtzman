@@ -1,13 +1,18 @@
-exports[`test does not render if country without states 1`] = `null`;
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`test renders if country is \`CA\` 1`] = `
+exports[`does not render if country without states 1`] = `null`;
+
+exports[`renders if country is \`CA\` 1`] = `
 <div
-  className="grid__item one-half">
+  className="grid__item one-half"
+>
   <div
-    className="input input--active select_15p0e27">
+    className="input input--active select_15p0e27"
+  >
     <label
       htmlFor="State/Territory"
-      style={Object {}}>
+      style={Object {}}
+    >
       State/Territory
     </label>
     <select
@@ -18,40 +23,49 @@ exports[`test renders if country is \`CA\` 1`] = `
       name="state"
       onChange={[Function]}
       onFocus={[Function]}
-      placeholder="State/Territory">
+      placeholder="State/Territory"
+    >
       <option
         style={
           Object {
             "display": "none",
           }
-        }>
+        }
+      >
         
       </option>
       <option
         className={undefined}
-        value={undefined} />
+        value={undefined}
+      />
       <option
         className={undefined}
-        value={undefined} />
+        value={undefined}
+      />
       <option
         className={undefined}
-        value={undefined} />
+        value={undefined}
+      />
       <option
         className={undefined}
-        value={undefined} />
+        value={undefined}
+      />
     </select>
   </div>
 </div>
 `;
 
-exports[`test renders if no country 1`] = `
+exports[`renders if no country 1`] = `
 <div
-  className="grid__item one-half">
+  className="grid__item one-half"
+>
   <div
-    className="input input--active select_15p0e27">
+    className="input input--active select_15p0e27"
+  >
     <label
       htmlFor="State/Territory"
-      style={Object {}}>
+      style={Object {}}
+    >
       State/Territory
     </label>
     <select
@@ -62,40 +76,49 @@ exports[`test renders if no country 1`] = `
       name="state"
       onChange={[Function]}
       onFocus={[Function]}
-      placeholder="State/Territory">
+      placeholder="State/Territory"
+    >
       <option
         style={
           Object {
             "display": "none",
           }
-        }>
+        }
+      >
         
       </option>
       <option
         className={undefined}
-        value={undefined} />
+        value={undefined}
+      />
       <option
         className={undefined}
-        value={undefined} />
+        value={undefined}
+      />
       <option
         className={undefined}
-        value={undefined} />
+        value={undefined}
+      />
       <option
         className={undefined}
-        value={undefined} />
+        value={undefined}
+      />
     </select>
   </div>
 </div>
 `;
 
-exports[`test renders with default state as SC 1`] = `
+exports[`renders with default state as SC 1`] = `
 <div
-  className="grid__item one-half">
+  className="grid__item one-half"
+>
   <div
-    className="input input--active select_15p0e27">
+    className="input input--active select_15p0e27"
+  >
     <label
       htmlFor="State/Territory"
-      style={Object {}}>
+      style={Object {}}
+    >
       State/Territory
     </label>
     <select
@@ -106,40 +129,49 @@ exports[`test renders with default state as SC 1`] = `
       name="state"
       onChange={[Function]}
       onFocus={[Function]}
-      placeholder="State/Territory">
+      placeholder="State/Territory"
+    >
       <option
         style={
           Object {
             "display": "none",
           }
-        }>
+        }
+      >
         
       </option>
       <option
         className={undefined}
-        value={undefined} />
+        value={undefined}
+      />
       <option
         className={undefined}
-        value={undefined} />
+        value={undefined}
+      />
       <option
         className={undefined}
-        value={undefined} />
+        value={undefined}
+      />
       <option
         className={undefined}
-        value={undefined} />
+        value={undefined}
+      />
     </select>
   </div>
 </div>
 `;
 
-exports[`test renders with predefined state 1`] = `
+exports[`renders with predefined state 1`] = `
 <div
-  className="grid__item one-half">
+  className="grid__item one-half"
+>
   <div
-    className="input input--active select_15p0e27">
+    className="input input--active select_15p0e27"
+  >
     <label
       htmlFor="State/Territory"
-      style={Object {}}>
+      style={Object {}}
+    >
       State/Territory
     </label>
     <select
@@ -150,27 +182,33 @@ exports[`test renders with predefined state 1`] = `
       name="state"
       onChange={[Function]}
       onFocus={[Function]}
-      placeholder="State/Territory">
+      placeholder="State/Territory"
+    >
       <option
         style={
           Object {
             "display": "none",
           }
-        }>
+        }
+      >
         
       </option>
       <option
         className={undefined}
-        value={undefined} />
+        value={undefined}
+      />
       <option
         className={undefined}
-        value={undefined} />
+        value={undefined}
+      />
       <option
         className={undefined}
-        value={undefined} />
+        value={undefined}
+      />
       <option
         className={undefined}
-        value={undefined} />
+        value={undefined}
+      />
     </select>
   </div>
 </div>

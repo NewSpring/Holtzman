@@ -1,49 +1,53 @@
-exports[`test getPrimaryBackgroundClass has dark version 1`] = `"background--dark-primary"`;
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`test getPrimaryBackgroundClass has light version 1`] = `"background--light-primary"`;
+exports[`getPrimaryBackgroundClass has dark version 1`] = `"background--dark-primary"`;
 
-exports[`test getSecondayBackgroundClass has dark version 1`] = `"background--dark-secondary"`;
+exports[`getPrimaryBackgroundClass has light version 1`] = `"background--light-primary"`;
 
-exports[`test getSecondayBackgroundClass has light version 1`] = `"background--light-secondary"`;
+exports[`getSecondayBackgroundClass has dark version 1`] = `"background--dark-secondary"`;
 
-exports[`test getTertiaryBackgroundColor has dark version 1`] = `
+exports[`getSecondayBackgroundClass has light version 1`] = `"background--light-secondary"`;
+
+exports[`getTertiaryBackgroundColor has dark version 1`] = `
 Object {
   "backgroundColor": "rgba(255,255,255,.2)",
 }
 `;
 
-exports[`test getTertiaryBackgroundColor has light version 1`] = `
+exports[`getTertiaryBackgroundColor has light version 1`] = `
 Object {
   "backgroundColor": "rgba(0,0,0,.2)",
 }
 `;
 
-exports[`test getTertiaryTextClass has dark version 1`] = `"text-dark-tertiary"`;
+exports[`getTertiaryTextClass has dark version 1`] = `"text-dark-tertiary"`;
 
-exports[`test getTertiaryTextClass has light version 1`] = `"text-light-tertiary"`;
+exports[`getTertiaryTextClass has light version 1`] = `"text-light-tertiary"`;
 
-exports[`test getTertiaryTextColor has dark version 1`] = `
+exports[`getTertiaryTextColor has dark version 1`] = `
 Object {
   "color": "rgba(255,255,255,.5)",
 }
 `;
 
-exports[`test getTertiaryTextColor has light version 1`] = `
+exports[`getTertiaryTextColor has light version 1`] = `
 Object {
   "color": "rgba(0,0,0,.5)",
 }
 `;
 
-exports[`test renders light version 1`] = `
+exports[`renders light version 1`] = `
 <div
-  className="grid one-whole flush soft-top">
+  className="grid one-whole flush soft-top"
+>
   <div
     className="hard grid__item one-tenth floating__item "
     style={
       Object {
         "color": "rgba(0,0,0,.5)",
       }
-    }>
+    }
+  >
     <small>
       <small>
         20
@@ -59,25 +63,30 @@ exports[`test renders light version 1`] = `
       Object {
         "position": "relative",
       }
-    }>
+    }
+  >
     <div
       className="play-bar rounded play-bar_uziqvr"
       style={
         Object {
           "backgroundColor": "rgba(0,0,0,.2)",
         }
-      } />
+      }
+    />
     <div
       className="play-bar--active_18t9bb6 floating--right"
       style={
         Object {
           "width": "20%",
         }
-      }>
+      }
+    >
       <div
-        className="play-bar_uziqvr rounded background--dark-primary" />
+        className="play-bar_uziqvr rounded background--dark-primary"
+      />
       <button
-        className="scrub-dot_l7j38z plain floating__item round background--dark-primary" />
+        className="scrub-dot_l7j38z plain floating__item round background--dark-primary"
+      />
     </div>
     <div
       className="cover"
@@ -89,7 +98,8 @@ exports[`test renders light version 1`] = `
           "right": 0,
           "top": "-20px",
         }
-      } />
+      }
+    />
   </div>
   <div
     className="hard grid__item one-tenth floating__item "
@@ -97,7 +107,8 @@ exports[`test renders light version 1`] = `
       Object {
         "color": "rgba(0,0,0,.5)",
       }
-    }>
+    }
+  >
     <small>
       <small>
         12:23
@@ -107,16 +118,18 @@ exports[`test renders light version 1`] = `
 </div>
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <div
-  className="grid one-whole flush soft-top">
+  className="grid one-whole flush soft-top"
+>
   <div
     className="hard grid__item one-tenth floating__item "
     style={
       Object {
         "color": "rgba(255,255,255,.5)",
       }
-    }>
+    }
+  >
     <small>
       <small>
         20
@@ -132,25 +145,30 @@ exports[`test renders with props 1`] = `
       Object {
         "position": "relative",
       }
-    }>
+    }
+  >
     <div
       className="play-bar rounded play-bar_uziqvr"
       style={
         Object {
           "backgroundColor": "rgba(255,255,255,.2)",
         }
-      } />
+      }
+    />
     <div
       className="play-bar--active_18t9bb6 floating--right"
       style={
         Object {
           "width": "20%",
         }
-      }>
+      }
+    >
       <div
-        className="play-bar_uziqvr rounded background--light-primary" />
+        className="play-bar_uziqvr rounded background--light-primary"
+      />
       <button
-        className="scrub-dot_l7j38z plain floating__item round background--light-primary" />
+        className="scrub-dot_l7j38z plain floating__item round background--light-primary"
+      />
     </div>
     <div
       className="cover"
@@ -162,7 +180,8 @@ exports[`test renders with props 1`] = `
           "right": 0,
           "top": "-20px",
         }
-      } />
+      }
+    />
   </div>
   <div
     className="hard grid__item one-tenth floating__item "
@@ -170,7 +189,8 @@ exports[`test renders with props 1`] = `
       Object {
         "color": "rgba(255,255,255,.5)",
       }
-    }>
+    }
+  >
     <small>
       <small>
         12:23

@@ -1,4 +1,6 @@
-exports[`test parses stories query correctly 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`parses stories query correctly 1`] = `
 Object {
   "definitions": Array [
     Object {
@@ -351,7 +353,7 @@ Object {
     "source": Source {
       "body": "
   query GetNews($limit: Int!, $skip: Int!) {
-    content(channel: \"news\", limit: $limit, skip: $skip) {
+    content(channel: \\"news\\", limit: $limit, skip: $skip) {
       id
       entryId: id
       title
@@ -365,7 +367,7 @@ Object {
       }
       content {
         body
-        images(sizes: [\"large\"]) {
+        images(sizes: [\\"large\\"]) {
           fileName
           fileType
           fileLabel
@@ -383,35 +385,45 @@ Object {
 }
 `;
 
-exports[`test renders loading if no content 1`] = `
+exports[`renders loading if no content 1`] = `
 <Connect(ApollosPullToRefreshWithoutData)
-  handleRefresh={[Function]}>
+  handleRefresh={[Function]}
+>
   <Meta
-    title="News" />
+    title="News"
+  />
   <div
-    className="background--light-secondary">
+    className="background--light-secondary"
+  >
     <section
-      className="soft-half">
+      className="soft-half"
+    >
       <div
-        className="grid">
+        className="grid"
+      >
         <div
-          className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored">
+          className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored"
+        >
           <FeedItemSkeleton />
         </div>
         <div
-          className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored">
+          className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored"
+        >
           <FeedItemSkeleton />
         </div>
         <div
-          className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored">
+          className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored"
+        >
           <FeedItemSkeleton />
         </div>
         <div
-          className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored">
+          className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored"
+        >
           <FeedItemSkeleton />
         </div>
         <div
-          className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored">
+          className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored"
+        >
           <FeedItemSkeleton />
         </div>
       </div>
@@ -420,31 +432,42 @@ exports[`test renders loading if no content 1`] = `
 </Connect(ApollosPullToRefreshWithoutData)>
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <Connect(ApollosPullToRefreshWithoutData)
-  handleRefresh={[Function]}>
+  handleRefresh={[Function]}
+>
   <Meta
-    title="News" />
+    title="News"
+  />
   <div
-    className="background--light-secondary">
+    className="background--light-secondary"
+  >
     <section
-      className="soft-half">
+      className="soft-half"
+    >
       <div
-        className="grid">
+        className="grid"
+      >
         <div
-          className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored">
+          className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored"
+        >
           <Connect(Apollo(LikesWrapper))
-            item={Object {}} />
+            item={Object {}}
+          />
         </div>
         <div
-          className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored">
+          className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored"
+        >
           <Connect(Apollo(LikesWrapper))
-            item={Object {}} />
+            item={Object {}}
+          />
         </div>
         <div
-          className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored">
+          className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored"
+        >
           <Connect(Apollo(LikesWrapper))
-            item={Object {}} />
+            item={Object {}}
+          />
         </div>
       </div>
     </section>

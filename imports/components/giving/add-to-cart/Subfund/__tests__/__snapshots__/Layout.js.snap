@@ -1,4 +1,6 @@
-exports[`test should accept an active prop to show the input 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should accept an active prop to show the input 1`] = `
 <Layout
   accounts={
     Array [
@@ -15,10 +17,12 @@ exports[`test should accept an active prop to show the input 1`] = `
       "fund": "main",
       "id": "test",
     }
-  }>
+  }
+>
   <div>
     <div
-      className="display-inline-block push-half-bottom h3 push-half-right text-dark-primary">
+      className="display-inline-block push-half-bottom h3 push-half-right text-dark-primary"
+    >
       and give
     </div>
     <Input
@@ -38,7 +42,8 @@ exports[`test should accept an active prop to show the input 1`] = `
         }
       }
       type="tel"
-      value="5.00">
+      value="5.00"
+    >
       <div
         className="input input--active soft-bottom input--active display-inline-block"
         data-spec="input-wrapper"
@@ -46,9 +51,11 @@ exports[`test should accept an active prop to show the input 1`] = `
           Object {
             "maxWidth": "150px",
           }
-        }>
+        }
+      >
         <RenderLabel
-          hideLabel={true} />
+          hideLabel={true}
+        />
         <input
           className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
           data-spec="input"
@@ -62,13 +69,16 @@ exports[`test should accept an active prop to show the input 1`] = `
               "maxWidth": "150px",
             }
           }
-          type="tel" />
+          type="tel"
+        />
       </div>
     </Input>
     <div
-      className="display-block">
+      className="display-block"
+    >
       <h3
-        className="text-dark-primary push-half-bottom push-half-right display-inline-block">
+        className="text-dark-primary push-half-bottom push-half-right display-inline-block"
+      >
         to
       </h3>
       <Select
@@ -90,25 +100,30 @@ exports[`test should accept an active prop to show the input 1`] = `
             },
           ]
         }
-        placeholder="select fund">
+        placeholder="select fund"
+      >
         <div
-          className="input input--active soft-bottom display-inline-block select_1rryh47 select_15p0e27">
+          className="input input--active soft-bottom display-inline-block select_1rryh47 select_15p0e27"
+        >
           <select
             className="text-brand outlined--dotted outlined--light h3 hard-top flush-bottom"
             defaultValue="main fund"
             onChange={[Function]}
             onFocus={[Function]}
-            placeholder="select fund">
+            placeholder="select fund"
+          >
             <option
               style={
                 Object {
                   "display": "none",
                 }
-              }>
+              }
+            >
               select fund
             </option>
             <option
-              value="main fund">
+              value="main fund"
+            >
               main fund
             </option>
           </select>
@@ -119,7 +134,7 @@ exports[`test should accept an active prop to show the input 1`] = `
 </Layout>
 `;
 
-exports[`test should accept custom classes thru classes prop 1`] = `
+exports[`should accept custom classes thru classes prop 1`] = `
 <Layout
   accounts={
     Array [
@@ -135,10 +150,12 @@ exports[`test should accept custom classes thru classes prop 1`] = `
       "fund": "main",
       "id": "test",
     }
-  }>
+  }
+>
   <div>
     <div
-      className="display-inline-block push-half-bottom h3 push-half-right text-dark-primary">
+      className="display-inline-block push-half-bottom h3 push-half-right text-dark-primary"
+    >
       and give
     </div>
     <Input
@@ -157,7 +174,8 @@ exports[`test should accept custom classes thru classes prop 1`] = `
           "maxWidth": "150px",
         }
       }
-      type="tel">
+      type="tel"
+    >
       <div
         className="input soft-bottom input--active display-inline-block"
         data-spec="input-wrapper"
@@ -165,9 +183,11 @@ exports[`test should accept custom classes thru classes prop 1`] = `
           Object {
             "maxWidth": "150px",
           }
-        }>
+        }
+      >
         <RenderLabel
-          hideLabel={true} />
+          hideLabel={true}
+        />
         <input
           className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
           data-spec="input"
@@ -181,13 +201,16 @@ exports[`test should accept custom classes thru classes prop 1`] = `
               "maxWidth": "150px",
             }
           }
-          type="tel" />
+          type="tel"
+        />
       </div>
     </Input>
     <div
-      className="display-block">
+      className="display-block"
+    >
       <h3
-        className="text-dark-primary push-half-bottom push-half-right display-inline-block">
+        className="text-dark-primary push-half-bottom push-half-right display-inline-block"
+      >
         to
       </h3>
       <Select
@@ -209,25 +232,30 @@ exports[`test should accept custom classes thru classes prop 1`] = `
             },
           ]
         }
-        placeholder="select fund">
+        placeholder="select fund"
+      >
         <div
-          className="input input--active soft-bottom display-inline-block select_1rryh47 select_15p0e27">
+          className="input input--active soft-bottom display-inline-block select_1rryh47 select_15p0e27"
+        >
           <select
             className="text-dark-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
             defaultValue="main fund"
             onChange={[Function]}
             onFocus={[Function]}
-            placeholder="select fund">
+            placeholder="select fund"
+          >
             <option
               style={
                 Object {
                   "display": "none",
                 }
-              }>
+              }
+            >
               select fund
             </option>
             <option
-              value="main fund">
+              value="main fund"
+            >
               main fund
             </option>
           </select>
@@ -238,7 +266,7 @@ exports[`test should accept custom classes thru classes prop 1`] = `
 </Layout>
 `;
 
-exports[`test should accept multiple accounts through accounts prop 1`] = `
+exports[`should accept multiple accounts through accounts prop 1`] = `
 <Layout
   accounts={
     Array [
@@ -256,10 +284,12 @@ exports[`test should accept multiple accounts through accounts prop 1`] = `
       "fund": "main",
       "id": "test",
     }
-  }>
+  }
+>
   <div>
     <div
-      className="display-inline-block push-half-bottom h3 push-half-right text-dark-primary">
+      className="display-inline-block push-half-bottom h3 push-half-right text-dark-primary"
+    >
       and give
     </div>
     <Input
@@ -278,7 +308,8 @@ exports[`test should accept multiple accounts through accounts prop 1`] = `
           "maxWidth": "150px",
         }
       }
-      type="tel">
+      type="tel"
+    >
       <div
         className="input soft-bottom input--active display-inline-block"
         data-spec="input-wrapper"
@@ -286,9 +317,11 @@ exports[`test should accept multiple accounts through accounts prop 1`] = `
           Object {
             "maxWidth": "150px",
           }
-        }>
+        }
+      >
         <RenderLabel
-          hideLabel={true} />
+          hideLabel={true}
+        />
         <input
           className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
           data-spec="input"
@@ -302,13 +335,16 @@ exports[`test should accept multiple accounts through accounts prop 1`] = `
               "maxWidth": "150px",
             }
           }
-          type="tel" />
+          type="tel"
+        />
       </div>
     </Input>
     <div
-      className="display-block">
+      className="display-block"
+    >
       <h3
-        className="text-dark-primary push-half-bottom push-half-right display-inline-block">
+        className="text-dark-primary push-half-bottom push-half-right display-inline-block"
+      >
         to
       </h3>
       <Select
@@ -333,29 +369,35 @@ exports[`test should accept multiple accounts through accounts prop 1`] = `
             },
           ]
         }
-        placeholder="select fund">
+        placeholder="select fund"
+      >
         <div
-          className="input input--active soft-bottom display-inline-block select_1rryh47 select_15p0e27">
+          className="input input--active soft-bottom display-inline-block select_1rryh47 select_15p0e27"
+        >
           <select
             className="text-dark-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
             defaultValue="hello"
             onChange={[Function]}
             onFocus={[Function]}
-            placeholder="select fund">
+            placeholder="select fund"
+          >
             <option
               style={
                 Object {
                   "display": "none",
                 }
-              }>
+              }
+            >
               select fund
             </option>
             <option
-              value="hello">
+              value="hello"
+            >
               hello
             </option>
             <option
-              value="world">
+              value="world"
+            >
               world
             </option>
           </select>
@@ -366,7 +408,7 @@ exports[`test should accept multiple accounts through accounts prop 1`] = `
 </Layout>
 `;
 
-exports[`test should render with minimal props 1`] = `
+exports[`should render with minimal props 1`] = `
 <Layout
   accounts={
     Array [
@@ -381,10 +423,12 @@ exports[`test should render with minimal props 1`] = `
       "fund": "main",
       "id": "test",
     }
-  }>
+  }
+>
   <div>
     <div
-      className="display-inline-block push-half-bottom h3 push-half-right text-dark-primary">
+      className="display-inline-block push-half-bottom h3 push-half-right text-dark-primary"
+    >
       and give
     </div>
     <Input
@@ -403,7 +447,8 @@ exports[`test should render with minimal props 1`] = `
           "maxWidth": "150px",
         }
       }
-      type="tel">
+      type="tel"
+    >
       <div
         className="input soft-bottom input--active display-inline-block"
         data-spec="input-wrapper"
@@ -411,9 +456,11 @@ exports[`test should render with minimal props 1`] = `
           Object {
             "maxWidth": "150px",
           }
-        }>
+        }
+      >
         <RenderLabel
-          hideLabel={true} />
+          hideLabel={true}
+        />
         <input
           className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
           data-spec="input"
@@ -427,13 +474,16 @@ exports[`test should render with minimal props 1`] = `
               "maxWidth": "150px",
             }
           }
-          type="tel" />
+          type="tel"
+        />
       </div>
     </Input>
     <div
-      className="display-block">
+      className="display-block"
+    >
       <h3
-        className="text-dark-primary push-half-bottom push-half-right display-inline-block">
+        className="text-dark-primary push-half-bottom push-half-right display-inline-block"
+      >
         to
       </h3>
       <Select
@@ -455,25 +505,30 @@ exports[`test should render with minimal props 1`] = `
             },
           ]
         }
-        placeholder="select fund">
+        placeholder="select fund"
+      >
         <div
-          className="input input--active soft-bottom display-inline-block select_1rryh47 select_15p0e27">
+          className="input input--active soft-bottom display-inline-block select_1rryh47 select_15p0e27"
+        >
           <select
             className="text-dark-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
             defaultValue="main fund"
             onChange={[Function]}
             onFocus={[Function]}
-            placeholder="select fund">
+            placeholder="select fund"
+          >
             <option
               style={
                 Object {
                   "display": "none",
                 }
-              }>
+              }
+            >
               select fund
             </option>
             <option
-              value="main fund">
+              value="main fund"
+            >
               main fund
             </option>
           </select>

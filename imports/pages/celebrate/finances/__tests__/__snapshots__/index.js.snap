@@ -1,20 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Finances renders a layout 1`] = `
 <div>
   <Meta
-    title="Finances" />
+    title="Finances"
+  />
   <div
-    className="background--primary text-center text-light-primary soft-double-ends">
+    className="background--primary text-center text-light-primary soft-double-ends"
+  >
     <h3
-      className="push-top soft-half-sides">
+      className="push-top soft-half-sides"
+    >
       General Tithes and Offerings
     </h3>
     <div
-      className="push-half-bottom">
+      className="push-half-bottom"
+    >
       <div
-        className="display-inline-block">
+        className="display-inline-block"
+      >
         <Connect(FitTextWithoutData)
           compressor={1.5}
-          maxFontSize={18}>
+          maxFontSize={18}
+        >
           <Currency
             amount="49329319.14"
             baseHeadingSize="1"
@@ -25,255 +33,318 @@ exports[`Finances renders a layout 1`] = `
                 "fontWeight": "900",
               }
             }
-            theme="light" />
+            theme="light"
+          />
         </Connect(FitTextWithoutData)>
       </div>
     </div>
     <div
-      className="floating push-right push-bottom">
+      className="floating push-right push-bottom"
+    >
       <div
-        className="grid floating__item three-quarters@lap-wide-and-up nine-tenths@lap-and-up text-center">
+        className="grid floating__item three-quarters@lap-wide-and-up nine-tenths@lap-and-up text-center"
+      >
         <div
-          className="grid__item one-half@lap-and-up push-half-bottom">
+          className="grid__item one-half@lap-and-up push-half-bottom"
+        >
           <div
-            className="grid__item one-whole">
+            className="grid__item one-whole"
+          >
             <Progress
               percentDone={0.9977887158813115}
               style={Object {}}
               theme="dark"
               title="Aiken"
-              total="492202.38" />
+              total="492202.38"
+            />
           </div>
         </div>
         <div
-          className="grid__item one-half@lap-and-up push-half-bottom">
+          className="grid__item one-half@lap-and-up push-half-bottom"
+        >
           <div
-            className="grid__item one-whole">
+            className="grid__item one-whole"
+          >
             <Progress
               percentDone={28.45033299602116}
               style={Object {}}
               theme="dark"
               title="Anderson"
-              total="14034355.56" />
+              total="14034355.56"
+            />
           </div>
         </div>
         <div
-          className="grid__item one-half@lap-and-up push-half-bottom">
+          className="grid__item one-half@lap-and-up push-half-bottom"
+        >
           <div
-            className="grid__item one-whole">
+            className="grid__item one-whole"
+          >
             <Progress
               percentDone={2.5218144942756244}
               style={Object {}}
               theme="dark"
               title="Boiling Springs"
-              total="1243993.92" />
+              total="1243993.92"
+            />
           </div>
         </div>
         <div
-          className="grid__item one-half@lap-and-up push-half-bottom">
+          className="grid__item one-half@lap-and-up push-half-bottom"
+        >
           <div
-            className="grid__item one-whole">
+            className="grid__item one-whole"
+          >
             <Progress
               percentDone={0.23958350137487833}
               style={Object {}}
               theme="dark"
               title="Central"
-              total="118184.91" />
+              total="118184.91"
+            />
           </div>
         </div>
         <div
-          className="grid__item one-half@lap-and-up push-half-bottom">
+          className="grid__item one-half@lap-and-up push-half-bottom"
+        >
           <div
-            className="grid__item one-whole">
+            className="grid__item one-whole"
+          >
             <Progress
               percentDone={6.626845691347201}
               style={Object {}}
               theme="dark"
               title="Charleston"
-              total="3268977.86" />
+              total="3268977.86"
+            />
           </div>
         </div>
         <div
-          className="grid__item one-half@lap-and-up push-half-bottom">
+          className="grid__item one-half@lap-and-up push-half-bottom"
+        >
           <div
-            className="grid__item one-whole">
+            className="grid__item one-whole"
+          >
             <Progress
               percentDone={2.497786998646988}
               style={Object {}}
               theme="dark"
               title="Clemson"
-              total="1232141.32" />
+              total="1232141.32"
+            />
           </div>
         </div>
         <div
-          className="grid__item one-half@lap-and-up push-half-bottom">
+          className="grid__item one-half@lap-and-up push-half-bottom"
+        >
           <div
-            className="grid__item one-whole">
+            className="grid__item one-whole"
+          >
             <Progress
               percentDone={9.441375942737166}
               style={Object {}}
               theme="dark"
               title="Columbia*"
-              total="4657366.47" />
+              total="4657366.47"
+            />
           </div>
         </div>
         <div
-          className="grid__item one-half@lap-and-up push-half-bottom">
+          className="grid__item one-half@lap-and-up push-half-bottom"
+        >
           <div
-            className="grid__item one-whole">
+            className="grid__item one-whole"
+          >
             <Progress
               percentDone={5.848441029182225}
               style={Object {}}
               theme="dark"
               title="Florence"
-              total="2884996.14" />
+              total="2884996.14"
+            />
           </div>
         </div>
         <div
-          className="grid__item one-half@lap-and-up push-half-bottom">
+          className="grid__item one-half@lap-and-up push-half-bottom"
+        >
           <div
-            className="grid__item one-whole">
+            className="grid__item one-whole"
+          >
             <Progress
               percentDone={16.67178404927808}
               style={Object {}}
               theme="dark"
               title="Greenville"
-              total="8224077.56" />
+              total="8224077.56"
+            />
           </div>
         </div>
         <div
-          className="grid__item one-half@lap-and-up push-half-bottom">
+          className="grid__item one-half@lap-and-up push-half-bottom"
+        >
           <div
-            className="grid__item one-whole">
+            className="grid__item one-whole"
+          >
             <Progress
               percentDone={3.6908021066191425}
               style={Object {}}
               theme="dark"
               title="Greenwood"
-              total="1820647.55" />
+              total="1820647.55"
+            />
           </div>
         </div>
         <div
-          className="grid__item one-half@lap-and-up push-half-bottom">
+          className="grid__item one-half@lap-and-up push-half-bottom"
+        >
           <div
-            className="grid__item one-whole">
+            className="grid__item one-whole"
+          >
             <Progress
               percentDone={0.6854857839012938}
               style={Object {}}
               theme="dark"
               title="Hilton Head"
-              total="338145.47" />
+              total="338145.47"
+            />
           </div>
         </div>
         <div
-          className="grid__item one-half@lap-and-up push-half-bottom">
+          className="grid__item one-half@lap-and-up push-half-bottom"
+        >
           <div
-            className="grid__item one-whole">
+            className="grid__item one-whole"
+          >
             <Progress
               percentDone={2.5644133794140176}
               style={Object {}}
               theme="dark"
               title="Lexington*"
-              total="1265007.66" />
+              total="1265007.66"
+            />
           </div>
         </div>
         <div
-          className="grid__item one-half@lap-and-up push-half-bottom">
+          className="grid__item one-half@lap-and-up push-half-bottom"
+        >
           <div
-            className="grid__item one-whole">
+            className="grid__item one-whole"
+          >
             <Progress
               percentDone={4.697388024804592}
               style={Object {}}
               theme="dark"
               title="Myrtle Beach"
-              total="2317189.53" />
+              total="2317189.53"
+            />
           </div>
         </div>
         <div
-          className="grid__item one-half@lap-and-up push-half-bottom">
+          className="grid__item one-half@lap-and-up push-half-bottom"
+        >
           <div
-            className="grid__item one-whole">
+            className="grid__item one-whole"
+          >
             <Progress
               percentDone={1.1259060122515203}
               style={Object {}}
               theme="dark"
               title="Northeast Columbia"
-              total="555401.77" />
+              total="555401.77"
+            />
           </div>
         </div>
         <div
-          className="grid__item one-half@lap-and-up push-half-bottom">
+          className="grid__item one-half@lap-and-up push-half-bottom"
+        >
           <div
-            className="grid__item one-whole">
+            className="grid__item one-whole"
+          >
             <Progress
               percentDone={5.237526698204494}
               style={Object {}}
               theme="dark"
               title="Powdersville"
-              total="2583636.26" />
+              total="2583636.26"
+            />
           </div>
         </div>
         <div
-          className="grid__item one-half@lap-and-up push-half-bottom">
+          className="grid__item one-half@lap-and-up push-half-bottom"
+        >
           <div
-            className="grid__item one-whole">
+            className="grid__item one-whole"
+          >
             <Progress
               percentDone={0.9665421869027645}
               style={Object {}}
               theme="dark"
               title="Rock Hill"
-              total="476788.68" />
+              total="476788.68"
+            />
           </div>
         </div>
         <div
-          className="grid__item one-half@lap-and-up push-half-bottom">
+          className="grid__item one-half@lap-and-up push-half-bottom"
+        >
           <div
-            className="grid__item one-whole">
+            className="grid__item one-whole"
+          >
             <Progress
               percentDone={6.357380528808165}
               style={Object {}}
               theme="dark"
               title="Spartanburg"
-              total="3136052.53" />
+              total="3136052.53"
+            />
           </div>
         </div>
         <div
-          className="grid__item one-half@lap-and-up push-half-bottom">
+          className="grid__item one-half@lap-and-up push-half-bottom"
+        >
           <div
-            className="grid__item one-whole">
+            className="grid__item one-whole"
+          >
             <Progress
               percentDone={0.5842372346191681}
               style={Object {}}
               theme="dark"
               title="Sumter"
-              total="288200.25" />
+              total="288200.25"
+            />
           </div>
         </div>
         <div
-          className="soft-left one-half@lap-and-up push-half-bottom">
+          className="soft-left one-half@lap-and-up push-half-bottom"
+        >
           <div
-            className="grid__item one-whole">
+            className="grid__item one-whole"
+          >
             <Progress
               percentDone={0.7945666529221833}
               style={Object {}}
               theme="dark"
               title="Web"
-              total="391954.32" />
+              total="391954.32"
+            />
           </div>
         </div>
       </div>
     </div>
     <div
-      className="soft-sides">
+      className="soft-sides"
+    >
       <small
-        className="text-center">
+        className="text-center"
+      >
         <em>
           Lexington campus merged with Columbia campus on Oct. 30.
         </em>
       </small>
       <br />
       <small
-        className="text-center">
+        className="text-center"
+      >
         <em>
           Financials have been audited.
         </em>
@@ -281,16 +352,20 @@ exports[`Finances renders a layout 1`] = `
     </div>
   </div>
   <div
-    className="background--light-primary text-center soft-double-top">
+    className="background--light-primary text-center soft-double-top"
+  >
     <h3
-      className="push-top push-half-bottom">
+      className="push-top push-half-bottom"
+    >
       Land and Building Giving
     </h3>
     <div
-      className="push-top">
+      className="push-top"
+    >
       <Connect(FitTextWithoutData)
         compressor={1.5}
-        maxFontSize={18}>
+        maxFontSize={18}
+      >
         <Currency
           amount="1792258.15"
           baseHeadingSize="1"
@@ -300,44 +375,54 @@ exports[`Finances renders a layout 1`] = `
             Object {
               "fontWeight": "900",
             }
-          } />
+          }
+        />
       </Connect(FitTextWithoutData)>
     </div>
     <div
-      className="floating">
+      className="floating"
+    >
       <div
-        className="soft-double-sides soft-sides@handheld text-center three-quarters@lap-wide-and-up nine-tenths@lap floating__item">
+        className="soft-double-sides soft-sides@handheld text-center three-quarters@lap-wide-and-up nine-tenths@lap floating__item"
+      >
         <hr
           className="push-ends"
           style={
             Object {
               "borderTop": "1px solid #dddddd",
             }
-          } />
+          }
+        />
         <div
-          className="soft-ends">
+          className="soft-ends"
+        >
           <div
-            className="grid push-ends">
+            className="grid push-ends"
+          >
             <div
-              className="grid__item one-half@lap-and-up one-whole">
+              className="grid__item one-half@lap-and-up one-whole"
+            >
               <h3
                 className="italic"
                 style={
                   Object {
                     "fontFamily": "ff-meta-serif-web-pro, serif",
                   }
-                }>
+                }
+              >
                 We had
               </h3>
               <Connect(FitTextWithoutData)
-                compressor={0.5}>
+                compressor={0.5}
+              >
                 <h1
                   className="uppercase flush-bottom soft-half-bottom"
                   style={
                     Object {
                       "fontWeight": "900",
                     }
-                  }>
+                  }
+                >
                   5,400
                 </h1>
               </Connect(FitTextWithoutData)>
@@ -346,32 +431,38 @@ exports[`Finances renders a layout 1`] = `
               </h3>
             </div>
             <div
-              className="grid__item one-half@lap-and-up">
+              className="grid__item one-half@lap-and-up"
+            >
               <h3
                 className="italic"
                 style={
                   Object {
                     "fontFamily": "ff-meta-serif-web-pro, serif",
                   }
-                }>
+                }
+              >
                 and
               </h3>
               <Connect(FitTextWithoutData)
-                compressor={0.5}>
+                compressor={0.5}
+              >
                 <h1
                   className="uppercase flush-bottom soft-half-bottom"
                   style={
                     Object {
                       "fontWeight": "900",
                     }
-                  }>
+                  }
+                >
                   18,173
                 </h1>
               </Connect(FitTextWithoutData)>
               <div
-                className="floating text-center">
+                className="floating text-center"
+              >
                 <h3
-                  className="floating__item push-half-bottom">
+                  className="floating__item push-half-bottom"
+                >
                   households gave.
                 </h3>
               </div>
@@ -382,16 +473,20 @@ exports[`Finances renders a layout 1`] = `
     </div>
   </div>
   <div
-    className="background--dark-primary soft floating">
+    className="background--dark-primary soft floating"
+  >
     <div
-      className="floating__item two-thirds@lap-and-up">
+      className="floating__item two-thirds@lap-and-up"
+    >
       <h3
-        className="push-double-top text-light-primary">
+        className="push-double-top text-light-primary"
+      >
         Christmas Offering
       </h3>
       <Connect(FitTextWithoutData)
         compressor={1.5}
-        maxFontSize={18}>
+        maxFontSize={18}
+      >
         <Currency
           amount="1125052.43"
           baseHeadingSize="1"
@@ -402,7 +497,8 @@ exports[`Finances renders a layout 1`] = `
               "fontWeight": "900",
             }
           }
-          theme="light" />
+          theme="light"
+        />
       </Connect(FitTextWithoutData)>
       <hr
         className="visuallyhidden@handheld push-ends"
@@ -410,15 +506,19 @@ exports[`Finances renders a layout 1`] = `
           Object {
             "borderTop": "1px solid #ffffff",
           }
-        } />
+        }
+      />
       <div
-        className="text-light-primary text-left push-top@lap-and-up soft-double-top@lap-and-up push-double-bottom">
+        className="text-light-primary text-left push-top@lap-and-up soft-double-top@lap-and-up push-double-bottom"
+      >
         <div
-          className="floating">
+          className="floating"
+        >
           <div
-            className="floating__item three-quarters@lap-and-up text-left">
+            className="floating__item three-quarters@lap-and-up text-left"
+          >
             <p>
-              This year\'s Christmas Offering will support these three projects:
+              This year's Christmas Offering will support these three projects:
             </p>
             <ul>
               <li>
@@ -427,7 +527,8 @@ exports[`Finances renders a layout 1`] = `
                   alt="link to locations page"
                   className="text-light-primary"
                   href="https://newspring.cc/locations"
-                  target="_blank">
+                  target="_blank"
+                >
                   current campuses
                 </a>
                  take their next step.
@@ -438,7 +539,8 @@ exports[`Finances renders a layout 1`] = `
                   alt="link to Freedom Church"
                   className="text-light-primary"
                   href="http://www.freedomchurch.cc/"
-                  target="_blank">
+                  target="_blank"
+                >
                   Freedom Church
                 </a>
                  as they launch three new campuses in 2017.
@@ -449,7 +551,8 @@ exports[`Finances renders a layout 1`] = `
                   alt="link to locations page"
                   className="text-light-primary"
                   href="https://newspring.cc/locations"
-                  target="_blank">
+                  target="_blank"
+                >
                   campuses
                 </a>
                 .
@@ -461,37 +564,45 @@ exports[`Finances renders a layout 1`] = `
     </div>
   </div>
   <div
-    className="background--light-primary soft">
+    className="background--light-primary soft"
+  >
     <h3
-      className="text-center push-top">
+      className="text-center push-top"
+    >
       Annual Audit
     </h3>
     <p
-      className="constrain-copy push-bottom">
+      className="constrain-copy push-bottom"
+    >
       NewSpring is audited annually by an external accounting firm according to Generally Accepted Accounting Principles. God calls His people to live above reproach, so for us, the annual audit is a financial and spiritual responsibility (
       <a
         alt="Philippians 2:15"
         href="https://www.bible.com/search/bible?q=philippians%202:15&version_id=111"
-        target="_blank">
+        target="_blank"
+      >
         Philippians 2:15
       </a>
       ).
     </p>
     <div
-      className="text-center">
+      className="text-center"
+    >
       <a
         className="btn push-bottom"
         href="https://s3.amazonaws.com/ns.assets/apollos/annual+report/2016/2016+Audit.pdf"
         onClick={[Function]}
-        target="_blank">
+        target="_blank"
+      >
         Detailed Report
       </a>
     </div>
   </div>
   <div
-    className="background--primary text-center text-light-primary soft">
+    className="background--primary text-center text-light-primary soft"
+  >
     <h3
-      className="push-double-top">
+      className="push-double-top"
+    >
       Keep Reading
     </h3>
     <p>
@@ -501,7 +612,8 @@ exports[`Finances renders a layout 1`] = `
       className="btn--light push-double-bottom"
       onlyActiveOnIndex={false}
       style={Object {}}
-      to="/annualreport/next-steps">
+      to="/annualreport/next-steps"
+    >
       Go To Next Steps Report
     </Link>
   </div>

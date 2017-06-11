@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`CartContainer > Class Methods changeFund handles deselecting a fund 1`] = `
 Object {
   "canCheckout": true,
@@ -248,7 +250,8 @@ exports[`CartContainer > Lifecycle functions accepts query string prefills the f
   clearTransaction={[Function]}
   clearTransactions={[Function]}
   give="5"
-  query={Object {}}>
+  query={Object {}}
+>
   <Component
     accounts={
       Array [
@@ -281,9 +284,11 @@ exports[`CartContainer > Lifecycle functions accepts query string prefills the f
       ]
     }
     toggleSecondFund={[Function]}
-    total={10}>
+    total={10}
+  >
     <div
-      className="push-top@handheld soft-half-top@lap-and-up">
+      className="push-top@handheld soft-half-top@lap-and-up"
+    >
       <Form
         classes={
           Array [
@@ -292,16 +297,20 @@ exports[`CartContainer > Lifecycle functions accepts query string prefills the f
           ]
         }
         id="add-to-cart"
-        submit={[Function]}>
+        submit={[Function]}
+      >
         <form
           className="hard-ends text-left hard"
           id="add-to-cart"
-          onSubmit={[Function]}>
+          onSubmit={[Function]}
+        >
           <FieldSet>
             <fieldset
-              className="flush-bottom">
+              className="flush-bottom"
+            >
               <div
-                className="display-inline-block">
+                className="display-inline-block"
+              >
                 <mockConstructor
                   accounts={
                     Array [
@@ -317,14 +326,17 @@ exports[`CartContainer > Lifecycle functions accepts query string prefills the f
                   fundId="1"
                   id={1}
                   preFill={[Function]}
-                  primary={true}>
+                  primary={true}
+                >
                   <div />
                 </mockConstructor>
                 <div
-                  className="display-block one-whole soft-bottom" />
+                  className="display-block one-whole soft-bottom"
+                />
                 <mockConstructor
                   bindSubComponentReset={[Function]}
-                  setCanCheckout={[Function]}>
+                  setCanCheckout={[Function]}
+                >
                   <div />
                 </mockConstructor>
                 <h3
@@ -333,7 +345,8 @@ exports[`CartContainer > Lifecycle functions accepts query string prefills the f
                     Object {
                       "verticalAlign": "middle",
                     }
-                  }>
+                  }
+                >
                   my total is
                 </h3>
                 <span
@@ -342,34 +355,47 @@ exports[`CartContainer > Lifecycle functions accepts query string prefills the f
                     Object {
                       "verticalAlign": "middle",
                     }
-                  }>
+                  }
+                >
                   <Currency
                     amount="$10.00"
                     baseHeadingSize="1"
-                    className="text-left">
+                    className="text-left"
+                  >
                     <div
-                      className="floating text-dark-primary text-left">
+                      className="floating text-dark-primary text-left"
+                    >
                       <h3
                         className="floating__item flush"
                         style={
                           Object {
                             "paddingRight": "5px",
                           }
-                        } />
+                        }
+                      >
+                        $
+                      </h3>
                       <h1
-                        className="floating__item flush">
+                        className="floating__item flush"
+                      >
                         10
                       </h1>
                       <h3
-                        className="floating__item flush" />
+                        className="floating__item flush"
+                      >
+                        .
+                        00
+                      </h3>
                     </div>
                   </Currency>
                 </span>
               </div>
               <div
-                className="push-top">
+                className="push-top"
+              >
                 <mockConstructor
-                  disabled={false}>
+                  disabled={false}
+                >
                   <div />
                 </mockConstructor>
               </div>
@@ -442,17 +468,18 @@ Object {
 }
 `;
 
-exports[`test should not render if no accounts 1`] = `
+exports[`should not render if no accounts 1`] = `
 <CartContainer
   accounts={Array []}
   addTransactions={[Function]}
   clearTransaction={[Function]}
   clearTransactions={[Function]}
   give="5"
-  query={Object {}} />
+  query={Object {}}
+/>
 `;
 
-exports[`test should properly render with multiple accounts 1`] = `
+exports[`should properly render with multiple accounts 1`] = `
 <CartContainer
   accounts={
     Array [
@@ -478,7 +505,8 @@ exports[`test should properly render with multiple accounts 1`] = `
   clearTransaction={[Function]}
   clearTransactions={[Function]}
   give="5"
-  query={Object {}}>
+  query={Object {}}
+>
   <Component
     accounts={
       Array [
@@ -535,9 +563,11 @@ exports[`test should properly render with multiple accounts 1`] = `
       ]
     }
     toggleSecondFund={[Function]}
-    total={0}>
+    total={0}
+  >
     <div
-      className="push-top@handheld soft-half-top@lap-and-up">
+      className="push-top@handheld soft-half-top@lap-and-up"
+    >
       <Form
         classes={
           Array [
@@ -546,16 +576,20 @@ exports[`test should properly render with multiple accounts 1`] = `
           ]
         }
         id="add-to-cart"
-        submit={[Function]}>
+        submit={[Function]}
+      >
         <form
           className="hard-ends text-left hard"
           id="add-to-cart"
-          onSubmit={[Function]}>
+          onSubmit={[Function]}
+        >
           <FieldSet>
             <fieldset
-              className="flush-bottom">
+              className="flush-bottom"
+            >
               <div
-                className="display-inline-block">
+                className="display-inline-block"
+              >
                 <mockConstructor
                   accounts={
                     Array [
@@ -583,16 +617,19 @@ exports[`test should properly render with multiple accounts 1`] = `
                   fundId={1}
                   id={1}
                   preFill={[Function]}
-                  primary={true}>
+                  primary={true}
+                >
                   <div />
                 </mockConstructor>
                 <div
-                  className="display-block one-whole soft-bottom">
+                  className="display-block one-whole soft-bottom"
+                >
                   <SmallButton
                     className="btn--dark-secondary"
                     disabled={true}
                     onClick={[Function]}
-                    text="Add Another Fund">
+                    text="Add Another Fund"
+                  >
                     <button
                       className="
                         btn btn--small@next
@@ -601,14 +638,16 @@ exports[`test should properly render with multiple accounts 1`] = `
                       "
                       disabled={true}
                       onClick={[Function]}
-                      style={Object {}}>
+                      style={Object {}}
+                    >
                       Add Another Fund
                     </button>
                   </SmallButton>
                 </div>
                 <mockConstructor
                   bindSubComponentReset={[Function]}
-                  setCanCheckout={[Function]}>
+                  setCanCheckout={[Function]}
+                >
                   <div />
                 </mockConstructor>
                 <h3
@@ -617,7 +656,8 @@ exports[`test should properly render with multiple accounts 1`] = `
                     Object {
                       "verticalAlign": "middle",
                     }
-                  }>
+                  }
+                >
                   my total is
                 </h3>
                 <span
@@ -626,34 +666,47 @@ exports[`test should properly render with multiple accounts 1`] = `
                     Object {
                       "verticalAlign": "middle",
                     }
-                  }>
+                  }
+                >
                   <Currency
                     amount="$0.00"
                     baseHeadingSize="1"
-                    className="text-left">
+                    className="text-left"
+                  >
                     <div
-                      className="floating text-dark-primary text-left">
+                      className="floating text-dark-primary text-left"
+                    >
                       <h3
                         className="floating__item flush"
                         style={
                           Object {
                             "paddingRight": "5px",
                           }
-                        } />
+                        }
+                      >
+                        $
+                      </h3>
                       <h1
-                        className="floating__item flush">
+                        className="floating__item flush"
+                      >
                         0
                       </h1>
                       <h3
-                        className="floating__item flush" />
+                        className="floating__item flush"
+                      >
+                        .
+                        00
+                      </h3>
                     </div>
                   </Currency>
                 </span>
               </div>
               <div
-                className="push-top">
+                className="push-top"
+              >
                 <mockConstructor
-                  disabled={true}>
+                  disabled={true}
+                >
                   <div />
                 </mockConstructor>
               </div>
@@ -666,7 +719,7 @@ exports[`test should properly render with multiple accounts 1`] = `
 </CartContainer>
 `;
 
-exports[`test should render with minimal props 1`] = `
+exports[`should render with minimal props 1`] = `
 <Component
   accounts={
     Array [
@@ -699,5 +752,6 @@ exports[`test should render with minimal props 1`] = `
     ]
   }
   toggleSecondFund={[Function]}
-  total={0} />
+  total={0}
+/>
 `;

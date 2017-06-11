@@ -1,5 +1,6 @@
+import PropTypes from "prop-types";
 /* eslint-disable react/no-danger */
-import { Component, PropTypes } from "react";
+import { Component } from "react";
 
 import Video from "../../../components/@primitives/players/video";
 

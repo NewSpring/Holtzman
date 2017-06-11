@@ -1,26 +1,34 @@
-exports[`test getClasses appends additional classes 1`] = `"hard-sides hard-top background--light-primary soft-sides@palm-wide-and-up test test2"`;
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`test getClasses returns default classes 1`] = `"hard-sides hard-top background--light-primary soft-sides@palm-wide-and-up"`;
+exports[`getClasses appends additional classes 1`] = `"hard-sides hard-top background--light-primary soft-sides@palm-wide-and-up test test2"`;
 
-exports[`test renders scriptures 1`] = `
+exports[`getClasses returns default classes 1`] = `"hard-sides hard-top background--light-primary soft-sides@palm-wide-and-up"`;
+
+exports[`renders scriptures 1`] = `
 <section
   className="hard-sides hard-top background--light-primary soft-sides@palm-wide-and-up"
   data-status-scroll-item={true}
-  data-status-scroll-offset={-50}>
+  data-status-scroll-offset={-50}
+>
   <ScriptureItem
-    scripture="Job 2" />
+    scripture="Job 2"
+  />
   <ScriptureItem
-    scripture="Job 3" />
+    scripture="Job 3"
+  />
   <p
-    className="small italic push-sides">
+    className="small italic push-sides"
+  >
     Scripture taken from The Holy Bible, English Standard Version. Copyright ©2001 by 
     <a
-      href="http://www.crosswaybibles.org">
+      href="http://www.crosswaybibles.org"
+    >
       Crossway Bibles
     </a>
     , a publishing ministry of Good News Publishers. Used by permission. All rights reserved. Text provided by the 
     <a
-      href="http://www.gnpcb.org/esv/share/services/">
+      href="http://www.gnpcb.org/esv/share/services/"
+    >
       Crossway Bibles Web Service
     </a>
     .

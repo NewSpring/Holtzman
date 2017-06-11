@@ -1,4 +1,6 @@
-exports[`test renders complete message 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders complete message 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)
     classes={
@@ -6,12 +8,15 @@ exports[`test renders complete message 1`] = `
         "background--light-primary",
       ]
     }
-    nav={true}>
+    nav={true}
+  >
     <Meta
-      title="Giving Schedule" />
+      title="Giving Schedule"
+    />
     <Right
       background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg"
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -19,32 +24,41 @@ exports[`test renders complete message 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <div
-      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
+      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary"
+    >
       <div
-        className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored">
+        className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored"
+      >
         <div
-          className="soft-double-ends">
+          className="soft-double-ends"
+        >
           <div
-            className="text-center">
+            className="text-center"
+          >
             <Currency
               amount="2.00"
               baseHeadingSize="1"
-              className="flush-bottom soft-half-bottom text-center display-inline-block" />
+              className="flush-bottom soft-half-bottom text-center display-inline-block"
+            />
             <h4
-              className="text-dark-primary flush-bottom">
+              className="text-dark-primary flush-bottom"
+            >
               Test
             </h4>
             <h4
-              className="text-dark-primary soft-half-top">
+              className="text-dark-primary soft-half-top"
+            >
               1111
                
                 
               <AccountType
                 height="20px"
                 type="Bank"
-                width="30px" />
+                width="30px"
+              />
             </h4>
           </div>
         </div>
@@ -54,67 +68,83 @@ exports[`test renders complete message 1`] = `
             Object {
               "borderColor": "#ddd",
             }
-          } />
+          }
+        />
         <div
-          className="soft-top">
+          className="soft-top"
+        >
           <div
-            className="floating one-whole display-inline-block">
+            className="floating one-whole display-inline-block"
+          >
             <div
-              className="floating__item float-left">
+              className="floating__item float-left"
+            >
               <h4
-                className="hard text-dark-primary">
+                className="hard text-dark-primary"
+              >
                 test account
               </h4>
             </div>
             <div
-              className="floating__item float-right">
+              className="floating__item float-right"
+            >
               <Currency
                 amount={2}
                 baseHeadingSize="4"
-                className="text-right text-dark-secondary" />
+                className="text-right text-dark-secondary"
+              />
             </div>
           </div>
           <p
-            className="flush soft-top">
+            className="flush soft-top"
+          >
             <span
               className="h7 text-dark-tertiary push-half-right"
               style={
                 Object {
                   "verticalAlign": "middle",
                 }
-              }>
+              }
+            >
               Start Date:
             </span>
             <em
-              className="text-dark-primary">
+              className="text-dark-primary"
+            >
               Dec 12, 2012
             </em>
           </p>
           <p
-            className="flush">
+            className="flush"
+          >
             <span
               className="h7 text-dark-tertiary push-half-right"
               style={
                 Object {
                   "verticalAlign": "middle",
                 }
-              }>
+              }
+            >
               Latest Contribution:
             </span>
             <em
-              className="text-dark-primary">
+              className="text-dark-primary"
+            >
               Dec 12, 2013
             </em>
           </p>
           <div
-            className="one-whole soft-double-top text-center">
+            className="one-whole soft-double-top text-center"
+          >
             <SmallButton
               disabled={true}
-              text="Schedule Completed" />
+              text="Schedule Completed"
+            />
           </div>
           <div>
             <p
-              className="soft-double-top soft-half-sides text-left@handheld text-center">
+              className="soft-double-top soft-half-sides text-left@handheld text-center"
+            >
               <small>
                 <em>
                   To change details about a schedule, please cancel the current one and create a new schedule with the desired information. We are sorry for any inconvenience this may cause and are working to provide the ability to edit contribution schedules in the future.
@@ -126,7 +156,8 @@ exports[`test renders complete message 1`] = `
       </div>
     </div>
     <div
-      className="soft-half soft-sides@portable soft-double-sides@anchored">
+      className="soft-half soft-sides@portable soft-double-sides@anchored"
+    >
       <TransactionList
         transactions={
           Array [
@@ -151,17 +182,22 @@ exports[`test renders complete message 1`] = `
               "person": Object {},
             },
           ]
-        } />
+        }
+      />
       <hr
-        className="push-double-top flush-bottom" />
+        className="push-double-top flush-bottom"
+      />
       <h4
-        className="soft soft-double-ends text-center@lap-and-up flush-bottom">
+        className="soft soft-double-ends text-center@lap-and-up flush-bottom"
+      >
         Recent Articles About Giving
       </h4>
       <div
-        className="grid">
+        className="grid"
+      >
         <div
-          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom">
+          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+        >
           <Card
             classes={
               Array [
@@ -175,9 +211,11 @@ exports[`test renders complete message 1`] = `
                   "url": "http://test.com/test.jpg",
                 },
               ]
-            }>
+            }
+          >
             <h4
-              className="push-half-top@portable push-top@anchored">
+              className="push-half-top@portable push-top@anchored"
+            >
               test
             </h4>
             <p>
@@ -186,12 +224,14 @@ exports[`test renders complete message 1`] = `
                   Object {
                     "__html": "test summary",
                   }
-                } />
+                }
+              />
             </p>
           </Card>
         </div>
         <div
-          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom">
+          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+        >
           <Card
             classes={
               Array [
@@ -205,9 +245,11 @@ exports[`test renders complete message 1`] = `
                   "url": "http://test.com/test.jpg",
                 },
               ]
-            }>
+            }
+          >
             <h4
-              className="push-half-top@portable push-top@anchored">
+              className="push-half-top@portable push-top@anchored"
+            >
               test
             </h4>
             <p>
@@ -216,7 +258,8 @@ exports[`test renders complete message 1`] = `
                   Object {
                     "__html": "test summary",
                   }
-                } />
+                }
+              />
             </p>
           </Card>
         </div>
@@ -227,7 +270,7 @@ exports[`test renders complete message 1`] = `
 </div>
 `;
 
-exports[`test renders loading if no entries 1`] = `
+exports[`renders loading if no entries 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)
     classes={
@@ -235,12 +278,15 @@ exports[`test renders loading if no entries 1`] = `
         "background--light-primary",
       ]
     }
-    nav={true}>
+    nav={true}
+  >
     <Meta
-      title="Giving Schedule" />
+      title="Giving Schedule"
+    />
     <Right
       background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg"
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -248,32 +294,41 @@ exports[`test renders loading if no entries 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <div
-      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
+      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary"
+    >
       <div
-        className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored">
+        className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored"
+      >
         <div
-          className="soft-double-ends">
+          className="soft-double-ends"
+        >
           <div
-            className="text-center">
+            className="text-center"
+          >
             <Currency
               amount="2.00"
               baseHeadingSize="1"
-              className="flush-bottom soft-half-bottom text-center display-inline-block" />
+              className="flush-bottom soft-half-bottom text-center display-inline-block"
+            />
             <h4
-              className="text-dark-primary flush-bottom">
+              className="text-dark-primary flush-bottom"
+            >
               Test
             </h4>
             <h4
-              className="text-dark-primary soft-half-top">
+              className="text-dark-primary soft-half-top"
+            >
               1111
                
                 
               <AccountType
                 height="20px"
                 type="Bank"
-                width="30px" />
+                width="30px"
+              />
             </h4>
           </div>
         </div>
@@ -283,68 +338,84 @@ exports[`test renders loading if no entries 1`] = `
             Object {
               "borderColor": "#ddd",
             }
-          } />
+          }
+        />
         <div
-          className="soft-top">
+          className="soft-top"
+        >
           <div
-            className="floating one-whole display-inline-block">
+            className="floating one-whole display-inline-block"
+          >
             <div
-              className="floating__item float-left">
+              className="floating__item float-left"
+            >
               <h4
-                className="hard text-dark-primary">
+                className="hard text-dark-primary"
+              >
                 test account
               </h4>
             </div>
             <div
-              className="floating__item float-right">
+              className="floating__item float-right"
+            >
               <Currency
                 amount={2}
                 baseHeadingSize="4"
-                className="text-right text-dark-secondary" />
+                className="text-right text-dark-secondary"
+              />
             </div>
           </div>
           <p
-            className="flush soft-top">
+            className="flush soft-top"
+          >
             <span
               className="h7 text-dark-tertiary push-half-right"
               style={
                 Object {
                   "verticalAlign": "middle",
                 }
-              }>
+              }
+            >
               Start Date:
             </span>
             <em
-              className="text-dark-primary">
+              className="text-dark-primary"
+            >
               Dec 12, 2012
             </em>
           </p>
           <p
-            className="flush">
+            className="flush"
+          >
             <span
               className="h7 text-dark-tertiary push-half-right"
               style={
                 Object {
                   "verticalAlign": "middle",
                 }
-              }>
+              }
+            >
               Latest Contribution:
             </span>
             <em
-              className="text-dark-primary">
+              className="text-dark-primary"
+            >
               Dec 12, 2013
             </em>
           </p>
           <div
-            className="one-whole soft-double-top text-center">
+            className="one-whole soft-double-top text-center"
+          >
             <SmallButton
               className="text-alert"
               onClick={[Function]}
-              text="Stop Contribution" />
+              text="Stop Contribution"
+            />
           </div>
           <div>
             <p
-              className="soft-double-top soft-half-sides text-left@handheld text-center">
+              className="soft-double-top soft-half-sides text-left@handheld text-center"
+            >
               <small>
                 <em>
                   To change details about a schedule, please cancel the current one and create a new schedule with the desired information. We are sorry for any inconvenience this may cause and are working to provide the ability to edit contribution schedules in the future.
@@ -356,7 +427,8 @@ exports[`test renders loading if no entries 1`] = `
       </div>
     </div>
     <div
-      className="soft-half soft-sides@portable soft-double-sides@anchored">
+      className="soft-half soft-sides@portable soft-double-sides@anchored"
+    >
       <TransactionList
         transactions={
           Array [
@@ -381,15 +453,19 @@ exports[`test renders loading if no entries 1`] = `
               "person": Object {},
             },
           ]
-        } />
+        }
+      />
       <hr
-        className="push-double-top flush-bottom" />
+        className="push-double-top flush-bottom"
+      />
       <h4
-        className="soft soft-double-ends text-center@lap-and-up flush-bottom">
+        className="soft soft-double-ends text-center@lap-and-up flush-bottom"
+      >
         Recent Articles About Giving
       </h4>
       <div
-        className="one-whole soft text-center">
+        className="one-whole soft text-center"
+      >
         <Spinner />
       </div>
       ;
@@ -398,7 +474,7 @@ exports[`test renders loading if no entries 1`] = `
 </div>
 `;
 
-exports[`test renders loading if no schedule 1`] = `
+exports[`renders loading if no schedule 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)
     classes={
@@ -406,12 +482,15 @@ exports[`test renders loading if no schedule 1`] = `
         "background--light-primary",
       ]
     }
-    nav={true}>
+    nav={true}
+  >
     <Meta
-      title="Giving Schedule" />
+      title="Giving Schedule"
+    />
     <Right
       background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg"
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -419,22 +498,28 @@ exports[`test renders loading if no schedule 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <div
-      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
+      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary"
+    >
       <div
-        className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored">
+        className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored"
+      >
         <div
-          className="soft-double-ends">
+          className="soft-double-ends"
+        >
           <div
-            className="text-center soft">
+            className="text-center soft"
+          >
             <Spinner
               styles={
                 Object {
                   "height": "40px",
                   "width": "40px",
                 }
-              } />
+              }
+            />
           </div>
         </div>
         <hr
@@ -443,21 +528,27 @@ exports[`test renders loading if no schedule 1`] = `
             Object {
               "borderColor": "#ddd",
             }
-          } />
+          }
+        />
       </div>
     </div>
     <div
-      className="soft-half soft-sides@portable soft-double-sides@anchored">
+      className="soft-half soft-sides@portable soft-double-sides@anchored"
+    >
       <hr
-        className="push-double-top flush-bottom" />
+        className="push-double-top flush-bottom"
+      />
       <h4
-        className="soft soft-double-ends text-center@lap-and-up flush-bottom">
+        className="soft soft-double-ends text-center@lap-and-up flush-bottom"
+      >
         Recent Articles About Giving
       </h4>
       <div
-        className="grid">
+        className="grid"
+      >
         <div
-          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom">
+          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+        >
           <Card
             classes={
               Array [
@@ -471,9 +562,11 @@ exports[`test renders loading if no schedule 1`] = `
                   "url": "http://test.com/test.jpg",
                 },
               ]
-            }>
+            }
+          >
             <h4
-              className="push-half-top@portable push-top@anchored">
+              className="push-half-top@portable push-top@anchored"
+            >
               test
             </h4>
             <p>
@@ -482,12 +575,14 @@ exports[`test renders loading if no schedule 1`] = `
                   Object {
                     "__html": "test summary",
                   }
-                } />
+                }
+              />
             </p>
           </Card>
         </div>
         <div
-          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom">
+          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+        >
           <Card
             classes={
               Array [
@@ -501,9 +596,11 @@ exports[`test renders loading if no schedule 1`] = `
                   "url": "http://test.com/test.jpg",
                 },
               ]
-            }>
+            }
+          >
             <h4
-              className="push-half-top@portable push-top@anchored">
+              className="push-half-top@portable push-top@anchored"
+            >
               test
             </h4>
             <p>
@@ -512,7 +609,8 @@ exports[`test renders loading if no schedule 1`] = `
                   Object {
                     "__html": "test summary",
                   }
-                } />
+                }
+              />
             </p>
           </Card>
         </div>
@@ -523,7 +621,7 @@ exports[`test renders loading if no schedule 1`] = `
 </div>
 `;
 
-exports[`test renders loading if not ready 1`] = `
+exports[`renders loading if not ready 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)
     classes={
@@ -531,12 +629,15 @@ exports[`test renders loading if not ready 1`] = `
         "background--light-primary",
       ]
     }
-    nav={true}>
+    nav={true}
+  >
     <Meta
-      title="Giving Schedule" />
+      title="Giving Schedule"
+    />
     <Right
       background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg"
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -544,42 +645,53 @@ exports[`test renders loading if not ready 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <div
-      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
+      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary"
+    >
       <div
-        className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored">
+        className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored"
+      >
         <div
-          className="soft-double-ends">
+          className="soft-double-ends"
+        >
           <div
-            className="text-center soft">
+            className="text-center soft"
+          >
             <Spinner
               styles={
                 Object {
                   "height": "40px",
                   "width": "40px",
                 }
-              } />
+              }
+            />
           </div>
           <div
-            className="text-center">
+            className="text-center"
+          >
             <Currency
               amount="2.00"
               baseHeadingSize="1"
-              className="flush-bottom soft-half-bottom text-center display-inline-block" />
+              className="flush-bottom soft-half-bottom text-center display-inline-block"
+            />
             <h4
-              className="text-dark-primary flush-bottom">
+              className="text-dark-primary flush-bottom"
+            >
               Test
             </h4>
             <h4
-              className="text-dark-primary soft-half-top">
+              className="text-dark-primary soft-half-top"
+            >
               1111
                
                 
               <AccountType
                 height="20px"
                 type="Bank"
-                width="30px" />
+                width="30px"
+              />
             </h4>
           </div>
         </div>
@@ -589,68 +701,84 @@ exports[`test renders loading if not ready 1`] = `
             Object {
               "borderColor": "#ddd",
             }
-          } />
+          }
+        />
         <div
-          className="soft-top">
+          className="soft-top"
+        >
           <div
-            className="floating one-whole display-inline-block">
+            className="floating one-whole display-inline-block"
+          >
             <div
-              className="floating__item float-left">
+              className="floating__item float-left"
+            >
               <h4
-                className="hard text-dark-primary">
+                className="hard text-dark-primary"
+              >
                 test account
               </h4>
             </div>
             <div
-              className="floating__item float-right">
+              className="floating__item float-right"
+            >
               <Currency
                 amount={2}
                 baseHeadingSize="4"
-                className="text-right text-dark-secondary" />
+                className="text-right text-dark-secondary"
+              />
             </div>
           </div>
           <p
-            className="flush soft-top">
+            className="flush soft-top"
+          >
             <span
               className="h7 text-dark-tertiary push-half-right"
               style={
                 Object {
                   "verticalAlign": "middle",
                 }
-              }>
+              }
+            >
               Start Date:
             </span>
             <em
-              className="text-dark-primary">
+              className="text-dark-primary"
+            >
               Dec 12, 2012
             </em>
           </p>
           <p
-            className="flush">
+            className="flush"
+          >
             <span
               className="h7 text-dark-tertiary push-half-right"
               style={
                 Object {
                   "verticalAlign": "middle",
                 }
-              }>
+              }
+            >
               Latest Contribution:
             </span>
             <em
-              className="text-dark-primary">
+              className="text-dark-primary"
+            >
               Dec 12, 2013
             </em>
           </p>
           <div
-            className="one-whole soft-double-top text-center">
+            className="one-whole soft-double-top text-center"
+          >
             <SmallButton
               className="text-alert"
               onClick={[Function]}
-              text="Stop Contribution" />
+              text="Stop Contribution"
+            />
           </div>
           <div>
             <p
-              className="soft-double-top soft-half-sides text-left@handheld text-center">
+              className="soft-double-top soft-half-sides text-left@handheld text-center"
+            >
               <small>
                 <em>
                   To change details about a schedule, please cancel the current one and create a new schedule with the desired information. We are sorry for any inconvenience this may cause and are working to provide the ability to edit contribution schedules in the future.
@@ -662,7 +790,8 @@ exports[`test renders loading if not ready 1`] = `
       </div>
     </div>
     <div
-      className="soft-half soft-sides@portable soft-double-sides@anchored">
+      className="soft-half soft-sides@portable soft-double-sides@anchored"
+    >
       <TransactionList
         transactions={
           Array [
@@ -687,17 +816,22 @@ exports[`test renders loading if not ready 1`] = `
               "person": Object {},
             },
           ]
-        } />
+        }
+      />
       <hr
-        className="push-double-top flush-bottom" />
+        className="push-double-top flush-bottom"
+      />
       <h4
-        className="soft soft-double-ends text-center@lap-and-up flush-bottom">
+        className="soft soft-double-ends text-center@lap-and-up flush-bottom"
+      >
         Recent Articles About Giving
       </h4>
       <div
-        className="grid">
+        className="grid"
+      >
         <div
-          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom">
+          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+        >
           <Card
             classes={
               Array [
@@ -711,9 +845,11 @@ exports[`test renders loading if not ready 1`] = `
                   "url": "http://test.com/test.jpg",
                 },
               ]
-            }>
+            }
+          >
             <h4
-              className="push-half-top@portable push-top@anchored">
+              className="push-half-top@portable push-top@anchored"
+            >
               test
             </h4>
             <p>
@@ -722,12 +858,14 @@ exports[`test renders loading if not ready 1`] = `
                   Object {
                     "__html": "test summary",
                   }
-                } />
+                }
+              />
             </p>
           </Card>
         </div>
         <div
-          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom">
+          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+        >
           <Card
             classes={
               Array [
@@ -741,9 +879,11 @@ exports[`test renders loading if not ready 1`] = `
                   "url": "http://test.com/test.jpg",
                 },
               ]
-            }>
+            }
+          >
             <h4
-              className="push-half-top@portable push-top@anchored">
+              className="push-half-top@portable push-top@anchored"
+            >
               test
             </h4>
             <p>
@@ -752,7 +892,8 @@ exports[`test renders loading if not ready 1`] = `
                   Object {
                     "__html": "test summary",
                   }
-                } />
+                }
+              />
             </p>
           </Card>
         </div>
@@ -763,7 +904,7 @@ exports[`test renders loading if not ready 1`] = `
 </div>
 `;
 
-exports[`test renders no contributions message 1`] = `
+exports[`renders no contributions message 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)
     classes={
@@ -771,12 +912,15 @@ exports[`test renders no contributions message 1`] = `
         "background--light-primary",
       ]
     }
-    nav={true}>
+    nav={true}
+  >
     <Meta
-      title="Giving Schedule" />
+      title="Giving Schedule"
+    />
     <Right
       background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg"
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -784,32 +928,41 @@ exports[`test renders no contributions message 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <div
-      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
+      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary"
+    >
       <div
-        className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored">
+        className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored"
+      >
         <div
-          className="soft-double-ends">
+          className="soft-double-ends"
+        >
           <div
-            className="text-center">
+            className="text-center"
+          >
             <Currency
               amount="2.00"
               baseHeadingSize="1"
-              className="flush-bottom soft-half-bottom text-center display-inline-block" />
+              className="flush-bottom soft-half-bottom text-center display-inline-block"
+            />
             <h4
-              className="text-dark-primary flush-bottom">
+              className="text-dark-primary flush-bottom"
+            >
               Test
             </h4>
             <h4
-              className="text-dark-primary soft-half-top">
+              className="text-dark-primary soft-half-top"
+            >
               1111
                
                 
               <AccountType
                 height="20px"
                 type="Bank"
-                width="30px" />
+                width="30px"
+              />
             </h4>
           </div>
         </div>
@@ -819,52 +972,65 @@ exports[`test renders no contributions message 1`] = `
             Object {
               "borderColor": "#ddd",
             }
-          } />
+          }
+        />
         <div
-          className="soft-top">
+          className="soft-top"
+        >
           <div
-            className="floating one-whole display-inline-block">
+            className="floating one-whole display-inline-block"
+          >
             <div
-              className="floating__item float-left">
+              className="floating__item float-left"
+            >
               <h4
-                className="hard text-dark-primary">
+                className="hard text-dark-primary"
+              >
                 test account
               </h4>
             </div>
             <div
-              className="floating__item float-right">
+              className="floating__item float-right"
+            >
               <Currency
                 amount={2}
                 baseHeadingSize="4"
-                className="text-right text-dark-secondary" />
+                className="text-right text-dark-secondary"
+              />
             </div>
           </div>
           <p
-            className="flush soft-top">
+            className="flush soft-top"
+          >
             <span
               className="h7 text-dark-tertiary push-half-right"
               style={
                 Object {
                   "verticalAlign": "middle",
                 }
-              }>
+              }
+            >
               Start Date:
             </span>
             <em
-              className="text-dark-primary">
+              className="text-dark-primary"
+            >
               Dec 12, 2012
             </em>
           </p>
           <div
-            className="one-whole soft-double-top text-center">
+            className="one-whole soft-double-top text-center"
+          >
             <SmallButton
               className="text-alert"
               onClick={[Function]}
-              text="Stop Contribution" />
+              text="Stop Contribution"
+            />
           </div>
           <div>
             <p
-              className="soft-double-top soft-half-sides text-left@handheld text-center">
+              className="soft-double-top soft-half-sides text-left@handheld text-center"
+            >
               <small>
                 <em>
                   To change details about a schedule, please cancel the current one and create a new schedule with the desired information. We are sorry for any inconvenience this may cause and are working to provide the ability to edit contribution schedules in the future.
@@ -876,11 +1042,13 @@ exports[`test renders no contributions message 1`] = `
       </div>
     </div>
     <div
-      className="soft-half soft-sides@portable soft-double-sides@anchored">
+      className="soft-half soft-sides@portable soft-double-sides@anchored"
+    >
       <div
-        className="text-left soft-double-top soft-half-sides">
+        className="text-left soft-double-top soft-half-sides"
+      >
         <p>
-          We didn\'t find any contributions associated with this schedule.
+          We didn't find any contributions associated with this schedule.
         </p>
         <p>
           <em>
@@ -889,7 +1057,8 @@ exports[`test renders no contributions message 1`] = `
             <a
               href="//rock.newspring.cc/workflows/152?Topic=Stewardship"
               rel="noopener noreferrer"
-              target="_blank">
+              target="_blank"
+            >
               contact us
             </a>
              
@@ -898,17 +1067,22 @@ exports[`test renders no contributions message 1`] = `
         </p>
       </div>
       <TransactionList
-        transactions={Array []} />
+        transactions={Array []}
+      />
       <hr
-        className="push-double-top flush-bottom" />
+        className="push-double-top flush-bottom"
+      />
       <h4
-        className="soft soft-double-ends text-center@lap-and-up flush-bottom">
+        className="soft soft-double-ends text-center@lap-and-up flush-bottom"
+      >
         Recent Articles About Giving
       </h4>
       <div
-        className="grid">
+        className="grid"
+      >
         <div
-          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom">
+          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+        >
           <Card
             classes={
               Array [
@@ -922,9 +1096,11 @@ exports[`test renders no contributions message 1`] = `
                   "url": "http://test.com/test.jpg",
                 },
               ]
-            }>
+            }
+          >
             <h4
-              className="push-half-top@portable push-top@anchored">
+              className="push-half-top@portable push-top@anchored"
+            >
               test
             </h4>
             <p>
@@ -933,12 +1109,14 @@ exports[`test renders no contributions message 1`] = `
                   Object {
                     "__html": "test summary",
                   }
-                } />
+                }
+              />
             </p>
           </Card>
         </div>
         <div
-          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom">
+          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+        >
           <Card
             classes={
               Array [
@@ -952,9 +1130,11 @@ exports[`test renders no contributions message 1`] = `
                   "url": "http://test.com/test.jpg",
                 },
               ]
-            }>
+            }
+          >
             <h4
-              className="push-half-top@portable push-top@anchored">
+              className="push-half-top@portable push-top@anchored"
+            >
               test
             </h4>
             <p>
@@ -963,7 +1143,8 @@ exports[`test renders no contributions message 1`] = `
                   Object {
                     "__html": "test summary",
                   }
-                } />
+                }
+              />
             </p>
           </Card>
         </div>
@@ -974,7 +1155,7 @@ exports[`test renders no contributions message 1`] = `
 </div>
 `;
 
-exports[`test renders stopped message 1`] = `
+exports[`renders stopped message 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)
     classes={
@@ -982,12 +1163,15 @@ exports[`test renders stopped message 1`] = `
         "background--light-primary",
       ]
     }
-    nav={true}>
+    nav={true}
+  >
     <Meta
-      title="Giving Schedule" />
+      title="Giving Schedule"
+    />
     <Right
       background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg"
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -995,32 +1179,41 @@ exports[`test renders stopped message 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <div
-      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
+      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary"
+    >
       <div
-        className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored">
+        className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored"
+      >
         <div
-          className="soft-double-ends">
+          className="soft-double-ends"
+        >
           <div
-            className="text-center">
+            className="text-center"
+          >
             <Currency
               amount="2.00"
               baseHeadingSize="1"
-              className="flush-bottom soft-half-bottom text-center display-inline-block" />
+              className="flush-bottom soft-half-bottom text-center display-inline-block"
+            />
             <h4
-              className="text-dark-primary flush-bottom">
+              className="text-dark-primary flush-bottom"
+            >
               Test
             </h4>
             <h4
-              className="text-dark-primary soft-half-top">
+              className="text-dark-primary soft-half-top"
+            >
               1111
                
                 
               <AccountType
                 height="20px"
                 type="Bank"
-                width="30px" />
+                width="30px"
+              />
             </h4>
           </div>
         </div>
@@ -1030,67 +1223,83 @@ exports[`test renders stopped message 1`] = `
             Object {
               "borderColor": "#ddd",
             }
-          } />
+          }
+        />
         <div
-          className="soft-top">
+          className="soft-top"
+        >
           <div
-            className="floating one-whole display-inline-block">
+            className="floating one-whole display-inline-block"
+          >
             <div
-              className="floating__item float-left">
+              className="floating__item float-left"
+            >
               <h4
-                className="hard text-dark-primary">
+                className="hard text-dark-primary"
+              >
                 test account
               </h4>
             </div>
             <div
-              className="floating__item float-right">
+              className="floating__item float-right"
+            >
               <Currency
                 amount={2}
                 baseHeadingSize="4"
-                className="text-right text-dark-secondary" />
+                className="text-right text-dark-secondary"
+              />
             </div>
           </div>
           <p
-            className="flush soft-top">
+            className="flush soft-top"
+          >
             <span
               className="h7 text-dark-tertiary push-half-right"
               style={
                 Object {
                   "verticalAlign": "middle",
                 }
-              }>
+              }
+            >
               Start Date:
             </span>
             <em
-              className="text-dark-primary">
+              className="text-dark-primary"
+            >
               Dec 12, 2012
             </em>
           </p>
           <p
-            className="flush">
+            className="flush"
+          >
             <span
               className="h7 text-dark-tertiary push-half-right"
               style={
                 Object {
                   "verticalAlign": "middle",
                 }
-              }>
+              }
+            >
               Latest Contribution:
             </span>
             <em
-              className="text-dark-primary">
+              className="text-dark-primary"
+            >
               Dec 12, 2013
             </em>
           </p>
           <div
-            className="one-whole soft-double-top text-center">
+            className="one-whole soft-double-top text-center"
+          >
             <SmallButton
               disabled={true}
-              text="Contribution Stopped" />
+              text="Contribution Stopped"
+            />
           </div>
           <div>
             <p
-              className="soft-double-top soft-half-sides text-left@handheld text-center">
+              className="soft-double-top soft-half-sides text-left@handheld text-center"
+            >
               <small>
                 <em>
                   To change details about a schedule, please cancel the current one and create a new schedule with the desired information. We are sorry for any inconvenience this may cause and are working to provide the ability to edit contribution schedules in the future.
@@ -1102,7 +1311,8 @@ exports[`test renders stopped message 1`] = `
       </div>
     </div>
     <div
-      className="soft-half soft-sides@portable soft-double-sides@anchored">
+      className="soft-half soft-sides@portable soft-double-sides@anchored"
+    >
       <TransactionList
         transactions={
           Array [
@@ -1127,17 +1337,22 @@ exports[`test renders stopped message 1`] = `
               "person": Object {},
             },
           ]
-        } />
+        }
+      />
       <hr
-        className="push-double-top flush-bottom" />
+        className="push-double-top flush-bottom"
+      />
       <h4
-        className="soft soft-double-ends text-center@lap-and-up flush-bottom">
+        className="soft soft-double-ends text-center@lap-and-up flush-bottom"
+      >
         Recent Articles About Giving
       </h4>
       <div
-        className="grid">
+        className="grid"
+      >
         <div
-          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom">
+          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+        >
           <Card
             classes={
               Array [
@@ -1151,9 +1366,11 @@ exports[`test renders stopped message 1`] = `
                   "url": "http://test.com/test.jpg",
                 },
               ]
-            }>
+            }
+          >
             <h4
-              className="push-half-top@portable push-top@anchored">
+              className="push-half-top@portable push-top@anchored"
+            >
               test
             </h4>
             <p>
@@ -1162,12 +1379,14 @@ exports[`test renders stopped message 1`] = `
                   Object {
                     "__html": "test summary",
                   }
-                } />
+                }
+              />
             </p>
           </Card>
         </div>
         <div
-          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom">
+          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+        >
           <Card
             classes={
               Array [
@@ -1181,9 +1400,11 @@ exports[`test renders stopped message 1`] = `
                   "url": "http://test.com/test.jpg",
                 },
               ]
-            }>
+            }
+          >
             <h4
-              className="push-half-top@portable push-top@anchored">
+              className="push-half-top@portable push-top@anchored"
+            >
               test
             </h4>
             <p>
@@ -1192,7 +1413,8 @@ exports[`test renders stopped message 1`] = `
                   Object {
                     "__html": "test summary",
                   }
-                } />
+                }
+              />
             </p>
           </Card>
         </div>
@@ -1203,7 +1425,7 @@ exports[`test renders stopped message 1`] = `
 </div>
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)
     classes={
@@ -1211,12 +1433,15 @@ exports[`test renders with props 1`] = `
         "background--light-primary",
       ]
     }
-    nav={true}>
+    nav={true}
+  >
     <Meta
-      title="Giving Schedule" />
+      title="Giving Schedule"
+    />
     <Right
       background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg"
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -1224,32 +1449,41 @@ exports[`test renders with props 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <div
-      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
+      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary"
+    >
       <div
-        className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored">
+        className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored"
+      >
         <div
-          className="soft-double-ends">
+          className="soft-double-ends"
+        >
           <div
-            className="text-center">
+            className="text-center"
+          >
             <Currency
               amount="2.00"
               baseHeadingSize="1"
-              className="flush-bottom soft-half-bottom text-center display-inline-block" />
+              className="flush-bottom soft-half-bottom text-center display-inline-block"
+            />
             <h4
-              className="text-dark-primary flush-bottom">
+              className="text-dark-primary flush-bottom"
+            >
               Test
             </h4>
             <h4
-              className="text-dark-primary soft-half-top">
+              className="text-dark-primary soft-half-top"
+            >
               1111
                
                 
               <AccountType
                 height="20px"
                 type="Bank"
-                width="30px" />
+                width="30px"
+              />
             </h4>
           </div>
         </div>
@@ -1259,68 +1493,84 @@ exports[`test renders with props 1`] = `
             Object {
               "borderColor": "#ddd",
             }
-          } />
+          }
+        />
         <div
-          className="soft-top">
+          className="soft-top"
+        >
           <div
-            className="floating one-whole display-inline-block">
+            className="floating one-whole display-inline-block"
+          >
             <div
-              className="floating__item float-left">
+              className="floating__item float-left"
+            >
               <h4
-                className="hard text-dark-primary">
+                className="hard text-dark-primary"
+              >
                 test account
               </h4>
             </div>
             <div
-              className="floating__item float-right">
+              className="floating__item float-right"
+            >
               <Currency
                 amount={2}
                 baseHeadingSize="4"
-                className="text-right text-dark-secondary" />
+                className="text-right text-dark-secondary"
+              />
             </div>
           </div>
           <p
-            className="flush soft-top">
+            className="flush soft-top"
+          >
             <span
               className="h7 text-dark-tertiary push-half-right"
               style={
                 Object {
                   "verticalAlign": "middle",
                 }
-              }>
+              }
+            >
               Start Date:
             </span>
             <em
-              className="text-dark-primary">
+              className="text-dark-primary"
+            >
               Dec 12, 2012
             </em>
           </p>
           <p
-            className="flush">
+            className="flush"
+          >
             <span
               className="h7 text-dark-tertiary push-half-right"
               style={
                 Object {
                   "verticalAlign": "middle",
                 }
-              }>
+              }
+            >
               Latest Contribution:
             </span>
             <em
-              className="text-dark-primary">
+              className="text-dark-primary"
+            >
               Dec 12, 2013
             </em>
           </p>
           <div
-            className="one-whole soft-double-top text-center">
+            className="one-whole soft-double-top text-center"
+          >
             <SmallButton
               className="text-alert"
               onClick={[Function]}
-              text="Stop Contribution" />
+              text="Stop Contribution"
+            />
           </div>
           <div>
             <p
-              className="soft-double-top soft-half-sides text-left@handheld text-center">
+              className="soft-double-top soft-half-sides text-left@handheld text-center"
+            >
               <small>
                 <em>
                   To change details about a schedule, please cancel the current one and create a new schedule with the desired information. We are sorry for any inconvenience this may cause and are working to provide the ability to edit contribution schedules in the future.
@@ -1332,7 +1582,8 @@ exports[`test renders with props 1`] = `
       </div>
     </div>
     <div
-      className="soft-half soft-sides@portable soft-double-sides@anchored">
+      className="soft-half soft-sides@portable soft-double-sides@anchored"
+    >
       <TransactionList
         transactions={
           Array [
@@ -1357,17 +1608,22 @@ exports[`test renders with props 1`] = `
               "person": Object {},
             },
           ]
-        } />
+        }
+      />
       <hr
-        className="push-double-top flush-bottom" />
+        className="push-double-top flush-bottom"
+      />
       <h4
-        className="soft soft-double-ends text-center@lap-and-up flush-bottom">
+        className="soft soft-double-ends text-center@lap-and-up flush-bottom"
+      >
         Recent Articles About Giving
       </h4>
       <div
-        className="grid">
+        className="grid"
+      >
         <div
-          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom">
+          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+        >
           <Card
             classes={
               Array [
@@ -1381,9 +1637,11 @@ exports[`test renders with props 1`] = `
                   "url": "http://test.com/test.jpg",
                 },
               ]
-            }>
+            }
+          >
             <h4
-              className="push-half-top@portable push-top@anchored">
+              className="push-half-top@portable push-top@anchored"
+            >
               test
             </h4>
             <p>
@@ -1392,12 +1650,14 @@ exports[`test renders with props 1`] = `
                   Object {
                     "__html": "test summary",
                   }
-                } />
+                }
+              />
             </p>
           </Card>
         </div>
         <div
-          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom">
+          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+        >
           <Card
             classes={
               Array [
@@ -1411,9 +1671,11 @@ exports[`test renders with props 1`] = `
                   "url": "http://test.com/test.jpg",
                 },
               ]
-            }>
+            }
+          >
             <h4
-              className="push-half-top@portable push-top@anchored">
+              className="push-half-top@portable push-top@anchored"
+            >
               test
             </h4>
             <p>
@@ -1422,7 +1684,8 @@ exports[`test renders with props 1`] = `
                   Object {
                     "__html": "test summary",
                   }
-                } />
+                }
+              />
             </p>
           </Card>
         </div>
@@ -1433,7 +1696,7 @@ exports[`test renders with props 1`] = `
 </div>
 `;
 
-exports[`test renders without schedule 1`] = `
+exports[`renders without schedule 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)
     classes={
@@ -1441,12 +1704,15 @@ exports[`test renders without schedule 1`] = `
         "background--light-primary",
       ]
     }
-    nav={true}>
+    nav={true}
+  >
     <Meta
-      title="Giving Schedule" />
+      title="Giving Schedule"
+    />
     <Right
       background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg"
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -1454,22 +1720,28 @@ exports[`test renders without schedule 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <div
-      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
+      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary"
+    >
       <div
-        className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored">
+        className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored"
+      >
         <div
-          className="soft-double-ends">
+          className="soft-double-ends"
+        >
           <div
-            className="text-center soft">
+            className="text-center soft"
+          >
             <Spinner
               styles={
                 Object {
                   "height": "40px",
                   "width": "40px",
                 }
-              } />
+              }
+            />
           </div>
         </div>
         <hr
@@ -1478,21 +1750,27 @@ exports[`test renders without schedule 1`] = `
             Object {
               "borderColor": "#ddd",
             }
-          } />
+          }
+        />
       </div>
     </div>
     <div
-      className="soft-half soft-sides@portable soft-double-sides@anchored">
+      className="soft-half soft-sides@portable soft-double-sides@anchored"
+    >
       <hr
-        className="push-double-top flush-bottom" />
+        className="push-double-top flush-bottom"
+      />
       <h4
-        className="soft soft-double-ends text-center@lap-and-up flush-bottom">
+        className="soft soft-double-ends text-center@lap-and-up flush-bottom"
+      >
         Recent Articles About Giving
       </h4>
       <div
-        className="grid">
+        className="grid"
+      >
         <div
-          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom">
+          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+        >
           <Card
             classes={
               Array [
@@ -1506,9 +1784,11 @@ exports[`test renders without schedule 1`] = `
                   "url": "http://test.com/test.jpg",
                 },
               ]
-            }>
+            }
+          >
             <h4
-              className="push-half-top@portable push-top@anchored">
+              className="push-half-top@portable push-top@anchored"
+            >
               test
             </h4>
             <p>
@@ -1517,12 +1797,14 @@ exports[`test renders without schedule 1`] = `
                   Object {
                     "__html": "test summary",
                   }
-                } />
+                }
+              />
             </p>
           </Card>
         </div>
         <div
-          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom">
+          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+        >
           <Card
             classes={
               Array [
@@ -1536,9 +1818,11 @@ exports[`test renders without schedule 1`] = `
                   "url": "http://test.com/test.jpg",
                 },
               ]
-            }>
+            }
+          >
             <h4
-              className="push-half-top@portable push-top@anchored">
+              className="push-half-top@portable push-top@anchored"
+            >
               test
             </h4>
             <p>
@@ -1547,7 +1831,8 @@ exports[`test renders without schedule 1`] = `
                   Object {
                     "__html": "test summary",
                   }
-                } />
+                }
+              />
             </p>
           </Card>
         </div>
@@ -1558,7 +1843,7 @@ exports[`test renders without schedule 1`] = `
 </div>
 `;
 
-exports[`test renders without schedule payment 1`] = `
+exports[`renders without schedule payment 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)
     classes={
@@ -1566,12 +1851,15 @@ exports[`test renders without schedule payment 1`] = `
         "background--light-primary",
       ]
     }
-    nav={true}>
+    nav={true}
+  >
     <Meta
-      title="Giving Schedule" />
+      title="Giving Schedule"
+    />
     <Right
       background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg"
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -1579,21 +1867,28 @@ exports[`test renders without schedule payment 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <div
-      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
+      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary"
+    >
       <div
-        className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored">
+        className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored"
+      >
         <div
-          className="soft-double-ends">
+          className="soft-double-ends"
+        >
           <div
-            className="text-center">
+            className="text-center"
+          >
             <Currency
               amount="2.00"
               baseHeadingSize="1"
-              className="flush-bottom soft-half-bottom text-center display-inline-block" />
+              className="flush-bottom soft-half-bottom text-center display-inline-block"
+            />
             <h4
-              className="text-dark-primary flush-bottom">
+              className="text-dark-primary flush-bottom"
+            >
               Test
             </h4>
           </div>
@@ -1604,68 +1899,84 @@ exports[`test renders without schedule payment 1`] = `
             Object {
               "borderColor": "#ddd",
             }
-          } />
+          }
+        />
         <div
-          className="soft-top">
+          className="soft-top"
+        >
           <div
-            className="floating one-whole display-inline-block">
+            className="floating one-whole display-inline-block"
+          >
             <div
-              className="floating__item float-left">
+              className="floating__item float-left"
+            >
               <h4
-                className="hard text-dark-primary">
+                className="hard text-dark-primary"
+              >
                 test account
               </h4>
             </div>
             <div
-              className="floating__item float-right">
+              className="floating__item float-right"
+            >
               <Currency
                 amount={2}
                 baseHeadingSize="4"
-                className="text-right text-dark-secondary" />
+                className="text-right text-dark-secondary"
+              />
             </div>
           </div>
           <p
-            className="flush soft-top">
+            className="flush soft-top"
+          >
             <span
               className="h7 text-dark-tertiary push-half-right"
               style={
                 Object {
                   "verticalAlign": "middle",
                 }
-              }>
+              }
+            >
               Start Date:
             </span>
             <em
-              className="text-dark-primary">
+              className="text-dark-primary"
+            >
               Dec 12, 2012
             </em>
           </p>
           <p
-            className="flush">
+            className="flush"
+          >
             <span
               className="h7 text-dark-tertiary push-half-right"
               style={
                 Object {
                   "verticalAlign": "middle",
                 }
-              }>
+              }
+            >
               Latest Contribution:
             </span>
             <em
-              className="text-dark-primary">
+              className="text-dark-primary"
+            >
               Dec 12, 2013
             </em>
           </p>
           <div
-            className="one-whole soft-double-top text-center">
+            className="one-whole soft-double-top text-center"
+          >
             <SmallButton
               className="text-alert"
               onClick={[Function]}
-              text="Stop Contribution" />
+              text="Stop Contribution"
+            />
           </div>
           <div>
             <p
-              className="soft-double-top soft-half-sides text-left@handheld text-center">
+              className="soft-double-top soft-half-sides text-left@handheld text-center"
+            >
               <small>
                 <em>
                   To change details about a schedule, please cancel the current one and create a new schedule with the desired information. We are sorry for any inconvenience this may cause and are working to provide the ability to edit contribution schedules in the future.
@@ -1677,7 +1988,8 @@ exports[`test renders without schedule payment 1`] = `
       </div>
     </div>
     <div
-      className="soft-half soft-sides@portable soft-double-sides@anchored">
+      className="soft-half soft-sides@portable soft-double-sides@anchored"
+    >
       <TransactionList
         transactions={
           Array [
@@ -1702,17 +2014,22 @@ exports[`test renders without schedule payment 1`] = `
               "person": Object {},
             },
           ]
-        } />
+        }
+      />
       <hr
-        className="push-double-top flush-bottom" />
+        className="push-double-top flush-bottom"
+      />
       <h4
-        className="soft soft-double-ends text-center@lap-and-up flush-bottom">
+        className="soft soft-double-ends text-center@lap-and-up flush-bottom"
+      >
         Recent Articles About Giving
       </h4>
       <div
-        className="grid">
+        className="grid"
+      >
         <div
-          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom">
+          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+        >
           <Card
             classes={
               Array [
@@ -1726,9 +2043,11 @@ exports[`test renders without schedule payment 1`] = `
                   "url": "http://test.com/test.jpg",
                 },
               ]
-            }>
+            }
+          >
             <h4
-              className="push-half-top@portable push-top@anchored">
+              className="push-half-top@portable push-top@anchored"
+            >
               test
             </h4>
             <p>
@@ -1737,12 +2056,14 @@ exports[`test renders without schedule payment 1`] = `
                   Object {
                     "__html": "test summary",
                   }
-                } />
+                }
+              />
             </p>
           </Card>
         </div>
         <div
-          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom">
+          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+        >
           <Card
             classes={
               Array [
@@ -1756,9 +2077,11 @@ exports[`test renders without schedule payment 1`] = `
                   "url": "http://test.com/test.jpg",
                 },
               ]
-            }>
+            }
+          >
             <h4
-              className="push-half-top@portable push-top@anchored">
+              className="push-half-top@portable push-top@anchored"
+            >
               test
             </h4>
             <p>
@@ -1767,7 +2090,8 @@ exports[`test renders without schedule payment 1`] = `
                   Object {
                     "__html": "test summary",
                   }
-                } />
+                }
+              />
             </p>
           </Card>
         </div>
@@ -1778,7 +2102,7 @@ exports[`test renders without schedule payment 1`] = `
 </div>
 `;
 
-exports[`test works with credit card 1`] = `
+exports[`works with credit card 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)
     classes={
@@ -1786,12 +2110,15 @@ exports[`test works with credit card 1`] = `
         "background--light-primary",
       ]
     }
-    nav={true}>
+    nav={true}
+  >
     <Meta
-      title="Giving Schedule" />
+      title="Giving Schedule"
+    />
     <Right
       background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg"
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -1799,32 +2126,41 @@ exports[`test works with credit card 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <div
-      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
+      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary"
+    >
       <div
-        className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored">
+        className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored"
+      >
         <div
-          className="soft-double-ends">
+          className="soft-double-ends"
+        >
           <div
-            className="text-center">
+            className="text-center"
+          >
             <Currency
               amount="2.00"
               baseHeadingSize="1"
-              className="flush-bottom soft-half-bottom text-center display-inline-block" />
+              className="flush-bottom soft-half-bottom text-center display-inline-block"
+            />
             <h4
-              className="text-dark-primary flush-bottom">
+              className="text-dark-primary flush-bottom"
+            >
               Test
             </h4>
             <h4
-              className="text-dark-primary soft-half-top">
+              className="text-dark-primary soft-half-top"
+            >
               1111
                
                 
               <AccountType
                 height="20px"
                 type="Visa"
-                width="30px" />
+                width="30px"
+              />
             </h4>
           </div>
         </div>
@@ -1834,68 +2170,84 @@ exports[`test works with credit card 1`] = `
             Object {
               "borderColor": "#ddd",
             }
-          } />
+          }
+        />
         <div
-          className="soft-top">
+          className="soft-top"
+        >
           <div
-            className="floating one-whole display-inline-block">
+            className="floating one-whole display-inline-block"
+          >
             <div
-              className="floating__item float-left">
+              className="floating__item float-left"
+            >
               <h4
-                className="hard text-dark-primary">
+                className="hard text-dark-primary"
+              >
                 test account
               </h4>
             </div>
             <div
-              className="floating__item float-right">
+              className="floating__item float-right"
+            >
               <Currency
                 amount={2}
                 baseHeadingSize="4"
-                className="text-right text-dark-secondary" />
+                className="text-right text-dark-secondary"
+              />
             </div>
           </div>
           <p
-            className="flush soft-top">
+            className="flush soft-top"
+          >
             <span
               className="h7 text-dark-tertiary push-half-right"
               style={
                 Object {
                   "verticalAlign": "middle",
                 }
-              }>
+              }
+            >
               Start Date:
             </span>
             <em
-              className="text-dark-primary">
+              className="text-dark-primary"
+            >
               Dec 12, 2012
             </em>
           </p>
           <p
-            className="flush">
+            className="flush"
+          >
             <span
               className="h7 text-dark-tertiary push-half-right"
               style={
                 Object {
                   "verticalAlign": "middle",
                 }
-              }>
+              }
+            >
               Latest Contribution:
             </span>
             <em
-              className="text-dark-primary">
+              className="text-dark-primary"
+            >
               Dec 12, 2013
             </em>
           </p>
           <div
-            className="one-whole soft-double-top text-center">
+            className="one-whole soft-double-top text-center"
+          >
             <SmallButton
               className="text-alert"
               onClick={[Function]}
-              text="Stop Contribution" />
+              text="Stop Contribution"
+            />
           </div>
           <div>
             <p
-              className="soft-double-top soft-half-sides text-left@handheld text-center">
+              className="soft-double-top soft-half-sides text-left@handheld text-center"
+            >
               <small>
                 <em>
                   To change details about a schedule, please cancel the current one and create a new schedule with the desired information. We are sorry for any inconvenience this may cause and are working to provide the ability to edit contribution schedules in the future.
@@ -1907,7 +2259,8 @@ exports[`test works with credit card 1`] = `
       </div>
     </div>
     <div
-      className="soft-half soft-sides@portable soft-double-sides@anchored">
+      className="soft-half soft-sides@portable soft-double-sides@anchored"
+    >
       <TransactionList
         transactions={
           Array [
@@ -1932,17 +2285,22 @@ exports[`test works with credit card 1`] = `
               "person": Object {},
             },
           ]
-        } />
+        }
+      />
       <hr
-        className="push-double-top flush-bottom" />
+        className="push-double-top flush-bottom"
+      />
       <h4
-        className="soft soft-double-ends text-center@lap-and-up flush-bottom">
+        className="soft soft-double-ends text-center@lap-and-up flush-bottom"
+      >
         Recent Articles About Giving
       </h4>
       <div
-        className="grid">
+        className="grid"
+      >
         <div
-          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom">
+          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+        >
           <Card
             classes={
               Array [
@@ -1956,9 +2314,11 @@ exports[`test works with credit card 1`] = `
                   "url": "http://test.com/test.jpg",
                 },
               ]
-            }>
+            }
+          >
             <h4
-              className="push-half-top@portable push-top@anchored">
+              className="push-half-top@portable push-top@anchored"
+            >
               test
             </h4>
             <p>
@@ -1967,12 +2327,14 @@ exports[`test works with credit card 1`] = `
                   Object {
                     "__html": "test summary",
                   }
-                } />
+                }
+              />
             </p>
           </Card>
         </div>
         <div
-          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom">
+          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+        >
           <Card
             classes={
               Array [
@@ -1986,9 +2348,11 @@ exports[`test works with credit card 1`] = `
                   "url": "http://test.com/test.jpg",
                 },
               ]
-            }>
+            }
+          >
             <h4
-              className="push-half-top@portable push-top@anchored">
+              className="push-half-top@portable push-top@anchored"
+            >
               test
             </h4>
             <p>
@@ -1997,7 +2361,8 @@ exports[`test works with credit card 1`] = `
                   Object {
                     "__html": "test summary",
                   }
-                } />
+                }
+              />
             </p>
           </Card>
         </div>

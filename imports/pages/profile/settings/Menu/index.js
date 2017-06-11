@@ -1,5 +1,6 @@
+import PropTypes from "prop-types";
 /* eslint-disable no-undef */
-import { Component, PropTypes } from "react";
+import { Component } from "react";
 import { Meteor } from "meteor/meteor";
 import ReactMixin from "react-mixin";
 import { graphql } from "react-apollo";

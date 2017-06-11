@@ -1,4 +1,6 @@
-exports[`test should accept custom classes thru classes prop 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should accept custom classes thru classes prop 1`] = `
 <Primary
   accounts={
     Array [
@@ -12,11 +14,13 @@ exports[`test should accept custom classes thru classes prop 1`] = `
   changeFund={[Function]}
   classes="test1 test2"
   fundId="test"
-  preFill={[Function]}>
+  preFill={[Function]}
+>
   <div>
     <h3
-      className="text-dark-primary display-inline-block push-half-bottom push-half-right">
-      I\'d like to give
+      className="text-dark-primary display-inline-block push-half-bottom push-half-right"
+    >
+      I'd like to give
     </h3>
     <Input
       classes={
@@ -35,7 +39,8 @@ exports[`test should accept custom classes thru classes prop 1`] = `
           "maxWidth": "150px",
         }
       }
-      type="tel">
+      type="tel"
+    >
       <div
         className="input soft-bottom input--active display-inline-block"
         data-spec="input-wrapper"
@@ -43,9 +48,11 @@ exports[`test should accept custom classes thru classes prop 1`] = `
           Object {
             "maxWidth": "150px",
           }
-        }>
+        }
+      >
         <RenderLabel
-          hideLabel={true} />
+          hideLabel={true}
+        />
         <input
           className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
           data-spec="input"
@@ -59,11 +66,13 @@ exports[`test should accept custom classes thru classes prop 1`] = `
               "maxWidth": "150px",
             }
           }
-          type="tel" />
+          type="tel"
+        />
       </div>
     </Input>
     <h3
-      className="text-dark-primary display-inline-block push-half-bottom push-half-right">
+      className="text-dark-primary display-inline-block push-half-bottom push-half-right"
+    >
       to
     </h3>
     <style>
@@ -89,9 +98,11 @@ exports[`test should accept custom classes thru classes prop 1`] = `
       name="select-account"
       onChange={[Function]}
       placeholder="select fund"
-      selected="test">
+      selected="test"
+    >
       <div
-        className="input soft-bottom display-inline-block select_1rryh47 input--active select_15p0e27">
+        className="input soft-bottom display-inline-block select_1rryh47 input--active select_15p0e27"
+      >
         <select
           className="text-dark-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
           id="select-account"
@@ -99,17 +110,20 @@ exports[`test should accept custom classes thru classes prop 1`] = `
           onChange={[Function]}
           onFocus={[Function]}
           placeholder="select fund"
-          value="test">
+          value="test"
+        >
           <option
             style={
               Object {
                 "display": "none",
               }
-            }>
+            }
+          >
             select fund
           </option>
           <option
-            value="main fund">
+            value="main fund"
+          >
             main fund
           </option>
         </select>
@@ -119,7 +133,7 @@ exports[`test should accept custom classes thru classes prop 1`] = `
 </Primary>
 `;
 
-exports[`test should accept multiple accounts through accounts prop 1`] = `
+exports[`should accept multiple accounts through accounts prop 1`] = `
 <Primary
   accounts={
     Array [
@@ -135,11 +149,13 @@ exports[`test should accept multiple accounts through accounts prop 1`] = `
   changeAmount={[Function]}
   changeFund={[Function]}
   fundId="test"
-  preFill={[Function]}>
+  preFill={[Function]}
+>
   <div>
     <h3
-      className="text-dark-primary display-inline-block push-half-bottom push-half-right">
-      I\'d like to give
+      className="text-dark-primary display-inline-block push-half-bottom push-half-right"
+    >
+      I'd like to give
     </h3>
     <Input
       classes={
@@ -158,7 +174,8 @@ exports[`test should accept multiple accounts through accounts prop 1`] = `
           "maxWidth": "150px",
         }
       }
-      type="tel">
+      type="tel"
+    >
       <div
         className="input soft-bottom input--active display-inline-block"
         data-spec="input-wrapper"
@@ -166,9 +183,11 @@ exports[`test should accept multiple accounts through accounts prop 1`] = `
           Object {
             "maxWidth": "150px",
           }
-        }>
+        }
+      >
         <RenderLabel
-          hideLabel={true} />
+          hideLabel={true}
+        />
         <input
           className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
           data-spec="input"
@@ -182,11 +201,13 @@ exports[`test should accept multiple accounts through accounts prop 1`] = `
               "maxWidth": "150px",
             }
           }
-          type="tel" />
+          type="tel"
+        />
       </div>
     </Input>
     <h3
-      className="text-dark-primary display-inline-block push-half-bottom push-half-right">
+      className="text-dark-primary display-inline-block push-half-bottom push-half-right"
+    >
       to
     </h3>
     <style>
@@ -215,9 +236,11 @@ exports[`test should accept multiple accounts through accounts prop 1`] = `
       name="select-account"
       onChange={[Function]}
       placeholder="select fund"
-      selected="test">
+      selected="test"
+    >
       <div
-        className="input soft-bottom display-inline-block select_1rryh47 input--active select_15p0e27">
+        className="input soft-bottom display-inline-block select_1rryh47 input--active select_15p0e27"
+      >
         <select
           className="text-dark-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
           id="select-account"
@@ -225,21 +248,25 @@ exports[`test should accept multiple accounts through accounts prop 1`] = `
           onChange={[Function]}
           onFocus={[Function]}
           placeholder="select fund"
-          value="test">
+          value="test"
+        >
           <option
             style={
               Object {
                 "display": "none",
               }
-            }>
+            }
+          >
             select fund
           </option>
           <option
-            value="hello">
+            value="hello"
+          >
             hello
           </option>
           <option
-            value="world">
+            value="world"
+          >
             world
           </option>
         </select>
@@ -249,7 +276,7 @@ exports[`test should accept multiple accounts through accounts prop 1`] = `
 </Primary>
 `;
 
-exports[`test should change classes based on active state 1`] = `
+exports[`should change classes based on active state 1`] = `
 <Primary
   accounts={
     Array [
@@ -262,11 +289,13 @@ exports[`test should change classes based on active state 1`] = `
   changeAmount={[Function]}
   changeFund={[Function]}
   fundId="test"
-  preFill={[Function]}>
+  preFill={[Function]}
+>
   <div>
     <h3
-      className="text-dark-primary display-inline-block push-half-bottom push-half-right">
-      I\'d like to give
+      className="text-dark-primary display-inline-block push-half-bottom push-half-right"
+    >
+      I'd like to give
     </h3>
     <Input
       classes={
@@ -285,7 +314,8 @@ exports[`test should change classes based on active state 1`] = `
           "maxWidth": "150px",
         }
       }
-      type="tel">
+      type="tel"
+    >
       <div
         className="input soft-bottom input--active display-inline-block"
         data-spec="input-wrapper"
@@ -293,9 +323,11 @@ exports[`test should change classes based on active state 1`] = `
           Object {
             "maxWidth": "150px",
           }
-        }>
+        }
+      >
         <RenderLabel
-          hideLabel={true} />
+          hideLabel={true}
+        />
         <input
           className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
           data-spec="input"
@@ -309,11 +341,13 @@ exports[`test should change classes based on active state 1`] = `
               "maxWidth": "150px",
             }
           }
-          type="tel" />
+          type="tel"
+        />
       </div>
     </Input>
     <h3
-      className="text-dark-primary display-inline-block push-half-bottom push-half-right">
+      className="text-dark-primary display-inline-block push-half-bottom push-half-right"
+    >
       to
     </h3>
     <style>
@@ -339,9 +373,11 @@ exports[`test should change classes based on active state 1`] = `
       name="select-account"
       onChange={[Function]}
       placeholder="select fund"
-      selected="test">
+      selected="test"
+    >
       <div
-        className="input soft-bottom display-inline-block select_1rryh47 input--active select_15p0e27">
+        className="input soft-bottom display-inline-block select_1rryh47 input--active select_15p0e27"
+      >
         <select
           className="text-primary outlined--dotted outlined--light h3 hard-top flush-bottom"
           id="select-account"
@@ -349,17 +385,20 @@ exports[`test should change classes based on active state 1`] = `
           onChange={[Function]}
           onFocus={[Function]}
           placeholder="select fund"
-          value="test">
+          value="test"
+        >
           <option
             style={
               Object {
                 "display": "none",
               }
-            }>
+            }
+          >
             select fund
           </option>
           <option
-            value="main fund">
+            value="main fund"
+          >
             main fund
           </option>
         </select>
@@ -369,7 +408,7 @@ exports[`test should change classes based on active state 1`] = `
 </Primary>
 `;
 
-exports[`test should render with minimal props 1`] = `
+exports[`should render with minimal props 1`] = `
 <Primary
   accounts={
     Array [
@@ -382,11 +421,13 @@ exports[`test should render with minimal props 1`] = `
   changeAmount={[Function]}
   changeFund={[Function]}
   fundId="test"
-  preFill={[Function]}>
+  preFill={[Function]}
+>
   <div>
     <h3
-      className="text-dark-primary display-inline-block push-half-bottom push-half-right">
-      I\'d like to give
+      className="text-dark-primary display-inline-block push-half-bottom push-half-right"
+    >
+      I'd like to give
     </h3>
     <Input
       classes={
@@ -405,7 +446,8 @@ exports[`test should render with minimal props 1`] = `
           "maxWidth": "150px",
         }
       }
-      type="tel">
+      type="tel"
+    >
       <div
         className="input soft-bottom input--active display-inline-block"
         data-spec="input-wrapper"
@@ -413,9 +455,11 @@ exports[`test should render with minimal props 1`] = `
           Object {
             "maxWidth": "150px",
           }
-        }>
+        }
+      >
         <RenderLabel
-          hideLabel={true} />
+          hideLabel={true}
+        />
         <input
           className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
           data-spec="input"
@@ -429,11 +473,13 @@ exports[`test should render with minimal props 1`] = `
               "maxWidth": "150px",
             }
           }
-          type="tel" />
+          type="tel"
+        />
       </div>
     </Input>
     <h3
-      className="text-dark-primary display-inline-block push-half-bottom push-half-right">
+      className="text-dark-primary display-inline-block push-half-bottom push-half-right"
+    >
       to
     </h3>
     <style>
@@ -459,9 +505,11 @@ exports[`test should render with minimal props 1`] = `
       name="select-account"
       onChange={[Function]}
       placeholder="select fund"
-      selected="test">
+      selected="test"
+    >
       <div
-        className="input soft-bottom display-inline-block select_1rryh47 input--active select_15p0e27">
+        className="input soft-bottom display-inline-block select_1rryh47 input--active select_15p0e27"
+      >
         <select
           className="text-dark-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
           id="select-account"
@@ -469,17 +517,20 @@ exports[`test should render with minimal props 1`] = `
           onChange={[Function]}
           onFocus={[Function]}
           placeholder="select fund"
-          value="test">
+          value="test"
+        >
           <option
             style={
               Object {
                 "display": "none",
               }
-            }>
+            }
+          >
             select fund
           </option>
           <option
-            value="main fund">
+            value="main fund"
+          >
             main fund
           </option>
         </select>

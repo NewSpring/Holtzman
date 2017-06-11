@@ -1,4 +1,6 @@
-exports[`test has a valid query 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`has a valid query 1`] = `
 Object {
   "definitions": Array [
     Object {
@@ -90,4 +92,4 @@ Object {
 }
 `;
 
-exports[`test is renders a wrapper function 1`] = `[Function]`;
+exports[`is renders a wrapper function 1`] = `[Function]`;

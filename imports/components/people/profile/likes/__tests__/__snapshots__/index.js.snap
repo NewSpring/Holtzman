@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`LikesContainer should pass props to children 1`] = `
 <LikesContainer
   likes={
@@ -9,14 +11,16 @@ exports[`LikesContainer should pass props to children 1`] = `
     Object {
       "loading": false,
     }
-  }>
+  }
+>
   <div
     className="soft-half-sides@palm soft-double@palm-wide soft-sides soft-top soft-half-bottom background--light-secondary"
     style={
       Object {
         "marginTop": "-20px",
       }
-    }>
+    }
+  >
     <RenderLikes
       likes={
         Object {
@@ -27,9 +31,11 @@ exports[`LikesContainer should pass props to children 1`] = `
         Object {
           "loading": false,
         }
-      }>
+      }
+    >
       <div
-        className="text-center">
+        className="text-center"
+      >
         <Loading />
       </div>
     </RenderLikes>
@@ -45,10 +51,12 @@ exports[`LikesContainer should render children 1`] = `
       Object {
         "marginTop": "-20px",
       }
-    }>
+    }
+  >
     <RenderLikes>
       <div
-        className="text-center">
+        className="text-center"
+      >
         <Loading />
       </div>
     </RenderLikes>
@@ -76,16 +84,18 @@ exports[`RenderLikes should render likes only when provided 1`] = `
         "very wow",
       ],
     }
-  }>
+  }
+>
   <Component
     likes={
       Array [
         "hello",
         "world",
       ]
-    }>
+    }
+  >
     <div>
-      {\"likes\":[\"hello\",\"world\"]}
+      {"likes":["hello","world"]}
     </div>
   </Component>
 </RenderLikes>
@@ -94,7 +104,8 @@ exports[`RenderLikes should render likes only when provided 1`] = `
 exports[`RenderLikes should render loading with no props 1`] = `
 <RenderLikes>
   <div
-    className="text-center">
+    className="text-center"
+  >
     <Loading />
   </div>
 </RenderLikes>
@@ -116,10 +127,12 @@ exports[`RenderLikes should render recentLikes only when likes not provided 1`] 
         "very wow",
       ],
     }
-  }>
+  }
+>
   <div>
     <p
-      className="soft text-center">
+      className="soft text-center"
+    >
       <em>
         <small>
           Check out some of the latest things from NewSpring
@@ -133,9 +146,10 @@ exports[`RenderLikes should render recentLikes only when likes not provided 1`] 
           "so like",
           "very wow",
         ]
-      }>
+      }
+    >
       <div>
-        {\"likes\":[\"much recent\",\"so like\",\"very wow\"]}
+        {"likes":["much recent","so like","very wow"]}
       </div>
     </Component>
   </div>

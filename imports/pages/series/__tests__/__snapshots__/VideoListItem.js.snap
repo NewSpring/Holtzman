@@ -1,4 +1,6 @@
-exports[`test renders with props 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders with props 1`] = `
 <Link
   className="text-dark-secondary floating ratio--square display-inline-block rounded background--light-tertiary push-right"
   onlyActiveOnIndex={false}
@@ -8,9 +10,11 @@ exports[`test renders with props 1`] = `
       "width": 787.2,
     }
   }
-  to="/series/2/sermon/1">
+  to="/series/2/sermon/1"
+>
   <div
-    className="one-whole soft-sides text-left floating__item">
+    className="one-whole soft-sides text-left floating__item"
+  >
     <div
       className="background--light-primary floating locked-left locked-top"
       style={
@@ -19,9 +23,11 @@ exports[`test renders with props 1`] = `
           "height": "40px",
           "width": "40px",
         }
-      }>
+      }
+    >
       <h5
-        className="floating__item flush">
+        className="floating__item flush"
+      >
         2
       </h5>
     </div>
@@ -29,12 +35,14 @@ exports[`test renders with props 1`] = `
       test sermon
     </h4>
     <i
-      className="soft-half-right icon-category-video" />
+      className="soft-half-right icon-category-video"
+    />
     <h7>
       Jim Bob
     </h7>
     <h7
-      className="push-half-top float-right text-right">
+      className="push-half-top float-right text-right"
+    >
       Invalid date
     </h7>
   </div>

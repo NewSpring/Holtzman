@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`GivingSummary should pass correct props to graph with data 1`] = `
 <Display
   data={
@@ -71,7 +73,8 @@ exports[`GivingSummary should pass correct props to graph with data 1`] = `
       ],
       "total": 66,
     }
-  }>
+  }
+>
   <Component
     amount="66.00"
     graphData={
@@ -155,7 +158,8 @@ exports[`GivingSummary should pass correct props to graph with data 1`] = `
         "lineWidth": "3",
       }
     }
-    linkUrl="/give/history">
+    linkUrl="/give/history"
+  >
     <div />
   </Component>
 </Display>
