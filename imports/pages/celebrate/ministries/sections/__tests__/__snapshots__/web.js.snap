@@ -2,24 +2,32 @@
 
 exports[`Web renders a layout 1`] = `
 <div
-  className="background--light-primary">
+  className="background--light-primary"
+>
   <div
-    className="grid flush">
+    className="grid flush"
+  >
     <div
-      className="constrain-page">
+      className="constrain-page"
+    >
       <div
-        className="grid__item one-whole text-dark-primary text-center hard">
+        className="grid__item one-whole text-dark-primary text-center hard"
+      >
         <div
-          className="soft-double-sides@lap-and-up soft-double-top@lap-and-up push-double-top@lap-and-up soft">
+          className="soft-double-sides@lap-and-up soft-double-top@lap-and-up push-double-top@lap-and-up soft"
+        >
           <div
-            className="one-whole text-center push-bottom push-double-top@handheld">
+            className="one-whole text-center push-bottom push-double-top@handheld"
+          >
             <h1
-              className="uppercase">
+              className="uppercase"
+            >
               Web Stats
             </h1>
           </div>
           <div
-            className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld">
+            className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld"
+          >
             <img
               alt="icon"
               className="push-double-bottom@lap-and-up push-bottom"
@@ -28,15 +36,18 @@ exports[`Web renders a layout 1`] = `
                 Object {
                   "maxHeight": "100px",
                 }
-              } />
+              }
+            />
             <Connect(FitTextWithoutData)
-              compressor={0.6}>
+              compressor={0.6}
+            >
               <h1
                 style={
                   Object {
                     "fontWeight": 900,
                   }
-                }>
+                }
+              >
                 12
               </h1>
             </Connect(FitTextWithoutData)>
@@ -45,7 +56,8 @@ exports[`Web renders a layout 1`] = `
             </h3>
           </div>
           <div
-            className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld">
+            className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld"
+          >
             <img
               alt="icon"
               className="push-double-bottom@lap-and-up push-bottom"
@@ -54,15 +66,18 @@ exports[`Web renders a layout 1`] = `
                 Object {
                   "maxHeight": "100px",
                 }
-              } />
+              }
+            />
             <Connect(FitTextWithoutData)
-              compressor={0.6}>
+              compressor={0.6}
+            >
               <h1
                 style={
                   Object {
                     "fontWeight": 900,
                   }
-                }>
+                }
+              >
                 2,398,759
               </h1>
             </Connect(FitTextWithoutData)>
@@ -71,7 +86,8 @@ exports[`Web renders a layout 1`] = `
             </h3>
           </div>
           <div
-            className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld">
+            className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld"
+          >
             <img
               alt="icon"
               className="push-double-bottom@lap-and-up push-bottom"
@@ -80,15 +96,18 @@ exports[`Web renders a layout 1`] = `
                 Object {
                   "maxHeight": "100px",
                 }
-              } />
+              }
+            />
             <Connect(FitTextWithoutData)
-              compressor={0.6}>
+              compressor={0.6}
+            >
               <h1
                 style={
                   Object {
                     "fontWeight": 900,
                   }
-                }>
+                }
+              >
                 398
               </h1>
             </Connect(FitTextWithoutData)>
@@ -97,7 +116,8 @@ exports[`Web renders a layout 1`] = `
             </h3>
           </div>
           <div
-            className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld">
+            className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld"
+          >
             <img
               alt="icon"
               className="push-double-bottom@lap-and-up push-bottom"
@@ -106,15 +126,18 @@ exports[`Web renders a layout 1`] = `
                 Object {
                   "maxHeight": "100px",
                 }
-              } />
+              }
+            />
             <Connect(FitTextWithoutData)
-              compressor={0.6}>
+              compressor={0.6}
+            >
               <h1
                 style={
                   Object {
                     "fontWeight": 900,
                   }
-                }>
+                }
+              >
                 8,353
               </h1>
             </Connect(FitTextWithoutData)>
@@ -123,7 +146,8 @@ exports[`Web renders a layout 1`] = `
             </h3>
           </div>
           <div
-            className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld">
+            className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld"
+          >
             <img
               alt="icon"
               className="push-double-bottom@lap-and-up push-bottom"
@@ -132,15 +156,18 @@ exports[`Web renders a layout 1`] = `
                 Object {
                   "maxHeight": "100px",
                 }
-              } />
+              }
+            />
             <Connect(FitTextWithoutData)
-              compressor={0.6}>
+              compressor={0.6}
+            >
               <h1
                 style={
                   Object {
                     "fontWeight": 900,
                   }
-                }>
+                }
+              >
                 25,322
               </h1>
             </Connect(FitTextWithoutData)>
@@ -149,7 +176,8 @@ exports[`Web renders a layout 1`] = `
             </h3>
           </div>
           <div
-            className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld">
+            className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld"
+          >
             <img
               alt="icon"
               className="push-double-bottom@lap-and-up push-bottom"
@@ -158,15 +186,18 @@ exports[`Web renders a layout 1`] = `
                 Object {
                   "maxHeight": "100px",
                 }
-              } />
+              }
+            />
             <Connect(FitTextWithoutData)
-              compressor={0.6}>
+              compressor={0.6}
+            >
               <h1
                 style={
                   Object {
                     "fontWeight": 900,
                   }
-                }>
+                }
+              >
                 210
               </h1>
             </Connect(FitTextWithoutData)>
@@ -179,15 +210,20 @@ exports[`Web renders a layout 1`] = `
     </div>
   </div>
   <div
-    className="soft-double-ends text-center one-whole background--light-tertiary text-dark-primary">
+    className="soft-double-ends text-center one-whole background--light-tertiary text-dark-primary"
+  >
     <div
-      className="soft-double-ends soft-bottom@handheld">
+      className="soft-double-ends soft-bottom@handheld"
+    >
       <div
-        className="floating one-whole hard@handheld">
+        className="floating one-whole hard@handheld"
+      >
         <div
-          className="floating__item constrain-copy soft-double-sides@lap-and-up push-sides@lap-and-up soft-sides@handheld">
+          className="floating__item constrain-copy soft-double-sides@lap-and-up push-sides@lap-and-up soft-sides@handheld"
+        >
           <h3
-            className="text-center italic">
+            className="text-center italic"
+          >
             <strong>
               Using technology to connect people to Jesus and each other, we saw
             </strong>
@@ -197,19 +233,24 @@ exports[`Web renders a layout 1`] = `
       <Connect(CardSlider)>
         <MetricCard
           count="942,436"
-          label="Articles Pageviews" />
+          label="Articles Pageviews"
+        />
         <MetricCard
           count="443,252"
-          label="Devotionals Pageviews" />
+          label="Devotionals Pageviews"
+        />
         <MetricCard
           count="252,566"
-          label="Studies Pageviews" />
+          label="Studies Pageviews"
+        />
         <MetricCard
           count="143,972"
-          label="Stories Pageviews" />
+          label="Stories Pageviews"
+        />
         <MetricCard
           count="429,514"
-          label="Sermons Pageviews" />
+          label="Sermons Pageviews"
+        />
       </Connect(CardSlider)>
     </div>
   </div>

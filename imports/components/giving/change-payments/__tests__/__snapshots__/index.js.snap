@@ -65,7 +65,8 @@ exports[`renders layout correctly delivers props to layout 1`] = `
         },
       },
     ]
-  }>
+  }
+>
   <Layout
     changeAccounts={[Function]}
     chooseAccount={[Function]}
@@ -101,25 +102,31 @@ exports[`renders layout correctly delivers props to layout 1`] = `
           "paymentType": "Visa",
         },
       }
-    }>
+    }
+  >
     <div
-      className="soft-double-top">
+      className="soft-double-top"
+    >
       <div
-        className="soft-sides flush-bottom push-double-top@lap-and-up">
+        className="soft-sides flush-bottom push-double-top@lap-and-up"
+      >
         <h4
-          className="text-center flush-bottom">
+          className="text-center flush-bottom"
+        >
           Change Payment Account
         </h4>
       </div>
       <div
-        className="soft">
+        className="soft"
+      >
         <Component
           accountId={1}
           accountName="Test Card 1"
           onClick={[Function]}
           paymentAccount="4111111111111111"
           paymentType="Visa"
-          selectedAccountId={1}>
+          selectedAccountId={1}
+        >
           <div
             id={1}
             onClick={[Function]}
@@ -128,24 +135,32 @@ exports[`renders layout correctly delivers props to layout 1`] = `
                 "cursor": "pointer",
                 "position": "relative",
               }
-            }>
+            }
+          >
             <div
-              className="soft-ends push-double-left text-left hard-right outlined--light outlined--bottom relative">
+              className="soft-ends push-double-left text-left hard-right outlined--light outlined--bottom relative"
+            >
               <div
-                className="display-inline-block soft-half-ends one-whole">
+                className="display-inline-block soft-half-ends one-whole"
+              >
                 <h6
-                  className="flush-bottom float-left text-dark-tertiary">
+                  className="flush-bottom float-left text-dark-tertiary"
+                >
                   Test Card 1
                 </h6>
               </div>
               <h5
-                className="hard one-whole flush-bottom text-dark-tertiary">
+                className="hard one-whole flush-bottom text-dark-tertiary"
+              >
+                ************1111
                 <span
-                  className="float-right soft-half-left">
+                  className="float-right soft-half-left"
+                >
                   <AccountType
                     height="25px"
                     type="Visa"
-                    width="40px">
+                    width="40px"
+                  >
                     <Visa
                       height="25px"
                       style={
@@ -155,7 +170,8 @@ exports[`renders layout correctly delivers props to layout 1`] = `
                           "marginRight": "-6px",
                         }
                       }
-                      width="40px">
+                      width="40px"
+                    >
                       <div
                         className="background--fill display-inline-block"
                         style={
@@ -167,14 +183,16 @@ exports[`renders layout correctly delivers props to layout 1`] = `
                             "top": "3px",
                             "width": "40px",
                           }
-                        } />
+                        }
+                      />
                     </Visa>
                   </AccountType>
                 </span>
               </h5>
             </div>
             <div
-              className="locked-ends locked-sides">
+              className="locked-ends locked-sides"
+            >
               <input
                 checked={true}
                 id="label1"
@@ -188,7 +206,8 @@ exports[`renders layout correctly delivers props to layout 1`] = `
                     "top": 0,
                   }
                 }
-                type="checkbox" />
+                type="checkbox"
+              />
               <label
                 htmlFor="label1"
                 style={
@@ -197,7 +216,8 @@ exports[`renders layout correctly delivers props to layout 1`] = `
                     "position": "absolute",
                     "top": "50%",
                   }
-                } />
+                }
+              />
             </div>
           </div>
         </Component>
@@ -207,7 +227,8 @@ exports[`renders layout correctly delivers props to layout 1`] = `
           onClick={[Function]}
           paymentAccount="4111111111111111"
           paymentType="Visa"
-          selectedAccountId={1}>
+          selectedAccountId={1}
+        >
           <div
             id={2}
             onClick={[Function]}
@@ -216,24 +237,32 @@ exports[`renders layout correctly delivers props to layout 1`] = `
                 "cursor": "pointer",
                 "position": "relative",
               }
-            }>
+            }
+          >
             <div
-              className="soft-ends push-double-left text-left hard-right outlined--light outlined--bottom relative">
+              className="soft-ends push-double-left text-left hard-right outlined--light outlined--bottom relative"
+            >
               <div
-                className="display-inline-block soft-half-ends one-whole">
+                className="display-inline-block soft-half-ends one-whole"
+              >
                 <h6
-                  className="flush-bottom float-left text-dark-tertiary">
+                  className="flush-bottom float-left text-dark-tertiary"
+                >
                   Test Card 2
                 </h6>
               </div>
               <h5
-                className="hard one-whole flush-bottom text-dark-tertiary">
+                className="hard one-whole flush-bottom text-dark-tertiary"
+              >
+                ************1111
                 <span
-                  className="float-right soft-half-left">
+                  className="float-right soft-half-left"
+                >
                   <AccountType
                     height="25px"
                     type="Visa"
-                    width="40px">
+                    width="40px"
+                  >
                     <Visa
                       height="25px"
                       style={
@@ -243,7 +272,8 @@ exports[`renders layout correctly delivers props to layout 1`] = `
                           "marginRight": "-6px",
                         }
                       }
-                      width="40px">
+                      width="40px"
+                    >
                       <div
                         className="background--fill display-inline-block"
                         style={
@@ -255,14 +285,16 @@ exports[`renders layout correctly delivers props to layout 1`] = `
                             "top": "3px",
                             "width": "40px",
                           }
-                        } />
+                        }
+                      />
                     </Visa>
                   </AccountType>
                 </span>
               </h5>
             </div>
             <div
-              className="locked-ends locked-sides">
+              className="locked-ends locked-sides"
+            >
               <input
                 checked={false}
                 id="label2"
@@ -276,7 +308,8 @@ exports[`renders layout correctly delivers props to layout 1`] = `
                     "top": 0,
                   }
                 }
-                type="checkbox" />
+                type="checkbox"
+              />
               <label
                 htmlFor="label2"
                 style={
@@ -285,13 +318,15 @@ exports[`renders layout correctly delivers props to layout 1`] = `
                     "position": "absolute",
                     "top": "50%",
                   }
-                } />
+                }
+              />
             </div>
           </div>
         </Component>
         <button
           className="btn one-whole push-double-top soft-sides push-bottom"
-          onClick={[Function]}>
+          onClick={[Function]}
+        >
           Change Account
         </button>
         <p>

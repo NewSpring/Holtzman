@@ -7,11 +7,3 @@ exports[`renders with children 1`] = `
   </h1>
 </Connect(Authorized)>
 `;
-
-exports[`test renders with children 1`] = `
-<Connect(Authorized)>
-  <h1>
-    test
-  </h1>
-</Connect(Authorized)>
-`;

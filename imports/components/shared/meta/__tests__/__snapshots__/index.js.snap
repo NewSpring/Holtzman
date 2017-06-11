@@ -95,7 +95,8 @@ exports[`Meta should have an id 1`] = `
       },
     ]
   }
-  title="Welcome | NewSpring Church" />
+  title="Welcome | NewSpring Church"
+/>
 `;
 
 exports[`Meta should have an og:type meta property 1`] = `
@@ -120,7 +121,8 @@ exports[`Meta should have an og:type meta property 1`] = `
       },
     ]
   }
-  title="Welcome | NewSpring Church" />
+  title="Welcome | NewSpring Church"
+/>
 `;
 
 exports[`Meta should have default data if nothing is passed to it 1`] = `
@@ -217,7 +219,8 @@ exports[`Meta should have default data if nothing is passed to it 1`] = `
       },
     ]
   }
-  title="Welcome | NewSpring Church" />
+  title="Welcome | NewSpring Church"
+/>
 `;
 
 exports[`Meta should override the default image 1`] = `
@@ -314,7 +317,8 @@ exports[`Meta should override the default image 1`] = `
       },
     ]
   }
-  title="Welcome | NewSpring Church" />
+  title="Welcome | NewSpring Church"
+/>
 `;
 
 exports[`Meta should override the default title 1`] = `
@@ -411,5 +415,6 @@ exports[`Meta should override the default title 1`] = `
       },
     ]
   }
-  title="This is a Test Title | NewSpring Church" />
+  title="This is a Test Title | NewSpring Church"
+/>
 `;

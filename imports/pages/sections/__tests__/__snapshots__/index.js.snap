@@ -10,12 +10,3 @@ exports[`renders 1`] = `
   <Connect(SectionsContainerWithoutData) />
 </div>
 `;
-
-exports[`test renders 1`] = `
-<div
-  className="background--light-secondary">
-  <Meta
-    title="Sections" />
-  <Connect(SectionsContainerWithoutData) />
-</div>
-`;

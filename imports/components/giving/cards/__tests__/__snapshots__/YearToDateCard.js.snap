@@ -2,11 +2,14 @@
 
 exports[`Year To Date should render with the default set of props 1`] = `
 <div
-  className="card">
+  className="card"
+>
   <div
-    className="card__item soft">
+    className="card__item soft"
+  >
     <div
-      className="soft-double-bottom soft-double-top">
+      className="soft-double-bottom soft-double-top"
+    >
       <LineGraph
         axisStyles={
           Object {
@@ -88,28 +91,35 @@ exports[`Year To Date should render with the default set of props 1`] = `
         dotColor="#6BAC43"
         dotSize="5"
         lineColor="#6BAC43"
-        lineWidth="3" />
+        lineWidth="3"
+      />
     </div>
     <Currency
       amount="2017"
-      baseHeadingSize="" />
+      baseHeadingSize=""
+    />
     <p
-      className="text-dark-primary italic text-left">
+      className="text-dark-primary italic text-left"
+    >
       Contributed so far this year
     </p>
     <div
-      className="text-left">
+      className="text-left"
+    >
       <Link
         className="text-left plain"
         onlyActiveOnIndex={false}
         style={Object {}}
-        to="https://my.newspring.cc">
+        to="https://my.newspring.cc"
+      >
         <h6
-          className="display-inline-block">
+          className="display-inline-block"
+        >
           View Your Giving History
         </h6>
         <span
-          className="icon-arrow-next soft-half-left" />
+          className="icon-arrow-next soft-half-left"
+        />
       </Link>
     </div>
   </div>

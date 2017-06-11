@@ -2,83 +2,107 @@
 
 exports[`NewSpring Averages renders a layout 1`] = `
 <div
-  className="background--light-secondary text-dark-primary soft-double-ends push-ends@lap-and-up soft-ends text-center">
+  className="background--light-secondary text-dark-primary soft-double-ends push-ends@lap-and-up soft-ends text-center"
+>
   <div
-    className="constrain-page push-top soft-sides@handheld">
+    className="constrain-page push-top soft-sides@handheld"
+  >
     <div
-      className="one-whole">
+      className="one-whole"
+    >
       <h3
-        className="push-half-bottom">
+        className="push-half-bottom"
+      >
         Average Weekly Attendance
       </h3>
       <Connect(FitTextWithoutData)
         compressor={0.6}
-        maxFontSize="100">
+        maxFontSize="100"
+      >
         <h1
           style={
             Object {
               "fontWeight": 900,
             }
-          }>
+          }
+        >
           29,156
         </h1>
       </Connect(FitTextWithoutData)>
     </div>
   </div>
   <div
-    className="push-bottom@lap-and-up">
+    className="push-bottom@lap-and-up"
+  >
     <Connect(CardSlider)>
       <MetricCard
         count="345"
-        label="Aiken" />
+        label="Aiken"
+      />
       <MetricCard
         count="6,401"
-        label="Anderson" />
+        label="Anderson"
+      />
       <MetricCard
         count="875"
-        label="Boiling Springs" />
+        label="Boiling Springs"
+      />
       <MetricCard
         count="2,449"
-        label="Charleston" />
+        label="Charleston"
+      />
       <MetricCard
         count="646"
-        label="Clemson" />
+        label="Clemson"
+      />
       <MetricCard
         count="3,166"
-        label="Columbia" />
+        label="Columbia"
+      />
       <MetricCard
         count="2,096"
-        label="Florence" />
+        label="Florence"
+      />
       <MetricCard
         count="3,800"
-        label="Greenville" />
+        label="Greenville"
+      />
       <MetricCard
         count="1,560"
-        label="Greenwood" />
+        label="Greenwood"
+      />
       <MetricCard
         count="158"
-        label="Hilton Head" />
+        label="Hilton Head"
+      />
       <MetricCard
         count="825"
-        label="Lexington" />
+        label="Lexington"
+      />
       <MetricCard
         count="2,046"
-        label="Myrtle Beach" />
+        label="Myrtle Beach"
+      />
       <MetricCard
         count="308"
-        label="Northeast Columbia" />
+        label="Northeast Columbia"
+      />
       <MetricCard
         count="1,446"
-        label="Powdersville" />
+        label="Powdersville"
+      />
       <MetricCard
         count="291"
-        label="Rock Hill" />
+        label="Rock Hill"
+      />
       <MetricCard
         count="2,612"
-        label="Spartanburg" />
+        label="Spartanburg"
+      />
       <MetricCard
         count="269"
-        label="Sumter" />
+        label="Sumter"
+      />
     </Connect(CardSlider)>
   </div>
 </div>

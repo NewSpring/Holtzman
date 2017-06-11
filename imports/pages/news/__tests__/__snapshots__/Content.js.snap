@@ -14,9 +14,11 @@ exports[`StoriesContent renders with props 1`] = `
         },
       ]
     }
-    title="test story" />
+    title="test story"
+  />
   <section
-    className="background--light-primary hard-sides hard-top">
+    className="background--light-primary hard-sides hard-top"
+  >
     <StoryImage
       story={
         Object {
@@ -46,15 +48,19 @@ exports[`StoriesContent renders with props 1`] = `
           "subtitle": "test subtitle",
           "title": "test story",
         }
-      } />
+      }
+    />
     <div
-      className="soft soft-double-sides@palm-wide-and-up push-top">
+      className="soft soft-double-sides@palm-wide-and-up push-top"
+    >
       <h2
-        className="capitalize">
+        className="capitalize"
+      >
         test story
       </h2>
       <h4
-        className="text-dark-tertiary">
+        className="text-dark-tertiary"
+      >
         test subtitle
       </h4>
       <div
@@ -62,7 +68,8 @@ exports[`StoriesContent renders with props 1`] = `
           Object {
             "__html": "test body",
           }
-        } />
+        }
+      />
     </div>
   </section>
   <Apollo(Connect(Template))
@@ -76,7 +83,8 @@ exports[`StoriesContent renders with props 1`] = `
         "one",
         "two",
       ]
-    } />
+    }
+  />
 </div>
 `;
 
@@ -94,19 +102,25 @@ exports[`StoriesContent renders with video 1`] = `
         },
       ]
     }
-    title="test story" />
+    title="test story"
+  />
   <section
-    className="background--light-primary hard-sides hard-top">
+    className="background--light-primary hard-sides hard-top"
+  >
     <SingleVideoPlayer
-      ooyalaId="test" />
+      ooyalaId="test"
+    />
     <div
-      className="soft soft-double-sides@palm-wide-and-up push-top">
+      className="soft soft-double-sides@palm-wide-and-up push-top"
+    >
       <h2
-        className="capitalize">
+        className="capitalize"
+      >
         test story
       </h2>
       <h4
-        className="text-dark-tertiary">
+        className="text-dark-tertiary"
+      >
         test subtitle
       </h4>
       <div
@@ -114,7 +128,8 @@ exports[`StoriesContent renders with video 1`] = `
           Object {
             "__html": "test body",
           }
-        } />
+        }
+      />
     </div>
   </section>
   <Apollo(Connect(Template))
@@ -128,7 +143,8 @@ exports[`StoriesContent renders with video 1`] = `
         "one",
         "two",
       ]
-    } />
+    }
+  />
 </div>
 `;
 
@@ -146,9 +162,11 @@ exports[`StoriesContent renders without imaes 1`] = `
         },
       ]
     }
-    title="test story" />
+    title="test story"
+  />
   <section
-    className="background--light-primary hard-sides hard-top">
+    className="background--light-primary hard-sides hard-top"
+  >
     <StoryImage
       story={
         Object {
@@ -165,15 +183,19 @@ exports[`StoriesContent renders without imaes 1`] = `
           "subtitle": "test subtitle",
           "title": "test story",
         }
-      } />
+      }
+    />
     <div
-      className="soft soft-double-sides@palm-wide-and-up push-top">
+      className="soft soft-double-sides@palm-wide-and-up push-top"
+    >
       <h2
-        className="capitalize">
+        className="capitalize"
+      >
         test story
       </h2>
       <h4
-        className="text-dark-tertiary">
+        className="text-dark-tertiary"
+      >
         test subtitle
       </h4>
       <div
@@ -181,7 +203,8 @@ exports[`StoriesContent renders without imaes 1`] = `
           Object {
             "__html": "test body",
           }
-        } />
+        }
+      />
     </div>
   </section>
   <Apollo(Connect(Template))
@@ -195,7 +218,8 @@ exports[`StoriesContent renders without imaes 1`] = `
         "one",
         "two",
       ]
-    } />
+    }
+  />
 </div>
 `;
 
@@ -206,5 +230,6 @@ exports[`StoryImage renders non tablet version 1`] = `
     Object {
       "backgroundImage": "url('http://test.com/1x1.jpg')",
     }
-  } />
+  }
+/>
 `;

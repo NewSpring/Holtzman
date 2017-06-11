@@ -105,28 +105,36 @@ exports[`GivingActivity should render with data 1`] = `
         },
       ],
     }
-  }>
+  }
+>
   <div
-    className="soft-half-sides soft-double-sides@lap-and-up">
+    className="soft-half-sides soft-double-sides@lap-and-up"
+  >
     <SectionHeader
       link={<ActivityButton />}
-      title="Activity">
+      title="Activity"
+    >
       <div
-        className="one-whole">
+        className="one-whole"
+      >
         <div
-          className="one-half floating display-inline-block floating--left soft soft-half-left">
+          className="one-half floating display-inline-block floating--left soft soft-half-left"
+        >
           <h6
-            className="floating__item text-dark-tertiary flush">
+            className="floating__item text-dark-tertiary flush"
+          >
             Activity
           </h6>
         </div>
         <div
-          className="one-half floating display-inline-block floating--right soft soft-half-right">
+          className="one-half floating display-inline-block floating--right soft soft-half-right"
+        >
           <ActivityButton>
             <SmallButton
               className="btn--dark-tertiary flush"
               linkUrl="/give/history"
-              text="See All">
+              text="See All"
+            >
               <Link
                 className="
                   btn btn--small@next
@@ -135,7 +143,8 @@ exports[`GivingActivity should render with data 1`] = `
                 "
                 onlyActiveOnIndex={false}
                 style={Object {}}
-                to="/give/history">
+                to="/give/history"
+              >
                 <a
                   className="
                     btn btn--small@next
@@ -143,7 +152,8 @@ exports[`GivingActivity should render with data 1`] = `
                     btn--dark-tertiary flush
                   "
                   onClick={[Function]}
-                  style={Object {}}>
+                  style={Object {}}
+                >
                   See All
                 </a>
               </Link>
@@ -153,48 +163,62 @@ exports[`GivingActivity should render with data 1`] = `
       </div>
     </SectionHeader>
     <div
-      className="hard">
+      className="hard"
+    >
       <ActivityCard
         date="2016-12-01"
         linkText="Update it Now"
         linkUrl="/"
         message="Your saved payment undefined is expiring soon."
-        status="">
+        status=""
+      >
         <div
-          className="card">
+          className="card"
+        >
           <div
-            className="card__item soft text-left soft-bottom rounded background--dark-primary text-light-primary">
+            className="card__item soft text-left soft-bottom rounded background--dark-primary text-light-primary"
+          >
             <div
-              className="floating text-left">
+              className="floating text-left"
+            >
               <i
-                className="soft-half-right">
+                className="soft-half-right"
+              >
                 <Error
                   fill="#FFFFFF"
                   height="31px"
-                  width="30px">
+                  width="30px"
+                >
                   <svg
                     height="31px"
                     version="1.1"
                     viewBox="0 0 60 61"
-                    width="30px">
+                    width="30px"
+                  >
                     <g
                       fill="none"
                       fillRule="evenodd"
                       stroke="none"
-                      strokeWidth="1">
+                      strokeWidth="1"
+                    >
                       <g
                         fill="#FFFFFF"
-                        transform="translate(-90.000000, -163.000000)">
+                        transform="translate(-90.000000, -163.000000)"
+                      >
                         <g
-                          transform="translate(60.000000, 0.000000)">
+                          transform="translate(60.000000, 0.000000)"
+                        >
                           <g
-                            transform="translate(30.000000, 163.000000)">
+                            transform="translate(30.000000, 163.000000)"
+                          >
                             <path
                               d="M30,54.33 L30,54.33 C43.254834,54.33 54,43.584834 54,30.33 C54,17.075166 43.254834,6.33 30,6.33 C16.745166,6.33 6,17.075166 6,30.33 C6,43.584834 16.745166,54.33 30,54.33 L30,54.33 Z M30,60.33 L30,60.33 C13.4314575,60.33 0,46.8985425 0,30.33 C0,13.7614575 13.4314575,0.33 30,0.33 C46.5685425,0.33 60,13.7614575 60,30.33 C60,46.8985425 46.5685425,60.33 30,60.33 L30,60.33 Z"
-                              id="Shape" />
+                              id="Shape"
+                            />
                             <path
                               d="M28.784,33.438 L28.784,33.438 L27.9222343,33.438 L27.7949654,32.5856839 L26.7389654,25.5136839 L26.728,25.366 L26.728,16.502 L26.728,15.502 L27.728,15.502 L32.272,15.502 L33.272,15.502 L33.272,16.502 L33.272,25.366 L33.2610346,25.5136839 L32.2050346,32.5856839 L32.0777657,33.438 L31.216,33.438 L28.784,33.438 Z M26.504,41.662 L26.504,41.662 C26.504,39.6282997 27.9530061,38.166 30,38.166 C32.0469939,38.166 33.496,39.6282997 33.496,41.662 C33.496,43.6957003 32.0469939,45.158 30,45.158 C27.9530061,45.158 26.504,43.6957003 26.504,41.662 L26.504,41.662 Z"
-                              id="Shape" />
+                              id="Shape"
+                            />
                           </g>
                         </g>
                       </g>
@@ -203,7 +227,8 @@ exports[`GivingActivity should render with data 1`] = `
                 </Error>
               </i>
               <h5
-                className="display-inline-block floating__item soft-half-bottom">
+                className="display-inline-block floating__item soft-half-bottom"
+              >
                 Dec 1, 2016
               </h5>
             </div>
@@ -214,17 +239,21 @@ exports[`GivingActivity should render with data 1`] = `
               className="text-light-primary plain"
               onlyActiveOnIndex={false}
               style={Object {}}
-              to="/">
+              to="/"
+            >
               <a
                 className="text-light-primary plain"
                 onClick={[Function]}
-                style={Object {}}>
+                style={Object {}}
+              >
                 <h5
-                  className="display-inline-block flush-bottom">
+                  className="display-inline-block flush-bottom"
+                >
                   Update it Now
                 </h5>
                 <span
-                  className="icon-arrow-next soft-half-left" />
+                  className="icon-arrow-next soft-half-left"
+                />
               </a>
             </Link>
           </div>
@@ -235,42 +264,55 @@ exports[`GivingActivity should render with data 1`] = `
         linkText="Update it Now"
         linkUrl="/"
         message="Your saved payment undefined is expiring soon."
-        status="">
+        status=""
+      >
         <div
-          className="card">
+          className="card"
+        >
           <div
-            className="card__item soft text-left soft-bottom rounded background--dark-primary text-light-primary">
+            className="card__item soft text-left soft-bottom rounded background--dark-primary text-light-primary"
+          >
             <div
-              className="floating text-left">
+              className="floating text-left"
+            >
               <i
-                className="soft-half-right">
+                className="soft-half-right"
+              >
                 <Error
                   fill="#FFFFFF"
                   height="31px"
-                  width="30px">
+                  width="30px"
+                >
                   <svg
                     height="31px"
                     version="1.1"
                     viewBox="0 0 60 61"
-                    width="30px">
+                    width="30px"
+                  >
                     <g
                       fill="none"
                       fillRule="evenodd"
                       stroke="none"
-                      strokeWidth="1">
+                      strokeWidth="1"
+                    >
                       <g
                         fill="#FFFFFF"
-                        transform="translate(-90.000000, -163.000000)">
+                        transform="translate(-90.000000, -163.000000)"
+                      >
                         <g
-                          transform="translate(60.000000, 0.000000)">
+                          transform="translate(60.000000, 0.000000)"
+                        >
                           <g
-                            transform="translate(30.000000, 163.000000)">
+                            transform="translate(30.000000, 163.000000)"
+                          >
                             <path
                               d="M30,54.33 L30,54.33 C43.254834,54.33 54,43.584834 54,30.33 C54,17.075166 43.254834,6.33 30,6.33 C16.745166,6.33 6,17.075166 6,30.33 C6,43.584834 16.745166,54.33 30,54.33 L30,54.33 Z M30,60.33 L30,60.33 C13.4314575,60.33 0,46.8985425 0,30.33 C0,13.7614575 13.4314575,0.33 30,0.33 C46.5685425,0.33 60,13.7614575 60,30.33 C60,46.8985425 46.5685425,60.33 30,60.33 L30,60.33 Z"
-                              id="Shape" />
+                              id="Shape"
+                            />
                             <path
                               d="M28.784,33.438 L28.784,33.438 L27.9222343,33.438 L27.7949654,32.5856839 L26.7389654,25.5136839 L26.728,25.366 L26.728,16.502 L26.728,15.502 L27.728,15.502 L32.272,15.502 L33.272,15.502 L33.272,16.502 L33.272,25.366 L33.2610346,25.5136839 L32.2050346,32.5856839 L32.0777657,33.438 L31.216,33.438 L28.784,33.438 Z M26.504,41.662 L26.504,41.662 C26.504,39.6282997 27.9530061,38.166 30,38.166 C32.0469939,38.166 33.496,39.6282997 33.496,41.662 C33.496,43.6957003 32.0469939,45.158 30,45.158 C27.9530061,45.158 26.504,43.6957003 26.504,41.662 L26.504,41.662 Z"
-                              id="Shape" />
+                              id="Shape"
+                            />
                           </g>
                         </g>
                       </g>
@@ -279,7 +321,8 @@ exports[`GivingActivity should render with data 1`] = `
                 </Error>
               </i>
               <h5
-                className="display-inline-block floating__item soft-half-bottom">
+                className="display-inline-block floating__item soft-half-bottom"
+              >
                 Dec 1, 2016
               </h5>
             </div>
@@ -290,17 +333,21 @@ exports[`GivingActivity should render with data 1`] = `
               className="text-light-primary plain"
               onlyActiveOnIndex={false}
               style={Object {}}
-              to="/">
+              to="/"
+            >
               <a
                 className="text-light-primary plain"
                 onClick={[Function]}
-                style={Object {}}>
+                style={Object {}}
+              >
                 <h5
-                  className="display-inline-block flush-bottom">
+                  className="display-inline-block flush-bottom"
+                >
                   Update it Now
                 </h5>
                 <span
-                  className="icon-arrow-next soft-half-left" />
+                  className="icon-arrow-next soft-half-left"
+                />
               </a>
             </Link>
           </div>
@@ -311,42 +358,55 @@ exports[`GivingActivity should render with data 1`] = `
         linkText="Update it Now"
         linkUrl="/"
         message="Your saved payment undefined is expiring soon."
-        status="">
+        status=""
+      >
         <div
-          className="card">
+          className="card"
+        >
           <div
-            className="card__item soft text-left soft-bottom rounded background--dark-primary text-light-primary">
+            className="card__item soft text-left soft-bottom rounded background--dark-primary text-light-primary"
+          >
             <div
-              className="floating text-left">
+              className="floating text-left"
+            >
               <i
-                className="soft-half-right">
+                className="soft-half-right"
+              >
                 <Error
                   fill="#FFFFFF"
                   height="31px"
-                  width="30px">
+                  width="30px"
+                >
                   <svg
                     height="31px"
                     version="1.1"
                     viewBox="0 0 60 61"
-                    width="30px">
+                    width="30px"
+                  >
                     <g
                       fill="none"
                       fillRule="evenodd"
                       stroke="none"
-                      strokeWidth="1">
+                      strokeWidth="1"
+                    >
                       <g
                         fill="#FFFFFF"
-                        transform="translate(-90.000000, -163.000000)">
+                        transform="translate(-90.000000, -163.000000)"
+                      >
                         <g
-                          transform="translate(60.000000, 0.000000)">
+                          transform="translate(60.000000, 0.000000)"
+                        >
                           <g
-                            transform="translate(30.000000, 163.000000)">
+                            transform="translate(30.000000, 163.000000)"
+                          >
                             <path
                               d="M30,54.33 L30,54.33 C43.254834,54.33 54,43.584834 54,30.33 C54,17.075166 43.254834,6.33 30,6.33 C16.745166,6.33 6,17.075166 6,30.33 C6,43.584834 16.745166,54.33 30,54.33 L30,54.33 Z M30,60.33 L30,60.33 C13.4314575,60.33 0,46.8985425 0,30.33 C0,13.7614575 13.4314575,0.33 30,0.33 C46.5685425,0.33 60,13.7614575 60,30.33 C60,46.8985425 46.5685425,60.33 30,60.33 L30,60.33 Z"
-                              id="Shape" />
+                              id="Shape"
+                            />
                             <path
                               d="M28.784,33.438 L28.784,33.438 L27.9222343,33.438 L27.7949654,32.5856839 L26.7389654,25.5136839 L26.728,25.366 L26.728,16.502 L26.728,15.502 L27.728,15.502 L32.272,15.502 L33.272,15.502 L33.272,16.502 L33.272,25.366 L33.2610346,25.5136839 L32.2050346,32.5856839 L32.0777657,33.438 L31.216,33.438 L28.784,33.438 Z M26.504,41.662 L26.504,41.662 C26.504,39.6282997 27.9530061,38.166 30,38.166 C32.0469939,38.166 33.496,39.6282997 33.496,41.662 C33.496,43.6957003 32.0469939,45.158 30,45.158 C27.9530061,45.158 26.504,43.6957003 26.504,41.662 L26.504,41.662 Z"
-                              id="Shape" />
+                              id="Shape"
+                            />
                           </g>
                         </g>
                       </g>
@@ -355,7 +415,8 @@ exports[`GivingActivity should render with data 1`] = `
                 </Error>
               </i>
               <h5
-                className="display-inline-block floating__item soft-half-bottom">
+                className="display-inline-block floating__item soft-half-bottom"
+              >
                 Dec 1, 2016
               </h5>
             </div>
@@ -366,17 +427,21 @@ exports[`GivingActivity should render with data 1`] = `
               className="text-light-primary plain"
               onlyActiveOnIndex={false}
               style={Object {}}
-              to="/">
+              to="/"
+            >
               <a
                 className="text-light-primary plain"
                 onClick={[Function]}
-                style={Object {}}>
+                style={Object {}}
+              >
                 <h5
-                  className="display-inline-block flush-bottom">
+                  className="display-inline-block flush-bottom"
+                >
                   Update it Now
                 </h5>
                 <span
-                  className="icon-arrow-next soft-half-left" />
+                  className="icon-arrow-next soft-half-left"
+                />
               </a>
             </Link>
           </div>
@@ -391,22 +456,27 @@ exports[`GivingActivity should render with data 1`] = `
 exports[`GivingActivity should render with minimal props and display no activity placeholder 1`] = `
 <GivingActivity>
   <div
-    className="soft-half-sides soft-double-sides@lap-and-up">
+    className="soft-half-sides soft-double-sides@lap-and-up"
+  >
     <Component>
       <div
-        className="one-whole">
+        className="one-whole"
+      >
         <div
-          className="one-half floating display-inline-block floating--left soft soft-half-left">
+          className="one-half floating display-inline-block floating--left soft soft-half-left"
+        >
           <div
             className="floating__item background--light-tertiary push-half-bottom soft-half-top"
             style={
               Object {
                 "width": "100px",
               }
-            } />
+            }
+          />
         </div>
         <div
-          className="one-half floating display-inline-block floating--right soft soft-half-right">
+          className="one-half floating display-inline-block floating--right soft soft-half-right"
+        >
           <SmallButton
             disabled={true}
             style={
@@ -415,7 +485,8 @@ exports[`GivingActivity should render with minimal props and display no activity
                 "color": "transparent",
               }
             }
-            text="See All">
+            text="See All"
+          >
             <button
               className="
                 btn btn--small@next
@@ -428,7 +499,8 @@ exports[`GivingActivity should render with minimal props and display no activity
                   "borderColor": "#ddd",
                   "color": "transparent",
                 }
-              }>
+              }
+            >
               See All
             </button>
           </SmallButton>
@@ -437,17 +509,23 @@ exports[`GivingActivity should render with minimal props and display no activity
     </Component>
     <Component>
       <div
-        className="card">
+        className="card"
+      >
         <div
-          className="card__item soft">
+          className="card__item soft"
+        >
           <div
-            className="soft-half-top one-fifth push-bottom background--light-tertiary" />
+            className="soft-half-top one-fifth push-bottom background--light-tertiary"
+          />
           <div
-            className="soft-half-top four-fifths push-half-bottom background--light-tertiary" />
+            className="soft-half-top four-fifths push-half-bottom background--light-tertiary"
+          />
           <div
-            className="soft-half-top one-half push-bottom background--light-tertiary" />
+            className="soft-half-top one-half push-bottom background--light-tertiary"
+          />
           <div
-            className="soft-half-top one-quarter background--light-tertiary" />
+            className="soft-half-top one-quarter background--light-tertiary"
+          />
         </div>
       </div>
     </Component>

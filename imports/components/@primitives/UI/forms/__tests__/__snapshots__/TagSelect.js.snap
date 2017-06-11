@@ -16,18 +16,3 @@ exports[`renders with props 1`] = `
   />
 </div>
 `;
-
-exports[`test renders with props 1`] = `
-<div>
-  <Component
-    active={false}
-    label="foo"
-    onClick={[Function]}
-    val="bar" />
-  <Component
-    active={false}
-    label="baz"
-    onClick={[Function]}
-    val="zoo" />
-</div>
-`;

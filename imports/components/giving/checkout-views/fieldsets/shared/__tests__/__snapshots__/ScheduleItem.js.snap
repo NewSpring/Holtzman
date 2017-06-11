@@ -25,26 +25,3 @@ exports[`should render with props 1`] = `
   </h5>
 </div>
 `;
-
-exports[`test should render with props 1`] = `
-<div
-  className="display-inline-block one-whole">
-  <h5
-    className="text-dark-secondary text-left">
-    Starting on 
-    Dec 12, 1912
-    , I will give 
-    <span
-      className="text-primary">
-       
-      $12.12
-       
-    </span>
-    to 
-    Cat Fund
-    . This will occur 
-    every day
-    .
-  </h5>
-</div>
-`;

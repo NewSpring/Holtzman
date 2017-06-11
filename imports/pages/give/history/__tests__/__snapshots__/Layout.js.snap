@@ -3,20 +3,25 @@
 exports[`Layout renders no transactions if there are none and ready 1`] = `
 <div>
   <Meta
-    title="Giving History" />
+    title="Giving History"
+  />
   <Filter
     family={Array []}
-    filterTransactions={[Function]} />
+    filterTransactions={[Function]}
+  />
   <div
-    className="soft-half soft@portable soft-double@anchored soft-double-bottom@anchored soft-bottom@portable">
+    className="soft-half soft@portable soft-double@anchored soft-double-bottom@anchored soft-bottom@portable"
+  >
     <div
-      className="text-left soft-ends soft-half-sides">
+      className="text-left soft-ends soft-half-sides"
+    >
       <p>
         We didn't find any contributions associated with your account. If you would like to start giving, click 
         <Link
           onlyActiveOnIndex={false}
           style={Object {}}
-          to="/give/now">
+          to="/give/now"
+        >
           here
         </Link>
       </p>
@@ -27,7 +32,8 @@ exports[`Layout renders no transactions if there are none and ready 1`] = `
           <a
             href="//rock.newspring.cc/workflows/152?Topic=Stewardship"
             rel="noopener noreferrer"
-            target="_blank">
+            target="_blank"
+          >
             contact us
           </a>
            and someone will be happy to assist you.
@@ -35,58 +41,72 @@ exports[`Layout renders no transactions if there are none and ready 1`] = `
       </p>
     </div>
     <TransactionList
-      transactions={Array []} />
+      transactions={Array []}
+    />
   </div>
   <div
-    className="one-whole text-center" />
+    className="one-whole text-center"
+  />
 </div>
 `;
 
 exports[`Layout renders reloading if no transactions and not ready 1`] = `
 <div>
   <Meta
-    title="Giving History" />
+    title="Giving History"
+  />
   <Filter
     family={Array []}
-    filterTransactions={[Function]} />
+    filterTransactions={[Function]}
+  />
   <div
-    className="soft-half soft@portable soft-double@anchored soft-double-bottom@anchored soft-bottom@portable">
+    className="soft-half soft@portable soft-double@anchored soft-double-bottom@anchored soft-bottom@portable"
+  >
     <div
-      className="text-center soft">
+      className="text-center soft"
+    >
       <Spinner
         styles={
           Object {
             "height": "40px",
             "width": "40px",
           }
-        } />
+        }
+      />
     </div>
     <TransactionList
-      transactions={Array []} />
+      transactions={Array []}
+    />
   </div>
   <div
-    className="one-whole text-center" />
+    className="one-whole text-center"
+  />
 </div>
 `;
 
 exports[`Layout renders reloading version 1`] = `
 <div>
   <Meta
-    title="Giving History" />
+    title="Giving History"
+  />
   <Filter
     family={Array []}
-    filterTransactions={[Function]} />
+    filterTransactions={[Function]}
+  />
   <div
-    className="soft-half soft@portable soft-double@anchored soft-double-bottom@anchored soft-bottom@portable">
+    className="soft-half soft@portable soft-double@anchored soft-double-bottom@anchored soft-bottom@portable"
+  >
     <div
-      className="text-center soft">
+      className="text-center soft"
+    >
       <Spinner
         styles={
           Object {
             "height": "40px",
             "width": "40px",
           }
-        } />
+        }
+      />
     </div>
     <TransactionList
       transactions={
@@ -118,22 +138,27 @@ exports[`Layout renders reloading version 1`] = `
             ],
           },
         ]
-      } />
+      }
+    />
   </div>
   <div
-    className="one-whole text-center" />
+    className="one-whole text-center"
+  />
 </div>
 `;
 
 exports[`Layout renders transactions across years 1`] = `
 <div>
   <Meta
-    title="Giving History" />
+    title="Giving History"
+  />
   <Filter
     family={Array []}
-    filterTransactions={[Function]} />
+    filterTransactions={[Function]}
+  />
   <div
-    className="soft-half soft@portable soft-double@anchored soft-double-bottom@anchored soft-bottom@portable">
+    className="soft-half soft@portable soft-double@anchored soft-double-bottom@anchored soft-bottom@portable"
+  >
     <TransactionList
       transactions={
         Array [
@@ -176,10 +201,12 @@ exports[`Layout renders transactions across years 1`] = `
             },
           },
         ]
-      } />
+      }
+    />
   </div>
   <div
-    className="one-whole text-center">
+    className="one-whole text-center"
+  >
     <mockConstructor />
   </div>
 </div>
@@ -188,12 +215,15 @@ exports[`Layout renders transactions across years 1`] = `
 exports[`Layout renders with negative transactions 1`] = `
 <div>
   <Meta
-    title="Giving History" />
+    title="Giving History"
+  />
   <Filter
     family={Array []}
-    filterTransactions={[Function]} />
+    filterTransactions={[Function]}
+  />
   <div
-    className="soft-half soft@portable soft-double@anchored soft-double-bottom@anchored soft-bottom@portable">
+    className="soft-half soft@portable soft-double@anchored soft-double-bottom@anchored soft-bottom@portable"
+  >
     <TransactionList
       transactions={
         Array [
@@ -220,10 +250,12 @@ exports[`Layout renders with negative transactions 1`] = `
             ],
           },
         ]
-      } />
+      }
+    />
   </div>
   <div
-    className="one-whole text-center">
+    className="one-whole text-center"
+  >
     <mockConstructor />
   </div>
 </div>
@@ -232,12 +264,15 @@ exports[`Layout renders with negative transactions 1`] = `
 exports[`Layout renders with print loading false and there are transactions 1`] = `
 <div>
   <Meta
-    title="Giving History" />
+    title="Giving History"
+  />
   <Filter
     family={Array []}
-    filterTransactions={[Function]} />
+    filterTransactions={[Function]}
+  />
   <div
-    className="soft-half soft@portable soft-double@anchored soft-double-bottom@anchored soft-bottom@portable">
+    className="soft-half soft@portable soft-double@anchored soft-double-bottom@anchored soft-bottom@portable"
+  >
     <TransactionList
       transactions={
         Array [
@@ -264,10 +299,12 @@ exports[`Layout renders with print loading false and there are transactions 1`] 
             ],
           },
         ]
-      } />
+      }
+    />
   </div>
   <div
-    className="one-whole text-center">
+    className="one-whole text-center"
+  >
     <mockConstructor />
   </div>
 </div>
@@ -276,12 +313,15 @@ exports[`Layout renders with print loading false and there are transactions 1`] 
 exports[`Layout renders with print loading true and there are transactions 1`] = `
 <div>
   <Meta
-    title="Giving History" />
+    title="Giving History"
+  />
   <Filter
     family={Array []}
-    filterTransactions={[Function]} />
+    filterTransactions={[Function]}
+  />
   <div
-    className="soft-half soft@portable soft-double@anchored soft-double-bottom@anchored soft-bottom@portable">
+    className="soft-half soft@portable soft-double@anchored soft-double-bottom@anchored soft-bottom@portable"
+  >
     <TransactionList
       transactions={
         Array [
@@ -308,10 +348,12 @@ exports[`Layout renders with print loading true and there are transactions 1`] =
             ],
           },
         ]
-      } />
+      }
+    />
   </div>
   <div
-    className="one-whole text-center">
+    className="one-whole text-center"
+  >
     <mockConstructor />
   </div>
 </div>
@@ -320,12 +362,15 @@ exports[`Layout renders with print loading true and there are transactions 1`] =
 exports[`Layout renders with props 1`] = `
 <div>
   <Meta
-    title="Giving History" />
+    title="Giving History"
+  />
   <Filter
     family={Array []}
-    filterTransactions={[Function]} />
+    filterTransactions={[Function]}
+  />
   <div
-    className="soft-half soft@portable soft-double@anchored soft-double-bottom@anchored soft-bottom@portable">
+    className="soft-half soft@portable soft-double@anchored soft-double-bottom@anchored soft-bottom@portable"
+  >
     <TransactionList
       transactions={
         Array [
@@ -356,10 +401,12 @@ exports[`Layout renders with props 1`] = `
             ],
           },
         ]
-      } />
+      }
+    />
   </div>
   <div
-    className="one-whole text-center">
+    className="one-whole text-center"
+  >
     <mockConstructor />
   </div>
 </div>
@@ -370,7 +417,8 @@ exports[`TransactionList doesn't render transaction with $0.00 amounts 1`] = `
   <div>
     <div>
       <div
-        className="soft soft-half-left text-left">
+        className="soft soft-half-left text-left"
+      >
         <h5>
           2012
         </h5>
@@ -410,7 +458,8 @@ exports[`TransactionList doesn't render transaction with $0.00 amounts 1`] = `
             "account": "test",
             "amount": 1,
           }
-        } />
+        }
+      />
     </div>
   </div>
 </div>
@@ -421,7 +470,8 @@ exports[`TransactionList renders transactions across years 1`] = `
   <div>
     <div>
       <div
-        className="soft soft-half-left text-left">
+        className="soft soft-half-left text-left"
+      >
         <h5>
           2012
         </h5>
@@ -461,7 +511,8 @@ exports[`TransactionList renders transactions across years 1`] = `
             "account": "test",
             "amount": 1,
           }
-        } />
+        }
+      />
     </div>
     <Component
       person={
@@ -498,12 +549,14 @@ exports[`TransactionList renders transactions across years 1`] = `
           "account": "test",
           "amount": 2,
         }
-      } />
+      }
+    />
   </div>
   <div>
     <div>
       <div
-        className="soft soft-half-left text-left">
+        className="soft soft-half-left text-left"
+      >
         <h5>
           2013
         </h5>
@@ -543,7 +596,8 @@ exports[`TransactionList renders transactions across years 1`] = `
             "account": "test",
             "amount": 3,
           }
-        } />
+        }
+      />
     </div>
     <Component
       person={
@@ -580,7 +634,8 @@ exports[`TransactionList renders transactions across years 1`] = `
           "account": "test",
           "amount": 4,
         }
-      } />
+      }
+    />
   </div>
 </div>
 `;
@@ -590,7 +645,8 @@ exports[`TransactionList renders with props 1`] = `
   <div>
     <div>
       <div
-        className="soft soft-half-left text-left">
+        className="soft soft-half-left text-left"
+      >
         <h5>
           2012
         </h5>
@@ -616,7 +672,8 @@ exports[`TransactionList renders with props 1`] = `
             "account": "test",
             "amount": 1,
           }
-        } />
+        }
+      />
     </div>
     <Component
       transaction={
@@ -639,7 +696,8 @@ exports[`TransactionList renders with props 1`] = `
           "account": "test",
           "amount": 2,
         }
-      } />
+      }
+    />
   </div>
   <div>
     <Component
@@ -663,7 +721,8 @@ exports[`TransactionList renders with props 1`] = `
           "account": "test",
           "amount": 3,
         }
-      } />
+      }
+    />
     <Component
       transaction={
         Object {
@@ -685,7 +744,8 @@ exports[`TransactionList renders with props 1`] = `
           "account": "test",
           "amount": 4,
         }
-      } />
+      }
+    />
   </div>
 </div>
 `;

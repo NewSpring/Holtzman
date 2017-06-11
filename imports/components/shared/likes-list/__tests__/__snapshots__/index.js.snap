@@ -26,7 +26,8 @@ exports[`likes list should properly skip any likes with a __typename that's null
         "title": "harambe",
       },
     ]
-  }>
+  }
+>
   <div>
     <MiniCard>
       <div />
@@ -36,7 +37,8 @@ exports[`likes list should properly skip any likes with a __typename that's null
       icon="icon-category-text"
       image="harambe"
       link="/studies/null/entry/12345"
-      title="harambe">
+      title="harambe"
+    >
       <div />
     </MiniCard>
   </div>
@@ -88,14 +90,16 @@ exports[`likes list should render likes 1`] = `
         "title": "Able",
       },
     ]
-  }>
+  }
+>
   <div>
     <MiniCard
       category="Groups"
       icon="icon-groups"
       image="zookeeper"
       link="/groups/12345"
-      title="hello">
+      title="hello"
+    >
       <div />
     </MiniCard>
     <MiniCard
@@ -103,7 +107,8 @@ exports[`likes list should render likes 1`] = `
       icon="icon-category-text"
       image="harambe"
       link="/studies/null/entry/12345"
-      title="harambe">
+      title="harambe"
+    >
       <div />
     </MiniCard>
     <MiniCard
@@ -111,7 +116,8 @@ exports[`likes list should render likes 1`] = `
       icon="icon-category-audio"
       image="harambe-tribute-one"
       link="/music/3776"
-      title="Able">
+      title="Able"
+    >
       <div />
     </MiniCard>
   </div>

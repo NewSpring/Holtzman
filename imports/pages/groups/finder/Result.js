@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
-import { Component, PropTypes } from "react";
+import { Component } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { graphql } from "react-apollo";
 import { withRouter } from "react-router";
@@ -17,6 +18,7 @@ import Split, { Left, Right } from "../../../components/@primitives/layout/split
 import Layout from "./ResultLayout";
 
 const GoogleMap = asyncComponent({
+  // $FlowMeteor
   resolve: () => import("../../../components/@primitives/map").then((x) => x.default)
 })
 

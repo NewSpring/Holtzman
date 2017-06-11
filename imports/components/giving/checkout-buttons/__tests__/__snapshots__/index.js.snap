@@ -30,18 +30,3 @@ exports[`has a known query shape 1`] = `
 }
 "
 `;
-
-exports[`test has a known query shape 1`] = `
-"query GetSavedPaymentAccounts($cache: Boolean) {
-  savedPayments(cache: $cache) {
-    name
-    id: entityId
-    date
-    payment {
-      accountNumber
-      paymentType
-    }
-  }
-}
-"
-`;

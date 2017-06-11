@@ -9,12 +9,3 @@ exports[`renders with message 1`] = `
   </h4>
 </div>
 `;
-
-exports[`test renders with message 1`] = `
-<div
-  className="one-whole text-center push-double-top soft-double-top@lap-and-up">
-  <h4>
-    test
-  </h4>
-</div>
-`;

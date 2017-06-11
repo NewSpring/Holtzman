@@ -32,31 +32,3 @@ exports[`correctly delivers props to the layout 1`] = `
   </div>
 </div>
 `;
-
-exports[`test correctly delivers props to the layout 1`] = `
-<div
-  className="soft-double-top">
-  <div
-    className="soft-sides flush-bottom push-double-top@lap-and-up">
-    <h4
-      className="text-center flush-bottom">
-      Change Payment Account
-    </h4>
-  </div>
-  <div
-    className="soft">
-    <button
-      className="btn one-whole push-double-top soft-sides push-bottom"
-      onClick={[Function]}>
-      Change Account
-    </button>
-    <p>
-      <small>
-        <em>
-          You can enter a new payment account before confirming your contribution.
-        </em>
-      </small>
-    </p>
-  </div>
-</div>
-`;

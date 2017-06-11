@@ -3,7 +3,8 @@
 exports[`Ministries renders a layout 1`] = `
 <div>
   <Meta
-    title="Ministries" />
+    title="Ministries"
+  />
   <NewSpringAverages />
   <KidSpring />
   <Fuse />

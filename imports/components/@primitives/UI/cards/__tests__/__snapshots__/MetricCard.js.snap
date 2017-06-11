@@ -2,18 +2,21 @@
 
 exports[`MetricCard renders with props 1`] = `
 <div
-  className="floating__item one-whole soft">
+  className="floating__item one-whole soft"
+>
   <h1
     className="uppercase flush-bottom soft-half-bottom"
     style={
       Object {
         "fontWeight": "900",
       }
-    }>
+    }
+  >
     11,130
   </h1>
   <h5
-    className="flush-bottom">
+    className="flush-bottom"
+  >
     Total Salvations
   </h5>
 </div>

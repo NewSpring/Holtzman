@@ -14,15 +14,3 @@ exports[`renders with props 1`] = `
   />
 </section>
 `;
-
-exports[`test renders with props 1`] = `
-<section
-  className="hard-sides soft-half-ends">
-  <SectionItem
-    hide={[Function]}
-    sections={Object {}} />
-  <SectionItem
-    hide={[Function]}
-    sections={Object {}} />
-</section>
-`;

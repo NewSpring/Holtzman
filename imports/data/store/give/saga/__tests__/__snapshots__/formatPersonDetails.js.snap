@@ -241,20 +241,3 @@ Object {
   "start-date": "20200101",
 }
 `;
-
-exports[`test returns a default shape with inital state data 1`] = `
-Object {
-  "amount": 0,
-  "billing": Object {
-    "address1": "1 Linwa Blvd",
-    "address2": "",
-    "city": "Anderson",
-    "email": "james.baxley@newspring.cc",
-    "first-name": "James",
-    "last-name": "Baxley",
-    "postal": 29621,
-    "state": "SC",
-  },
-  "merchant-defined-field-2": 1,
-}
-`;

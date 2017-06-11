@@ -2,17 +2,21 @@
 
 exports[`Remind should give default info if no props are passed 1`] = `
 <div
-  className="soft soft-double-ends one-whole text-center">
+  className="soft soft-double-ends one-whole text-center"
+>
   <h4
-    className="text-center push-ends">
+    className="text-center push-ends"
+  >
     Remind Me Later
   </h4>
   <p
-    className="text-left">
+    className="text-left"
+  >
     We know life is busy! We would be happy to remind you about transferring your schedules at a later date.
   </p>
   <p
-    className="text-left push-double-bottom">
+    className="text-left push-double-bottom"
+  >
     Please be aware that your existing schedule will continue to charge the account on file until you transfer it for editing in our new system.
   </p>
   <Form
@@ -23,9 +27,11 @@ exports[`Remind should give default info if no props are passed 1`] = `
         "push-top",
       ]
     }
-    id="remind">
+    id="remind"
+  >
     <h3
-      className="text-dark-tertiary display-inline-block push-half-bottom push-half-right">
+      className="text-dark-tertiary display-inline-block push-half-bottom push-half-right"
+    >
       I'd like to be reminded
     </h3>
     <Select
@@ -56,15 +62,18 @@ exports[`Remind should give default info if no props are passed 1`] = `
           },
         ]
       }
-      name="frequency" />
+      name="frequency"
+    />
     <button
       className="one-whole btn push-ends"
-      data-spec="remind-me">
+      data-spec="remind-me"
+    >
       Remind Me Later
     </button>
     <button
       className="btn--thin btn--small btn--dark-tertiary one-whole"
-      data-spec="back-button">
+      data-spec="back-button"
+    >
       Back to Contributions
     </button>
   </Form>

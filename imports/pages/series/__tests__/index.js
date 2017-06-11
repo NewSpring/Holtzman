@@ -7,7 +7,7 @@ import {
 } from "../";
 
 jest.mock("../../../deprecated/mixins/mixins.Header", () => {});
-jest.mock("../../../deprecated/mixins/mixins.Likeable", () => {});
+
 jest.mock("../../../data/store/header", () => {});
 jest.mock("../../../data/store", () => ({
   nav: {

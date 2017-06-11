@@ -2,16 +2,19 @@
 
 exports[`Header renders default if no override 1`] = `
 <div
-  className="grid one-whole text-left flush">
+  className="grid one-whole text-left flush"
+>
   <div
     className="grid__item three-quarters text-left hard"
     style={
       Object {
         "verticalAlign": "middle",
       }
-    }>
+    }
+  >
     <h3
-      className="flush-bottom">
+      className="flush-bottom"
+    >
       Review Contribution
     </h3>
   </div>
@@ -21,7 +24,8 @@ exports[`Header renders default if no override 1`] = `
       Object {
         "verticalAlign": "middle",
       }
-    }>
+    }
+  >
     <button
       className="
         btn btn--small@next
@@ -30,7 +34,8 @@ exports[`Header renders default if no override 1`] = `
       "
       disabled={undefined}
       onClick={undefined}
-      style={Object {}}>
+      style={Object {}}
+    >
       Edit
     </button>
   </div>
@@ -46,40 +51,48 @@ exports[`Header renders override if override 1`] = `
 exports[`TransactionLayout should render with a schedule props 1`] = `
 <div>
   <div
-    className="push-double-top@lap-and-up push">
+    className="push-double-top@lap-and-up push"
+  >
     <span>
       header
     </span>
   </div>
   <div
-    className="soft-sides">
+    className="soft-sides"
+  >
     <div
-      className="one-whole push-bottom" />
+      className="one-whole push-bottom"
+    />
     <div
       className="outlined--light outlined--bottom soft-half-top"
       style={
         Object {
           "borderWidth": "1px",
         }
-      }>
+      }
+    >
       <div
-        className="soft-half-ends hard-sides">
+        className="soft-half-ends hard-sides"
+      >
         <div
           className="grid"
           style={
             Object {
               "verticalAlign": "middle",
             }
-          }>
+          }
+        >
           <div
             className="grid__item one-half"
             style={
               Object {
                 "verticalAlign": "middle",
               }
-            }>
+            }
+          >
             <h5
-              className="text-dark-primary flush text-left">
+              className="text-dark-primary flush text-left"
+            >
               123
             </h5>
           </div>
@@ -89,25 +102,30 @@ exports[`TransactionLayout should render with a schedule props 1`] = `
               Object {
                 "verticalAlign": "middle",
               }
-            }>
+            }
+          >
             <div
-              className="floating text-dark-primary text-left display-inline-block">
+              className="floating text-dark-primary text-left display-inline-block"
+            >
               <h6
                 className="floating__item flush"
                 style={
                   Object {
                     "paddingRight": "5px",
                   }
-                }>
+                }
+              >
                 $
               </h6>
               <h4
                 className="floating__item flush"
-                style={undefined}>
+                style={undefined}
+              >
                 5
               </h4>
               <h6
-                className="floating__item flush">
+                className="floating__item flush"
+              >
                 .
                 00
               </h6>
@@ -122,25 +140,30 @@ exports[`TransactionLayout should render with a schedule props 1`] = `
         Object {
           "borderWidth": "1px",
         }
-      }>
+      }
+    >
       <div
-        className="soft-half-ends hard-sides">
+        className="soft-half-ends hard-sides"
+      >
         <div
           className="grid"
           style={
             Object {
               "verticalAlign": "middle",
             }
-          }>
+          }
+        >
           <div
             className="grid__item one-half"
             style={
               Object {
                 "verticalAlign": "middle",
               }
-            }>
+            }
+          >
             <h5
-              className="text-dark-primary flush text-left">
+              className="text-dark-primary flush text-left"
+            >
               234
             </h5>
           </div>
@@ -150,25 +173,30 @@ exports[`TransactionLayout should render with a schedule props 1`] = `
               Object {
                 "verticalAlign": "middle",
               }
-            }>
+            }
+          >
             <div
-              className="floating text-dark-primary text-left display-inline-block">
+              className="floating text-dark-primary text-left display-inline-block"
+            >
               <h6
                 className="floating__item flush"
                 style={
                   Object {
                     "paddingRight": "5px",
                   }
-                }>
+                }
+              >
                 $
               </h6>
               <h4
                 className="floating__item flush"
-                style={undefined}>
+                style={undefined}
+              >
                 7
               </h4>
               <h6
-                className="floating__item flush">
+                className="floating__item flush"
+              >
                 .
                 00
               </h6>
@@ -183,19 +211,24 @@ exports[`TransactionLayout should render with a schedule props 1`] = `
         Object {
           "borderWidth": "1px",
         }
-      }>
+      }
+    >
       <h5
-        className="text-dark-primary">
+        className="text-dark-primary"
+      >
         Schedule details
       </h5>
       <div
-        className="soft-half-bottom">
+        className="soft-half-bottom"
+      >
         <h7
-          className="text-dark-tertiary">
+          className="text-dark-tertiary"
+        >
           Frequency:
         </h7>
         <p
-          className="display-inline-block soft-half-left flush">
+          className="display-inline-block soft-half-left flush"
+        >
           <em>
             <small />
           </em>
@@ -203,11 +236,13 @@ exports[`TransactionLayout should render with a schedule props 1`] = `
       </div>
       <div>
         <h7
-          className="text-dark-tertiary">
+          className="text-dark-tertiary"
+        >
           Starting:
         </h7>
         <p
-          className="display-inline-block soft-half-left flush">
+          className="display-inline-block soft-half-left flush"
+        >
           <em>
             <small>
               now formatted as MMM D, YYYY
@@ -222,23 +257,27 @@ exports[`TransactionLayout should render with a schedule props 1`] = `
         Object {
           "borderWidth": "1px",
         }
-      }>
+      }
+    >
       <div
         className="grid"
         style={
           Object {
             "verticalAlign": "middle",
           }
-        }>
+        }
+      >
         <div
           className="grid__item one-quarter"
           style={
             Object {
               "verticalAlign": "middle",
             }
-          }>
+          }
+        >
           <h5
-            className="text-dark-secondary flush text-left">
+            className="text-dark-secondary flush text-left"
+          >
             Total
           </h5>
         </div>
@@ -248,27 +287,33 @@ exports[`TransactionLayout should render with a schedule props 1`] = `
             Object {
               "verticalAlign": "middle",
             }
-          }>
+          }
+        >
           <div
-            className="display-inline-block">
+            className="display-inline-block"
+          >
             <div
-              className="floating text-dark-primary text-left">
+              className="floating text-dark-primary text-left"
+            >
               <h4
                 className="floating__item flush"
                 style={
                   Object {
                     "paddingRight": "5px",
                   }
-                }>
+                }
+              >
                 $
               </h4>
               <h2
                 className="floating__item flush"
-                style={undefined}>
+                style={undefined}
+              >
                 12
               </h2>
               <h4
-                className="floating__item flush">
+                className="floating__item flush"
+              >
                 .
                 00
               </h4>
@@ -278,10 +323,12 @@ exports[`TransactionLayout should render with a schedule props 1`] = `
       </div>
     </div>
     <div
-      className="one-whole soft-half-top" />
+      className="one-whole soft-half-top"
+    />
     <button
       className="btn soft-half-top one-whole"
-      type="submit">
+      type="submit"
+    >
       <span>
         Schedule With 6789
       </span>
@@ -297,10 +344,12 @@ exports[`TransactionLayout should render with a schedule props 1`] = `
             "top": "3px",
             "width": "30px",
           }
-        } />
+        }
+      />
     </button>
     <div
-      className="display-block soft-half-top text-center">
+      className="display-block soft-half-top text-center"
+    >
       <h6
         className="outlined--light outlined--bottom display-inline-block text-dark-tertiary"
         onClick={[Function]}
@@ -308,7 +357,8 @@ exports[`TransactionLayout should render with a schedule props 1`] = `
           Object {
             "cursor": "pointer",
           }
-        }>
+        }
+      >
         Change Payment Accounts
       </h6>
     </div>
@@ -319,40 +369,48 @@ exports[`TransactionLayout should render with a schedule props 1`] = `
 exports[`TransactionLayout should render with props 1`] = `
 <div>
   <div
-    className="push-double-top@lap-and-up push">
+    className="push-double-top@lap-and-up push"
+  >
     <span>
       header
     </span>
   </div>
   <div
-    className="soft-sides">
+    className="soft-sides"
+  >
     <div
-      className="one-whole push-bottom" />
+      className="one-whole push-bottom"
+    />
     <div
       className="outlined--light outlined--bottom soft-half-top"
       style={
         Object {
           "borderWidth": "1px",
         }
-      }>
+      }
+    >
       <div
-        className="soft-half-ends hard-sides">
+        className="soft-half-ends hard-sides"
+      >
         <div
           className="grid"
           style={
             Object {
               "verticalAlign": "middle",
             }
-          }>
+          }
+        >
           <div
             className="grid__item one-half"
             style={
               Object {
                 "verticalAlign": "middle",
               }
-            }>
+            }
+          >
             <h5
-              className="text-dark-primary flush text-left">
+              className="text-dark-primary flush text-left"
+            >
               123
             </h5>
           </div>
@@ -362,25 +420,30 @@ exports[`TransactionLayout should render with props 1`] = `
               Object {
                 "verticalAlign": "middle",
               }
-            }>
+            }
+          >
             <div
-              className="floating text-dark-primary text-left display-inline-block">
+              className="floating text-dark-primary text-left display-inline-block"
+            >
               <h6
                 className="floating__item flush"
                 style={
                   Object {
                     "paddingRight": "5px",
                   }
-                }>
+                }
+              >
                 $
               </h6>
               <h4
                 className="floating__item flush"
-                style={undefined}>
+                style={undefined}
+              >
                 5
               </h4>
               <h6
-                className="floating__item flush">
+                className="floating__item flush"
+              >
                 .
                 00
               </h6>
@@ -395,25 +458,30 @@ exports[`TransactionLayout should render with props 1`] = `
         Object {
           "borderWidth": "1px",
         }
-      }>
+      }
+    >
       <div
-        className="soft-half-ends hard-sides">
+        className="soft-half-ends hard-sides"
+      >
         <div
           className="grid"
           style={
             Object {
               "verticalAlign": "middle",
             }
-          }>
+          }
+        >
           <div
             className="grid__item one-half"
             style={
               Object {
                 "verticalAlign": "middle",
               }
-            }>
+            }
+          >
             <h5
-              className="text-dark-primary flush text-left">
+              className="text-dark-primary flush text-left"
+            >
               234
             </h5>
           </div>
@@ -423,25 +491,30 @@ exports[`TransactionLayout should render with props 1`] = `
               Object {
                 "verticalAlign": "middle",
               }
-            }>
+            }
+          >
             <div
-              className="floating text-dark-primary text-left display-inline-block">
+              className="floating text-dark-primary text-left display-inline-block"
+            >
               <h6
                 className="floating__item flush"
                 style={
                   Object {
                     "paddingRight": "5px",
                   }
-                }>
+                }
+              >
                 $
               </h6>
               <h4
                 className="floating__item flush"
-                style={undefined}>
+                style={undefined}
+              >
                 7
               </h4>
               <h6
-                className="floating__item flush">
+                className="floating__item flush"
+              >
                 .
                 00
               </h6>
@@ -456,23 +529,27 @@ exports[`TransactionLayout should render with props 1`] = `
         Object {
           "borderWidth": "1px",
         }
-      }>
+      }
+    >
       <div
         className="grid"
         style={
           Object {
             "verticalAlign": "middle",
           }
-        }>
+        }
+      >
         <div
           className="grid__item one-quarter"
           style={
             Object {
               "verticalAlign": "middle",
             }
-          }>
+          }
+        >
           <h5
-            className="text-dark-secondary flush text-left">
+            className="text-dark-secondary flush text-left"
+          >
             Total
           </h5>
         </div>
@@ -482,27 +559,33 @@ exports[`TransactionLayout should render with props 1`] = `
             Object {
               "verticalAlign": "middle",
             }
-          }>
+          }
+        >
           <div
-            className="display-inline-block">
+            className="display-inline-block"
+          >
             <div
-              className="floating text-dark-primary text-left">
+              className="floating text-dark-primary text-left"
+            >
               <h4
                 className="floating__item flush"
                 style={
                   Object {
                     "paddingRight": "5px",
                   }
-                }>
+                }
+              >
                 $
               </h4>
               <h2
                 className="floating__item flush"
-                style={undefined}>
+                style={undefined}
+              >
                 12
               </h2>
               <h4
-                className="floating__item flush">
+                className="floating__item flush"
+              >
                 .
                 00
               </h4>
@@ -512,10 +595,12 @@ exports[`TransactionLayout should render with props 1`] = `
       </div>
     </div>
     <div
-      className="one-whole soft-half-top" />
+      className="one-whole soft-half-top"
+    />
     <button
       className="btn soft-half-top one-whole"
-      type="submit">
+      type="submit"
+    >
       <span>
         Give With 6789
       </span>
@@ -531,10 +616,12 @@ exports[`TransactionLayout should render with props 1`] = `
             "top": "3px",
             "width": "30px",
           }
-        } />
+        }
+      />
     </button>
     <div
-      className="display-block soft-half-top text-center">
+      className="display-block soft-half-top text-center"
+    >
       <h6
         className="outlined--light outlined--bottom display-inline-block text-dark-tertiary"
         onClick={[Function]}
@@ -542,7 +629,8 @@ exports[`TransactionLayout should render with props 1`] = `
           Object {
             "cursor": "pointer",
           }
-        }>
+        }
+      >
         Change Payment Accounts
       </h6>
     </div>

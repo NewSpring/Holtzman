@@ -3,41 +3,50 @@
 exports[`Fuse renders a layout 1`] = `
 <div>
   <div
-    className="background--light-secondary soft-double-ends@lap-and-up soft-ends text-center">
+    className="background--light-secondary soft-double-ends@lap-and-up soft-ends text-center"
+  >
     <div
-      className="constrain-page soft-double-top soft-sides@lap soft-sides@handheld">
+      className="constrain-page soft-double-top soft-sides@lap soft-sides@handheld"
+    >
       <div
-        className="one-whole">
+        className="one-whole"
+      >
         <div
-          className="constrain-copy">
+          className="constrain-copy"
+        >
           <h1
             className="uppercase push-bottom"
             style={
               Object {
                 "color": "#4F92A9",
               }
-            }>
+            }
+          >
             Fuse
           </h1>
           <p
-            className="text-left">
+            className="text-left"
+          >
             Fuse is NewSpring's student ministry. Fuse is a place where middle and high school students can have fun while connecting to Jesus and to each other.
           </p>
         </div>
         <div
-          className="one-whole soft-double-top@lap-and-up soft-top soft-bottom@lap-and-up">
+          className="one-whole soft-double-top@lap-and-up soft-top soft-bottom@lap-and-up"
+        >
           <h3
             className="push-double-bottom@lap-and-up push-bottom"
             style={
               Object {
                 "color": "#4F92A9",
               }
-            }>
+            }
+          >
             Average Weekly Attendance
           </h3>
           <Connect(FitTextWithoutData)
             compressor={0.4}
-            maxFontSize="100">
+            maxFontSize="100"
+          >
             <h1
               style={
                 Object {
@@ -45,7 +54,8 @@ exports[`Fuse renders a layout 1`] = `
                   "fontWeight": 900,
                   "marginBottom": 0,
                 }
-              }>
+              }
+            >
               4,060
             </h1>
           </Connect(FitTextWithoutData)>
@@ -55,71 +65,91 @@ exports[`Fuse renders a layout 1`] = `
     <Connect(CardSlider)>
       <MetricCard
         count="59"
-        label="Aiken" />
+        label="Aiken"
+      />
       <MetricCard
         count="883"
-        label="Anderson" />
+        label="Anderson"
+      />
       <MetricCard
         count="189"
-        label="Boiling Springs" />
+        label="Boiling Springs"
+      />
       <MetricCard
         count="361"
-        label="Charleston" />
+        label="Charleston"
+      />
       <MetricCard
         count="213"
-        label="Clemson" />
+        label="Clemson"
+      />
       <MetricCard
         count="485"
-        label="Columbia" />
+        label="Columbia"
+      />
       <MetricCard
         count="243"
-        label="Florence" />
+        label="Florence"
+      />
       <MetricCard
         count="529"
-        label="Greenville" />
+        label="Greenville"
+      />
       <MetricCard
         count="173"
-        label="Greenwood" />
+        label="Greenwood"
+      />
       <MetricCard
         count="18"
-        label="Hilton Head" />
+        label="Hilton Head"
+      />
       <MetricCard
         count="201"
-        label="Lexington" />
+        label="Lexington"
+      />
       <MetricCard
         count="305"
-        label="Myrtle Beach" />
+        label="Myrtle Beach"
+      />
       <MetricCard
         count="202"
-        label="Powdersville" />
+        label="Powdersville"
+      />
       <MetricCard
         count="28"
-        label="Rock Hill" />
+        label="Rock Hill"
+      />
       <MetricCard
         count="313"
-        label="Spartanburg" />
+        label="Spartanburg"
+      />
       <MetricCard
         count="80"
-        label="Sumter" />
+        label="Sumter"
+      />
     </Connect(CardSlider)>
     <div
-      className="constrain-page soft-sides@handheld">
+      className="constrain-page soft-sides@handheld"
+    >
       <div
-        className="soft-double-top@lap-and-up soft-bottom@lap-and-up">
+        className="soft-double-top@lap-and-up soft-bottom@lap-and-up"
+      >
         <h3
           className="italic"
           style={
             Object {
               "color": "#4F92A9",
             }
-          }>
+          }
+        >
           <strong>
             Every number has a name.
           </strong>
         </h3>
         <div
           className="soft-sides@lap"
-          id="fuse">
+          id="fuse"
+        >
           <Connect(TagGalleryWithoutData)
             buttonColor="#6BA4B8"
             id="fuse"
@@ -159,38 +189,45 @@ exports[`Fuse renders a layout 1`] = `
                   "value": "StudentVolunteers",
                 },
               ]
-            } />
+            }
+          />
         </div>
       </div>
     </div>
   </div>
   <div
-    className="background--light-primary text-center soft-double-ends">
+    className="background--light-primary text-center soft-double-ends"
+  >
     <div
-      className="constrain-copy soft-double-ends soft-sides@handheld push-double-ends">
+      className="constrain-copy soft-double-ends soft-sides@handheld push-double-ends"
+    >
       <div
-        className="one-whole">
+        className="one-whole"
+      >
         <h3
           className="italic push-half-bottom"
           style={
             Object {
               "color": "#4F92A9",
             }
-          }>
+          }
+        >
           <strong>
             This year we saw
           </strong>
         </h3>
         <Connect(FitTextWithoutData)
           compressor={0.4}
-          maxFontSize="100">
+          maxFontSize="100"
+        >
           <h1
             style={
               Object {
                 "color": "#4F92A9",
                 "fontWeight": 900,
               }
-            }>
+            }
+          >
             3,880
           </h1>
         </Connect(FitTextWithoutData)>
@@ -200,7 +237,8 @@ exports[`Fuse renders a layout 1`] = `
             Object {
               "color": "#4F92A9",
             }
-          }>
+          }
+        >
           students meet Jesus at Fuse.
         </h3>
       </div>
@@ -212,23 +250,29 @@ exports[`Fuse renders a layout 1`] = `
       Object {
         "backgroundColor": "#4F92A9",
       }
-    }>
+    }
+  >
     <div
-      className="constrain-copy push-top push-top@lap-and-up soft-sides@handheld">
+      className="constrain-copy push-top push-top@lap-and-up soft-sides@handheld"
+    >
       <div
-        className="one-whole">
+        className="one-whole"
+      >
         <h3
-          className="italic flush">
+          className="italic flush"
+        >
           <strong>
             This year at
           </strong>
         </h3>
         <h2
-          className="flush">
+          className="flush"
+        >
           Gauntlet
         </h2>
         <h3
-          className="italic">
+          className="italic"
+        >
           <strong>
             we saw
           </strong>
@@ -241,20 +285,25 @@ exports[`Fuse renders a layout 1`] = `
         Object {
           "color": "#4F92A9",
         }
-      }>
+      }
+    >
       <Connect(CardSlider)>
         <MetricCard
           count="671"
-          label="Salvations" />
+          label="Salvations"
+        />
         <MetricCard
           count="1,407"
-          label="Baptisms" />
+          label="Baptisms"
+        />
         <MetricCard
           count="5,182"
-          label="Students" />
+          label="Students"
+        />
         <MetricCard
           count="1,368"
-          label="Volunteers" />
+          label="Volunteers"
+        />
       </Connect(CardSlider)>
     </div>
   </div>

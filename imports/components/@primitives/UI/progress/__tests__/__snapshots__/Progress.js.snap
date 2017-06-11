@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ProgressBar should accept custom height as prop 1`] = `"<div class="one-whole" style="height: 10px; background-color: rgb(42, 73, 48);"><div style="height: 100%; width: 0%; background-color: white;"></div></div>"`;
+exports[`ProgressBar should accept custom height as prop 1`] = `"<div class=\\"one-whole\\" style=\\"height: 10px; background-color: rgb(42, 73, 48);\\"><div style=\\"height: 100%; width: 0%; background-color: white;\\"></div></div>"`;
 
 exports[`ProgressBar should generate a proper percentDone style 1`] = `
 Object {
@@ -39,7 +39,8 @@ exports[`ProgressBar should render with minimal props 1`] = `
         "backgroundColor": "#2a4930",
         "height": "6px",
       }
-    }>
+    }
+  >
     <div
       style={
         Object {
@@ -47,7 +48,8 @@ exports[`ProgressBar should render with minimal props 1`] = `
           "height": "100%",
           "width": "0%",
         }
-      } />
+      }
+    />
   </div>
 </Progress>
 `;

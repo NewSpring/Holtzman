@@ -1,5 +1,6 @@
 
-import { Component, PropTypes } from "react";
+import PropTypes from "prop-types";
+import { Component } from "react";
 import gql from "graphql-tag";
 
 import { Link } from "react-router";

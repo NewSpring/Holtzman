@@ -1,6 +1,7 @@
 /* eslint-disable import/imports-first */
 
-import { Component, PropTypes } from "react";
+import { Component } from "react";
+import PropTypes from "prop-types";
 import { css } from "aphrodite";
 
 if (Meteor.isClient) {

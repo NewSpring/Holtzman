@@ -33,61 +33,6 @@ exports[`renders with props 1`] = `
 </div>
 `;
 
-exports[`test renders with props 1`] = `
-<div
-  className="soft soft-double-ends one-whole text-center">
-  <h4
-    className="text-center push-ends">
-    Welcome
-     jimothy
-    !
-  </h4>
-  <p
-    className="text-left">
-    Congratulations on setting up your NewSpring account! This account will help us to serve you better in your walk with Jesus. To help us make sure the information we have is accurate and up to date, we would love if you could complete your profile.
-  </p>
-  <Link
-    className="one-whole btn push-ends"
-    onlyActiveOnIndex={false}
-    style={Object {}}
-    to="/profile/settings">
-    Complete Profile Now
-  </Link>
-  <button
-    className="btn--thin btn--small btn--dark-tertiary one-whole "
-    onClick={[Function]}>
-    Complete Later
-  </button>
-</div>
-`;
-
-exports[`test works without nick name 1`] = `
-<div
-  className="soft soft-double-ends one-whole text-center">
-  <h4
-    className="text-center push-ends">
-    Welcome
-    !
-  </h4>
-  <p
-    className="text-left">
-    Congratulations on setting up your NewSpring account! This account will help us to serve you better in your walk with Jesus. To help us make sure the information we have is accurate and up to date, we would love if you could complete your profile.
-  </p>
-  <Link
-    className="one-whole btn push-ends"
-    onlyActiveOnIndex={false}
-    style={Object {}}
-    to="/profile/settings">
-    Complete Profile Now
-  </Link>
-  <button
-    className="btn--thin btn--small btn--dark-tertiary one-whole "
-    onClick={[Function]}>
-    Complete Later
-  </button>
-</div>
-`;
-
 exports[`works without nick name 1`] = `
 <div
   className="soft soft-double-ends one-whole text-center"

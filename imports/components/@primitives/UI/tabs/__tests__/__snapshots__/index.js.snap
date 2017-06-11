@@ -56,61 +56,6 @@ exports[`renders with props 1`] = `
 </div>
 `;
 
-exports[`test arrowStyle returns css for arrow placement 1`] = `
-Object {
-  "marginLeft": "0%",
-}
-`;
-
-exports[`test arrowStyle returns css for arrow placement 2`] = `
-Object {
-  "marginLeft": "50%",
-}
-`;
-
-exports[`test renders with props 1`] = `
-<div
-  className="toggle push-bottom soft-sides"
-  style={
-    Object {
-      "backgroundColor": "#fff",
-    }
-  }>
-  <div
-    className="transition text-center toggle__item toggle__item--active"
-    data-toggle={0}
-    onClick={[Function]}
-    style={
-      Object {
-        "width": "50%",
-      }
-    } />
-  <div
-    className="transition text-center toggle__item"
-    data-toggle={1}
-    onClick={[Function]}
-    style={
-      Object {
-        "width": "50%",
-      }
-    } />
-  <div
-    className="grid text-left toggle-arrow soft-sides">
-    <div
-      className="transition grid__item hard one-half toggle-arrow__item "
-      style={
-        Object {
-          "marginLeft": "0%",
-        }
-      } />
-  </div>
-</div>
-`;
-
-exports[`test toggleClasses renders active classes 1`] = `"transition text-center toggle__item toggle__item--active"`;
-
-exports[`test toggleClasses renders default classes 1`] = `"transition text-center toggle__item"`;
-
 exports[`toggleClasses renders active classes 1`] = `"transition text-center toggle__item toggle__item--active"`;
 
 exports[`toggleClasses renders default classes 1`] = `"transition text-center toggle__item"`;

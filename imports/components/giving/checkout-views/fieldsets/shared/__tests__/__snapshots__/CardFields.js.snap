@@ -7,10 +7,12 @@ exports[`CardFields should render with props 1`] = `
   <div
     className="input input--active"
     data-spec="input-wrapper"
-    style={Object {}}>
+    style={Object {}}
+  >
     <label
       htmlFor="cardNumber"
-      style={Object {}}>
+      style={Object {}}
+    >
       Card Number
     </label>
     <input
@@ -26,14 +28,16 @@ exports[`CardFields should render with props 1`] = `
       onFocus={[Function]}
       placeholder="Card Number"
       style={Object {}}
-      type="tel" />
+      type="tel"
+    />
     <div
       className="locked locked-right soft-double-right locked-top"
       style={
         Object {
           "top": "-3px",
         }
-      }>
+      }
+    >
       <div
         className="background--fill display-inline-block"
         style={
@@ -45,20 +49,25 @@ exports[`CardFields should render with props 1`] = `
             "top": "3px",
             "width": "30px",
           }
-        } />
+        }
+      />
     </div>
   </div>
   <div
-    className="grid">
+    className="grid"
+  >
     <div
-      className="grid__item one-half">
+      className="grid__item one-half"
+    >
       <div
         className="input input--active"
         data-spec="input-wrapper"
-        style={Object {}}>
+        style={Object {}}
+      >
         <label
           htmlFor="expiration"
-          style={Object {}}>
+          style={Object {}}
+        >
           Exp (MM/YY)
         </label>
         <input
@@ -74,18 +83,22 @@ exports[`CardFields should render with props 1`] = `
           onFocus={[Function]}
           placeholder="Exp (MM/YY)"
           style={Object {}}
-          type="tel" />
+          type="tel"
+        />
       </div>
     </div>
     <div
-      className="grid__item one-half">
+      className="grid__item one-half"
+    >
       <div
         className="input input--active"
         data-spec="input-wrapper"
-        style={Object {}}>
+        style={Object {}}
+      >
         <label
           htmlFor="ccv"
-          style={Object {}}>
+          style={Object {}}
+        >
           CCV
         </label>
         <input
@@ -101,7 +114,8 @@ exports[`CardFields should render with props 1`] = `
           onFocus={[Function]}
           placeholder="CCV"
           style={Object {}}
-          type="tel" />
+          type="tel"
+        />
       </div>
     </div>
   </div>
@@ -128,7 +142,8 @@ exports[`RenderIcon should render if ach and accountNumber 1`] = `
       "top": "3px",
       "width": "30px",
     }
-  } />
+  }
+/>
 `;
 
 exports[`RenderIcon should render if card and cardNumber and cardType returns 1`] = `
@@ -143,5 +158,6 @@ exports[`RenderIcon should render if card and cardNumber and cardType returns 1`
       "top": "3px",
       "width": "30px",
     }
-  } />
+  }
+/>
 `;

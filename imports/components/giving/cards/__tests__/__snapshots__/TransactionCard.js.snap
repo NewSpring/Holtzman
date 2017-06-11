@@ -13,7 +13,8 @@ exports[`TransactionCard renders failed version 1`] = `
         "status": "FAILED",
       }
     }
-    transactionDetail={Object {}} />
+    transactionDetail={Object {}}
+  />
 </FailedWrapper>
 `;
 
@@ -29,7 +30,8 @@ exports[`TransactionCard renders pending version 1`] = `
         "status": "PENDING",
       }
     }
-    transactionDetail={Object {}} />
+    transactionDetail={Object {}}
+  />
 </PendingWrapper>
 `;
 
@@ -40,7 +42,8 @@ exports[`TransactionCard renders with props 1`] = `
       "id": "1",
       "status": "default",
     }
-  }>
+  }
+>
   <DetailCard
     icon={true}
     person={Object {}}
@@ -50,7 +53,8 @@ exports[`TransactionCard renders with props 1`] = `
         "status": "default",
       }
     }
-    transactionDetail={Object {}} />
+    transactionDetail={Object {}}
+  />
 </Wrapper>
 `;
 
@@ -61,25 +65,30 @@ exports[`TransactionDetail renders with failure 1`] = `
     Object {
       "verticalAlign": "middle",
     }
-  }>
+  }
+>
   <div
     className="grid__item one-half"
     style={
       Object {
         "verticalAlign": "middle",
       }
-    }>
+    }
+  >
     <div
-      className="relative">
+      className="relative"
+    >
       <div
         className="background--fill soft visuallyhidden@palm float-left round push-half-top"
         style={
           Object {
-            "backgroundImage": "url("http://test.com/test.jpg")",
+            "backgroundImage": "url(\\"http://test.com/test.jpg\\")",
           }
-        } />
+        }
+      />
       <div
-        className="soft-double-left@palm-wide-and-up push-left@palm-wide-and-up">
+        className="soft-double-left@palm-wide-and-up push-left@palm-wide-and-up"
+      >
         <h5
           className="text-dark-secondary flush"
           style={
@@ -87,17 +96,20 @@ exports[`TransactionDetail renders with failure 1`] = `
               "textOverflow": "ellipsis",
               "whiteSpace": "nowrap",
             }
-          }>
+          }
+        >
           account name
         </h5>
         <h6
-          className="text-dark-tertiary soft-half-bottom flush">
+          className="text-dark-tertiary soft-half-bottom flush"
+        >
           jim
            
           bob
         </h6>
         <p
-          className="flush italic small text-alert">
+          className="flush italic small text-alert"
+        >
           Dec 12, 2012
         </p>
       </div>
@@ -109,7 +121,8 @@ exports[`TransactionDetail renders with failure 1`] = `
       Object {
         "verticalAlign": "middle",
       }
-    }>
+    }
+  >
     <div>
       <Currency
         amount={2}
@@ -117,7 +130,8 @@ exports[`TransactionDetail renders with failure 1`] = `
         className="
                   text-dark-tertiary text-right
                   soft-half-right@handheld soft-double-right@lap-and-up
-                " />
+                "
+      />
       <span
         className="text-primary icon-arrow-next locked"
         style={
@@ -125,7 +139,8 @@ exports[`TransactionDetail renders with failure 1`] = `
             "right": "-13px",
             "top": "2px",
           }
-        } />
+        }
+      />
     </div>
   </div>
 </div>
@@ -138,25 +153,30 @@ exports[`TransactionDetail renders with failure and status 1`] = `
     Object {
       "verticalAlign": "middle",
     }
-  }>
+  }
+>
   <div
     className="grid__item one-half"
     style={
       Object {
         "verticalAlign": "middle",
       }
-    }>
+    }
+  >
     <div
-      className="relative">
+      className="relative"
+    >
       <div
         className="background--fill soft visuallyhidden@palm float-left round push-half-top"
         style={
           Object {
-            "backgroundImage": "url("http://test.com/test.jpg")",
+            "backgroundImage": "url(\\"http://test.com/test.jpg\\")",
           }
-        } />
+        }
+      />
       <div
-        className="soft-double-left@palm-wide-and-up push-left@palm-wide-and-up">
+        className="soft-double-left@palm-wide-and-up push-left@palm-wide-and-up"
+      >
         <h5
           className="text-dark-secondary flush"
           style={
@@ -164,17 +184,20 @@ exports[`TransactionDetail renders with failure and status 1`] = `
               "textOverflow": "ellipsis",
               "whiteSpace": "nowrap",
             }
-          }>
+          }
+        >
           account name
         </h5>
         <h6
-          className="text-dark-tertiary soft-half-bottom flush">
+          className="text-dark-tertiary soft-half-bottom flush"
+        >
           jim
            
           bob
         </h6>
         <p
-          className="flush italic small text-alert">
+          className="flush italic small text-alert"
+        >
           error - 
           Dec 12, 2012
         </p>
@@ -187,7 +210,8 @@ exports[`TransactionDetail renders with failure and status 1`] = `
       Object {
         "verticalAlign": "middle",
       }
-    }>
+    }
+  >
     <div>
       <Currency
         amount={2}
@@ -195,7 +219,8 @@ exports[`TransactionDetail renders with failure and status 1`] = `
         className="
                   text-dark-tertiary text-right
                   soft-half-right@handheld soft-double-right@lap-and-up
-                " />
+                "
+      />
       <span
         className="text-primary icon-arrow-next locked"
         style={
@@ -203,7 +228,8 @@ exports[`TransactionDetail renders with failure and status 1`] = `
             "right": "-13px",
             "top": "2px",
           }
-        } />
+        }
+      />
     </div>
   </div>
 </div>
@@ -216,25 +242,30 @@ exports[`TransactionDetail renders with props 1`] = `
     Object {
       "verticalAlign": "middle",
     }
-  }>
+  }
+>
   <div
     className="grid__item one-half"
     style={
       Object {
         "verticalAlign": "middle",
       }
-    }>
+    }
+  >
     <div
-      className="relative">
+      className="relative"
+    >
       <div
         className="background--fill soft visuallyhidden@palm float-left round push-half-top"
         style={
           Object {
-            "backgroundImage": "url("http://test.com/test.jpg")",
+            "backgroundImage": "url(\\"http://test.com/test.jpg\\")",
           }
-        } />
+        }
+      />
       <div
-        className="soft-double-left@palm-wide-and-up push-left@palm-wide-and-up">
+        className="soft-double-left@palm-wide-and-up push-left@palm-wide-and-up"
+      >
         <h5
           className="text-dark-secondary flush"
           style={
@@ -242,17 +273,20 @@ exports[`TransactionDetail renders with props 1`] = `
               "textOverflow": "ellipsis",
               "whiteSpace": "nowrap",
             }
-          }>
+          }
+        >
           account name
         </h5>
         <h6
-          className="text-dark-tertiary soft-half-bottom flush">
+          className="text-dark-tertiary soft-half-bottom flush"
+        >
           jim
            
           bob
         </h6>
         <p
-          className="flush italic small text-dark-tertiary">
+          className="flush italic small text-dark-tertiary"
+        >
           Dec 12, 2012
         </p>
       </div>
@@ -264,7 +298,8 @@ exports[`TransactionDetail renders with props 1`] = `
       Object {
         "verticalAlign": "middle",
       }
-    }>
+    }
+  >
     <div>
       <Currency
         amount={2}
@@ -272,7 +307,8 @@ exports[`TransactionDetail renders with props 1`] = `
         className="
                   text-dark-tertiary text-right
                   soft-half-right@handheld soft-double-right@lap-and-up
-                " />
+                "
+      />
       <span
         className="text-primary icon-arrow-next locked"
         style={
@@ -280,7 +316,8 @@ exports[`TransactionDetail renders with props 1`] = `
             "right": "-13px",
             "top": "2px",
           }
-        } />
+        }
+      />
     </div>
   </div>
 </div>
@@ -293,25 +330,30 @@ exports[`TransactionDetail renders without icon 1`] = `
     Object {
       "verticalAlign": "middle",
     }
-  }>
+  }
+>
   <div
     className="grid__item one-half"
     style={
       Object {
         "verticalAlign": "middle",
       }
-    }>
+    }
+  >
     <div
-      className="relative">
+      className="relative"
+    >
       <div
         className="background--fill soft visuallyhidden@palm float-left round push-half-top"
         style={
           Object {
-            "backgroundImage": "url("http://test.com/test.jpg")",
+            "backgroundImage": "url(\\"http://test.com/test.jpg\\")",
           }
-        } />
+        }
+      />
       <div
-        className="soft-double-left@palm-wide-and-up push-left@palm-wide-and-up">
+        className="soft-double-left@palm-wide-and-up push-left@palm-wide-and-up"
+      >
         <h5
           className="text-dark-secondary flush"
           style={
@@ -319,17 +361,20 @@ exports[`TransactionDetail renders without icon 1`] = `
               "textOverflow": "ellipsis",
               "whiteSpace": "nowrap",
             }
-          }>
+          }
+        >
           account name
         </h5>
         <h6
-          className="text-dark-tertiary soft-half-bottom flush">
+          className="text-dark-tertiary soft-half-bottom flush"
+        >
           jim
            
           bob
         </h6>
         <p
-          className="flush italic small text-dark-tertiary">
+          className="flush italic small text-dark-tertiary"
+        >
           Dec 12, 2012
         </p>
       </div>
@@ -341,7 +386,8 @@ exports[`TransactionDetail renders without icon 1`] = `
       Object {
         "verticalAlign": "middle",
       }
-    }>
+    }
+  >
     <div>
       <Currency
         amount={2}
@@ -349,7 +395,8 @@ exports[`TransactionDetail renders without icon 1`] = `
         className="
                   text-dark-tertiary text-right
                   soft-half-right@handheld soft-double-right@lap-and-up
-                " />
+                "
+      />
     </div>
   </div>
 </div>

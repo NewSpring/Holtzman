@@ -8,13 +8,15 @@ exports[`CardSlider should render with default props 1`] = `
       "overflowX": "auto",
       "overflowY": "hidden",
     }
-  }>
+  }
+>
   <section
     style={
       Object {
         "width": "867.2px",
       }
-    }>
+    }
+  >
     <div
       className="card floating display-inline-block push-right"
       style={
@@ -22,10 +24,12 @@ exports[`CardSlider should render with default props 1`] = `
           "height": 393.6,
           "width": 393.6,
         }
-      }>
+      }
+    >
       <MetricCard
         count="11,130"
-        label="Total Salvations" />
+        label="Total Salvations"
+      />
     </div>
     <div
       className="card floating display-inline-block "
@@ -34,10 +38,12 @@ exports[`CardSlider should render with default props 1`] = `
           "height": 393.6,
           "width": 393.6,
         }
-      }>
+      }
+    >
       <MetricCard
         count="3,982"
-        label="Student Salvations at Fuse and Gauntlet" />
+        label="Student Salvations at Fuse and Gauntlet"
+      />
     </div>
   </section>
 </div>

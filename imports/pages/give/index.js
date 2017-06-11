@@ -1,4 +1,3 @@
-// @flow
 // import Campaign from "./campaign";
 // import EditSavedPayment from "./saved-payments/";
 // import EditSchedule from "./schedules/Edit";
@@ -17,10 +16,12 @@ const Routes = [
   {
     path: "give/saved-payments/edit/:id",
     getComponents(nextState, cb) {
+      // $FlowMeteor
       import("./saved-payments/")
         .then((x) => {
           cb(null, x.default.EditSavedPayment);
           // preload home
+          // $FlowMeteor
           import("./home");
         })
         .catch(console.error);
@@ -29,10 +30,12 @@ const Routes = [
   {
     path: "give/schedules/edit/:id",
     getComponents(nextState, cb) {
+      // $FlowMeteor
       import("./schedules/Edit")
         .then((x) => {
           cb(null, x.default.EditSchedule);
           // preload schedules
+          // $FlowMeteor
           import("./schedules");
         })
         .catch(console.error);
@@ -41,10 +44,12 @@ const Routes = [
   {
     path: "give/schedules/transfer",
     getComponents(nextState, cb) {
+      // $FlowMeteor
       import("./schedules/Recover")
         .then((x) => {
           cb(null, x.default.Template);
           // preload schedules
+          // $FlowMeteor
           import("./schedules");
         })
         .catch(console.error);
@@ -53,6 +58,7 @@ const Routes = [
   {
     path: "give/schedules/:id",
     getComponents(nextState, cb) {
+      // $FlowMeteor
       import("./schedules/Details")
         .then((x) => {
           cb(null, x.default.Details);
@@ -63,6 +69,7 @@ const Routes = [
   {
     path: "give/campaign/:name",
     getComponents(nextState, cb) {
+      // $FlowMeteor
       import("./campaign")
         .then((x) => {
           cb(null, x.default.Template);
@@ -73,10 +80,12 @@ const Routes = [
   {
     path: "give/history/:id",
     getComponents(nextState, cb) {
+      // $FlowMeteor
       import("./history/Details")
         .then((x) => {
           cb(null, x.default.Details);
           // preload history
+          // $FlowMeteor
           import("./history");
         })
         .catch(console.error);
@@ -85,14 +94,18 @@ const Routes = [
   {
     path: "give",
     component: Layout,
-    indexRoute: { onEnter: (nextState: Object, replace: Function) => replace("/give/home") },
+    indexRoute: { onEnter: (nextState, replace) => replace("/give/home") },
     getChildRoutes(partialNextState, cb) {
       Promise.all([
+        // $FlowMeteor
         import("./history"),
+        // $FlowMeteor
         import("./home"),
         // now is critical enough to not async load
         Promise.resolve({ default: Now }),
+        // $FlowMeteor
         import("./review"),
+        // $FlowMeteor
         import("./schedules"),
       ])
         .then((x) => x.map((y) => y.default.Routes))

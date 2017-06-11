@@ -6,24 +6,30 @@ exports[`Loading renders with a different type 1`] = `
     Array [
       "background--primary",
     ]
-  }>
+  }
+>
   <div
-    className="soft soft-double-ends push-double-top one-whole text-center">
+    className="soft soft-double-ends push-double-top one-whole text-center"
+  >
     <div
-      className="push-double-top">
+      className="push-double-top"
+    >
       <Spinner
         styles={
           Object {
             "borderColor": "#fff #6BAC43 #fff #fff",
             "borderWidth": "7px",
           }
-        } />
+        }
+      />
       <h3
-        className="text-light-primary push-top">
+        className="text-light-primary push-top"
+      >
         We're Removing Your Saved Account
       </h3>
       <p
-        className="text-light-primary">
+        className="text-light-primary"
+      >
         Please don't close this window while we remove your account details
       </p>
     </div>
@@ -37,24 +43,30 @@ exports[`Loading renders with default props 1`] = `
     Array [
       "background--primary",
     ]
-  }>
+  }
+>
   <div
-    className="soft soft-double-ends push-double-top one-whole text-center">
+    className="soft soft-double-ends push-double-top one-whole text-center"
+  >
     <div
-      className="push-double-top">
+      className="push-double-top"
+    >
       <Spinner
         styles={
           Object {
             "borderColor": "#fff #6BAC43 #fff #fff",
             "borderWidth": "7px",
           }
-        } />
+        }
+      />
       <h3
-        className="text-light-primary push-top">
+        className="text-light-primary push-top"
+      >
         We're Updating Your Saved Account
       </h3>
       <p
-        className="text-light-primary">
+        className="text-light-primary"
+      >
         Please don't close this window while we update your account details
       </p>
     </div>

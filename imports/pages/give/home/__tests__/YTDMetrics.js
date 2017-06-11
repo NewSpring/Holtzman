@@ -23,7 +23,9 @@ const graphData = {
   total: 3422
 };
 
-jest.mock("../../../../components/@primitives/UI/graphs/LineGraph", () => (props) => <pre> { JSON.stringify(props, null, 2) } </pre> );
+jest.mock("../../../../components/@primitives/UI/graphs/LineGraph", () => ({
+  default: (props) => <pre> { JSON.stringify(props, null, 2) } </pre>
+}));
 
 describe("YTDMetrics", () => {
   beforeEach(() => {

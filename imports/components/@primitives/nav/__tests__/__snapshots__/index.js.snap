@@ -11,14 +11,3 @@ exports[`renders with props 1`] = `
   reset={[Function]}
 />
 `;
-
-exports[`test does not render if not visible 1`] = `null`;
-
-exports[`test renders with props 1`] = `
-<NavLayout
-  handleAction={[Function]}
-  liked={Object {}}
-  modal={Object {}}
-  path="path"
-  reset={[Function]} />
-`;

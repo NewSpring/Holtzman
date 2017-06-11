@@ -1,5 +1,6 @@
+import PropTypes from "prop-types";
 // @flow
-import { Component, PropTypes } from "react";
+import { Component } from "react";
 import moment from "moment";
 
 import TagSelect from "../../../components/@primitives/UI/forms/TagSelect";

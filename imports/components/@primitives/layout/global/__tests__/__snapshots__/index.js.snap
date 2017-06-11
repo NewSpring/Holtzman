@@ -2,13 +2,16 @@
 
 exports[`App renders header when native 1`] = `
 <div
-  className="push-double-bottom@palm soft-half-bottom@palm push-double-left@palm-wide-and-up soft-double-left@palm-wide-and-up">
+  className="push-double-bottom@palm soft-half-bottom@palm push-double-left@palm-wide-and-up soft-double-left@palm-wide-and-up"
+>
   <div
-    className="one two">
+    className="one two"
+  >
     <Meta />
     <Connect(HeaderWithoutData) />
     <div
-      data-status-scroll={true}>
+      data-status-scroll={true}
+    >
       <h1>
         test
       </h1>
@@ -22,12 +25,15 @@ exports[`App renders header when native 1`] = `
 
 exports[`App renders with props 1`] = `
 <div
-  className="push-double-bottom@palm soft-half-bottom@palm push-double-left@palm-wide-and-up soft-double-left@palm-wide-and-up">
+  className="push-double-bottom@palm soft-half-bottom@palm push-double-left@palm-wide-and-up soft-double-left@palm-wide-and-up"
+>
   <div
-    className="one two">
+    className="one two"
+  >
     <Meta />
     <div
-      data-status-scroll={true}>
+      data-status-scroll={true}
+    >
       <h1>
         test
       </h1>
@@ -57,7 +63,7 @@ Array [
 `;
 
 exports[`GlobalWithoutData parses URL_TITLE_QUERY correctly 1`] = `
-"query contentWithUrlTitle($parentChannel: String!, $parentUrl: String!, $childChannel: String = "", $childUrl: String = "", $hasChild: Boolean = false) {
+"query contentWithUrlTitle($parentChannel: String!, $parentUrl: String!, $childChannel: String = \\"\\", $childUrl: String = \\"\\", $hasChild: Boolean = false) {
   parent: contentWithUrlTitle(channel: $parentChannel, urlTitle: $parentUrl)
   child: contentWithUrlTitle(channel: $childChannel, urlTitle: $childUrl) @include(if: $hasChild)
 }
@@ -66,7 +72,8 @@ exports[`GlobalWithoutData parses URL_TITLE_QUERY correctly 1`] = `
 
 exports[`GlobalWithoutData renders with props 1`] = `
 <div
-  id="global">
+  id="global"
+>
   <style />
   <App
     client={
@@ -74,22 +81,26 @@ exports[`GlobalWithoutData renders with props 1`] = `
         "query": [Function],
       }
     }
-    dispatch={[Function]} />
+    dispatch={[Function]}
+  />
   <MeteorDataContainer
     client={
       Object {
         "query": [Function],
       }
     }
-    dispatch={[Function]} />
+    dispatch={[Function]}
+  />
 </div>
 `;
 
 exports[`Watermark renders 1`] = `
 <div
-  className="global-watermark_11ogz0s">
+  className="global-watermark_11ogz0s"
+>
   <h4
-    className="soft-half flush text-light-primary uppercase watermark watermark_1i744g visuallyhidden@handheld">
+    className="soft-half flush text-light-primary uppercase watermark watermark_1i744g visuallyhidden@handheld"
+  >
     NewSpring
   </h4>
 </div>

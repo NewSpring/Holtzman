@@ -24,27 +24,3 @@ Object {
   "color": "red",
 }
 `;
-
-exports[`test renders with props 1`] = `
-<div
-  className="ooyala-player"
-  id="ooyala-player-2"
-  style={
-    Object {
-      "color": "red",
-    }
-  } />
-`;
-
-exports[`test styles has hidden styles 1`] = `
-Object {
-  "color": "red",
-  "display": "none",
-}
-`;
-
-exports[`test styles has non hidden styles 1`] = `
-Object {
-  "color": "red",
-}
-`;

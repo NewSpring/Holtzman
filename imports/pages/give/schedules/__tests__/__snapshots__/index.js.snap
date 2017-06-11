@@ -11,14 +11,3 @@ exports[`renders with props 1`] = `
   schedulesReady={true}
 />
 `;
-
-exports[`test renders with props 1`] = `
-<Layout
-  accounts={Array []}
-  accountsReady={true}
-  cancelSchedule={[Function]}
-  confirm={[Function]}
-  recoverableSchedules={Array []}
-  schedules={Array []}
-  schedulesReady={true} />
-`;

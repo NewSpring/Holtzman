@@ -1,6 +1,7 @@
-import { Component, PropTypes } from "react";
+import { Component } from "react";
 import { Meteor } from "meteor/meteor";
 import moment from "moment";
+import PropTypes from "prop-types";
 import { flatten, pluck } from "ramda";
 import { connect } from "react-redux";
 import { css } from "aphrodite";
@@ -17,7 +18,7 @@ import Nav from "../../nav";
 import Header from "../../UI/header";
 import { Loading } from "../../UI/states";
 
-import Likes from "../../../../deprecated/database/collections/likes";		
+import Likes from "../../../../deprecated/database/collections/likes";
 
 import { linkListener } from "../../../../util/inAppLink";
 

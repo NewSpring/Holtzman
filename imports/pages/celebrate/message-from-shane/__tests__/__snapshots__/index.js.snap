@@ -3,7 +3,8 @@
 exports[`Shane renders a layout 1`] = `
 <div>
   <Meta
-    title="Message From Shane" />
+    title="Message From Shane"
+  />
   <Connect(SplitContainerWithoutData)>
     <Right
       background="https://s3.amazonaws.com/ns.assets/apollos/leaves.png"
@@ -14,7 +15,8 @@ exports[`Shane renders a layout 1`] = `
           "background--bottom",
         ]
       }
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <style>
     .oo-player-container { min-width: 0 !important }
@@ -25,19 +27,22 @@ exports[`Shane renders a layout 1`] = `
         "background--light-primary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <Link
       className="locked-top locked-left soft-double@lap-and-up soft h7 text-dark-secondary plain push-half-top@handheld"
       onlyActiveOnIndex={false}
       style={Object {}}
-      to="/annualreport">
+      to="/annualreport"
+    >
       <i
         className="icon-arrow-back soft-half-right display-inline-block"
         style={
           Object {
             "verticalAlign": "middle",
           }
-        } />
+        }
+      />
       <span
         className="display-inline-block"
         style={
@@ -45,23 +50,29 @@ exports[`Shane renders a layout 1`] = `
             "marginTop": "5px",
             "verticalAlign": "middle",
           }
-        }>
+        }
+      >
         Back
       </span>
     </Link>
     <div
-      className="soft@lap-and-up soft-double-top@lap-and-up">
+      className="soft@lap-and-up soft-double-top@lap-and-up"
+    >
       <div
-        className="soft soft-double-bottom soft-double-top@lap-and-up">
+        className="soft soft-double-bottom soft-double-top@lap-and-up"
+      >
         <h1
-          className="soft-double-top@lap-and-up soft-top push-double-top@handheld">
+          className="soft-double-top@lap-and-up soft-top push-double-top@handheld"
+        >
           Welcome to NewSpring's 2016 Annual Report!
         </h1>
         <div
-          className="soft-top soft-double-bottom">
+          className="soft-top soft-double-bottom"
+        >
           <Connect(VideoPlayerWithoutData)
             autoplay={false}
-            id="VoNTB1ODE66MXxAFqcCqRb04c2WT9biy" />
+            id="VoNTB1ODE66MXxAFqcCqRb04c2WT9biy"
+          />
         </div>
         <p>
           The annual report is an opportunity to reflect on what God has done and to see why the local church is the best investment we can make.
@@ -83,16 +94,19 @@ exports[`Shane renders a layout 1`] = `
       </div>
     </div>
     <div
-      className="background--primary text-center text-light-primary soft">
+      className="background--primary text-center text-light-primary soft"
+    >
       <h3
-        className="push-double-top">
+        className="push-double-top"
+      >
         Keep Reading
       </h3>
       <Link
         className="btn--light push-double-bottom"
         onlyActiveOnIndex={false}
         style={Object {}}
-        to="/annualreport">
+        to="/annualreport"
+      >
         Back To Annual Report
       </Link>
     </div>

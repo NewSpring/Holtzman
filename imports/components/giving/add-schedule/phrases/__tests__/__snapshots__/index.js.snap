@@ -15,17 +15,3 @@ exports[`renders with props 1`] = `
   test
 </h3>
 `;
-
-exports[`test appends additional classes 1`] = `
-<h3
-  className="text-dark-tertiary display-inline-block push-half-bottom one two three">
-  test
-</h3>
-`;
-
-exports[`test renders with props 1`] = `
-<h3
-  className="text-dark-tertiary display-inline-block push-half-bottom">
-  test
-</h3>
-`;

@@ -1,5 +1,6 @@
 import { Meteor } from "meteor/meteor";
-import { Component, PropTypes, cloneElement } from "react";
+import PropTypes from "prop-types";
+import { Component, cloneElement } from "react";
 import { connect } from "react-redux";
 
 import { accounts as accountsActions, modal } from "../../../data/store";

@@ -36,35 +36,3 @@ exports[`renders with props 1`] = `
   </div>
 </Loading>
 `;
-
-exports[`test renders with props 1`] = `
-<Loading
-  classes={
-    Array [
-      "background--primary",
-    ]
-  }
-  styles={
-    Object {
-      "color": "red",
-    }
-  }>
-  <div
-    className="locked-top locked-bottom one-whole floating">
-    <div
-      className="floating__item">
-      <Spinner
-        styles={
-          Object {
-            "borderColor": "#fff #6BAC43 #fff #fff",
-            "borderWidth": "7px",
-          }
-        } />
-      <h4
-        className="text-light-primary">
-        test msg
-      </h4>
-    </div>
-  </div>
-</Loading>
-`;

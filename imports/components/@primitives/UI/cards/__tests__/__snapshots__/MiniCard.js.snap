@@ -5,22 +5,27 @@ exports[`MiniCard should render with no props 1`] = `
   <Link
     className="plain"
     onlyActiveOnIndex={false}
-    style={Object {}}>
+    style={Object {}}
+  >
     <a
       className="plain"
       onClick={[Function]}
-      style={Object {}}>
+      style={Object {}}
+    >
       <div
-        className="card">
+        className="card"
+      >
         <div
           className="card__item soft push-half-ends one-whole"
           style={
             Object {
               "verticalAlign": "middle",
             }
-          }>
+          }
+        >
           <h6
-            className="text-dark-primary capitalize push-half-top" />
+            className="text-dark-primary capitalize push-half-top"
+          />
         </div>
         <div
           className="locked-ends locked-right card__image one-third background--fill"
@@ -29,7 +34,8 @@ exports[`MiniCard should render with no props 1`] = `
               "backgroundImage": "url('undefined')",
               "verticalAlign": "middle",
             }
-          } />
+          }
+        />
       </div>
     </a>
   </Link>

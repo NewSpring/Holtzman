@@ -6,22 +6,30 @@ exports[`Saved Payments List should render a loading state 1`] = `
     Object {
       "loading": true,
     }
-  }>
+  }
+>
   <div
-    className="soft-half-sides soft-double-sides@lap-and-up">
+    className="soft-half-sides soft-double-sides@lap-and-up"
+  >
     <Component>
       <div
-        className="card">
+        className="card"
+      >
         <div
-          className="card__item soft">
+          className="card__item soft"
+        >
           <div
-            className="soft-half-top one-fifth push-bottom background--light-tertiary" />
+            className="soft-half-top one-fifth push-bottom background--light-tertiary"
+          />
           <div
-            className="soft-half-top four-fifths push-half-bottom background--light-tertiary" />
+            className="soft-half-top four-fifths push-half-bottom background--light-tertiary"
+          />
           <div
-            className="soft-half-top one-half push-bottom background--light-tertiary" />
+            className="soft-half-top one-half push-bottom background--light-tertiary"
+          />
           <div
-            className="soft-half-top one-quarter background--light-tertiary" />
+            className="soft-half-top one-quarter background--light-tertiary"
+          />
         </div>
       </div>
     </Component>
@@ -52,28 +60,36 @@ exports[`Saved Payments List should render properly with data 1`] = `
         },
       ],
     }
-  }>
+  }
+>
   <div
-    className="soft-half-sides soft-double-sides@lap-and-up">
+    className="soft-half-sides soft-double-sides@lap-and-up"
+  >
     <SectionHeader
       link={<Unknown />}
-      title="Saved Accounts">
+      title="Saved Accounts"
+    >
       <div
-        className="one-whole">
+        className="one-whole"
+      >
         <div
-          className="one-half floating display-inline-block floating--left soft soft-half-left">
+          className="one-half floating display-inline-block floating--left soft soft-half-left"
+        >
           <h6
-            className="floating__item text-dark-tertiary flush">
+            className="floating__item text-dark-tertiary flush"
+          >
             Saved Accounts
           </h6>
         </div>
         <div
-          className="one-half floating display-inline-block floating--right soft soft-half-right">
+          className="one-half floating display-inline-block floating--right soft soft-half-right"
+        >
           <Component>
             <SmallButton
               className="btn--dark-tertiary flush"
               onClick={[Function]}
-              text="Add Account">
+              text="Add Account"
+            >
               <button
                 className="
                   btn btn--small@next
@@ -81,7 +97,8 @@ exports[`Saved Payments List should render properly with data 1`] = `
                   btn--dark-tertiary flush
                 "
                 onClick={[Function]}
-                style={Object {}}>
+                style={Object {}}
+              >
                 Add Account
               </button>
             </SmallButton>
@@ -90,7 +107,8 @@ exports[`Saved Payments List should render properly with data 1`] = `
       </div>
     </SectionHeader>
     <div
-      className="grid">
+      className="grid"
+    >
       <Component
         payment={
           Object {
@@ -101,7 +119,8 @@ exports[`Saved Payments List should render properly with data 1`] = `
               "paymentType": "Visa",
             },
           }
-        }>
+        }
+      >
         <div />
       </Component>
       <Component
@@ -114,7 +133,8 @@ exports[`Saved Payments List should render properly with data 1`] = `
               "paymentType": "MasterCard",
             },
           }
-        }>
+        }
+      >
         <div />
       </Component>
     </div>
@@ -126,28 +146,36 @@ exports[`Saved Payments List should render with minimal props 1`] = `<SavedPayme
 
 exports[`Saved Payments List should render without saved payments 1`] = `
 <SavedPaymentsList
-  payments={Object {}}>
+  payments={Object {}}
+>
   <div
-    className="soft-half-sides soft-double-sides@lap-and-up">
+    className="soft-half-sides soft-double-sides@lap-and-up"
+  >
     <SectionHeader
       link={<Unknown />}
-      title="Saved Accounts">
+      title="Saved Accounts"
+    >
       <div
-        className="one-whole">
+        className="one-whole"
+      >
         <div
-          className="one-half floating display-inline-block floating--left soft soft-half-left">
+          className="one-half floating display-inline-block floating--left soft soft-half-left"
+        >
           <h6
-            className="floating__item text-dark-tertiary flush">
+            className="floating__item text-dark-tertiary flush"
+          >
             Saved Accounts
           </h6>
         </div>
         <div
-          className="one-half floating display-inline-block floating--right soft soft-half-right">
+          className="one-half floating display-inline-block floating--right soft soft-half-right"
+        >
           <Component>
             <SmallButton
               className="btn--dark-tertiary flush"
               onClick={[Function]}
-              text="Add Account">
+              text="Add Account"
+            >
               <button
                 className="
                   btn btn--small@next
@@ -155,7 +183,8 @@ exports[`Saved Payments List should render without saved payments 1`] = `
                   btn--dark-tertiary flush
                 "
                 onClick={[Function]}
-                style={Object {}}>
+                style={Object {}}
+              >
                 Add Account
               </button>
             </SmallButton>
@@ -164,11 +193,14 @@ exports[`Saved Payments List should render without saved payments 1`] = `
       </div>
     </SectionHeader>
     <div
-      className="card">
+      className="card"
+    >
       <div
-        className="card__item soft">
+        className="card__item soft"
+      >
         <h4
-          className="text-dark-primary">
+          className="text-dark-primary"
+        >
           Adding a saved account makes giving even easier!
         </h4>
         <p>
@@ -176,7 +208,8 @@ exports[`Saved Payments List should render without saved payments 1`] = `
         </p>
         <button
           className="btn one-whole@handheld flush-bottom"
-          onClick={[Function]}>
+          onClick={[Function]}
+        >
           Get Started Now
         </button>
       </div>

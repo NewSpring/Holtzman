@@ -2,20 +2,26 @@
 
 exports[`Activity should accept a react component as message prop 1`] = `
 <div
-  className="card">
+  className="card"
+>
   <div
-    className="card__item soft text-left soft-bottom rounded background--light-primary text-dark">
+    className="card__item soft text-left soft-bottom rounded background--light-primary text-dark"
+  >
     <div
-      className="floating text-left">
+      className="floating text-left"
+    >
       <i
-        className="soft-half-right">
+        className="soft-half-right"
+      >
         <Success
           fill="#6bac43"
           height="31px"
-          width="30px" />
+          width="30px"
+        />
       </i>
       <h5
-        className="text-dark-tertiary display-inline-block floating__item soft-half-bottom">
+        className="text-dark-tertiary display-inline-block floating__item soft-half-bottom"
+      >
         Dec 25, 2016
       </h5>
     </div>
@@ -26,13 +32,16 @@ exports[`Activity should accept a react component as message prop 1`] = `
       className="text-primary plain"
       onlyActiveOnIndex={false}
       style={Object {}}
-      to="https://my.newspring.cc/give/now">
+      to="https://my.newspring.cc/give/now"
+    >
       <h5
-        className="display-inline-block flush-bottom">
+        className="display-inline-block flush-bottom"
+      >
         Click This Link
       </h5>
       <span
-        className="icon-arrow-next soft-half-left" />
+        className="icon-arrow-next soft-half-left"
+      />
     </Link>
   </div>
 </div>
@@ -40,20 +49,26 @@ exports[`Activity should accept a react component as message prop 1`] = `
 
 exports[`Activity should render the failed status component 1`] = `
 <div
-  className="card">
+  className="card"
+>
   <div
-    className="card__item soft text-left soft-bottom rounded background--alert text-light-primary">
+    className="card__item soft text-left soft-bottom rounded background--alert text-light-primary"
+  >
     <div
-      className="floating text-left">
+      className="floating text-left"
+    >
       <i
-        className="soft-half-right">
+        className="soft-half-right"
+      >
         <Error
           fill="#FFFFFF"
           height="31px"
-          width="30px" />
+          width="30px"
+        />
       </i>
       <h5
-        className="display-inline-block floating__item soft-half-bottom">
+        className="display-inline-block floating__item soft-half-bottom"
+      >
         Dec 25, 2016
       </h5>
     </div>
@@ -64,13 +79,16 @@ exports[`Activity should render the failed status component 1`] = `
       className="text-light-primary plain"
       onlyActiveOnIndex={false}
       style={Object {}}
-      to="https://my.newspring.cc/give/now">
+      to="https://my.newspring.cc/give/now"
+    >
       <h5
-        className="display-inline-block flush-bottom">
+        className="display-inline-block flush-bottom"
+      >
         Click This Link
       </h5>
       <span
-        className="icon-arrow-next soft-half-left" />
+        className="icon-arrow-next soft-half-left"
+      />
     </Link>
   </div>
 </div>
@@ -78,20 +96,26 @@ exports[`Activity should render the failed status component 1`] = `
 
 exports[`Activity should render the warning status component 1`] = `
 <div
-  className="card">
+  className="card"
+>
   <div
-    className="card__item soft text-left soft-bottom rounded background--dark-primary text-light-primary">
+    className="card__item soft text-left soft-bottom rounded background--dark-primary text-light-primary"
+  >
     <div
-      className="floating text-left">
+      className="floating text-left"
+    >
       <i
-        className="soft-half-right">
+        className="soft-half-right"
+      >
         <Error
           fill="#FFFFFF"
           height="31px"
-          width="30px" />
+          width="30px"
+        />
       </i>
       <h5
-        className="display-inline-block floating__item soft-half-bottom">
+        className="display-inline-block floating__item soft-half-bottom"
+      >
         Dec 25, 2016
       </h5>
     </div>
@@ -102,13 +126,16 @@ exports[`Activity should render the warning status component 1`] = `
       className="text-light-primary plain"
       onlyActiveOnIndex={false}
       style={Object {}}
-      to="https://my.newspring.cc/give/now">
+      to="https://my.newspring.cc/give/now"
+    >
       <h5
-        className="display-inline-block flush-bottom">
+        className="display-inline-block flush-bottom"
+      >
         Click This Link
       </h5>
       <span
-        className="icon-arrow-next soft-half-left" />
+        className="icon-arrow-next soft-half-left"
+      />
     </Link>
   </div>
 </div>
@@ -116,20 +143,26 @@ exports[`Activity should render the warning status component 1`] = `
 
 exports[`Activity should render with the default set of props 1`] = `
 <div
-  className="card">
+  className="card"
+>
   <div
-    className="card__item soft text-left soft-bottom rounded background--light-primary text-dark">
+    className="card__item soft text-left soft-bottom rounded background--light-primary text-dark"
+  >
     <div
-      className="floating text-left">
+      className="floating text-left"
+    >
       <i
-        className="soft-half-right">
+        className="soft-half-right"
+      >
         <Success
           fill="#6bac43"
           height="31px"
-          width="30px" />
+          width="30px"
+        />
       </i>
       <h5
-        className="text-dark-tertiary display-inline-block floating__item soft-half-bottom">
+        className="text-dark-tertiary display-inline-block floating__item soft-half-bottom"
+      >
         Dec 25, 2016
       </h5>
     </div>
@@ -140,13 +173,16 @@ exports[`Activity should render with the default set of props 1`] = `
       className="text-primary plain"
       onlyActiveOnIndex={false}
       style={Object {}}
-      to="https://my.newspring.cc/give/now">
+      to="https://my.newspring.cc/give/now"
+    >
       <h5
-        className="display-inline-block flush-bottom">
+        className="display-inline-block flush-bottom"
+      >
         Click This Link
       </h5>
       <span
-        className="icon-arrow-next soft-half-left" />
+        className="icon-arrow-next soft-half-left"
+      />
     </Link>
   </div>
 </div>

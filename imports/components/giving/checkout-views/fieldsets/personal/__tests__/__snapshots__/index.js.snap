@@ -20,23 +20,3 @@ exports[`renders with props 1`] = `
   </span>
 </Layout>
 `;
-
-exports[`test renders with props 1`] = `
-<Layout
-  campus={[Function]}
-  campuses={Array []}
-  firstName={[Function]}
-  header={
-    <span>
-      header
-    </span>
-  }
-  isEmail={[Function]}
-  lastName={[Function]}
-  next={[Function]}
-  personal={Object {}}>
-  <span>
-    child
-  </span>
-</Layout>
-`;

@@ -8,7 +8,7 @@ import {
   live as liveActions,
 } from "../../../data/store";
 
-jest.mock("../../../deprecated/mixins/mixins.Likeable", () => {});
+
 jest.mock("../../../deprecated/mixins/mixins.Shareable", () => {});
 jest.mock("../../../data/store", () => ({
   nav: {

@@ -1,6 +1,7 @@
 /* eslint-disable react/prefer-stateless-function */
 import Meteor from "meteor/meteor";
-import { Component, PropTypes } from "react";
+import { Component } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 import {

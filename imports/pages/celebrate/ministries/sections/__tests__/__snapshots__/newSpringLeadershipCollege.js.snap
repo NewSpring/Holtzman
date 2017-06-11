@@ -2,24 +2,32 @@
 
 exports[`NewSpring Leadership College renders a layout 1`] = `
 <div
-  className="text-center background--light-primary soft-double-ends@lap-and-up soft-ends">
+  className="text-center background--light-primary soft-double-ends@lap-and-up soft-ends"
+>
   <div
-    className="constrain-page soft-double-top soft-sides@lap soft-sides@handheld">
+    className="constrain-page soft-double-top soft-sides@lap soft-sides@handheld"
+  >
     <div
-      className="grid">
+      className="grid"
+    >
       <div
-        className="grid__item one-whole push-double-bottom">
+        className="grid__item one-whole push-double-bottom"
+      >
         <div
-          className="constrain-copy">
+          className="constrain-copy"
+        >
           <h1
-            className="uppercase push-bottom">
+            className="uppercase push-bottom"
+          >
             NewSpring Leadership College
           </h1>
           <p
-            className="text-left">
+            className="text-left"
+          >
             <a
               alt="NewSpring Leadership College link"
-              href="https://newspringcollege.com">
+              href="https://newspringcollege.com"
+            >
               NewSpring Leadership College
             </a>
              is a two-year program to raise up passionate leaders for the local church. At NewSpring Leadership College, students receive practical Bible teaching and leadership training as well as real ministry responsibility and experience.
@@ -27,11 +35,14 @@ exports[`NewSpring Leadership College renders a layout 1`] = `
         </div>
       </div>
       <div
-        className="grid__item one-whole text-center soft-bottom@lap-and-up">
+        className="grid__item one-whole text-center soft-bottom@lap-and-up"
+      >
         <div
-          className="constrain-copy">
+          className="constrain-copy"
+        >
           <h3
-            className="italic text-primary">
+            className="italic text-primary"
+          >
             <strong>
               NewSpring Leadership College is raising leaders for the local church.
             </strong>
@@ -39,7 +50,8 @@ exports[`NewSpring Leadership College renders a layout 1`] = `
         </div>
         <div
           className="soft-half-sides@lap"
-          id="college">
+          id="college"
+        >
           <Connect(TagGalleryWithoutData)
             buttonColor="#6BAC43"
             id="college"
@@ -71,7 +83,8 @@ exports[`NewSpring Leadership College renders a layout 1`] = `
                   "value": "GradsInMinistry",
                 },
               ]
-            } />
+            }
+          />
         </div>
       </div>
     </div>

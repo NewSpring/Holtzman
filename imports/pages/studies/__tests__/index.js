@@ -21,7 +21,7 @@ afterEach(() => {
   reset();
 });
 
-jest.mock("../../../deprecated/mixins/mixins.Likeable", () => {});
+
 jest.mock("../../../deprecated/mixins/mixins.Header", () => {});
 
 jest.mock("../../../data/store", () => ({

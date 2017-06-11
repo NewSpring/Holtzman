@@ -8,27 +8,32 @@ exports[`FundBreakdown should render properly with data. 1`] = `
       Object {
         "borderBottom": "1px solid",
       }
-    }>
+    }
+  >
     Fund Breakdown
   </h3>
   <div
-    className="push-bottom">
+    className="push-bottom"
+  >
     <div
       style={
         Object {
           "color": "#fff",
         }
-      }>
+      }
+    >
       <div
         className="floating floating--left one-half display-inline-block push-half-top"
         style={
           Object {
             "verticalAlign": "middle",
           }
-        }>
+        }
+      >
         <h5
           className="floating__item"
-          data-spec="title">
+          data-spec="title"
+        >
           Step Up
         </h5>
       </div>
@@ -38,21 +43,25 @@ exports[`FundBreakdown should render properly with data. 1`] = `
           Object {
             "verticalAlign": "middle",
           }
-        }>
+        }
+      >
         <div
-          className="floating text-light-primary floating__item text-right">
+          className="floating text-light-primary floating__item text-right"
+        >
           <h6
             className="floating__item flush"
             style={
               Object {
                 "paddingRight": "5px",
               }
-            }>
+            }
+          >
             $
           </h6>
           <h4
             className="floating__item flush"
-            style={undefined}>
+            style={undefined}
+          >
             100
           </h4>
         </div>
@@ -64,7 +73,8 @@ exports[`FundBreakdown should render properly with data. 1`] = `
             "backgroundColor": "#2a4930",
             "height": "6px",
           }
-        }>
+        }
+      >
         <div
           style={
             Object {
@@ -72,28 +82,33 @@ exports[`FundBreakdown should render properly with data. 1`] = `
               "height": "100%",
               "width": "10%",
             }
-          } />
+          }
+        />
       </div>
     </div>
   </div>
   <div
-    className="push-bottom">
+    className="push-bottom"
+  >
     <div
       style={
         Object {
           "color": "#fff",
         }
-      }>
+      }
+    >
       <div
         className="floating floating--left one-half display-inline-block push-half-top"
         style={
           Object {
             "verticalAlign": "middle",
           }
-        }>
+        }
+      >
         <h5
           className="floating__item"
-          data-spec="title">
+          data-spec="title"
+        >
           General Fund
         </h5>
       </div>
@@ -103,21 +118,25 @@ exports[`FundBreakdown should render properly with data. 1`] = `
           Object {
             "verticalAlign": "middle",
           }
-        }>
+        }
+      >
         <div
-          className="floating text-light-primary floating__item text-right">
+          className="floating text-light-primary floating__item text-right"
+        >
           <h6
             className="floating__item flush"
             style={
               Object {
                 "paddingRight": "5px",
               }
-            }>
+            }
+          >
             $
           </h6>
           <h4
             className="floating__item flush"
-            style={undefined}>
+            style={undefined}
+          >
             900
           </h4>
         </div>
@@ -129,7 +148,8 @@ exports[`FundBreakdown should render properly with data. 1`] = `
             "backgroundColor": "#2a4930",
             "height": "6px",
           }
-        }>
+        }
+      >
         <div
           style={
             Object {
@@ -137,7 +157,8 @@ exports[`FundBreakdown should render properly with data. 1`] = `
               "height": "100%",
               "width": "90%",
             }
-          } />
+          }
+        />
       </div>
     </div>
   </div>

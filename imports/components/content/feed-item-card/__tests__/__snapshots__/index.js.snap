@@ -12,11 +12,13 @@ exports[`FeedItem should have styles based on a channelName of 'articles' 1`] = 
       "overflow": "hidden",
       "textDecoration": "none",
     }
-  }>
+  }
+>
   <div
     className="plain background--fill"
     data-spec="card-image-wrapper"
-    style={Object {}}>
+    style={Object {}}
+  >
     <span>
       <span
         className="imageloader loaded"
@@ -24,16 +26,19 @@ exports[`FeedItem should have styles based on a channelName of 'articles' 1`] = 
           Object {
             "backgroundImage": "url('https://images.unsplash.com/24/5895672523_2e8ce56485_o.jpg')",
           }
-        }>
+        }
+      >
         <div
           className="background--fill card__image background-light-tertiary ratio--square rounded-top"
           style={
             Object {
               "backgroundImage": "url('https://images.unsplash.com/24/5895672523_2e8ce56485_o.jpg')",
             }
-          }>
+          }
+        >
           <div
-            className="ratio__item" />
+            className="ratio__item"
+          />
         </div>
       </span>
     </span>
@@ -41,7 +46,8 @@ exports[`FeedItem should have styles based on a channelName of 'articles' 1`] = 
   <div
     className="card__item soft text-center soft-bottom rounded-bottom soft-top"
     data-spec="card-item"
-    style={Object {}}>
+    style={Object {}}
+  >
     <style>
       
           .overlay-color--303030:after{
@@ -52,15 +58,19 @@ exports[`FeedItem should have styles based on a channelName of 'articles' 1`] = 
         
     </style>
     <div
-      className="text-left">
+      className="text-left"
+    >
       <h4
-        className="text-dark-primary capitalize">
+        className="text-dark-primary capitalize"
+      >
         FeedItem Title
       </h4>
       <i
-        className="soft-half-right icon-category-text text-dark-secondary" />
+        className="soft-half-right icon-category-text text-dark-secondary"
+      />
       <h7
-        className="text-dark-secondary">
+        className="text-dark-secondary"
+      >
         Articles
       </h7>
       <h7
@@ -76,7 +86,8 @@ exports[`FeedItem should have styles based on a channelName of 'articles' 1`] = 
             "right": 0,
             "zIndex": 10,
           }
-        } />
+        }
+      />
     </div>
   </div>
 </a>
@@ -94,7 +105,8 @@ exports[`FeedItem should have styles based on a channelName of 'series_newspring
       "overflow": "hidden",
       "textDecoration": "none",
     }
-  }>
+  }
+>
   <div
     className="plain background--fill overlay-color--303030 overlay--gradient"
     data-spec="card-image-wrapper"
@@ -102,7 +114,8 @@ exports[`FeedItem should have styles based on a channelName of 'series_newspring
       Object {
         "backgroundImage": "url('https://images.unsplash.com/24/5895672523_2e8ce56485_o.jpg')",
       }
-    }>
+    }
+  >
     <span>
       <span
         className="imageloader loaded"
@@ -110,12 +123,15 @@ exports[`FeedItem should have styles based on a channelName of 'series_newspring
           Object {
             "backgroundImage": undefined,
           }
-        }>
+        }
+      >
         <div
           className="background--fill card__image background-light-tertiary ratio--square rounded-top"
-          style={Object {}}>
+          style={Object {}}
+        >
           <div
-            className="ratio__item" />
+            className="ratio__item"
+          />
         </div>
       </span>
     </span>
@@ -127,7 +143,8 @@ exports[`FeedItem should have styles based on a channelName of 'series_newspring
       Object {
         "backgroundColor": "#303030",
       }
-    }>
+    }
+  >
     <style>
       
           .overlay-color--303030:after{
@@ -138,15 +155,19 @@ exports[`FeedItem should have styles based on a channelName of 'series_newspring
         
     </style>
     <div
-      className="text-left">
+      className="text-left"
+    >
       <h4
-        className="text-light-primary capitalize">
+        className="text-light-primary capitalize"
+      >
         FeedItem Title
       </h4>
       <i
-        className="soft-half-right icon-category-video text-light-primary" />
+        className="soft-half-right icon-category-video text-light-primary"
+      />
       <h7
-        className="text-light-primary">
+        className="text-light-primary"
+      >
         Series
       </h7>
       <h7
@@ -162,7 +183,8 @@ exports[`FeedItem should have styles based on a channelName of 'series_newspring
             "right": 0,
             "zIndex": 10,
           }
-        } />
+        }
+      />
     </div>
   </div>
 </a>
@@ -180,7 +202,8 @@ exports[`FeedItem should pull the parent color if the channelName is 'sermons' 1
       "overflow": "hidden",
       "textDecoration": "none",
     }
-  }>
+  }
+>
   <div
     className="plain background--fill overlay-color--030303 overlay--gradient"
     data-spec="card-image-wrapper"
@@ -188,7 +211,8 @@ exports[`FeedItem should pull the parent color if the channelName is 'sermons' 1
       Object {
         "backgroundImage": "url('https://images.unsplash.com/24/5895672523_2e8ce56485_o.jpg')",
       }
-    }>
+    }
+  >
     <span>
       <span
         className="imageloader loaded"
@@ -196,12 +220,15 @@ exports[`FeedItem should pull the parent color if the channelName is 'sermons' 1
           Object {
             "backgroundImage": undefined,
           }
-        }>
+        }
+      >
         <div
           className="background--fill card__image background-light-tertiary ratio--square rounded-top"
-          style={Object {}}>
+          style={Object {}}
+        >
           <div
-            className="ratio__item" />
+            className="ratio__item"
+          />
         </div>
       </span>
     </span>
@@ -213,7 +240,8 @@ exports[`FeedItem should pull the parent color if the channelName is 'sermons' 1
       Object {
         "backgroundColor": "#030303",
       }
-    }>
+    }
+  >
     <style>
       
           .overlay-color--030303:after{
@@ -224,15 +252,19 @@ exports[`FeedItem should pull the parent color if the channelName is 'sermons' 1
         
     </style>
     <div
-      className="text-left">
+      className="text-left"
+    >
       <h4
-        className="text-light-primary capitalize">
+        className="text-light-primary capitalize"
+      >
         FeedItem Title
       </h4>
       <i
-        className="soft-half-right icon-category-video text-light-primary" />
+        className="soft-half-right icon-category-video text-light-primary"
+      />
       <h7
-        className="text-light-primary">
+        className="text-light-primary"
+      >
         Sermons
       </h7>
       <h7
@@ -248,7 +280,8 @@ exports[`FeedItem should pull the parent color if the channelName is 'sermons' 1
             "right": 0,
             "zIndex": 10,
           }
-        } />
+        }
+      />
     </div>
   </div>
 </a>
@@ -266,7 +299,8 @@ exports[`FeedItem should pull the parent image if the channelName is 'sermons' a
       "overflow": "hidden",
       "textDecoration": "none",
     }
-  }>
+  }
+>
   <div
     className="plain background--fill overlay-color--030303 overlay--gradient"
     data-spec="card-image-wrapper"
@@ -274,7 +308,8 @@ exports[`FeedItem should pull the parent image if the channelName is 'sermons' a
       Object {
         "backgroundImage": "url('https://images.unsplash.com/photo-1418985991508-e47386d96a71')",
       }
-    }>
+    }
+  >
     <span>
       <span
         className="imageloader loaded"
@@ -282,12 +317,15 @@ exports[`FeedItem should pull the parent image if the channelName is 'sermons' a
           Object {
             "backgroundImage": undefined,
           }
-        }>
+        }
+      >
         <div
           className="background--fill card__image background-light-tertiary ratio--square rounded-top"
-          style={Object {}}>
+          style={Object {}}
+        >
           <div
-            className="ratio__item" />
+            className="ratio__item"
+          />
         </div>
       </span>
     </span>
@@ -299,7 +337,8 @@ exports[`FeedItem should pull the parent image if the channelName is 'sermons' a
       Object {
         "backgroundColor": "#030303",
       }
-    }>
+    }
+  >
     <style>
       
           .overlay-color--030303:after{
@@ -310,15 +349,19 @@ exports[`FeedItem should pull the parent image if the channelName is 'sermons' a
         
     </style>
     <div
-      className="text-left">
+      className="text-left"
+    >
       <h4
-        className="text-light-primary capitalize">
+        className="text-light-primary capitalize"
+      >
         FeedItem Title
       </h4>
       <i
-        className="soft-half-right icon-category-video text-light-primary" />
+        className="soft-half-right icon-category-video text-light-primary"
+      />
       <h7
-        className="text-light-primary">
+        className="text-light-primary"
+      >
         Sermons
       </h7>
       <h7
@@ -334,7 +377,8 @@ exports[`FeedItem should pull the parent image if the channelName is 'sermons' a
             "right": 0,
             "zIndex": 10,
           }
-        } />
+        }
+      />
     </div>
   </div>
 </a>
@@ -352,7 +396,8 @@ exports[`FeedItem should pull the regular image if the channelName is 'sermons' 
       "overflow": "hidden",
       "textDecoration": "none",
     }
-  }>
+  }
+>
   <div
     className="plain background--fill overlay-color--030303 overlay--gradient"
     data-spec="card-image-wrapper"
@@ -360,7 +405,8 @@ exports[`FeedItem should pull the regular image if the channelName is 'sermons' 
       Object {
         "backgroundImage": "url('https://images.unsplash.com/24/5895672523_2e8ce56485_o.jpg')",
       }
-    }>
+    }
+  >
     <span>
       <span
         className="imageloader loaded"
@@ -368,12 +414,15 @@ exports[`FeedItem should pull the regular image if the channelName is 'sermons' 
           Object {
             "backgroundImage": undefined,
           }
-        }>
+        }
+      >
         <div
           className="background--fill card__image background-light-tertiary ratio--square rounded-top"
-          style={Object {}}>
+          style={Object {}}
+        >
           <div
-            className="ratio__item" />
+            className="ratio__item"
+          />
         </div>
       </span>
     </span>
@@ -385,7 +434,8 @@ exports[`FeedItem should pull the regular image if the channelName is 'sermons' 
       Object {
         "backgroundColor": "#030303",
       }
-    }>
+    }
+  >
     <style>
       
           .overlay-color--030303:after{
@@ -396,15 +446,19 @@ exports[`FeedItem should pull the regular image if the channelName is 'sermons' 
         
     </style>
     <div
-      className="text-left">
+      className="text-left"
+    >
       <h4
-        className="text-light-primary capitalize">
+        className="text-light-primary capitalize"
+      >
         FeedItem Title
       </h4>
       <i
-        className="soft-half-right icon-category-video text-light-primary" />
+        className="soft-half-right icon-category-video text-light-primary"
+      />
       <h7
-        className="text-light-primary">
+        className="text-light-primary"
+      >
         Sermons
       </h7>
       <h7
@@ -420,7 +474,8 @@ exports[`FeedItem should pull the regular image if the channelName is 'sermons' 
             "right": 0,
             "zIndex": 10,
           }
-        } />
+        }
+      />
     </div>
   </div>
 </a>

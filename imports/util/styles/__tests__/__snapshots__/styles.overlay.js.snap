@@ -9,13 +9,3 @@ exports[`should return css class for content color gradient backgrounds 1`] = `
     }
   "
 `;
-
-exports[`test should return css class for content color gradient backgrounds 1`] = `
-"
-    .overlay-color--0000ff:after{
-      background: linear-gradient(
-        to bottom, rgba(0, 0, 255, 0) 0%, #0000ff 100%
-      );
-    }
-  "
-`;

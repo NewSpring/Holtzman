@@ -12,7 +12,8 @@ exports[`Account Icons AmEx Icon should match snapshot 1`] = `
       "top": "3px",
       "width": undefined,
     }
-  } />
+  }
+/>
 `;
 
 exports[`Account Icons Bank Icon should match snapshot 1`] = `
@@ -27,7 +28,8 @@ exports[`Account Icons Bank Icon should match snapshot 1`] = `
       "top": "3px",
       "width": undefined,
     }
-  } />
+  }
+/>
 `;
 
 exports[`Account Icons Discover Icon should match snapshot 1`] = `
@@ -42,7 +44,8 @@ exports[`Account Icons Discover Icon should match snapshot 1`] = `
       "top": "3px",
       "width": undefined,
     }
-  } />
+  }
+/>
 `;
 
 exports[`Account Icons MasterCard Icon should match snapshot 1`] = `
@@ -57,7 +60,8 @@ exports[`Account Icons MasterCard Icon should match snapshot 1`] = `
       "top": "3px",
       "width": undefined,
     }
-  } />
+  }
+/>
 `;
 
 exports[`Account Icons Visa Icon should match snapshot 1`] = `
@@ -72,5 +76,6 @@ exports[`Account Icons Visa Icon should match snapshot 1`] = `
       "top": "3px",
       "width": undefined,
     }
-  } />
+  }
+/>
 `;

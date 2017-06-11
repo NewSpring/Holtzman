@@ -2,13 +2,16 @@
 
 exports[`Layout should render the Later component if state is set to 'later' 1`] = `
 <div
-  className="soft soft-double-ends one-whole text-center">
+  className="soft soft-double-ends one-whole text-center"
+>
   <h4
-    className="text-center push-ends">
+    className="text-center push-ends"
+  >
     Sounds Great!
   </h4>
   <p
-    className="text-left">
+    className="text-left"
+  >
     We will remind you about your contributions on 
     <strong>
       Tuesday, January 1st
@@ -17,13 +20,15 @@ exports[`Layout should render the Later component if state is set to 'later' 1`]
     <a
       href="//rock.newspring.cc/workflows/152?Topic=Stewardship"
       rel="noopener noreferrer"
-      target="_blank">
+      target="_blank"
+    >
       contact us 
     </a>
   </p>
   <button
     className="one-whole btn push-ends"
-    onClick={undefined}>
+    onClick={undefined}
+  >
     Close
   </button>
 </div>
@@ -31,35 +36,42 @@ exports[`Layout should render the Later component if state is set to 'later' 1`]
 
 exports[`Layout should render the Recover component if no props are passed 1`] = `
 <div
-  className="soft soft-double-ends one-whole text-center">
+  className="soft soft-double-ends one-whole text-center"
+>
   <h4
-    className="text-center push-ends">
+    className="text-center push-ends"
+  >
     Transfer Your Schedule
   </h4>
   <p
-    className="push-bottom text-left">
+    className="push-bottom text-left"
+  >
     Our records show that you have active giving schedules in our previous system. To access your schedule within our new system, simply review your schedule and re-enter your payment details. If you're not ready to do this, your schedule will continue in our previous system until you transfer it.
   </p>
   <a
     className="btn one-whole push-ends"
     onClick={[Function]}
-    style={Object {}}>
+    style={Object {}}
+  >
     Confirm Schedules
   </a>
   <button
     className="btn--thin btn--small btn--dark-tertiary one-whole"
-    onClick={undefined}>
+    onClick={undefined}
+  >
     Remind Me Later
   </button>
   <p
-    className="push-top text-left">
+    className="push-top text-left"
+  >
     <em>
       <small>
         You can cancel your schedule at any time from the Scheduled Giving page. If you have any questions please call our Finance Team at 864-965-9990 or 
         <a
           href="//rock.newspring.cc/workflows/152?Topic=Stewardship"
           rel="noopener noreferrer"
-          target="_blank">
+          target="_blank"
+        >
           contact us 
         </a>
          and someone will be happy to assist you.
@@ -71,17 +83,21 @@ exports[`Layout should render the Recover component if no props are passed 1`] =
 
 exports[`Layout should render the Remind component if state is set to 'remind' 1`] = `
 <div
-  className="soft soft-double-ends one-whole text-center">
+  className="soft soft-double-ends one-whole text-center"
+>
   <h4
-    className="text-center push-ends">
+    className="text-center push-ends"
+  >
     Remind Me Later
   </h4>
   <p
-    className="text-left">
+    className="text-left"
+  >
     We know life is busy! We would be happy to remind you about transferring your schedules at a later date.
   </p>
   <p
-    className="text-left push-double-bottom">
+    className="text-left push-double-bottom"
+  >
     Please be aware that your existing schedule will continue to charge the account on file until you transfer it for editing in our new system.
   </p>
   <form
@@ -90,15 +106,19 @@ exports[`Layout should render the Remind component if state is set to 'remind' 1
     id="remind"
     method={undefined}
     onSubmit={undefined}
-    style={undefined}>
+    style={undefined}
+  >
     <fieldset
-      className="flush-bottom">
+      className="flush-bottom"
+    >
       <h3
-        className="text-dark-tertiary display-inline-block push-half-bottom push-half-right">
+        className="text-dark-tertiary display-inline-block push-half-bottom push-half-right"
+      >
         I'd like to be reminded
       </h3>
       <div
-        className="input input--active soft-bottom display-inline-block select_15p0e27">
+        className="input input--active soft-bottom display-inline-block select_15p0e27"
+      >
         <select
           className="outlined--dotted outlined--light h3 hard-top flush-bottom"
           defaultValue="tomorrow"
@@ -107,33 +127,39 @@ exports[`Layout should render the Remind component if state is set to 'remind' 1
           name="frequency"
           onChange={[Function]}
           onFocus={[Function]}
-          placeholder={undefined}>
+          placeholder={undefined}
+        >
           <option
             className={undefined}
-            value="tomorrow">
+            value="tomorrow"
+          >
             Tomorrow
           </option>
           <option
             className={undefined}
-            value="nextWeek">
+            value="nextWeek"
+          >
             Next Week
           </option>
           <option
             className={undefined}
-            value="twoWeeks">
+            value="twoWeeks"
+          >
             In Two Weeks
           </option>
         </select>
       </div>
       <button
         className="one-whole btn push-ends"
-        data-spec="remind-me">
+        data-spec="remind-me"
+      >
         Remind Me Later
       </button>
       <button
         className="btn--thin btn--small btn--dark-tertiary one-whole"
         data-spec="back-button"
-        onClick={undefined}>
+        onClick={undefined}
+      >
         Back to Contributions
       </button>
     </fieldset>

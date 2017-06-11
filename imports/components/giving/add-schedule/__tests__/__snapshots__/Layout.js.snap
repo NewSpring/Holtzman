@@ -2,7 +2,8 @@
 
 exports[`Layout disables checkout when not ready 1`] = `
 <div
-  className="push-top@handheld soft-half-top@lap-and-up">
+  className="push-top@handheld soft-half-top@lap-and-up"
+>
   <Form
     classes={
       Array [
@@ -11,10 +12,12 @@ exports[`Layout disables checkout when not ready 1`] = `
       ]
     }
     id="add-to-cart"
-    submit={[Function]}>
+    submit={[Function]}
+  >
     <TertiaryPhrase
       additionalClasses="push-half-right"
-      text="I'd like to give " />
+      text="I'd like to give "
+    />
     <Input
       classes={
         Array [
@@ -34,9 +37,11 @@ exports[`Layout disables checkout when not ready 1`] = `
           "width": "200px",
         }
       }
-      type="tel" />
+      type="tel"
+    />
     <TertiaryPhrase
-      text="to " />
+      text="to "
+    />
     <Select
       classes={
         Array [
@@ -57,9 +62,11 @@ exports[`Layout disables checkout when not ready 1`] = `
         ]
       }
       name="select-account"
-      placeholder="select fund here" />
+      placeholder="select fund here"
+    />
     <TertiaryPhrase
-      text=" " />
+      text=" "
+    />
     <Select
       classes={
         Array [
@@ -74,9 +81,11 @@ exports[`Layout disables checkout when not ready 1`] = `
       includeBlank={true}
       inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-light-tertiary"
       name="schedules"
-      placeholder="choose frequency" />
+      placeholder="choose frequency"
+    />
     <TertiaryPhrase
-      text=" starting " />
+      text=" starting "
+    />
     <DateComponent
       classes={
         Array [
@@ -93,13 +102,16 @@ exports[`Layout disables checkout when not ready 1`] = `
       name="start-date"
       past={false}
       placeholder="select date"
-      today={false} />
+      today={false}
+    />
     <div
-      className="push-top">
+      className="push-top"
+    >
       <Connect(Apollo(CheckoutButton))
         disabled={true}
         disabledGuest={true}
-        text="Review Schedule" />
+        text="Review Schedule"
+      />
     </div>
   </Form>
 </div>
@@ -107,7 +119,8 @@ exports[`Layout disables checkout when not ready 1`] = `
 
 exports[`Layout disables checkout when total is negative 1`] = `
 <div
-  className="push-top@handheld soft-half-top@lap-and-up">
+  className="push-top@handheld soft-half-top@lap-and-up"
+>
   <Form
     classes={
       Array [
@@ -116,10 +129,12 @@ exports[`Layout disables checkout when total is negative 1`] = `
       ]
     }
     id="add-to-cart"
-    submit={[Function]}>
+    submit={[Function]}
+  >
     <TertiaryPhrase
       additionalClasses="push-half-right"
-      text="I'd like to give " />
+      text="I'd like to give "
+    />
     <Input
       classes={
         Array [
@@ -139,9 +154,11 @@ exports[`Layout disables checkout when total is negative 1`] = `
           "width": "200px",
         }
       }
-      type="tel" />
+      type="tel"
+    />
     <TertiaryPhrase
-      text="to " />
+      text="to "
+    />
     <Select
       classes={
         Array [
@@ -162,9 +179,11 @@ exports[`Layout disables checkout when total is negative 1`] = `
         ]
       }
       name="select-account"
-      placeholder="select fund here" />
+      placeholder="select fund here"
+    />
     <TertiaryPhrase
-      text=" " />
+      text=" "
+    />
     <Select
       classes={
         Array [
@@ -179,9 +198,11 @@ exports[`Layout disables checkout when total is negative 1`] = `
       includeBlank={true}
       inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-light-tertiary"
       name="schedules"
-      placeholder="choose frequency" />
+      placeholder="choose frequency"
+    />
     <TertiaryPhrase
-      text=" starting " />
+      text=" starting "
+    />
     <DateComponent
       classes={
         Array [
@@ -198,13 +219,16 @@ exports[`Layout disables checkout when total is negative 1`] = `
       name="start-date"
       past={false}
       placeholder="select date"
-      today={false} />
+      today={false}
+    />
     <div
-      className="push-top">
+      className="push-top"
+    >
       <Connect(Apollo(CheckoutButton))
         disabled={true}
         disabledGuest={true}
-        text="Review Schedule" />
+        text="Review Schedule"
+      />
     </div>
   </Form>
 </div>
@@ -212,7 +236,8 @@ exports[`Layout disables checkout when total is negative 1`] = `
 
 exports[`Layout disables checkout when total is positive but not ready 1`] = `
 <div
-  className="push-top@handheld soft-half-top@lap-and-up">
+  className="push-top@handheld soft-half-top@lap-and-up"
+>
   <Form
     classes={
       Array [
@@ -221,10 +246,12 @@ exports[`Layout disables checkout when total is positive but not ready 1`] = `
       ]
     }
     id="add-to-cart"
-    submit={[Function]}>
+    submit={[Function]}
+  >
     <TertiaryPhrase
       additionalClasses="push-half-right"
-      text="I'd like to give " />
+      text="I'd like to give "
+    />
     <Input
       classes={
         Array [
@@ -244,9 +271,11 @@ exports[`Layout disables checkout when total is positive but not ready 1`] = `
           "width": "200px",
         }
       }
-      type="tel" />
+      type="tel"
+    />
     <TertiaryPhrase
-      text="to " />
+      text="to "
+    />
     <Select
       classes={
         Array [
@@ -267,9 +296,11 @@ exports[`Layout disables checkout when total is positive but not ready 1`] = `
         ]
       }
       name="select-account"
-      placeholder="select fund here" />
+      placeholder="select fund here"
+    />
     <TertiaryPhrase
-      text=" " />
+      text=" "
+    />
     <Select
       classes={
         Array [
@@ -284,9 +315,11 @@ exports[`Layout disables checkout when total is positive but not ready 1`] = `
       includeBlank={true}
       inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-light-tertiary"
       name="schedules"
-      placeholder="choose frequency" />
+      placeholder="choose frequency"
+    />
     <TertiaryPhrase
-      text=" starting " />
+      text=" starting "
+    />
     <DateComponent
       classes={
         Array [
@@ -303,13 +336,16 @@ exports[`Layout disables checkout when total is positive but not ready 1`] = `
       name="start-date"
       past={false}
       placeholder="select date"
-      today={false} />
+      today={false}
+    />
     <div
-      className="push-top">
+      className="push-top"
+    >
       <Connect(Apollo(CheckoutButton))
         disabled={true}
         disabledGuest={true}
-        text="Review Schedule" />
+        text="Review Schedule"
+      />
     </div>
   </Form>
 </div>
@@ -317,7 +353,8 @@ exports[`Layout disables checkout when total is positive but not ready 1`] = `
 
 exports[`Layout disables checkout when total is undefined 1`] = `
 <div
-  className="push-top@handheld soft-half-top@lap-and-up">
+  className="push-top@handheld soft-half-top@lap-and-up"
+>
   <Form
     classes={
       Array [
@@ -326,10 +363,12 @@ exports[`Layout disables checkout when total is undefined 1`] = `
       ]
     }
     id="add-to-cart"
-    submit={[Function]}>
+    submit={[Function]}
+  >
     <TertiaryPhrase
       additionalClasses="push-half-right"
-      text="I'd like to give " />
+      text="I'd like to give "
+    />
     <Input
       classes={
         Array [
@@ -349,9 +388,11 @@ exports[`Layout disables checkout when total is undefined 1`] = `
           "width": "200px",
         }
       }
-      type="tel" />
+      type="tel"
+    />
     <TertiaryPhrase
-      text="to " />
+      text="to "
+    />
     <Select
       classes={
         Array [
@@ -372,9 +413,11 @@ exports[`Layout disables checkout when total is undefined 1`] = `
         ]
       }
       name="select-account"
-      placeholder="select fund here" />
+      placeholder="select fund here"
+    />
     <TertiaryPhrase
-      text=" " />
+      text=" "
+    />
     <Select
       classes={
         Array [
@@ -389,9 +432,11 @@ exports[`Layout disables checkout when total is undefined 1`] = `
       includeBlank={true}
       inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-light-tertiary"
       name="schedules"
-      placeholder="choose frequency" />
+      placeholder="choose frequency"
+    />
     <TertiaryPhrase
-      text=" starting " />
+      text=" starting "
+    />
     <DateComponent
       classes={
         Array [
@@ -408,13 +453,16 @@ exports[`Layout disables checkout when total is undefined 1`] = `
       name="start-date"
       past={false}
       placeholder="select date"
-      today={false} />
+      today={false}
+    />
     <div
-      className="push-top">
+      className="push-top"
+    >
       <Connect(Apollo(CheckoutButton))
         disabled={true}
         disabledGuest={true}
-        text="Review Schedule" />
+        text="Review Schedule"
+      />
     </div>
   </Form>
 </div>
@@ -422,7 +470,8 @@ exports[`Layout disables checkout when total is undefined 1`] = `
 
 exports[`Layout enables checkout when total is positive and ready 1`] = `
 <div
-  className="push-top@handheld soft-half-top@lap-and-up">
+  className="push-top@handheld soft-half-top@lap-and-up"
+>
   <Form
     classes={
       Array [
@@ -431,10 +480,12 @@ exports[`Layout enables checkout when total is positive and ready 1`] = `
       ]
     }
     id="add-to-cart"
-    submit={[Function]}>
+    submit={[Function]}
+  >
     <TertiaryPhrase
       additionalClasses="push-half-right"
-      text="I'd like to give " />
+      text="I'd like to give "
+    />
     <Input
       classes={
         Array [
@@ -454,9 +505,11 @@ exports[`Layout enables checkout when total is positive and ready 1`] = `
           "width": "200px",
         }
       }
-      type="tel" />
+      type="tel"
+    />
     <TertiaryPhrase
-      text="to " />
+      text="to "
+    />
     <Select
       classes={
         Array [
@@ -477,9 +530,11 @@ exports[`Layout enables checkout when total is positive and ready 1`] = `
         ]
       }
       name="select-account"
-      placeholder="select fund here" />
+      placeholder="select fund here"
+    />
     <TertiaryPhrase
-      text=" " />
+      text=" "
+    />
     <Select
       classes={
         Array [
@@ -494,9 +549,11 @@ exports[`Layout enables checkout when total is positive and ready 1`] = `
       includeBlank={true}
       inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-light-tertiary"
       name="schedules"
-      placeholder="choose frequency" />
+      placeholder="choose frequency"
+    />
     <TertiaryPhrase
-      text=" starting " />
+      text=" starting "
+    />
     <DateComponent
       classes={
         Array [
@@ -513,13 +570,16 @@ exports[`Layout enables checkout when total is positive and ready 1`] = `
       name="start-date"
       past={false}
       placeholder="select date"
-      today={false} />
+      today={false}
+    />
     <div
-      className="push-top">
+      className="push-top"
+    >
       <Connect(Apollo(CheckoutButton))
         disabled={false}
         disabledGuest={true}
-        text="Review Schedule" />
+        text="Review Schedule"
+      />
     </div>
   </Form>
 </div>
@@ -529,7 +589,8 @@ exports[`Layout renders null if no accounts exist 1`] = `null`;
 
 exports[`Layout renders the prefilled amount for an existing schedule 1`] = `
 <div
-  className="push-top@handheld soft-half-top@lap-and-up">
+  className="push-top@handheld soft-half-top@lap-and-up"
+>
   <Form
     classes={
       Array [
@@ -538,10 +599,12 @@ exports[`Layout renders the prefilled amount for an existing schedule 1`] = `
       ]
     }
     id="add-to-cart"
-    submit={[Function]}>
+    submit={[Function]}
+  >
     <TertiaryPhrase
       additionalClasses="push-half-right"
-      text="I'd like to give " />
+      text="I'd like to give "
+    />
     <Input
       classes={
         Array [
@@ -561,9 +624,11 @@ exports[`Layout renders the prefilled amount for an existing schedule 1`] = `
           "width": "200px",
         }
       }
-      type="tel" />
+      type="tel"
+    />
     <TertiaryPhrase
-      text="to " />
+      text="to "
+    />
     <Select
       classes={
         Array [
@@ -584,9 +649,11 @@ exports[`Layout renders the prefilled amount for an existing schedule 1`] = `
         ]
       }
       name="select-account"
-      placeholder="select fund here" />
+      placeholder="select fund here"
+    />
     <TertiaryPhrase
-      text=" " />
+      text=" "
+    />
     <Select
       classes={
         Array [
@@ -601,9 +668,11 @@ exports[`Layout renders the prefilled amount for an existing schedule 1`] = `
       includeBlank={true}
       inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-light-tertiary"
       name="schedules"
-      placeholder="choose frequency" />
+      placeholder="choose frequency"
+    />
     <TertiaryPhrase
-      text=" starting " />
+      text=" starting "
+    />
     <DateComponent
       classes={
         Array [
@@ -620,13 +689,16 @@ exports[`Layout renders the prefilled amount for an existing schedule 1`] = `
       name="start-date"
       past={false}
       placeholder="select date"
-      today={false} />
+      today={false}
+    />
     <div
-      className="push-top">
+      className="push-top"
+    >
       <Connect(Apollo(CheckoutButton))
         disabled={false}
         disabledGuest={true}
-        text="Review Schedule" />
+        text="Review Schedule"
+      />
     </div>
   </Form>
 </div>
@@ -634,7 +706,8 @@ exports[`Layout renders the prefilled amount for an existing schedule 1`] = `
 
 exports[`Layout renders the prefilled date for an existing schedule  1`] = `
 <div
-  className="push-top@handheld soft-half-top@lap-and-up">
+  className="push-top@handheld soft-half-top@lap-and-up"
+>
   <Form
     classes={
       Array [
@@ -643,10 +716,12 @@ exports[`Layout renders the prefilled date for an existing schedule  1`] = `
       ]
     }
     id="add-to-cart"
-    submit={[Function]}>
+    submit={[Function]}
+  >
     <TertiaryPhrase
       additionalClasses="push-half-right"
-      text="I'd like to give " />
+      text="I'd like to give "
+    />
     <Input
       classes={
         Array [
@@ -666,9 +741,11 @@ exports[`Layout renders the prefilled date for an existing schedule  1`] = `
           "width": "200px",
         }
       }
-      type="tel" />
+      type="tel"
+    />
     <TertiaryPhrase
-      text="to " />
+      text="to "
+    />
     <Select
       classes={
         Array [
@@ -689,9 +766,11 @@ exports[`Layout renders the prefilled date for an existing schedule  1`] = `
         ]
       }
       name="select-account"
-      placeholder="select fund here" />
+      placeholder="select fund here"
+    />
     <TertiaryPhrase
-      text=" " />
+      text=" "
+    />
     <Select
       classes={
         Array [
@@ -706,9 +785,11 @@ exports[`Layout renders the prefilled date for an existing schedule  1`] = `
       includeBlank={true}
       inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-light-tertiary"
       name="schedules"
-      placeholder="choose frequency" />
+      placeholder="choose frequency"
+    />
     <TertiaryPhrase
-      text=" starting " />
+      text=" starting "
+    />
     <DateComponent
       classes={
         Array [
@@ -725,13 +806,16 @@ exports[`Layout renders the prefilled date for an existing schedule  1`] = `
       name="start-date"
       past={false}
       placeholder="select date"
-      today={false} />
+      today={false}
+    />
     <div
-      className="push-top">
+      className="push-top"
+    >
       <Connect(Apollo(CheckoutButton))
         disabled={false}
         disabledGuest={true}
-        text="Review Schedule" />
+        text="Review Schedule"
+      />
     </div>
   </Form>
 </div>
@@ -739,7 +823,8 @@ exports[`Layout renders the prefilled date for an existing schedule  1`] = `
 
 exports[`Layout renders the prefilled frequency for an existing schedule  1`] = `
 <div
-  className="push-top@handheld soft-half-top@lap-and-up">
+  className="push-top@handheld soft-half-top@lap-and-up"
+>
   <Form
     classes={
       Array [
@@ -748,10 +833,12 @@ exports[`Layout renders the prefilled frequency for an existing schedule  1`] = 
       ]
     }
     id="add-to-cart"
-    submit={[Function]}>
+    submit={[Function]}
+  >
     <TertiaryPhrase
       additionalClasses="push-half-right"
-      text="I'd like to give " />
+      text="I'd like to give "
+    />
     <Input
       classes={
         Array [
@@ -771,9 +858,11 @@ exports[`Layout renders the prefilled frequency for an existing schedule  1`] = 
           "width": "200px",
         }
       }
-      type="tel" />
+      type="tel"
+    />
     <TertiaryPhrase
-      text="to " />
+      text="to "
+    />
     <Select
       classes={
         Array [
@@ -794,9 +883,11 @@ exports[`Layout renders the prefilled frequency for an existing schedule  1`] = 
         ]
       }
       name="select-account"
-      placeholder="select fund here" />
+      placeholder="select fund here"
+    />
     <TertiaryPhrase
-      text=" " />
+      text=" "
+    />
     <Select
       classes={
         Array [
@@ -811,9 +902,11 @@ exports[`Layout renders the prefilled frequency for an existing schedule  1`] = 
       includeBlank={true}
       inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-light-tertiary"
       name="schedules"
-      placeholder="choose frequency" />
+      placeholder="choose frequency"
+    />
     <TertiaryPhrase
-      text=" starting " />
+      text=" starting "
+    />
     <DateComponent
       classes={
         Array [
@@ -830,13 +923,16 @@ exports[`Layout renders the prefilled frequency for an existing schedule  1`] = 
       name="start-date"
       past={false}
       placeholder="select date"
-      today={false} />
+      today={false}
+    />
     <div
-      className="push-top">
+      className="push-top"
+    >
       <Connect(Apollo(CheckoutButton))
         disabled={false}
         disabledGuest={true}
-        text="Review Schedule" />
+        text="Review Schedule"
+      />
     </div>
   </Form>
 </div>
@@ -844,7 +940,8 @@ exports[`Layout renders the prefilled frequency for an existing schedule  1`] = 
 
 exports[`Layout renders the prefilled fund for an existing schedule  1`] = `
 <div
-  className="push-top@handheld soft-half-top@lap-and-up">
+  className="push-top@handheld soft-half-top@lap-and-up"
+>
   <Form
     classes={
       Array [
@@ -853,10 +950,12 @@ exports[`Layout renders the prefilled fund for an existing schedule  1`] = `
       ]
     }
     id="add-to-cart"
-    submit={[Function]}>
+    submit={[Function]}
+  >
     <TertiaryPhrase
       additionalClasses="push-half-right"
-      text="I'd like to give " />
+      text="I'd like to give "
+    />
     <Input
       classes={
         Array [
@@ -876,9 +975,11 @@ exports[`Layout renders the prefilled fund for an existing schedule  1`] = `
           "width": "200px",
         }
       }
-      type="tel" />
+      type="tel"
+    />
     <TertiaryPhrase
-      text="to " />
+      text="to "
+    />
     <Select
       classes={
         Array [
@@ -899,9 +1000,11 @@ exports[`Layout renders the prefilled fund for an existing schedule  1`] = `
         ]
       }
       name="select-account"
-      placeholder="select fund here" />
+      placeholder="select fund here"
+    />
     <TertiaryPhrase
-      text=" " />
+      text=" "
+    />
     <Select
       classes={
         Array [
@@ -916,9 +1019,11 @@ exports[`Layout renders the prefilled fund for an existing schedule  1`] = `
       includeBlank={true}
       inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-light-tertiary"
       name="schedules"
-      placeholder="choose frequency" />
+      placeholder="choose frequency"
+    />
     <TertiaryPhrase
-      text=" starting " />
+      text=" starting "
+    />
     <DateComponent
       classes={
         Array [
@@ -935,13 +1040,16 @@ exports[`Layout renders the prefilled fund for an existing schedule  1`] = `
       name="start-date"
       past={false}
       placeholder="select date"
-      today={false} />
+      today={false}
+    />
     <div
-      className="push-top">
+      className="push-top"
+    >
       <Connect(Apollo(CheckoutButton))
         disabled={false}
         disabledGuest={true}
-        text="Review Schedule" />
+        text="Review Schedule"
+      />
     </div>
   </Form>
 </div>
@@ -949,7 +1057,8 @@ exports[`Layout renders the prefilled fund for an existing schedule  1`] = `
 
 exports[`Layout renders when accounts & state exist 1`] = `
 <div
-  className="push-top@handheld soft-half-top@lap-and-up">
+  className="push-top@handheld soft-half-top@lap-and-up"
+>
   <Form
     classes={
       Array [
@@ -958,10 +1067,12 @@ exports[`Layout renders when accounts & state exist 1`] = `
       ]
     }
     id="add-to-cart"
-    submit={[Function]}>
+    submit={[Function]}
+  >
     <TertiaryPhrase
       additionalClasses="push-half-right"
-      text="I'd like to give " />
+      text="I'd like to give "
+    />
     <Input
       classes={
         Array [
@@ -981,9 +1092,11 @@ exports[`Layout renders when accounts & state exist 1`] = `
           "width": "200px",
         }
       }
-      type="tel" />
+      type="tel"
+    />
     <TertiaryPhrase
-      text="to " />
+      text="to "
+    />
     <Select
       classes={
         Array [
@@ -1004,9 +1117,11 @@ exports[`Layout renders when accounts & state exist 1`] = `
         ]
       }
       name="select-account"
-      placeholder="select fund here" />
+      placeholder="select fund here"
+    />
     <TertiaryPhrase
-      text=" " />
+      text=" "
+    />
     <Select
       classes={
         Array [
@@ -1021,9 +1136,11 @@ exports[`Layout renders when accounts & state exist 1`] = `
       includeBlank={true}
       inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-light-tertiary"
       name="schedules"
-      placeholder="choose frequency" />
+      placeholder="choose frequency"
+    />
     <TertiaryPhrase
-      text=" starting " />
+      text=" starting "
+    />
     <DateComponent
       classes={
         Array [
@@ -1040,13 +1157,16 @@ exports[`Layout renders when accounts & state exist 1`] = `
       name="start-date"
       past={false}
       placeholder="select date"
-      today={false} />
+      today={false}
+    />
     <div
-      className="push-top">
+      className="push-top"
+    >
       <Connect(Apollo(CheckoutButton))
         disabled={true}
         disabledGuest={true}
-        text="Review Schedule" />
+        text="Review Schedule"
+      />
     </div>
   </Form>
 </div>
@@ -1054,7 +1174,8 @@ exports[`Layout renders when accounts & state exist 1`] = `
 
 exports[`Layout renders with custom text 1`] = `
 <div
-  className="push-top@handheld soft-half-top@lap-and-up">
+  className="push-top@handheld soft-half-top@lap-and-up"
+>
   <Form
     classes={
       Array [
@@ -1063,10 +1184,12 @@ exports[`Layout renders with custom text 1`] = `
       ]
     }
     id="add-to-cart"
-    submit={[Function]}>
+    submit={[Function]}
+  >
     <TertiaryPhrase
       additionalClasses="push-half-right"
-      text="I'd like to give " />
+      text="I'd like to give "
+    />
     <Input
       classes={
         Array [
@@ -1086,9 +1209,11 @@ exports[`Layout renders with custom text 1`] = `
           "width": "200px",
         }
       }
-      type="tel" />
+      type="tel"
+    />
     <TertiaryPhrase
-      text="to " />
+      text="to "
+    />
     <Select
       classes={
         Array [
@@ -1109,9 +1234,11 @@ exports[`Layout renders with custom text 1`] = `
         ]
       }
       name="select-account"
-      placeholder="select fund here" />
+      placeholder="select fund here"
+    />
     <TertiaryPhrase
-      text=" " />
+      text=" "
+    />
     <Select
       classes={
         Array [
@@ -1126,9 +1253,11 @@ exports[`Layout renders with custom text 1`] = `
       includeBlank={true}
       inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-light-tertiary"
       name="schedules"
-      placeholder="choose frequency" />
+      placeholder="choose frequency"
+    />
     <TertiaryPhrase
-      text=" starting " />
+      text=" starting "
+    />
     <DateComponent
       classes={
         Array [
@@ -1145,13 +1274,16 @@ exports[`Layout renders with custom text 1`] = `
       name="start-date"
       past={false}
       placeholder="select date"
-      today={false} />
+      today={false}
+    />
     <div
-      className="push-top">
+      className="push-top"
+    >
       <Connect(Apollo(CheckoutButton))
         disabled={true}
         disabledGuest={true}
-        text="Make Schedules Now" />
+        text="Make Schedules Now"
+      />
     </div>
   </Form>
 </div>

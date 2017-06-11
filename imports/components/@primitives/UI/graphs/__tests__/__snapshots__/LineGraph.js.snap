@@ -2,7 +2,8 @@
 
 exports[`Line Graph renders correctly with default props 1`] = `
 <div
-  className="">
+  className=""
+>
   <VictoryChart
     animate={
       Object {
@@ -17,7 +18,8 @@ exports[`Line Graph renders correctly with default props 1`] = `
         "right": 10,
         "top": 5,
       }
-    }>
+    }
+  >
     <VictoryAxis
       style={
         Object {
@@ -47,7 +49,8 @@ exports[`Line Graph renders correctly with default props 1`] = `
           "N",
           "D",
         ]
-      } />
+      }
+    />
     <VictoryArea
       data={
         Array [
@@ -115,7 +118,8 @@ exports[`Line Graph renders correctly with default props 1`] = `
       }
       groupComponent={
         <GradientGroup
-          gradientColor="#6BAC43" />
+          gradientColor="#6BAC43"
+        />
       }
       style={
         Object {
@@ -127,7 +131,8 @@ exports[`Line Graph renders correctly with default props 1`] = `
         }
       }
       x="month"
-      y="amount" />
+      y="amount"
+    />
     <VictoryLine
       data={
         Array [
@@ -202,7 +207,8 @@ exports[`Line Graph renders correctly with default props 1`] = `
         }
       }
       x="month"
-      y="amount" />
+      y="amount"
+    />
     <VictoryScatter
       data={
         Array [
@@ -277,7 +283,8 @@ exports[`Line Graph renders correctly with default props 1`] = `
         }
       }
       x="month"
-      y="amount" />
+      y="amount"
+    />
   </VictoryChart>
 </div>
 `;

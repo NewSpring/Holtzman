@@ -3,5 +3,6 @@
 exports[`Page renders with props 1`] = `
 <Layout
   dispatch={[Function]}
-  setRightProps={[Function]} />
+  setRightProps={[Function]}
+/>
 `;

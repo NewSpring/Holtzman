@@ -10,8 +10,6 @@ import { GraphQL } from "../graphql";
 import { reducers, middlewares, sagas } from "./utilities";
 import { syncHistory, routeReducer } from "./routing";
 
-console.log({ middlewares })
-
 const createReduxStore = (initialState, history) => {
   if (initialState) {
     // bug with SSR

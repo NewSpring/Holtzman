@@ -1,4 +1,4 @@
-import { PropTypes } from "react";
+import PropTypes from "prop-types";
 
 const Leaf = ({ size, color, type, style, className }) => {
   const computedStyles = { ...{ width: size, height: size }, ...style };

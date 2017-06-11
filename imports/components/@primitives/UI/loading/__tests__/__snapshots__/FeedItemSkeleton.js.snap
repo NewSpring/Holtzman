@@ -29,29 +29,4 @@ exports[`subsubtitleStyles returns styles 1`] = `"one-fifth background--light-te
 
 exports[`subtitleStyles returns styles 1`] = `"two-thirds push-bottom background--lirght-tertiary fake-text_jt72u2"`;
 
-exports[`test backgroundStyles returns styles 1`] = `"rounded-top ratio--square background--light-tertiary load-item_1vqkxyp"`;
-
-exports[`test renders 1`] = `
-<div
-  className="card">
-  <div
-    className="rounded-top ratio--square background--light-tertiary load-item_1vqkxyp" />
-  <div
-    className="outlined--light soft card__item rounded-bottom">
-    <div
-      className="one-whole push-half-bottom background--light-tertiary fake-text_jt72u2" />
-    <div
-      className="two-thirds push-bottom background--lirght-tertiary fake-text_jt72u2" />
-    <div
-      className="one-fifth background--light-tertiary fake-text-small_nakaq4" />
-  </div>
-</div>
-`;
-
-exports[`test subsubtitleStyles returns styles 1`] = `"one-fifth background--light-tertiary fake-text-small_nakaq4"`;
-
-exports[`test subtitleStyles returns styles 1`] = `"two-thirds push-bottom background--lirght-tertiary fake-text_jt72u2"`;
-
-exports[`test titleStyles returns styles 1`] = `"one-whole push-half-bottom background--light-tertiary fake-text_jt72u2"`;
-
 exports[`titleStyles returns styles 1`] = `"one-whole push-half-bottom background--light-tertiary fake-text_jt72u2"`;
