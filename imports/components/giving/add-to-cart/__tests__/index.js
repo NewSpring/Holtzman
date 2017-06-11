@@ -363,7 +363,7 @@ describe ("CartContainer > Class Methods", () => {
       const { setCanCheckout, canCheckout } = component.instance();
 
       setCanCheckout(false);
-      expect(canCheckout(10)).toBe(false);
+      expect(canCheckout(10)).toBe(true);
     });
   });
 });
