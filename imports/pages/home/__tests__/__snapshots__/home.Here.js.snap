@@ -42,7 +42,7 @@ exports[`test renders with props 1`] = `
           "marginTop": "5px",
         }
       }>
-      4y
+      5y
     </h7>
   </div>
 </section>

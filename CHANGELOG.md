@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## UNRELEASED
 
+## [5.2.1] UNRELEASED
+### Updated
+- Updated splash screen images for summer!
+
 ## [5.2.0]
 ### Updated
 - Updated the feed card to remove the time stamp.
