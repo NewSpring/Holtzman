@@ -39,7 +39,7 @@ export default ({
         target="_blank"
         rel="noopener noreferrer"
       >
-        View Leader Toolbox
+        Manage Groups
       </a>
     </div>
   </div>

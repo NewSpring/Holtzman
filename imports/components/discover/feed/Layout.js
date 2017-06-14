@@ -5,11 +5,15 @@ import Loading from "../../@primitives/UI/loading/Spinner";
 import Hero from "../../@primitives/UI/hero";
 import { MiniCard } from "../../@primitives/UI/cards";
 
+import FeedItemCard from "../../content/feed-item-card";
+
 import RecentLikes from "../../shared/likes-list";
 
 // reducer helpers
 import backgrounds from "../../../util/backgrounds";
 import categories from "../../../util/categories";
+
+import inAppLink from "../../../util/inAppLink";
 
 const cardPropsReducer = (c) => ({
   title: c.title,
@@ -58,8 +62,7 @@ RenderRecentLikes.propTypes = {
 };
 
 const Layout = ({
-  featuredItem,
-  recommendedItems,
+  featuredItems,
   textItems,
   recentLikes,
   recentLoading,
@@ -67,15 +70,19 @@ const Layout = ({
   <div style={{ overflowY: "hidden", height: "100%" }} className="background--light-primary">
 
     <section className="hard background--light-secondary">
-      <h6 className="push-left soft-half-bottom soft-top">Recommended by NewSpring</h6>
+      <h6 className="push-left hard-bottom soft-top">Recommended by NewSpring</h6>
     </section>
-
-    <Hero {...{ content: featuredItem, hideDate: true }} />
 
     <section className="soft-half background--light-secondary">
       <div className="grid flush">
-        {recommendedItems && recommendedItems.map((item, i) =>
-          <MiniCard {...cardPropsReducer(item)} key={i} />
+        {featuredItems && featuredItems.map((item, i) =>
+            <FeedItemCard
+              key={i}
+              item={item}
+              onClick={inAppLink}
+              link={item.meta.urlTitle}
+              disableLike
+            />
         )}
       </div>
     </section>
@@ -122,8 +129,7 @@ const Layout = ({
 );
 
 Layout.propTypes = {
-  featuredItem: PropTypes.object,
-  recommendedItems: PropTypes.array,
+  featuredItems: PropTypes.array,
   textItems: PropTypes.array,
   recentLikes: PropTypes.array,
   recentLoading: PropTypes.bool,

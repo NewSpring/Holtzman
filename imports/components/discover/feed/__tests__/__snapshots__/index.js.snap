@@ -6,6 +6,7 @@ exports[`test doesn't render if loading 1`] = `
 exports[`test parses query correctly 1`] = `
 "query GetPromotions($setName: String!) {
   items: lowReorderSets(setName: $setName) {
+    entryId: id
     title
     id
     status
@@ -28,14 +29,11 @@ exports[`test parses query correctly 1`] = `
 
 exports[`test renders with props 1`] = `
 <Layout
-  featuredItem={
-    Object {
-      "status": "featured",
-    }
-  }
-  recentLikedLoading={false}
-  recommendedItems={
+  featuredItems={
     Array [
+      Object {
+        "status": "featured",
+      },
       Object {
         "status": "featured",
       },
@@ -44,6 +42,7 @@ exports[`test renders with props 1`] = `
       },
     ]
   }
+  recentLikedLoading={false}
   textItems={
     Array [
       Object {
