@@ -22,13 +22,9 @@ const DiscoverWithoutData = ({
   const open = discover.items && discover.items
     .filter((x) => (x.status.toLowerCase() === "open"));
 
-  const featuredItem = featured && featured[0];
-  const recommendedItems = featured && [...featured.slice(1, featured.length)];
-
   return (
     <Layout
-      featuredItem={featuredItem}
-      recommendedItems={recommendedItems}
+      featuredItems={featured}
       textItems={open}
       recentLikes={recentLikes.recentlyLiked}
       recentLikedLoading={recentLikes.loading}
@@ -39,6 +35,7 @@ const DiscoverWithoutData = ({
 const DISCOVER_QUERY = gql`
   query GetPromotions($setName: String!) {
     items: lowReorderSets(setName: $setName) {
+      entryId: id
       title
       id
       status
