@@ -120,10 +120,6 @@ const CONTENT_FEED_QUERY = gql`
 const getTopics = (opts) => {
   let channels = opts.topics;
 
-  const filterChannels = (value) => {
-    if (value !== "Events") return true;
-    return opts.person.authorized;
-  };
   // only include what user hasn't excluded
   channels = difference(topics, channels);
 
@@ -131,7 +127,7 @@ const getTopics = (opts) => {
   if (channels.length === 0 || !Meteor.userId()) channels = [...topics];
 
   // return for the graphql call
-  return channels.filter(filterChannels).map((x) => x.toLowerCase());
+  return channels.map((x) => x.toLowerCase());
 };
 
 const withFeedContent = graphql(CONTENT_FEED_QUERY, {
@@ -143,7 +139,6 @@ const withFeedContent = graphql(CONTENT_FEED_QUERY, {
       skip: 0,
       cache: true,
     },
-    skip: ownProps.person.authLoading,
   }),
   props: ({ data }) => ({
     data: data || {},
@@ -162,9 +157,7 @@ const withFeedContent = graphql(CONTENT_FEED_QUERY, {
 });
 
 export default connect((state) => ({ topics: state.topics.topics }))(
-  canSee(["RSR - Beta Testers"])(
-    withFeedContent(infiniteScroll()(ReactMixin.decorate(Headerable)(HomeWithoutData)))
-  )
+  withFeedContent(infiniteScroll()(ReactMixin.decorate(Headerable)(HomeWithoutData)))
 );
 
 export { HomeWithoutData };

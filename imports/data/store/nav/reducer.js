@@ -7,7 +7,7 @@
 import modalActions from "../modal";
 import shareActions from "../share";
 import Sections from "../../../components/shared/sections";
-import Discover from "../../../components/discover";
+
 
 import { routeActions } from "../routing";
 
@@ -30,6 +30,8 @@ const discoverAction = () => {
 
   sectionsVisible = false;
   discoverVisible = true;
+  // eslint-disable-next-line
+  const Discover = require("../../../components/discover");
   return modalActions.render(Discover, {
     keepNav: true, layoutOverride: ["background--light-secondary"],
   });
