@@ -135,7 +135,10 @@ type IFeedItem = {
     title: string
   },
   isLiked: boolean,
-  toggleLike: () => void
+  toggleLike: () => void,
+  disableLike?: boolean,
+  onClick?: (e: Event) => void,
+  link?: string,
 };
 
 export const stopClick = (fn: () => void) => (e: Event) => {
@@ -156,9 +159,17 @@ const likeStyles = {
   zIndex: 10,
 };
 
-export const FeedItem = ({ item, isLiked, toggleLike }: IFeedItem) => (
+export const FeedItem = ({
+  item,
+  isLiked,
+  toggleLike,
+  disableLike,
+  onClick,
+  link,
+}: IFeedItem) => (
   <Card
-    link={content.links(item)}
+    link={link || content.links(item)}
+    onClick={onClick}
     classes={cardClasses(item)}
     imageclasses={["rounded-top"]}
     image={{ url: getImage(item), ratio: "square", full: isCollectionItem(item) }}
@@ -173,7 +184,13 @@ export const FeedItem = ({ item, isLiked, toggleLike }: IFeedItem) => (
       <h4 className={h4Classes(item)}>{item.title}</h4>
       <i className={iconClasses(item)} />
       <h7 className={categoryClasses(item)}>{categories.name(item)}</h7>
-      <h7 onClick={stopClick(toggleLike)} style={likeStyles} className={likeClasses(item, isLiked)}></h7>
+      {!disableLike && (
+        <h7
+          onClick={stopClick(toggleLike)}
+          style={likeStyles}
+          className={likeClasses(item, isLiked)}
+        />
+      )}
     </div>
   </Card>
 );
