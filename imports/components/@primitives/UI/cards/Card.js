@@ -86,13 +86,31 @@ type ICard = {
   itemStyles: Object,
   mobile?: boolean,
   wrapperClasses: string,
+  onClick?: (e: Event) => void,
+};
+
+type IImage = {
+  url: string,
+  ratio: string,
+  full: boolean
 };
 
 export default ({
-  classes, theme, link, image = {}, styles, children, itemClasses,
-  linkAll, imageclasses, itemTheme, itemStyles, mobile, wrapperClasses,
+  classes,
+  theme,
+  link,
+  image = {},
+  styles,
+  children,
+  itemClasses,
+  linkAll,
+  imageclasses,
+  itemTheme,
+  itemStyles,
+  mobile,
+  wrapperClasses,
+  onClick,
 }: ICard): any => {
-  type IImage = { url: string, ratio: string, full: boolean };
   const { url, ratio, full }: IImage = image;
 
   if (linkAll) {
@@ -102,6 +120,7 @@ export default ({
         className={theme || cardClasses(classes)}
         style={styles || createStyles(linkAll)}
         to={link}
+        onClick={onClick}
       >
         <div
           className={createWrapperClasses(mobile)(wrapperClasses)}
