@@ -80,13 +80,15 @@ class LiveWithoutData extends Component {
   getLink() {
     const { embedCode } = this.props.live;
 
-    // create beta link
-    const shouldShowBetaLink = (
-      this.props.person
-      && !this.props.person.authLoading
-      && this.props.person.authorized
-    );
-    return shouldShowBetaLink ? "/wowza" : `/video/${embedCode}`;
+    // // create beta link
+    // const shouldShowBetaLink = (
+    //   this.props.person
+    //   && !this.props.person.authLoading
+    //   && this.props.person.authorized
+    // );
+    // return shouldShowBetaLink ? "/wowza" : `/video/${embedCode}`;
+    // make wowza default for everyone watching live
+    return "/wowza"
   }
 
   render() {

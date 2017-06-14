@@ -232,5 +232,6 @@ it("shows beta users a link to wowza page", () => {
   wrapper.setProps({ ...props, person: {
     authLoading: false, authorized: false,
   }});
-  expect(wrapper.instance().getLink()).toEqual("/video/harambe");
+  // use only wowza now
+  expect(wrapper.instance().getLink()).toEqual("/wowza");
 });
