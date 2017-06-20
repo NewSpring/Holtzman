@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [5.2.2] UNRELEASED
+### Fixed
+- Fixed an issue with the Live component not sending the correct metadata.
+
 ## [5.2.0] UNRELEASED
 ### Updated
 - Updated the feed card to remove the time stamp.
