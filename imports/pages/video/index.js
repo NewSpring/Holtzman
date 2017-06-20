@@ -8,19 +8,21 @@ import Video from "../../components/@primitives/players/video";
 import wowzaRoute from "./wowza";
 
 import styles from "../../components/@primitives/nav/offset-css";
+import Meta from "../../components/shared/meta";
 
 class TemplateWithoutData extends Component {
-
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     params: PropTypes.object.isRequired,
-  }
+  };
 
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("BASIC_CONTENT"));
-    this.props.dispatch(headerActions.set({
-      title: "Live Now",
-    }));
+    this.props.dispatch(
+      headerActions.set({
+        title: "Live Now",
+      })
+    );
   }
 
   render() {
@@ -28,10 +30,11 @@ class TemplateWithoutData extends Component {
 
     return (
       <div
-        className={
-          `locked-ends locked-sides background--dark-primary floating ${css(styles.offset)}`
-        }
+        className={`locked-ends locked-sides background--dark-primary floating ${css(
+          styles.offset
+        )}`}
       >
+        <Meta title="Watch Live Services" />
         <div className="floating__item one-whole">
           <Video id={embedCode} ref="video" />
         </div>
@@ -54,6 +57,4 @@ export default {
   Routes,
 };
 
-export {
-  TemplateWithoutData,
-};
+export { TemplateWithoutData };

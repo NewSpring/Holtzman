@@ -9,7 +9,6 @@ import { Motion, spring } from "react-motion";
 import Styles from "./live-css";
 import { canSee } from "../../../@enhancers/security-roles";
 import liveActions from "../../../../data/store/live";
-import Meta from "../../../../components/shared/meta";
 
 class LiveWithoutData extends Component {
   static propTypes = {
@@ -86,17 +85,14 @@ class LiveWithoutData extends Component {
     const link = this.getLink();
 
     return (
-      <div>
-        <Meta title="Watch Live Services" />
-        <Motion defaultStyle={{ height: 0 }} style={{ height: spring(40) }}>
-          {(interpolatingStyle) =>
-            <Link to={link} className={this.getClasses()} style={interpolatingStyle}>
-              <h7 className={this.getTextClasses()}>
-                NewSpring Church Live, Watch Now!
-              </h7>
-            </Link>}
-        </Motion>
-      </div>
+      <Motion defaultStyle={{ height: 0 }} style={{ height: spring(40) }}>
+        {(interpolatingStyle) =>
+          <Link to={link} className={this.getClasses()} style={interpolatingStyle}>
+            <h7 className={this.getTextClasses()}>
+              NewSpring Church Live, Watch Now!
+            </h7>
+          </Link>}
+      </Motion>
     );
   }
 }

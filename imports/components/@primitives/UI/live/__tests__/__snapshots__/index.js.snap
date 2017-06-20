@@ -21,37 +21,29 @@ exports[`test parses query 1`] = `
 `;
 
 exports[`test renders float version 1`] = `
-<div>
-  <Meta
-    title="Watch Live Services" />
-  <mockConstructor
-    defaultStyle={
-      Object {
-        "height": 0,
-      }
+<mockConstructor
+  defaultStyle={
+    Object {
+      "height": 0,
     }
-    style={
-      Object {
-        "height": undefined,
-      }
-    } />
-</div>
+  }
+  style={
+    Object {
+      "height": undefined,
+    }
+  } />
 `;
 
 exports[`test renders with props 1`] = `
-<div>
-  <Meta
-    title="Watch Live Services" />
-  <mockConstructor
-    defaultStyle={
-      Object {
-        "height": 0,
-      }
+<mockConstructor
+  defaultStyle={
+    Object {
+      "height": 0,
     }
-    style={
-      Object {
-        "height": undefined,
-      }
-    } />
-</div>
+  }
+  style={
+    Object {
+      "height": undefined,
+    }
+  } />
 `;
