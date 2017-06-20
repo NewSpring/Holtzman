@@ -7,18 +7,16 @@ import { Link } from "react-router";
 import { Motion, spring } from "react-motion";
 
 import Styles from "./live-css";
-
-import liveActions from "../../../../data/store/live";
 import { canSee } from "../../../@enhancers/security-roles";
+import liveActions from "../../../../data/store/live";
 
 class LiveWithoutData extends Component {
-
   static propTypes = {
     live: PropTypes.object, // eslint-disable-line
     dispatch: PropTypes.func,
     data: PropTypes.object, // eslint-disable-line
     person: PropTypes.object,
-  }
+  };
 
   componentWillUpdate(nextProps, nextState) {
     this.handleLiveChange(nextProps, nextState);
@@ -43,18 +41,13 @@ class LiveWithoutData extends Component {
     }
 
     return classes.join(" ");
-  }
+  };
 
   getTextClasses = () => {
-    const classes = [
-      "flush",
-      "hard",
-      "text-light-primary",
-      css(Styles["live-text"]),
-    ];
+    const classes = ["flush", "hard", "text-light-primary", css(Styles["live-text"])];
 
     return classes.join(" ");
-  }
+  };
 
   handleLiveChange = (nextProps) => {
     const { live } = nextProps.data;
@@ -63,10 +56,7 @@ class LiveWithoutData extends Component {
     const isLive = live.live;
     const embedCode = live.embedCode;
 
-    if (
-      isLive === nextProps.live.live &&
-      embedCode === nextProps.live.embedCode
-    ) {
+    if (isLive === nextProps.live.live && embedCode === nextProps.live.embedCode) {
       return;
     }
 
@@ -75,17 +65,14 @@ class LiveWithoutData extends Component {
     } else {
       this.props.dispatch(liveActions.reset());
     }
-  }
+  };
 
   getLink() {
     const { embedCode } = this.props.live;
 
     // create beta link
-    const shouldShowBetaLink = (
-      this.props.person
-      && !this.props.person.authLoading
-      && this.props.person.authorized
-    );
+    const shouldShowBetaLink =
+      this.props.person && !this.props.person.authLoading && this.props.person.authorized;
     return shouldShowBetaLink ? "/wowza" : `/video/${embedCode}`;
   }
 
@@ -98,21 +85,13 @@ class LiveWithoutData extends Component {
     const link = this.getLink();
 
     return (
-      <Motion
-        defaultStyle={{ height: 0 }}
-        style={{ height: spring(40) }}
-      >
+      <Motion defaultStyle={{ height: 0 }} style={{ height: spring(40) }}>
         {(interpolatingStyle) =>
-          <Link
-            to={link}
-            className={this.getClasses()}
-            style={interpolatingStyle}
-          >
+          <Link to={link} className={this.getClasses()} style={interpolatingStyle}>
             <h7 className={this.getTextClasses()}>
               NewSpring Church Live, Watch Now!
             </h7>
-          </Link>
-        }
+          </Link>}
       </Motion>
     );
   }
@@ -148,15 +127,6 @@ const withLive = graphql(LIVE_QUERY, {
 //   options: { pollInterval: 60000 },
 // });
 
-export default withRedux(
-  withLive(
-    canSee(["RSR - Beta Testers"])(LiveWithoutData)
-  )
-);
+export default withRedux(withLive(canSee(["RSR - Beta Testers"])(LiveWithoutData)));
 
-export {
-  LiveWithoutData,
-  LIVE_QUERY,
-  withRedux,
-  withLive,
-};
+export { LiveWithoutData, LIVE_QUERY, withRedux, withLive };
