@@ -86,15 +86,17 @@ class LiveWithoutData extends Component {
     const link = this.getLink();
 
     return (
-      <Motion defaultStyle={{ height: 0 }} style={{ height: spring(40) }}>
+      <div>
         <Meta title="Watch Live Services" />
-        {(interpolatingStyle) =>
-          <Link to={link} className={this.getClasses()} style={interpolatingStyle}>
-            <h7 className={this.getTextClasses()}>
-              NewSpring Church Live, Watch Now!
-            </h7>
-          </Link>}
-      </Motion>
+        <Motion defaultStyle={{ height: 0 }} style={{ height: spring(40) }}>
+          {(interpolatingStyle) =>
+            <Link to={link} className={this.getClasses()} style={interpolatingStyle}>
+              <h7 className={this.getTextClasses()}>
+                NewSpring Church Live, Watch Now!
+              </h7>
+            </Link>}
+        </Motion>
+      </div>
     );
   }
 }
