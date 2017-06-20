@@ -31,7 +31,10 @@ exports[`test renders float version 1`] = `
     Object {
       "height": undefined,
     }
-  } />
+  }>
+  <Meta
+    title="Watch Live Services" />
+</mockConstructor>
 `;
 
 exports[`test renders with props 1`] = `
@@ -45,5 +48,8 @@ exports[`test renders with props 1`] = `
     Object {
       "height": undefined,
     }
-  } />
+  }>
+  <Meta
+    title="Watch Live Services" />
+</mockConstructor>
 `;
