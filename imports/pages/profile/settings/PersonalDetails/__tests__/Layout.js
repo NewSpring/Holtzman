@@ -85,3 +85,12 @@ it("submit calls submit with values in inputs", () => {
     Campus: 1
   });
 });
+
+it("displays a different note if the email is @newspring", () => {
+  const wrapper = shallow(generateComponent({
+    person: {
+      email: "test@newspring.cc",
+    },
+  }));
+  expect(shallowToJson(wrapper)).toMatchSnapshot();
+})
