@@ -10,9 +10,21 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 their email address it will also update their user login to
 use that email address.
 
-## [5.2.1] UNRELEASED
+## [5.2.2] UNRELEASED
+### Added
+### Fixed
+- Fixed the live page to have a meta title for analytics.
 ### Updated
-- Updated splash screen images for summer!
+
+## [5.2.1]
+### Updated
+- Updated the app with new splash screen images for summer.
+- Changed ... on group finder to filter
+- Changed group leader button to manage groups
+- Change discover to use feed item cards
+- Remove ooyala for live and only use jwplayer (commit and page says wowza)
+### Fixed
+- Speed up home feed by not require any MSSQL data for initial home feed
 
 ## [5.2.0]
 ### Updated
