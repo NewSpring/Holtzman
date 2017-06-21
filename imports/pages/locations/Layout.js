@@ -3,6 +3,7 @@ import { Component, PropTypes } from "react";
 import gql from "graphql-tag";
 
 import { Link } from "react-router";
+import inAppLink from "../../util/inAppLink";
 
 import Meta from "../../components/shared/meta";
 import Forms from "../../components/@primitives/UI/forms";
@@ -170,6 +171,7 @@ export default class Layout extends Component {
                       "display-inline-block rounded  push-right card text-left"
                     }
                     style={style}
+                    onClick={inAppLink}
                   >
                     <div className="one-whole soft-sides text-left floating__item">
                       <h4>{campus.name}</h4>
