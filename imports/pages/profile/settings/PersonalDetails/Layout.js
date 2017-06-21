@@ -1,6 +1,4 @@
 import { Component, PropTypes } from "react";
-import { Link } from "react-router";
-import inAppLink from "../../../../util/inAppLink";
 import Forms from "../../../../components/@primitives/UI/forms";
 import Meta from "../../../../components/shared/meta";
 import Validate from "../../../../util/validate";
