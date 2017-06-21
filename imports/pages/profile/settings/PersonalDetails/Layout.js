@@ -1,5 +1,6 @@
 import { Component, PropTypes } from "react";
-
+import { Link } from "react-router";
+import inAppLink from "../../../../util/inAppLink";
 import Forms from "../../../../components/@primitives/UI/forms";
 import Meta from "../../../../components/shared/meta";
 import Validate from "../../../../util/validate";
@@ -7,7 +8,6 @@ import Validate from "../../../../util/validate";
 import Back from "../Back";
 
 export default class Layout extends Component {
-
   static propTypes = {
     submit: PropTypes.func.isRequired,
     person: PropTypes.object,
@@ -16,7 +16,7 @@ export default class Layout extends Component {
     days: PropTypes.array.isRequired,
     years: PropTypes.array.isRequired,
     campuses: PropTypes.array,
-  }
+  };
 
   submit = (e) => {
     e.preventDefault();
@@ -38,7 +38,7 @@ export default class Layout extends Component {
     }
 
     this.props.submit(data);
-  }
+  };
 
   render() {
     const { person, months, saveMonth, days, years, campuses } = this.props;
@@ -113,7 +113,6 @@ export default class Layout extends Component {
             </div>
           </div>
 
-
           <h6 className="soft-bottom">Contact</h6>
           <Forms.Input
             name="Email"
@@ -124,9 +123,22 @@ export default class Layout extends Component {
             errorText="Please enter a valid email"
             validation={Validate.isEmail}
             defaultValue={email}
+            style={{ paddingBottom: "0px" }}
           />
+          {email &&
+            email.indexOf("@newspring.cc") <= -1 &&
+            <small className="text-left">
+              Note: Changing your email address will also change the email address that you use to
+              sign in.
+            </small>}
+          {email &&
+            email.indexOf("@newspring.cc") > -1 &&
+            <small className="text-left">
+              Note: To change your email, please visit{" "}
+              <a href={"https://selfservice.newspring.cc"}>Self Service</a>
+            </small>}
 
-          <h6 className="soft-bottom">Birthday</h6>
+          <h6 className="soft-bottom push-double-top">Birthday</h6>
           <div className="grid">
             <div className="grid__item three-fifths">
               <div className="grid">
