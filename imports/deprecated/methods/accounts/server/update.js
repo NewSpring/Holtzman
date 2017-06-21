@@ -12,7 +12,8 @@ Meteor.methods({
     const Person = { ...data };
 
     // clean up data
-    for (const key in Person) { // eslint-disable-line
+    for (const key in Person) {
+      // eslint-disable-line
       if (!Person[key]) {
         delete Person[key];
       }
@@ -47,8 +48,25 @@ Meteor.methods({
       }
     }
 
+    // If the user has changed their email address:
+    // change their NewSpring account user name to match the new email address. This is in Meteor
+    // update the Rock UserLogin user name to match the new email address
 
-    result = api.patch.sync(`People/${user.services.rock.PersonId}`, Person);
+    // Do not update accounts whose email address ends with
+    // "@newspring.cc".
+    if (user.emails && user.emails[0].address.indexOf("@newspring.cc") <= -1) {
+      // Get the current userLogin information
+      const userLoginInfo = api.get.sync(
+        `UserLogins?$filter=UserName eq '${user.emails[0].address}'`
+      );
+      // reset all the things
+      Accounts.setUserName(user._id, Person.Email);
+      result = api.patch.sync("UserLogins/{userLoginInfo.Id}", { UserName: Person.Email });
+    }
+
+    if (user.services.rock.PersonId) {
+      result = api.patch.sync(`People/${user.services.rock.PersonId}`, Person);
+    }
 
     if (result.status === 400) {
       throw new Meteor.Error("There was a problem updating your profile");
