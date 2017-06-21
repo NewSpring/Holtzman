@@ -60,8 +60,8 @@ Meteor.methods({
         `UserLogins?$filter=UserName eq '${user.emails[0].address}'`
       );
       // reset all the things
-      Accounts.setUserName(user._id, Person.Email);
-      result = api.patch.sync("UserLogins/{userLoginInfo.Id}", { UserName: Person.Email });
+      Accounts.setUsername(user._id, Person.Email);
+      result = api.patch.sync(`UserLogins/${userLoginInfo[0].Id}`, { UserName: Person.Email });
     }
 
     if (user.services.rock.PersonId) {
