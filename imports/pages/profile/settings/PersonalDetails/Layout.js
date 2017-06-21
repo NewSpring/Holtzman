@@ -72,6 +72,7 @@ export default class Layout extends Component {
             "one-half@anchored",
             "display-inline-block",
             "soft-double-sides@palm-wide",
+            "text-left",
           ]}
           submit={this.submit}
         >
@@ -127,15 +128,15 @@ export default class Layout extends Component {
           />
           {email &&
             email.indexOf("@newspring.cc") <= -1 &&
-            <small className="text-left">
+            <small>
               Note: Changing your email address will also change the email address that you use to
               sign in.
             </small>}
           {email &&
             email.indexOf("@newspring.cc") > -1 &&
-            <small className="text-left">
+            <small>
               Note: To change your email, please visit{" "}
-              <a href={"https://selfservice.newspring.cc"}>Self Service</a>
+              <a href={"https://selfservice.newspring.cc"}>Self Service</a>.
             </small>}
 
           <h6 className="soft-bottom push-double-top">Birthday</h6>
