@@ -31,6 +31,7 @@ export default ({
       ))}
     </div>
 
+    {/*
     <div className="one-whole text-center">
       <a
         href={`//rock.newspring.cc/groups/leader?${loginParam ? loginParam : ""}`}
@@ -39,8 +40,9 @@ export default ({
         target="_blank"
         rel="noopener noreferrer"
       >
-        View Leader Toolbox
+        Manage Groups
       </a>
     </div>
+    */}
   </div>
 );

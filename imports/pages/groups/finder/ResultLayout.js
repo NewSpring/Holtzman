@@ -20,7 +20,7 @@ type ILayout = {
   campuses: [String],
   schedules: [String],
   LoadingComponent: Function,
-  done: boolean,
+  done: boolean
 };
 
 const Layout = ({
@@ -47,7 +47,7 @@ const Layout = ({
     <div
       className={
         "background--light-primary soft soft-double-left@anchored " +
-        "outlined--light outlined--bottom"
+          "outlined--light outlined--bottom"
       }
       style={{
         whiteSpace: "nowrap",
@@ -56,41 +56,46 @@ const Layout = ({
         WebkitOverflowScrolling: "touch",
       }}
     >
-      {tags && tags.map((tag, key) => (
-        <Tag
-          style={{ verticalAlign: "bottom" }}
-          className="flush-bottom"
-          val={tag}
-          key={key}
-          canBeActive
-        />
-      ))}
-      {schedules && schedules.map((schedule, key) => (
-        <Tag
-          style={{ verticalAlign: "bottom" }}
-          className="flush-bottom"
-          val={schedule}
-          urlKey="schedules"
-          key={key}
-          canBeActive
-        />
-      ))}
-      {campuses && campuses.map((campus, key) => (
-        <Tag
-          style={{ verticalAlign: "bottom" }}
-          className="flush-bottom"
-          val={campus}
-          urlKey="campuses"
-          key={key}
-          canBeActive
-        />
-      ))}
+      {tags &&
+        tags.map((tag, key) => (
+          <Tag
+            style={{ verticalAlign: "bottom" }}
+            className="flush-bottom"
+            val={tag}
+            key={key}
+            canBeActive
+          />
+        ))}
+      {schedules &&
+        schedules.map((schedule, key) => (
+          <Tag
+            style={{ verticalAlign: "bottom" }}
+            className="flush-bottom"
+            val={schedule}
+            urlKey="schedules"
+            key={key}
+            canBeActive
+          />
+        ))}
+      {campuses &&
+        campuses.map((campus, key) => (
+          <Tag
+            style={{ verticalAlign: "bottom" }}
+            className="flush-bottom"
+            val={campus}
+            urlKey="campuses"
+            key={key}
+            canBeActive
+          />
+        ))}
       <Tag
         style={{ verticalAlign: "bottom" }}
         className="flush-bottom"
-        val="..."
+        val="filter"
         canBeActive={false}
         onClick={() => toggleTags()}
+        iconClass={showTags ? "icon-arrow-up" : "icon-arrow-down"}
+        data-spec="iconTag"
       />
 
     </div>
@@ -134,11 +139,10 @@ const Layout = ({
       {/* Results */}
 
       {/* Loading */}
-      {loading && (
+      {loading &&
         <div className="text-center soft">
           <Spinner styles={{ width: "40px", height: "40px" }} />
-        </div>
-      )}
+        </div>}
 
       {groups.map((group, key) => (
         <Group onHover={onCardHover} group={group} id={group.id} key={key} />
@@ -150,7 +154,7 @@ const Layout = ({
           <div
             className={
               "text-center soft-half-top push-top push-double-top@lap-and-up " +
-              "soft-half-bottom soft-half-sides"
+                "soft-half-bottom soft-half-sides"
             }
           >
             <h6 className="em text-dark-secondary flush">
@@ -169,9 +173,15 @@ const Layout = ({
           return (
             <div className="card push-top">
               <div className="card__item soft-ends soft-half-sides soft-double@palm-wide-and-up">
-                <p className="flush hard"><em><small>
-                  Unfortunately, we didn&#39;t find any groups matching your search. You can start a group <a href="https://rock.newspring.cc/workflows/81">here!</a>
-                </small></em></p>
+                <p className="flush hard">
+                  <em>
+                    <small>
+                      Unfortunately, we didn't find any groups matching your search. You can start a group
+                      {" "}
+                      <a href="https://rock.newspring.cc/workflows/81">here!</a>
+                    </small>
+                  </em>
+                </p>
               </div>
             </div>
           );
@@ -182,7 +192,7 @@ const Layout = ({
       <button
         className={
           "relative one-whole push-double-top@lap-and-up " +
-          "push-double-top push-bottom@lap-and-up"
+            "push-double-top push-bottom@lap-and-up"
         }
       >
         <div className="card soft soft-double-sides@lap-and-up">
@@ -190,14 +200,11 @@ const Layout = ({
             <div className="one-whole text-center@handheld">
               {/* Name */}
               <h4 className="soft-half-top push-top@anchored capitalize">
-                Can&#39;t find what you&#39;re looking for, or want to start your own group?
+                Can't find what you're looking for, or want to start your own group?
               </h4>
 
               {/* CTA */}
-              <Link
-                href="https://rock.newspring.cc/workflows/81"
-                className="btn push-half-top"
-              >
+              <Link href="https://rock.newspring.cc/workflows/81" className="btn push-half-top">
                 Contact Us
               </Link>
             </div>
