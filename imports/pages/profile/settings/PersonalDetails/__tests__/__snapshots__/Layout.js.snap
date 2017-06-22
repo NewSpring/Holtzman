@@ -55,6 +55,7 @@ exports[`test displays a different note if the email is @newspring 1`] = `
     </h6>
     <Input
       defaultValue="test@newspring.cc"
+      disabled={true}
       errorText="Please enter a valid email"
       label="Email"
       name="Email"
@@ -226,6 +227,7 @@ exports[`test renders with props 1`] = `
     </h6>
     <Input
       defaultValue="test@test.com"
+      disabled={false}
       errorText="Please enter a valid email"
       label="Email"
       name="Email"
@@ -393,6 +395,7 @@ exports[`test renders without campuses 1`] = `
     </h6>
     <Input
       defaultValue="test@test.com"
+      disabled={false}
       errorText="Please enter a valid email"
       label="Email"
       name="Email"
@@ -553,6 +556,7 @@ exports[`test renders without person campus 1`] = `
     </h6>
     <Input
       defaultValue="test@test.com"
+      disabled={false}
       errorText="Please enter a valid email"
       label="Email"
       name="Email"
