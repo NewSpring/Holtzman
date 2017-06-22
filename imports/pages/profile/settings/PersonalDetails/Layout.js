@@ -122,6 +122,7 @@ export default class Layout extends Component {
             validation={Validate.isEmail}
             defaultValue={email}
             style={{ paddingBottom: "0px" }}
+            disabled={email && email.indexOf("@newspring") > -1}
           />
           {email &&
             email.indexOf("@newspring.cc") <= -1 &&
