@@ -1,3 +1,172 @@
+exports[`test displays a different note if the email is @newspring 1`] = `
+<div
+  className="background--light-primary one-whole text-center push-top push-double-top@lap-and-up soft-double-bottom push-double-bottom">
+  <Meta
+    title="Update your details" />
+  <Back />
+  <Form
+    classes={
+      Array [
+        "soft",
+        "one-whole",
+        "two-thirds@portable",
+        "one-half@anchored",
+        "display-inline-block",
+        "soft-double-sides@palm-wide",
+      ]
+    }
+    id="reset-password"
+    submit={[Function]}>
+    <div
+      className="push-double">
+      <h4
+        className="text-center">
+        My Personal Details
+      </h4>
+    </div>
+    <h6
+      className="soft-bottom">
+      Name
+    </h6>
+    <Input
+      label="Nickname"
+      name="NickName"
+      type="text" />
+    <div
+      className="grid">
+      <div
+        className="grid__item one-half">
+        <Input
+          label="First Name"
+          name="FirstName"
+          type="text" />
+      </div>
+      <div
+        className="grid__item one-half">
+        <Input
+          label="Last Name"
+          name="LastName"
+          type="text" />
+      </div>
+    </div>
+    <h6
+      className="soft-bottom">
+      Contact
+    </h6>
+    <Input
+      defaultValue="test@newspring.cc"
+      disabled={true}
+      errorText="Please enter a valid email"
+      label="Email"
+      name="Email"
+      placeholder="user@email.com"
+      style={
+        Object {
+          "paddingBottom": "0px",
+        }
+      }
+      type="email"
+      validation={[Function]} />
+    <div
+      className="text-left">
+      <small>
+        Note: To change your email, please visit
+         
+        <a
+          href="https://selfservice.newspring.cc">
+          Self Service
+        </a>
+        .
+      </small>
+    </div>
+    <h6
+      className="soft-bottom push-double-top">
+      Birthday
+    </h6>
+    <div
+      className="grid">
+      <div
+        className="grid__item three-fifths">
+        <div
+          className="grid">
+          <div
+            className="grid__item one-half">
+            <Select
+              includeBlank={true}
+              items={
+                Array [
+                  Object {
+                    "label": "Jan",
+                    "value": 1,
+                  },
+                ]
+              }
+              label="Month"
+              name="BirthMonth"
+              type="text"
+              validation={[Function]} />
+          </div>
+          <div
+            className="grid__item one-half">
+            <Select
+              includeBlank={true}
+              items={
+                Array [
+                  Object {
+                    "label": 1,
+                    "value": 1,
+                  },
+                ]
+              }
+              label="Day"
+              name="BirthDay"
+              type="text" />
+          </div>
+        </div>
+      </div>
+      <div
+        className="grid__item two-fifths">
+        <Select
+          includeBlank={true}
+          items={
+            Array [
+              Object {
+                "label": 2000,
+                "value": 2000,
+              },
+            ]
+          }
+          label="Year"
+          name="BirthYear"
+          type="text" />
+      </div>
+    </div>
+    <h6
+      className="soft-bottom">
+      Campus
+    </h6>
+    <Select
+      defaultValue={false}
+      includeBlank={true}
+      items={
+        Array [
+          Object {
+            "label": "anderson",
+            "value": 1,
+          },
+        ]
+      }
+      label="Campus"
+      name="Campus"
+      type="Campus" />
+    <button
+      className="btn">
+      Update
+    </button>
+  </Form>
+</div>
+`;
+
 exports[`test renders with props 1`] = `
 <div
   className="background--light-primary one-whole text-center push-top push-double-top@lap-and-up soft-double-bottom push-double-bottom">
@@ -58,13 +227,25 @@ exports[`test renders with props 1`] = `
     </h6>
     <Input
       defaultValue="test@test.com"
+      disabled={false}
       errorText="Please enter a valid email"
       label="Email"
       name="Email"
       placeholder="user@email.com"
+      style={
+        Object {
+          "paddingBottom": "0px",
+        }
+      }
       type="email" />
+    <div
+      className="text-left">
+      <small>
+        Note: Changing your email address will also change the email address that you use to sign in.
+      </small>
+    </div>
     <h6
-      className="soft-bottom">
+      className="soft-bottom push-double-top">
       Birthday
     </h6>
     <div
@@ -214,13 +395,25 @@ exports[`test renders without campuses 1`] = `
     </h6>
     <Input
       defaultValue="test@test.com"
+      disabled={false}
       errorText="Please enter a valid email"
       label="Email"
       name="Email"
       placeholder="user@email.com"
+      style={
+        Object {
+          "paddingBottom": "0px",
+        }
+      }
       type="email" />
+    <div
+      className="text-left">
+      <small>
+        Note: Changing your email address will also change the email address that you use to sign in.
+      </small>
+    </div>
     <h6
-      className="soft-bottom">
+      className="soft-bottom push-double-top">
       Birthday
     </h6>
     <div
@@ -363,13 +556,25 @@ exports[`test renders without person campus 1`] = `
     </h6>
     <Input
       defaultValue="test@test.com"
+      disabled={false}
       errorText="Please enter a valid email"
       label="Email"
       name="Email"
       placeholder="user@email.com"
+      style={
+        Object {
+          "paddingBottom": "0px",
+        }
+      }
       type="email" />
+    <div
+      className="text-left">
+      <small>
+        Note: Changing your email address will also change the email address that you use to sign in.
+      </small>
+    </div>
     <h6
-      className="soft-bottom">
+      className="soft-bottom push-double-top">
       Birthday
     </h6>
     <div
