@@ -55,20 +55,25 @@ Meteor.methods({
     // Do not update accounts whose email address ends with
     // "@newspring.cc".
     if (user.emails && user.emails[0].address.indexOf("@newspring.cc") <= -1) {
-      // Get the current userLogin information
-      const userLoginInfo = api.get.sync(
-        `UserLogins?$filter=UserName eq '${user.emails[0].address}'`
-      );
-      // reset all the things
-      Accounts.setUsername(user._id, Person.Email);
-      result = api.patch.sync(`UserLogins/${userLoginInfo[0].Id}`, { UserName: Person.Email });
+      if (Person.Email !== user.emails[0].address) {
+        // Get the current userLogin information
+        const userLoginInfo = api.get.sync(
+          `UserLogins?$filter=UserName eq '${user.emails[0].address}'`
+        );
+        // // reset all the things
+        Accounts.setUsername(user._id, Person.Email);
+        Meteor.users.update(user._id, {
+          $set: { "emails.0.address": Person.Email },
+        });
+        result = api.patch.sync(`UserLogins/${userLoginInfo[0].Id}`, { UserName: Person.Email });
+      }
     }
 
     if (user.services.rock.PersonId) {
       result = api.patch.sync(`People/${user.services.rock.PersonId}`, Person);
     }
 
-    if (result.status === 400) {
+    if (result.status && result.status === 400) {
       throw new Meteor.Error("There was a problem updating your profile");
     }
 
