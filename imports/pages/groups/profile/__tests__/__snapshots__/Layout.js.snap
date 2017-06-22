@@ -84,11 +84,13 @@ exports[`test doesn't render Interest type tag 1`] = `
         </h4>
         <div
           className="grid__item hard-left text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up">
-          <button
+          <a
             className="flush-bottom push-half-bottom@handheld btn"
-            onClick={[Function]}>
+            href="http://rock.rockWorkflows/307?Group=undefined&undefined"
+            rel="noopener noreferrer"
+            target="_blank">
             Contact
-          </button>
+          </a>
         </div>
       </div>
     </div>
@@ -347,11 +349,13 @@ exports[`test doesn't render demographic tag if none 1`] = `
         </h4>
         <div
           className="grid__item hard-left text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up">
-          <button
+          <a
             className="flush-bottom push-half-bottom@handheld btn"
-            onClick={[Function]}>
+            href="http://rock.rockWorkflows/307?Group=undefined&undefined"
+            rel="noopener noreferrer"
+            target="_blank">
             Contact
-          </button>
+          </a>
         </div>
       </div>
     </div>
@@ -610,11 +614,13 @@ exports[`test renders adult only version 1`] = `
         </h4>
         <div
           className="grid__item hard-left text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up">
-          <button
+          <a
             className="flush-bottom push-half-bottom@handheld btn"
-            onClick={[Function]}>
+            href="http://rock.rockWorkflows/307?Group=undefined&undefined"
+            rel="noopener noreferrer"
+            target="_blank">
             Contact
-          </button>
+          </a>
         </div>
       </div>
     </div>
@@ -1138,11 +1144,13 @@ exports[`test renders with props 1`] = `
         </h4>
         <div
           className="grid__item hard-left text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up">
-          <button
+          <a
             className="flush-bottom push-half-bottom@handheld btn"
-            onClick={[Function]}>
+            href="http://rock.rockWorkflows/307?Group=undefined&undefined"
+            rel="noopener noreferrer"
+            target="_blank">
             Contact
-          </button>
+          </a>
         </div>
       </div>
     </div>
@@ -1401,11 +1409,13 @@ exports[`test renders without campus 1`] = `
         </h4>
         <div
           className="grid__item hard-left text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up">
-          <button
+          <a
             className="flush-bottom push-half-bottom@handheld btn"
-            onClick={[Function]}>
+            href="http://rock.rockWorkflows/307?Group=undefined&undefined"
+            rel="noopener noreferrer"
+            target="_blank">
             Contact
-          </button>
+          </a>
         </div>
       </div>
     </div>
@@ -1664,11 +1674,13 @@ exports[`test renders without group locations 1`] = `
         </h4>
         <div
           className="grid__item hard-left text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up">
-          <button
+          <a
             className="flush-bottom push-half-bottom@handheld btn"
-            onClick={[Function]}>
+            href="http://rock.rockWorkflows/307?Group=undefined&undefined"
+            rel="noopener noreferrer"
+            target="_blank">
             Contact
-          </button>
+          </a>
         </div>
       </div>
     </div>
@@ -1927,11 +1939,13 @@ exports[`test renders without schedule 1`] = `
         </h4>
         <div
           className="grid__item hard-left text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up">
-          <button
+          <a
             className="flush-bottom push-half-bottom@handheld btn"
-            onClick={[Function]}>
+            href="http://rock.rockWorkflows/307?Group=undefined&undefined"
+            rel="noopener noreferrer"
+            target="_blank">
             Contact
-          </button>
+          </a>
         </div>
       </div>
     </div>
@@ -2190,11 +2204,13 @@ exports[`test renders without schedule description 1`] = `
         </h4>
         <div
           className="grid__item hard-left text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up">
-          <button
+          <a
             className="flush-bottom push-half-bottom@handheld btn"
-            onClick={[Function]}>
+            href="http://rock.rockWorkflows/307?Group=undefined&undefined"
+            rel="noopener noreferrer"
+            target="_blank">
             Contact
-          </button>
+          </a>
         </div>
       </div>
     </div>
