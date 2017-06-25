@@ -278,7 +278,7 @@ class TemplateWithoutData extends Component {
             loginParam={loginParam}
             group={group}
             leaders={leaders || defaultArray}
-            join={this.join}
+            join={this.join} // not using this anymore moved to workflow - DD
           />
         </Left>
       </div>
@@ -298,6 +298,7 @@ const GROUP_QUERY = gql`
       id
       ... on Group {
         name
+        guid
         entityId
         type
         demographic
