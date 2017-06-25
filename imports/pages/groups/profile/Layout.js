@@ -112,7 +112,7 @@ const Layout = ({ group, leaders, isLeader, join, loginParam }) => (
                   target="_blank"
                   className={className}
                   href={
-                    `${rockUrl}Workflows/307?Group=${group.guid}&${loginParam}`
+                    `${rockUrl}Workflows/304?Group=${group.guid}&${loginParam}`
                   }
                 >
                   Contact
