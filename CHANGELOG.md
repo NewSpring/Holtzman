@@ -4,7 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## UNRELEASED
+## [5.2.2] UNRELEASED
+### Updated
+- Updated the personal settings so that if someone updates
+their email address it will also update their user login to
+use that email address.
 
 ## [5.2.1] UNRELEASED
 ### Updated
