@@ -106,13 +106,19 @@ const Layout = ({ group, leaders, isLeader, join, loginParam }) => (
                 );
               }
 
+              let newloginParam = loginParam;
+
+              if (loginParam) {
+                newloginParam = `&${loginParam}`;
+              }
+
               return (
                 <a
                   rel="noopener noreferrer"
                   target="_blank"
                   className={className}
                   href={
-                    `${rockUrl}Workflows/304?Group=${group.guid}&${loginParam}`
+                    `${rockUrl}Workflows/304?Group=${group.guid}${newloginParam}`
                   }
                 >
                   Contact
