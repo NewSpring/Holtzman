@@ -20,11 +20,14 @@ export default class Layout extends Component {
     e.preventDefault();
 
     const data = {};
+    let valid = true;
     // eslint-disable-next-line
     for (const ref in this.refs) {
       let value = this.refs[ref].getValue();
-      if (ref === "Email" && !Validate.isEmail(value)) {
-        continue; // eslint-disable-line
+
+      if (ref === "Email" && !this.isEmail(value)) {
+        valid = false;
+        break;
       }
 
       const number = Number(value);
@@ -35,7 +38,20 @@ export default class Layout extends Component {
       data[ref] = value;
     }
 
-    this.props.submit(data);
+    if (valid) {
+      this.props.submit(data);
+    }
+  };
+
+  isEmail = (value: string) => {
+    let isValid = value.length ? Validate.isEmail(value) : true;
+    if (
+      value.indexOf("@newspring.cc") > -1 &&
+      this.props.person.email.indexOf("@newspring.cc") <= -1
+    ) {
+      isValid = false;
+    }
+    return isValid;
   };
 
   render() {
@@ -119,27 +135,22 @@ export default class Layout extends Component {
             type="email"
             ref="Email"
             errorText="Please enter a valid email"
-            validation={Validate.isEmail}
+            validation={this.isEmail}
             defaultValue={email}
-            style={{ paddingBottom: "0px" }}
             disabled={email && email.indexOf("@newspring") > -1}
+            style={{ paddingBottom: "0px" }}
+            noteFieldText={
+              email && email.indexOf("@newspring.cc") <= -1
+                ? <small>
+                    Note: Changing your email address will also change the email address that you
+                    use to sign in
+                  </small>
+                : <small>
+                    Note: To change your email, please visit{" "}
+                  <a href={"https://selfservice.newspring.cc"}>Self Service</a>
+                </small>
+            }
           />
-          {email &&
-            email.indexOf("@newspring.cc") <= -1 &&
-            <div className={"text-left"}>
-              <small>
-                Note: Changing your email address will also change the email address that you use to
-                sign in.
-              </small>
-            </div>}
-          {email &&
-            email.indexOf("@newspring.cc") > -1 &&
-            <div className={"text-left"}>
-              <small>
-                Note: To change your email, please visit{" "}
-                <a href={"https://selfservice.newspring.cc"}>Self Service</a>.
-              </small>
-            </div>}
 
           <h6 className="soft-bottom push-double-top">Birthday</h6>
           <div className="grid">
