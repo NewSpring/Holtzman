@@ -52,24 +52,24 @@ Meteor.methods({
     // change their NewSpring account user name to match the new email address. This is in Meteor
     // update the Rock UserLogin user name to match the new email address
 
-    // Do not update accounts whose email address ends with
-    // "@newspring.cc".
-    if (user.emails && user.emails[0].address.indexOf("@newspring.cc") <= -1) {
+    try {
       if (Person.Email !== user.emails[0].address) {
         // Get the current userLogin information
         const userLoginInfo = api.get.sync(
           `UserLogins?$filter=UserName eq '${user.emails[0].address}'`
         );
-        // // reset all the things
+        // reset all the things
         Accounts.setUsername(user._id, Person.Email);
         Meteor.users.update(user._id, {
           $set: { "emails.0.address": Person.Email },
         });
         result = api.patch.sync(`UserLogins/${userLoginInfo[0].Id}`, { UserName: Person.Email });
       }
+    } catch (error) {
+      return { error };
     }
 
-    if (user.services.rock.PersonId) {
+    if (user.services.rock.PersonId && Person.Email.indexOf("@newspring.cc") <= -1) {
       result = api.patch.sync(`People/${user.services.rock.PersonId}`, Person);
     }
 
