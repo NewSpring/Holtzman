@@ -107,9 +107,16 @@ const Layout = ({ group, leaders, isLeader, join, loginParam }) => (
               }
 
               return (
-                <button onClick={() => join()} className={className}>
+                <a
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  className={className}
+                  href={
+                    `${rockUrl}Workflows/304?Group=${group.guid}&${loginParam}`
+                  }
+                >
                   Contact
-                </button>
+                </a>
               );
             })()}
           </div>
