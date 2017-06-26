@@ -138,7 +138,6 @@ export default class Layout extends Component {
             validation={this.isEmail}
             defaultValue={email}
             disabled={email && email.indexOf("@newspring") > -1}
-            style={{ paddingBottom: "0px" }}
             noteFieldText={
               email && email.indexOf("@newspring.cc") <= -1
                 ? <small>
