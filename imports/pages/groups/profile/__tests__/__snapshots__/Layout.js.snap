@@ -86,7 +86,7 @@ exports[`test doesn't render Interest type tag 1`] = `
           className="grid__item hard-left text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up">
           <a
             className="flush-bottom push-half-bottom@handheld btn"
-            href="http://rock.rockWorkflows/304?Group=undefined&undefined"
+            href="http://rock.rockWorkflows/304?Group=undefinedundefined"
             rel="noopener noreferrer"
             target="_blank">
             Contact
@@ -351,7 +351,7 @@ exports[`test doesn't render demographic tag if none 1`] = `
           className="grid__item hard-left text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up">
           <a
             className="flush-bottom push-half-bottom@handheld btn"
-            href="http://rock.rockWorkflows/304?Group=undefined&undefined"
+            href="http://rock.rockWorkflows/304?Group=undefinedundefined"
             rel="noopener noreferrer"
             target="_blank">
             Contact
@@ -616,7 +616,7 @@ exports[`test renders adult only version 1`] = `
           className="grid__item hard-left text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up">
           <a
             className="flush-bottom push-half-bottom@handheld btn"
-            href="http://rock.rockWorkflows/304?Group=undefined&undefined"
+            href="http://rock.rockWorkflows/304?Group=undefinedundefined"
             rel="noopener noreferrer"
             target="_blank">
             Contact
@@ -1146,7 +1146,7 @@ exports[`test renders with props 1`] = `
           className="grid__item hard-left text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up">
           <a
             className="flush-bottom push-half-bottom@handheld btn"
-            href="http://rock.rockWorkflows/304?Group=undefined&undefined"
+            href="http://rock.rockWorkflows/304?Group=undefinedundefined"
             rel="noopener noreferrer"
             target="_blank">
             Contact
@@ -1411,7 +1411,7 @@ exports[`test renders without campus 1`] = `
           className="grid__item hard-left text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up">
           <a
             className="flush-bottom push-half-bottom@handheld btn"
-            href="http://rock.rockWorkflows/304?Group=undefined&undefined"
+            href="http://rock.rockWorkflows/304?Group=undefinedundefined"
             rel="noopener noreferrer"
             target="_blank">
             Contact
@@ -1676,7 +1676,7 @@ exports[`test renders without group locations 1`] = `
           className="grid__item hard-left text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up">
           <a
             className="flush-bottom push-half-bottom@handheld btn"
-            href="http://rock.rockWorkflows/304?Group=undefined&undefined"
+            href="http://rock.rockWorkflows/304?Group=undefinedundefined"
             rel="noopener noreferrer"
             target="_blank">
             Contact
@@ -1941,7 +1941,7 @@ exports[`test renders without schedule 1`] = `
           className="grid__item hard-left text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up">
           <a
             className="flush-bottom push-half-bottom@handheld btn"
-            href="http://rock.rockWorkflows/304?Group=undefined&undefined"
+            href="http://rock.rockWorkflows/304?Group=undefinedundefined"
             rel="noopener noreferrer"
             target="_blank">
             Contact
@@ -2206,7 +2206,7 @@ exports[`test renders without schedule description 1`] = `
           className="grid__item hard-left text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up">
           <a
             className="flush-bottom push-half-bottom@handheld btn"
-            href="http://rock.rockWorkflows/304?Group=undefined&undefined"
+            href="http://rock.rockWorkflows/304?Group=undefinedundefined"
             rel="noopener noreferrer"
             target="_blank">
             Contact
