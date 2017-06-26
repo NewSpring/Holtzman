@@ -70,11 +70,6 @@ exports[`test displays a different note if the email is @newspring 1`] = `
         </small>
       }
       placeholder="user@email.com"
-      style={
-        Object {
-          "paddingBottom": "0px",
-        }
-      }
       type="email"
       validation={[Function]} />
     <h6
@@ -235,11 +230,6 @@ exports[`test renders with props 1`] = `
         </small>
       }
       placeholder="user@email.com"
-      style={
-        Object {
-          "paddingBottom": "0px",
-        }
-      }
       type="email"
       validation={[Function]} />
     <h6
@@ -403,11 +393,6 @@ exports[`test renders without campuses 1`] = `
         </small>
       }
       placeholder="user@email.com"
-      style={
-        Object {
-          "paddingBottom": "0px",
-        }
-      }
       type="email"
       validation={[Function]} />
     <h6
@@ -564,11 +549,6 @@ exports[`test renders without person campus 1`] = `
         </small>
       }
       placeholder="user@email.com"
-      style={
-        Object {
-          "paddingBottom": "0px",
-        }
-      }
       type="email"
       validation={[Function]} />
     <h6
