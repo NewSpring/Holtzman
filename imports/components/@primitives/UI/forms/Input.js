@@ -10,24 +10,12 @@ type IRenderLabel = {
   id: string,
   name: string,
   label: string,
-  disabled?: boolean,
+  disabled?: boolean
 };
 
-const RenderLabel = ({
-  hideLabel = false,
-  id,
-  name,
-  label,
-  disabled = false,
-}: IRenderLabel) => {
+const RenderLabel = ({ hideLabel = false, id, name, label, disabled = false }: IRenderLabel) => {
   if (hideLabel) return null;
-  return (
-    <Label
-      labelFor={id || name || label}
-      labelName={label || name}
-      disabed={disabled}
-    />
-  );
+  return <Label labelFor={id || name || label} labelName={label || name} disabed={disabled} />;
 };
 
 type IInputProps = {
@@ -51,6 +39,7 @@ type IInputProps = {
   value: string,
   placeholder: string,
   maxLength: number,
+  noteFieldText?: Object
 };
 
 export default class Input extends Component {
@@ -66,7 +55,7 @@ export default class Input extends Component {
     error: false,
     value: null,
     autofocus: false,
-  }
+  };
 
   componentWillMount() {
     if (this.props.defaultValue) {
@@ -84,11 +73,13 @@ export default class Input extends Component {
     // until then. I'll keep on checking
     const target = this.node;
     this.interval = setInterval(() => {
-      if (this._previousValue === target.value || !target.value) { // eslint-disable-line
+      if (this._previousValue === target.value || !target.value) {
+        // eslint-disable-line
         return;
       }
 
-      if (!this._previousValue && target.value && !this.state.focused) { // eslint-disable-line
+      if (!this._previousValue && target.value && !this.state.focused) {
+        // eslint-disable-line
         this.setValue(target.value);
       }
 
@@ -119,15 +110,15 @@ export default class Input extends Component {
     // let value = this.node.value
     const value = this.getValue();
 
-    if (this.props.format && typeof (this.props.format) === "function") {
+    if (this.props.format && typeof this.props.format === "function") {
       const newValue = this.props.format(value, target, e);
       target.value = newValue;
     }
 
-    if (this.props.onChange && typeof (this.props.onChange) === "function") {
+    if (this.props.onChange && typeof this.props.onChange === "function") {
       this.props.onChange(target.value, target, e);
     }
-  }
+  };
 
   validate = (e?: Event) => {
     const target = this.node;
@@ -145,16 +136,16 @@ export default class Input extends Component {
       focused: false,
     });
 
-    if (this.props.validation && typeof (this.props.validation) === "function") {
+    if (this.props.validation && typeof this.props.validation === "function") {
       this.setState({
         error: !this.props.validation(value, target, e),
       });
     }
 
-    if (this.props.onBlur && typeof (this.props.onBlur) === "function") {
+    if (this.props.onBlur && typeof this.props.onBlur === "function") {
       this.props.onBlur(value, target, e);
     }
-  }
+  };
 
   focus = () => {
     this.setState({
@@ -162,7 +153,7 @@ export default class Input extends Component {
       error: false,
       focused: true,
     });
-  }
+  };
 
   setValue = (value: string) => {
     const node = this.node;
@@ -174,21 +165,21 @@ export default class Input extends Component {
     }
     this.focus();
     this.validate();
-  }
+  };
 
   // http://stackoverflow.com/questions/5788527/is-strip-tags-vulnerable-to-scripting-attacks/5793453#5793453
-    // prevent XSS;
+  // prevent XSS;
   getValue = () => {
     if (this.props.name === "password") return this.node.value;
     return StripTags(this.node.value); // eslint-disable-line
-  }
+  };
 
   disabled = () => {
     if (this.props.disabled) {
       return this.props.disabled;
     }
     return undefined;
-  }
+  };
 
   renderHelpText = () => {
     if (this.state.error && this.props.errorText) {
@@ -199,7 +190,28 @@ export default class Input extends Component {
       );
     }
     return undefined;
-  }
+  };
+
+  getNoteClasses = () => {
+    const classes = ["text-left"];
+
+    if (this.state.error) {
+      classes.push("push-double-top");
+    }
+
+    return classes.join(" ");
+  };
+
+  renderNoteField = () => {
+    if (this.props.noteFieldText) {
+      return (
+        <div className={this.getNoteClasses()} data-spec="notes">
+          {this.props.noteFieldText}
+        </div>
+      );
+    }
+    return undefined;
+  };
 
   style = () => {
     let style = {};
@@ -218,35 +230,46 @@ export default class Input extends Component {
     }
 
     return style;
-  }
+  };
 
   classes = () => {
-    let inputclasses = [
-      "input",
-    ];
+    let inputclasses = ["input"];
 
     // state mangaged classes
-    if (this.state.active) { inputclasses.push("input--active"); }
-    if (this.state.focused) { inputclasses.push("input--focused"); }
-    if (this.state.error) { inputclasses.push("input--alert"); }
+    if (this.state.active) {
+      inputclasses.push("input--active");
+    }
+    if (this.state.focused) {
+      inputclasses.push("input--focused");
+    }
+    if (this.state.error) {
+      inputclasses.push("input--alert");
+    }
     // custom added classes
-    if (this.props.classes) { inputclasses = inputclasses.concat(this.props.classes); }
+    if (this.props.classes) {
+      inputclasses = inputclasses.concat(this.props.classes);
+    }
 
     return inputclasses.join(" ");
-  }
+  };
 
   render() {
     const {
-      style, hideLabel, id, name, label, type, placeholder,
-      inputClasses, defaultValue, maxLength, children,
+      style,
+      hideLabel,
+      id,
+      name,
+      label,
+      type,
+      placeholder,
+      inputClasses,
+      defaultValue,
+      maxLength,
+      children,
     } = this.props;
 
     return (
-      <div
-        className={this.classes()}
-        style={style || {}}
-        data-spec="input-wrapper"
-      >
+      <div className={this.classes()} style={style || {}} data-spec="input-wrapper">
 
         <RenderLabel
           hideLabel={hideLabel}
@@ -276,9 +299,9 @@ export default class Input extends Component {
         {children}
 
         {this.renderHelpText()}
+        {this.renderNoteField()}
 
       </div>
     );
   }
-
 }
