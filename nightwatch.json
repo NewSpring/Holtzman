@@ -1,5 +1,5 @@
 {
-  "src_folders" : ["__e2e__"],
+  "src_folders" : [".end-to-end"],
   "globals_path": "./imports/util/tests/chromedriver.js",
   "output_folder" : "reports",
 
