@@ -1,27 +1,29 @@
 {
   "src_folders" : ["__e2e__"],
+  "globals_path": "./imports/util/tests/chromedriver.js",
   "output_folder" : "reports",
 
   "selenium" : {
-    "start_process" : true,
-    "server_path" : "selenium-server-standalone-3.4.0.jar",
-    "log_path" : "",
-    "port" : 4444,
+    "start_process" : false
   },
 
   "test_settings" : {
     "default" : {
       "launch_url" : "http://localhost:3000",
-      "selenium_port"  : 4444,
+      "selenium_port"  : 9515,
       "selenium_host"  : "localhost",
+      "default_path_prefix" : "",
+      "desiredCapabilities": {
+        "browserName": "chrome",
+        "chromeOptions" : {
+          "args" : ["--no-sandbox"]
+        },
+        "acceptSslCerts": true
+      },
       "silent": false,
       "screenshots" : {
         "enabled" : false,
         "path" : ""
-      },
-      "desiredCapabilities": {
-        "browserName": "firefox",
-        "marionette": true
       }
     },
 
