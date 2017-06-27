@@ -753,6 +753,7 @@
 				CODE_SIGN_ENTITLEMENTS = NewSpring/NewSpring.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = "${CURRENT_PROJECT_VERSION}";
 				DEVELOPMENT_TEAM = 7TM8C6252Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -795,6 +796,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = NewSpring/NewSpring.entitlements;
 				COPY_PHASE_STRIP = YES;
+				CURRENT_PROJECT_VERSION = "${CURRENT_PROJECT_VERSION}";
 				DEVELOPMENT_TEAM = 7TM8C6252Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
