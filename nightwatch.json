@@ -1,0 +1,34 @@
+{
+  "src_folders" : ["__e2e__"],
+  "output_folder" : "reports",
+
+  "selenium" : {
+    "start_process" : true,
+    "server_path" : "selenium-server-standalone-3.4.0.jar",
+    "log_path" : "",
+    "port" : 4444,
+  },
+
+  "test_settings" : {
+    "default" : {
+      "launch_url" : "http://localhost:3000",
+      "selenium_port"  : 4444,
+      "selenium_host"  : "localhost",
+      "silent": false,
+      "screenshots" : {
+        "enabled" : false,
+        "path" : ""
+      },
+      "desiredCapabilities": {
+        "browserName": "firefox",
+        "marionette": true
+      }
+    },
+
+    "chrome" : {
+      "desiredCapabilities": {
+        "browserName": "chrome"
+      }
+    }
+  }
+}
