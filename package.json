@@ -14,7 +14,8 @@
     "storybook": "start-storybook -p 6006 -s ./public",
     "build-storybook": "node ./.bin/index.js setup && build-storybook -s public -o docs",
     "lint-staged": "lint-staged",
-    "danger": "danger run --verbose"
+    "danger": "danger run --verbose",
+    "e2e": "nightwatch"
   },
   "lint-staged": {
     "*.js": [

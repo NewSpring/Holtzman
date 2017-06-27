@@ -20,7 +20,7 @@
         },
         "acceptSslCerts": true
       },
-      "silent": false,
+      "silent": true,
       "screenshots" : {
         "enabled" : false,
         "path" : ""
