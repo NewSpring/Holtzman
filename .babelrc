@@ -8,6 +8,7 @@
   "plugins": [
     "ramda",
     "babel-root-slash-import",
+    "transform-class-properties",
     "transform-react-router-optimize",
     "transform-inline-environment-variables",
     "transform-decorators-legacy",
