@@ -28,6 +28,7 @@ exports[`test should accept custom classes thru classes prop 1`] = `
       }
       format={[Function]}
       hideLabel={true}
+      id="primary"
       inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
       placeholder="$0.00"
       style={
@@ -45,10 +46,12 @@ exports[`test should accept custom classes thru classes prop 1`] = `
           }
         }>
         <RenderLabel
-          hideLabel={true} />
+          hideLabel={true}
+          id="primary" />
         <input
           className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
           data-spec="input"
+          id="primary"
           maxLength=""
           onBlur={[Function]}
           onChange={[Function]}
@@ -78,6 +81,7 @@ exports[`test should accept custom classes thru classes prop 1`] = `
         ]
       }
       hideLabel={true}
+      id="primary-select"
       inputClasses="text-dark-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
       items={
         Array [
@@ -94,7 +98,7 @@ exports[`test should accept custom classes thru classes prop 1`] = `
         className="input soft-bottom display-inline-block select_1rryh47 input--active select_15p0e27">
         <select
           className="text-dark-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
-          id="select-account"
+          id="primary-select"
           name="select-account"
           onChange={[Function]}
           onFocus={[Function]}
@@ -151,6 +155,7 @@ exports[`test should accept multiple accounts through accounts prop 1`] = `
       }
       format={[Function]}
       hideLabel={true}
+      id="primary"
       inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
       placeholder="$0.00"
       style={
@@ -168,10 +173,12 @@ exports[`test should accept multiple accounts through accounts prop 1`] = `
           }
         }>
         <RenderLabel
-          hideLabel={true} />
+          hideLabel={true}
+          id="primary" />
         <input
           className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
           data-spec="input"
+          id="primary"
           maxLength=""
           onBlur={[Function]}
           onChange={[Function]}
@@ -201,6 +208,7 @@ exports[`test should accept multiple accounts through accounts prop 1`] = `
         ]
       }
       hideLabel={true}
+      id="primary-select"
       inputClasses="text-dark-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
       items={
         Array [
@@ -220,7 +228,7 @@ exports[`test should accept multiple accounts through accounts prop 1`] = `
         className="input soft-bottom display-inline-block select_1rryh47 input--active select_15p0e27">
         <select
           className="text-dark-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
-          id="select-account"
+          id="primary-select"
           name="select-account"
           onChange={[Function]}
           onFocus={[Function]}
@@ -278,6 +286,7 @@ exports[`test should change classes based on active state 1`] = `
       }
       format={[Function]}
       hideLabel={true}
+      id="primary"
       inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
       placeholder="$0.00"
       style={
@@ -295,10 +304,12 @@ exports[`test should change classes based on active state 1`] = `
           }
         }>
         <RenderLabel
-          hideLabel={true} />
+          hideLabel={true}
+          id="primary" />
         <input
           className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
           data-spec="input"
+          id="primary"
           maxLength=""
           onBlur={[Function]}
           onChange={[Function]}
@@ -328,6 +339,7 @@ exports[`test should change classes based on active state 1`] = `
         ]
       }
       hideLabel={true}
+      id="primary-select"
       inputClasses="text-primary outlined--dotted outlined--light h3 hard-top flush-bottom"
       items={
         Array [
@@ -344,7 +356,7 @@ exports[`test should change classes based on active state 1`] = `
         className="input soft-bottom display-inline-block select_1rryh47 input--active select_15p0e27">
         <select
           className="text-primary outlined--dotted outlined--light h3 hard-top flush-bottom"
-          id="select-account"
+          id="primary-select"
           name="select-account"
           onChange={[Function]}
           onFocus={[Function]}
@@ -398,6 +410,7 @@ exports[`test should render with minimal props 1`] = `
       }
       format={[Function]}
       hideLabel={true}
+      id="primary"
       inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
       placeholder="$0.00"
       style={
@@ -415,10 +428,12 @@ exports[`test should render with minimal props 1`] = `
           }
         }>
         <RenderLabel
-          hideLabel={true} />
+          hideLabel={true}
+          id="primary" />
         <input
           className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
           data-spec="input"
+          id="primary"
           maxLength=""
           onBlur={[Function]}
           onChange={[Function]}
@@ -448,6 +463,7 @@ exports[`test should render with minimal props 1`] = `
         ]
       }
       hideLabel={true}
+      id="primary-select"
       inputClasses="text-dark-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
       items={
         Array [
@@ -464,7 +480,7 @@ exports[`test should render with minimal props 1`] = `
         className="input soft-bottom display-inline-block select_1rryh47 input--active select_15p0e27">
         <select
           className="text-dark-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
-          id="select-account"
+          id="primary-select"
           name="select-account"
           onChange={[Function]}
           onFocus={[Function]}
