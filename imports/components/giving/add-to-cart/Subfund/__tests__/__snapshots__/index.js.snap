@@ -38,6 +38,7 @@ exports[`SubFund sets the state to active if it has an amount 1`] = `
         }
         format={[Function]}
         hideLabel={true}
+        id="subfund"
         inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
         placeholder="$0.00"
         style={
@@ -55,10 +56,12 @@ exports[`SubFund sets the state to active if it has an amount 1`] = `
             }
           }>
           <RenderLabel
-            hideLabel={true} />
+            hideLabel={true}
+            id="subfund" />
           <input
             className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
             data-spec="input"
+            id="subfund"
             maxLength=""
             onBlur={[Function]}
             onChange={[Function]}
@@ -88,6 +91,7 @@ exports[`SubFund sets the state to active if it has an amount 1`] = `
           }
           defaultValue="main fund"
           hideLabel={true}
+          id="subfund-select"
           includeBlank={true}
           inputClasses="text-brand outlined--dotted outlined--light h3 hard-top flush-bottom"
           items={
@@ -104,6 +108,7 @@ exports[`SubFund sets the state to active if it has an amount 1`] = `
             <select
               className="text-brand outlined--dotted outlined--light h3 hard-top flush-bottom"
               defaultValue="main fund"
+              id="subfund-select"
               onChange={[Function]}
               onFocus={[Function]}
               placeholder="select fund">
@@ -168,6 +173,7 @@ exports[`SubFund should render a primary fund 1`] = `
         }
         format={[Function]}
         hideLabel={true}
+        id="primary"
         inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
         placeholder="$0.00"
         style={
@@ -185,10 +191,12 @@ exports[`SubFund should render a primary fund 1`] = `
             }
           }>
           <RenderLabel
-            hideLabel={true} />
+            hideLabel={true}
+            id="primary" />
           <input
             className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
             data-spec="input"
+            id="primary"
             maxLength=""
             onBlur={[Function]}
             onChange={[Function]}
@@ -218,6 +226,7 @@ exports[`SubFund should render a primary fund 1`] = `
           ]
         }
         hideLabel={true}
+        id="primary-select"
         inputClasses="text-dark-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
         items={
           Array [
@@ -233,7 +242,7 @@ exports[`SubFund should render a primary fund 1`] = `
           className="input soft-bottom display-inline-block select_1rryh47 select_15p0e27">
           <select
             className="text-dark-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
-            id="select-account"
+            id="primary-select"
             name="select-account"
             onChange={[Function]}
             onFocus={[Function]}
@@ -297,6 +306,7 @@ exports[`SubFund should render with minimal props 1`] = `
         }
         format={[Function]}
         hideLabel={true}
+        id="subfund"
         inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
         placeholder="$0.00"
         style={
@@ -314,10 +324,12 @@ exports[`SubFund should render with minimal props 1`] = `
             }
           }>
           <RenderLabel
-            hideLabel={true} />
+            hideLabel={true}
+            id="subfund" />
           <input
             className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
             data-spec="input"
+            id="subfund"
             maxLength=""
             onBlur={[Function]}
             onChange={[Function]}
@@ -347,6 +359,7 @@ exports[`SubFund should render with minimal props 1`] = `
           }
           defaultValue="main fund"
           hideLabel={true}
+          id="subfund-select"
           includeBlank={true}
           inputClasses="text-brand outlined--dotted outlined--light h3 hard-top flush-bottom"
           items={
@@ -363,6 +376,7 @@ exports[`SubFund should render with minimal props 1`] = `
             <select
               className="text-brand outlined--dotted outlined--light h3 hard-top flush-bottom"
               defaultValue="main fund"
+              id="subfund-select"
               onChange={[Function]}
               onFocus={[Function]}
               placeholder="select fund">

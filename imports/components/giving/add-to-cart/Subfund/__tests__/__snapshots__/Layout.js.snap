@@ -30,6 +30,7 @@ exports[`test should accept an active prop to show the input 1`] = `
         ]
       }
       hideLabel={true}
+      id="subfund"
       inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
       placeholder="$0.00"
       style={
@@ -48,10 +49,12 @@ exports[`test should accept an active prop to show the input 1`] = `
           }
         }>
         <RenderLabel
-          hideLabel={true} />
+          hideLabel={true}
+          id="subfund" />
         <input
           className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
           data-spec="input"
+          id="subfund"
           maxLength=""
           onBlur={[Function]}
           onChange={[Function]}
@@ -81,6 +84,7 @@ exports[`test should accept an active prop to show the input 1`] = `
         }
         defaultValue="main fund"
         hideLabel={true}
+        id="subfund-select"
         includeBlank={true}
         inputClasses="text-brand outlined--dotted outlined--light h3 hard-top flush-bottom"
         items={
@@ -96,6 +100,7 @@ exports[`test should accept an active prop to show the input 1`] = `
           <select
             className="text-brand outlined--dotted outlined--light h3 hard-top flush-bottom"
             defaultValue="main fund"
+            id="subfund-select"
             onChange={[Function]}
             onFocus={[Function]}
             placeholder="select fund">
@@ -150,6 +155,7 @@ exports[`test should accept custom classes thru classes prop 1`] = `
         ]
       }
       hideLabel={true}
+      id="subfund"
       inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
       placeholder="$0.00"
       style={
@@ -167,10 +173,12 @@ exports[`test should accept custom classes thru classes prop 1`] = `
           }
         }>
         <RenderLabel
-          hideLabel={true} />
+          hideLabel={true}
+          id="subfund" />
         <input
           className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
           data-spec="input"
+          id="subfund"
           maxLength=""
           onBlur={[Function]}
           onChange={[Function]}
@@ -200,6 +208,7 @@ exports[`test should accept custom classes thru classes prop 1`] = `
         }
         defaultValue="main fund"
         hideLabel={true}
+        id="subfund-select"
         includeBlank={true}
         inputClasses="text-dark-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
         items={
@@ -215,6 +224,7 @@ exports[`test should accept custom classes thru classes prop 1`] = `
           <select
             className="text-dark-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
             defaultValue="main fund"
+            id="subfund-select"
             onChange={[Function]}
             onFocus={[Function]}
             placeholder="select fund">
@@ -271,6 +281,7 @@ exports[`test should accept multiple accounts through accounts prop 1`] = `
         ]
       }
       hideLabel={true}
+      id="subfund"
       inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
       placeholder="$0.00"
       style={
@@ -288,10 +299,12 @@ exports[`test should accept multiple accounts through accounts prop 1`] = `
           }
         }>
         <RenderLabel
-          hideLabel={true} />
+          hideLabel={true}
+          id="subfund" />
         <input
           className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
           data-spec="input"
+          id="subfund"
           maxLength=""
           onBlur={[Function]}
           onChange={[Function]}
@@ -321,6 +334,7 @@ exports[`test should accept multiple accounts through accounts prop 1`] = `
         }
         defaultValue="hello"
         hideLabel={true}
+        id="subfund-select"
         includeBlank={true}
         inputClasses="text-dark-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
         items={
@@ -339,6 +353,7 @@ exports[`test should accept multiple accounts through accounts prop 1`] = `
           <select
             className="text-dark-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
             defaultValue="hello"
+            id="subfund-select"
             onChange={[Function]}
             onFocus={[Function]}
             placeholder="select fund">
@@ -396,6 +411,7 @@ exports[`test should render with minimal props 1`] = `
         ]
       }
       hideLabel={true}
+      id="subfund"
       inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
       placeholder="$0.00"
       style={
@@ -413,10 +429,12 @@ exports[`test should render with minimal props 1`] = `
           }
         }>
         <RenderLabel
-          hideLabel={true} />
+          hideLabel={true}
+          id="subfund" />
         <input
           className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
           data-spec="input"
+          id="subfund"
           maxLength=""
           onBlur={[Function]}
           onChange={[Function]}
@@ -446,6 +464,7 @@ exports[`test should render with minimal props 1`] = `
         }
         defaultValue="main fund"
         hideLabel={true}
+        id="subfund-select"
         includeBlank={true}
         inputClasses="text-dark-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
         items={
@@ -461,6 +480,7 @@ exports[`test should render with minimal props 1`] = `
           <select
             className="text-dark-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
             defaultValue="main fund"
+            id="subfund-select"
             onChange={[Function]}
             onFocus={[Function]}
             placeholder="select fund">

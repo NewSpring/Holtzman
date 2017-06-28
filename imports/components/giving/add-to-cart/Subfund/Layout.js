@@ -42,6 +42,7 @@ const Layout = ({
       style={{ maxWidth: "150px" }}
       type={Meteor.isCordova ? "text" : "tel"}
       value={inputVal}
+      id="subfund"
     />
 
     <div className="display-block">
@@ -56,6 +57,7 @@ const Layout = ({
         onChange={changeFund}
         placeholder="select fund"
         selected={fundId}
+        id="subfund-select"
         hideLabel
         includeBlank
       />
