@@ -40,13 +40,13 @@ export default ({
     </Checkbox>
     {checked && (
       <div>
-        <div className="display-block soft-half-ends">
+        <div id="frequency" className="display-block soft-half-ends">
           <h7>Frequency</h7>
           <div className="display-block soft-half-top">
             <TagSelect items={GIVING_SCHEDULES} onClick={frequencyClick} />
           </div>
         </div>
-        <div className="display-block soft-bottom">
+        <div id="start" className="display-block soft-bottom">
           <h7>Start Date</h7>
           <div className="display-block soft-half-top">
             <TagSelect items={START_DATES} onClick={startClick} />
