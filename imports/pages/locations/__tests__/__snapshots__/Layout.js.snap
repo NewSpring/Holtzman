@@ -318,6 +318,7 @@ exports[`test renders with props 1`] = `
         }>
         <Link
           className="text-dark-secondary transition floating ratio--square display-inline-block rounded  push-right card text-left"
+          onClick={[Function]}
           onlyActiveOnIndex={false}
           style={
             Object {
@@ -353,6 +354,7 @@ exports[`test renders with props 1`] = `
         </Link>
         <Link
           className="text-dark-secondary transition floating ratio--square display-inline-block rounded  push-right card text-left"
+          onClick={[Function]}
           onlyActiveOnIndex={false}
           style={
             Object {
@@ -459,6 +461,7 @@ exports[`test renders without campus distance 1`] = `
         }>
         <Link
           className="text-dark-secondary transition floating ratio--square display-inline-block rounded  push-right card text-left"
+          onClick={[Function]}
           onlyActiveOnIndex={false}
           style={
             Object {
@@ -489,6 +492,7 @@ exports[`test renders without campus distance 1`] = `
         </Link>
         <Link
           className="text-dark-secondary transition floating ratio--square display-inline-block rounded  push-right card text-left"
+          onClick={[Function]}
           onlyActiveOnIndex={false}
           style={
             Object {
