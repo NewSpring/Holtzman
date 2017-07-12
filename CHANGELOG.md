@@ -4,13 +4,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## UNRELEASED
-
-## [5.2.2] UNRELEASED
+## [5.2.3] UNRELEASED
 ### Added
 ### Fixed
-- Fixed the live page to have a meta title for analytics.
 ### Updated
+
+## [5.2.2] 2017.07.11
+### Fixed
+- Fixed the live page to have a meta title for analytics.
+- Fixed a typo in one of the welcome slides.
+- Fixed a problem with the location cards so that you can now tap anywhere in
+the card to get more information.
+### Updated
+- Updated the "Contact" button on a group in group finder so that it now goes
+to a workflow and allows you to sign up for a group whether or not you are
+signed in.
 
 ## [5.2.1]
 ### Updated
