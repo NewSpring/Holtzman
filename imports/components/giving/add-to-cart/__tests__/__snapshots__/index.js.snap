@@ -258,7 +258,6 @@ exports[`CartContainer > Lifecycle functions accepts query string prefills the f
         },
       ]
     }
-    bindSubComponentReset={[Function]}
     canCheckout={true}
     changeAmount={[Function]}
     changeFund={[Function]}
@@ -323,7 +322,6 @@ exports[`CartContainer > Lifecycle functions accepts query string prefills the f
                 <div
                   className="display-block one-whole soft-bottom" />
                 <mockConstructor
-                  bindSubComponentReset={[Function]}
                   setCanCheckout={[Function]}>
                   <div />
                 </mockConstructor>
@@ -500,7 +498,6 @@ exports[`test should properly render with multiple accounts 1`] = `
         },
       ]
     }
-    bindSubComponentReset={[Function]}
     canCheckout={false}
     changeAmount={[Function]}
     changeFund={[Function]}
@@ -607,7 +604,6 @@ exports[`test should properly render with multiple accounts 1`] = `
                   </SmallButton>
                 </div>
                 <mockConstructor
-                  bindSubComponentReset={[Function]}
                   setCanCheckout={[Function]}>
                   <div />
                 </mockConstructor>
@@ -676,7 +672,6 @@ exports[`test should render with minimal props 1`] = `
       },
     ]
   }
-  bindSubComponentReset={[Function]}
   canCheckout={false}
   changeAmount={[Function]}
   changeFund={[Function]}
