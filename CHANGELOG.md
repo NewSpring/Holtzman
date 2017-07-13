@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [5.2.3] UNRELEASED
 ### Added
 ### Fixed
+- Fixed the "Schedule This Contribution" checkbox from automatically being
+checked and opening the schedule options.
 ### Updated
 
 ## [5.2.2] 2017.07.11
