@@ -22,10 +22,19 @@ const creditCard = (value) => {
 };
 
 const creditExpiry = (value) => {
-  const d = moment(value, "MM/YY");
+  let d;
+
+  if (value.length <= 3) {
+    d = value.replace(/\D/g, "");
+    d = moment(value, "MM");
+  } else {
+    d = moment(value, "MM/YY");
+    if (d.isBefore(moment().subtract(1, "month")) || d.isAfter(moment().add(15, "years"))) {
+      return false;
+    }
+  }
+
   if (d == null || !d.isValid()) return false;
-  if (d.isBefore(moment().subtract(1, "month")) ||
-      d.isAfter(moment().add(15, "years"))) return false;
   return true;
 };
 
@@ -34,8 +43,4 @@ const creditCVV = (value) => {
   return regex.test(value);
 };
 
-export {
-  creditCard,
-  creditExpiry,
-  creditCVV,
-};
+export { creditCard, creditExpiry, creditCVV };
