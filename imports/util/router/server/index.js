@@ -169,7 +169,7 @@ function patchResWrite(serverOptions, originalWrite, css, html, head, req, res) 
       data = data.replace(
         "<body>",
         `<body><!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WKZ3JLN"
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=${Meteor.settings.public.gtm}"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) --><div id="react-app">${html}</div>`
       );
