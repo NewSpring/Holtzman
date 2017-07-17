@@ -10,43 +10,77 @@ if (process.env.NATIVE) {
   window.Audio5 = Audio5;
 
   // load droid
-  function loadCSS(e, n, t) { function i(e) { return r.body ? e() : void setTimeout(() => { i(e); }); } let o, r = window.document, a = r.createElement("link"), d = t || "all"; if (n)o = n; else { const l = (r.body || r.getElementsByTagName("head")[0]).childNodes; o = l[l.length - 1]; } const f = r.styleSheets; a.rel = "stylesheet", a.href = e, a.media = "only x", i(() => { o.parentNode.insertBefore(a, n ? o : o.nextSibling); }); const s = function (e) { for (let n = a.href, t = f.length; t--;) if (f[t].href === n) return e(); setTimeout(() => { s(e); }); }; return a.addEventListener && a.addEventListener("load", function () { this.media = d; }), a.onloadcssdefined = s, s(() => { a.media !== d && (a.media = d); }), a; }
+  function loadCSS(e, n, t) {
+    function i(e) {
+      return r.body
+        ? e()
+        : void setTimeout(() => {
+            i(e);
+          });
+    }
+    let o,
+      r = window.document,
+      a = r.createElement("link"),
+      d = t || "all";
+    if (n) o = n;
+    else {
+      const l = (r.body || r.getElementsByTagName("head")[0]).childNodes;
+      o = l[l.length - 1];
+    }
+    const f = r.styleSheets;
+    (a.rel = "stylesheet"), (a.href = e), (a.media = "only x"), i(() => {
+      o.parentNode.insertBefore(a, n ? o : o.nextSibling);
+    });
+    const s = function(e) {
+      for (let n = a.href, t = f.length; t--; ) if (f[t].href === n) return e();
+      setTimeout(() => {
+        s(e);
+      });
+    };
+    return a.addEventListener &&
+      a.addEventListener("load", function() {
+        this.media = d;
+      }), (a.onloadcssdefined = s), s(() => {
+      a.media !== d && (a.media = d);
+    }), a;
+  }
   loadCSS("https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic");
 
   function openUrl(url) {
     try {
-      SafariViewController.isAvailable((available) => {
+      SafariViewController.isAvailable(available => {
         if (available) {
-          SafariViewController.show({
-            url,
-            hidden: false, // default false. You can use this to load cookies etc in the background (see issue #1 for details).
-            animated: true, // default true, note that 'hide' will reuse this preference (the 'Done' button will always animate though)
-            transition: "curl", // unless animated is false you can choose from: curl, flip, fade, slide (default)
-            enterReaderModeIfAvailable: false, // default false
-            controlTintColor: "#6BAC43",
-            tintColor: "#6BAC43", // default to ios blue
-          },
-              // this success handler will be invoked for the lifecycle events 'opened', 'loaded' and 'closed'
-              (result) => {
-                if (result.event === "opened") {
-                  // view has opened
-                } else if (result.event === "loaded") {
-                  // view has loaded
-                } else if (result.event === "closed") {
-                  // view has closed
-                }
-              },
-              // error function?
-              (msg) => {
-                alert("KO: " + msg);
-              });
+          SafariViewController.show(
+            {
+              url,
+              hidden: false, // default false. You can use this to load cookies etc in the background (see issue #1 for details).
+              animated: true, // default true, note that 'hide' will reuse this preference (the 'Done' button will always animate though)
+              transition: "curl", // unless animated is false you can choose from: curl, flip, fade, slide (default)
+              enterReaderModeIfAvailable: false, // default false
+              controlTintColor: "#6BAC43",
+              tintColor: "#6BAC43" // default to ios blue
+            },
+            // this success handler will be invoked for the lifecycle events 'opened', 'loaded' and 'closed'
+            result => {
+              if (result.event === "opened") {
+                // view has opened
+              } else if (result.event === "loaded") {
+                // view has loaded
+              } else if (result.event === "closed") {
+                // view has closed
+              }
+            },
+            // error function?
+            msg => {
+              alert("KO: " + msg);
+            }
+          );
         } else {
           // potentially powered by InAppBrowser because that (currently) clobbers window.open
           window.open(url, "_blank", "location=yes");
         }
       });
-    }
-    catch (err) {
+    } catch (err) {
       window.open(url, "_blank", "location=yes");
     }
   }
@@ -59,7 +93,7 @@ if (process.env.NATIVE) {
     document.addEventListener("deviceready", () => {
       window.open = cordova.InAppBrowser.open;
 
-      document.addEventListener("click", (event) => {
+      document.addEventListener("click", event => {
         // aggressively get all clicks of <a></a> links in cordova
         let target = event.target;
 
@@ -102,8 +136,8 @@ if (process.env.NATIVE) {
        *
        * It is also possible to set an offset using `data-status-scroll-offset`.
        */
-      window.addEventListener("statusTap", (event) => {
-        const flatten = (obj) => {
+      window.addEventListener("statusTap", event => {
+        const flatten = obj => {
           return [].concat.apply([], obj);
         };
 
@@ -112,7 +146,7 @@ if (process.env.NATIVE) {
           easing: "ease-in",
           // header + live banner should never be more than 100,
           // and this shouldn't affect instances where no offset is needed
-          offset: -100,
+          offset: -100
         };
 
         // this is the main view used by most content
@@ -151,34 +185,40 @@ Meteor.startup(() => {
     window.isPhone = window.innerWidth < 480;
     window.isTablet = window.innerWidth >= 480;
 
-    (function (kitID) {
+    (function(kitID) {
       if (!kitID) {
         return;
       }
 
       const config = {
-        kitId: kitID,
+        kitId: kitID
       };
       let d = false;
       const tk = document.createElement("script");
       tk.src = "//use.typekit.net/" + config.kitId + ".js";
       tk.type = "text/javascript";
       tk.async = "true";
-      tk.onload = tk.onreadystatechange = function () {
+      tk.onload = tk.onreadystatechange = function() {
         const rs = this.readyState;
-        if (d || rs && rs != "complete" && rs != "loaded") return;
+        if (d || (rs && rs != "complete" && rs != "loaded")) return;
         d = true;
-        try { Typekit.load(config); } catch (e) {} };
+        try {
+          Typekit.load(config);
+        } catch (e) {}
+      };
       const s = document.getElementsByTagName("script")[0];
       s.parentNode.insertBefore(tk, s);
     })(Meteor.settings.public.typekit);
 
-
     if (Meteor.settings.public.chartbeat) {
-      window._sf_async_config = { uid: Meteor.settings.public.chartbeat, domain: window.location.hostname, useCanonical: true };
-      (function () {
+      window._sf_async_config = {
+        uid: Meteor.settings.public.chartbeat,
+        domain: window.location.hostname,
+        useCanonical: true
+      };
+      (function() {
         function loadChartbeat() {
-          window._sf_endpt = (new Date()).getTime();
+          window._sf_endpt = new Date().getTime();
           const e = document.createElement("script");
           e.setAttribute("language", "javascript");
           e.setAttribute("type", "text/javascript");
@@ -186,17 +226,29 @@ Meteor.startup(() => {
           document.body.appendChild(e);
         }
         const oldonload = window.onload;
-        window.onload = (typeof window.onload != "function") ?
-          loadChartbeat : function () { oldonload(); loadChartbeat(); };
+        window.onload =
+          typeof window.onload != "function"
+            ? loadChartbeat
+            : function() {
+                oldonload();
+                loadChartbeat();
+              };
       })();
     }
 
-
     if (Meteor.settings.public.ga) {
       // Load Google Analytics
-      (function (i, s, o, g, r, a, m) { i.GoogleAnalyticsObject = r; i[r] = i[r] || function () {
-        (i[r].q = i[r].q || []).push(arguments); }, i[r].l = 1 * new Date(); a = s.createElement(o),
-      m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+      (function(i, s, o, g, r, a, m) {
+        i.GoogleAnalyticsObject = r;
+        (i[r] =
+          i[r] ||
+          function() {
+            (i[r].q = i[r].q || []).push(arguments);
+          }), (i[r].l = 1 * new Date());
+        (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m);
       })(window, document, "script", "//www.google-analytics.com/analytics.js", "ga");
 
       ga("create", Meteor.settings.public.ga, "auto");
@@ -204,12 +256,35 @@ Meteor.startup(() => {
       ga("require", "ecommerce");
     }
 
+    // if (Meteor.settings.public.gtm) {
+    // Google Tag Manager
+    (function(w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({
+        "gtm.start": new Date().getTime(),
+        event: "gtm.js"
+      });
+      var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != "dataLayer" ? "&l=" + l : "";
+      j.async = true;
+      j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, "script", "dataLayer", "GTM-WKZ3JLN");
+    // End Google Tag Manager
+    // }
+
     if (Meteor.settings.public.hotjar) {
-      (function (h, o, t, j, a, r) {
-        h.hj = h.hj || function () { (h.hj.q = h.hj.q || []).push(arguments); };
+      (function(h, o, t, j, a, r) {
+        h.hj =
+          h.hj ||
+          function() {
+            (h.hj.q = h.hj.q || []).push(arguments);
+          };
         h._hjSettings = { hjid: Meteor.settings.public.hotjar, hjsv: 5 };
         a = o.getElementsByTagName("head")[0];
-        r = o.createElement("script"); r.async = 1;
+        r = o.createElement("script");
+        r.async = 1;
         r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
         a.appendChild(r);
       })(window, document, "//static.hotjar.com/c/hotjar-", ".js?sv=");

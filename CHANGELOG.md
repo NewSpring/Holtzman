@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [5.2.3] UNRELEASED
 ### Added
+- Added Google Tag Manager event tracking to the app.
 ### Fixed
 ### Updated
 
