@@ -320,17 +320,4 @@ describe("Class", () => {
     });
   });
 
-  describe("reset-binding", () => {
-    it("resets when called", () => {
-      let reset = null;
-      const bindSubComponentReset = (fn) => reset = jest.fn(fn);
-
-      const wrapper = mount(generateComponent({ bindSubComponentReset }));
-      const originalState = wrapper.state();
-      wrapper.setState({ checked: true });
-
-      reset();
-      expect(wrapper.state()).toEqual(originalState);
-    });
-  });
 });
