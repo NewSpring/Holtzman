@@ -121,12 +121,8 @@ describe("CartContainer > Lifecycle functions", () => {
       clearTransactions: spy,
       status: "success",
     }));
-    const { bindSubComponentReset } = component.instance();
-    bindSubComponentReset(resetSpy);
-    expect(spy).toHaveBeenCalledTimes(1);
     component.setProps({ status: "default" });
     expect(component.state()).toMatchSnapshot();
-    expect(resetSpy).toHaveBeenCalledTimes(1);
     expect(spy).toHaveBeenCalledTimes(2);
   });
 
