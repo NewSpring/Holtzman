@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [5.2.3] UNRELEASED
 ### Added
 ### Fixed
+- fixed credit card expiration date input to make it easier to change the date
 ### Updated
 
 ## [5.2.2] 2017.07.11
