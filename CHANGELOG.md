@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [5.2.3] UNRELEASED
 ### Added
+- use native device location for group finder
 ### Fixed
 ### Updated
 
