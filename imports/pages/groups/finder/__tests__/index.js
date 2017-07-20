@@ -10,6 +10,10 @@ jest.mock("../../../../data/store", () => ({
   },
 }));
 
+global.navigator.geolocation = {
+  getCurrentPosition: jest.fn(),
+};
+
 const defaultProps = {
   dispatch: jest.fn(),
   router: {
@@ -25,6 +29,8 @@ const defaultProps = {
     loading: false,
     entries: [{}, {}],
   },
+  latitude: 34.59189,
+  longitude: -82.6196913,
 };
 
 const generateComponent = (additionalProps = {}) => {
