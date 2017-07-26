@@ -67,6 +67,7 @@ Meteor.methods({
       LastName: stripTags(account.lastName),
       IsSystem: false,
       Gender: 0,
+      RecordTypeValueId: 1,
       ConnectionStatusValueId: 67, // Web Prospect
       SystemNote: `Created from NewSpring Apollos on ${__meteor_runtime_config__.ROOT_URL}`,
     };
