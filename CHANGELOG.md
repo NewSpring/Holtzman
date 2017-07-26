@@ -6,7 +6,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [5.2.3] UNRELEASED
 ### Added
+- Added Google Tag Manager event tracking to the app.
 ### Fixed
+- Fixed the "Schedule This Contribution" checkbox from automatically being
+- fixed credit card expiration date input to make it easier to change the date
+- Added RecordTypeValueId to Person
 ### Updated
 
 ## [5.2.2] 2017.07.11
