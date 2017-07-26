@@ -22,11 +22,13 @@ cache:
     - $HOME/.yarn-cache
     - node_modules
 before_install:
-  - echo 'Europe/London' | sudo tee /etc/timezone
-  - sudo dpkg-reconfigure --frontend noninteractive tzdata
   - chmod +x $TRAVIS_BUILD_DIR/.travis/run_on_pull_requests
   - chmod +x $TRAVIS_BUILD_DIR/.travis/run_for_coverage
   - npm install -g coveralls
+before_script:
+  - echo 'America/New_York' | sudo tee /etc/timezone
+  - sudo dpkg-reconfigure --frontend noninteractive tzdata
+  - ntpdate ntp.ubuntu.com
 script:
   - yarn
   - yarn danger
