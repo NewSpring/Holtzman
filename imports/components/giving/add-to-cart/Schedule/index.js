@@ -1,4 +1,3 @@
-
 import { Component } from "react";
 import { connect } from "react-redux";
 import moment from "moment";
@@ -11,15 +10,14 @@ type IScheduleProps = {
   authorized: boolean,
   saveSchedule: Function,
   setCanCheckout: Function,
-  preCheck: boolean,
-  bindSubComponentReset: Function,
+  preCheck: boolean
 };
 
 type IScheduleState = {
-  checked: boolean;
+  checked: boolean,
   showDatePicker: boolean,
   start: string,
-  frequency: string,
+  frequency: string
 };
 
 const GIVING_SCHEDULES = [
@@ -36,9 +34,7 @@ const START_DATES = [
   { label: "Custom", value: "custom" },
 ];
 
-
 export class Schedule extends Component {
-
   props: IScheduleProps;
   state: IScheduleState;
 
@@ -47,11 +43,10 @@ export class Schedule extends Component {
     start: null,
     frequency: null,
     showDatePicker: false,
-  }
+  };
 
   componentWillMount() {
     if (this.props.preCheck) this.setState({ checked: true });
-    this.props.bindSubComponentReset(this.toggleSchedule);
   }
 
   componentDidMount() {
@@ -71,18 +66,12 @@ export class Schedule extends Component {
       return;
     }
 
-    if (
-      (this.state.start && this.state.frequency) &&
-      (!start || !frequency)
-    ) {
+    if (this.state.start && this.state.frequency && (!start || !frequency)) {
       this.props.setCanCheckout(true);
       return;
     }
 
-    if (
-      (!this.state.start && start) ||
-      (!this.state.frequency && frequency)
-    ) {
+    if ((!this.state.start && start) || (!this.state.frequency && frequency)) {
       this.props.setCanCheckout(false);
       return;
     }
@@ -104,14 +93,14 @@ export class Schedule extends Component {
       const marginTop = Number(child.style.marginTop.slice(0, -2));
       child.style.marginTop = `${marginTop + Math.abs(globalTop)}px`;
     }
-  }
+  };
 
   toggleDatePicker = () => {
     this.setState(({ showDatePicker }) => ({ showDatePicker: !showDatePicker }));
     setTimeout(() => {
       this.fixPickerPosition();
     }, 200);
-  }
+  };
 
   toggleSchedule = () => {
     this.setState(({ checked }) => {
@@ -128,7 +117,7 @@ export class Schedule extends Component {
         checked: false,
       };
     });
-  }
+  };
 
   /*
     if one is selected, and freqClick is called with the same one, disable it
@@ -144,10 +133,12 @@ export class Schedule extends Component {
       frequency: newValue,
       start: this.state.start,
     });
-  }
+  };
 
   startClick = (value: string) => {
-    const filtered = START_DATES.find((x) => moment(x.value).isValid() && moment(x.value).isSame(value, "day"));
+    const filtered = START_DATES.find(
+      (x) => moment(x.value).isValid() && moment(x.value).isSame(value, "day")
+    );
     const label = filtered ? filtered.label : "Custom"; // the tag label
 
     // DATETIME || "custom"
@@ -166,8 +157,12 @@ export class Schedule extends Component {
 
     // custom doesn't need to save schedule.
     // toggle date picker and clear previous set start dates
-    this.setState(({ activeStartTag }) => ({ showDatePicker: activeStartTag !== "Custom", start: null, activeStartTag: newStartTag }));
-  }
+    this.setState(({ activeStartTag }) => ({
+      showDatePicker: activeStartTag !== "Custom",
+      start: null,
+      activeStartTag: newStartTag,
+    }));
+  };
 
   onDayClick = (e, day, { selected, disabled }) => {
     if (disabled) return;
@@ -176,7 +171,7 @@ export class Schedule extends Component {
       frequency: this.state.frequency,
       start: day,
     });
-  }
+  };
 
   render() {
     const { authorized } = this.props;
