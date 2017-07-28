@@ -6,7 +6,7 @@ os:
 # - osx
 # osx_image: xcode7.3
 language: node_js
-dist: precise
+dist: trusty
 node_js:
 - '6'
 addons:
@@ -23,7 +23,7 @@ cache:
     - $HOME/.yarn-cache
     - node_modules
 before_install:
-  - echo 'America/New_York' | sudo tee /etc/timezone
+  - unset TZ
   - sudo dpkg-reconfigure --frontend noninteractive tzdata
   - chmod +x $TRAVIS_BUILD_DIR/.travis/run_on_pull_requests
   - chmod +x $TRAVIS_BUILD_DIR/.travis/run_for_coverage
