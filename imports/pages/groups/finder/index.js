@@ -26,12 +26,19 @@ class TemplateWithoutData extends Component {
   state = {
     tags: [],
     query: null,
+    latitude: null,
+    longitude: null,
   }
 
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("TOP"));
     if (this.headerAction) {
       this.headerAction({ title: "Group Finder" });
+    }
+    if (Meteor.isCordova) {
+      document.addEventListener("deviceready", this.deviceReadyFunction, false);
+    } else {
+      setTimeout(this.deviceReadyFunction(), 3000);
     }
   }
 
@@ -43,8 +50,16 @@ class TemplateWithoutData extends Component {
     }
   }
 
+  deviceReadyFunction = () => {
+    navigator.geolocation.getCurrentPosition(this.setGeolocation);
+  }
+
+  setGeolocation = (position) => {
+    this.setState({ latitude: position.coords.latitude, longitude: position.coords.longitude });
+  }
+
   getResults = () => {
-    const { tags, query } = this.state;
+    const { tags, query, latitude, longitude } = this.state;
     const { router, location } = this.props;
 
     if (!location.query) location.query = {};
@@ -56,7 +71,7 @@ class TemplateWithoutData extends Component {
     if (location.query.schedules) delete location.query.schedules;
 
     // reset state
-    this.setState({ tags: [], query: null });
+    this.setState({ tags: [], query: null, latitude, longitude });
     router.push(location);
   }
 
@@ -64,6 +79,8 @@ class TemplateWithoutData extends Component {
     this.setState({
       tags: this.state.tags,
       query: value,
+      latitude: this.state.latitude,
+      longitude: this.state.longitude,
     });
   }
 
@@ -98,7 +115,7 @@ class TemplateWithoutData extends Component {
       || location.query.q
       || location.query.campuses
       || location.query.schedules
-    )) return <Result />;
+    )) return <Result latitude={this.state.latitude} longitude={this.state.longitude} />;
     return (
       <div>
         <Split>

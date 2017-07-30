@@ -54,6 +54,8 @@ class TemplateWithoutData extends Component {
     location: PropTypes.object.isRequired,
     router: PropTypes.object.isRequired,
     done: PropTypes.bool,
+    latitude: PropTypes.number,
+    longitude: PropTypes.number,
     loading: PropTypes.bool,
     Loading: PropTypes.func,
     /* eslint-disable */
@@ -85,7 +87,7 @@ class TemplateWithoutData extends Component {
     this.setState({ hover: id });
   }
 
-  onMarkerHover =(marker) => this.setState({ hover: marker.id })
+  onMarkerHover = (marker) => this.setState({ hover: marker.id })
 
   getMarkers = (groups = []) => {
     const markers = [];
@@ -114,7 +116,7 @@ class TemplateWithoutData extends Component {
   }
 
   render() {
-    const { data, tags, campusLocations, campuses, schedules, q, done, Loading, loading } = this.props;
+    const { data, tags, campusLocations, campuses, schedules, q, done, Loading, loading, latitude, longitude } = this.props;
     let count;
     let groups = defaultArray;
     if (data.groups && data.groups.count) count = data.groups.count;
@@ -158,6 +160,8 @@ class TemplateWithoutData extends Component {
             campusLocations={campusLocations}
             query={q}
             done={done}
+            latitude={latitude}
+            longitude={longitude}
             removeQueryString={this.removeQueryString}
             showTags={this.state.showTags}
             toggleTags={this.toggleTags}
@@ -190,8 +194,8 @@ const CAMPUS_LOCATION_QUERY = gql`
 const withCampusLocations = graphql(CAMPUS_LOCATION_QUERY, { name: "campusLocations" });
 
 const GROUP_FINDER_QUERY = gql`
-  query GroupFinder($query: String, $tags: [String], $limit: Int, $offset: Int, $ip: String, $campuses: [String], $schedules: [Int]) {
-    groups(query: $query, attributes: $tags, limit: $limit, offset: $offset, clientIp: $ip, campuses: $campuses, schedules: $schedules) {
+  query GroupFinder($query: String, $tags: [String], $limit: Int, $offset: Int, $ip: String, $campuses: [String], $latitude: Float, $longitude: Float, $schedules: [Int]) {
+    groups(query: $query, attributes: $tags, limit: $limit, offset: $offset, clientIp: $ip, campuses: $campuses, latitude: $latitude, longitude: $longitude, schedules: $schedules) {
       count
       results {
         id
@@ -235,6 +239,8 @@ const withGroupFinder = graphql(GROUP_FINDER_QUERY, {
       ip: internalIp,
       limit: 10,
       offset: 0,
+      latitude: ownProps.latitude,
+      longitude: ownProps.longitude,
       campuses: ownProps.campuses && ownProps.campuses.split(",").filter((x) => x),
       schedules: ownProps.schedules && ownProps.schedules.length ? ownProps.schedules.split(",").filter((x) => x).map((x) => getDay(x)) : [],
     },
