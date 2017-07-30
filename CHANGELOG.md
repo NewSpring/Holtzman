@@ -4,11 +4,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [5.2.3] UNRELEASED
+## [5.3.0] UNRELEASED
 ### Added
 ### Fixed
-- Added RecordTypeValueId to Person
 ### Updated
+
+## [5.2.3] 2017.07.30
+### Added
+- Added RecordTypeValueId to Person.
+- Added Google Tag Manager to the app.
+### Fixed
+- Fixed the "Schedule this Contribution" button to no longer toggle on it's own.
+- Fixed the credit card expiration date input to work correctly on all platforms.
+### Updated
+- Updated Travis to always use the "precise" build environment.
+- Updated Danger to auto-comment with a list of platforms to test when a PR
+gets marked with the "Release" tag.
 
 ## [5.2.2] 2017.07.11
 ### Fixed
