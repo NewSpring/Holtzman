@@ -46,6 +46,7 @@ type IInputProps = {
   autofocus?: boolean,
   format: Function,
   onChange: Function,
+  onFocus: Function,
   onBlur: Function,
   style: Object,
   value: string,
@@ -152,16 +153,23 @@ export default class Input extends Component {
     }
 
     if (this.props.onBlur && typeof (this.props.onBlur) === "function") {
+      // console.log(value, target, e);
       this.props.onBlur(value, target, e);
     }
   }
 
-  focus = () => {
+  focus = (e: Event) => {
     this.setState({
       active: true,
       error: false,
       focused: true,
     });
+
+    const target = this.node;
+
+    if (this.props.onFocus && typeof (this.props.onFocus) === "function") {
+      this.props.onFocus(target.value, target, e);
+    }
   }
 
   setValue = (value: string) => {

@@ -44,12 +44,27 @@ class TemplateWithoutData extends Component {
   }
 
   getResults = () => {
-    const { tags, query } = this.state;
     const { router, location } = this.props;
+    // create an array of the attributes returned by graphql
+    const attributeTags = this.props.attributes.tags.map((tag) => {
+      return tag.value;
+    });
+
+    let tags = [];
+    let query = [];
+
+    // find the tags that aren't defined
+    this.state.tags.forEach(e => {
+      if (e && attributeTags.indexOf(e) > -1) {
+        tags.push(e);
+      } else {
+        query.push(e);
+      }
+    });
 
     if (!location.query) location.query = {};
 
-    if (query) location.query.q = query;
+    if (query.length) location.query.q = query.join(",").toLowerCase();
     if (tags.length) location.query.tags = tags.join(",").toLowerCase();
 
     if (location.query.campuses) delete location.query.campuses;
@@ -61,8 +76,30 @@ class TemplateWithoutData extends Component {
   }
 
   inputOnChange = (value) => {
+    // split each element of the query string into its own array element,
+    // at this point the query string also includes tags
+    const queryString = value.split(/[, ]+/);
+
+    // current state of tags to work off of.
+    let newTags = this.state.tags;
+
+    // remove the tags that have been removed from the search field
+    const removeTags = newTags.filter(e => {
+      if (e && queryString.indexOf(e) < 0) {
+        newTags.splice(newTags.indexOf(e), 1);
+      }
+    });
+
+    // map over the querystring elements and push the elements that are found in
+    // the defined list but not currently in state
+    const foundTags = queryString.filter(e => {
+      if (e && this.state.tags.indexOf(e) < 0) {
+        newTags.push(e);
+      }
+    });
+
     this.setState({
-      tags: this.state.tags,
+      tags: newTags,
       query: value,
     });
   }
@@ -113,6 +150,7 @@ class TemplateWithoutData extends Component {
             canSearchTags={false || this.state.tags.length || this.state.query}
             tags={(attributes && attributes.tags) || defaultArray}
             tagOnClick={this.tagOnClick}
+            selectedTags={this.state.tags}
             submitTags={this.submitTags}
             findByQuery={this.findByQuery}
             inputOnChange={this.inputOnChange}
