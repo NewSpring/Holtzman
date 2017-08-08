@@ -31,6 +31,7 @@ const Layout = ({
   selectedTags,
   submitTags,
   canSearchTags,
+  searchQuery,
   findByQuery,
   inputOnChange,
   content,
@@ -67,6 +68,7 @@ const Layout = ({
         >
           <KeywordSelect
             tags={tags}
+            searchQuery={searchQuery}
             tagOnClick={tagOnClick}
             selectedTags={selectedTags}
             onChange={e => inputOnChange(e)}
@@ -182,6 +184,7 @@ Layout.propTypes = {
   selectedTags: PropTypes.array.isRequired,
   submitTags: PropTypes.func.isRequired,
   canSearchTags: PropTypes.bool.isRequired,
+  searchQuery: PropTypes.array.isRequired,
   findByQuery: PropTypes.func.isRequired,
   inputOnChange: PropTypes.func.isRequired,
   inputOnFocus: PropTypes.func.isRequired,

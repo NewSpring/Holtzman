@@ -19,6 +19,7 @@ export default class Keywords extends Component {
   static propTypes = {
     tags: PropTypes.array.isRequired,
     selectedTags: PropTypes.array.isRequired,
+    searchQuery: PropTypes.array.isRequired,
     tagOnClick: PropTypes.func.isRequired,
     inputOnChange: PropTypes.func.isRequired,
   }
@@ -35,10 +36,12 @@ export default class Keywords extends Component {
 
   componentDidMount() {
       document.addEventListener('mousedown', this.handleClickOutside);
+      document.addEventListener('touchstart', this.handleClickOutside);
   }
 
   componentWillUnmount() {
       document.removeEventListener('mousedown', this.handleClickOutside);
+      document.removeEventListener('touchend', this.handleClickOutside);
   }
 
   setWrapperRef(node) {
@@ -61,7 +64,11 @@ export default class Keywords extends Component {
   }
 
   render() {
-    const { tags, tagOnClick, selectedTags, onChange } = this.props;
+    const { tags, tagOnClick, selectedTags, searchQuery, onChange } = this.props;
+
+    let loweredTags = selectedTags.map(t => {
+      return t.toLowerCase();
+    });
 
     return (
       <div
@@ -75,13 +82,13 @@ export default class Keywords extends Component {
           type="text"
           label={"I'm looking for..."}
           name="keywords"
-          defaultValue={selectedTags.join(", ")}
+          defaultValue={searchQuery}
           onChange={e => onChange(e)}
           onFocus={e => this.setFocus(true)}
         />
         <div className={`push-half-sides push-half-bottom ${!this.state.focused ? "visuallyhidden" : ""}`}>
           {/* weird SSR stuff here to investigate */}
-          {tags.map((tag, i) => <Tag className="" onClick={tagOnClick} key={i} val={tag.value} active={selectedTags.indexOf(tag.value) + 1} />)}
+          {tags.map((tag, i) => <Tag className="" style={{textTransform: "capitalize"}} onClick={tagOnClick} key={i} val={tag.value} active={loweredTags.indexOf(tag.value) + 1} />)}
         </div>
       </div>
     );

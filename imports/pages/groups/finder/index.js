@@ -80,8 +80,12 @@ class TemplateWithoutData extends Component {
     // at this point the query string also includes tags
     const queryString = value.split(/[, ]+/);
 
+    const attributeTags = this.props.attributes.tags.map((tag) => {
+      return tag.value;
+    });
+
     // current state of tags to work off of.
-    let newTags = this.state.tags;
+    let newTags = [...this.state.tags];
 
     // remove the tags that have been removed from the search field
     const removeTags = newTags.filter(e => {
@@ -92,8 +96,12 @@ class TemplateWithoutData extends Component {
 
     // map over the querystring elements and push the elements that are found in
     // the defined list but not currently in state
-    const foundTags = queryString.filter(e => {
-      if (e && this.state.tags.indexOf(e) < 0) {
+    const addTags = queryString.filter((e,i,a) => {
+      if (e === "friendly" && a[i-1] === "kid"){
+        newTags.push("kid friendly");
+      }
+
+      if (e && newTags.indexOf(e) < 0 && attributeTags.indexOf(e) > -1 ) {
         newTags.push(e);
       }
     });
@@ -106,14 +114,18 @@ class TemplateWithoutData extends Component {
 
   tagOnClick = (tag) => {
     const tagList = [...this.state.tags];
+    let queryString = this.state.query || "";
+
     if (tagList.indexOf(tag) > -1) {
-      // remove the tag from the list string
+      const regex = `(,? ?)${tag}`;
+      queryString = queryString.replace(new RegExp(regex), "");
       tagList.splice(tagList.indexOf(tag), 1);
     } else {
+      queryString = queryString && queryString.length ? `${queryString}, ${tag}` : `${tag}`;
       tagList.push(tag);
     }
 
-    this.setState({ tags: tagList });
+    this.setState({ tags: tagList, query: queryString.trim() });
   }
 
   submitTags = (e) => {
@@ -148,6 +160,7 @@ class TemplateWithoutData extends Component {
         <Left scroll classes={["background--light-secondary"]}>
           <Layout
             canSearchTags={false || this.state.tags.length || this.state.query}
+            searchQuery={this.state.query}
             tags={(attributes && attributes.tags) || defaultArray}
             tagOnClick={this.tagOnClick}
             selectedTags={this.state.tags}
