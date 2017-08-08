@@ -22,6 +22,7 @@ exports[`test renders if content loading 1`] = `
       content={Array []}
       findByQuery={[Function]}
       inputOnChange={[Function]}
+      searchQuery={null}
       selectedTags={Array []}
       submitTags={[Function]}
       tagOnClick={[Function]}
@@ -72,6 +73,7 @@ exports[`test renders with props 1`] = `
       }
       findByQuery={[Function]}
       inputOnChange={[Function]}
+      searchQuery={null}
       selectedTags={Array []}
       submitTags={[Function]}
       tagOnClick={[Function]}
@@ -114,6 +116,7 @@ exports[`test renders without attributes 1`] = `
       }
       findByQuery={[Function]}
       inputOnChange={[Function]}
+      searchQuery={null}
       selectedTags={Array []}
       submitTags={[Function]}
       tagOnClick={[Function]}

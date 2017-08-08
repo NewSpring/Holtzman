@@ -174,7 +174,7 @@ it("inputOnChange updates tags and query", () => {
   const wrapper = shallow(generateComponent());
   wrapper.setState({ tags: ["one"], query: null });
   wrapper.instance().inputOnChange("test");
-  expect(wrapper.state().tags).toEqual(["test"]);
+  expect(wrapper.state().query).toEqual("test");
 });
 
 it("tagOnClick adds tag to state if not found", () => {
