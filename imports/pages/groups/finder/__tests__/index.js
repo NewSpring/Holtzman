@@ -160,13 +160,12 @@ it("getResults calls router with q and tags", () => {
       push: mockPush,
     },
   }));
-  wrapper.setState({ query: "test", tags: ["one", "two"] });
+  wrapper.setState({ query: "", tags: ["one", "two"] });
   wrapper.instance().getResults();
   expect(mockPush).toHaveBeenCalledTimes(1);
   expect(mockPush).toHaveBeenCalledWith({
     query: {
-      q: "test",
-      tags: "one,two",
+      q: "one,two",
     },
   });
 });
@@ -175,7 +174,6 @@ it("inputOnChange updates tags and query", () => {
   const wrapper = shallow(generateComponent());
   wrapper.setState({ tags: ["one"], query: null });
   wrapper.instance().inputOnChange("test");
-  expect(wrapper.state().tags).toEqual(["one"]);
   expect(wrapper.state().query).toEqual("test");
 });
 
