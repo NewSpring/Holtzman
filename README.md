@@ -146,4 +146,4 @@ This details how administrators to the repository with admin access inside Jenki
 
 For more information about contributing PRs and issues, see our [Contribution Guidelines](CONTRIBUTING.md).
 
-[Good First PR](https://github.com/NewSpring/Holtzman/labels/good first pr) is a great starting point for people new to this project.
+[Good First PR](https://github.com/NewSpring/Holtzman/labels/good%20first%20pr) is a great starting point for people new to this project.
