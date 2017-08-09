@@ -126,7 +126,6 @@ Meteor.methods({
           Status: 3,
           IsBulkCommunication: false,
           Guid: makeNewGuid(),
-          MediumEntityTypeId: 37, // Mandrill
           Subject: subject,
           MediumData: {
             HtmlMessage: body,
@@ -147,6 +146,12 @@ Meteor.methods({
         if (typeof PersonAliasId === "number") {
           PersonAliasId = [PersonAliasId]; // eslint-disable-line
         }
+
+        // this is a bug in core right now. We can't set Mandrill on the initial
+        // post because it locks everything up, we can however, patch it
+        api.patch.sync(`Communications/${CommunicationId}`, {
+          MediumEntityTypeId: 37, // Mandrill
+        });
 
         const ids = [];
         for (const id of PersonAliasId) {
