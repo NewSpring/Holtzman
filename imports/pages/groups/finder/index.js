@@ -161,7 +161,6 @@ class TemplateWithoutData extends Component {
   /* eslint-disable max-len */
   render() {
     const { attributes, location, content, autofill } = this.props;
-    console.log(autofill);
     if (
       location.query &&
       (location.query.tags ||
