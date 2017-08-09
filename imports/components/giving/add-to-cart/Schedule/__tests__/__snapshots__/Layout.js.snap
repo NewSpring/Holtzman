@@ -16,7 +16,8 @@ exports[`test should render schedule options if checked 1`] = `
   </Checkbox>
   <div>
     <div
-      className="display-block soft-half-ends">
+      className="display-block soft-half-ends"
+      id="frequency">
       <h7>
         Frequency
       </h7>
@@ -34,7 +35,8 @@ exports[`test should render schedule options if checked 1`] = `
       </div>
     </div>
     <div
-      className="display-block soft-bottom">
+      className="display-block soft-bottom"
+      id="start">
       <h7>
         Start Date
       </h7>
@@ -73,7 +75,8 @@ exports[`test should render the date picker if told to 1`] = `
   </Checkbox>
   <div>
     <div
-      className="display-block soft-half-ends">
+      className="display-block soft-half-ends"
+      id="frequency">
       <h7>
         Frequency
       </h7>
@@ -91,7 +94,8 @@ exports[`test should render the date picker if told to 1`] = `
       </div>
     </div>
     <div
-      className="display-block soft-bottom">
+      className="display-block soft-bottom"
+      id="start">
       <h7>
         Start Date
       </h7>

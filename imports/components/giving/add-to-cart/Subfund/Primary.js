@@ -32,6 +32,7 @@ const Primary = ({ active, fundId, accounts, preFill, changeFund, changeAmount }
       format={changeAmount}
       defaultValue={preFill(fundId)}
       style={{ maxWidth: "150px" }}
+      id="primary"
     />
 
     <h3 className={"text-dark-primary display-inline-block push-half-bottom push-half-right"}>
@@ -48,6 +49,7 @@ const Primary = ({ active, fundId, accounts, preFill, changeFund, changeAmount }
       placeholder="select fund"
       onChange={changeFund}
       selected={fundId}
+      id="primary-select"
     />
   </div>
 );
