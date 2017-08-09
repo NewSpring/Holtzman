@@ -75,7 +75,6 @@ const Layout = ({
             label={"Campus"}
             name="Campus"
             defaultValue={user ? user.campus.name : ""}
-            onChange={e => inputOnChange(e)} // This will need to change
           />
           <Forms.Input
             inputClasses={
@@ -85,7 +84,6 @@ const Layout = ({
             defaultValue={user ? user.home.zip : ""}
             type="text"
             name="Zip"
-            onChange={e => inputOnChange(e)} // This will need to change
           />
         </Forms.Form>
       </div>
