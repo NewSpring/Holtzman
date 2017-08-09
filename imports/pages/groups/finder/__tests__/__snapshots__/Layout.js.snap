@@ -52,16 +52,16 @@ exports[`test renders disabled tags 1`] = `
             ]
           } />
         <Input
+          defaultValue=""
           inputClasses="outlined--dotted outlined--light h6 flush-bottom text-black"
           label="Campus"
           name="Campus"
-          onChange={[Function]}
           type="text" />
         <Input
+          defaultValue=""
           inputClasses="outlined--dotted outlined--light h6 flush-bottom text-black"
           label="Location (zip)"
           name="Zip"
-          onChange={[Function]}
           type="text" />
       </Form>
     </div>
@@ -146,16 +146,16 @@ exports[`test renders loading if no tags 1`] = `
           tagOnClick={[Function]}
           tags={Array []} />
         <Input
+          defaultValue=""
           inputClasses="outlined--dotted outlined--light h6 flush-bottom text-black"
           label="Campus"
           name="Campus"
-          onChange={[Function]}
           type="text" />
         <Input
+          defaultValue=""
           inputClasses="outlined--dotted outlined--light h6 flush-bottom text-black"
           label="Location (zip)"
           name="Zip"
-          onChange={[Function]}
           type="text" />
       </Form>
     </div>
@@ -247,16 +247,16 @@ exports[`test renders with props 1`] = `
             ]
           } />
         <Input
+          defaultValue=""
           inputClasses="outlined--dotted outlined--light h6 flush-bottom text-black"
           label="Campus"
           name="Campus"
-          onChange={[Function]}
           type="text" />
         <Input
+          defaultValue=""
           inputClasses="outlined--dotted outlined--light h6 flush-bottom text-black"
           label="Location (zip)"
           name="Zip"
-          onChange={[Function]}
           type="text" />
       </Form>
     </div>
