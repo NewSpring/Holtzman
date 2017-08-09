@@ -17,34 +17,6 @@ import GoogleMap from "../../../components/@primitives/map";
 import Layout from "./ResultLayout";
 
 // HACK
-let internalIp = null;
-if (Meteor.isClient) {
-  // NOTE: window.RTCPeerConnection is "not a constructor" in FF22/23
-  const RTCPeerConnection =
-    window.RTCPeerConnection ||
-    window.mozRTCPeerConnection ||
-    window.webkitRTCPeerConnection; // compatibility for firefox and chrome
-
-  if (RTCPeerConnection) {
-    const pc = new RTCPeerConnection({ iceServers: [] });
-    const noop = () => {};
-    // create a bogus data channel
-    if (typeof pc.createDataChannel === "function") {
-      pc.createDataChannel("");
-      // create offer and set local description
-      pc.createOffer(pc.setLocalDescription.bind(pc), noop);
-      // listen for candidate events
-      pc.onicecandidate = (ice) => {
-        if (!ice || !ice.candidate || !ice.candidate.candidate) return;
-        const myIP = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/.exec(
-          ice.candidate.candidate,
-        )[1];
-        internalIp = myIP;
-        pc.onicecandidate = noop;
-      };
-    }
-  }
-}
 const defaultArray = [];
 class TemplateWithoutData extends Component {
   static propTypes = {
@@ -56,6 +28,8 @@ class TemplateWithoutData extends Component {
     done: PropTypes.bool,
     loading: PropTypes.bool,
     Loading: PropTypes.func,
+    latitude: PropTypes.number,
+    longitude: PropTypes.number,
     /* eslint-disable */
     data: PropTypes.shape({
       groups: PropTypes.shape({
@@ -114,7 +88,7 @@ class TemplateWithoutData extends Component {
   }
 
   render() {
-    const { data, tags, campusLocations, campuses, schedules, q, done, Loading, loading } = this.props;
+    const { data, tags, campusLocations, campuses, schedules, q, done, Loading, loading, zip, latitude, longitude } = this.props;
     let count;
     let groups = defaultArray;
     if (data.groups && data.groups.count) count = data.groups.count;
@@ -154,6 +128,8 @@ class TemplateWithoutData extends Component {
             count={count}
             tags={tags && tags.split(",").filter((x) => x)}
             schedules={schedules && schedules.split(",").filter((x) => x)}
+            latitude={latitude}
+            longitude={longitude}
             campuses={campuses && campuses.split(",").filter((x) => x)}
             campusLocations={campusLocations}
             query={q}
@@ -174,13 +150,16 @@ class TemplateWithoutData extends Component {
 const mapStateToProps = ({ routing: { location } }) => {
   const tags = Object.keys(location.query).length && location.query.tags ? location.query.tags : "";
   const q = Object.keys(location.query).length && location.query.q ? location.query.q : null;
-  const campuses = (
-    Object.keys(location.query).length && location.query.campuses ? location.query.campuses : ""
+  const campus = (
+    Object.keys(location.query).length && location.query.campus ? location.query.campus : ""
+  );
+  const zip = (
+    Object.keys(location.query).length && location.query.zip ? location.query.zip : ""
   );
   const schedules = (
     Object.keys(location.query).length && location.query.schedules ? location.query.schedules : ""
   );
-  return { tags, q, location, campuses, schedules };
+  return { tags, q, location, campus, zip, schedules };
 };
 
 const CAMPUS_LOCATION_QUERY = gql`
@@ -190,8 +169,8 @@ const CAMPUS_LOCATION_QUERY = gql`
 const withCampusLocations = graphql(CAMPUS_LOCATION_QUERY, { name: "campusLocations" });
 
 const GROUP_FINDER_QUERY = gql`
-  query GroupFinder($query: String, $tags: [String], $limit: Int, $offset: Int, $ip: String, $campuses: [String], $schedules: [Int]) {
-    groups(query: $query, attributes: $tags, limit: $limit, offset: $offset, clientIp: $ip, campuses: $campuses, schedules: $schedules) {
+  query GroupFinder($query: String, $tags: [String], $limit: Int, $offset: Int, $campus: String, $latitude: Float, $longitude: Float, $zip: String, $schedules: [Int]) {
+    groups(query: $query, attributes: $tags, limit: $limit, offset: $offset, campus: $campus, latitude: $latitude, longitude: $longitude, zip: $zip, schedules: $schedules) {
       count
       results {
         id
@@ -232,10 +211,12 @@ const withGroupFinder = graphql(GROUP_FINDER_QUERY, {
     variables: {
       tags: ownProps.tags && ownProps.tags.split(",").filter((x) => x),
       query: ownProps.q,
-      ip: internalIp,
+      latitude: ownProps.latitude,
+      longitude: ownProps.longitude,
+      zip: ownProps.zip,
       limit: 10,
       offset: 0,
-      campuses: ownProps.campuses && ownProps.campuses.split(",").filter((x) => x),
+      campus: ownProps.campus,
       schedules: ownProps.schedules && ownProps.schedules.length ? ownProps.schedules.split(",").filter((x) => x).map((x) => getDay(x)) : [],
     },
   }),
