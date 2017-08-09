@@ -3,7 +3,7 @@ import { PropTypes } from "react";
 import { css } from "aphrodite";
 import Meta from "../../../components/shared/meta";
 import Loading from "../../../components/@primitives/UI/loading";
-import Forms from "../../../components/@primitives/UI/forms"
+import Forms from "../../../components/@primitives/UI/forms";
 
 import FeedItem from "../../../components/content/feed-item-card";
 import SideBySide from "../../../components/@primitives/UI/cards/SideBySideCard";
@@ -12,18 +12,6 @@ import Tag from "../../../components/@primitives/UI/tags";
 import GroupsILead from "../../../components/groups/groups-i-lead";
 import KeywordSelect from "./Fields/Keyword";
 
-// import Styles from "./style-css";
-
-const modalFocusedStyle = {
-  border: "1px solid #f0f0f0",
-  borderRadius: 7,
-  boxShadow: "0px 2px 9px #DDD",
-};
-
-const modalHiddenStyle = {
-  border: 0,
-}
-
 /* eslint-disable max-len */
 const Layout = ({
   tags,
@@ -31,6 +19,8 @@ const Layout = ({
   selectedTags,
   submitTags,
   canSearchTags,
+  campuses,
+  user,
   searchQuery,
   findByQuery,
   inputOnChange,
@@ -46,12 +36,16 @@ const Layout = ({
 
     <GroupsILead />
 
-    <div className="background--light-primary soft soft-double-top soft-double-top@lap-and-up text-center" style={{ overflow: "visible" }}>
+    <div
+      className="background--light-primary soft soft-double-top soft-double-top@lap-and-up text-center"
+      style={{ overflow: "visible" }}
+    >
       <div>
         <h3>Find Your People</h3>
         <h6 className="soft-half-bottom@handheld soft-bottom">
           <em>
-            Select your interests, campus, and location <br />to search for groups near you.
+            Select your interests, campus, and location <br />to search for
+            groups near you.
           </em>
         </h6>
         <Forms.Form
@@ -74,19 +68,22 @@ const Layout = ({
             onChange={e => inputOnChange(e)}
           />
           <Forms.Input
-            inputClasses={"outlined--dotted outlined--light h6 flush-bottom text-black"}
+            inputClasses={
+              "outlined--dotted outlined--light h6 flush-bottom text-black"
+            }
             type="text"
             label={"Campus"}
             name="Campus"
-            onChange={e => inputOnChange(e)}
+            defaultValue={user ? user.campus.name : ""}
           />
           <Forms.Input
-            inputClasses={"outlined--dotted outlined--light h6 flush-bottom text-black"}
+            inputClasses={
+              "outlined--dotted outlined--light h6 flush-bottom text-black"
+            }
             label={"Location (zip)"}
-            // show tel if mobile
+            defaultValue={user ? user.home.zip : ""}
             type="text"
             name="Zip"
-            onChange={e => inputOnChange(e)}
           />
         </Forms.Form>
       </div>
@@ -180,6 +177,8 @@ const Layout = ({
 
 Layout.propTypes = {
   tags: PropTypes.array.isRequired,
+  campuses: PropTypes.array.isRequired,
+  user: PropTypes.object.isRequired,
   tagOnClick: PropTypes.func.isRequired,
   selectedTags: PropTypes.array.isRequired,
   submitTags: PropTypes.func.isRequired,
