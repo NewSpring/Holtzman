@@ -7,7 +7,7 @@ const focusedInput = {
   borderRadius: 7,
   boxShadow: "0px 2px 9px #DDD",
   backgroundColor: "#FFFFFF",
-  position: "absolute",
+  // position: "absolute",
   zIndex: 99,
 };
 
@@ -22,7 +22,7 @@ export default class Keywords extends Component {
     searchQuery: PropTypes.array.isRequired,
     tagOnClick: PropTypes.func.isRequired,
     inputOnChange: PropTypes.func.isRequired,
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -35,13 +35,13 @@ export default class Keywords extends Component {
   }
 
   componentDidMount() {
-      document.addEventListener('mousedown', this.handleClickOutside);
-      document.addEventListener('touchstart', this.handleClickOutside);
+    document.addEventListener("mousedown", this.handleClickOutside);
+    document.addEventListener("touchstart", this.handleClickOutside);
   }
 
   componentWillUnmount() {
-      document.removeEventListener('mousedown', this.handleClickOutside);
-      document.removeEventListener('touchend', this.handleClickOutside);
+    document.removeEventListener("mousedown", this.handleClickOutside);
+    document.removeEventListener("touchend", this.handleClickOutside);
   }
 
   setWrapperRef(node) {
@@ -52,19 +52,25 @@ export default class Keywords extends Component {
    * Alert if clicked on outside of element
    */
   handleClickOutside(event) {
-      if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
-          this.setFocus(false);
-      }
+    if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
+      this.setFocus(false);
+    }
   }
 
   setFocus = (focus: Boolean) => {
     this.setState({
       focused: focus,
     });
-  }
+  };
 
   render() {
-    const { tags, tagOnClick, selectedTags, searchQuery, onChange } = this.props;
+    const {
+      tags,
+      tagOnClick,
+      selectedTags,
+      searchQuery,
+      onChange,
+    } = this.props;
 
     let loweredTags = selectedTags.map(t => {
       return t.toLowerCase();
@@ -73,12 +79,16 @@ export default class Keywords extends Component {
     return (
       <div
         style={this.state.focused ? focusedInput : hiddenInput}
-        className={`soft-double-top text-left ${this.state.focused ? "soft-half-sides" : ""}`}
+        className={`soft-double-top text-left ${this.state.focused
+          ? "soft-half-sides"
+          : ""}`}
         ref={this.setWrapperRef}
       >
         <Forms.Input
           classes={this.state.focused ? "soft-bottom" : ""}
-          inputClasses={"outlined--dotted outlined--light h6 flush-bottom text-black"}
+          inputClasses={
+            "outlined--dotted outlined--light h6 flush-bottom text-black"
+          }
           type="text"
           label={"I'm looking for..."}
           name="keywords"
@@ -86,9 +96,22 @@ export default class Keywords extends Component {
           onChange={e => onChange(e)}
           onFocus={e => this.setFocus(true)}
         />
-        <div className={`push-half-sides push-half-bottom ${!this.state.focused ? "visuallyhidden" : ""}`}>
+        <div
+          className={`push-half-sides push-half-bottom ${!this.state.focused
+            ? "visuallyhidden"
+            : ""}`}
+        >
           {/* weird SSR stuff here to investigate */}
-          {tags.map((tag, i) => <Tag className="" style={{textTransform: "capitalize"}} onClick={tagOnClick} key={i} val={tag.value} active={loweredTags.indexOf(tag.value) + 1} />)}
+          {tags.map((tag, i) =>
+            <Tag
+              className=""
+              style={{ textTransform: "capitalize" }}
+              onClick={tagOnClick}
+              key={i}
+              val={tag.value}
+              active={loweredTags.indexOf(tag.value) + 1}
+            />,
+          )}
         </div>
       </div>
     );

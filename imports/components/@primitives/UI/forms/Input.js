@@ -10,12 +10,24 @@ type IRenderLabel = {
   id: string,
   name: string,
   label: string,
-  disabled?: boolean
+  disabled?: boolean,
 };
 
-const RenderLabel = ({ hideLabel = false, id, name, label, disabled = false }: IRenderLabel) => {
+const RenderLabel = ({
+  hideLabel = false,
+  id,
+  name,
+  label,
+  disabled = false,
+}: IRenderLabel) => {
   if (hideLabel) return null;
-  return <Label labelFor={id || name || label} labelName={label || name} disabed={disabled} />;
+  return (
+    <Label
+      labelFor={id || name || label}
+      labelName={label || name}
+      disabed={disabled}
+    />
+  );
 };
 
 type IInputProps = {
@@ -32,6 +44,7 @@ type IInputProps = {
   inputClasses: string,
   hideLabel?: boolean,
   autofocus?: boolean,
+  readOnly: string,
   format: Function,
   onChange: Function,
   onFocus: Function,
@@ -39,7 +52,7 @@ type IInputProps = {
   style: Object,
   value: string,
   placeholder: string,
-  maxLength: number
+  maxLength: number,
 };
 
 export default class Input extends Component {
@@ -250,12 +263,17 @@ export default class Input extends Component {
       placeholder,
       inputClasses,
       defaultValue,
+      readOnly,
       maxLength,
       children,
     } = this.props;
 
     return (
-      <div className={this.classes()} style={style || {}} data-spec="input-wrapper">
+      <div
+        className={this.classes()}
+        style={style || {}}
+        data-spec="input-wrapper"
+      >
         <RenderLabel
           hideLabel={hideLabel}
           id={id}
@@ -265,7 +283,7 @@ export default class Input extends Component {
         />
 
         <input
-          ref={(node) => (this.node = node)}
+          ref={node => (this.node = node)}
           id={id || name || label}
           type={type}
           placeholder={placeholder || label}
@@ -275,6 +293,7 @@ export default class Input extends Component {
           onBlur={this.validate}
           onFocus={this.focus}
           onChange={this.format}
+          readOnly={readOnly}
           defaultValue={defaultValue}
           style={this.style()}
           maxLength={maxLength || ""}
