@@ -31,6 +31,8 @@ class TemplateWithoutData extends Component {
     query: null,
     latitude: null,
     longitude: null,
+    campus: "",
+    zip: "",
   };
 
   componentWillMount() {
@@ -89,7 +91,13 @@ class TemplateWithoutData extends Component {
     router.push(location);
   };
 
-  inputOnChange = value => {
+  campusOnChange = (c: String) => {
+    this.setState({
+      campus: c,
+    });
+  };
+
+  inputOnChange = (value: String) => {
     // split each element of the query string into its own array element
     // at this point the query string also includes tags
     const queryString = value.split(/[, ]+/);
@@ -132,6 +140,9 @@ class TemplateWithoutData extends Component {
 
     if (tagList.indexOf(tag) > -1) {
       queryString = queryString.replace(new RegExp(`(,? ?)${tag}`), "");
+      if (queryString[0] === ",") {
+        queryString = queryString.substring(1);
+      }
       tagList.splice(tagList.indexOf(tag), 1);
     } else {
       queryString =
@@ -183,7 +194,13 @@ class TemplateWithoutData extends Component {
           <Layout
             canSearchTags={false || this.state.tags.length || this.state.query}
             campuses={autofill.loading ? [""] : autofill.campuses}
-            user={autofill.loading ? "" : autofill.person}
+            selectedCampus={
+              autofill.loading || this.state.campus
+                ? this.state.campus
+                : autofill.person.campus.name
+            }
+            zip={autofill.loading ? this.state.zip : autofill.person.home.zip}
+            campusOnChange={this.campusOnChange}
             searchQuery={this.state.query}
             tags={(attributes && attributes.tags) || defaultArray}
             tagOnClick={this.tagOnClick}
