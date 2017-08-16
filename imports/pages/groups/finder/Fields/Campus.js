@@ -57,7 +57,6 @@ export default class Campus extends Component {
   }
 
   setWrapperRef(node) {
-    console.log(node);
     this.wrapperRef = node;
   }
 
@@ -65,8 +64,6 @@ export default class Campus extends Component {
    * Alert if clicked on outside of element
    */
   handleClickOutside(event) {
-    console.log(event);
-    console.log(event.target);
     if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
       this.setFocus(false);
     }

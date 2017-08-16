@@ -18,12 +18,14 @@ exports[`test renders if content loading 1`] = `
     }
     scroll={true}>
     <Layout
+      campusOnChange={[Function]}
       campuses={Array []}
       canSearchTags={null}
       content={Array []}
       findByQuery={[Function]}
       inputOnChange={[Function]}
       searchQuery={null}
+      selectedCampus="Anderson"
       selectedTags={Array []}
       submitTags={[Function]}
       tagOnClick={[Function]}
@@ -33,7 +35,7 @@ exports[`test renders if content loading 1`] = `
           Object {},
         ]
       }
-      user={Object {}} />
+      zip="29607" />
   </Left>
 </div>
 `;
@@ -66,6 +68,7 @@ exports[`test renders with props 1`] = `
     }
     scroll={true}>
     <Layout
+      campusOnChange={[Function]}
       campuses={Array []}
       canSearchTags={null}
       content={
@@ -77,6 +80,7 @@ exports[`test renders with props 1`] = `
       findByQuery={[Function]}
       inputOnChange={[Function]}
       searchQuery={null}
+      selectedCampus="Anderson"
       selectedTags={Array []}
       submitTags={[Function]}
       tagOnClick={[Function]}
@@ -86,7 +90,7 @@ exports[`test renders with props 1`] = `
           Object {},
         ]
       }
-      user={Object {}} />
+      zip="29607" />
   </Left>
 </div>
 `;
@@ -111,6 +115,7 @@ exports[`test renders without attributes 1`] = `
     }
     scroll={true}>
     <Layout
+      campusOnChange={[Function]}
       campuses={Array []}
       canSearchTags={null}
       content={
@@ -122,11 +127,12 @@ exports[`test renders without attributes 1`] = `
       findByQuery={[Function]}
       inputOnChange={[Function]}
       searchQuery={null}
+      selectedCampus="Anderson"
       selectedTags={Array []}
       submitTags={[Function]}
       tagOnClick={[Function]}
       tags={Array []}
-      user={Object {}} />
+      zip="29607" />
   </Left>
 </div>
 `;
