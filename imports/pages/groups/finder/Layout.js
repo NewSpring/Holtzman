@@ -10,6 +10,7 @@ import SideBySide from "../../../components/@primitives/UI/cards/SideBySideCard"
 import GroupsILead from "../../../components/groups/groups-i-lead";
 import KeywordSelect from "./Fields/Keyword";
 import Locate from "../../../components/@primitives/UI/icons/Locate";
+import Validate from "../../../util/validate";
 
 /* eslint-disable max-len */
 const Layout = ({
@@ -79,6 +80,8 @@ const Layout = ({
             type="text"
             name="Zip"
             id="zip"
+            validation={Validate.isLocationBasedZipCode}
+            errorText="Please enter a valid zip code"
           />
           <div className="text-left">
             <Locate fill={"#505050"} className="display-inline-block" />

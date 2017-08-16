@@ -47,6 +47,15 @@ class TemplateWithoutData extends Component {
     }
   }
 
+  componentDidUpdate() {
+    // If you come back from the results page and we still have your
+    // latitude and longitude, we want you to know we're still using it.
+    const zip = document.getElementById("zip");
+    if (this.state.latitude && this.state.longitude && zip) {
+      zip.value = "Using your location";
+    }
+  }
+
   geoLocateMe = (e: Event) => {
     if (e) e.preventDefault();
     navigator.geolocation.getCurrentPosition(this.geolocationSuccess, this.geolocationError, {

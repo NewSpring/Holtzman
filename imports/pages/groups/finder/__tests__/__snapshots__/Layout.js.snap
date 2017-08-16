@@ -59,11 +59,13 @@ exports[`test renders disabled tags 1`] = `
           type="text" />
         <Input
           defaultValue=""
+          errorText="Please enter a valid zip code"
           id="zip"
           inputClasses="outlined--dotted outlined--light h6 flush-bottom text-black"
           label="Location (zip)"
           name="Zip"
-          type="text" />
+          type="text"
+          validation={[Function]} />
         <div
           className="text-left">
           <Locate
@@ -175,11 +177,13 @@ exports[`test renders loading if no tags 1`] = `
           type="text" />
         <Input
           defaultValue=""
+          errorText="Please enter a valid zip code"
           id="zip"
           inputClasses="outlined--dotted outlined--light h6 flush-bottom text-black"
           label="Location (zip)"
           name="Zip"
-          type="text" />
+          type="text"
+          validation={[Function]} />
         <div
           className="text-left">
           <Locate
@@ -298,11 +302,13 @@ exports[`test renders with props 1`] = `
           type="text" />
         <Input
           defaultValue=""
+          errorText="Please enter a valid zip code"
           id="zip"
           inputClasses="outlined--dotted outlined--light h6 flush-bottom text-black"
           label="Location (zip)"
           name="Zip"
-          type="text" />
+          type="text"
+          validation={[Function]} />
         <div
           className="text-left">
           <Locate
