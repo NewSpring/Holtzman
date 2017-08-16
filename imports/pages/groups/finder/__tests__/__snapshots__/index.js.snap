@@ -19,9 +19,10 @@ exports[`test renders if content loading 1`] = `
     scroll={true}>
     <Layout
       campuses={Array []}
-      canSearchTags={null}
+      canSearchTags={Object {}}
       content={Array []}
       findByQuery={[Function]}
+      getLocation={[Function]}
       inputOnChange={[Function]}
       searchQuery={null}
       selectedTags={Array []}
@@ -67,7 +68,7 @@ exports[`test renders with props 1`] = `
     scroll={true}>
     <Layout
       campuses={Array []}
-      canSearchTags={null}
+      canSearchTags={Object {}}
       content={
         Array [
           Object {},
@@ -75,6 +76,7 @@ exports[`test renders with props 1`] = `
         ]
       }
       findByQuery={[Function]}
+      getLocation={[Function]}
       inputOnChange={[Function]}
       searchQuery={null}
       selectedTags={Array []}
@@ -112,7 +114,7 @@ exports[`test renders without attributes 1`] = `
     scroll={true}>
     <Layout
       campuses={Array []}
-      canSearchTags={null}
+      canSearchTags={Object {}}
       content={
         Array [
           Object {},
@@ -120,6 +122,7 @@ exports[`test renders without attributes 1`] = `
         ]
       }
       findByQuery={[Function]}
+      getLocation={[Function]}
       inputOnChange={[Function]}
       searchQuery={null}
       selectedTags={Array []}

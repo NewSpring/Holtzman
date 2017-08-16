@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [5.3.0] UNRELEASED
 ### Added
 - new group finder
+- Added a new utility to validate zip code.
 ### Fixed
 ### Updated
 
