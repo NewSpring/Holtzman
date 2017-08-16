@@ -51,9 +51,7 @@ class TemplateWithoutData extends Component {
 
   geoLocateMe = (e: Event) => {
     if (e) e.preventDefault();
-    navigator.geolocation.getCurrentPosition(this.geolocationSuccess, this.geolocationError, {
-      timeout: 5000,
-    });
+    navigator.geolocation.getCurrentPosition(this.geolocationSuccess, this.geolocationError);
   };
 
   geolocationSuccess = (position: Object) => {
