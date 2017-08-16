@@ -5,17 +5,16 @@ import ReactMixin from "react-mixin";
 import gql from "graphql-tag";
 import { withRouter } from "react-router";
 
-import Split, {
-  Left,
-  Right,
-} from "../../../components/@primitives/layout/split";
+import Split, { Left, Right } from "../../../components/@primitives/layout/split";
 import Headerable from "../../../deprecated/mixins/mixins.Header";
-import { nav as navActions } from "../../../data/store";
+import { nav as navActions, modal } from "../../../data/store";
 
 import Layout from "./Layout";
 import Result from "./Result";
+import ErrTemplate from "./ErrTemplate";
 
 const defaultArray = [];
+
 class TemplateWithoutData extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
@@ -48,15 +47,33 @@ class TemplateWithoutData extends Component {
     }
   }
 
-  deviceReadyFunction = () => {
-    navigator.geolocation.getCurrentPosition(this.setGeolocation);
+  componentDidUpdate() {
+    // If you come back from the results page and we still have your
+    // latitude and longitude, we want you to know we're still using it.
+    const zip = document.getElementById("zip");
+    if (this.state.latitude && this.state.longitude && zip) {
+      zip.value = "Using your location";
+    }
+  }
+
+  geoLocateMe = (e: Event) => {
+    if (e) e.preventDefault();
+    navigator.geolocation.getCurrentPosition(this.geolocationSuccess, this.geolocationError, {
+      timeout: 5000,
+    });
   };
 
-  setGeolocation = (position: Object) => {
+  geolocationSuccess = (position: Object) => {
     this.setState({
       latitude: position.coords.latitude,
       longitude: position.coords.longitude,
     });
+    const zip = document.getElementById("zip");
+    zip.value = "Using your location";
+  };
+
+  geolocationError = error => {
+    this.props.dispatch(modal.render(ErrTemplate, { errorCode: error.code }));
   };
 
   getResults = () => {
@@ -84,6 +101,9 @@ class TemplateWithoutData extends Component {
 
     if (location.query.campuses) delete location.query.campuses;
     if (location.query.schedules) delete location.query.schedules;
+
+    if (latitude) location.query.latitude = latitude;
+    if (longitude) location.query.longitude = longitude;
 
     this.setState({ tags: [], query: null, latitude, longitude });
     router.push(location);
@@ -134,8 +154,7 @@ class TemplateWithoutData extends Component {
       queryString = queryString.replace(new RegExp(`(,? ?)${tag}`), "");
       tagList.splice(tagList.indexOf(tag), 1);
     } else {
-      queryString =
-        queryString && queryString.length ? `${queryString}, ${tag}` : `${tag}`;
+      queryString = queryString && queryString.length ? `${queryString}, ${tag}` : `${tag}`;
       tagList.push(tag);
     }
 
@@ -166,7 +185,9 @@ class TemplateWithoutData extends Component {
       (location.query.tags ||
         location.query.q ||
         location.query.campuses ||
-        location.query.schedules)
+        location.query.schedules ||
+        location.query.latitude ||
+        location.query.longitude)
     ) {
       return <Result />;
     }
@@ -181,7 +202,7 @@ class TemplateWithoutData extends Component {
         </Split>
         <Left scroll classes={["background--light-secondary"]}>
           <Layout
-            canSearchTags={false || this.state.tags.length || this.state.query}
+            canSearchTags={false || this.state.tags.length || this.state.query || autofill.person}
             campuses={autofill.loading ? [""] : autofill.campuses}
             user={autofill.loading ? "" : autofill.person}
             searchQuery={this.state.query}
@@ -192,6 +213,7 @@ class TemplateWithoutData extends Component {
             findByQuery={this.findByQuery}
             inputOnChange={this.inputOnChange}
             content={content.loading ? defaultArray : content.entries}
+            getLocation={this.geoLocateMe}
           />
         </Left>
       </div>
@@ -237,11 +259,7 @@ const withGroupAttributes = graphql(GROUP_ATTRIBUTES_QUERY, {
 });
 
 const TAGGED_CONTENT_QUERY = gql`
-  query GetTaggedContent(
-    $tagName: String!
-    $limit: Int
-    $includeChannels: [String]
-  ) {
+  query GetTaggedContent($tagName: String!, $limit: Int, $includeChannels: [String]) {
     entries: taggedContent(
       tagName: $tagName
       limit: $limit
@@ -284,11 +302,9 @@ const mapStateToProps = state => ({ location: state.routing.location });
 export default withRouter(
   connect(mapStateToProps)(
     withGroupAttributes(
-      withAutoFillMeta(
-        withTaggedContent(ReactMixin.decorate(Headerable)(TemplateWithoutData)),
-      ),
-    ),
-  ),
+      withAutoFillMeta(withTaggedContent(ReactMixin.decorate(Headerable)(TemplateWithoutData)))
+    )
+  )
 );
 
 export { TemplateWithoutData };

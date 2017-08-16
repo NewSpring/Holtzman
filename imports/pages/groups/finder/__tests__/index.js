@@ -236,7 +236,8 @@ it("findByQuery calls preventDefault and blurs the search", () => {
     preventDefault: mockPreventDefault,
   });
   expect(mockPreventDefault).toHaveBeenCalledTimes(1);
-  expect(mockGetElementById).toHaveBeenCalledTimes(1);
+  expect(mockGetElementById).toHaveBeenCalledTimes(2);
   expect(mockGetElementById).toHaveBeenCalledWith("search");
+  expect(mockGetElementById).toHaveBeenCalledWith("zip");
   expect(mockBlur).toHaveBeenCalledTimes(1);
 });
