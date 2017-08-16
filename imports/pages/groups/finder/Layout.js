@@ -1,17 +1,16 @@
 /* eslint-disable react/no-danger */
 import { PropTypes } from "react";
-import { css } from "aphrodite";
 import Meta from "../../../components/shared/meta";
 import Loading from "../../../components/@primitives/UI/loading";
 import Forms from "../../../components/@primitives/UI/forms";
 
-import FeedItem from "../../../components/content/feed-item-card";
+import GroupFinderFeedItem from "../../../components/content/feed-item-card";
 import SideBySide from "../../../components/@primitives/UI/cards/SideBySideCard";
-import Tag from "../../../components/@primitives/UI/tags";
 
 import GroupsILead from "../../../components/groups/groups-i-lead";
 import KeywordSelect from "./Fields/Keyword";
 import CampusSelect from "./Fields/Campus";
+import Locate from "../../../components/@primitives/UI/icons/Locate";
 
 /* eslint-disable max-len */
 const Layout = ({
@@ -28,6 +27,7 @@ const Layout = ({
   findByQuery,
   inputOnChange,
   content,
+  getLocation,
 }) =>
   <section className="background--light-secondary hard">
     {/* Meta */}
@@ -47,8 +47,7 @@ const Layout = ({
         <h3>Find Your People</h3>
         <h6 className="soft-half-bottom@handheld soft-bottom">
           <em>
-            Select your interests, campus, and location <br />to search for
-            groups near you.
+            Select your interests, campus, and location <br />to search for groups near you.
           </em>
         </h6>
         <Forms.Form
@@ -76,14 +75,22 @@ const Layout = ({
             campusOnChange={campusOnChange}
           />
           <Forms.Input
-            inputClasses={
-              "outlined--dotted outlined--light h6 flush-bottom text-black"
-            }
+            inputClasses={"outlined--dotted outlined--light h6 flush-bottom text-black"}
             label={"Location (zip)"}
             defaultValue={zip}
             type="text"
             name="Zip"
+            id="zip"
           />
+          <div className="text-left">
+            <Locate fill={"#505050"} className="display-inline-block" />
+            <h6
+              className="display-inline-block push-half-left"
+              style={{ fontWeight: "400", verticalAlign: "super" }}
+            >
+              <button onClick={e => getLocation(e)}>Use my current location</button>
+            </h6>
+          </div>
         </Forms.Form>
       </div>
     </div>
@@ -144,9 +151,7 @@ const Layout = ({
                     </h4>
 
                     <p className="text-dark-primary">
-                      <small
-                        dangerouslySetInnerHTML={{ __html: entry.meta.summary }}
-                      />
+                      <small dangerouslySetInnerHTML={{ __html: entry.meta.summary }} />
                     </p>
                     <span
                       className={
@@ -161,11 +166,8 @@ const Layout = ({
               );
             }
             return (
-              <div
-                className="grid__item one-whole one-half@palm-wide-and-up"
-                key={key}
-              >
-                <FeedItem item={entry} />
+              <div className="grid__item one-whole one-half@palm-wide-and-up" key={key}>
+                <GroupFinderFeedItem item={entry} />
               </div>
             );
           })}
@@ -186,8 +188,8 @@ Layout.propTypes = {
   searchQuery: PropTypes.array.isRequired,
   findByQuery: PropTypes.func.isRequired,
   inputOnChange: PropTypes.func.isRequired,
-  inputOnFocus: PropTypes.func.isRequired,
   content: PropTypes.array.isRequired,
+  getLocation: PropTypes.func.isRequired,
 };
 
 export default Layout;
