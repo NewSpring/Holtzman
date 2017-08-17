@@ -11,6 +11,7 @@ import Tag from "../../../components/@primitives/UI/tags";
 
 import GroupsILead from "../../../components/groups/groups-i-lead";
 import KeywordSelect from "./Fields/Keyword";
+import CampusSelect from "./Fields/Campus";
 
 /* eslint-disable max-len */
 const Layout = ({
@@ -20,7 +21,9 @@ const Layout = ({
   submitTags,
   canSearchTags,
   campuses,
-  user,
+  zip,
+  selectedCampus,
+  campusOnChange,
   searchQuery,
   findByQuery,
   inputOnChange,
@@ -67,21 +70,17 @@ const Layout = ({
             selectedTags={selectedTags}
             onChange={e => inputOnChange(e)}
           />
-          <Forms.Input
-            inputClasses={
-              "outlined--dotted outlined--light h6 flush-bottom text-black"
-            }
-            type="text"
-            label={"Campus"}
-            name="Campus"
-            defaultValue={user ? user.campus.name : ""}
+          <CampusSelect
+            campuses={campuses}
+            selectedCampus={selectedCampus}
+            campusOnChange={campusOnChange}
           />
           <Forms.Input
             inputClasses={
               "outlined--dotted outlined--light h6 flush-bottom text-black"
             }
             label={"Location (zip)"}
-            defaultValue={user ? user.home.zip : ""}
+            defaultValue={zip}
             type="text"
             name="Zip"
           />
@@ -178,10 +177,11 @@ const Layout = ({
 Layout.propTypes = {
   tags: PropTypes.array.isRequired,
   campuses: PropTypes.array.isRequired,
-  user: PropTypes.object.isRequired,
+  selectedCampus: PropTypes.object.isRequired,
   tagOnClick: PropTypes.func.isRequired,
   selectedTags: PropTypes.array.isRequired,
   submitTags: PropTypes.func.isRequired,
+  campusOnChange: PropTypes.func.isRequired,
   canSearchTags: PropTypes.bool.isRequired,
   searchQuery: PropTypes.array.isRequired,
   findByQuery: PropTypes.func.isRequired,

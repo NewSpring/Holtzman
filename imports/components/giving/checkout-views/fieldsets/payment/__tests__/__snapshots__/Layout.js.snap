@@ -86,6 +86,7 @@ exports[`Layout renders custom toggles if passed 1`] = `
           onChange={[Function]}
           onFocus={[Function]}
           placeholder="Card Number"
+          readOnly={undefined}
           style={Object {}}
           type="tel" />
         <div
@@ -121,6 +122,7 @@ exports[`Layout renders custom toggles if passed 1`] = `
               onChange={[Function]}
               onFocus={[Function]}
               placeholder="Exp (MM/YY)"
+              readOnly={undefined}
               style={Object {}}
               type="tel" />
           </div>
@@ -148,6 +150,7 @@ exports[`Layout renders custom toggles if passed 1`] = `
               onChange={[Function]}
               onFocus={[Function]}
               placeholder="CCV"
+              readOnly={undefined}
               style={Object {}}
               type="tel" />
           </div>
@@ -164,6 +167,7 @@ exports[`Layout renders custom toggles if passed 1`] = `
           Object {
             "cursor": "pointer",
             "marginTop": "-1px",
+            "whiteSpace": "nowrap",
           }
         }>
         <small
@@ -179,6 +183,7 @@ exports[`Layout renders custom toggles if passed 1`] = `
         disabled={undefined}
         id="savePayment"
         name="savePayment"
+        onChange={undefined}
         onClick={[Function]}
         style={
           Object {
@@ -285,6 +290,7 @@ exports[`Layout renders default toggles by default 1`] = `
           onChange={[Function]}
           onFocus={[Function]}
           placeholder="Card Number"
+          readOnly={undefined}
           style={Object {}}
           type="tel" />
         <div
@@ -320,6 +326,7 @@ exports[`Layout renders default toggles by default 1`] = `
               onChange={[Function]}
               onFocus={[Function]}
               placeholder="Exp (MM/YY)"
+              readOnly={undefined}
               style={Object {}}
               type="tel" />
           </div>
@@ -347,6 +354,7 @@ exports[`Layout renders default toggles by default 1`] = `
               onChange={[Function]}
               onFocus={[Function]}
               placeholder="CCV"
+              readOnly={undefined}
               style={Object {}}
               type="tel" />
           </div>
@@ -363,6 +371,7 @@ exports[`Layout renders default toggles by default 1`] = `
           Object {
             "cursor": "pointer",
             "marginTop": "-1px",
+            "whiteSpace": "nowrap",
           }
         }>
         <small
@@ -378,6 +387,7 @@ exports[`Layout renders default toggles by default 1`] = `
         disabled={undefined}
         id="savePayment"
         name="savePayment"
+        onChange={undefined}
         onClick={[Function]}
         style={
           Object {

@@ -31,6 +31,8 @@ class TemplateWithoutData extends Component {
     query: null,
     latitude: null,
     longitude: null,
+    campus: "",
+    zip: "",
   };
 
   componentWillMount() {
@@ -89,7 +91,13 @@ class TemplateWithoutData extends Component {
     router.push(location);
   };
 
-  inputOnChange = value => {
+  campusOnChange = (c: String) => {
+    this.setState({
+      campus: c || "",
+    });
+  };
+
+  inputOnChange = (value: String) => {
     // split each element of the query string into its own array element
     // at this point the query string also includes tags
     const queryString = value.split(/[, ]+/);
@@ -132,6 +140,9 @@ class TemplateWithoutData extends Component {
 
     if (tagList.indexOf(tag) > -1) {
       queryString = queryString.replace(new RegExp(`(,? ?)${tag}`), "");
+      if (queryString[0] === ",") {
+        queryString = queryString.substring(1);
+      }
       tagList.splice(tagList.indexOf(tag), 1);
     } else {
       queryString =
@@ -161,6 +172,7 @@ class TemplateWithoutData extends Component {
   /* eslint-disable max-len */
   render() {
     const { attributes, location, content, autofill } = this.props;
+
     if (
       location.query &&
       (location.query.tags ||
@@ -170,6 +182,20 @@ class TemplateWithoutData extends Component {
     ) {
       return <Result />;
     }
+
+    let selectedCampus = this.state.campus;
+    let zipCode = this.state.zip;
+
+    if (
+      !autofill.loading &&
+      autofill.person &&
+      !this.state.campus &&
+      !this.state.zip
+    ) {
+      selectedCampus = autofill.person.campus.name;
+      zipCode = autofill.person.home.zip;
+    }
+
     return (
       <div>
         <Split>
@@ -182,8 +208,22 @@ class TemplateWithoutData extends Component {
         <Left scroll classes={["background--light-secondary"]}>
           <Layout
             canSearchTags={false || this.state.tags.length || this.state.query}
-            campuses={autofill.loading ? [""] : autofill.campuses}
-            user={autofill.loading ? "" : autofill.person}
+            campuses={
+              autofill.loading
+                ? [""]
+                : autofill.campuses
+                    .filter(x => {
+                      if (x.name === "Web") {
+                        return false;
+                      }
+
+                      return true;
+                    })
+                    .map(x => x.name)
+            }
+            selectedCampus={selectedCampus}
+            zip={zipCode}
+            campusOnChange={this.campusOnChange}
             searchQuery={this.state.query}
             tags={(attributes && attributes.tags) || defaultArray}
             tagOnClick={this.tagOnClick}

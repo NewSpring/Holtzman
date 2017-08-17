@@ -25,6 +25,7 @@ exports[`test renders with props 1`] = `
       Object {
         "cursor": "pointer",
         "marginTop": "-1px",
+        "whiteSpace": "nowrap",
       }
     }>
     <small
@@ -40,6 +41,7 @@ exports[`test renders with props 1`] = `
     disabled={undefined}
     id="savePayment"
     name="savePayment"
+    onChange={undefined}
     onClick={[Function]}
     style={
       Object {
