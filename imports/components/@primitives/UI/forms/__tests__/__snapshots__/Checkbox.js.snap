@@ -18,7 +18,6 @@ exports[`test pushes type prop to inputclasses 1`] = `
   <input
     checked=""
     data-spec="input"
-    onClick={[Function]}
     style={
       Object {
         "width": 0,
@@ -65,7 +64,6 @@ exports[`test should accept a default value 1`] = `
     <input
       checked="checked"
       data-spec="input"
-      onClick={[Function]}
       style={
         Object {
           "width": 0,
@@ -104,7 +102,6 @@ exports[`test should accept an id 1`] = `
       checked=""
       data-spec="input"
       id="harambe"
-      onClick={[Function]}
       style={
         Object {
           "width": 0,
@@ -146,7 +143,6 @@ exports[`test should accept label 1`] = `
       data-spec="input"
       id="harambe"
       name="harambe"
-      onClick={[Function]}
       style={
         Object {
           "width": 0,
@@ -188,7 +184,6 @@ exports[`test should accept name prop 1`] = `
       data-spec="input"
       id="harambe"
       name="harambe"
-      onClick={[Function]}
       style={
         Object {
           "width": 0,
@@ -232,7 +227,6 @@ exports[`test should add classes with classes prop 1`] = `
     <input
       checked=""
       data-spec="input"
-      onClick={[Function]}
       style={
         Object {
           "width": 0,
@@ -269,7 +263,6 @@ exports[`test should add classes with classes prop 2`] = `
     <input
       checked=""
       data-spec="input"
-      onClick={[Function]}
       style={
         Object {
           "width": 0,
@@ -307,7 +300,6 @@ exports[`test should add inputClasses with inputClasses prop 1`] = `
       checked=""
       className="test1 harambe"
       data-spec="input"
-      onClick={[Function]}
       style={
         Object {
           "width": 0,
@@ -345,7 +337,6 @@ exports[`test should disable input with disabled prop 1`] = `
       checked=""
       data-spec="input"
       disabled={true}
-      onClick={[Function]}
       style={
         Object {
           "width": 0,
@@ -383,7 +374,6 @@ exports[`test should display children 1`] = `
     <input
       checked=""
       data-spec="input"
-      onClick={[Function]}
       style={
         Object {
           "width": 0,
@@ -420,7 +410,6 @@ exports[`test should hide label with hideLabel prop 1`] = `
     <input
       checked=""
       data-spec="input"
-      onClick={[Function]}
       style={
         Object {
           "width": 0,
@@ -452,7 +441,6 @@ exports[`test should render with minimal props 1`] = `
     <input
       checked=""
       data-spec="input"
-      onClick={[Function]}
       style={
         Object {
           "width": 0,

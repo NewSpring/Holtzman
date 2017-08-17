@@ -133,7 +133,7 @@ export default class Checkbox extends React.Component {
               ? "checked"
               : ""
           }
-          onClick={e => this.props.clicked(e)}
+          onClick={this.props.clicked}
           onChange={this.props.onChange}
           style={{ width: 0 }}
           data-spec="input"
