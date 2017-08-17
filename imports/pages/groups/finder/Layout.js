@@ -10,8 +10,8 @@ import SideBySide from "../../../components/@primitives/UI/cards/SideBySideCard"
 import GroupsILead from "../../../components/groups/groups-i-lead";
 import KeywordSelect from "./Fields/Keyword";
 import CampusSelect from "./Fields/Campus";
-import Locate from "../../../components/@primitives/UI/icons/Locate";
 import Validate from "../../../util/validate";
+import Svg from "../../../components/@primitives/UI/svg";
 
 /* eslint-disable max-len */
 const Layout = ({
@@ -86,7 +86,7 @@ const Layout = ({
             errorText="Please enter a valid zip code"
           />
           <div className="text-left">
-            <Locate fill={"#505050"} className="display-inline-block" />
+            <Svg name={"locate"} title={"Locate Icon"} fill={"#505050"} />
             <h6
               className="display-inline-block push-half-left"
               style={{ fontWeight: "400", verticalAlign: "super" }}
