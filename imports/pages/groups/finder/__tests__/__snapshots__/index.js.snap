@@ -23,6 +23,7 @@ exports[`test renders if content loading 1`] = `
       canSearchTags={null}
       content={Array []}
       findByQuery={[Function]}
+      getLocation={[Function]}
       inputOnChange={[Function]}
       searchQuery={null}
       selectedCampus="Anderson"
@@ -78,6 +79,7 @@ exports[`test renders with props 1`] = `
         ]
       }
       findByQuery={[Function]}
+      getLocation={[Function]}
       inputOnChange={[Function]}
       searchQuery={null}
       selectedCampus="Anderson"
@@ -125,6 +127,7 @@ exports[`test renders without attributes 1`] = `
         ]
       }
       findByQuery={[Function]}
+      getLocation={[Function]}
       inputOnChange={[Function]}
       searchQuery={null}
       selectedCampus="Anderson"

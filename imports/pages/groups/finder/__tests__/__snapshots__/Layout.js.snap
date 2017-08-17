@@ -53,10 +53,34 @@ exports[`test renders disabled tags 1`] = `
           } />
         <Campus />
         <Input
+          errorText="Please enter a valid zip code"
+          id="zip"
           inputClasses="outlined--dotted outlined--light h6 flush-bottom text-black"
           label="Location (zip)"
           name="Zip"
-          type="text" />
+          type="text"
+          validation={[Function]} />
+        <div
+          className="text-left">
+          <Locate
+            className="display-inline-block"
+            fill="#505050"
+            height="24px"
+            width="24px" />
+          <h6
+            className="display-inline-block push-half-left"
+            style={
+              Object {
+                "fontWeight": "400",
+                "verticalAlign": "super",
+              }
+            }>
+            <button
+              onClick={[Function]}>
+              Use my current location
+            </button>
+          </h6>
+        </div>
       </Form>
     </div>
   </div>
@@ -141,10 +165,34 @@ exports[`test renders loading if no tags 1`] = `
           tags={Array []} />
         <Campus />
         <Input
+          errorText="Please enter a valid zip code"
+          id="zip"
           inputClasses="outlined--dotted outlined--light h6 flush-bottom text-black"
           label="Location (zip)"
           name="Zip"
-          type="text" />
+          type="text"
+          validation={[Function]} />
+        <div
+          className="text-left">
+          <Locate
+            className="display-inline-block"
+            fill="#505050"
+            height="24px"
+            width="24px" />
+          <h6
+            className="display-inline-block push-half-left"
+            style={
+              Object {
+                "fontWeight": "400",
+                "verticalAlign": "super",
+              }
+            }>
+            <button
+              onClick={[Function]}>
+              Use my current location
+            </button>
+          </h6>
+        </div>
       </Form>
     </div>
   </div>
@@ -236,10 +284,34 @@ exports[`test renders with props 1`] = `
           } />
         <Campus />
         <Input
+          errorText="Please enter a valid zip code"
+          id="zip"
           inputClasses="outlined--dotted outlined--light h6 flush-bottom text-black"
           label="Location (zip)"
           name="Zip"
-          type="text" />
+          type="text"
+          validation={[Function]} />
+        <div
+          className="text-left">
+          <Locate
+            className="display-inline-block"
+            fill="#505050"
+            height="24px"
+            width="24px" />
+          <h6
+            className="display-inline-block push-half-left"
+            style={
+              Object {
+                "fontWeight": "400",
+                "verticalAlign": "super",
+              }
+            }>
+            <button
+              onClick={[Function]}>
+              Use my current location
+            </button>
+          </h6>
+        </div>
       </Form>
     </div>
   </div>
