@@ -62,10 +62,11 @@ exports[`test renders disabled tags 1`] = `
           validation={[Function]} />
         <div
           className="text-left">
-          <Locate
-            className="display-inline-block"
+          <Svg
             fill="#505050"
             height="24px"
+            name="locate"
+            title="Locate Icon"
             width="24px" />
           <h6
             className="display-inline-block push-half-left"
@@ -174,10 +175,11 @@ exports[`test renders loading if no tags 1`] = `
           validation={[Function]} />
         <div
           className="text-left">
-          <Locate
-            className="display-inline-block"
+          <Svg
             fill="#505050"
             height="24px"
+            name="locate"
+            title="Locate Icon"
             width="24px" />
           <h6
             className="display-inline-block push-half-left"
@@ -293,10 +295,11 @@ exports[`test renders with props 1`] = `
           validation={[Function]} />
         <div
           className="text-left">
-          <Locate
-            className="display-inline-block"
+          <Svg
             fill="#505050"
             height="24px"
+            name="locate"
+            title="Locate Icon"
             width="24px" />
           <h6
             className="display-inline-block push-half-left"
