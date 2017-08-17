@@ -7,59 +7,24 @@ exports[`test renders disabled tags 1`] = `
     title="Group Finder" />
   <Apollo(Component) />
   <div
-    className="background--light-primary soft-double-sides@lap-wide-and-up">
-    <div
-      className="soft soft-double-ends push-double@lap-and-up soft@lap-wide-and-up text-center">
-      <h3
-        className="flush-bottom">
+    className="background--light-primary soft soft-double-top soft-double-top@lap-and-up text-center"
+    style={
+      Object {
+        "overflow": "visible",
+      }
+    }>
+    <div>
+      <h3>
         Find Your People
       </h3>
       <h6
-        className="soft-half-bottom@handheld soft-bottom@anchored">
+        className="soft-half-bottom@handheld soft-bottom">
         <em>
-          Select multiple tags to find even more groups
+          Select your interests, campus, and location 
+          <br />
+          to search for groups near you.
         </em>
       </h6>
-      <div
-        className="push-ends soft-double-sides@lap-and-up push-double-sides@anchored">
-        <withRouter(Connect(TagWithoutData))
-          className=""
-          onClick={[Function]}
-          val="test" />
-        <withRouter(Connect(TagWithoutData))
-          className=""
-          onClick={[Function]}
-          val="test" />
-      </div>
-      <button
-        className="btn push-top@lap-and-up btn--disabled"
-        disabled={true}
-        onClick={[Function]}>
-        Let\'s Go!
-      </button>
-    </div>
-  </div>
-  <div
-    className="soft-sides soft-double-sides@lap-and-up background--light-primary">
-    <div
-      className="soft@lap-and-up">
-      <hr
-        className="flush outlined--light"
-        style={
-          Object {
-            "borderTopWidth": 0,
-            "borderWidth": "1px",
-          }
-        } />
-    </div>
-  </div>
-  <div
-    className="soft soft-double-ends soft-double@lap-and-up text-center background--light-primary">
-    <div>
-      <h3
-        className="soft-ends@anchored push-top@lap-and-up flush-bottom">
-        Don\'t see what you\'re looking for?
-      </h3>
       <Form
         action={true}
         classes={
@@ -73,26 +38,62 @@ exports[`test renders disabled tags 1`] = `
           ]
         }
         submit={[Function]}>
-        <Input
-          classes={
-            Array [
-              "hard-bottom",
-            ]
-          }
-          hideLabel={true}
-          name="search"
+        <Keywords
           onChange={[Function]}
-          placeholder="Type your search here..."
-          type="text" />
+          tagOnClick={[Function]}
+          tags={
+            Array [
+              Object {
+                "value": "test",
+              },
+              Object {
+                "value": "test",
+              },
+            ]
+          } />
+        <Campus />
+        <Input
+          errorText="Please enter a valid zip code"
+          id="zip"
+          inputClasses="outlined--dotted outlined--light h6 flush-bottom text-black"
+          label="Location (zip)"
+          name="Zip"
+          type="text"
+          validation={[Function]} />
         <div
-          className="one-whole text-center@handheld text-left@lap-and-up">
-          <h6>
-            <em>
-              Find a group by zipcode, name, campus, or description
-            </em>
+          className="text-left">
+          <Locate
+            className="display-inline-block"
+            fill="#505050"
+            height="24px"
+            width="24px" />
+          <h6
+            className="display-inline-block push-half-left"
+            style={
+              Object {
+                "fontWeight": "400",
+                "verticalAlign": "super",
+              }
+            }>
+            <button
+              onClick={[Function]}>
+              Use my current location
+            </button>
           </h6>
         </div>
       </Form>
+    </div>
+  </div>
+  <div
+    className="soft-double-bottom text-center background--light-primary">
+    <div
+      className="background--light-primary soft-double-sides@lap-wide-and-up">
+      <button
+        className="btn push-top@lap-and-up btn--disabled"
+        disabled={true}
+        onClick={[Function]}>
+        Let\'s Go!
+      </button>
     </div>
   </div>
   <div
@@ -127,48 +128,24 @@ exports[`test renders loading if no tags 1`] = `
     title="Group Finder" />
   <Apollo(Component) />
   <div
-    className="background--light-primary soft-double-sides@lap-wide-and-up">
-    <div
-      className="soft soft-double-ends push-double@lap-and-up soft@lap-wide-and-up text-center">
-      <h3
-        className="flush-bottom">
+    className="background--light-primary soft soft-double-top soft-double-top@lap-and-up text-center"
+    style={
+      Object {
+        "overflow": "visible",
+      }
+    }>
+    <div>
+      <h3>
         Find Your People
       </h3>
       <h6
-        className="soft-half-bottom@handheld soft-bottom@anchored">
+        className="soft-half-bottom@handheld soft-bottom">
         <em>
-          Select multiple tags to find even more groups
+          Select your interests, campus, and location 
+          <br />
+          to search for groups near you.
         </em>
       </h6>
-      <div
-        className="push-ends soft-double-sides@lap-and-up push-double-sides@anchored" />
-      <div
-        className="one-whole text-center">
-        <Loading />
-      </div>
-    </div>
-  </div>
-  <div
-    className="soft-sides soft-double-sides@lap-and-up background--light-primary">
-    <div
-      className="soft@lap-and-up">
-      <hr
-        className="flush outlined--light"
-        style={
-          Object {
-            "borderTopWidth": 0,
-            "borderWidth": "1px",
-          }
-        } />
-    </div>
-  </div>
-  <div
-    className="soft soft-double-ends soft-double@lap-and-up text-center background--light-primary">
-    <div>
-      <h3
-        className="soft-ends@anchored push-top@lap-and-up flush-bottom">
-        Don\'t see what you\'re looking for?
-      </h3>
       <Form
         action={true}
         classes={
@@ -182,26 +159,51 @@ exports[`test renders loading if no tags 1`] = `
           ]
         }
         submit={[Function]}>
-        <Input
-          classes={
-            Array [
-              "hard-bottom",
-            ]
-          }
-          hideLabel={true}
-          name="search"
+        <Keywords
           onChange={[Function]}
-          placeholder="Type your search here..."
-          type="text" />
+          tagOnClick={[Function]}
+          tags={Array []} />
+        <Campus />
+        <Input
+          errorText="Please enter a valid zip code"
+          id="zip"
+          inputClasses="outlined--dotted outlined--light h6 flush-bottom text-black"
+          label="Location (zip)"
+          name="Zip"
+          type="text"
+          validation={[Function]} />
         <div
-          className="one-whole text-center@handheld text-left@lap-and-up">
-          <h6>
-            <em>
-              Find a group by zipcode, name, campus, or description
-            </em>
+          className="text-left">
+          <Locate
+            className="display-inline-block"
+            fill="#505050"
+            height="24px"
+            width="24px" />
+          <h6
+            className="display-inline-block push-half-left"
+            style={
+              Object {
+                "fontWeight": "400",
+                "verticalAlign": "super",
+              }
+            }>
+            <button
+              onClick={[Function]}>
+              Use my current location
+            </button>
           </h6>
         </div>
       </Form>
+    </div>
+  </div>
+  <div
+    className="soft-double-bottom text-center background--light-primary">
+    <div
+      className="background--light-primary soft-double-sides@lap-wide-and-up">
+      <div
+        className="one-whole text-center">
+        <Loading />
+      </div>
     </div>
   </div>
   <div
@@ -236,59 +238,24 @@ exports[`test renders with props 1`] = `
     title="Group Finder" />
   <Apollo(Component) />
   <div
-    className="background--light-primary soft-double-sides@lap-wide-and-up">
-    <div
-      className="soft soft-double-ends push-double@lap-and-up soft@lap-wide-and-up text-center">
-      <h3
-        className="flush-bottom">
+    className="background--light-primary soft soft-double-top soft-double-top@lap-and-up text-center"
+    style={
+      Object {
+        "overflow": "visible",
+      }
+    }>
+    <div>
+      <h3>
         Find Your People
       </h3>
       <h6
-        className="soft-half-bottom@handheld soft-bottom@anchored">
+        className="soft-half-bottom@handheld soft-bottom">
         <em>
-          Select multiple tags to find even more groups
+          Select your interests, campus, and location 
+          <br />
+          to search for groups near you.
         </em>
       </h6>
-      <div
-        className="push-ends soft-double-sides@lap-and-up push-double-sides@anchored">
-        <withRouter(Connect(TagWithoutData))
-          className=""
-          onClick={[Function]}
-          val="test" />
-        <withRouter(Connect(TagWithoutData))
-          className=""
-          onClick={[Function]}
-          val="test" />
-      </div>
-      <button
-        className="btn push-top@lap-and-up"
-        disabled={false}
-        onClick={[Function]}>
-        Let\'s Go!
-      </button>
-    </div>
-  </div>
-  <div
-    className="soft-sides soft-double-sides@lap-and-up background--light-primary">
-    <div
-      className="soft@lap-and-up">
-      <hr
-        className="flush outlined--light"
-        style={
-          Object {
-            "borderTopWidth": 0,
-            "borderWidth": "1px",
-          }
-        } />
-    </div>
-  </div>
-  <div
-    className="soft soft-double-ends soft-double@lap-and-up text-center background--light-primary">
-    <div>
-      <h3
-        className="soft-ends@anchored push-top@lap-and-up flush-bottom">
-        Don\'t see what you\'re looking for?
-      </h3>
       <Form
         action={true}
         classes={
@@ -302,26 +269,62 @@ exports[`test renders with props 1`] = `
           ]
         }
         submit={[Function]}>
-        <Input
-          classes={
-            Array [
-              "hard-bottom",
-            ]
-          }
-          hideLabel={true}
-          name="search"
+        <Keywords
           onChange={[Function]}
-          placeholder="Type your search here..."
-          type="text" />
+          tagOnClick={[Function]}
+          tags={
+            Array [
+              Object {
+                "value": "test",
+              },
+              Object {
+                "value": "test",
+              },
+            ]
+          } />
+        <Campus />
+        <Input
+          errorText="Please enter a valid zip code"
+          id="zip"
+          inputClasses="outlined--dotted outlined--light h6 flush-bottom text-black"
+          label="Location (zip)"
+          name="Zip"
+          type="text"
+          validation={[Function]} />
         <div
-          className="one-whole text-center@handheld text-left@lap-and-up">
-          <h6>
-            <em>
-              Find a group by zipcode, name, campus, or description
-            </em>
+          className="text-left">
+          <Locate
+            className="display-inline-block"
+            fill="#505050"
+            height="24px"
+            width="24px" />
+          <h6
+            className="display-inline-block push-half-left"
+            style={
+              Object {
+                "fontWeight": "400",
+                "verticalAlign": "super",
+              }
+            }>
+            <button
+              onClick={[Function]}>
+              Use my current location
+            </button>
           </h6>
         </div>
       </Form>
+    </div>
+  </div>
+  <div
+    className="soft-double-bottom text-center background--light-primary">
+    <div
+      className="background--light-primary soft-double-sides@lap-wide-and-up">
+      <button
+        className="btn push-top@lap-and-up"
+        disabled={false}
+        onClick={[Function]}>
+        Let\'s Go!
+      </button>
     </div>
   </div>
   <div
