@@ -51,14 +51,8 @@ exports[`test renders disabled tags 1`] = `
               },
             ]
           } />
+        <Campus />
         <Input
-          defaultValue=""
-          inputClasses="outlined--dotted outlined--light h6 flush-bottom text-black"
-          label="Campus"
-          name="Campus"
-          type="text" />
-        <Input
-          defaultValue=""
           inputClasses="outlined--dotted outlined--light h6 flush-bottom text-black"
           label="Location (zip)"
           name="Zip"
@@ -145,14 +139,8 @@ exports[`test renders loading if no tags 1`] = `
           onChange={[Function]}
           tagOnClick={[Function]}
           tags={Array []} />
+        <Campus />
         <Input
-          defaultValue=""
-          inputClasses="outlined--dotted outlined--light h6 flush-bottom text-black"
-          label="Campus"
-          name="Campus"
-          type="text" />
-        <Input
-          defaultValue=""
           inputClasses="outlined--dotted outlined--light h6 flush-bottom text-black"
           label="Location (zip)"
           name="Zip"
@@ -246,14 +234,8 @@ exports[`test renders with props 1`] = `
               },
             ]
           } />
+        <Campus />
         <Input
-          defaultValue=""
-          inputClasses="outlined--dotted outlined--light h6 flush-bottom text-black"
-          label="Campus"
-          name="Campus"
-          type="text" />
-        <Input
-          defaultValue=""
           inputClasses="outlined--dotted outlined--light h6 flush-bottom text-black"
           label="Location (zip)"
           name="Zip"
