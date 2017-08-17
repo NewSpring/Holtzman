@@ -62,19 +62,30 @@ export default class Input extends Component {
   _previousValue: string;
   props: IInputProps;
 
-  state = {
-    active: false,
-    focused: false,
-    error: false,
-    value: null,
-    autofocus: false,
+  state: {
+    active: boolean,
+    focused: boolean,
+    error: boolean,
+    value: ?string,
+    autofocus: boolean,
   };
 
-  componentWillMount() {
-    if (this.props.defaultValue) {
-      this.setState({ active: true });
-    }
+  constructor(props: Object) {
+    super(props);
+    this.state = {
+      active: Boolean(this.props.defaultValue),
+      focused: false,
+      error: false,
+      value: null,
+      autofocus: false,
+    };
   }
+
+  // componentWillMount() {
+  //   if (this.props.defaultValue) {
+  //     this.setState({ active: true });
+  //   }
+  // }
 
   componentDidMount() {
     if (this.props.autofocus) {
@@ -91,7 +102,12 @@ export default class Input extends Component {
         return;
       }
 
-      if (!this._previousValue && target.value && !this.state.focused) {
+      if (
+        !this._previousValue &&
+        target.value &&
+        !this.state.focused &&
+        !this.state.value
+      ) {
         // eslint-disable-line
         this.setValue(target.value);
       }
@@ -156,7 +172,6 @@ export default class Input extends Component {
     }
 
     if (this.props.onBlur && typeof this.props.onBlur === "function") {
-      // console.log(value, target, e);
       this.props.onBlur(value, target, e);
     }
   };
@@ -169,9 +184,10 @@ export default class Input extends Component {
     });
 
     const target = this.node;
+    const value = this.getValue();
 
     if (this.props.onFocus && typeof this.props.onFocus === "function") {
-      this.props.onFocus(target.value, target, e);
+      this.props.onFocus(value, target, e);
     }
   };
 
@@ -183,6 +199,8 @@ export default class Input extends Component {
     } else {
       node.value = StripTags(value); // eslint-disable-line
     }
+
+    this.setState({ value: node.value });
     this.focus();
     this.validate();
   };

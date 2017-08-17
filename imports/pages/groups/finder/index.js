@@ -93,7 +93,7 @@ class TemplateWithoutData extends Component {
 
   campusOnChange = (c: String) => {
     this.setState({
-      campus: c,
+      campus: c || "",
     });
   };
 
@@ -172,6 +172,7 @@ class TemplateWithoutData extends Component {
   /* eslint-disable max-len */
   render() {
     const { attributes, location, content, autofill } = this.props;
+
     if (
       location.query &&
       (location.query.tags ||
@@ -181,6 +182,20 @@ class TemplateWithoutData extends Component {
     ) {
       return <Result />;
     }
+
+    let selectedCampus = this.state.campus;
+    let zipCode = this.state.zip;
+
+    if (
+      !autofill.loading &&
+      autofill.person &&
+      !this.state.campus &&
+      !this.state.zip
+    ) {
+      selectedCampus = autofill.person.campus.name;
+      zipCode = autofill.person.home.zip;
+    }
+
     return (
       <div>
         <Split>
@@ -193,13 +208,21 @@ class TemplateWithoutData extends Component {
         <Left scroll classes={["background--light-secondary"]}>
           <Layout
             canSearchTags={false || this.state.tags.length || this.state.query}
-            campuses={autofill.loading ? [""] : autofill.campuses}
-            selectedCampus={
-              autofill.loading || this.state.campus
-                ? this.state.campus
-                : autofill.person.campus.name
+            campuses={
+              autofill.loading
+                ? [""]
+                : autofill.campuses
+                    .filter(x => {
+                      if (x.name === "Web") {
+                        return false;
+                      }
+
+                      return true;
+                    })
+                    .map(x => x.name)
             }
-            zip={autofill.loading ? this.state.zip : autofill.person.home.zip}
+            selectedCampus={selectedCampus}
+            zip={zipCode}
             campusOnChange={this.campusOnChange}
             searchQuery={this.state.query}
             tags={(attributes && attributes.tags) || defaultArray}
