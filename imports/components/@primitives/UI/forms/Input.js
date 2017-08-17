@@ -10,12 +10,24 @@ type IRenderLabel = {
   id: string,
   name: string,
   label: string,
-  disabled?: boolean
+  disabled?: boolean,
 };
 
-const RenderLabel = ({ hideLabel = false, id, name, label, disabled = false }: IRenderLabel) => {
+const RenderLabel = ({
+  hideLabel = false,
+  id,
+  name,
+  label,
+  disabled = false,
+}: IRenderLabel) => {
   if (hideLabel) return null;
-  return <Label labelFor={id || name || label} labelName={label || name} disabed={disabled} />;
+  return (
+    <Label
+      labelFor={id || name || label}
+      labelName={label || name}
+      disabed={disabled}
+    />
+  );
 };
 
 type IInputProps = {
@@ -32,6 +44,7 @@ type IInputProps = {
   inputClasses: string,
   hideLabel?: boolean,
   autofocus?: boolean,
+  readOnly: string,
   format: Function,
   onChange: Function,
   onFocus: Function,
@@ -39,7 +52,7 @@ type IInputProps = {
   style: Object,
   value: string,
   placeholder: string,
-  maxLength: number
+  maxLength: number,
 };
 
 export default class Input extends Component {
@@ -49,19 +62,30 @@ export default class Input extends Component {
   _previousValue: string;
   props: IInputProps;
 
-  state = {
-    active: false,
-    focused: false,
-    error: false,
-    value: null,
-    autofocus: false,
+  state: {
+    active: boolean,
+    focused: boolean,
+    error: boolean,
+    value: ?string,
+    autofocus: boolean,
   };
 
-  componentWillMount() {
-    if (this.props.defaultValue) {
-      this.setState({ active: true });
-    }
+  constructor(props: Object) {
+    super(props);
+    this.state = {
+      active: Boolean(this.props.defaultValue),
+      focused: false,
+      error: false,
+      value: null,
+      autofocus: false,
+    };
   }
+
+  // componentWillMount() {
+  //   if (this.props.defaultValue) {
+  //     this.setState({ active: true });
+  //   }
+  // }
 
   componentDidMount() {
     if (this.props.autofocus) {
@@ -78,7 +102,12 @@ export default class Input extends Component {
         return;
       }
 
-      if (!this._previousValue && target.value && !this.state.focused) {
+      if (
+        !this._previousValue &&
+        target.value &&
+        !this.state.focused &&
+        !this.state.value
+      ) {
         // eslint-disable-line
         this.setValue(target.value);
       }
@@ -143,7 +172,6 @@ export default class Input extends Component {
     }
 
     if (this.props.onBlur && typeof this.props.onBlur === "function") {
-      // console.log(value, target, e);
       this.props.onBlur(value, target, e);
     }
   };
@@ -156,9 +184,10 @@ export default class Input extends Component {
     });
 
     const target = this.node;
+    const value = this.getValue();
 
     if (this.props.onFocus && typeof this.props.onFocus === "function") {
-      this.props.onFocus(target.value, target, e);
+      this.props.onFocus(value, target, e);
     }
   };
 
@@ -170,6 +199,8 @@ export default class Input extends Component {
     } else {
       node.value = StripTags(value); // eslint-disable-line
     }
+
+    this.setState({ value: node.value });
     this.focus();
     this.validate();
   };
@@ -250,12 +281,17 @@ export default class Input extends Component {
       placeholder,
       inputClasses,
       defaultValue,
+      readOnly,
       maxLength,
       children,
     } = this.props;
 
     return (
-      <div className={this.classes()} style={style || {}} data-spec="input-wrapper">
+      <div
+        className={this.classes()}
+        style={style || {}}
+        data-spec="input-wrapper"
+      >
         <RenderLabel
           hideLabel={hideLabel}
           id={id}
@@ -265,7 +301,7 @@ export default class Input extends Component {
         />
 
         <input
-          ref={(node) => (this.node = node)}
+          ref={node => (this.node = node)}
           id={id || name || label}
           type={type}
           placeholder={placeholder || label}
@@ -275,6 +311,7 @@ export default class Input extends Component {
           onBlur={this.validate}
           onFocus={this.focus}
           onChange={this.format}
+          readOnly={readOnly}
           defaultValue={defaultValue}
           style={this.style()}
           maxLength={maxLength || ""}

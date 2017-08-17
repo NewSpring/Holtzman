@@ -23,7 +23,14 @@ const defaultProps = {
   },
   autofill: {
     loading: false,
-    person: {},
+    person: {
+      campus: {
+        name: "Anderson",
+      },
+      home: {
+        zip: "29607",
+      },
+    },
     campuses: [],
   },
   content: {
