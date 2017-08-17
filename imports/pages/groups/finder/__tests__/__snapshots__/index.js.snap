@@ -20,7 +20,7 @@ exports[`test renders if content loading 1`] = `
     <Layout
       campusOnChange={[Function]}
       campuses={Array []}
-      canSearchTags={Object {}}
+      canSearchTags={null}
       content={Array []}
       findByQuery={[Function]}
       getLocation={[Function]}
@@ -71,7 +71,7 @@ exports[`test renders with props 1`] = `
     <Layout
       campusOnChange={[Function]}
       campuses={Array []}
-      canSearchTags={Object {}}
+      canSearchTags={null}
       content={
         Array [
           Object {},
@@ -119,7 +119,7 @@ exports[`test renders without attributes 1`] = `
     <Layout
       campusOnChange={[Function]}
       campuses={Array []}
-      canSearchTags={Object {}}
+      canSearchTags={null}
       content={
         Array [
           Object {},
