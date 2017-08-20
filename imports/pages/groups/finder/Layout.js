@@ -1,25 +1,35 @@
 /* eslint-disable react/no-danger */
 import { PropTypes } from "react";
 import Meta from "../../../components/shared/meta";
-import Forms from "../../../components/@primitives/UI/forms";
 import Loading from "../../../components/@primitives/UI/loading";
+import Forms from "../../../components/@primitives/UI/forms";
 
-import FeedItem from "../../../components/content/feed-item-card";
+import GroupFinderFeedItem from "../../../components/content/feed-item-card";
 import SideBySide from "../../../components/@primitives/UI/cards/SideBySideCard";
-import Tag from "../../../components/@primitives/UI/tags";
 
 import GroupsILead from "../../../components/groups/groups-i-lead";
+import KeywordSelect from "./Fields/Keyword";
+import CampusSelect from "./Fields/Campus";
+import Validate from "../../../util/validate";
+import Svg from "../../../components/@primitives/UI/svg";
 
 /* eslint-disable max-len */
 const Layout = ({
   tags,
   tagOnClick,
+  selectedTags,
   submitTags,
   canSearchTags,
+  campuses,
+  zip,
+  selectedCampus,
+  campusOnChange,
+  searchQuery,
   findByQuery,
   inputOnChange,
   content,
-}) => (
+  getLocation,
+}) =>
   <section className="background--light-secondary hard">
     {/* Meta */}
     <Meta
@@ -30,57 +40,17 @@ const Layout = ({
 
     <GroupsILead />
 
-    {/* Tags :rocket: */}
-    <div className="background--light-primary soft-double-sides@lap-wide-and-up">
-      <div
-        className={
-          "soft soft-double-ends " +
-          "push-double@lap-and-up soft@lap-wide-and-up text-center"
-        }
-      >
-        <h3 className="flush-bottom">Find Your People</h3>
-        <h6 className="soft-half-bottom@handheld soft-bottom@anchored">
-          <em>Select multiple tags to find even more groups</em>
-        </h6>
-        <div className="push-ends soft-double-sides@lap-and-up push-double-sides@anchored">
-          {/* weird SSR stuff here to investigate */}
-          {tags.map((tag, i) => <Tag className="" onClick={tagOnClick} key={i} val={tag.value} />)}
-        </div>
-        {(() => {
-          if (!tags.length) {
-            return <div className="one-whole text-center"><Loading /></div>;
-          }
-
-          const classes = ["btn", "push-top@lap-and-up"];
-          if (!canSearchTags) classes.push("btn--disabled");
-          // XXX why can't I just pass in the function here?
-          return (
-            <button
-              disabled={!canSearchTags}
-              onClick={(e) => submitTags(e)}
-              className={classes.join(" ")}
-            >
-              Let&#39;s Go!
-            </button>
-          );
-        })()}
-      </div>
-    </div>
-
-    <div className="soft-sides soft-double-sides@lap-and-up background--light-primary">
-      <div className="soft@lap-and-up">
-        <hr className="flush outlined--light" style={{ borderWidth: "1px", borderTopWidth: 0 }} />
-      </div>
-    </div>
-
-    {/* Search */}
     <div
-      className="soft soft-double-ends soft-double@lap-and-up text-center background--light-primary"
+      className="background--light-primary soft soft-double-top soft-double-top@lap-and-up text-center"
+      style={{ overflow: "visible" }}
     >
       <div>
-        <h3 className="soft-ends@anchored push-top@lap-and-up flush-bottom">
-          Don&#39;t see what you&#39;re looking for?
-        </h3>
+        <h3>Find Your People</h3>
+        <h6 className="soft-half-bottom@handheld soft-bottom">
+          <em>
+            Select your interests, campus, and location <br />to search for groups near you.
+          </em>
+        </h6>
         <Forms.Form
           classes={[
             "soft",
@@ -90,21 +60,67 @@ const Layout = ({
             "display-inline-block",
             "push-bottom",
           ]}
-          submit={(e) => findByQuery(e)}
+          submit={e => findByQuery(e)}
           action
         >
-          <Forms.Input
-            hideLabel
-            classes={["hard-bottom"]}
-            placeholder="Type your search here..."
-            type="text"
-            name="search"
-            onChange={(e) => inputOnChange(e)}
+          <KeywordSelect
+            tags={tags}
+            searchQuery={searchQuery}
+            tagOnClick={tagOnClick}
+            selectedTags={selectedTags}
+            onChange={e => inputOnChange(e)}
           />
-          <div className="one-whole text-center@handheld text-left@lap-and-up">
-            <h6><em>Find a group by zipcode, name, campus, or description</em></h6>
+          <CampusSelect
+            campuses={campuses}
+            selectedCampus={selectedCampus}
+            campusOnChange={campusOnChange}
+          />
+          <Forms.Input
+            inputClasses={"outlined--dotted outlined--light h6 flush-bottom text-black"}
+            label={"Location (zip)"}
+            defaultValue={zip}
+            type="text"
+            name="Zip"
+            id="zip"
+            validation={Validate.isLocationBasedZipCode}
+            errorText="Please enter a valid zip code"
+          />
+          <div className="text-left">
+            <Svg name={"locate"} title={"Locate Icon"} fill={"#505050"} />
+            <h6
+              className="display-inline-block push-half-left"
+              style={{ fontWeight: "400", verticalAlign: "super" }}
+            >
+              <button onClick={e => getLocation(e)}>Use my current location</button>
+            </h6>
           </div>
         </Forms.Form>
+      </div>
+    </div>
+    <div className="soft-double-bottom text-center background--light-primary">
+      <div className="background--light-primary soft-double-sides@lap-wide-and-up">
+        {(() => {
+          if (!tags.length) {
+            return (
+              <div className="one-whole text-center">
+                <Loading />
+              </div>
+            );
+          }
+
+          const classes = ["btn", "push-top@lap-and-up"];
+          if (!canSearchTags) classes.push("btn--disabled");
+          // XXX why can't I just pass in the function here?
+          return (
+            <button
+              disabled={!canSearchTags}
+              onClick={e => submitTags(e)}
+              className={classes.join(" ")}
+            >
+              Let&#39;s Go!
+            </button>
+          );
+        })()}
       </div>
     </div>
 
@@ -117,61 +133,67 @@ const Layout = ({
     >
       <h3 className="push-top">You Can&#39;t Do Life Alone</h3>
       <div className="grid">
-        {content && content.map((entry, key) => {
-          if (process.env.WEB) {
-            return (
-              <a
-                rel="noopener noreferrer"
-                target="_blank"
-                href={`https://newspring.cc/articles/${entry.meta.urlTitle}`}
-                className="plain grid__item one-whole"
-                key={key}
-              >
-                <SideBySide
-                  classes={["push-bottom@lap-and-up"]}
-                  images={entry.content.images}
-                  defaultImage={entry.content.images[0].url}
+        {content &&
+          content.map((entry, key) => {
+            if (process.env.WEB) {
+              return (
+                <a
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  href={`https://newspring.cc/articles/${entry.meta.urlTitle}`}
+                  className="plain grid__item one-whole"
+                  key={key}
                 >
-                  <h4 className="text-dark-primary push-half-top@portable push-top@anchored">
-                    {entry.title}
-                  </h4>
-
-                  <p className="text-dark-primary">
-                    <small dangerouslySetInnerHTML={{ __html: entry.meta.summary }} />
-                  </p>
-                  <span
-                    className={
-                      "h6 btn--small btn--dark-tertiary " +
-                      "soft-sides@portable one-whole@handheld"
-                    }
+                  <SideBySide
+                    classes={["push-bottom@lap-and-up"]}
+                    images={entry.content.images}
+                    defaultImage={entry.content.images[0].url}
                   >
-                    Read more
-                  </span>
+                    <h4 className="text-dark-primary push-half-top@portable push-top@anchored">
+                      {entry.title}
+                    </h4>
 
-                </SideBySide>
-              </a>
+                    <p className="text-dark-primary">
+                      <small dangerouslySetInnerHTML={{ __html: entry.meta.summary }} />
+                    </p>
+                    <span
+                      className={
+                        "h6 btn--small btn--dark-tertiary " +
+                        "soft-sides@portable one-whole@handheld"
+                      }
+                    >
+                      Read more
+                    </span>
+                  </SideBySide>
+                </a>
+              );
+            }
+            return (
+              <div className="grid__item one-whole one-half@palm-wide-and-up" key={key}>
+                <GroupFinderFeedItem item={entry} />
+              </div>
             );
-          }
-          return (
-            <div className="grid__item one-whole one-half@palm-wide-and-up" key={key} >
-              <FeedItem item={entry} />
-            </div>
-          );
-        })}
+          })}
       </div>
     </div>
-  </section>
-);
+  </section>;
 /* eslint-enable max-len */
 
 Layout.propTypes = {
   tags: PropTypes.array.isRequired,
+  campuses: PropTypes.array.isRequired,
+  zip: PropTypes.string.isRequired,
+  selectedCampus: PropTypes.object.isRequired,
   tagOnClick: PropTypes.func.isRequired,
+  selectedTags: PropTypes.array.isRequired,
   submitTags: PropTypes.func.isRequired,
+  campusOnChange: PropTypes.func.isRequired,
   canSearchTags: PropTypes.bool.isRequired,
+  searchQuery: PropTypes.array.isRequired,
   findByQuery: PropTypes.func.isRequired,
   inputOnChange: PropTypes.func.isRequired,
   content: PropTypes.array.isRequired,
+  getLocation: PropTypes.func.isRequired,
 };
 
 export default Layout;
