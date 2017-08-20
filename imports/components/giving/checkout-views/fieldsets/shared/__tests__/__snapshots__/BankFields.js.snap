@@ -23,6 +23,7 @@ exports[`test should render with props 1`] = `
       onChange={[Function]}
       onFocus={[Function]}
       placeholder="Routing Number"
+      readOnly={undefined}
       style={Object {}}
       type="tel" />
   </div>
@@ -47,6 +48,7 @@ exports[`test should render with props 1`] = `
       onChange={[Function]}
       onFocus={[Function]}
       placeholder="Account Number"
+      readOnly={undefined}
       style={Object {}}
       type="tel" />
   </div>

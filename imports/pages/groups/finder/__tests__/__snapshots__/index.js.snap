@@ -18,10 +18,17 @@ exports[`test renders if content loading 1`] = `
     }
     scroll={true}>
     <Layout
+      campusOnChange={[Function]}
+      campuses={Array []}
       canSearchTags={null}
       content={Array []}
       findByQuery={[Function]}
+      getLocation={[Function]}
+      iconFill="#505050"
       inputOnChange={[Function]}
+      searchQuery={null}
+      selectedCampus="Anderson"
+      selectedTags={Array []}
       submitTags={[Function]}
       tagOnClick={[Function]}
       tags={
@@ -29,7 +36,8 @@ exports[`test renders if content loading 1`] = `
           Object {},
           Object {},
         ]
-      } />
+      }
+      zip="29607" />
   </Left>
 </div>
 `;
@@ -62,6 +70,8 @@ exports[`test renders with props 1`] = `
     }
     scroll={true}>
     <Layout
+      campusOnChange={[Function]}
+      campuses={Array []}
       canSearchTags={null}
       content={
         Array [
@@ -70,7 +80,12 @@ exports[`test renders with props 1`] = `
         ]
       }
       findByQuery={[Function]}
+      getLocation={[Function]}
+      iconFill="#505050"
       inputOnChange={[Function]}
+      searchQuery={null}
+      selectedCampus="Anderson"
+      selectedTags={Array []}
       submitTags={[Function]}
       tagOnClick={[Function]}
       tags={
@@ -78,7 +93,8 @@ exports[`test renders with props 1`] = `
           Object {},
           Object {},
         ]
-      } />
+      }
+      zip="29607" />
   </Left>
 </div>
 `;
@@ -103,6 +119,8 @@ exports[`test renders without attributes 1`] = `
     }
     scroll={true}>
     <Layout
+      campusOnChange={[Function]}
+      campuses={Array []}
       canSearchTags={null}
       content={
         Array [
@@ -111,10 +129,16 @@ exports[`test renders without attributes 1`] = `
         ]
       }
       findByQuery={[Function]}
+      getLocation={[Function]}
+      iconFill="#505050"
       inputOnChange={[Function]}
+      searchQuery={null}
+      selectedCampus="Anderson"
+      selectedTags={Array []}
       submitTags={[Function]}
       tagOnClick={[Function]}
-      tags={Array []} />
+      tags={Array []}
+      zip="29607" />
   </Left>
 </div>
 `;
