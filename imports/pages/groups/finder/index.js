@@ -114,6 +114,7 @@ class TemplateWithoutData extends Component {
     if (longitude) location.query.longitude = longitude;
 
     this.setState({ tags: [], query: null, latitude, longitude });
+    console.log(location);
     router.push(location);
   };
 
@@ -198,22 +199,27 @@ class TemplateWithoutData extends Component {
   render() {
     const { attributes, location, content, autofill } = this.props;
 
-    if (
-      location.query &&
-      (location.query.tags ||
-        location.query.q ||
-        location.query.campuses ||
-        location.query.schedules ||
-        location.query.latitude ||
-        location.query.longitude)
-    ) {
-      return <Result />;
-    }
-
     let selectedCampus = this.state.campus;
     let zipCode = this.state.zip;
 
-    if (!autofill.loading && autofill.person && !this.state.campus && !this.state.zip) {
+    if (
+      (location.query.campus || location.query.zip) &&
+      (!this.state.zip || !this.state.campus)
+    ) {
+      zipCode = !this.state.zip ? location.query.zip : this.state.zip;
+      selectedCampus = !this.state.campus
+        ? location.query.campus
+        : this.state.campus;
+    }
+
+    if (
+      !location.query.campus &&
+      !location.query.zip &&
+      !autofill.loading &&
+      autofill.person &&
+      !this.state.campus &&
+      !this.state.zip
+    ) {
       selectedCampus = autofill.person.campus.name;
       zipCode = autofill.person.home.zip;
     }
@@ -241,7 +247,7 @@ class TemplateWithoutData extends Component {
 
                       return true;
                     })
-                    .map(x => x.name)
+                    .map(x => x.name.toLowerCase())
             }
             selectedCampus={selectedCampus}
             zip={zipCode}
