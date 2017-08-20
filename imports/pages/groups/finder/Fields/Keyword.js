@@ -54,13 +54,15 @@ export default class Keywords extends Component {
    */
   handleClickOutside(event) {
     if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
-      this.setFocus(false);
+      this.setState({
+        focused: false,
+      });
     }
   }
 
   setFocus = (focus: Boolean) => {
     this.setState({
-      focused: focus,
+      focused: !this.state.focused,
     });
   };
 

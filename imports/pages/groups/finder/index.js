@@ -113,8 +113,9 @@ class TemplateWithoutData extends Component {
     if (latitude) location.query.latitude = latitude;
     if (longitude) location.query.longitude = longitude;
 
+    location.pathname = "/groups/finder";
     this.setState({ tags: [], query: null, latitude, longitude });
-    console.log(location);
+
     router.push(location);
   };
 
