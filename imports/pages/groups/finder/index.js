@@ -32,6 +32,7 @@ class TemplateWithoutData extends Component {
     longitude: null,
     campus: "",
     zip: "",
+    iconFill: "#505050",
   };
 
   componentWillMount() {
@@ -55,12 +56,28 @@ class TemplateWithoutData extends Component {
   };
 
   geolocationSuccess = (position: Object) => {
-    this.setState({
-      latitude: position.coords.latitude,
-      longitude: position.coords.longitude,
-    });
     const zip = document.getElementById("zip");
-    zip.value = "Using your location";
+    if (this.state.latitude !== null || this.state.longitude !== null) {
+      // we are using a persons location already and they
+      // have clicked the "use my current location" button
+      // again. turn it off.
+      this.setState({
+        latitude: null,
+        longitude: null,
+        iconFill: "#505050",
+      });
+      zip.value = this.state.zip ? this.state.zip : this.props.autofill.person.home.zip;
+      zip.disabled = false;
+    } else {
+      // we are not yet using a persons location. turn it on.
+      this.setState({
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
+        iconFill: "#6BAC43",
+      });
+      zip.value = "Using your location";
+      zip.disabled = true;
+    }
   };
 
   geolocationError = error => {
@@ -238,6 +255,7 @@ class TemplateWithoutData extends Component {
             inputOnChange={this.inputOnChange}
             content={content.loading ? defaultArray : content.entries}
             getLocation={this.geoLocateMe}
+            iconFill={this.state.iconFill}
           />
         </Left>
       </div>
