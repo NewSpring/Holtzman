@@ -7,6 +7,7 @@ const focusedInput = {
   borderRadius: 7,
   boxShadow: "0px 2px 9px #DDD",
   backgroundColor: "#FFFFFF",
+  textTransform: "captialize",
   // position: "absolute",
   zIndex: 99,
 };
@@ -53,13 +54,15 @@ export default class Keywords extends Component {
    */
   handleClickOutside(event) {
     if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
-      this.setFocus(false);
+      this.setState({
+        focused: false,
+      });
     }
   }
 
   setFocus = (focus: Boolean) => {
     this.setState({
-      focused: focus,
+      focused: !this.state.focused,
     });
   };
 
@@ -87,14 +90,14 @@ export default class Keywords extends Component {
         <Forms.Input
           classes={this.state.focused ? "soft-bottom" : ""}
           inputClasses={
-            "outlined--dotted outlined--light h6 flush-bottom text-black"
+            "outlined--dotted outlined--light h6 capitalize flush-bottom text-black"
           }
           type="text"
           label={"I'm looking for..."}
           name="keywords"
           defaultValue={searchQuery}
           onChange={e => onChange(e)}
-          onFocus={e => this.setFocus(true)}
+          onFocus={this.setFocus}
         />
         <div
           className={`push-half-sides push-half-bottom ${!this.state.focused
