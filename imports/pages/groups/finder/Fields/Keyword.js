@@ -62,7 +62,7 @@ export default class Keywords extends Component {
 
   setFocus = (focus: Boolean) => {
     this.setState({
-      focused: !this.state.focused,
+      focused: focus,
     });
   };
 
@@ -97,7 +97,7 @@ export default class Keywords extends Component {
           name="keywords"
           defaultValue={searchQuery}
           onChange={e => onChange(e)}
-          onFocus={this.setFocus}
+          onFocus={e => this.setFocus(true)}
         />
         <div
           className={`push-half-sides push-half-bottom ${!this.state.focused
