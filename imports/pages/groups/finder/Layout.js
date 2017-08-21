@@ -98,7 +98,7 @@ const Layout = ({
             iconTitle="Location Icon"
           />
           <div className="text-left">
-            <Svg name={"locate"} title={"Locate Icon"} fill={"iconFill"} />
+            <Svg name={"locate"} title={"Locate Icon"} fill={iconFill} />
             <h6
               className="display-inline-block push-half-left"
               style={{ fontWeight: "400", verticalAlign: "super" }}
