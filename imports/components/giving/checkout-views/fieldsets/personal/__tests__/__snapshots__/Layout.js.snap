@@ -49,6 +49,7 @@ exports[`Layout renders with props 1`] = `
             onChange={[Function]}
             onFocus={[Function]}
             placeholder="First Name"
+            readOnly={undefined}
             style={Object {}}
             type={undefined} />
         </div>
@@ -76,6 +77,7 @@ exports[`Layout renders with props 1`] = `
             onChange={[Function]}
             onFocus={[Function]}
             placeholder="Last Name"
+            readOnly={undefined}
             style={Object {}}
             type={undefined} />
         </div>
@@ -102,6 +104,7 @@ exports[`Layout renders with props 1`] = `
         onChange={[Function]}
         onFocus={[Function]}
         placeholder="user@email.com"
+        readOnly={undefined}
         style={Object {}}
         type="email" />
     </div>
