@@ -196,6 +196,7 @@ it("getResults calls router with q and tags", () => {
   wrapper.instance().getResults();
   expect(mockPush).toHaveBeenCalledTimes(1);
   expect(mockPush).toHaveBeenCalledWith({
+    pathname: "/groups/finder",
     query: {
       q: "one,two",
     },
