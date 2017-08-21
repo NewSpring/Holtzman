@@ -72,7 +72,7 @@ exports[`test renders disabled tags 1`] = `
         <div
           className="text-left">
           <Svg
-            fill="#505050"
+            fill="#1C683E"
             height="24px"
             name="locate"
             title="Locate Icon"
@@ -86,7 +86,12 @@ exports[`test renders disabled tags 1`] = `
               }
             }>
             <button
-              onClick={[Function]}>
+              onClick={[Function]}
+              style={
+                Object {
+                  "color": "undefined",
+                }
+              }>
               Use my current location
             </button>
           </h6>
@@ -194,7 +199,7 @@ exports[`test renders loading if no tags 1`] = `
         <div
           className="text-left">
           <Svg
-            fill="#505050"
+            fill="#1C683E"
             height="24px"
             name="locate"
             title="Locate Icon"
@@ -208,7 +213,12 @@ exports[`test renders loading if no tags 1`] = `
               }
             }>
             <button
-              onClick={[Function]}>
+              onClick={[Function]}
+              style={
+                Object {
+                  "color": "undefined",
+                }
+              }>
               Use my current location
             </button>
           </h6>
@@ -323,7 +333,7 @@ exports[`test renders with props 1`] = `
         <div
           className="text-left">
           <Svg
-            fill="#505050"
+            fill="#1C683E"
             height="24px"
             name="locate"
             title="Locate Icon"
@@ -337,7 +347,12 @@ exports[`test renders with props 1`] = `
               }
             }>
             <button
-              onClick={[Function]}>
+              onClick={[Function]}
+              style={
+                Object {
+                  "color": "undefined",
+                }
+              }>
               Use my current location
             </button>
           </h6>
