@@ -4,30 +4,19 @@ import { Component } from "react";
 import StripTags from "striptags";
 
 import Label from "./Label";
+import Svg from "../svg";
 
 type IRenderLabel = {
   hideLabel?: boolean,
   id: string,
   name: string,
   label: string,
-  disabled?: boolean,
+  disabled?: boolean
 };
 
-const RenderLabel = ({
-  hideLabel = false,
-  id,
-  name,
-  label,
-  disabled = false,
-}: IRenderLabel) => {
+const RenderLabel = ({ hideLabel = false, id, name, label, disabled = false }: IRenderLabel) => {
   if (hideLabel) return null;
-  return (
-    <Label
-      labelFor={id || name || label}
-      labelName={label || name}
-      disabed={disabled}
-    />
-  );
+  return <Label labelFor={id || name || label} labelName={label || name} disabed={disabled} />;
 };
 
 type IInputProps = {
@@ -53,6 +42,11 @@ type IInputProps = {
   value: string,
   placeholder: string,
   maxLength: number,
+  iconName: string,
+  iconFill: string,
+  iconWidth: string,
+  iconHeight: string,
+  iconTitle: string
 };
 
 export default class Input extends Component {
@@ -67,7 +61,7 @@ export default class Input extends Component {
     focused: boolean,
     error: boolean,
     value: ?string,
-    autofocus: boolean,
+    autofocus: boolean
   };
 
   constructor(props: Object) {
@@ -102,12 +96,7 @@ export default class Input extends Component {
         return;
       }
 
-      if (
-        !this._previousValue &&
-        target.value &&
-        !this.state.focused &&
-        !this.state.value
-      ) {
+      if (!this._previousValue && target.value && !this.state.focused && !this.state.value) {
         // eslint-disable-line
         this.setValue(target.value);
       }
@@ -284,14 +273,15 @@ export default class Input extends Component {
       readOnly,
       maxLength,
       children,
+      iconName,
+      iconFill,
+      iconWidth,
+      iconHeight,
+      iconTitle,
     } = this.props;
 
     return (
-      <div
-        className={this.classes()}
-        style={style || {}}
-        data-spec="input-wrapper"
-      >
+      <div className={this.classes()} style={style || {}} data-spec="input-wrapper">
         <RenderLabel
           hideLabel={hideLabel}
           id={id}
@@ -299,6 +289,17 @@ export default class Input extends Component {
           label={label}
           disabled={this.disabled()}
         />
+
+        {iconName &&
+          <div style={{ position: "absolute", right: "0" }}>
+            <Svg
+              name={iconName}
+              fill={iconFill}
+              width={iconWidth}
+              height={iconHeight}
+              title={iconTitle}
+            />
+          </div>}
 
         <input
           ref={node => (this.node = node)}
