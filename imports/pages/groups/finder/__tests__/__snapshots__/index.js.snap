@@ -20,6 +20,8 @@ exports[`test renders if content loading 1`] = `
     <Layout
       campusOnChange={[Function]}
       campuses={Array []}
+      canSearchCampus=""
+      canSearchLocation=""
       canSearchTags={null}
       content={Array []}
       findByQuery={[Function]}
@@ -64,6 +66,8 @@ exports[`test renders result if campuses 1`] = `
     <Layout
       campusOnChange={[Function]}
       campuses={Array []}
+      canSearchCampus=""
+      canSearchLocation=""
       canSearchTags={null}
       content={
         Array [
@@ -113,6 +117,8 @@ exports[`test renders result if q 1`] = `
     <Layout
       campusOnChange={[Function]}
       campuses={Array []}
+      canSearchCampus=""
+      canSearchLocation=""
       canSearchTags={null}
       content={
         Array [
@@ -162,6 +168,8 @@ exports[`test renders result if schedules 1`] = `
     <Layout
       campusOnChange={[Function]}
       campuses={Array []}
+      canSearchCampus=""
+      canSearchLocation=""
       canSearchTags={null}
       content={
         Array [
@@ -211,6 +219,8 @@ exports[`test renders result if tags 1`] = `
     <Layout
       campusOnChange={[Function]}
       campuses={Array []}
+      canSearchCampus=""
+      canSearchLocation=""
       canSearchTags={null}
       content={
         Array [
@@ -260,6 +270,8 @@ exports[`test renders with props 1`] = `
     <Layout
       campusOnChange={[Function]}
       campuses={Array []}
+      canSearchCampus=""
+      canSearchLocation=""
       canSearchTags={null}
       content={
         Array [
@@ -309,6 +321,8 @@ exports[`test renders without attributes 1`] = `
     <Layout
       campusOnChange={[Function]}
       campuses={Array []}
+      canSearchCampus=""
+      canSearchLocation=""
       canSearchTags={null}
       content={
         Array [
