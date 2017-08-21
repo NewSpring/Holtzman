@@ -51,6 +51,20 @@ class TemplateWithoutData extends Component {
     } else {
       this.props.dispatch(navActions.setLevel("TOP"));
     }
+
+    // Nessesary to check if autofill even exists first
+    if (!nextProps.autofill.loading && nextProps.autofill) {
+      if (
+        nextProps.autofill.person &&
+        nextProps.autofill.person.campus &&
+        nextProps.autofill.person.home
+      ) {
+        this.setState({
+          campus: nextProps.autofill.person.campus.name,
+          zip: nextProps.autofill.person.home.zip,
+        });
+      }
+    }
   }
 
   geoLocateMe = (e: Event) => {
@@ -94,7 +108,7 @@ class TemplateWithoutData extends Component {
 
   getResults = () => {
     const { router, location } = this.props;
-    const { latitude, longitude } = this.state;
+    const { latitude, longitude, campus, zip } = this.state;
     // create an array of the attributes returned by graphql
     const attributeTags = this.props.attributes.tags.map(tag => tag.value);
 
@@ -115,11 +129,13 @@ class TemplateWithoutData extends Component {
     if (query.length) location.query.q = query.join(",").toLowerCase();
     if (tags.length) location.query.tags = tags.join(",").toLowerCase();
 
-    if (location.query.campuses) delete location.query.campuses;
+    if (location.query.campus) delete location.query.campus;
     if (location.query.schedules) delete location.query.schedules;
 
     if (latitude) location.query.latitude = latitude;
     if (longitude) location.query.longitude = longitude;
+    if (campus) location.query.campuses = campus;
+    if (zip) location.query.zip = zip;
 
     location.pathname = "/groups/finder";
     this.setState({ tags: [], query: null, latitude, longitude });
@@ -246,6 +262,8 @@ class TemplateWithoutData extends Component {
         <Left scroll classes={["background--light-secondary"]}>
           <Layout
             canSearchTags={false || this.state.tags.length || this.state.query}
+            canSearchCampus={false || this.state.campus}
+            canSearchLocation={false || this.state.zip}
             campuses={
               autofill.loading
                 ? [""]
