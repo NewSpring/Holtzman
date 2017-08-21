@@ -9,7 +9,7 @@ exports[`Svg Component should render a home svg 1`] = `
   <defs>
     <path
       d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"
-      id="a" />
+      id="home" />
   </defs>
   <g
     fill="none"
@@ -18,18 +18,18 @@ exports[`Svg Component should render a home svg 1`] = `
       d="M0 0h24v24H0z" />
     <mask
       fill="#fff"
-      id="b">
+      id="home_b">
       <use
-        xlinkHref="#a" />
+        xlinkHref="#home" />
     </mask>
     <use
       fill="#444"
       fillRule="nonzero"
-      xlinkHref="#a" />
+      xlinkHref="#home" />
     <path
       d="M0 0h24v24H0z"
       fill="#1C683E"
-      mask="url(#b)" />
+      mask="url(#home_b)" />
   </g>
 </svg>
 `;

@@ -70,11 +70,17 @@ const Layout = ({
             tagOnClick={tagOnClick}
             selectedTags={selectedTags}
             onChange={e => inputOnChange(e)}
+            iconName="tag"
+            iconFill="#505050"
+            iconTitle="Tag Icon"
           />
           <CampusSelect
             campuses={campuses}
             selectedCampus={selectedCampus}
             campusOnChange={campusOnChange}
+            iconName="campus"
+            iconFill="#505050"
+            iconTitle="Campus Icon"
           />
           <Forms.Input
             inputClasses={"outlined--dotted outlined--light h6 flush-bottom text-black"}
@@ -85,6 +91,9 @@ const Layout = ({
             id="zip"
             validation={Validate.isLocationBasedZipCode}
             errorText="Please enter a valid zip code"
+            iconName="location"
+            iconFill="#505050"
+            iconTitle="Location Icon"
           />
           <div className="text-left">
             <Svg name={"locate"} title={"Locate Icon"} fill={iconFill} />
@@ -197,7 +206,6 @@ Layout.propTypes = {
   inputOnChange: PropTypes.func.isRequired,
   content: PropTypes.array.isRequired,
   getLocation: PropTypes.func.isRequired,
-  iconFill: PropTypes.string.isRequired,
 };
 
 export default Layout;
