@@ -29,6 +29,7 @@ const Layout = ({
   inputOnChange,
   content,
   getLocation,
+  iconFill,
 }) =>
   <section className="background--light-secondary hard">
     {/* Meta */}
@@ -95,12 +96,14 @@ const Layout = ({
             iconTitle="Location Icon"
           />
           <div className="text-left">
-            <Svg name={"locate"} title={"Locate Icon"} fill={"#505050"} />
+            <Svg name={"locate"} title={"Locate Icon"} fill={iconFill} />
             <h6
               className="display-inline-block push-half-left"
               style={{ fontWeight: "400", verticalAlign: "super" }}
             >
-              <button onClick={e => getLocation(e)}>Use my current location</button>
+              <button onClick={e => getLocation(e)} style={{ color: `${iconFill}` }}>
+                Use my current location
+              </button>
             </h6>
           </div>
         </Forms.Form>
