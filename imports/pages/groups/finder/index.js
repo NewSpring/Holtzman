@@ -5,7 +5,10 @@ import ReactMixin from "react-mixin";
 import gql from "graphql-tag";
 import { withRouter } from "react-router";
 
-import Split, { Left, Right } from "../../../components/@primitives/layout/split";
+import Split, {
+  Left,
+  Right,
+} from "../../../components/@primitives/layout/split";
 import Headerable from "../../../deprecated/mixins/mixins.Header";
 import { nav as navActions, modal } from "../../../data/store";
 
@@ -52,7 +55,10 @@ class TemplateWithoutData extends Component {
 
   geoLocateMe = (e: Event) => {
     if (e) e.preventDefault();
-    navigator.geolocation.getCurrentPosition(this.geolocationSuccess, this.geolocationError);
+    navigator.geolocation.getCurrentPosition(
+      this.geolocationSuccess,
+      this.geolocationError,
+    );
   };
 
   geolocationSuccess = (position: Object) => {
@@ -66,7 +72,9 @@ class TemplateWithoutData extends Component {
         longitude: null,
         iconFill: "#505050",
       });
-      zip.value = this.state.zip ? this.state.zip : this.props.autofill.person.home.zip;
+      zip.value = this.state.zip
+        ? this.state.zip
+        : this.props.autofill.person.home.zip;
       zip.disabled = false;
     } else {
       // we are not yet using a persons location. turn it on.
@@ -113,7 +121,9 @@ class TemplateWithoutData extends Component {
     if (latitude) location.query.latitude = latitude;
     if (longitude) location.query.longitude = longitude;
 
+    location.pathname = "/groups/finder";
     this.setState({ tags: [], query: null, latitude, longitude });
+
     router.push(location);
   };
 
@@ -171,7 +181,8 @@ class TemplateWithoutData extends Component {
       }
       tagList.splice(tagList.indexOf(tag), 1);
     } else {
-      queryString = queryString && queryString.length ? `${queryString}, ${tag}` : `${tag}`;
+      queryString =
+        queryString && queryString.length ? `${queryString}, ${tag}` : `${tag}`;
       tagList.push(tag);
     }
 
@@ -198,22 +209,27 @@ class TemplateWithoutData extends Component {
   render() {
     const { attributes, location, content, autofill } = this.props;
 
-    if (
-      location.query &&
-      (location.query.tags ||
-        location.query.q ||
-        location.query.campuses ||
-        location.query.schedules ||
-        location.query.latitude ||
-        location.query.longitude)
-    ) {
-      return <Result />;
-    }
-
     let selectedCampus = this.state.campus;
     let zipCode = this.state.zip;
 
-    if (!autofill.loading && autofill.person && !this.state.campus && !this.state.zip) {
+    if (
+      (location.query.campus || location.query.zip) &&
+      (!this.state.zip || !this.state.campus)
+    ) {
+      zipCode = !this.state.zip ? location.query.zip : this.state.zip;
+      selectedCampus = !this.state.campus
+        ? location.query.campus
+        : this.state.campus;
+    }
+
+    if (
+      !location.query.campus &&
+      !location.query.zip &&
+      !autofill.loading &&
+      autofill.person &&
+      !this.state.campus &&
+      !this.state.zip
+    ) {
       selectedCampus = autofill.person.campus.name;
       zipCode = autofill.person.home.zip;
     }
@@ -241,7 +257,7 @@ class TemplateWithoutData extends Component {
 
                       return true;
                     })
-                    .map(x => x.name)
+                    .map(x => x.name.toLowerCase())
             }
             selectedCampus={selectedCampus}
             zip={zipCode}
@@ -301,7 +317,11 @@ const withGroupAttributes = graphql(GROUP_ATTRIBUTES_QUERY, {
 });
 
 const TAGGED_CONTENT_QUERY = gql`
-  query GetTaggedContent($tagName: String!, $limit: Int, $includeChannels: [String]) {
+  query GetTaggedContent(
+    $tagName: String!
+    $limit: Int
+    $includeChannels: [String]
+  ) {
     entries: taggedContent(
       tagName: $tagName
       limit: $limit
@@ -344,9 +364,11 @@ const mapStateToProps = state => ({ location: state.routing.location });
 export default withRouter(
   connect(mapStateToProps)(
     withGroupAttributes(
-      withAutoFillMeta(withTaggedContent(ReactMixin.decorate(Headerable)(TemplateWithoutData)))
-    )
-  )
+      withAutoFillMeta(
+        withTaggedContent(ReactMixin.decorate(Headerable)(TemplateWithoutData)),
+      ),
+    ),
+  ),
 );
 
 export { TemplateWithoutData };

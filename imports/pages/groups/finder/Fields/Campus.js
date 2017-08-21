@@ -7,6 +7,7 @@ const focusedInput = {
   boxShadow: "0px 2px 9px #DDD",
   backgroundColor: "#FFFFFF",
   display: "block",
+  textTransform: "captialize",
   // position: "absolute",
   zIndex: 99,
 };
@@ -78,7 +79,7 @@ export default class Campus extends Component {
     const focused =
       this.state.onload && this.props.selectedCampus
         ? false
-      : !this.state.focused;
+        : !this.state.focused;
 
     this.setState({
       focused,
@@ -111,6 +112,7 @@ export default class Campus extends Component {
           inputClasses={
             "outlined--dotted outlined--light h6 flush-bottom text-black"
           }
+          style={{ textTransform: "capitalize" }}
           type="text"
           label={"Campus"}
           name="campus"
@@ -134,11 +136,13 @@ export default class Campus extends Component {
               ]}
               defaultChecked={campus === c ? "defaultChecked" : ""}
               name={c}
-              style={{ textTransform: "capitalize" }}
               key={i}
               clicked={this.onClick}
             >
-              <span className="soft-half-top">
+              <span
+                className="soft-half-top"
+                style={{ textTransform: "capitalize" }}
+              >
                 {c}
               </span>
             </Forms.Checkbox>,
