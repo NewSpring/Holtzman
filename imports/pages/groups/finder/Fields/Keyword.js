@@ -7,6 +7,7 @@ const focusedInput = {
   borderRadius: 7,
   boxShadow: "0px 2px 9px #DDD",
   backgroundColor: "#FFFFFF",
+  textTransform: "captialize",
   // position: "absolute",
   zIndex: 99,
 };
@@ -53,7 +54,9 @@ export default class Keywords extends Component {
    */
   handleClickOutside(event) {
     if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
-      this.setFocus(false);
+      this.setState({
+        focused: false,
+      });
     }
   }
 
@@ -87,7 +90,7 @@ export default class Keywords extends Component {
         <Forms.Input
           classes={this.state.focused ? "soft-bottom" : ""}
           inputClasses={
-            "outlined--dotted outlined--light h6 flush-bottom text-black"
+            "outlined--dotted outlined--light h6 capitalize flush-bottom text-black"
           }
           type="text"
           label={"I'm looking for..."}
