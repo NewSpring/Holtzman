@@ -44,15 +44,15 @@ const Svg = ({ fill, height, name, title, width }: ISvg) =>
       {title}
     </title>
     <defs>
-      <path d={icons[name]} id="a" />
+      <path d={icons[name]} id={name} />
     </defs>
     <g fill="none" fillRule="evenodd">
       <path d="M0 0h24v24H0z" />
-      <mask id="b" fill="#fff">
-        <use xlinkHref="#a" />
+      <mask id={`${name}_b`} fill="#fff">
+        <use xlinkHref={`#${name}`} />
       </mask>
-      <use fill="#444" fillRule="nonzero" xlinkHref="#a" />
-      <path d="M0 0h24v24H0z" mask="url(#b)" fill={fill} />
+      <use fill="#444" fillRule="nonzero" xlinkHref={`#${name}`} />
+      <path d="M0 0h24v24H0z" mask={`url(#${name}_b)`} fill={fill} />
     </g>
   </svg>;
 

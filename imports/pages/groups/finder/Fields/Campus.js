@@ -21,12 +21,17 @@ export default class Campus extends Component {
     campuses: PropTypes.array.isRequired,
     selectedCampus: PropTypes.string.isRequired,
     campusOnChange: PropTypes.func.isRequired,
+    iconName: PropTypes.string.isRequired,
+    iconFill: PropTypes.string,
+    iconWidth: PropTypes.string,
+    iconHeight: PropTypes.string,
+    iconTitle: PropTypes.string,
   };
 
   state: {
     focused: boolean,
     campus: string,
-    onload: boolean,
+    onload: boolean
   };
 
   constructor(props: Object) {
@@ -76,10 +81,7 @@ export default class Campus extends Component {
   }
 
   setFocus = () => {
-    const focused =
-      this.state.onload && this.props.selectedCampus
-        ? false
-        : !this.state.focused;
+    const focused = this.state.onload && this.props.selectedCampus ? false : !this.state.focused;
 
     this.setState({
       focused,
@@ -96,7 +98,16 @@ export default class Campus extends Component {
   };
 
   render() {
-    const { campuses, campusOnChange, selectedCampus } = this.props;
+    const {
+      campuses,
+      campusOnChange,
+      selectedCampus,
+      iconName,
+      iconFill,
+      iconWidth,
+      iconHeight,
+      iconTitle,
+    } = this.props;
     const { campus } = this.state;
 
     return (
@@ -109,9 +120,7 @@ export default class Campus extends Component {
       >
         <Forms.Input
           classes={this.state.focused ? "soft-bottom" : ""}
-          inputClasses={
-            "outlined--dotted outlined--light h6 flush-bottom text-black"
-          }
+          inputClasses={"outlined--dotted outlined--light h6 flush-bottom text-black"}
           style={{ textTransform: "capitalize" }}
           type="text"
           label={"Campus"}
@@ -119,6 +128,11 @@ export default class Campus extends Component {
           defaultValue={campus}
           readOnly="readonly"
           onFocus={this.setFocus}
+          iconName={iconName}
+          iconFill={iconFill}
+          iconWidth={iconWidth}
+          iconHeight={iconHeight}
+          iconTitle={iconTitle}
         />
         <div
           className={`push-half-sides push-half-bottom ${!this.state.focused
@@ -139,13 +153,10 @@ export default class Campus extends Component {
               key={i}
               clicked={this.onClick}
             >
-              <span
-                className="soft-half-top"
-                style={{ textTransform: "capitalize" }}
-              >
+              <span className="soft-half-top" style={{ textTransform: "capitalize" }}>
                 {c}
               </span>
-            </Forms.Checkbox>,
+            </Forms.Checkbox>
           )}
         </div>
       </div>
