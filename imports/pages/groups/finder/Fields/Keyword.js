@@ -22,6 +22,11 @@ export default class Keywords extends Component {
     searchQuery: PropTypes.array.isRequired,
     tagOnClick: PropTypes.func.isRequired,
     inputOnChange: PropTypes.func.isRequired,
+    iconName: PropTypes.string.isRequired,
+    iconFill: PropTypes.string,
+    iconWidth: PropTypes.string,
+    iconHeight: PropTypes.string,
+    iconTitle: PropTypes.string,
   };
 
   constructor(props) {
@@ -70,31 +75,35 @@ export default class Keywords extends Component {
       selectedTags,
       searchQuery,
       onChange,
+      iconName,
+      iconFill,
+      iconWidth,
+      iconHeight,
+      iconTitle,
     } = this.props;
 
-    let loweredTags = selectedTags.map(t => {
-      return t.toLowerCase();
-    });
+    const loweredTags = selectedTags.map(t => t.toLowerCase());
 
     return (
       <div
         style={this.state.focused ? focusedInput : hiddenInput}
-        className={`soft-double-top text-left ${this.state.focused
-          ? "soft-half-sides"
-          : ""}`}
+        className={`soft-double-top text-left ${this.state.focused ? "soft-half-sides" : ""}`}
         ref={this.setWrapperRef}
       >
         <Forms.Input
           classes={this.state.focused ? "soft-bottom" : ""}
-          inputClasses={
-            "outlined--dotted outlined--light h6 flush-bottom text-black"
-          }
+          inputClasses={"outlined--dotted outlined--light h6 flush-bottom text-black"}
           type="text"
           label={"I'm looking for..."}
           name="keywords"
           defaultValue={searchQuery}
           onChange={e => onChange(e)}
           onFocus={e => this.setFocus(true)}
+          iconName={iconName}
+          iconFill={iconFill}
+          iconWidth={iconWidth}
+          iconHeight={iconHeight}
+          iconTitle={iconTitle}
         />
         <div
           className={`push-half-sides push-half-bottom ${!this.state.focused
@@ -110,7 +119,7 @@ export default class Keywords extends Component {
               key={i}
               val={tag.value}
               active={loweredTags.indexOf(tag.value) + 1}
-            />,
+            />
           )}
         </div>
       </div>

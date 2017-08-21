@@ -29,7 +29,6 @@ const Layout = ({
   inputOnChange,
   content,
   getLocation,
-  iconFill,
 }) =>
   <section className="background--light-secondary hard">
     {/* Meta */}
@@ -70,11 +69,17 @@ const Layout = ({
             tagOnClick={tagOnClick}
             selectedTags={selectedTags}
             onChange={e => inputOnChange(e)}
+            iconName="tag"
+            iconFill="#505050"
+            iconTitle="Tag Icon"
           />
           <CampusSelect
             campuses={campuses}
             selectedCampus={selectedCampus}
             campusOnChange={campusOnChange}
+            iconName="campus"
+            iconFill="#505050"
+            iconTitle="Campus Icon"
           />
           <Forms.Input
             inputClasses={"outlined--dotted outlined--light h6 flush-bottom text-black"}
@@ -85,16 +90,17 @@ const Layout = ({
             id="zip"
             validation={Validate.isLocationBasedZipCode}
             errorText="Please enter a valid zip code"
+            iconName="location"
+            iconFill="#505050"
+            iconTitle="Location Icon"
           />
           <div className="text-left">
-            <Svg name={"locate"} title={"Locate Icon"} fill={iconFill} />
+            <Svg name={"locate"} title={"Locate Icon"} fill={"#505050"} />
             <h6
               className="display-inline-block push-half-left"
               style={{ fontWeight: "400", verticalAlign: "super" }}
             >
-              <button onClick={e => getLocation(e)} style={{ color: `${iconFill}` }}>
-                Use my current location
-              </button>
+              <button onClick={e => getLocation(e)}>Use my current location</button>
             </h6>
           </div>
         </Forms.Form>
@@ -197,7 +203,6 @@ Layout.propTypes = {
   inputOnChange: PropTypes.func.isRequired,
   content: PropTypes.array.isRequired,
   getLocation: PropTypes.func.isRequired,
-  iconFill: PropTypes.string.isRequired,
 };
 
 export default Layout;

@@ -39,6 +39,9 @@ exports[`test renders disabled tags 1`] = `
         }
         submit={[Function]}>
         <Keywords
+          iconFill="#505050"
+          iconName="tag"
+          iconTitle="Tag Icon"
           onChange={[Function]}
           tagOnClick={[Function]}
           tags={
@@ -51,9 +54,15 @@ exports[`test renders disabled tags 1`] = `
               },
             ]
           } />
-        <Campus />
+        <Campus
+          iconFill="#505050"
+          iconName="campus"
+          iconTitle="Campus Icon" />
         <Input
           errorText="Please enter a valid zip code"
+          iconFill="#505050"
+          iconName="location"
+          iconTitle="Location Icon"
           id="zip"
           inputClasses="outlined--dotted outlined--light h6 flush-bottom text-black"
           label="Location (zip)"
@@ -63,7 +72,7 @@ exports[`test renders disabled tags 1`] = `
         <div
           className="text-left">
           <Svg
-            fill="#1C683E"
+            fill="#505050"
             height="24px"
             name="locate"
             title="Locate Icon"
@@ -77,12 +86,7 @@ exports[`test renders disabled tags 1`] = `
               }
             }>
             <button
-              onClick={[Function]}
-              style={
-                Object {
-                  "color": "undefined",
-                }
-              }>
+              onClick={[Function]}>
               Use my current location
             </button>
           </h6>
@@ -166,12 +170,21 @@ exports[`test renders loading if no tags 1`] = `
         }
         submit={[Function]}>
         <Keywords
+          iconFill="#505050"
+          iconName="tag"
+          iconTitle="Tag Icon"
           onChange={[Function]}
           tagOnClick={[Function]}
           tags={Array []} />
-        <Campus />
+        <Campus
+          iconFill="#505050"
+          iconName="campus"
+          iconTitle="Campus Icon" />
         <Input
           errorText="Please enter a valid zip code"
+          iconFill="#505050"
+          iconName="location"
+          iconTitle="Location Icon"
           id="zip"
           inputClasses="outlined--dotted outlined--light h6 flush-bottom text-black"
           label="Location (zip)"
@@ -181,7 +194,7 @@ exports[`test renders loading if no tags 1`] = `
         <div
           className="text-left">
           <Svg
-            fill="#1C683E"
+            fill="#505050"
             height="24px"
             name="locate"
             title="Locate Icon"
@@ -195,12 +208,7 @@ exports[`test renders loading if no tags 1`] = `
               }
             }>
             <button
-              onClick={[Function]}
-              style={
-                Object {
-                  "color": "undefined",
-                }
-              }>
+              onClick={[Function]}>
               Use my current location
             </button>
           </h6>
@@ -282,6 +290,9 @@ exports[`test renders with props 1`] = `
         }
         submit={[Function]}>
         <Keywords
+          iconFill="#505050"
+          iconName="tag"
+          iconTitle="Tag Icon"
           onChange={[Function]}
           tagOnClick={[Function]}
           tags={
@@ -294,9 +305,15 @@ exports[`test renders with props 1`] = `
               },
             ]
           } />
-        <Campus />
+        <Campus
+          iconFill="#505050"
+          iconName="campus"
+          iconTitle="Campus Icon" />
         <Input
           errorText="Please enter a valid zip code"
+          iconFill="#505050"
+          iconName="location"
+          iconTitle="Location Icon"
           id="zip"
           inputClasses="outlined--dotted outlined--light h6 flush-bottom text-black"
           label="Location (zip)"
@@ -306,7 +323,7 @@ exports[`test renders with props 1`] = `
         <div
           className="text-left">
           <Svg
-            fill="#1C683E"
+            fill="#505050"
             height="24px"
             name="locate"
             title="Locate Icon"
@@ -320,12 +337,7 @@ exports[`test renders with props 1`] = `
               }
             }>
             <button
-              onClick={[Function]}
-              style={
-                Object {
-                  "color": "undefined",
-                }
-              }>
+              onClick={[Function]}>
               Use my current location
             </button>
           </h6>
