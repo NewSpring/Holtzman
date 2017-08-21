@@ -8,7 +8,7 @@ const focusedInput = {
   boxShadow: "0px 2px 9px #DDD",
   backgroundColor: "#FFFFFF",
   textTransform: "captialize",
-  // position: "absolute",
+  position: "relative",
   zIndex: 99,
 };
 

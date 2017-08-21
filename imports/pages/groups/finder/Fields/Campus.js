@@ -8,7 +8,7 @@ const focusedInput = {
   backgroundColor: "#FFFFFF",
   display: "block",
   textTransform: "captialize",
-  // position: "absolute",
+  position: "relative",
   zIndex: 99,
 };
 
@@ -31,7 +31,7 @@ export default class Campus extends Component {
   state: {
     focused: boolean,
     campus: string,
-    onload: boolean
+    onload: boolean,
   };
 
   constructor(props: Object) {
@@ -80,8 +80,11 @@ export default class Campus extends Component {
     }
   }
 
-  setFocus = () => {
-    const focused = this.state.onload && this.props.selectedCampus ? false : !this.state.focused;
+  setFocus = (focus: Boolean) => {
+    const focused =
+      !focus || (this.state.onload && this.props.selectedCampus)
+        ? false
+        : !this.state.focused;
 
     this.setState({
       focused,
@@ -94,6 +97,7 @@ export default class Campus extends Component {
     this.setState({
       campus,
     });
+
     this.props.campusOnChange(campus);
   };
 
@@ -120,14 +124,16 @@ export default class Campus extends Component {
       >
         <Forms.Input
           classes={this.state.focused ? "soft-bottom" : ""}
-          inputClasses={"outlined--dotted outlined--light h6 flush-bottom text-black"}
+          inputClasses={
+            "outlined--dotted outlined--light h6 flush-bottom text-black"
+          }
           style={{ textTransform: "capitalize" }}
           type="text"
           label={"Campus"}
           name="campus"
           defaultValue={campus}
           readOnly="readonly"
-          onFocus={this.setFocus}
+          onFocus={e => this.setFocus(true)}
           iconName={iconName}
           iconFill={iconFill}
           iconWidth={iconWidth}
@@ -153,10 +159,13 @@ export default class Campus extends Component {
               key={i}
               clicked={this.onClick}
             >
-              <span className="soft-half-top" style={{ textTransform: "capitalize" }}>
+              <span
+                className="soft-half-top"
+                style={{ textTransform: "capitalize" }}
+              >
                 {c}
               </span>
-            </Forms.Checkbox>
+            </Forms.Checkbox>,
           )}
         </div>
       </div>
