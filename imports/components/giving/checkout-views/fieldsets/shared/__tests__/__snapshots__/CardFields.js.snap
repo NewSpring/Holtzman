@@ -23,6 +23,7 @@ exports[`CardFields should render with props 1`] = `
       onChange={[Function]}
       onFocus={[Function]}
       placeholder="Card Number"
+      readOnly={undefined}
       style={Object {}}
       type="tel" />
     <div
@@ -71,6 +72,7 @@ exports[`CardFields should render with props 1`] = `
           onChange={[Function]}
           onFocus={[Function]}
           placeholder="Exp (MM/YY)"
+          readOnly={undefined}
           style={Object {}}
           type="tel" />
       </div>
@@ -98,6 +100,7 @@ exports[`CardFields should render with props 1`] = `
           onChange={[Function]}
           onFocus={[Function]}
           placeholder="CCV"
+          readOnly={undefined}
           style={Object {}}
           type="tel" />
       </div>

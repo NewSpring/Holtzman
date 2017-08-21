@@ -74,6 +74,10 @@ App.configurePlugin("cordova-plugin-fcm", {
   APP_DOMAIN: "rm2y5.app.goo.gl",
 });
 
+App.configurePlugin("cordova-plugin-geolocation", {
+  GEOLOCATION_USAGE_DESCRIPTION: "Searching for Groups",
+});
+
 App.appendToConfig(`
     <universal-links>
       <ios-team-id value="7TM8C6252Z" />
@@ -117,4 +121,3 @@ App.appendToConfig(`
       <host name="rm2y5.app.goo.gl" scheme="https" event="universalLinkRoute" />
     </universal-links>
 `);
-
