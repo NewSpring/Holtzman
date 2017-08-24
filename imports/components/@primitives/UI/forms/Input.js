@@ -224,6 +224,9 @@ export default class Input extends Component {
       this.setState({
         focused: false,
       });
+      if (this.props.onFocus && typeof this.props.onFocus === "function") {
+        this.props.onFocus(value, this.node, e);
+      }
     }
   };
 
