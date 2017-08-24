@@ -161,7 +161,6 @@ export default class Input extends Component {
 
   validate = (e?: Event) => {
     const target = this.node;
-    // const value = target.value
     const value = this.getValue();
 
     if (!value) {
@@ -171,16 +170,24 @@ export default class Input extends Component {
       });
     }
 
-    this.setState({
-      focused: false,
-    });
-
+    let activeElement;
+    setTimeout(() => {
+      activeElement = document.activeElement;
+      if (
+        !activeElement ||
+        (activeElement && !activeElement.id) ||
+        (activeElement && activeElement.id && activeElement.id !== "iconButton")
+      ) {
+        this.setState({
+          focused: false,
+        });
+      }
+    }, 1);
     if (this.props.validation && typeof this.props.validation === "function") {
       this.setState({
         error: !this.props.validation(value, target, e),
       });
     }
-
     if (this.props.onBlur && typeof this.props.onBlur === "function") {
       this.props.onBlur(value, target, e);
     }
@@ -198,6 +205,25 @@ export default class Input extends Component {
 
     if (this.props.onFocus && typeof this.props.onFocus === "function") {
       this.props.onFocus(value, target, e);
+    }
+  };
+
+  iconClick = (e: Event) => {
+    if (e) e.preventDefault();
+    if (!this.state.focused) {
+      // set the focus
+      this.node.focus();
+    } else {
+      // unset the focus
+      const value = this.getValue();
+      if (!value) {
+        this.setState({
+          active: false,
+        });
+      }
+      this.setState({
+        focused: false,
+      });
     }
   };
 
@@ -318,7 +344,11 @@ export default class Input extends Component {
         />
 
         {iconName &&
-          <div style={{ position: "absolute", right: "0" }}>
+          <button
+            id="iconButton"
+            style={{ position: "absolute", right: "0" }}
+            onClick={this.iconClick}
+          >
             <Svg
               name={iconName}
               fill={iconFill}
@@ -326,7 +356,7 @@ export default class Input extends Component {
               height={iconHeight}
               title={iconTitle}
             />
-          </div>}
+          </button>}
 
         <input
           ref={node => (this.node = node)}
