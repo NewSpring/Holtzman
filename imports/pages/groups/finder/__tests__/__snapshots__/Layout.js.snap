@@ -58,20 +58,6 @@ exports[`test renders disabled tags 1`] = `
           iconFill="#505050"
           iconName="campus"
           iconTitle="Campus Icon" />
-<<<<<<< HEAD
-=======
-        <Input
-          errorText="Please enter a valid zip code"
-          iconFill="#505050"
-          iconName="location"
-          iconTitle="Location Icon"
-          id="zip"
-          inputClasses="outlined--dotted outlined--light h6 flush-bottom text-black"
-          label="Zip Code"
-          name="Zip"
-          type="text"
-          validation={[Function]} />
->>>>>>> attempting to fix icon touch targets for components that use a onFocus function. changed the label to say Zip Code. updated snapshots
         <div
           className="text-left soft-double-top soft-half-sides">
           <Input
@@ -202,20 +188,6 @@ exports[`test renders loading if no tags 1`] = `
           iconFill="#505050"
           iconName="campus"
           iconTitle="Campus Icon" />
-<<<<<<< HEAD
-=======
-        <Input
-          errorText="Please enter a valid zip code"
-          iconFill="#505050"
-          iconName="location"
-          iconTitle="Location Icon"
-          id="zip"
-          inputClasses="outlined--dotted outlined--light h6 flush-bottom text-black"
-          label="Zip Code"
-          name="Zip"
-          type="text"
-          validation={[Function]} />
->>>>>>> attempting to fix icon touch targets for components that use a onFocus function. changed the label to say Zip Code. updated snapshots
         <div
           className="text-left soft-double-top soft-half-sides">
           <Input
@@ -353,20 +325,6 @@ exports[`test renders with props 1`] = `
           iconFill="#505050"
           iconName="campus"
           iconTitle="Campus Icon" />
-<<<<<<< HEAD
-=======
-        <Input
-          errorText="Please enter a valid zip code"
-          iconFill="#505050"
-          iconName="location"
-          iconTitle="Location Icon"
-          id="zip"
-          inputClasses="outlined--dotted outlined--light h6 flush-bottom text-black"
-          label="Zip Code"
-          name="Zip"
-          type="text"
-          validation={[Function]} />
->>>>>>> attempting to fix icon touch targets for components that use a onFocus function. changed the label to say Zip Code. updated snapshots
         <div
           className="text-left soft-double-top soft-half-sides">
           <Input
