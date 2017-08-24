@@ -6,7 +6,8 @@ exports[`test should render with no props 1`] = `
     style={Object {}}>
     <RenderLabel>
       <Label
-        disabed={false}>
+        disabed={false}
+        labelStyles={Object {}}>
         <label
           style={Object {}} />
       </Label>

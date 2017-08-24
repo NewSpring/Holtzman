@@ -7,7 +7,9 @@ exports[`test pushes type prop to inputclasses 1`] = `
     style={
       Object {
         "cursor": "pointer",
+        "display": "block",
         "marginTop": "-1px",
+        "whiteSpace": "nowrap",
       }
     }>
     <small
@@ -52,7 +54,9 @@ exports[`test should accept a default value 1`] = `
       style={
         Object {
           "cursor": "pointer",
+          "display": "block",
           "marginTop": "-1px",
+          "whiteSpace": "nowrap",
         }
       }>
       <small
@@ -69,8 +73,7 @@ exports[`test should accept a default value 1`] = `
       }
       type="checkbox" />
     <Label>
-      <label
-        style={Object {}} />
+      <label />
     </Label>
   </div>
 </Checkbox>
@@ -88,7 +91,9 @@ exports[`test should accept an id 1`] = `
       style={
         Object {
           "cursor": "pointer",
+          "display": "block",
           "marginTop": "-1px",
+          "whiteSpace": "nowrap",
         }
       }>
       <small
@@ -108,8 +113,7 @@ exports[`test should accept an id 1`] = `
     <Label
       labelFor="harambe">
       <label
-        htmlFor="harambe"
-        style={Object {}} />
+        htmlFor="harambe" />
     </Label>
   </div>
 </Checkbox>
@@ -127,7 +131,9 @@ exports[`test should accept label 1`] = `
       style={
         Object {
           "cursor": "pointer",
+          "display": "block",
           "marginTop": "-1px",
+          "whiteSpace": "nowrap",
         }
       }>
       <small
@@ -148,8 +154,7 @@ exports[`test should accept label 1`] = `
     <Label
       labelFor="harambe">
       <label
-        htmlFor="harambe"
-        style={Object {}} />
+        htmlFor="harambe" />
     </Label>
   </div>
 </Checkbox>
@@ -167,7 +172,9 @@ exports[`test should accept name prop 1`] = `
       style={
         Object {
           "cursor": "pointer",
+          "display": "block",
           "marginTop": "-1px",
+          "whiteSpace": "nowrap",
         }
       }>
       <small
@@ -188,8 +195,7 @@ exports[`test should accept name prop 1`] = `
     <Label
       labelFor="harambe">
       <label
-        htmlFor="harambe"
-        style={Object {}} />
+        htmlFor="harambe" />
     </Label>
   </div>
 </Checkbox>
@@ -211,7 +217,9 @@ exports[`test should add classes with classes prop 1`] = `
       style={
         Object {
           "cursor": "pointer",
+          "display": "block",
           "marginTop": "-1px",
+          "whiteSpace": "nowrap",
         }
       }>
       <small
@@ -228,8 +236,7 @@ exports[`test should add classes with classes prop 1`] = `
       }
       type="checkbox" />
     <Label>
-      <label
-        style={Object {}} />
+      <label />
     </Label>
   </div>
 </Checkbox>
@@ -246,7 +253,9 @@ exports[`test should add classes with classes prop 2`] = `
       style={
         Object {
           "cursor": "pointer",
+          "display": "block",
           "marginTop": "-1px",
+          "whiteSpace": "nowrap",
         }
       }>
       <small
@@ -263,8 +272,7 @@ exports[`test should add classes with classes prop 2`] = `
       }
       type="checkbox" />
     <Label>
-      <label
-        style={Object {}} />
+      <label />
     </Label>
   </div>
 </Checkbox>
@@ -281,7 +289,9 @@ exports[`test should add inputClasses with inputClasses prop 1`] = `
       style={
         Object {
           "cursor": "pointer",
+          "display": "block",
           "marginTop": "-1px",
+          "whiteSpace": "nowrap",
         }
       }>
       <small
@@ -299,8 +309,7 @@ exports[`test should add inputClasses with inputClasses prop 1`] = `
       }
       type="checkbox" />
     <Label>
-      <label
-        style={Object {}} />
+      <label />
     </Label>
   </div>
 </Checkbox>
@@ -317,7 +326,9 @@ exports[`test should disable input with disabled prop 1`] = `
       style={
         Object {
           "cursor": "pointer",
+          "display": "block",
           "marginTop": "-1px",
+          "whiteSpace": "nowrap",
         }
       }>
       <small
@@ -335,8 +346,7 @@ exports[`test should disable input with disabled prop 1`] = `
       }
       type="checkbox" />
     <Label>
-      <label
-        style={Object {}} />
+      <label />
     </Label>
   </div>
 </Checkbox>
@@ -352,7 +362,9 @@ exports[`test should display children 1`] = `
       style={
         Object {
           "cursor": "pointer",
+          "display": "block",
           "marginTop": "-1px",
+          "whiteSpace": "nowrap",
         }
       }>
       <small
@@ -371,8 +383,7 @@ exports[`test should display children 1`] = `
       }
       type="checkbox" />
     <Label>
-      <label
-        style={Object {}} />
+      <label />
     </Label>
   </div>
 </Checkbox>
@@ -389,7 +400,9 @@ exports[`test should hide label with hideLabel prop 1`] = `
       style={
         Object {
           "cursor": "pointer",
+          "display": "block",
           "marginTop": "-1px",
+          "whiteSpace": "nowrap",
         }
       }>
       <small
@@ -419,7 +432,9 @@ exports[`test should render with minimal props 1`] = `
       style={
         Object {
           "cursor": "pointer",
+          "display": "block",
           "marginTop": "-1px",
+          "whiteSpace": "nowrap",
         }
       }>
       <small
@@ -436,8 +451,7 @@ exports[`test should render with minimal props 1`] = `
       }
       type="checkbox" />
     <Label>
-      <label
-        style={Object {}} />
+      <label />
     </Label>
   </div>
 </Checkbox>
@@ -454,7 +468,9 @@ exports[`test should respond to onclick prop 1`] = `
       style={
         Object {
           "cursor": "pointer",
+          "display": "block",
           "marginTop": "-1px",
+          "whiteSpace": "nowrap",
         }
       }>
       <small
@@ -472,8 +488,7 @@ exports[`test should respond to onclick prop 1`] = `
       }
       type="checkbox" />
     <Label>
-      <label
-        style={Object {}} />
+      <label />
     </Label>
   </div>
 </Checkbox>

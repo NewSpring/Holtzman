@@ -24,7 +24,9 @@ exports[`test renders with props 1`] = `
     style={
       Object {
         "cursor": "pointer",
+        "display": "block",
         "marginTop": "-1px",
+        "whiteSpace": "nowrap",
       }
     }>
     <small
@@ -40,6 +42,7 @@ exports[`test renders with props 1`] = `
     disabled={undefined}
     id="savePayment"
     name="savePayment"
+    onChange={undefined}
     onClick={[Function]}
     style={
       Object {
@@ -49,6 +52,6 @@ exports[`test renders with props 1`] = `
     type="checkbox" />
   <label
     htmlFor="savePayment"
-    style={Object {}} />
+    style={undefined} />
 </div>
 `;

@@ -65,7 +65,7 @@
 	<array>
 		<string>audio</string>
 		<string>remote-notification</string>
-	</array>
+  </array>
 	<key>UIInterfaceOrientation</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
