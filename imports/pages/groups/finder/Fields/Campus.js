@@ -80,9 +80,9 @@ export default class Campus extends Component {
     }
   }
 
-  setFocus = (focus: Boolean) => {
+  setFocus = () => {
     const focused =
-      !focus || (this.state.onload && this.props.selectedCampus)
+      this.state.onload && this.props.selectedCampus
         ? false
         : !this.state.focused;
 
@@ -117,10 +117,7 @@ export default class Campus extends Component {
     return (
       <div
         style={this.state.focused ? focusedInput : hiddenInput}
-        className={`text-left ${this.state.focused
-          ? "soft-double-top soft-half-sides display-inline-block"
-          : ""}`}
-        ref={this.setWrapperRef}
+        className={"soft-double-top text-left soft-half-sides"}
       >
         <Forms.Input
           classes={this.state.focused ? "soft-bottom" : ""}
@@ -130,10 +127,11 @@ export default class Campus extends Component {
           style={{ textTransform: "capitalize" }}
           type="text"
           label={"Campus"}
+          labelStyles={{ pointerEvents: "none" }}
           name="campus"
           defaultValue={campus}
-          readOnly="readonly"
-          onFocus={e => this.setFocus(true)}
+          readOnly={this.state.focused ? "readonly" : ""}
+          onFocus={this.setFocus}
           iconName={iconName}
           iconFill={iconFill}
           iconWidth={iconWidth}
@@ -144,6 +142,7 @@ export default class Campus extends Component {
           className={`push-half-sides push-half-bottom ${!this.state.focused
             ? "visuallyhidden"
             : "display-inline-block"}`}
+          ref={this.setWrapperRef}
         >
           {/* weird SSR stuff here to investigate */}
           {campuses.map((c, i) =>

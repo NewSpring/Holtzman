@@ -166,6 +166,7 @@ exports[`Layout renders custom toggles if passed 1`] = `
         style={
           Object {
             "cursor": "pointer",
+            "display": "block",
             "marginTop": "-1px",
             "whiteSpace": "nowrap",
           }
@@ -193,7 +194,7 @@ exports[`Layout renders custom toggles if passed 1`] = `
         type="checkbox" />
       <label
         htmlFor="savePayment"
-        style={Object {}} />
+        style={undefined} />
     </div>
   </div>
   <div>
@@ -370,6 +371,7 @@ exports[`Layout renders default toggles by default 1`] = `
         style={
           Object {
             "cursor": "pointer",
+            "display": "block",
             "marginTop": "-1px",
             "whiteSpace": "nowrap",
           }
@@ -397,7 +399,7 @@ exports[`Layout renders default toggles by default 1`] = `
         type="checkbox" />
       <label
         htmlFor="savePayment"
-        style={Object {}} />
+        style={undefined} />
     </div>
   </div>
   <div>
