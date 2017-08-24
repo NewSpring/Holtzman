@@ -80,9 +80,9 @@ export default class Campus extends Component {
     }
   }
 
-  setFocus = (focus: Boolean) => {
+  setFocus = () => {
     const focused =
-      !focus || (this.state.onload && this.props.selectedCampus)
+      this.state.onload && this.props.selectedCampus
         ? false
         : !this.state.focused;
 
@@ -118,9 +118,8 @@ export default class Campus extends Component {
       <div
         style={this.state.focused ? focusedInput : hiddenInput}
         className={`text-left ${this.state.focused
-          ? "soft-double-top soft-half-sides display-inline-block"
+          ? "soft-double-top push-half-sides soft-half-sides display-inline-block"
           : ""}`}
-        ref={this.setWrapperRef}
       >
         <Forms.Input
           classes={this.state.focused ? "soft-bottom" : ""}
@@ -132,8 +131,8 @@ export default class Campus extends Component {
           label={"Campus"}
           name="campus"
           defaultValue={campus}
-          readOnly="readonly"
-          onFocus={e => this.setFocus(true)}
+          readOnly={this.state.focused ? "readonly" : ""}
+          onFocus={this.setFocus}
           iconName={iconName}
           iconFill={iconFill}
           iconWidth={iconWidth}
@@ -143,7 +142,9 @@ export default class Campus extends Component {
         <div
           className={`push-half-sides push-half-bottom ${!this.state.focused
             ? "visuallyhidden"
-            : "display-inline-block"}`}
+              : "display-inline-block"}`}
+
+          ref={this.setWrapperRef}
         >
           {/* weird SSR stuff here to investigate */}
           {campuses.map((c, i) =>

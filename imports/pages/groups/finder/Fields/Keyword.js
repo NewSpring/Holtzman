@@ -54,9 +54,9 @@ export default class Keywords extends Component {
     this.wrapperRef = node;
   }
 
-  /**
-   * Alert if clicked on outside of element
-   */
+  // /**
+  //  * Alert if clicked on outside of element
+  //  */
   handleClickOutside(event) {
     if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
       this.setState({
@@ -90,18 +90,23 @@ export default class Keywords extends Component {
     return (
       <div
         style={this.state.focused ? focusedInput : hiddenInput}
-        className={`soft-double-top text-left ${this.state.focused ? "soft-half-sides" : ""}`}
+        className={`soft-double-top text-left ${this.state.focused
+          ? "soft-half-sides"
+          : ""}`}
         ref={this.setWrapperRef}
       >
         <Forms.Input
           classes={this.state.focused ? "soft-bottom" : ""}
-          inputClasses={"outlined--dotted outlined--light h6 capitalize flush-bottom text-black"}
+          inputClasses={
+            "outlined--dotted outlined--light h6 capitalize flush-bottom text-black"
+          }
           type="text"
           label={"I'm looking for..."}
           name="keywords"
           defaultValue={searchQuery}
           onChange={e => onChange(e)}
           onFocus={e => this.setFocus(true)}
+          onBlur={this.onBlur}
           iconName={iconName}
           iconFill={iconFill}
           iconWidth={iconWidth}
@@ -122,7 +127,7 @@ export default class Keywords extends Component {
               key={i}
               val={tag.value}
               active={loweredTags.indexOf(tag.value) + 1}
-            />
+            />,
           )}
         </div>
       </div>

@@ -5,9 +5,13 @@ import ReactMixin from "react-mixin";
 import gql from "graphql-tag";
 import { withRouter } from "react-router";
 
-import Split, { Left, Right } from "../../../components/@primitives/layout/split";
+import Split, {
+  Left,
+  Right,
+} from "../../../components/@primitives/layout/split";
 import Headerable from "../../../deprecated/mixins/mixins.Header";
 import { nav as navActions, modal } from "../../../data/store";
+import Validate from "../../../util/validate";
 
 import Layout from "./Layout";
 import Result from "./Result";
@@ -32,6 +36,7 @@ class TemplateWithoutData extends Component {
     longitude: null,
     campus: "",
     zip: "",
+    submit: false,
     iconFill: "#505050",
   };
 
@@ -67,7 +72,10 @@ class TemplateWithoutData extends Component {
   geoLocateMe = (e: Event) => {
     if (e) e.preventDefault();
 
-    navigator.geolocation.getCurrentPosition(this.geolocationSuccess, this.geolocationError);
+    navigator.geolocation.getCurrentPosition(
+      this.geolocationSuccess,
+      this.geolocationError,
+    );
   };
 
   geolocationSuccess = (position: Object) => {
@@ -152,13 +160,20 @@ class TemplateWithoutData extends Component {
     });
   };
 
+  // XXX will need to figure out way to remove submit if zip is invalid
+  zipOnChange = (z: String) => {
+    if (Validate.isLocationBasedZipCode(z)) {
+      this.setState({
+        zip: z || "",
+      });
+    }
+  };
+
   inputOnChange = (value: String) => {
     // split each element of the query string into its own array element
     // at this point the query string also includes tags
     const queryString = value.split(/[, ]+/);
-
     const attributeTags = this.props.attributes.tags.map(tag => tag.value);
-
     // current state of tags to work off of.
     const newTags = [...this.state.tags];
 
@@ -200,7 +215,8 @@ class TemplateWithoutData extends Component {
       }
       tagList.splice(tagList.indexOf(tag), 1);
     } else {
-      queryString = queryString && queryString.length ? `${queryString}, ${tag}` : `${tag}`;
+      queryString =
+        queryString && queryString.length ? `${queryString}, ${tag}` : `${tag}`;
       tagList.push(tag);
     }
 
@@ -230,9 +246,14 @@ class TemplateWithoutData extends Component {
     let selectedCampus = this.state.campus;
     let zipCode = this.state.zip;
 
-    if ((location.query.campus || location.query.zip) && (!this.state.zip || !this.state.campus)) {
+    if (
+      (location.query.campus || location.query.zip) &&
+      (!this.state.zip || !this.state.campus)
+    ) {
       zipCode = !this.state.zip ? location.query.zip : this.state.zip;
-      selectedCampus = !this.state.campus ? location.query.campus : this.state.campus;
+      selectedCampus = !this.state.campus
+        ? location.query.campus
+        : this.state.campus;
     }
 
     if (
@@ -260,7 +281,11 @@ class TemplateWithoutData extends Component {
           <Layout
             canSearchTags={false || this.state.tags.length || this.state.query}
             canSearchCampus={false || this.state.campus}
-            canSearchLocation={false || this.state.zip}
+            canSearchLocation={
+              false ||
+              this.state.zip ||
+              (this.state.latitude && this.state.longitude)
+            }
             campuses={
               autofill.loading
                 ? [""]
@@ -276,6 +301,7 @@ class TemplateWithoutData extends Component {
             }
             selectedCampus={selectedCampus}
             zip={zipCode}
+            zipOnChange={this.zipOnChange}
             campusOnChange={this.campusOnChange}
             searchQuery={this.state.query}
             tags={(attributes && attributes.tags) || defaultArray}
@@ -332,7 +358,11 @@ const withGroupAttributes = graphql(GROUP_ATTRIBUTES_QUERY, {
 });
 
 const TAGGED_CONTENT_QUERY = gql`
-  query GetTaggedContent($tagName: String!, $limit: Int, $includeChannels: [String]) {
+  query GetTaggedContent(
+    $tagName: String!
+    $limit: Int
+    $includeChannels: [String]
+  ) {
     entries: taggedContent(
       tagName: $tagName
       limit: $limit
@@ -375,9 +405,11 @@ const mapStateToProps = state => ({ location: state.routing.location });
 export default withRouter(
   connect(mapStateToProps)(
     withGroupAttributes(
-      withAutoFillMeta(withTaggedContent(ReactMixin.decorate(Headerable)(TemplateWithoutData)))
-    )
-  )
+      withAutoFillMeta(
+        withTaggedContent(ReactMixin.decorate(Headerable)(TemplateWithoutData)),
+      ),
+    ),
+  ),
 );
 
 export { TemplateWithoutData };
