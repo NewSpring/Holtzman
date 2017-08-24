@@ -78,7 +78,7 @@ exports[`Layout renders US by default 1`] = `
       className="input input--active select_15p0e27">
       <label
         htmlFor="Country"
-        style={Object {}}>
+        style={undefined}>
         Country
       </label>
       <select
@@ -139,7 +139,7 @@ exports[`Layout renders US by default 1`] = `
           className="input input--active select_15p0e27">
           <label
             htmlFor="State/Territory"
-            style={Object {}}>
+            style={undefined}>
             State/Territory
           </label>
           <select
@@ -284,7 +284,7 @@ exports[`Layout renders your country instead 1`] = `
       className="input input--active select_15p0e27">
       <label
         htmlFor="Country"
-        style={Object {}}>
+        style={undefined}>
         Country
       </label>
       <select
@@ -345,7 +345,7 @@ exports[`Layout renders your country instead 1`] = `
           className="input input--active select_15p0e27">
           <label
             htmlFor="State/Territory"
-            style={Object {}}>
+            style={undefined}>
             State/Territory
           </label>
           <select

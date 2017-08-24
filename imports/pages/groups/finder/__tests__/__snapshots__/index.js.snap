@@ -21,7 +21,7 @@ exports[`test renders if content loading 1`] = `
       campusOnChange={[Function]}
       campuses={Array []}
       canSearchCampus=""
-      canSearchLocation=""
+      canSearchLocation={null}
       canSearchTags={null}
       content={Array []}
       findByQuery={[Function]}
@@ -39,7 +39,8 @@ exports[`test renders if content loading 1`] = `
           Object {},
         ]
       }
-      zip="29607" />
+      zip="29607"
+      zipOnChange={[Function]} />
   </Left>
 </div>
 `;
@@ -67,7 +68,7 @@ exports[`test renders result if campuses 1`] = `
       campusOnChange={[Function]}
       campuses={Array []}
       canSearchCampus=""
-      canSearchLocation=""
+      canSearchLocation={null}
       canSearchTags={null}
       content={
         Array [
@@ -90,7 +91,8 @@ exports[`test renders result if campuses 1`] = `
           Object {},
         ]
       }
-      zip="29607" />
+      zip="29607"
+      zipOnChange={[Function]} />
   </Left>
 </div>
 `;
@@ -118,7 +120,7 @@ exports[`test renders result if q 1`] = `
       campusOnChange={[Function]}
       campuses={Array []}
       canSearchCampus=""
-      canSearchLocation=""
+      canSearchLocation={null}
       canSearchTags={null}
       content={
         Array [
@@ -141,7 +143,8 @@ exports[`test renders result if q 1`] = `
           Object {},
         ]
       }
-      zip="29607" />
+      zip="29607"
+      zipOnChange={[Function]} />
   </Left>
 </div>
 `;
@@ -169,7 +172,7 @@ exports[`test renders result if schedules 1`] = `
       campusOnChange={[Function]}
       campuses={Array []}
       canSearchCampus=""
-      canSearchLocation=""
+      canSearchLocation={null}
       canSearchTags={null}
       content={
         Array [
@@ -192,7 +195,8 @@ exports[`test renders result if schedules 1`] = `
           Object {},
         ]
       }
-      zip="29607" />
+      zip="29607"
+      zipOnChange={[Function]} />
   </Left>
 </div>
 `;
@@ -220,7 +224,7 @@ exports[`test renders result if tags 1`] = `
       campusOnChange={[Function]}
       campuses={Array []}
       canSearchCampus=""
-      canSearchLocation=""
+      canSearchLocation={null}
       canSearchTags={null}
       content={
         Array [
@@ -243,7 +247,8 @@ exports[`test renders result if tags 1`] = `
           Object {},
         ]
       }
-      zip="29607" />
+      zip="29607"
+      zipOnChange={[Function]} />
   </Left>
 </div>
 `;
@@ -271,7 +276,7 @@ exports[`test renders with props 1`] = `
       campusOnChange={[Function]}
       campuses={Array []}
       canSearchCampus=""
-      canSearchLocation=""
+      canSearchLocation={null}
       canSearchTags={null}
       content={
         Array [
@@ -294,7 +299,8 @@ exports[`test renders with props 1`] = `
           Object {},
         ]
       }
-      zip="29607" />
+      zip="29607"
+      zipOnChange={[Function]} />
   </Left>
 </div>
 `;
@@ -322,7 +328,7 @@ exports[`test renders without attributes 1`] = `
       campusOnChange={[Function]}
       campuses={Array []}
       canSearchCampus=""
-      canSearchLocation=""
+      canSearchLocation={null}
       canSearchTags={null}
       content={
         Array [
@@ -340,7 +346,8 @@ exports[`test renders without attributes 1`] = `
       submitTags={[Function]}
       tagOnClick={[Function]}
       tags={Array []}
-      zip="29607" />
+      zip="29607"
+      zipOnChange={[Function]} />
   </Left>
 </div>
 `;

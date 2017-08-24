@@ -115,7 +115,7 @@ exports[`Layout renders with props 1`] = `
       className="input input--active select_15p0e27">
       <label
         htmlFor="Campus"
-        style={Object {}}>
+        style={undefined}>
         Campus
       </label>
       <select
