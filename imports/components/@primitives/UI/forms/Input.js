@@ -11,12 +11,27 @@ type IRenderLabel = {
   id: string,
   name: string,
   label: string,
-  disabled?: boolean
+  disabled?: boolean,
+  style?: Object, // eslint-disable-line
 };
 
-const RenderLabel = ({ hideLabel = false, id, name, label, disabled = false }: IRenderLabel) => {
+const RenderLabel = ({
+  hideLabel = false,
+  id,
+  name,
+  label,
+  disabled = false,
+  style = {},
+}: IRenderLabel) => {
   if (hideLabel) return null;
-  return <Label labelFor={id || name || label} labelName={label || name} disabed={disabled} />;
+  return (
+    <Label
+      labelFor={id || name || label}
+      labelName={label || name}
+      disabed={disabled}
+      labelStyles={style}
+    />
+  );
 };
 
 type IInputProps = {
@@ -29,6 +44,7 @@ type IInputProps = {
   children: any,
   id: string,
   label: string,
+  labelStyles: Object,
   name: string,
   inputClasses: string,
   hideLabel?: boolean,
@@ -46,7 +62,7 @@ type IInputProps = {
   iconFill: string,
   iconWidth: string,
   iconHeight: string,
-  iconTitle: string
+  iconTitle: string,
 };
 
 export default class Input extends Component {
@@ -61,7 +77,7 @@ export default class Input extends Component {
     focused: boolean,
     error: boolean,
     value: ?string,
-    autofocus: boolean
+    autofocus: boolean,
   };
 
   constructor(props: Object) {
@@ -96,7 +112,12 @@ export default class Input extends Component {
         return;
       }
 
-      if (!this._previousValue && target.value && !this.state.focused && !this.state.value) {
+      if (
+        !this._previousValue &&
+        target.value &&
+        !this.state.focused &&
+        !this.state.value
+      ) {
         // eslint-disable-line
         this.setValue(target.value);
       }
@@ -266,6 +287,7 @@ export default class Input extends Component {
       id,
       name,
       label,
+      labelStyles,
       type,
       placeholder,
       inputClasses,
@@ -281,13 +303,18 @@ export default class Input extends Component {
     } = this.props;
 
     return (
-      <div className={this.classes()} style={style || {}} data-spec="input-wrapper">
+      <div
+        className={this.classes()}
+        style={style || {}}
+        data-spec="input-wrapper"
+      >
         <RenderLabel
           hideLabel={hideLabel}
           id={id}
           name={name}
           label={label}
           disabled={this.disabled()}
+          style={labelStyles}
         />
 
         {iconName &&

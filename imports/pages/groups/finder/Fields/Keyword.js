@@ -90,9 +90,7 @@ export default class Keywords extends Component {
     return (
       <div
         style={this.state.focused ? focusedInput : hiddenInput}
-        className={`soft-double-top text-left ${this.state.focused
-          ? "soft-half-sides"
-          : ""}`}
+        className={"soft-double-top text-left soft-half-sides"}
         ref={this.setWrapperRef}
       >
         <Forms.Input

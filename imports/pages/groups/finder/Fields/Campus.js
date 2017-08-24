@@ -117,9 +117,7 @@ export default class Campus extends Component {
     return (
       <div
         style={this.state.focused ? focusedInput : hiddenInput}
-        className={`text-left ${this.state.focused
-          ? "soft-double-top push-half-sides soft-half-sides display-inline-block"
-          : ""}`}
+        className={"soft-double-top text-left soft-half-sides"}
       >
         <Forms.Input
           classes={this.state.focused ? "soft-bottom" : ""}
@@ -129,6 +127,7 @@ export default class Campus extends Component {
           style={{ textTransform: "capitalize" }}
           type="text"
           label={"Campus"}
+          labelStyles={{ pointerEvents: "none" }}
           name="campus"
           defaultValue={campus}
           readOnly={this.state.focused ? "readonly" : ""}
@@ -142,8 +141,7 @@ export default class Campus extends Component {
         <div
           className={`push-half-sides push-half-bottom ${!this.state.focused
             ? "visuallyhidden"
-              : "display-inline-block"}`}
-
+            : "display-inline-block"}`}
           ref={this.setWrapperRef}
         >
           {/* weird SSR stuff here to investigate */}

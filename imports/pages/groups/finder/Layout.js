@@ -86,23 +86,25 @@ const Layout = ({
             iconFill="#505050"
             iconTitle="Campus Icon"
           />
-          <Forms.Input
-            inputClasses={
-              "outlined--dotted outlined--light h6 flush-bottom text-black"
-            }
-            label={"Location (zip)"}
-            defaultValue={zip}
-            type="text"
-            name="Zip"
-            id="zip"
-            validation={Validate.isLocationBasedZipCode}
-            onChange={zipOnChange}
-            errorText="Please enter a valid zip code"
-            iconName="location"
-            iconFill="#505050"
-            iconTitle="Location Icon"
-          />
-          <div className="text-left">
+          <div className={"text-left soft-double-top soft-half-sides"}>
+            <Forms.Input
+              inputClasses={
+                "outlined--dotted outlined--light h6 flush-bottom text-black"
+              }
+              label={"Location (zip)"}
+              defaultValue={zip}
+              type="text"
+              name="Zip"
+              id="zip"
+              validation={Validate.isLocationBasedZipCode}
+              onChange={zipOnChange}
+              errorText="Please enter a valid zip code"
+              iconName="location"
+              iconFill="#505050"
+              iconTitle="Location Icon"
+            />
+          </div>
+          <div className={"text-left soft-double-top soft-half-sides"}>
             <Svg name={"locate"} title={"Locate Icon"} fill={iconFill} />
             <h6
               className="display-inline-block push-half-left"
