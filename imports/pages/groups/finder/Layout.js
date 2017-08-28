@@ -73,17 +73,11 @@ const Layout = ({
             tagOnClick={tagOnClick}
             selectedTags={selectedTags}
             onChange={inputOnChange}
-            iconName="arrowDown"
-            iconFill="#505050"
-            iconTitle="Arrow Down Icon"
           />
           <CampusSelect
             campuses={campuses}
             selectedCampus={selectedCampus}
             campusOnChange={campusOnChange}
-            iconName="campus"
-            iconFill="#505050"
-            iconTitle="Campus Icon"
           />
           <div className={"text-left soft-double-top soft-half-sides"}>
             <Forms.Input

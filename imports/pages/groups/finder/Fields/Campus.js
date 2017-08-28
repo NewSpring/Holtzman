@@ -27,11 +27,6 @@ export default class Campus extends Component {
     campuses: PropTypes.array.isRequired,
     selectedCampus: PropTypes.string.isRequired,
     campusOnChange: PropTypes.func.isRequired,
-    iconName: PropTypes.string.isRequired,
-    iconFill: PropTypes.string,
-    iconWidth: PropTypes.string,
-    iconHeight: PropTypes.string,
-    iconTitle: PropTypes.string,
   };
 
   constructor(props: Object) {
@@ -105,7 +100,7 @@ export default class Campus extends Component {
   };
 
   render() {
-    const { campuses, iconName, iconFill, iconWidth, iconHeight, iconTitle } = this.props;
+    const { campuses } = this.props;
     const { campus } = this.state;
 
     return (
@@ -125,11 +120,11 @@ export default class Campus extends Component {
           defaultValue={campus}
           readOnly={this.state.focused ? "readonly" : ""}
           onFocus={this.setFocus}
-          iconName={iconName}
-          iconFill={iconFill}
-          iconWidth={iconWidth}
-          iconHeight={iconHeight}
-          iconTitle={iconTitle}
+          iconName={this.state.focused ? "arrowUp" : "arrowDown"}
+          iconFill={this.state.focused ? "#6BAC43" : "#505050"}
+          iconWidth={"24px"}
+          iconHeight={"24px"}
+          iconTitle={this.state.focused ? "Arrow Up Icon" : "Arrow Down Icon"}
           iconButtonToggle={this.buttonToggle}
         />
         <div

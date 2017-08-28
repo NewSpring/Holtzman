@@ -23,11 +23,6 @@ export default class Keywords extends Component {
     searchQuery: PropTypes.array.isRequired,
     tagOnClick: PropTypes.func.isRequired,
     onChange: PropTypes.func.isRequired,
-    iconName: PropTypes.string.isRequired,
-    iconFill: PropTypes.string,
-    iconWidth: PropTypes.string,
-    iconHeight: PropTypes.string,
-    iconTitle: PropTypes.string,
   };
 
   constructor(props) {
@@ -84,17 +79,7 @@ export default class Keywords extends Component {
   };
 
   render() {
-    const {
-      tags,
-      selectedTags,
-      searchQuery,
-      onChange,
-      iconName,
-      iconFill,
-      iconWidth,
-      iconHeight,
-      iconTitle,
-    } = this.props;
+    const { tags, selectedTags, searchQuery, onChange } = this.props;
 
     const loweredTags = selectedTags.map(t => t.toLowerCase());
 
@@ -113,11 +98,11 @@ export default class Keywords extends Component {
           defaultValue={searchQuery}
           onChange={e => onChange(e)}
           onFocus={e => this.setFocus(true)}
-          iconName={iconName}
-          iconFill={iconFill}
-          iconWidth={iconWidth}
-          iconHeight={iconHeight}
-          iconTitle={iconTitle}
+          iconName={this.state.focused ? "arrowUp" : "arrowDown"}
+          iconFill={this.state.focused ? "#6BAC43" : "#505050"}
+          iconWidth={"24px"}
+          iconHeight={"24px"}
+          iconTitle={this.state.focused ? "Arrow Up Icon" : "Arrow Down Icon"}
           iconButtonToggle={this.buttonToggle}
         />
         <div

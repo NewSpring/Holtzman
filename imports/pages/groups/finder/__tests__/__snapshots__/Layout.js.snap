@@ -39,9 +39,6 @@ exports[`test renders disabled tags 1`] = `
         }
         submit={[Function]}>
         <Keywords
-          iconFill="#505050"
-          iconName="arrowDown"
-          iconTitle="Arrow Down Icon"
           onChange={[Function]}
           tagOnClick={[Function]}
           tags={
@@ -54,10 +51,7 @@ exports[`test renders disabled tags 1`] = `
               },
             ]
           } />
-        <Campus
-          iconFill="#505050"
-          iconName="campus"
-          iconTitle="Campus Icon" />
+        <Campus />
         <div
           className="text-left soft-double-top soft-half-sides">
           <Input
@@ -179,16 +173,10 @@ exports[`test renders loading if no tags 1`] = `
         }
         submit={[Function]}>
         <Keywords
-          iconFill="#505050"
-          iconName="arrowDown"
-          iconTitle="Arrow Down Icon"
           onChange={[Function]}
           tagOnClick={[Function]}
           tags={Array []} />
-        <Campus
-          iconFill="#505050"
-          iconName="campus"
-          iconTitle="Campus Icon" />
+        <Campus />
         <div
           className="text-left soft-double-top soft-half-sides">
           <Input
@@ -308,9 +296,6 @@ exports[`test renders with props 1`] = `
         }
         submit={[Function]}>
         <Keywords
-          iconFill="#505050"
-          iconName="arrowDown"
-          iconTitle="Arrow Down Icon"
           onChange={[Function]}
           tagOnClick={[Function]}
           tags={
@@ -323,10 +308,7 @@ exports[`test renders with props 1`] = `
               },
             ]
           } />
-        <Campus
-          iconFill="#505050"
-          iconName="campus"
-          iconTitle="Campus Icon" />
+        <Campus />
         <div
           className="text-left soft-double-top soft-half-sides">
           <Input
