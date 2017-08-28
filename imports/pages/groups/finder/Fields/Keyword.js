@@ -69,14 +69,6 @@ export default class Keywords extends Component {
     this.setState({
       focused: focus,
     });
-
-    // if an icon is clicked to close this input, then freaking close it.
-    const activeElement = document.activeElement;
-    if (activeElement && activeElement.id && activeElement.id === "iconButton") {
-      this.setState({
-        focused: false,
-      });
-    }
   };
 
   callThisOnClick = tag => {
@@ -85,10 +77,15 @@ export default class Keywords extends Component {
     theInput.focus();
   };
 
+  buttonToggle = () => {
+    this.setState({
+      focused: !this.state.focused,
+    });
+  };
+
   render() {
     const {
       tags,
-      tagOnClick,
       selectedTags,
       searchQuery,
       onChange,
@@ -121,6 +118,7 @@ export default class Keywords extends Component {
           iconWidth={iconWidth}
           iconHeight={iconHeight}
           iconTitle={iconTitle}
+          iconButtonToggle={this.buttonToggle}
         />
         <div
           className={`push-half-sides push-half-bottom ${!this.state.focused

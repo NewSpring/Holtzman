@@ -62,7 +62,8 @@ type IInputProps = {
   iconFill: string,
   iconWidth: string,
   iconHeight: string,
-  iconTitle: string
+  iconTitle: string,
+  iconButtonToggle: Function
 };
 
 export default class Input extends Component {
@@ -90,12 +91,6 @@ export default class Input extends Component {
       autofocus: false,
     };
   }
-
-  // componentWillMount() {
-  //   if (this.props.defaultValue) {
-  //     this.setState({ active: true });
-  //   }
-  // }
 
   componentDidMount() {
     if (this.props.autofocus) {
@@ -226,8 +221,9 @@ export default class Input extends Component {
       this.setState({
         focused: false,
       });
-      if (this.props.onFocus && typeof this.props.onFocus === "function") {
-        this.props.onFocus(value, this.node, e);
+
+      if (this.props.iconButtonToggle && typeof this.props.iconButtonToggle === "function") {
+        this.props.iconButtonToggle(value, this.node, e);
       }
     }
   };

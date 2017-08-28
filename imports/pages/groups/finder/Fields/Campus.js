@@ -87,14 +87,12 @@ export default class Campus extends Component {
       focused,
       onload: false,
     });
+  };
 
-    // if an icon is clicked to close this input, then freaking close it.
-    const activeElement = document.activeElement;
-    if (activeElement && activeElement.id && activeElement.id === "iconButton") {
-      this.setState({
-        focused: false,
-      });
-    }
+  buttonToggle = () => {
+    this.setState({
+      focused: !this.state.focused,
+    });
   };
 
   onClick = (e: Event) => {
@@ -114,6 +112,7 @@ export default class Campus extends Component {
       <div
         style={this.state.focused ? focusedInput : hiddenInput}
         className={"soft-double-top text-left soft-half-sides"}
+        ref={this.setWrapperRef}
       >
         <Forms.Input
           classes={this.state.focused ? "soft-bottom" : ""}
@@ -131,12 +130,12 @@ export default class Campus extends Component {
           iconWidth={iconWidth}
           iconHeight={iconHeight}
           iconTitle={iconTitle}
+          iconButtonToggle={this.buttonToggle}
         />
         <div
           className={`push-half-sides push-half-bottom ${!this.state.focused
             ? "visuallyhidden"
             : "display-inline-block"}`}
-          ref={this.setWrapperRef}
         >
           {/* weird SSR stuff here to investigate */}
           {campuses.map((c, i) =>
