@@ -52,8 +52,7 @@ const Layout = ({
         <h3>Find Your People</h3>
         <h6 className="soft-half-bottom@handheld soft-bottom">
           <em>
-            Select your interests, campus, and location <br />to search for
-            groups near you.
+            Select your interests, campus, and location <br />to search for groups near you.
           </em>
         </h6>
         <Forms.Form
@@ -73,10 +72,10 @@ const Layout = ({
             searchQuery={searchQuery}
             tagOnClick={tagOnClick}
             selectedTags={selectedTags}
-            onChange={e => inputOnChange(e)}
-            iconName="tag"
+            onChange={inputOnChange}
+            iconName="arrowDown"
             iconFill="#505050"
-            iconTitle="Tag Icon"
+            iconTitle="Arrow Down Icon"
           />
           <CampusSelect
             campuses={campuses}
@@ -88,10 +87,8 @@ const Layout = ({
           />
           <div className={"text-left soft-double-top soft-half-sides"}>
             <Forms.Input
-              inputClasses={
-                "outlined--dotted outlined--light h6 flush-bottom text-black"
-              }
-              label={"Location (zip)"}
+              inputClasses={"outlined--dotted outlined--light h6 flush-bottom text-black"}
+              label={"Zip Code"}
               defaultValue={zip}
               type="text"
               name="Zip"
@@ -105,15 +102,17 @@ const Layout = ({
             />
           </div>
           <div className={"text-left soft-double-top soft-half-sides"}>
-            <Svg name={"locate"} title={"Locate Icon"} fill={iconFill} />
+            <Svg
+              name={"locate"}
+              title={"Locate Icon"}
+              fill={iconFill}
+              classes={"display-inline-block"}
+            />
             <h6
               className="display-inline-block push-half-left"
               style={{ fontWeight: "400", verticalAlign: "super" }}
             >
-              <button
-                onClick={e => getLocation(e)}
-                style={{ color: `${iconFill}` }}
-              >
+              <button onClick={e => getLocation(e)} style={{ color: `${iconFill}` }}>
                 Use my current location
               </button>
             </h6>
@@ -139,9 +138,7 @@ const Layout = ({
           // XXX why can't I just pass in the function here?
           return (
             <button
-              disabled={
-                !canSearchTags && !canSearchCampus && !canSearchLocation
-              }
+              disabled={!canSearchTags && !canSearchCampus && !canSearchLocation}
               onClick={e => submitTags(e)}
               className={classes.join(" ")}
             >
@@ -182,9 +179,7 @@ const Layout = ({
                     </h4>
 
                     <p className="text-dark-primary">
-                      <small
-                        dangerouslySetInnerHTML={{ __html: entry.meta.summary }}
-                      />
+                      <small dangerouslySetInnerHTML={{ __html: entry.meta.summary }} />
                     </p>
                     <span
                       className={
@@ -199,10 +194,7 @@ const Layout = ({
               );
             }
             return (
-              <div
-                className="grid__item one-whole one-half@palm-wide-and-up"
-                key={key}
-              >
+              <div className="grid__item one-whole one-half@palm-wide-and-up" key={key}>
                 <GroupFinderFeedItem item={entry} />
               </div>
             );

@@ -281,6 +281,71 @@ it ("should accept errorText prop", () => {
   expect(help.text()).toEqual("my text");
 });
 
+it ("should accept an iconName prop", () => {
+  const spy = jest.fn();
+  let component = mount(generateComponent({
+    label: "test label",
+    type: "text",
+    iconName: "location",
+  }))
+  const componentProps = component.props();
+  expect(componentProps.iconName).toEqual("location");
+});
+
+it ("should accept an iconFill prop", () => {
+  const spy = jest.fn();
+  let component = mount(generateComponent({
+    label: "test label",
+    type: "text",
+    iconName: "location",
+    iconFill: "#4B384C",
+  }))
+  const componentProps = component.props();
+  expect(componentProps.iconFill).toEqual("#4B384C");
+});
+
+it ("should accept an iconWidth prop", () => {
+  const spy = jest.fn();
+  let component = mount(generateComponent({
+    label: "test label",
+    type: "text",
+    iconName: "location",
+    iconFill: "#4B384C",
+    iconWidth: "24px",
+  }))
+  const componentProps = component.props();
+  expect(componentProps.iconWidth).toEqual("24px");
+});
+
+it ("should accept an iconHeight prop", () => {
+  const spy = jest.fn();
+  let component = mount(generateComponent({
+    label: "test label",
+    type: "text",
+    iconName: "location",
+    iconFill: "#4B384C",
+    iconWidth: "24px",
+    iconHeight: "24px",
+  }))
+  const componentProps = component.props();
+  expect(componentProps.iconHeight).toEqual("24px");
+});
+
+it ("should accept an iconTitle prop", () => {
+  const spy = jest.fn();
+  let component = mount(generateComponent({
+    label: "test label",
+    type: "text",
+    iconName: "location",
+    iconFill: "#4B384C",
+    iconWidth: "24px",
+    iconHeight: "24px",
+    iconTitle: "Location Icon"
+  }))
+  const componentProps = component.props();
+  expect(componentProps.iconTitle).toEqual("Location Icon");
+});
+
 // TODO
 // it ("should accept value prop", () => {
 //   let component = mount(generateComponent({
