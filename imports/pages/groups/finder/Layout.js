@@ -73,9 +73,9 @@ const Layout = ({
             tagOnClick={tagOnClick}
             selectedTags={selectedTags}
             onChange={inputOnChange}
-            iconName="tag"
+            iconName="arrowDown"
             iconFill="#505050"
-            iconTitle="Tag Icon"
+            iconTitle="Arrow Down Icon"
           />
           <CampusSelect
             campuses={campuses}
@@ -102,7 +102,12 @@ const Layout = ({
             />
           </div>
           <div className={"text-left soft-double-top soft-half-sides"}>
-            <Svg name={"locate"} title={"Locate Icon"} fill={iconFill} />
+            <Svg
+              name={"locate"}
+              title={"Locate Icon"}
+              fill={iconFill}
+              classes={"display-inline-block"}
+            />
             <h6
               className="display-inline-block push-half-left"
               style={{ fontWeight: "400", verticalAlign: "super" }}
