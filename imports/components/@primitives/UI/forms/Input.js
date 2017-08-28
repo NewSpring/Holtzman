@@ -12,7 +12,7 @@ type IRenderLabel = {
   name: string,
   label: string,
   disabled?: boolean,
-  style?: Object, // eslint-disable-line
+  style?: Object // eslint-disable-line
 };
 
 const RenderLabel = ({
@@ -62,7 +62,7 @@ type IInputProps = {
   iconFill: string,
   iconWidth: string,
   iconHeight: string,
-  iconTitle: string,
+  iconTitle: string
 };
 
 export default class Input extends Component {
@@ -77,7 +77,7 @@ export default class Input extends Component {
     focused: boolean,
     error: boolean,
     value: ?string,
-    autofocus: boolean,
+    autofocus: boolean
   };
 
   constructor(props: Object) {
@@ -112,12 +112,7 @@ export default class Input extends Component {
         return;
       }
 
-      if (
-        !this._previousValue &&
-        target.value &&
-        !this.state.focused &&
-        !this.state.value
-      ) {
+      if (!this._previousValue && target.value && !this.state.focused && !this.state.value) {
         // eslint-disable-line
         this.setValue(target.value);
       }
@@ -183,6 +178,7 @@ export default class Input extends Component {
         });
       }
     }, 1);
+
     if (this.props.validation && typeof this.props.validation === "function") {
       this.setState({
         error: !this.props.validation(value, target, e),
@@ -190,6 +186,12 @@ export default class Input extends Component {
     }
     if (this.props.onBlur && typeof this.props.onBlur === "function") {
       this.props.onBlur(value, target, e);
+    }
+
+    if (value) {
+      this.setState({
+        focused: true,
+      });
     }
   };
 
@@ -332,11 +334,7 @@ export default class Input extends Component {
     } = this.props;
 
     return (
-      <div
-        className={this.classes()}
-        style={style || {}}
-        data-spec="input-wrapper"
-      >
+      <div className={this.classes()} style={style || {}} data-spec="input-wrapper">
         <RenderLabel
           hideLabel={hideLabel}
           id={id}

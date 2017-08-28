@@ -72,7 +72,7 @@ const Layout = ({
             searchQuery={searchQuery}
             tagOnClick={tagOnClick}
             selectedTags={selectedTags}
-            onChange={e => inputOnChange(e)}
+            onChange={inputOnChange}
             iconName="tag"
             iconFill="#505050"
             iconTitle="Tag Icon"
@@ -88,7 +88,7 @@ const Layout = ({
           <div className={"text-left soft-double-top soft-half-sides"}>
             <Forms.Input
               inputClasses={"outlined--dotted outlined--light h6 flush-bottom text-black"}
-              label={"Location (zip)"}
+              label={"Zip Code"}
               defaultValue={zip}
               type="text"
               name="Zip"
