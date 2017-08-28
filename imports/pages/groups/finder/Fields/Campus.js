@@ -17,21 +17,16 @@ const hiddenInput = {
 };
 
 export default class Campus extends Component {
+  state: {
+    focused: boolean,
+    campus: string,
+    onload: boolean
+  };
+
   static propTypes = {
     campuses: PropTypes.array.isRequired,
     selectedCampus: PropTypes.string.isRequired,
     campusOnChange: PropTypes.func.isRequired,
-    iconName: PropTypes.string.isRequired,
-    iconFill: PropTypes.string,
-    iconWidth: PropTypes.string,
-    iconHeight: PropTypes.string,
-    iconTitle: PropTypes.string,
-  };
-
-  state: {
-    focused: boolean,
-    campus: string,
-    onload: boolean,
   };
 
   constructor(props: Object) {
@@ -52,17 +47,17 @@ export default class Campus extends Component {
     document.addEventListener("touchstart", this.handleClickOutside);
   }
 
-  componentWillUnmount() {
-    document.removeEventListener("mousedown", this.handleClickOutside);
-    document.removeEventListener("touchend", this.handleClickOutside);
-  }
-
   componentWillReceiveProps(nextProps: Object) {
     if (nextProps.selectedCampus) {
       this.setState({
         campus: nextProps.selectedCampus,
       });
     }
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("mousedown", this.handleClickOutside);
+    document.removeEventListener("touchend", this.handleClickOutside);
   }
 
   setWrapperRef(node) {
@@ -81,14 +76,17 @@ export default class Campus extends Component {
   }
 
   setFocus = () => {
-    const focused =
-      this.state.onload && this.props.selectedCampus
-        ? false
-        : !this.state.focused;
+    const focused = this.state.onload && this.props.selectedCampus ? false : !this.state.focused;
 
     this.setState({
       focused,
       onload: false,
+    });
+  };
+
+  buttonToggle = () => {
+    this.setState({
+      focused: !this.state.focused,
     });
   };
 
@@ -102,28 +100,18 @@ export default class Campus extends Component {
   };
 
   render() {
-    const {
-      campuses,
-      campusOnChange,
-      selectedCampus,
-      iconName,
-      iconFill,
-      iconWidth,
-      iconHeight,
-      iconTitle,
-    } = this.props;
+    const { campuses } = this.props;
     const { campus } = this.state;
 
     return (
       <div
         style={this.state.focused ? focusedInput : hiddenInput}
         className={"soft-double-top text-left soft-half-sides"}
+        ref={this.setWrapperRef}
       >
         <Forms.Input
           classes={this.state.focused ? "soft-bottom" : ""}
-          inputClasses={
-            "outlined--dotted outlined--light h6 flush-bottom text-black"
-          }
+          inputClasses={"outlined--dotted outlined--light h6 flush-bottom text-black"}
           style={{ textTransform: "capitalize" }}
           type="text"
           label={"Campus"}
@@ -132,17 +120,17 @@ export default class Campus extends Component {
           defaultValue={campus}
           readOnly={this.state.focused ? "readonly" : ""}
           onFocus={this.setFocus}
-          iconName={iconName}
-          iconFill={iconFill}
-          iconWidth={iconWidth}
-          iconHeight={iconHeight}
-          iconTitle={iconTitle}
+          iconName={this.state.focused ? "arrowUp" : "arrowDown"}
+          iconFill={this.state.focused ? "#6BAC43" : "#505050"}
+          iconWidth={"24px"}
+          iconHeight={"24px"}
+          iconTitle={this.state.focused ? "Arrow Up Icon" : "Arrow Down Icon"}
+          iconButtonToggle={this.buttonToggle}
         />
         <div
           className={`push-half-sides push-half-bottom ${!this.state.focused
             ? "visuallyhidden"
             : "display-inline-block"}`}
-          ref={this.setWrapperRef}
         >
           {/* weird SSR stuff here to investigate */}
           {campuses.map((c, i) =>
@@ -158,13 +146,10 @@ export default class Campus extends Component {
               key={i}
               clicked={this.onClick}
             >
-              <span
-                className="soft-half-top"
-                style={{ textTransform: "capitalize" }}
-              >
+              <span className="soft-half-top" style={{ textTransform: "capitalize" }}>
                 {c}
               </span>
-            </Forms.Checkbox>,
+            </Forms.Checkbox>
           )}
         </div>
       </div>
