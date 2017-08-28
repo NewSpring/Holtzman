@@ -163,6 +163,7 @@ exports[`Layout renders custom toggles if passed 1`] = `
       <label
         className="h6 soft-half-left push-half-left flush-bottom text-left float-left locked-top"
         htmlFor="savePayment"
+        onClick={[Function]}
         style={
           Object {
             "cursor": "pointer",
@@ -368,6 +369,7 @@ exports[`Layout renders default toggles by default 1`] = `
       <label
         className="h6 soft-half-left push-half-left flush-bottom text-left float-left locked-top"
         htmlFor="savePayment"
+        onClick={[Function]}
         style={
           Object {
             "cursor": "pointer",

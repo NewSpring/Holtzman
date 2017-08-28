@@ -93,7 +93,8 @@ export default class Campus extends Component {
   };
 
   onClick = (e: Event) => {
-    const campus = e.target.name;
+    const campus = e.target.name || e.target.innerHTML; // eslint-disable-line
+
     this.setState({
       campus,
     });
@@ -130,7 +131,7 @@ export default class Campus extends Component {
           labelStyles={{ pointerEvents: "none" }}
           name="campus"
           defaultValue={campus}
-          readOnly={this.state.focused ? "readonly" : ""}
+          readOnly={this.state.focused ? "readOnly" : ""}
           onFocus={this.setFocus}
           iconName={iconName}
           iconFill={iconFill}

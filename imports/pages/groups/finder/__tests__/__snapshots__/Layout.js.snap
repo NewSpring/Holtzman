@@ -73,7 +73,7 @@ exports[`test renders disabled tags 1`] = `
             validation={[Function]} />
         </div>
         <div
-          className="text-left soft-double-top soft-half-sides">
+          className="text-left push-back-double-ends soft-half-sides">
           <Svg
             fill="#1C683E"
             height="24px"
@@ -203,7 +203,7 @@ exports[`test renders loading if no tags 1`] = `
             validation={[Function]} />
         </div>
         <div
-          className="text-left soft-double-top soft-half-sides">
+          className="text-left push-back-double-ends soft-half-sides">
           <Svg
             fill="#1C683E"
             height="24px"
@@ -340,7 +340,7 @@ exports[`test renders with props 1`] = `
             validation={[Function]} />
         </div>
         <div
-          className="text-left soft-double-top soft-half-sides">
+          className="text-left push-back-double-ends soft-half-sides">
           <Svg
             fill="#1C683E"
             height="24px"

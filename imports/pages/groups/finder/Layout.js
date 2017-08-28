@@ -104,7 +104,7 @@ const Layout = ({
               iconTitle="Location Icon"
             />
           </div>
-          <div className={"text-left soft-double-top soft-half-sides"}>
+          <div className={"text-left push-back-double-ends soft-half-sides"}>
             <Svg name={"locate"} title={"Locate Icon"} fill={iconFill} />
             <h6
               className="display-inline-block push-half-left"
