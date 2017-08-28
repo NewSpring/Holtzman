@@ -70,6 +70,11 @@ export default class Checkbox extends React.Component {
     return null;
   }
 
+  clickedLabel = (e: Event) => {
+    if (e) e.preventDefault();
+    this.props.clicked(e);
+  };
+
   getStyles = checked => {
     if (checked) {
       return {
@@ -109,8 +114,14 @@ export default class Checkbox extends React.Component {
       <div className={inputclasses.join(" ")} data-spec="input-wrapper">
         <label
           className="h6 soft-half-left push-half-left flush-bottom text-left float-left locked-top"
-          style={{ marginTop: "-1px", cursor: "pointer", whiteSpace: "nowrap", display: "block"}}
+          style={{
+            marginTop: "-1px",
+            cursor: "pointer",
+            whiteSpace: "nowrap",
+            display: "block",
+          }}
           htmlFor={this.props.id || this.props.label || this.props.name}
+          onClick={this.clickedLabel}
         >
           <small
             data-spec="input-label"
