@@ -17,6 +17,12 @@ const hiddenInput = {
 };
 
 export default class Campus extends Component {
+  state: {
+    focused: boolean,
+    campus: string,
+    onload: boolean
+  };
+
   static propTypes = {
     campuses: PropTypes.array.isRequired,
     selectedCampus: PropTypes.string.isRequired,
@@ -26,12 +32,6 @@ export default class Campus extends Component {
     iconWidth: PropTypes.string,
     iconHeight: PropTypes.string,
     iconTitle: PropTypes.string,
-  };
-
-  state: {
-    focused: boolean,
-    campus: string,
-    onload: boolean,
   };
 
   constructor(props: Object) {
@@ -52,17 +52,17 @@ export default class Campus extends Component {
     document.addEventListener("touchstart", this.handleClickOutside);
   }
 
-  componentWillUnmount() {
-    document.removeEventListener("mousedown", this.handleClickOutside);
-    document.removeEventListener("touchend", this.handleClickOutside);
-  }
-
   componentWillReceiveProps(nextProps: Object) {
     if (nextProps.selectedCampus) {
       this.setState({
         campus: nextProps.selectedCampus,
       });
     }
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("mousedown", this.handleClickOutside);
+    document.removeEventListener("touchend", this.handleClickOutside);
   }
 
   setWrapperRef(node) {
@@ -81,15 +81,20 @@ export default class Campus extends Component {
   }
 
   setFocus = () => {
-    const focused =
-      this.state.onload && this.props.selectedCampus
-        ? false
-        : !this.state.focused;
+    const focused = this.state.onload && this.props.selectedCampus ? false : !this.state.focused;
 
     this.setState({
       focused,
       onload: false,
     });
+
+    // if an icon is clicked to close this input, then freaking close it.
+    const activeElement = document.activeElement;
+    if (activeElement && activeElement.id && activeElement.id === "iconButton") {
+      this.setState({
+        focused: false,
+      });
+    }
   };
 
   onClick = (e: Event) => {
@@ -102,16 +107,7 @@ export default class Campus extends Component {
   };
 
   render() {
-    const {
-      campuses,
-      campusOnChange,
-      selectedCampus,
-      iconName,
-      iconFill,
-      iconWidth,
-      iconHeight,
-      iconTitle,
-    } = this.props;
+    const { campuses, iconName, iconFill, iconWidth, iconHeight, iconTitle } = this.props;
     const { campus } = this.state;
 
     return (
@@ -121,9 +117,7 @@ export default class Campus extends Component {
       >
         <Forms.Input
           classes={this.state.focused ? "soft-bottom" : ""}
-          inputClasses={
-            "outlined--dotted outlined--light h6 flush-bottom text-black"
-          }
+          inputClasses={"outlined--dotted outlined--light h6 flush-bottom text-black"}
           style={{ textTransform: "capitalize" }}
           type="text"
           label={"Campus"}
@@ -158,13 +152,10 @@ export default class Campus extends Component {
               key={i}
               clicked={this.onClick}
             >
-              <span
-                className="soft-half-top"
-                style={{ textTransform: "capitalize" }}
-              >
+              <span className="soft-half-top" style={{ textTransform: "capitalize" }}>
                 {c}
               </span>
-            </Forms.Checkbox>,
+            </Forms.Checkbox>
           )}
         </div>
       </div>
