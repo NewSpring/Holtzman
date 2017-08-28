@@ -12,7 +12,7 @@ type IRenderLabel = {
   name: string,
   label: string,
   disabled?: boolean,
-  style?: Object, // eslint-disable-line
+  style?: Object // eslint-disable-line
 };
 
 const RenderLabel = ({
@@ -62,7 +62,7 @@ type IInputProps = {
   iconFill: string,
   iconWidth: string,
   iconHeight: string,
-  iconTitle: string,
+  iconTitle: string
 };
 
 export default class Input extends Component {
@@ -77,7 +77,7 @@ export default class Input extends Component {
     focused: boolean,
     error: boolean,
     value: ?string,
-    autofocus: boolean,
+    autofocus: boolean
   };
 
   constructor(props: Object) {
@@ -112,12 +112,7 @@ export default class Input extends Component {
         return;
       }
 
-      if (
-        !this._previousValue &&
-        target.value &&
-        !this.state.focused &&
-        !this.state.value
-      ) {
+      if (!this._previousValue && target.value && !this.state.focused && !this.state.value) {
         // eslint-disable-line
         this.setValue(target.value);
       }
@@ -161,7 +156,6 @@ export default class Input extends Component {
 
   validate = (e?: Event) => {
     const target = this.node;
-    // const value = target.value
     const value = this.getValue();
 
     if (!value) {
@@ -171,18 +165,33 @@ export default class Input extends Component {
       });
     }
 
-    this.setState({
-      focused: false,
-    });
+    let activeElement;
+    setTimeout(() => {
+      activeElement = document.activeElement;
+      if (
+        !activeElement ||
+        (activeElement && !activeElement.id) ||
+        (activeElement && activeElement.id && activeElement.id !== "iconButton")
+      ) {
+        this.setState({
+          focused: false,
+        });
+      }
+    }, 1);
 
     if (this.props.validation && typeof this.props.validation === "function") {
       this.setState({
         error: !this.props.validation(value, target, e),
       });
     }
-
     if (this.props.onBlur && typeof this.props.onBlur === "function") {
       this.props.onBlur(value, target, e);
+    }
+
+    if (value) {
+      this.setState({
+        focused: true,
+      });
     }
   };
 
@@ -198,6 +207,28 @@ export default class Input extends Component {
 
     if (this.props.onFocus && typeof this.props.onFocus === "function") {
       this.props.onFocus(value, target, e);
+    }
+  };
+
+  iconClick = (e: Event) => {
+    if (e) e.preventDefault();
+    if (!this.state.focused) {
+      // set the focus
+      this.node.focus();
+    } else {
+      // unset the focus
+      const value = this.getValue();
+      if (!value) {
+        this.setState({
+          active: false,
+        });
+      }
+      this.setState({
+        focused: false,
+      });
+      if (this.props.onFocus && typeof this.props.onFocus === "function") {
+        this.props.onFocus(value, this.node, e);
+      }
     }
   };
 
@@ -303,11 +334,7 @@ export default class Input extends Component {
     } = this.props;
 
     return (
-      <div
-        className={this.classes()}
-        style={style || {}}
-        data-spec="input-wrapper"
-      >
+      <div className={this.classes()} style={style || {}} data-spec="input-wrapper">
         <RenderLabel
           hideLabel={hideLabel}
           id={id}
@@ -318,7 +345,11 @@ export default class Input extends Component {
         />
 
         {iconName &&
-          <div style={{ position: "absolute", right: "0" }}>
+          <button
+            id="iconButton"
+            style={{ position: "absolute", right: "0" }}
+            onClick={this.iconClick}
+          >
             <Svg
               name={iconName}
               fill={iconFill}
@@ -326,7 +357,7 @@ export default class Input extends Component {
               height={iconHeight}
               title={iconTitle}
             />
-          </div>}
+          </button>}
 
         <input
           ref={node => (this.node = node)}

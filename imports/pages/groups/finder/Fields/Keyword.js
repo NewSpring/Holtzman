@@ -22,7 +22,7 @@ export default class Keywords extends Component {
     selectedTags: PropTypes.array.isRequired,
     searchQuery: PropTypes.array.isRequired,
     tagOnClick: PropTypes.func.isRequired,
-    inputOnChange: PropTypes.func.isRequired,
+    onChange: PropTypes.func.isRequired,
     iconName: PropTypes.string.isRequired,
     iconFill: PropTypes.string,
     iconWidth: PropTypes.string,
@@ -69,6 +69,20 @@ export default class Keywords extends Component {
     this.setState({
       focused: focus,
     });
+
+    // if an icon is clicked to close this input, then freaking close it.
+    const activeElement = document.activeElement;
+    if (activeElement && activeElement.id && activeElement.id === "iconButton") {
+      this.setState({
+        focused: false,
+      });
+    }
+  };
+
+  callThisOnClick = tag => {
+    this.props.tagOnClick(tag);
+    const theInput = document.getElementById("keywords");
+    theInput.focus();
   };
 
   render() {
@@ -95,16 +109,13 @@ export default class Keywords extends Component {
       >
         <Forms.Input
           classes={this.state.focused ? "soft-bottom" : ""}
-          inputClasses={
-            "outlined--dotted outlined--light h6 capitalize flush-bottom text-black"
-          }
+          inputClasses={"outlined--dotted outlined--light h6 capitalize flush-bottom text-black"}
           type="text"
           label={"I'm looking for..."}
           name="keywords"
           defaultValue={searchQuery}
           onChange={e => onChange(e)}
           onFocus={e => this.setFocus(true)}
-          onBlur={this.onBlur}
           iconName={iconName}
           iconFill={iconFill}
           iconWidth={iconWidth}
@@ -121,11 +132,11 @@ export default class Keywords extends Component {
             <Tag
               className=""
               style={{ textTransform: "capitalize" }}
-              onClick={tagOnClick}
+              onClick={this.callThisOnClick}
               key={i}
               val={tag.value}
               active={loweredTags.indexOf(tag.value) + 1}
-            />,
+            />
           )}
         </div>
       </div>
