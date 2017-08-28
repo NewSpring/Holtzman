@@ -4,6 +4,7 @@ exports[`test pushes type prop to inputclasses 1`] = `
   data-spec="input-wrapper">
   <label
     className="h6 soft-half-left push-half-left flush-bottom text-left float-left locked-top"
+    onClick={[Function]}
     style={
       Object {
         "cursor": "pointer",
@@ -51,6 +52,7 @@ exports[`test should accept a default value 1`] = `
     data-spec="input-wrapper">
     <label
       className="h6 soft-half-left push-half-left flush-bottom text-left float-left locked-top"
+      onClick={[Function]}
       style={
         Object {
           "cursor": "pointer",
@@ -88,6 +90,7 @@ exports[`test should accept an id 1`] = `
     <label
       className="h6 soft-half-left push-half-left flush-bottom text-left float-left locked-top"
       htmlFor="harambe"
+      onClick={[Function]}
       style={
         Object {
           "cursor": "pointer",
@@ -128,6 +131,7 @@ exports[`test should accept label 1`] = `
     <label
       className="h6 soft-half-left push-half-left flush-bottom text-left float-left locked-top"
       htmlFor="harambe"
+      onClick={[Function]}
       style={
         Object {
           "cursor": "pointer",
@@ -169,6 +173,7 @@ exports[`test should accept name prop 1`] = `
     <label
       className="h6 soft-half-left push-half-left flush-bottom text-left float-left locked-top"
       htmlFor="harambe"
+      onClick={[Function]}
       style={
         Object {
           "cursor": "pointer",
@@ -214,6 +219,7 @@ exports[`test should add classes with classes prop 1`] = `
     data-spec="input-wrapper">
     <label
       className="h6 soft-half-left push-half-left flush-bottom text-left float-left locked-top"
+      onClick={[Function]}
       style={
         Object {
           "cursor": "pointer",
@@ -250,6 +256,7 @@ exports[`test should add classes with classes prop 2`] = `
     data-spec="input-wrapper">
     <label
       className="h6 soft-half-left push-half-left flush-bottom text-left float-left locked-top"
+      onClick={[Function]}
       style={
         Object {
           "cursor": "pointer",
@@ -286,6 +293,7 @@ exports[`test should add inputClasses with inputClasses prop 1`] = `
     data-spec="input-wrapper">
     <label
       className="h6 soft-half-left push-half-left flush-bottom text-left float-left locked-top"
+      onClick={[Function]}
       style={
         Object {
           "cursor": "pointer",
@@ -323,6 +331,7 @@ exports[`test should disable input with disabled prop 1`] = `
     data-spec="input-wrapper">
     <label
       className="h6 soft-half-left push-half-left flush-bottom text-left float-left locked-top"
+      onClick={[Function]}
       style={
         Object {
           "cursor": "pointer",
@@ -359,6 +368,7 @@ exports[`test should display children 1`] = `
     data-spec="input-wrapper">
     <label
       className="h6 soft-half-left push-half-left flush-bottom text-left float-left locked-top"
+      onClick={[Function]}
       style={
         Object {
           "cursor": "pointer",
@@ -397,6 +407,7 @@ exports[`test should hide label with hideLabel prop 1`] = `
     data-spec="input-wrapper">
     <label
       className="h6 soft-half-left push-half-left flush-bottom text-left float-left locked-top"
+      onClick={[Function]}
       style={
         Object {
           "cursor": "pointer",
@@ -429,6 +440,7 @@ exports[`test should render with minimal props 1`] = `
     data-spec="input-wrapper">
     <label
       className="h6 soft-half-left push-half-left flush-bottom text-left float-left locked-top"
+      onClick={[Function]}
       style={
         Object {
           "cursor": "pointer",
@@ -465,6 +477,7 @@ exports[`test should respond to onclick prop 1`] = `
     data-spec="input-wrapper">
     <label
       className="h6 soft-half-left push-half-left flush-bottom text-left float-left locked-top"
+      onClick={[Function]}
       style={
         Object {
           "cursor": "pointer",
