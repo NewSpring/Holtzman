@@ -2,6 +2,7 @@
 
 import { Component } from "react";
 import StripTags from "striptags";
+import isIOS from "../../../../util/isIOS";
 
 import Label from "./Label";
 import Svg from "../svg";
@@ -48,6 +49,7 @@ type IInputProps = {
   name: string,
   inputClasses: string,
   hideLabel?: boolean,
+  hideKeyboard?: boolean,
   autofocus?: boolean,
   readOnly: string,
   format: Function,
@@ -90,12 +92,6 @@ export default class Input extends Component {
       autofocus: false,
     };
   }
-
-  // componentWillMount() {
-  //   if (this.props.defaultValue) {
-  //     this.setState({ active: true });
-  //   }
-  // }
 
   componentDidMount() {
     if (this.props.autofocus) {
@@ -181,8 +177,11 @@ export default class Input extends Component {
       });
     }
 
+    // Call onblur function if one is defined otherwise blur the input.
     if (this.props.onBlur && typeof this.props.onBlur === "function") {
       this.props.onBlur(value, target, e);
+    } else {
+      target.blur();
     }
   };
 

@@ -31,7 +31,6 @@ export default class Campus extends Component {
   state: {
     focused: boolean,
     campus: string,
-    onload: boolean,
   };
 
   constructor(props: Object) {
@@ -39,12 +38,10 @@ export default class Campus extends Component {
     this.state = {
       focused: false,
       campus: "",
-      onload: true,
     };
 
     this.setWrapperRef = this.setWrapperRef.bind(this);
     this.handleClickOutside = this.handleClickOutside.bind(this);
-    // this.onClick = this.onClick.bind(this);
   }
 
   componentDidMount() {
@@ -72,7 +69,7 @@ export default class Campus extends Component {
   /**
    * Alert if clicked on outside of element
    */
-  handleClickOutside(event) {
+  handleClickOutside(event: Event) {
     if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
       this.setState({
         focused: false,
@@ -80,15 +77,9 @@ export default class Campus extends Component {
     }
   }
 
-  setFocus = () => {
-    const focused =
-      this.state.onload && this.props.selectedCampus
-        ? false
-        : !this.state.focused;
-
+  setFocus = (e: Event) => {
     this.setState({
-      focused,
-      onload: false,
+      focused: !this.state.focused,
     });
   };
 
@@ -98,7 +89,19 @@ export default class Campus extends Component {
       campus,
     });
 
+    if (!Meteor.isCordova) {
+      this.setFocus();
+    }
+
     this.props.campusOnChange(campus);
+  };
+
+  onBlur = event => {
+    if (event.type === "keydown" && event.keyCode === 9) {
+      if (!Meteor.isCordova) {
+        this.setFocus();
+      }
+    }
   };
 
   render() {
@@ -118,6 +121,10 @@ export default class Campus extends Component {
       <div
         style={this.state.focused ? focusedInput : hiddenInput}
         className={"soft-double-top text-left soft-half-sides"}
+        ref={this.setWrapperRef}
+        onKeyDown={this.onBlur}
+        onFocus={this.setFocus}
+        onTouchStart={this.setFocus}
       >
         <Forms.Input
           classes={this.state.focused ? "soft-bottom" : ""}
@@ -130,19 +137,17 @@ export default class Campus extends Component {
           labelStyles={{ pointerEvents: "none" }}
           name="campus"
           defaultValue={campus}
-          readOnly={this.state.focused ? "readonly" : ""}
-          onFocus={this.setFocus}
           iconName={iconName}
           iconFill={iconFill}
           iconWidth={iconWidth}
           iconHeight={iconHeight}
           iconTitle={iconTitle}
+          readOnly
         />
         <div
           className={`push-half-sides push-half-bottom ${!this.state.focused
             ? "visuallyhidden"
             : "display-inline-block"}`}
-          ref={this.setWrapperRef}
         >
           {/* weird SSR stuff here to investigate */}
           {campuses.map((c, i) =>
