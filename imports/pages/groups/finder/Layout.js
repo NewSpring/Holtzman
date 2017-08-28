@@ -33,7 +33,7 @@ const Layout = ({
   content,
   getLocation,
   iconFill,
-}) =>
+}) => (
   <section className="background--light-secondary hard">
     {/* Meta */}
     <Meta
@@ -93,6 +93,7 @@ const Layout = ({
               iconName="location"
               iconFill="#505050"
               iconTitle="Location Icon"
+              iconHighlightColor="#6BAC43"
             />
           </div>
           <div className={"text-left soft-double-top soft-half-sides"}>
@@ -195,7 +196,8 @@ const Layout = ({
           })}
       </div>
     </div>
-  </section>;
+  </section>
+);
 /* eslint-enable max-len */
 
 Layout.propTypes = {

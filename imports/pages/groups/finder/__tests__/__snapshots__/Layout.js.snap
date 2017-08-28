@@ -57,6 +57,7 @@ exports[`test renders disabled tags 1`] = `
           <Input
             errorText="Please enter a valid zip code"
             iconFill="#505050"
+            iconHighlightColor="#6BAC43"
             iconName="location"
             iconTitle="Location Icon"
             id="zip"
@@ -182,6 +183,7 @@ exports[`test renders loading if no tags 1`] = `
           <Input
             errorText="Please enter a valid zip code"
             iconFill="#505050"
+            iconHighlightColor="#6BAC43"
             iconName="location"
             iconTitle="Location Icon"
             id="zip"
@@ -314,6 +316,7 @@ exports[`test renders with props 1`] = `
           <Input
             errorText="Please enter a valid zip code"
             iconFill="#505050"
+            iconHighlightColor="#6BAC43"
             iconName="location"
             iconTitle="Location Icon"
             id="zip"

@@ -63,6 +63,7 @@ type IInputProps = {
   iconWidth: string,
   iconHeight: string,
   iconTitle: string,
+  iconHighlightColor: string,
   iconButtonToggle: Function
 };
 
@@ -327,6 +328,7 @@ export default class Input extends Component {
       iconWidth,
       iconHeight,
       iconTitle,
+      iconHighlightColor,
     } = this.props;
 
     return (
@@ -340,7 +342,7 @@ export default class Input extends Component {
           style={labelStyles}
         />
 
-        {iconName &&
+        {iconName && (
           <button
             id="iconButton"
             style={{ position: "absolute", right: "0" }}
@@ -348,12 +350,13 @@ export default class Input extends Component {
           >
             <Svg
               name={iconName}
-              fill={iconFill}
+              fill={iconHighlightColor && this.state.focused ? iconHighlightColor : iconFill}
               width={iconWidth}
               height={iconHeight}
               title={iconTitle}
             />
-          </button>}
+          </button>
+        )}
 
         <input
           ref={node => (this.node = node)}
