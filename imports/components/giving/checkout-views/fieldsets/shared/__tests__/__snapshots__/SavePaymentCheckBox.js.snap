@@ -21,10 +21,13 @@ exports[`test renders with props 1`] = `
   <label
     className="h6 soft-half-left push-half-left flush-bottom text-left float-left locked-top"
     htmlFor="savePayment"
+    onClick={[Function]}
     style={
       Object {
         "cursor": "pointer",
+        "display": "block",
         "marginTop": "-1px",
+        "whiteSpace": "nowrap",
       }
     }>
     <small
@@ -40,6 +43,7 @@ exports[`test renders with props 1`] = `
     disabled={undefined}
     id="savePayment"
     name="savePayment"
+    onChange={undefined}
     onClick={[Function]}
     style={
       Object {
@@ -49,6 +53,6 @@ exports[`test renders with props 1`] = `
     type="checkbox" />
   <label
     htmlFor="savePayment"
-    style={Object {}} />
+    style={undefined} />
 </div>
 `;
