@@ -12,6 +12,7 @@ exports[`test renders one-half if country is \`CA\` 1`] = `
     </label>
     <input
       className={undefined}
+      data-lpignore={undefined}
       data-spec="input"
       defaultValue="23456"
       disabled={undefined}
@@ -43,6 +44,7 @@ exports[`test renders one-half if country is \`US\` 1`] = `
     </label>
     <input
       className={undefined}
+      data-lpignore={undefined}
       data-spec="input"
       defaultValue="12345"
       disabled={undefined}
@@ -74,6 +76,7 @@ exports[`test renders one-half if no country 1`] = `
     </label>
     <input
       className={undefined}
+      data-lpignore={undefined}
       data-spec="input"
       defaultValue={undefined}
       disabled={undefined}
@@ -105,6 +108,7 @@ exports[`test renders one-whole for countries with no states 1`] = `
     </label>
     <input
       className={undefined}
+      data-lpignore={undefined}
       data-spec="input"
       defaultValue={undefined}
       disabled={undefined}
