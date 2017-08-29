@@ -13,6 +13,7 @@ exports[`test should render with props 1`] = `
     </label>
     <input
       className={undefined}
+      data-lpignore={undefined}
       data-spec="input"
       defaultValue="123456789"
       disabled={undefined}
@@ -38,6 +39,7 @@ exports[`test should render with props 1`] = `
     </label>
     <input
       className={undefined}
+      data-lpignore={undefined}
       data-spec="input"
       defaultValue="987654321"
       disabled={undefined}

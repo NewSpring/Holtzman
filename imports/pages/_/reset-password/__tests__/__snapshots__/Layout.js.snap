@@ -33,6 +33,7 @@ exports[`test render with enabled button if newP and newPDup 1`] = `
         </label>
         <input
           className={undefined}
+          data-lpignore={undefined}
           data-spec="input"
           defaultValue={undefined}
           disabled={undefined}
@@ -58,6 +59,7 @@ exports[`test render with enabled button if newP and newPDup 1`] = `
         </label>
         <input
           className={undefined}
+          data-lpignore={undefined}
           data-spec="input"
           defaultValue={undefined}
           disabled={undefined}
@@ -123,6 +125,7 @@ exports[`test renders with disabled button without newP 1`] = `
         </label>
         <input
           className={undefined}
+          data-lpignore={undefined}
           data-spec="input"
           defaultValue={undefined}
           disabled={undefined}
@@ -148,6 +151,7 @@ exports[`test renders with disabled button without newP 1`] = `
         </label>
         <input
           className={undefined}
+          data-lpignore={undefined}
           data-spec="input"
           defaultValue={undefined}
           disabled={undefined}
@@ -213,6 +217,7 @@ exports[`test renders with disabled button without newPDup 1`] = `
         </label>
         <input
           className={undefined}
+          data-lpignore={undefined}
           data-spec="input"
           defaultValue={undefined}
           disabled={undefined}
@@ -238,6 +243,7 @@ exports[`test renders with disabled button without newPDup 1`] = `
         </label>
         <input
           className={undefined}
+          data-lpignore={undefined}
           data-spec="input"
           defaultValue={undefined}
           disabled={undefined}

@@ -5,16 +5,12 @@ import ReactMixin from "react-mixin";
 import gql from "graphql-tag";
 import { withRouter } from "react-router";
 
-import Split, {
-  Left,
-  Right,
-} from "../../../components/@primitives/layout/split";
+import Split, { Left, Right } from "../../../components/@primitives/layout/split";
 import Headerable from "../../../deprecated/mixins/mixins.Header";
 import { nav as navActions, modal } from "../../../data/store";
 import Validate from "../../../util/validate";
 
 import Layout from "./Layout";
-import Result from "./Result";
 import ErrTemplate from "./ErrTemplate";
 
 const defaultArray = [];
@@ -38,6 +34,7 @@ class TemplateWithoutData extends Component {
     zip: "",
     submit: false,
     iconFill: "#505050",
+    geolocationLoading: false,
   };
 
   componentWillMount() {
@@ -71,11 +68,11 @@ class TemplateWithoutData extends Component {
 
   geoLocateMe = (e: Event) => {
     if (e) e.preventDefault();
-
-    navigator.geolocation.getCurrentPosition(
-      this.geolocationSuccess,
-      this.geolocationError,
-    );
+    // show the loading spinner while we wait for the geolocation function to return
+    this.setState({
+      geolocationLoading: true,
+    });
+    navigator.geolocation.getCurrentPosition(this.geolocationSuccess, this.geolocationError);
   };
 
   geolocationSuccess = (position: Object) => {
@@ -111,10 +108,16 @@ class TemplateWithoutData extends Component {
       zip.value = "Using your location";
       zip.disabled = true;
     }
+    this.setState({
+      geolocationLoading: false,
+    });
   };
 
   geolocationError = error => {
     this.props.dispatch(modal.render(ErrTemplate, { errorCode: error.code }));
+    this.setState({
+      geolocationLoading: false,
+    });
   };
 
   getResults = () => {
@@ -215,8 +218,7 @@ class TemplateWithoutData extends Component {
       }
       tagList.splice(tagList.indexOf(tag), 1);
     } else {
-      queryString =
-        queryString && queryString.length ? `${queryString}, ${tag}` : `${tag}`;
+      queryString = queryString && queryString.length ? `${queryString}, ${tag}` : `${tag}`;
       tagList.push(tag);
     }
 
@@ -246,14 +248,9 @@ class TemplateWithoutData extends Component {
     let selectedCampus = this.state.campus;
     let zipCode = this.state.zip;
 
-    if (
-      (location.query.campus || location.query.zip) &&
-      (!this.state.zip || !this.state.campus)
-    ) {
+    if ((location.query.campus || location.query.zip) && (!this.state.zip || !this.state.campus)) {
       zipCode = !this.state.zip ? location.query.zip : this.state.zip;
-      selectedCampus = !this.state.campus
-        ? location.query.campus
-        : this.state.campus;
+      selectedCampus = !this.state.campus ? location.query.campus : this.state.campus;
     }
 
     if (
@@ -282,22 +279,22 @@ class TemplateWithoutData extends Component {
             canSearchTags={false || this.state.tags.length || this.state.query}
             canSearchCampus={false || this.state.campus}
             canSearchLocation={
-              false ||
-              this.state.zip ||
-              (this.state.latitude && this.state.longitude)
+              false || this.state.zip || (this.state.latitude && this.state.longitude)
             }
             campuses={
-              autofill.loading
-                ? [""]
-                : autofill.campuses
-                    .filter(x => {
-                      if (x.name === "Web") {
-                        return false;
-                      }
+              autofill.loading ? (
+                [""]
+              ) : (
+                autofill.campuses
+                  .filter(x => {
+                    if (x.name === "Web") {
+                      return false;
+                    }
 
-                      return true;
-                    })
-                    .map(x => x.name.toLowerCase())
+                    return true;
+                  })
+                  .map(x => x.name.toLowerCase())
+              )
             }
             selectedCampus={selectedCampus}
             zip={zipCode}
@@ -312,6 +309,7 @@ class TemplateWithoutData extends Component {
             inputOnChange={this.inputOnChange}
             content={content.loading ? defaultArray : content.entries}
             getLocation={this.geoLocateMe}
+            geolocationLoading={this.state.geolocationLoading}
             iconFill={this.state.iconFill}
           />
         </Left>
@@ -358,11 +356,7 @@ const withGroupAttributes = graphql(GROUP_ATTRIBUTES_QUERY, {
 });
 
 const TAGGED_CONTENT_QUERY = gql`
-  query GetTaggedContent(
-    $tagName: String!
-    $limit: Int
-    $includeChannels: [String]
-  ) {
+  query GetTaggedContent($tagName: String!, $limit: Int, $includeChannels: [String]) {
     entries: taggedContent(
       tagName: $tagName
       limit: $limit
@@ -405,11 +399,9 @@ const mapStateToProps = state => ({ location: state.routing.location });
 export default withRouter(
   connect(mapStateToProps)(
     withGroupAttributes(
-      withAutoFillMeta(
-        withTaggedContent(ReactMixin.decorate(Headerable)(TemplateWithoutData)),
-      ),
-    ),
-  ),
+      withAutoFillMeta(withTaggedContent(ReactMixin.decorate(Headerable)(TemplateWithoutData)))
+    )
+  )
 );
 
 export { TemplateWithoutData };
