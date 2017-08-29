@@ -96,7 +96,6 @@ exports[`test renders disabled tags 1`] = `
             </button>
           </h6>
         </div>
-        <LoadingContent />
       </Form>
     </div>
   </div>
@@ -224,7 +223,6 @@ exports[`test renders loading if no tags 1`] = `
             </button>
           </h6>
         </div>
-        <LoadingContent />
       </Form>
     </div>
   </div>
@@ -359,7 +357,6 @@ exports[`test renders with props 1`] = `
             </button>
           </h6>
         </div>
-        <LoadingContent />
       </Form>
     </div>
   </div>

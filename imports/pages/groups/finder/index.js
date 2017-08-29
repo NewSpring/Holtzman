@@ -108,7 +108,6 @@ class TemplateWithoutData extends Component {
       zip.value = "Using your location";
       zip.disabled = true;
     }
-    console.log("this.state.geolocationLoading = ", this.state.geolocationLoading);
     this.setState({
       geolocationLoading: false,
     });

@@ -13,18 +13,6 @@ import CampusSelect from "./Fields/Campus";
 import Validate from "../../../util/validate";
 import Svg from "../../../components/@primitives/UI/svg";
 
-type ILoadingContent = {
-  loading: boolean
-};
-
-const LoadingContent = ({ loading }: ILoadingContent) => {
-  if (!loading) return null;
-  return (
-    <div className="one-whole text-center soft">
-      <Loading />
-    </div>
-  );
-};
 /* eslint-disable max-len */
 const Layout = ({
   tags,
@@ -110,23 +98,33 @@ const Layout = ({
               ignoreLastPass
             />
           </div>
-          <div className={"text-left soft-double-top soft-half-sides"}>
-            <Svg
-              name={"locate"}
-              title={"Locate Icon"}
-              fill={iconFill}
-              classes={"display-inline-block"}
-            />
-            <h6
-              className="display-inline-block push-half-left"
-              style={{ fontWeight: "400", verticalAlign: "super" }}
-            >
-              <button onClick={e => getLocation(e)} style={{ color: `${iconFill}` }}>
-                Use my current location
-              </button>
-            </h6>
-          </div>
-          <LoadingContent loading={geolocationLoading} />
+          {(() => {
+            if (geolocationLoading) {
+              return (
+                <div className="one-whole text-center soft">
+                  <Loading />
+                </div>
+              );
+            }
+            return (
+              <div className={"text-left soft-double-top soft-half-sides"}>
+                <Svg
+                  name={"locate"}
+                  title={"Locate Icon"}
+                  fill={iconFill}
+                  classes={"display-inline-block"}
+                />
+                <h6
+                  className="display-inline-block push-half-left"
+                  style={{ fontWeight: "400", verticalAlign: "super" }}
+                >
+                  <button onClick={e => getLocation(e)} style={{ color: `${iconFill}` }}>
+                    Use my current location
+                  </button>
+                </h6>
+              </div>
+            );
+          })()}
         </Forms.Form>
       </div>
     </div>
