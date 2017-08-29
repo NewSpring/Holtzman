@@ -21,6 +21,7 @@ exports[`test renders with props 1`] = `
   <label
     className="h6 soft-half-left push-half-left flush-bottom text-left float-left locked-top"
     htmlFor="savePayment"
+    onClick={[Function]}
     style={
       Object {
         "cursor": "pointer",
