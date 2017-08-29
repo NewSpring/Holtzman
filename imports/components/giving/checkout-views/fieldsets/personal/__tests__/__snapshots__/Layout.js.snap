@@ -39,6 +39,7 @@ exports[`Layout renders with props 1`] = `
           </label>
           <input
             className={undefined}
+            data-lpignore={undefined}
             data-spec="input"
             defaultValue="Jim"
             disabled={undefined}
@@ -67,6 +68,7 @@ exports[`Layout renders with props 1`] = `
           </label>
           <input
             className={undefined}
+            data-lpignore={undefined}
             data-spec="input"
             defaultValue={undefined}
             disabled={undefined}
@@ -94,6 +96,7 @@ exports[`Layout renders with props 1`] = `
       </label>
       <input
         className={undefined}
+        data-lpignore={undefined}
         data-spec="input"
         defaultValue="test@test.com"
         disabled={undefined}

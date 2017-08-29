@@ -64,7 +64,8 @@ type IInputProps = {
   iconHeight: string,
   iconTitle: string,
   iconHighlightColor: string,
-  iconButtonToggle: Function
+  iconButtonToggle: Function,
+  ignoreLastPass: boolean
 };
 
 export default class Input extends Component {
@@ -329,6 +330,7 @@ export default class Input extends Component {
       iconHeight,
       iconTitle,
       iconHighlightColor,
+      ignoreLastPass,
     } = this.props;
 
     return (
@@ -374,6 +376,7 @@ export default class Input extends Component {
           style={this.style()}
           maxLength={maxLength || ""}
           data-spec="input"
+          data-lpignore={ignoreLastPass}
         />
 
         {children}

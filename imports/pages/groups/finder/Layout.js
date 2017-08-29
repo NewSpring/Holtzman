@@ -13,6 +13,18 @@ import CampusSelect from "./Fields/Campus";
 import Validate from "../../../util/validate";
 import Svg from "../../../components/@primitives/UI/svg";
 
+type ILoadingContent = {
+  loading: boolean
+};
+
+const LoadingContent = ({ loading }: ILoadingContent) => {
+  if (!loading) return null;
+  return (
+    <div className="one-whole text-center soft">
+      <Loading />
+    </div>
+  );
+};
 /* eslint-disable max-len */
 const Layout = ({
   tags,
@@ -32,6 +44,7 @@ const Layout = ({
   inputOnChange,
   content,
   getLocation,
+  geolocationLoading,
   iconFill,
 }) => (
   <section className="background--light-secondary hard">
@@ -94,6 +107,7 @@ const Layout = ({
               iconFill="#505050"
               iconTitle="Location Icon"
               iconHighlightColor="#6BAC43"
+              ignoreLastPass
             />
           </div>
           <div className={"text-left soft-double-top soft-half-sides"}>
@@ -112,6 +126,7 @@ const Layout = ({
               </button>
             </h6>
           </div>
+          <LoadingContent loading={geolocationLoading} />
         </Forms.Form>
       </div>
     </div>
@@ -218,6 +233,7 @@ Layout.propTypes = {
   inputOnChange: PropTypes.func.isRequired,
   content: PropTypes.array.isRequired,
   getLocation: PropTypes.func.isRequired,
+  geolocationLoading: PropTypes.bool.isRequired,
   iconFill: PropTypes.string.isRequired,
 };
 

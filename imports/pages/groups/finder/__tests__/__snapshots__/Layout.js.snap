@@ -61,6 +61,7 @@ exports[`test renders disabled tags 1`] = `
             iconName="location"
             iconTitle="Location Icon"
             id="zip"
+            ignoreLastPass={true}
             inputClasses="outlined--dotted outlined--light h6 flush-bottom text-black"
             label="Zip Code"
             name="Zip"
@@ -95,6 +96,7 @@ exports[`test renders disabled tags 1`] = `
             </button>
           </h6>
         </div>
+        <LoadingContent />
       </Form>
     </div>
   </div>
@@ -187,6 +189,7 @@ exports[`test renders loading if no tags 1`] = `
             iconName="location"
             iconTitle="Location Icon"
             id="zip"
+            ignoreLastPass={true}
             inputClasses="outlined--dotted outlined--light h6 flush-bottom text-black"
             label="Zip Code"
             name="Zip"
@@ -221,6 +224,7 @@ exports[`test renders loading if no tags 1`] = `
             </button>
           </h6>
         </div>
+        <LoadingContent />
       </Form>
     </div>
   </div>
@@ -320,6 +324,7 @@ exports[`test renders with props 1`] = `
             iconName="location"
             iconTitle="Location Icon"
             id="zip"
+            ignoreLastPass={true}
             inputClasses="outlined--dotted outlined--light h6 flush-bottom text-black"
             label="Zip Code"
             name="Zip"
@@ -354,6 +359,7 @@ exports[`test renders with props 1`] = `
             </button>
           </h6>
         </div>
+        <LoadingContent />
       </Form>
     </div>
   </div>

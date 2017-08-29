@@ -126,6 +126,7 @@ export default class Campus extends Component {
           iconHeight={"24px"}
           iconTitle={this.state.focused ? "Arrow Up Icon" : "Arrow Down Icon"}
           iconButtonToggle={this.buttonToggle}
+          ignoreLastPass
         />
         <div
           className={`push-half-sides push-half-bottom ${!this.state.focused
@@ -133,7 +134,7 @@ export default class Campus extends Component {
             : "display-inline-block"}`}
         >
           {/* weird SSR stuff here to investigate */}
-          {campuses.map((c, i) =>
+          {campuses.map((c, i) => (
             <Forms.Checkbox
               classes={[
                 "soft-half-bottom",
@@ -150,7 +151,7 @@ export default class Campus extends Component {
                 {c}
               </span>
             </Forms.Checkbox>
-          )}
+          ))}
         </div>
       </div>
     );

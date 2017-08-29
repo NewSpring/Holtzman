@@ -11,7 +11,6 @@ import { nav as navActions, modal } from "../../../data/store";
 import Validate from "../../../util/validate";
 
 import Layout from "./Layout";
-import Result from "./Result";
 import ErrTemplate from "./ErrTemplate";
 
 const defaultArray = [];
@@ -35,6 +34,7 @@ class TemplateWithoutData extends Component {
     zip: "",
     submit: false,
     iconFill: "#505050",
+    geolocationLoading: false,
   };
 
   componentWillMount() {
@@ -68,7 +68,10 @@ class TemplateWithoutData extends Component {
 
   geoLocateMe = (e: Event) => {
     if (e) e.preventDefault();
-
+    // show the loading spinner while we wait for the geolocation function to return
+    this.setState({
+      geolocationLoading: true,
+    });
     navigator.geolocation.getCurrentPosition(this.geolocationSuccess, this.geolocationError);
   };
 
@@ -105,10 +108,17 @@ class TemplateWithoutData extends Component {
       zip.value = "Using your location";
       zip.disabled = true;
     }
+    console.log("this.state.geolocationLoading = ", this.state.geolocationLoading);
+    this.setState({
+      geolocationLoading: false,
+    });
   };
 
   geolocationError = error => {
     this.props.dispatch(modal.render(ErrTemplate, { errorCode: error.code }));
+    this.setState({
+      geolocationLoading: false,
+    });
   };
 
   getResults = () => {
@@ -273,17 +283,19 @@ class TemplateWithoutData extends Component {
               false || this.state.zip || (this.state.latitude && this.state.longitude)
             }
             campuses={
-              autofill.loading
-                ? [""]
-                : autofill.campuses
-                    .filter(x => {
-                      if (x.name === "Web") {
-                        return false;
-                      }
+              autofill.loading ? (
+                [""]
+              ) : (
+                autofill.campuses
+                  .filter(x => {
+                    if (x.name === "Web") {
+                      return false;
+                    }
 
-                      return true;
-                    })
-                    .map(x => x.name.toLowerCase())
+                    return true;
+                  })
+                  .map(x => x.name.toLowerCase())
+              )
             }
             selectedCampus={selectedCampus}
             zip={zipCode}
@@ -298,6 +310,7 @@ class TemplateWithoutData extends Component {
             inputOnChange={this.inputOnChange}
             content={content.loading ? defaultArray : content.entries}
             getLocation={this.geoLocateMe}
+            geolocationLoading={this.state.geolocationLoading}
             iconFill={this.state.iconFill}
           />
         </Left>

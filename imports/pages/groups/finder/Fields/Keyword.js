@@ -104,6 +104,7 @@ export default class Keywords extends Component {
           iconHeight={"24px"}
           iconTitle={this.state.focused ? "Arrow Up Icon" : "Arrow Down Icon"}
           iconButtonToggle={this.buttonToggle}
+          ignoreLastPass
         />
         <div
           className={`push-half-sides push-half-bottom ${!this.state.focused
@@ -111,7 +112,7 @@ export default class Keywords extends Component {
             : ""}`}
         >
           {/* weird SSR stuff here to investigate */}
-          {tags.map((tag, i) =>
+          {tags.map((tag, i) => (
             <Tag
               className=""
               style={{ textTransform: "capitalize" }}
@@ -120,7 +121,7 @@ export default class Keywords extends Component {
               val={tag.value}
               active={loweredTags.indexOf(tag.value) + 1}
             />
-          )}
+          ))}
         </div>
       </div>
     );
