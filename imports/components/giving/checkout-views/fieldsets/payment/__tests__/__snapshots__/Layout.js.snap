@@ -76,6 +76,7 @@ exports[`Layout renders custom toggles if passed 1`] = `
         </label>
         <input
           className={undefined}
+          data-lpignore={undefined}
           data-spec="input"
           defaultValue={undefined}
           disabled={undefined}
@@ -112,6 +113,7 @@ exports[`Layout renders custom toggles if passed 1`] = `
             </label>
             <input
               className={undefined}
+              data-lpignore={undefined}
               data-spec="input"
               defaultValue={undefined}
               disabled={undefined}
@@ -140,6 +142,7 @@ exports[`Layout renders custom toggles if passed 1`] = `
             </label>
             <input
               className={undefined}
+              data-lpignore={undefined}
               data-spec="input"
               defaultValue={undefined}
               disabled={undefined}
@@ -281,6 +284,7 @@ exports[`Layout renders default toggles by default 1`] = `
         </label>
         <input
           className={undefined}
+          data-lpignore={undefined}
           data-spec="input"
           defaultValue={undefined}
           disabled={undefined}
@@ -317,6 +321,7 @@ exports[`Layout renders default toggles by default 1`] = `
             </label>
             <input
               className={undefined}
+              data-lpignore={undefined}
               data-spec="input"
               defaultValue={undefined}
               disabled={undefined}
@@ -345,6 +350,7 @@ exports[`Layout renders default toggles by default 1`] = `
             </label>
             <input
               className={undefined}
+              data-lpignore={undefined}
               data-spec="input"
               defaultValue={undefined}
               disabled={undefined}

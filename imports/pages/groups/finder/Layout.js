@@ -13,6 +13,18 @@ import CampusSelect from "./Fields/Campus";
 import Validate from "../../../util/validate";
 import Svg from "../../../components/@primitives/UI/svg";
 
+type ILoadingContent = {
+  loading: boolean
+};
+
+const LoadingContent = ({ loading }: ILoadingContent) => {
+  if (!loading) return null;
+  return (
+    <div className="one-whole text-center soft">
+      <Loading />
+    </div>
+  );
+};
 /* eslint-disable max-len */
 const Layout = ({
   tags,
@@ -32,8 +44,9 @@ const Layout = ({
   inputOnChange,
   content,
   getLocation,
+  geolocationLoading,
   iconFill,
-}) =>
+}) => (
   <section className="background--light-secondary hard">
     {/* Meta */}
     <Meta
@@ -52,8 +65,7 @@ const Layout = ({
         <h3>Find Your People</h3>
         <h6 className="soft-half-bottom@handheld soft-bottom">
           <em>
-            Select your interests, campus, and location <br />to search for
-            groups near you.
+            Select your interests, campus, and location <br />to search for groups near you.
           </em>
         </h6>
         <Forms.Form
@@ -73,25 +85,17 @@ const Layout = ({
             searchQuery={searchQuery}
             tagOnClick={tagOnClick}
             selectedTags={selectedTags}
-            onChange={e => inputOnChange(e)}
-            iconName="tag"
-            iconFill="#505050"
-            iconTitle="Tag Icon"
+            onChange={inputOnChange}
           />
           <CampusSelect
             campuses={campuses}
             selectedCampus={selectedCampus}
             campusOnChange={campusOnChange}
-            iconName="campus"
-            iconFill="#505050"
-            iconTitle="Campus Icon"
           />
           <div className={"text-left soft-double-top soft-half-sides"}>
             <Forms.Input
-              inputClasses={
-                "outlined--dotted outlined--light h6 flush-bottom text-black"
-              }
-              label={"Location (zip)"}
+              inputClasses={"outlined--dotted outlined--light h6 flush-bottom text-black"}
+              label={"Zip Code"}
               defaultValue={zip}
               type="text"
               name="Zip"
@@ -102,22 +106,27 @@ const Layout = ({
               iconName="location"
               iconFill="#505050"
               iconTitle="Location Icon"
+              iconHighlightColor="#6BAC43"
+              ignoreLastPass
             />
           </div>
           <div className={"text-left soft-double-top soft-half-sides"}>
-            <Svg name={"locate"} title={"Locate Icon"} fill={iconFill} />
+            <Svg
+              name={"locate"}
+              title={"Locate Icon"}
+              fill={iconFill}
+              classes={"display-inline-block"}
+            />
             <h6
               className="display-inline-block push-half-left"
               style={{ fontWeight: "400", verticalAlign: "super" }}
             >
-              <button
-                onClick={e => getLocation(e)}
-                style={{ color: `${iconFill}` }}
-              >
+              <button onClick={e => getLocation(e)} style={{ color: `${iconFill}` }}>
                 Use my current location
               </button>
             </h6>
           </div>
+          <LoadingContent loading={geolocationLoading} />
         </Forms.Form>
       </div>
     </div>
@@ -139,9 +148,7 @@ const Layout = ({
           // XXX why can't I just pass in the function here?
           return (
             <button
-              disabled={
-                !canSearchTags && !canSearchCampus && !canSearchLocation
-              }
+              disabled={!canSearchTags && !canSearchCampus && !canSearchLocation}
               onClick={e => submitTags(e)}
               className={classes.join(" ")}
             >
@@ -182,9 +189,7 @@ const Layout = ({
                     </h4>
 
                     <p className="text-dark-primary">
-                      <small
-                        dangerouslySetInnerHTML={{ __html: entry.meta.summary }}
-                      />
+                      <small dangerouslySetInnerHTML={{ __html: entry.meta.summary }} />
                     </p>
                     <span
                       className={
@@ -199,17 +204,15 @@ const Layout = ({
               );
             }
             return (
-              <div
-                className="grid__item one-whole one-half@palm-wide-and-up"
-                key={key}
-              >
+              <div className="grid__item one-whole one-half@palm-wide-and-up" key={key}>
                 <GroupFinderFeedItem item={entry} />
               </div>
             );
           })}
       </div>
     </div>
-  </section>;
+  </section>
+);
 /* eslint-enable max-len */
 
 Layout.propTypes = {
@@ -230,6 +233,7 @@ Layout.propTypes = {
   inputOnChange: PropTypes.func.isRequired,
   content: PropTypes.array.isRequired,
   getLocation: PropTypes.func.isRequired,
+  geolocationLoading: PropTypes.bool.isRequired,
   iconFill: PropTypes.string.isRequired,
 };
 

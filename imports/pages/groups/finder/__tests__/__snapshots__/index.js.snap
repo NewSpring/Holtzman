@@ -25,6 +25,7 @@ exports[`test renders if content loading 1`] = `
       canSearchTags={null}
       content={Array []}
       findByQuery={[Function]}
+      geolocationLoading={false}
       getLocation={[Function]}
       iconFill="#505050"
       inputOnChange={[Function]}
@@ -77,6 +78,7 @@ exports[`test renders result if campuses 1`] = `
         ]
       }
       findByQuery={[Function]}
+      geolocationLoading={false}
       getLocation={[Function]}
       iconFill="#505050"
       inputOnChange={[Function]}
@@ -129,6 +131,7 @@ exports[`test renders result if q 1`] = `
         ]
       }
       findByQuery={[Function]}
+      geolocationLoading={false}
       getLocation={[Function]}
       iconFill="#505050"
       inputOnChange={[Function]}
@@ -181,6 +184,7 @@ exports[`test renders result if schedules 1`] = `
         ]
       }
       findByQuery={[Function]}
+      geolocationLoading={false}
       getLocation={[Function]}
       iconFill="#505050"
       inputOnChange={[Function]}
@@ -233,6 +237,7 @@ exports[`test renders result if tags 1`] = `
         ]
       }
       findByQuery={[Function]}
+      geolocationLoading={false}
       getLocation={[Function]}
       iconFill="#505050"
       inputOnChange={[Function]}
@@ -285,6 +290,7 @@ exports[`test renders with props 1`] = `
         ]
       }
       findByQuery={[Function]}
+      geolocationLoading={false}
       getLocation={[Function]}
       iconFill="#505050"
       inputOnChange={[Function]}
@@ -337,6 +343,7 @@ exports[`test renders without attributes 1`] = `
         ]
       }
       findByQuery={[Function]}
+      geolocationLoading={false}
       getLocation={[Function]}
       iconFill="#505050"
       inputOnChange={[Function]}
