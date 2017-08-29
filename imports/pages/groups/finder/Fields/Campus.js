@@ -27,6 +27,16 @@ export default class Campus extends Component {
     campuses: PropTypes.array.isRequired,
     selectedCampus: PropTypes.string.isRequired,
     campusOnChange: PropTypes.func.isRequired,
+    iconName: PropTypes.string.isRequired,
+    iconFill: PropTypes.string,
+    iconWidth: PropTypes.string,
+    iconHeight: PropTypes.string,
+    iconTitle: PropTypes.string,
+  };
+
+  state: {
+    focused: boolean,
+    campus: string,
   };
 
   constructor(props: Object) {
@@ -34,12 +44,10 @@ export default class Campus extends Component {
     this.state = {
       focused: false,
       campus: "",
-      onload: true,
     };
 
     this.setWrapperRef = this.setWrapperRef.bind(this);
     this.handleClickOutside = this.handleClickOutside.bind(this);
-    // this.onClick = this.onClick.bind(this);
   }
 
   componentDidMount() {
@@ -67,7 +75,7 @@ export default class Campus extends Component {
   /**
    * Alert if clicked on outside of element
    */
-  handleClickOutside(event) {
+  handleClickOutside(event: Event) {
     if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
       this.setState({
         focused: false,
@@ -75,12 +83,9 @@ export default class Campus extends Component {
     }
   }
 
-  setFocus = () => {
-    const focused = this.state.onload && this.props.selectedCampus ? false : !this.state.focused;
-
+  setFocus = (e: Event) => {
     this.setState({
-      focused,
-      onload: false,
+      focused: !this.state.focused,
     });
   };
 
@@ -97,7 +102,19 @@ export default class Campus extends Component {
       campus,
     });
 
+    if (!Meteor.isCordova) {
+      this.setFocus();
+    }
+
     this.props.campusOnChange(campus);
+  };
+
+  onBlur = event => {
+    if (event.type === "keydown" && event.keyCode === 9) {
+      if (!Meteor.isCordova) {
+        this.setFocus();
+      }
+    }
   };
 
   render() {
@@ -109,6 +126,9 @@ export default class Campus extends Component {
         style={this.state.focused ? focusedInput : hiddenInput}
         className={"soft-double-top text-left soft-half-sides"}
         ref={this.setWrapperRef}
+        onKeyDown={this.onBlur}
+        onFocus={this.setFocus}
+        onTouchStart={this.setFocus}
       >
         <Forms.Input
           classes={this.state.focused ? "soft-bottom" : ""}

@@ -76,6 +76,14 @@ export default class Keywords extends Component {
     this.setState({
       focused: !this.state.focused,
     });
+  }
+
+  onBlur = (event: Event) => {
+    if (event.type === "keydown" && event.keyCode === 9) {
+      if (!Meteor.isCordova) {
+        this.setFocus();
+      }
+    }
   };
 
   render() {
@@ -88,6 +96,7 @@ export default class Keywords extends Component {
         style={this.state.focused ? focusedInput : hiddenInput}
         className={"soft-double-top text-left soft-half-sides"}
         ref={this.setWrapperRef}
+        onKeyDown={this.onBlur}
       >
         <Forms.Input
           classes={this.state.focused ? "soft-bottom" : ""}
