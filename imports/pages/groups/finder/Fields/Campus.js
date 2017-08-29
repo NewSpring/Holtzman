@@ -20,7 +20,7 @@ export default class Campus extends Component {
   state: {
     focused: boolean,
     campus: string,
-    onload: boolean
+    onload: boolean,
   };
 
   static propTypes = {
@@ -37,6 +37,7 @@ export default class Campus extends Component {
   state: {
     focused: boolean,
     campus: string,
+    onload: boolean,
   };
 
   constructor(props: Object) {
@@ -44,6 +45,7 @@ export default class Campus extends Component {
     this.state = {
       focused: false,
       campus: "",
+      onload: true,
     };
 
     this.setWrapperRef = this.setWrapperRef.bind(this);
@@ -83,9 +85,15 @@ export default class Campus extends Component {
     }
   }
 
-  setFocus = (e: Event) => {
+  setFocus = () => {
+    const focused =
+      this.state.onload && this.props.selectedCampus
+        ? false
+        : !this.state.focused;
+
     this.setState({
-      focused: !this.state.focused,
+      focused,
+      onload: false,
     });
   };
 
@@ -132,14 +140,16 @@ export default class Campus extends Component {
       >
         <Forms.Input
           classes={this.state.focused ? "soft-bottom" : ""}
-          inputClasses={"outlined--dotted outlined--light h6 flush-bottom text-black"}
+          inputClasses={
+            "outlined--dotted outlined--light h6 flush-bottom text-black"
+          }
           style={{ textTransform: "capitalize" }}
           type="text"
           label={"Campus"}
           labelStyles={{ pointerEvents: "none" }}
           name="campus"
           defaultValue={campus}
-          readOnly={this.state.focused ? "readOnly" : ""}
+          readOnly="readonly"
           onFocus={this.setFocus}
           iconName={this.state.focused ? "arrowUp" : "arrowDown"}
           iconFill={this.state.focused ? "#6BAC43" : "#505050"}
@@ -155,7 +165,7 @@ export default class Campus extends Component {
             : "display-inline-block"}`}
         >
           {/* weird SSR stuff here to investigate */}
-          {campuses.map((c, i) => (
+          {campuses.map((c, i) =>
             <Forms.Checkbox
               classes={[
                 "soft-half-bottom",
@@ -168,11 +178,14 @@ export default class Campus extends Component {
               key={i}
               clicked={this.onClick}
             >
-              <span className="soft-half-top" style={{ textTransform: "capitalize" }}>
+              <span
+                className="soft-half-top"
+                style={{ textTransform: "capitalize" }}
+              >
                 {c}
               </span>
-            </Forms.Checkbox>
-          ))}
+            </Forms.Checkbox>,
+          )}
         </div>
       </div>
     );
