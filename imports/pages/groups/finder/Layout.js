@@ -94,12 +94,28 @@ const Layout = ({
               validation={Validate.isLocationBasedZipCode}
               onChange={zipOnChange}
               errorText="Please enter a valid zip code"
-              iconName="location"
-              iconFill="#505050"
-              iconTitle="Location Icon"
-              iconHighlightColor="#6BAC43"
               ignoreLastPass
-            />
+            >
+              <button
+                id="locationButton"
+                style={{
+                  position: "absolute",
+                  right: "0",
+                  backgroundColor: "#FFFFFF",
+                  top: "-1px",
+                  paddingLeft: "5px",
+                }}
+                onClick={e => e.preventDefault()}
+              >
+                <Svg
+                  name={"location"}
+                  fill={"#505050"}
+                  width={"24px"}
+                  height={"24px"}
+                  title={"Location Icon"}
+                />
+              </button>
+            </Forms.Input>
           </div>
           {(() => {
             if (geolocationLoading) {
@@ -110,7 +126,7 @@ const Layout = ({
               );
             }
             return (
-              <div className={"text-left push-back-double-top soft-half-sides"}>
+              <div className={"text-left soft-half-sides"}>
                 <Svg
                   name={"locate"}
                   title={"Locate Icon"}

@@ -1,6 +1,7 @@
 import { Component, PropTypes } from "react";
 import Forms from "../../../../components/@primitives/UI/forms";
 import Tag from "../../../../components/@primitives/UI/tags";
+import Svg from "../../../../components/@primitives/UI/svg";
 
 const focusedInput = {
   border: "1px solid #f0f0f0",
@@ -25,7 +26,11 @@ export default class Keywords extends Component {
     onChange: PropTypes.func.isRequired,
   };
 
-  constructor(props) {
+  state: {
+    focused: boolean,
+  };
+
+  constructor(props: Object) {
     super(props);
     this.state = {
       focused: false,
@@ -52,34 +57,24 @@ export default class Keywords extends Component {
   // /**
   //  * Alert if clicked on outside of element
   //  */
-  handleClickOutside(event) {
-    if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
+  handleClickOutside(e: Event) {
+    if (this.wrapperRef && !this.wrapperRef.contains(e.target)) {
       this.setState({
         focused: false,
       });
     }
   }
 
-  setFocus = (focus: Boolean) => {
-    this.setState({
-      focused: focus,
-    });
-  };
+  setFocus = (e: Event) => {
+    if (e) e.preventDefault();
 
-  callThisOnClick = tag => {
-    this.props.tagOnClick(tag);
-    const theInput = document.getElementById("keywords");
-    theInput.focus();
-  };
-
-  buttonToggle = () => {
     this.setState({
       focused: !this.state.focused,
     });
-  }
+  };
 
-  onBlur = (event: Event) => {
-    if (event.type === "keydown" && event.keyCode === 9) {
+  onBlur = (e: Event) => {
+    if (e.type === "keydown" && e.keyCode === 9) {
       if (!Meteor.isCordova) {
         this.setFocus();
       }
@@ -87,7 +82,13 @@ export default class Keywords extends Component {
   };
 
   render() {
-    const { tags, selectedTags, searchQuery, onChange } = this.props;
+    const {
+      tags,
+      tagOnClick,
+      selectedTags,
+      searchQuery,
+      onChange,
+    } = this.props;
 
     const loweredTags = selectedTags.map(t => t.toLowerCase());
 
@@ -97,40 +98,56 @@ export default class Keywords extends Component {
         className={"soft-double-top text-left soft-half-sides"}
         ref={this.setWrapperRef}
         onKeyDown={this.onBlur}
+        onFocus={this.setFocus}
       >
         <Forms.Input
           classes={this.state.focused ? "soft-bottom" : ""}
-          inputClasses={"outlined--dotted outlined--light h6 capitalize flush-bottom text-black"}
+          inputClasses={
+            "outlined--dotted outlined--light h6 capitalize flush-bottom text-black"
+          }
           type="text"
           label={"I'm looking for..."}
           name="keywords"
           defaultValue={searchQuery}
-          onChange={e => onChange(e)}
-          onFocus={e => this.setFocus(true)}
-          iconName={this.state.focused ? "arrowUp" : "arrowDown"}
-          iconFill={this.state.focused ? "#6BAC43" : "#505050"}
-          iconWidth={"24px"}
-          iconHeight={"24px"}
-          iconTitle={this.state.focused ? "Arrow Up Icon" : "Arrow Down Icon"}
-          iconButtonToggle={this.buttonToggle}
+          onChange={onChange}
           ignoreLastPass
-        />
+        >
+          <button
+            id="keywordButton"
+            style={{
+              position: "absolute",
+              right: "0",
+              backgroundColor: "#FFFFFF",
+              top: "-1px",
+              paddingLeft: "5px",
+            }}
+            onClick={this.setFocus}
+          >
+            <Svg
+              name={this.state.focused ? "arrowUp" : "arrowDown"}
+              fill={this.state.focused ? "#6BAC43" : "#505050"}
+              width={"24px"}
+              height={"24px"}
+              title={this.state.focused ? "Arrow Up Icon" : "Arrow Down Icon"}
+            />
+          </button>
+        </Forms.Input>
         <div
           className={`push-half-sides push-half-bottom ${!this.state.focused
             ? "visuallyhidden"
             : ""}`}
         >
           {/* weird SSR stuff here to investigate */}
-          {tags.map((tag, i) => (
+          {tags.map((tag, i) =>
             <Tag
               className=""
               style={{ textTransform: "capitalize" }}
-              onClick={this.callThisOnClick}
+              onClick={tagOnClick}
               key={i}
               val={tag.value}
               active={loweredTags.indexOf(tag.value) + 1}
-            />
-          ))}
+            />,
+          )}
         </div>
       </div>
     );

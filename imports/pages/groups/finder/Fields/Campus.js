@@ -1,5 +1,6 @@
 import { Component, PropTypes } from "react";
 import Forms from "../../../../components/@primitives/UI/forms";
+import Svg from "../../../../components/@primitives/UI/svg";
 
 const focusedInput = {
   border: "1px solid #f0f0f0",
@@ -77,27 +78,17 @@ export default class Campus extends Component {
   /**
    * Alert if clicked on outside of element
    */
-  handleClickOutside(event: Event) {
-    if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
+  handleClickOutside(e: Event) {
+    if (this.wrapperRef && !this.wrapperRef.contains(e.target)) {
       this.setState({
         focused: false,
       });
     }
   }
 
-  setFocus = () => {
-    const focused =
-      this.state.onload && this.props.selectedCampus
-        ? false
-        : !this.state.focused;
+  setFocus = (e: Event) => {
+    if (e) e.preventDefault();
 
-    this.setState({
-      focused,
-      onload: false,
-    });
-  };
-
-  buttonToggle = () => {
     this.setState({
       focused: !this.state.focused,
     });
@@ -149,15 +140,29 @@ export default class Campus extends Component {
           labelStyles={{ pointerEvents: "none" }}
           name="campus"
           defaultValue={campus}
-          iconName={this.state.focused ? "arrowUp" : "arrowDown"}
-          iconFill={this.state.focused ? "#6BAC43" : "#505050"}
-          iconWidth={"24px"}
-          iconHeight={"24px"}
-          iconTitle={this.state.focused ? "Arrow Up Icon" : "Arrow Down Icon"}
-          iconButtonToggle={this.buttonToggle}
           ignoreLastPass
           readOnly="readonly"
-        />
+        >
+          <button
+            id="campusButton"
+            style={{
+              position: "absolute",
+              right: "0",
+              backgroundColor: "#FFFFFF",
+              top: "-1px",
+              paddingLeft: "5px",
+            }}
+            onClick={this.setFocus}
+          >
+            <Svg
+              name={this.state.focused ? "arrowUp" : "arrowDown"}
+              fill={this.state.focused ? "#6BAC43" : "#505050"}
+              width={"24px"}
+              height={"24px"}
+              title={this.state.focused ? "Arrow Up Icon" : "Arrow Down Icon"}
+            />
+          </button>
+        </Forms.Input>
         <div
           className={`push-half-sides push-half-bottom ${!this.state.focused
             ? "visuallyhidden"
