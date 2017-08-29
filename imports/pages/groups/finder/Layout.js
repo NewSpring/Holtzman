@@ -34,7 +34,7 @@ const Layout = ({
   getLocation,
   geolocationLoading,
   iconFill,
-}) => (
+}) =>
   <section className="background--light-secondary hard">
     {/* Meta */}
     <Meta
@@ -53,7 +53,8 @@ const Layout = ({
         <h3>Find Your People</h3>
         <h6 className="soft-half-bottom@handheld soft-bottom">
           <em>
-            Select your interests, campus, and location <br />to search for groups near you.
+            Select your interests, campus, and location <br />to search for
+            groups near you.
           </em>
         </h6>
         <Forms.Form
@@ -82,7 +83,9 @@ const Layout = ({
           />
           <div className={"text-left soft-double-top soft-half-sides"}>
             <Forms.Input
-              inputClasses={"outlined--dotted outlined--light h6 flush-bottom text-black"}
+              inputClasses={
+                "outlined--dotted outlined--light h6 flush-bottom text-black"
+              }
               label={"Zip Code"}
               defaultValue={zip}
               type="text"
@@ -107,7 +110,7 @@ const Layout = ({
               );
             }
             return (
-              <div className={"text-left soft-double-top soft-half-sides"}>
+              <div className={"text-left push-back-double-top soft-half-sides"}>
                 <Svg
                   name={"locate"}
                   title={"Locate Icon"}
@@ -118,7 +121,10 @@ const Layout = ({
                   className="display-inline-block push-half-left"
                   style={{ fontWeight: "400", verticalAlign: "super" }}
                 >
-                  <button onClick={e => getLocation(e)} style={{ color: `${iconFill}` }}>
+                  <button
+                    onClick={e => getLocation(e)}
+                    style={{ color: `${iconFill}` }}
+                  >
                     Use my current location
                   </button>
                 </h6>
@@ -148,7 +154,9 @@ const Layout = ({
           // XXX why can't I just pass in the function here?
           return (
             <button
-              disabled={!canSearchTags && !canSearchCampus && !canSearchLocation}
+              disabled={
+                !canSearchTags && !canSearchCampus && !canSearchLocation
+              }
               onClick={e => submitTags(e)}
               className={classes.join(" ")}
             >
@@ -189,7 +197,9 @@ const Layout = ({
                     </h4>
 
                     <p className="text-dark-primary">
-                      <small dangerouslySetInnerHTML={{ __html: entry.meta.summary }} />
+                      <small
+                        dangerouslySetInnerHTML={{ __html: entry.meta.summary }}
+                      />
                     </p>
                     <span
                       className={
@@ -204,15 +214,17 @@ const Layout = ({
               );
             }
             return (
-              <div className="grid__item one-whole one-half@palm-wide-and-up" key={key}>
+              <div
+                className="grid__item one-whole one-half@palm-wide-and-up"
+                key={key}
+              >
                 <GroupFinderFeedItem item={entry} />
               </div>
             );
           })}
       </div>
     </div>
-  </section>
-);
+  </section>;
 /* eslint-enable max-len */
 
 Layout.propTypes = {
