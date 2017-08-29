@@ -27,8 +27,6 @@ export default class Campus extends Component {
     campuses: PropTypes.array.isRequired,
     selectedCampus: PropTypes.string.isRequired,
     campusOnChange: PropTypes.func.isRequired,
-<<<<<<< HEAD
-=======
     iconName: PropTypes.string.isRequired,
     iconFill: PropTypes.string,
     iconWidth: PropTypes.string,
@@ -39,7 +37,6 @@ export default class Campus extends Component {
   state: {
     focused: boolean,
     campus: string,
->>>>>>> added tabbing between fields
   };
 
   constructor(props: Object) {
