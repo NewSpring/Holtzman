@@ -137,6 +137,8 @@ const Layout = ({
                 <Loading />
               </div>
             );
+          } else if (geolocationLoading) {
+            return null;
           }
 
           const classes = ["btn", "push-top@lap-and-up"];
