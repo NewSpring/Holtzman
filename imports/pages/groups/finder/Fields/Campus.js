@@ -1,5 +1,6 @@
 import { Component, PropTypes } from "react";
 import Forms from "../../../../components/@primitives/UI/forms";
+import Svg from "../../../../components/@primitives/UI/svg";
 
 const focusedInput = {
   border: "1px solid #f0f0f0",
@@ -20,7 +21,7 @@ export default class Campus extends Component {
   state: {
     focused: boolean,
     campus: string,
-    onload: boolean
+    onload: boolean,
   };
 
   static propTypes = {
@@ -37,6 +38,7 @@ export default class Campus extends Component {
   state: {
     focused: boolean,
     campus: string,
+    onload: boolean,
   };
 
   constructor(props: Object) {
@@ -44,6 +46,7 @@ export default class Campus extends Component {
     this.state = {
       focused: false,
       campus: "",
+      onload: true,
     };
 
     this.setWrapperRef = this.setWrapperRef.bind(this);
@@ -75,8 +78,8 @@ export default class Campus extends Component {
   /**
    * Alert if clicked on outside of element
    */
-  handleClickOutside(event: Event) {
-    if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
+  handleClickOutside(e: Event) {
+    if (this.wrapperRef && !this.wrapperRef.contains(e.target)) {
       this.setState({
         focused: false,
       });
@@ -84,12 +87,8 @@ export default class Campus extends Component {
   }
 
   setFocus = (e: Event) => {
-    this.setState({
-      focused: !this.state.focused,
-    });
-  };
+    if (e) e.preventDefault();
 
-  buttonToggle = () => {
     this.setState({
       focused: !this.state.focused,
     });
@@ -132,30 +131,45 @@ export default class Campus extends Component {
       >
         <Forms.Input
           classes={this.state.focused ? "soft-bottom" : ""}
-          inputClasses={"outlined--dotted outlined--light h6 flush-bottom text-black"}
+          inputClasses={
+            "outlined--dotted outlined--light h6 flush-bottom text-black"
+          }
           style={{ textTransform: "capitalize" }}
           type="text"
           label={"Campus"}
           labelStyles={{ pointerEvents: "none" }}
           name="campus"
           defaultValue={campus}
-          readOnly={this.state.focused ? "readOnly" : ""}
-          onFocus={this.setFocus}
-          iconName={this.state.focused ? "arrowUp" : "arrowDown"}
-          iconFill={this.state.focused ? "#6BAC43" : "#505050"}
-          iconWidth={"24px"}
-          iconHeight={"24px"}
-          iconTitle={this.state.focused ? "Arrow Up Icon" : "Arrow Down Icon"}
-          iconButtonToggle={this.buttonToggle}
           ignoreLastPass
-        />
+          readOnly="readonly"
+        >
+          <button
+            id="campusButton"
+            style={{
+              position: "absolute",
+              right: "0",
+              backgroundColor: "#FFFFFF",
+              top: "-1px",
+              paddingLeft: "5px",
+            }}
+            onClick={this.setFocus}
+          >
+            <Svg
+              name={this.state.focused ? "arrowUp" : "arrowDown"}
+              fill={this.state.focused ? "#6BAC43" : "#505050"}
+              width={"24px"}
+              height={"24px"}
+              title={this.state.focused ? "Arrow Up Icon" : "Arrow Down Icon"}
+            />
+          </button>
+        </Forms.Input>
         <div
           className={`push-half-sides push-half-bottom ${!this.state.focused
             ? "visuallyhidden"
             : "display-inline-block"}`}
         >
           {/* weird SSR stuff here to investigate */}
-          {campuses.map((c, i) => (
+          {campuses.map((c, i) =>
             <Forms.Checkbox
               classes={[
                 "soft-half-bottom",
@@ -168,11 +182,14 @@ export default class Campus extends Component {
               key={i}
               clicked={this.onClick}
             >
-              <span className="soft-half-top" style={{ textTransform: "capitalize" }}>
+              <span
+                className="soft-half-top"
+                style={{ textTransform: "capitalize" }}
+              >
                 {c}
               </span>
-            </Forms.Checkbox>
-          ))}
+            </Forms.Checkbox>,
+          )}
         </div>
       </div>
     );

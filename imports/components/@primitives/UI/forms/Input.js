@@ -1,11 +1,7 @@
 // @flow
-
 import { Component } from "react";
 import StripTags from "striptags";
-import isIOS from "../../../../util/isIOS";
-
 import Label from "./Label";
-import Svg from "../svg";
 
 type IRenderLabel = {
   hideLabel?: boolean,
@@ -13,7 +9,7 @@ type IRenderLabel = {
   name: string,
   label: string,
   disabled?: boolean,
-  style?: Object // eslint-disable-line
+  style?: Object, // eslint-disable-line
 };
 
 const RenderLabel = ({
@@ -49,9 +45,9 @@ type IInputProps = {
   name: string,
   inputClasses: string,
   hideLabel?: boolean,
-  hideKeyboard?: boolean,
   autofocus?: boolean,
   readOnly: string,
+  ignoreLastPass: boolean,
   format: Function,
   onChange: Function,
   onFocus: Function,
@@ -60,14 +56,6 @@ type IInputProps = {
   value: string,
   placeholder: string,
   maxLength: number,
-  iconName: string,
-  iconFill: string,
-  iconWidth: string,
-  iconHeight: string,
-  iconTitle: string,
-  iconHighlightColor: string,
-  iconButtonToggle: Function,
-  ignoreLastPass: boolean
 };
 
 export default class Input extends Component {
@@ -82,7 +70,7 @@ export default class Input extends Component {
     focused: boolean,
     error: boolean,
     value: ?string,
-    autofocus: boolean
+    autofocus: boolean,
   };
 
   constructor(props: Object) {
@@ -111,7 +99,12 @@ export default class Input extends Component {
         return;
       }
 
-      if (!this._previousValue && target.value && !this.state.focused && !this.state.value) {
+      if (
+        !this._previousValue &&
+        target.value &&
+        !this.state.focused &&
+        !this.state.value
+      ) {
         // eslint-disable-line
         this.setValue(target.value);
       }
@@ -164,19 +157,23 @@ export default class Input extends Component {
       });
     }
 
-    let activeElement;
-    setTimeout(() => {
-      activeElement = document.activeElement;
-      if (
-        !activeElement ||
-        (activeElement && !activeElement.id) ||
-        (activeElement && activeElement.id && activeElement.id !== "iconButton")
-      ) {
-        this.setState({
-          focused: false,
-        });
-      }
-    }, 1);
+    // let activeElement;
+    // setTimeout(() => {
+    //   activeElement = document.activeElement;
+    //   if (
+    //     !activeElement ||
+    //     (activeElement && !activeElement.id) ||
+    //     (activeElement && activeElement.id && activeElement.id !== "iconButton")
+    //   ) {
+    //     this.setState({
+    //       focused: false,
+    //     });
+    //   }
+    // }, 1);
+
+    this.setState({
+      focused: false,
+    });
 
     if (this.props.validation && typeof this.props.validation === "function") {
       this.setState({
@@ -188,12 +185,6 @@ export default class Input extends Component {
       this.props.onBlur(value, target, e);
     } else {
       target.blur();
-    }
-
-    if (value) {
-      this.setState({
-        focused: true,
-      });
     }
   };
 
@@ -212,28 +203,31 @@ export default class Input extends Component {
     }
   };
 
-  iconClick = (e: Event) => {
-    if (e) e.preventDefault();
-    if (!this.state.focused) {
-      // set the focus
-      this.node.focus();
-    } else {
-      // unset the focus
-      const value = this.getValue();
-      if (!value) {
-        this.setState({
-          active: false,
-        });
-      }
-      this.setState({
-        focused: false,
-      });
+  // iconClick = (e: Event) => {
+  //   if (e) e.preventDefault();
+  //   if (!this.state.focused) {
+  //     // set the focus
+  //     this.node.focus();
+  //   } else {
+  //     // unset the focus
+  //     const value = this.getValue();
+  //     if (!value) {
+  //       this.setState({
+  //         active: false,
+  //       });
+  //     }
+  //     this.setState({
+  //       focused: false,
+  //     });
 
-      if (this.props.iconButtonToggle && typeof this.props.iconButtonToggle === "function") {
-        this.props.iconButtonToggle(value, this.node, e);
-      }
-    }
-  };
+  //     if (
+  //       this.props.iconButtonToggle &&
+  //       typeof this.props.iconButtonToggle === "function"
+  //     ) {
+  //       this.props.iconButtonToggle(value, this.node, e);
+  //     }
+  //   }
+  // };
 
   setValue = (value: string) => {
     const node = this.node;
@@ -327,19 +321,17 @@ export default class Input extends Component {
       inputClasses,
       defaultValue,
       readOnly,
+      ignoreLastPass,
       maxLength,
       children,
-      iconName,
-      iconFill,
-      iconWidth,
-      iconHeight,
-      iconTitle,
-      iconHighlightColor,
-      ignoreLastPass,
     } = this.props;
 
     return (
-      <div className={this.classes()} style={style || {}} data-spec="input-wrapper">
+      <div
+        className={this.classes()}
+        style={style || {}}
+        data-spec="input-wrapper"
+      >
         <RenderLabel
           hideLabel={hideLabel}
           id={id}
@@ -348,22 +340,6 @@ export default class Input extends Component {
           disabled={this.disabled()}
           style={labelStyles}
         />
-
-        {iconName && (
-          <button
-            id="iconButton"
-            style={{ position: "absolute", right: "0" }}
-            onClick={this.iconClick}
-          >
-            <Svg
-              name={iconName}
-              fill={iconHighlightColor && this.state.focused ? iconHighlightColor : iconFill}
-              width={iconWidth}
-              height={iconHeight}
-              title={iconTitle}
-            />
-          </button>
-        )}
 
         <input
           ref={node => (this.node = node)}
