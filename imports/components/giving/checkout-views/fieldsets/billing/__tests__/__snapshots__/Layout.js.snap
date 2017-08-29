@@ -35,6 +35,7 @@ exports[`Layout renders US by default 1`] = `
       </label>
       <input
         className={undefined}
+        data-lpignore={undefined}
         data-spec="input"
         defaultValue="123 Some St."
         disabled={undefined}
@@ -60,6 +61,7 @@ exports[`Layout renders US by default 1`] = `
       </label>
       <input
         className={undefined}
+        data-lpignore={undefined}
         data-spec="input"
         defaultValue="Apt. 1"
         disabled={undefined}
@@ -117,6 +119,7 @@ exports[`Layout renders US by default 1`] = `
       </label>
       <input
         className={undefined}
+        data-lpignore={undefined}
         data-spec="input"
         defaultValue="Someville"
         disabled={undefined}
@@ -181,6 +184,7 @@ exports[`Layout renders US by default 1`] = `
           </label>
           <input
             className={undefined}
+            data-lpignore={undefined}
             data-spec="input"
             defaultValue={undefined}
             disabled={undefined}
@@ -241,6 +245,7 @@ exports[`Layout renders your country instead 1`] = `
       </label>
       <input
         className={undefined}
+        data-lpignore={undefined}
         data-spec="input"
         defaultValue="123 Some St."
         disabled={undefined}
@@ -266,6 +271,7 @@ exports[`Layout renders your country instead 1`] = `
       </label>
       <input
         className={undefined}
+        data-lpignore={undefined}
         data-spec="input"
         defaultValue="Apt. 1"
         disabled={undefined}
@@ -323,6 +329,7 @@ exports[`Layout renders your country instead 1`] = `
       </label>
       <input
         className={undefined}
+        data-lpignore={undefined}
         data-spec="input"
         defaultValue="Someville"
         disabled={undefined}
@@ -387,6 +394,7 @@ exports[`Layout renders your country instead 1`] = `
           </label>
           <input
             className={undefined}
+            data-lpignore={undefined}
             data-spec="input"
             defaultValue={undefined}
             disabled={undefined}

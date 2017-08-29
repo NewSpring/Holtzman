@@ -91,6 +91,7 @@
     "no-useless-escape": 0,
     "no-cond-assign": 0,
     "compat/compat": 1,
+    "no-underscore-dangle": 0,
   },
   "settings": {
     "import/core-modules": [
