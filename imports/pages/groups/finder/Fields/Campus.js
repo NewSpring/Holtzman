@@ -149,8 +149,6 @@ export default class Campus extends Component {
           labelStyles={{ pointerEvents: "none" }}
           name="campus"
           defaultValue={campus}
-          readOnly="readonly"
-          onFocus={this.setFocus}
           iconName={this.state.focused ? "arrowUp" : "arrowDown"}
           iconFill={this.state.focused ? "#6BAC43" : "#505050"}
           iconWidth={"24px"}
@@ -158,6 +156,7 @@ export default class Campus extends Component {
           iconTitle={this.state.focused ? "Arrow Up Icon" : "Arrow Down Icon"}
           iconButtonToggle={this.buttonToggle}
           ignoreLastPass
+          readOnly="readonly"
         />
         <div
           className={`push-half-sides push-half-bottom ${!this.state.focused
