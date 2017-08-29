@@ -18,6 +18,7 @@ exports[`test renders default \`Bank Account\` if ach 1`] = `
   </label>
   <input
     className={undefined}
+    data-lpignore={undefined}
     data-spec="input"
     defaultValue="Bank Account"
     disabled={undefined}
@@ -28,6 +29,7 @@ exports[`test renders default \`Bank Account\` if ach 1`] = `
     onChange={[Function]}
     onFocus={[Function]}
     placeholder="Saved Account Name"
+    readOnly={undefined}
     style={Object {}}
     type={undefined} />
 </div>
@@ -45,6 +47,7 @@ exports[`test renders default \`Credit Card\` if not ach 1`] = `
   </label>
   <input
     className={undefined}
+    data-lpignore={undefined}
     data-spec="input"
     defaultValue="Credit Card"
     disabled={undefined}
@@ -55,6 +58,7 @@ exports[`test renders default \`Credit Card\` if not ach 1`] = `
     onChange={[Function]}
     onFocus={[Function]}
     placeholder="Saved Account Name"
+    readOnly={undefined}
     style={Object {}}
     type={undefined} />
 </div>

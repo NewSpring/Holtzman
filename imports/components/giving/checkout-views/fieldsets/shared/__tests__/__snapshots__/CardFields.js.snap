@@ -13,6 +13,7 @@ exports[`CardFields should render with props 1`] = `
     </label>
     <input
       className={undefined}
+      data-lpignore={undefined}
       data-spec="input"
       defaultValue="4111-1111-1111-1111"
       disabled={undefined}
@@ -23,6 +24,7 @@ exports[`CardFields should render with props 1`] = `
       onChange={[Function]}
       onFocus={[Function]}
       placeholder="Card Number"
+      readOnly={undefined}
       style={Object {}}
       type="tel" />
     <div
@@ -61,6 +63,7 @@ exports[`CardFields should render with props 1`] = `
         </label>
         <input
           className={undefined}
+          data-lpignore={undefined}
           data-spec="input"
           defaultValue="11/22"
           disabled={undefined}
@@ -71,6 +74,7 @@ exports[`CardFields should render with props 1`] = `
           onChange={[Function]}
           onFocus={[Function]}
           placeholder="Exp (MM/YY)"
+          readOnly={undefined}
           style={Object {}}
           type="tel" />
       </div>
@@ -88,6 +92,7 @@ exports[`CardFields should render with props 1`] = `
         </label>
         <input
           className={undefined}
+          data-lpignore={undefined}
           data-spec="input"
           defaultValue="111"
           disabled={undefined}
@@ -98,6 +103,7 @@ exports[`CardFields should render with props 1`] = `
           onChange={[Function]}
           onFocus={[Function]}
           placeholder="CCV"
+          readOnly={undefined}
           style={Object {}}
           type="tel" />
       </div>
