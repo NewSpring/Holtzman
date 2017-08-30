@@ -75,7 +75,6 @@ exports[`Layout renders custom toggles if passed 1`] = `
           Card Number
         </label>
         <input
-          autoFocus={undefined}
           className={undefined}
           data-lpignore={undefined}
           data-spec="input"
@@ -113,7 +112,6 @@ exports[`Layout renders custom toggles if passed 1`] = `
               Exp (MM/YY)
             </label>
             <input
-              autoFocus={undefined}
               className={undefined}
               data-lpignore={undefined}
               data-spec="input"
@@ -143,7 +141,6 @@ exports[`Layout renders custom toggles if passed 1`] = `
               CCV
             </label>
             <input
-              autoFocus={undefined}
               className={undefined}
               data-lpignore={undefined}
               data-spec="input"
@@ -287,7 +284,6 @@ exports[`Layout renders default toggles by default 1`] = `
           Card Number
         </label>
         <input
-          autoFocus={undefined}
           className={undefined}
           data-lpignore={undefined}
           data-spec="input"
@@ -325,7 +321,6 @@ exports[`Layout renders default toggles by default 1`] = `
               Exp (MM/YY)
             </label>
             <input
-              autoFocus={undefined}
               className={undefined}
               data-lpignore={undefined}
               data-spec="input"
@@ -355,7 +350,6 @@ exports[`Layout renders default toggles by default 1`] = `
               CCV
             </label>
             <input
-              autoFocus={undefined}
               className={undefined}
               data-lpignore={undefined}
               data-spec="input"

@@ -139,8 +139,6 @@ class TemplateWithoutData extends Component {
     const tags = [];
     const q = [];
 
-    console.log(this.state.tags);
-
     // find the tags that aren't defined
     this.state.tags.forEach(e => {
       if (e && attributeTags.indexOf(e) > -1) {

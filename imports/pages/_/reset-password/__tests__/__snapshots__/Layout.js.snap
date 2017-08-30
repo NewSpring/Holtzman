@@ -32,7 +32,6 @@ exports[`test render with enabled button if newP and newPDup 1`] = `
           New Password
         </label>
         <input
-          autoFocus={undefined}
           className={undefined}
           data-lpignore={undefined}
           data-spec="input"
@@ -59,7 +58,6 @@ exports[`test render with enabled button if newP and newPDup 1`] = `
           Repeat New Password
         </label>
         <input
-          autoFocus={undefined}
           className={undefined}
           data-lpignore={undefined}
           data-spec="input"
@@ -126,7 +124,6 @@ exports[`test renders with disabled button without newP 1`] = `
           New Password
         </label>
         <input
-          autoFocus={undefined}
           className={undefined}
           data-lpignore={undefined}
           data-spec="input"
@@ -153,7 +150,6 @@ exports[`test renders with disabled button without newP 1`] = `
           Repeat New Password
         </label>
         <input
-          autoFocus={undefined}
           className={undefined}
           data-lpignore={undefined}
           data-spec="input"
@@ -220,7 +216,6 @@ exports[`test renders with disabled button without newPDup 1`] = `
           New Password
         </label>
         <input
-          autoFocus={undefined}
           className={undefined}
           data-lpignore={undefined}
           data-spec="input"
@@ -247,7 +242,6 @@ exports[`test renders with disabled button without newPDup 1`] = `
           Repeat New Password
         </label>
         <input
-          autoFocus={undefined}
           className={undefined}
           data-lpignore={undefined}
           data-spec="input"

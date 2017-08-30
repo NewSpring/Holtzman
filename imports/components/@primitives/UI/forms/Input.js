@@ -45,7 +45,7 @@ type IInputProps = {
   name: string,
   inputClasses: string,
   hideLabel?: boolean,
-  autoFocus?: boolean,
+  autofocus?: boolean,
   readOnly: string,
   ignoreLastPass: boolean,
   format: Function,
@@ -85,7 +85,7 @@ export default class Input extends Component {
   }
 
   componentDidMount() {
-    if (this.props.autoFocus) {
+    if (this.props.autofocus) {
       this.node.focus();
       this.focus();
     }
@@ -280,7 +280,6 @@ export default class Input extends Component {
       placeholder,
       inputClasses,
       defaultValue,
-      autoFocus,
       readOnly,
       ignoreLastPass,
       maxLength,
@@ -314,7 +313,6 @@ export default class Input extends Component {
           onFocus={this.focus}
           onChange={this.format}
           readOnly={readOnly}
-          autoFocus={autoFocus}
           defaultValue={defaultValue}
           style={this.style()}
           maxLength={maxLength || ""}
