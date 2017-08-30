@@ -5,7 +5,10 @@ import ReactMixin from "react-mixin";
 import gql from "graphql-tag";
 import { withRouter } from "react-router";
 
-import Split, { Left, Right } from "../../../components/@primitives/layout/split";
+import Split, {
+  Left,
+  Right,
+} from "../../../components/@primitives/layout/split";
 import Headerable from "../../../deprecated/mixins/mixins.Header";
 import { nav as navActions, modal } from "../../../data/store";
 import Validate from "../../../util/validate";
@@ -62,53 +65,60 @@ class TemplateWithoutData extends Component {
           campus: nextProps.autofill.person.campus.name,
           zip: nextProps.autofill.person.home.zip,
         });
+      } else if (
+        nextProps.location.query.campuses ||
+        nextProps.location.query.zip
+      ) {
+        this.setState({
+          campus: nextProps.location.query.campuses,
+          zip: nextProps.location.query.zip,
+        });
       }
+    } else if (
+      nextProps.location.query.tags ||
+      nextProps.location.query.raw ||
+      nextProps.location.query.campuses ||
+      nextProps.location.query.zip
+    ) {
+      this.setState({
+        tags:
+          nextProps.location.query.tags && nextProps.location.query.tags.length
+            ? nextProps.location.query.tags.split(",")
+            : [],
+        query: nextProps.location.query.raw,
+        campus: nextProps.location.query.campuses,
+        zip: nextProps.location.query.zip,
+      });
     }
   }
 
   geoLocateMe = (e: Event) => {
     if (e) e.preventDefault();
-    // show the loading spinner while we wait for the geolocation function to return
-    this.setState({
-      geolocationLoading: true,
-    });
-    navigator.geolocation.getCurrentPosition(this.geolocationSuccess, this.geolocationError);
-  };
 
-  geolocationSuccess = (position: Object) => {
-    const zip = document.getElementById("zip");
-    if (this.state.latitude !== null || this.state.longitude !== null) {
-      // we are using a persons location already and they
-      // have clicked the "use my current location" button
-      // again. turn it off.
+    if (this.state.latitude && this.state.longitude) {
       this.setState({
         latitude: null,
         longitude: null,
-        iconFill: "#505050",
+        zip: this.props.autofill.person ? this.props.autofill.person.zip : "",
+        geoLocationLoading: false,
       });
-      if (this.state.zip) {
-        zip.value = this.state.zip;
-      } else if (
-        this.props.autofill.person &&
-        this.props.autofill.person.home &&
-        this.props.autofill.person.home.zip
-      ) {
-        zip.value = this.props.autofill.person.home.zip;
-      } else {
-        zip.value = "";
-      }
-      zip.disabled = false;
     } else {
-      // we are not yet using a persons location. turn it on.
       this.setState({
-        latitude: position.coords.latitude,
-        longitude: position.coords.longitude,
-        iconFill: "#6BAC43",
+        geolocationLoading: true,
       });
-      zip.value = "Using your location";
-      zip.disabled = true;
+
+      navigator.geolocation.getCurrentPosition(
+        this.geolocationSuccess,
+        this.geolocationError,
+      );
     }
+  };
+
+  geolocationSuccess = (position: Object) => {
     this.setState({
+      latitude: position.coords.latitude,
+      longitude: position.coords.longitude,
+      zip: "Using your location",
       geolocationLoading: false,
     });
   };
@@ -122,38 +132,42 @@ class TemplateWithoutData extends Component {
 
   getResults = () => {
     const { router, location } = this.props;
-    const { latitude, longitude, campus, zip } = this.state;
+    const { latitude, longitude, campus, zip, query } = this.state;
     // create an array of the attributes returned by graphql
     const attributeTags = this.props.attributes.tags.map(tag => tag.value);
 
     const tags = [];
-    const query = [];
+    const q = [];
 
     // find the tags that aren't defined
     this.state.tags.forEach(e => {
       if (e && attributeTags.indexOf(e) > -1) {
         tags.push(e);
       } else {
-        query.push(e);
+        q.push(e);
       }
     });
 
+    console.log(q);
+
     if (!location.query) location.query = {};
 
-    if (query.length) location.query.q = query.join(",").toLowerCase();
+    if (q.length) location.query.q = q.join(",").toLowerCase();
     if (tags.length) location.query.tags = tags.join(",").toLowerCase();
 
     if (location.query.campus) delete location.query.campus;
     if (location.query.schedules) delete location.query.schedules;
 
+    if (query) location.query.raw = query;
     if (latitude) location.query.latitude = latitude;
     if (longitude) location.query.longitude = longitude;
     if (campus) location.query.campuses = campus;
     if (zip) location.query.zip = zip;
 
-    location.pathname = "/groups/finder";
-    this.setState({ tags: [], query: null, latitude, longitude });
+    // XXX i don't like the idea of having to push history twice
+    router.push(location);
 
+    location.pathname = "/groups/finder";
     router.push(location);
   };
 
@@ -202,8 +216,6 @@ class TemplateWithoutData extends Component {
     this.setState({
       tags: newTags,
       query: value,
-      latitude: this.state.latitude,
-      longitude: this.state.longitude,
     });
   };
 
@@ -218,15 +230,14 @@ class TemplateWithoutData extends Component {
       }
       tagList.splice(tagList.indexOf(tag), 1);
     } else {
-      queryString = queryString && queryString.length ? `${queryString}, ${tag}` : `${tag}`;
+      queryString =
+        queryString && queryString.length ? `${queryString}, ${tag}` : `${tag}`;
       tagList.push(tag);
     }
 
     this.setState({
       tags: tagList,
       query: queryString.trim(),
-      latitude: this.state.latitude,
-      longitude: this.state.longitude,
     });
   };
 
@@ -243,27 +254,38 @@ class TemplateWithoutData extends Component {
 
   /* eslint-disable max-len */
   render() {
-    const { attributes, location, content, autofill } = this.props;
+    const { attributes, autofill, content } = this.props;
 
-    let selectedCampus = this.state.campus;
-    let zipCode = this.state.zip;
+    // let selectedCampus = this.state.campus;
+    // let zipCode = this.state.zip;
+    // const query = location.query.raw ? location.query.raw : this.state.query;
 
-    if ((location.query.campus || location.query.zip) && (!this.state.zip || !this.state.campus)) {
-      zipCode = !this.state.zip ? location.query.zip : this.state.zip;
-      selectedCampus = !this.state.campus ? location.query.campus : this.state.campus;
-    }
+    // if (
+    //   (location.query.campus || location.query.zip) &&
+    //   (!this.state.zip || !this.state.campus)
+    // ) {
+    //   zipCode = !this.state.zip ? location.query.zip : this.state.zip;
+    //   selectedCampus = !this.state.campus
+    //     ? location.query.campus
+    //     : this.state.campus;
+    // }
 
-    if (
-      !location.query.campus &&
-      !location.query.zip &&
-      !autofill.loading &&
-      autofill.person &&
-      !this.state.campus &&
-      !this.state.zip
-    ) {
-      selectedCampus = autofill.person.campus.name;
-      zipCode = autofill.person.home.zip;
-    }
+    // if (
+    //   !location.query.campus &&
+    //   !location.query.zip &&
+    //   !autofill.loading &&
+    //   autofill.person &&
+    //   !this.state.campus &&
+    //   !this.state.zip
+    // ) {
+    //   selectedCampus = autofill.person.campus.name;
+    //   zipCode = autofill.person.home.zip;
+    // }
+
+    // if (location.query.campuses) {
+    //   selectedCampus = location.query.campuses.split(",");
+    //   selectedCampus = selectedCampus[0];
+    // }
 
     return (
       <div>
@@ -276,29 +298,34 @@ class TemplateWithoutData extends Component {
         </Split>
         <Left scroll classes={["background--light-secondary"]}>
           <Layout
-            canSearchTags={false || this.state.tags.length || this.state.query}
-            canSearchCampus={false || this.state.campus}
+            canSearchTags={
+              false ||
+              Boolean(this.state.tags.length) ||
+              Boolean(this.state.query)
+            }
+            canSearchCampus={false || Boolean(this.state.campus)}
             canSearchLocation={
-              false || this.state.zip || (this.state.latitude && this.state.longitude)
+              false ||
+              this.state.zip ||
+              (this.state.latitude && this.state.longitude)
             }
             campuses={
-              autofill.loading ? (
-                [""]
-              ) : (
-                autofill.campuses
-                  .filter(x => {
-                    if (x.name === "Web") {
-                      return false;
-                    }
+              autofill.loading
+                ? [""]
+                : autofill.campuses
+                    .filter(x => {
+                      if (x.name === "Web") {
+                        return false;
+                      }
 
-                    return true;
-                  })
-                  .map(x => x.name.toLowerCase())
-              )
+                      return true;
+                    })
+                    .map(x => x.name.toLowerCase())
             }
-            selectedCampus={selectedCampus}
-            zip={zipCode}
+            selectedCampus={this.state.campus}
+            zip={this.state.zip}
             zipOnChange={this.zipOnChange}
+            zipDisabled={this.state.latitude && this.state.longitude}
             campusOnChange={this.campusOnChange}
             searchQuery={this.state.query}
             tags={(attributes && attributes.tags) || defaultArray}
@@ -356,7 +383,11 @@ const withGroupAttributes = graphql(GROUP_ATTRIBUTES_QUERY, {
 });
 
 const TAGGED_CONTENT_QUERY = gql`
-  query GetTaggedContent($tagName: String!, $limit: Int, $includeChannels: [String]) {
+  query GetTaggedContent(
+    $tagName: String!
+    $limit: Int
+    $includeChannels: [String]
+  ) {
     entries: taggedContent(
       tagName: $tagName
       limit: $limit
@@ -399,9 +430,11 @@ const mapStateToProps = state => ({ location: state.routing.location });
 export default withRouter(
   connect(mapStateToProps)(
     withGroupAttributes(
-      withAutoFillMeta(withTaggedContent(ReactMixin.decorate(Headerable)(TemplateWithoutData)))
-    )
-  )
+      withAutoFillMeta(
+        withTaggedContent(ReactMixin.decorate(Headerable)(TemplateWithoutData)),
+      ),
+    ),
+  ),
 );
 
 export { TemplateWithoutData };
