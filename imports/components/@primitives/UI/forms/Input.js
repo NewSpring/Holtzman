@@ -45,7 +45,7 @@ type IInputProps = {
   name: string,
   inputClasses: string,
   hideLabel?: boolean,
-  autofocus?: boolean,
+  autoFocus?: boolean,
   readOnly: string,
   ignoreLastPass: boolean,
   format: Function,
@@ -85,7 +85,7 @@ export default class Input extends Component {
   }
 
   componentDidMount() {
-    if (this.props.autofocus) {
+    if (this.props.autoFocus) {
       this.node.focus();
       this.focus();
     }
@@ -157,20 +157,6 @@ export default class Input extends Component {
       });
     }
 
-    // let activeElement;
-    // setTimeout(() => {
-    //   activeElement = document.activeElement;
-    //   if (
-    //     !activeElement ||
-    //     (activeElement && !activeElement.id) ||
-    //     (activeElement && activeElement.id && activeElement.id !== "iconButton")
-    //   ) {
-    //     this.setState({
-    //       focused: false,
-    //     });
-    //   }
-    // }, 1);
-
     this.setState({
       focused: false,
     });
@@ -202,32 +188,6 @@ export default class Input extends Component {
       this.props.onFocus(value, target, e);
     }
   };
-
-  // iconClick = (e: Event) => {
-  //   if (e) e.preventDefault();
-  //   if (!this.state.focused) {
-  //     // set the focus
-  //     this.node.focus();
-  //   } else {
-  //     // unset the focus
-  //     const value = this.getValue();
-  //     if (!value) {
-  //       this.setState({
-  //         active: false,
-  //       });
-  //     }
-  //     this.setState({
-  //       focused: false,
-  //     });
-
-  //     if (
-  //       this.props.iconButtonToggle &&
-  //       typeof this.props.iconButtonToggle === "function"
-  //     ) {
-  //       this.props.iconButtonToggle(value, this.node, e);
-  //     }
-  //   }
-  // };
 
   setValue = (value: string) => {
     const node = this.node;
@@ -320,6 +280,7 @@ export default class Input extends Component {
       placeholder,
       inputClasses,
       defaultValue,
+      autoFocus,
       readOnly,
       ignoreLastPass,
       maxLength,
@@ -353,6 +314,7 @@ export default class Input extends Component {
           onFocus={this.focus}
           onChange={this.format}
           readOnly={readOnly}
+          autoFocus={autoFocus}
           defaultValue={defaultValue}
           style={this.style()}
           maxLength={maxLength || ""}

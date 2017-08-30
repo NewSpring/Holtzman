@@ -17,6 +17,7 @@ exports[`test renders default \`Bank Account\` if ach 1`] = `
     Saved Account Name
   </label>
   <input
+    autoFocus={undefined}
     className={undefined}
     data-lpignore={undefined}
     data-spec="input"
@@ -46,6 +47,7 @@ exports[`test renders default \`Credit Card\` if not ach 1`] = `
     Saved Account Name
   </label>
   <input
+    autoFocus={undefined}
     className={undefined}
     data-lpignore={undefined}
     data-spec="input"

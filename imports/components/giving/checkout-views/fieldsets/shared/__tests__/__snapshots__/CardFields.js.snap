@@ -12,6 +12,7 @@ exports[`CardFields should render with props 1`] = `
       Card Number
     </label>
     <input
+      autoFocus={undefined}
       className={undefined}
       data-lpignore={undefined}
       data-spec="input"
@@ -62,6 +63,7 @@ exports[`CardFields should render with props 1`] = `
           Exp (MM/YY)
         </label>
         <input
+          autoFocus={undefined}
           className={undefined}
           data-lpignore={undefined}
           data-spec="input"
@@ -91,6 +93,7 @@ exports[`CardFields should render with props 1`] = `
           CCV
         </label>
         <input
+          autoFocus={undefined}
           className={undefined}
           data-lpignore={undefined}
           data-spec="input"

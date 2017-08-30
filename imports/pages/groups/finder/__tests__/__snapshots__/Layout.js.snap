@@ -52,38 +52,8 @@ exports[`test renders disabled tags 1`] = `
             ]
           } />
         <Campus />
-        <div
-          className="text-left soft-double-top soft-half-sides">
-          <Input
-            errorText="Please enter a valid zip code"
-            id="zip"
-            ignoreLastPass={true}
-            inputClasses="outlined--dotted outlined--light h6 flush-bottom text-black"
-            label="Zip Code"
-            name="Zip"
-            type="text"
-            validation={[Function]}>
-            <button
-              id="locationButton"
-              onClick={[Function]}
-              style={
-                Object {
-                  "backgroundColor": "#FFFFFF",
-                  "paddingLeft": "5px",
-                  "position": "absolute",
-                  "right": "0",
-                  "top": "-1px",
-                }
-              }>
-              <Svg
-                fill="#505050"
-                height="24px"
-                name="location"
-                title="Location Icon"
-                width="24px" />
-            </button>
-          </Input>
-        </div>
+        <Location
+          validation={[Function]} />
         <div
           className="text-left soft-half-sides">
           <Svg
@@ -195,38 +165,8 @@ exports[`test renders loading if no tags 1`] = `
           tagOnClick={[Function]}
           tags={Array []} />
         <Campus />
-        <div
-          className="text-left soft-double-top soft-half-sides">
-          <Input
-            errorText="Please enter a valid zip code"
-            id="zip"
-            ignoreLastPass={true}
-            inputClasses="outlined--dotted outlined--light h6 flush-bottom text-black"
-            label="Zip Code"
-            name="Zip"
-            type="text"
-            validation={[Function]}>
-            <button
-              id="locationButton"
-              onClick={[Function]}
-              style={
-                Object {
-                  "backgroundColor": "#FFFFFF",
-                  "paddingLeft": "5px",
-                  "position": "absolute",
-                  "right": "0",
-                  "top": "-1px",
-                }
-              }>
-              <Svg
-                fill="#505050"
-                height="24px"
-                name="location"
-                title="Location Icon"
-                width="24px" />
-            </button>
-          </Input>
-        </div>
+        <Location
+          validation={[Function]} />
         <div
           className="text-left soft-half-sides">
           <Svg
@@ -345,38 +285,8 @@ exports[`test renders with props 1`] = `
             ]
           } />
         <Campus />
-        <div
-          className="text-left soft-double-top soft-half-sides">
-          <Input
-            errorText="Please enter a valid zip code"
-            id="zip"
-            ignoreLastPass={true}
-            inputClasses="outlined--dotted outlined--light h6 flush-bottom text-black"
-            label="Zip Code"
-            name="Zip"
-            type="text"
-            validation={[Function]}>
-            <button
-              id="locationButton"
-              onClick={[Function]}
-              style={
-                Object {
-                  "backgroundColor": "#FFFFFF",
-                  "paddingLeft": "5px",
-                  "position": "absolute",
-                  "right": "0",
-                  "top": "-1px",
-                }
-              }>
-              <Svg
-                fill="#505050"
-                height="24px"
-                name="location"
-                title="Location Icon"
-                width="24px" />
-            </button>
-          </Input>
-        </div>
+        <Location
+          validation={[Function]} />
         <div
           className="text-left soft-half-sides">
           <Svg

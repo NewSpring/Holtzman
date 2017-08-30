@@ -10,6 +10,7 @@ import SideBySide from "../../../components/@primitives/UI/cards/SideBySideCard"
 import GroupsILead from "../../../components/groups/groups-i-lead";
 import KeywordSelect from "./Fields/Keyword";
 import CampusSelect from "./Fields/Campus";
+import Location from "./Fields/Location";
 import Validate from "../../../util/validate";
 import Svg from "../../../components/@primitives/UI/svg";
 
@@ -25,6 +26,7 @@ const Layout = ({
   campuses,
   zip,
   zipOnChange,
+  zipDisabled,
   selectedCampus,
   campusOnChange,
   searchQuery,
@@ -81,42 +83,13 @@ const Layout = ({
             selectedCampus={selectedCampus}
             campusOnChange={campusOnChange}
           />
-          <div className={"text-left soft-double-top soft-half-sides"}>
-            <Forms.Input
-              inputClasses={
-                "outlined--dotted outlined--light h6 flush-bottom text-black"
-              }
-              label={"Zip Code"}
-              defaultValue={zip}
-              type="text"
-              name="Zip"
-              id="zip"
-              validation={Validate.isLocationBasedZipCode}
-              onChange={zipOnChange}
-              errorText="Please enter a valid zip code"
-              ignoreLastPass
-            >
-              <button
-                id="locationButton"
-                style={{
-                  position: "absolute",
-                  right: "0",
-                  backgroundColor: "#FFFFFF",
-                  top: "-1px",
-                  paddingLeft: "5px",
-                }}
-                onClick={e => e.preventDefault()}
-              >
-                <Svg
-                  name={"location"}
-                  fill={"#505050"}
-                  width={"24px"}
-                  height={"24px"}
-                  title={"Location Icon"}
-                />
-              </button>
-            </Forms.Input>
-          </div>
+          <Location
+            zip={zip}
+            validation={Validate.isLocationBasedZipCode}
+            zipOnChange={zip}
+            onChange={zipOnChange}
+            disabled={zipDisabled}
+          />
           {(() => {
             if (geolocationLoading) {
               return (
@@ -253,6 +226,7 @@ Layout.propTypes = {
   submitTags: PropTypes.func.isRequired,
   campusOnChange: PropTypes.func.isRequired,
   zipOnChange: PropTypes.func.isRequired,
+  zipDisabled: PropTypes.bool.isRequired,
   canSearchTags: PropTypes.bool.isRequired,
   canSearchCampus: PropTypes.bool.isRequired,
   canSearchLocation: PropTypes.bool.isRequired,

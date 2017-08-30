@@ -11,6 +11,7 @@ exports[`test renders one-half if country is \`CA\` 1`] = `
       Zip/Postal
     </label>
     <input
+      autoFocus={undefined}
       className={undefined}
       data-lpignore={undefined}
       data-spec="input"
@@ -43,6 +44,7 @@ exports[`test renders one-half if country is \`US\` 1`] = `
       Zip/Postal
     </label>
     <input
+      autoFocus={undefined}
       className={undefined}
       data-lpignore={undefined}
       data-spec="input"
@@ -75,6 +77,7 @@ exports[`test renders one-half if no country 1`] = `
       Zip/Postal
     </label>
     <input
+      autoFocus={undefined}
       className={undefined}
       data-lpignore={undefined}
       data-spec="input"
@@ -107,6 +110,7 @@ exports[`test renders one-whole for countries with no states 1`] = `
       Zip/Postal
     </label>
     <input
+      autoFocus={undefined}
       className={undefined}
       data-lpignore={undefined}
       data-spec="input"

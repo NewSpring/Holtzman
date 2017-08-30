@@ -38,6 +38,7 @@ exports[`Layout renders with props 1`] = `
             First Name
           </label>
           <input
+            autoFocus={undefined}
             className={undefined}
             data-lpignore={undefined}
             data-spec="input"
@@ -67,6 +68,7 @@ exports[`Layout renders with props 1`] = `
             Last Name
           </label>
           <input
+            autoFocus={undefined}
             className={undefined}
             data-lpignore={undefined}
             data-spec="input"
@@ -95,6 +97,7 @@ exports[`Layout renders with props 1`] = `
         Email
       </label>
       <input
+        autoFocus={undefined}
         className={undefined}
         data-lpignore={undefined}
         data-spec="input"
