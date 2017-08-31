@@ -20,7 +20,6 @@ const hiddenInput = {
 export default class Keywords extends Component {
   static propTypes = {
     tags: PropTypes.array.isRequired,
-    selectedTags: PropTypes.array.isRequired,
     searchQuery: PropTypes.array.isRequired,
     tagOnClick: PropTypes.func.isRequired,
     onChange: PropTypes.func.isRequired,
@@ -59,11 +58,17 @@ export default class Keywords extends Component {
   //  */
   handleClickOutside(e: Event) {
     if (this.wrapperRef && !this.wrapperRef.contains(e.target)) {
-      this.setState({
-        focused: false,
-      });
+      this.closeModal();
     }
   }
+
+  openModal = () => {
+    this.setState({ focused: true });
+  };
+
+  closeModal = () => {
+    this.setState({ focused: false });
+  };
 
   setFocus = (e: Event) => {
     if (e) e.preventDefault();
@@ -82,15 +87,19 @@ export default class Keywords extends Component {
   };
 
   render() {
-    const {
-      tags,
-      tagOnClick,
-      selectedTags,
-      searchQuery,
-      onChange,
-    } = this.props;
+    const { tags, tagOnClick, searchQuery, onChange } = this.props;
 
-    const loweredTags = selectedTags.map(t => t.toLowerCase());
+    const selectedTags = searchQuery
+      .split(/[, ]+/)
+      .reduce((result, t, index, original) => {
+        if (t === "kid" && original[index + 1] === "friendly") {
+          result.push("kid friendly");
+        } else if (t !== "friendly" && original[index - 1] !== "kid") {
+          result.push(t);
+        }
+
+        return result;
+      }, []);
 
     return (
       <div
@@ -98,7 +107,7 @@ export default class Keywords extends Component {
         className={"soft-double-top text-left soft-half-sides"}
         ref={this.setWrapperRef}
         onKeyDown={this.onBlur}
-        onFocus={this.setFocus}
+        onFocus={this.openModal}
       >
         <Forms.Input
           classes={this.state.focused ? "soft-bottom" : ""}
@@ -107,7 +116,7 @@ export default class Keywords extends Component {
           }
           type="text"
           label={"I'm looking for..."}
-          name="keywords"
+          name="query"
           defaultValue={searchQuery}
           onChange={onChange}
           ignoreLastPass
@@ -145,7 +154,7 @@ export default class Keywords extends Component {
               onClick={tagOnClick}
               key={i}
               val={tag.value}
-              active={loweredTags.indexOf(tag.value) + 1}
+              active={selectedTags.indexOf(tag.value) + 1}
             />,
           )}
         </div>

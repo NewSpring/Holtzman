@@ -44,7 +44,7 @@ export default class Location extends Component {
           label={"Zip Code"}
           defaultValue={zip}
           type="text"
-          name="Zip"
+          name="zip"
           id="zip"
           validation={validation}
           onChange={onChange}

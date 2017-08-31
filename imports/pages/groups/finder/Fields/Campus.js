@@ -27,12 +27,7 @@ export default class Campus extends Component {
   static propTypes = {
     campuses: PropTypes.array.isRequired,
     selectedCampus: PropTypes.string.isRequired,
-    campusOnChange: PropTypes.func.isRequired,
-    iconName: PropTypes.string.isRequired,
-    iconFill: PropTypes.string,
-    iconWidth: PropTypes.string,
-    iconHeight: PropTypes.string,
-    iconTitle: PropTypes.string,
+    onChange: PropTypes.func.isRequired,
   };
 
   state: {
@@ -99,17 +94,14 @@ export default class Campus extends Component {
 
     this.setState({
       campus,
+      focused: false,
     });
 
-    if (!Meteor.isCordova) {
-      this.setFocus();
-    }
-
-    this.props.campusOnChange(campus);
+    this.props.onChange(campus, { name: "campus" });
   };
 
-  onBlur = event => {
-    if (event.type === "keydown" && event.keyCode === 9) {
+  onBlur = (e: Event) => {
+    if (e.type === "keydown" && e.keyCode === 9) {
       if (!Meteor.isCordova) {
         this.setFocus();
       }
@@ -117,7 +109,7 @@ export default class Campus extends Component {
   };
 
   render() {
-    const { campuses } = this.props;
+    const { campuses, onChange } = this.props;
     const { campus } = this.state;
 
     return (

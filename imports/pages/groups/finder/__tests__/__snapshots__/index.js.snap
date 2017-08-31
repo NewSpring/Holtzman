@@ -18,7 +18,6 @@ exports[`test renders if content loading 1`] = `
     }
     scroll={true}>
     <Layout
-      campusOnChange={[Function]}
       campuses={Array []}
       canSearchCampus={false}
       canSearchLocation={null}
@@ -29,9 +28,8 @@ exports[`test renders if content loading 1`] = `
       getLocation={[Function]}
       iconFill="#505050"
       inputOnChange={[Function]}
-      searchQuery={null}
+      searchQuery=""
       selectedCampus=""
-      selectedTags={Array []}
       submitTags={[Function]}
       tagOnClick={[Function]}
       tags={
@@ -41,8 +39,7 @@ exports[`test renders if content loading 1`] = `
         ]
       }
       zip=""
-      zipDisabled={null}
-      zipOnChange={[Function]} />
+      zipDisabled={null} />
   </Left>
 </div>
 `;
@@ -67,7 +64,6 @@ exports[`test renders result if campuses 1`] = `
     }
     scroll={true}>
     <Layout
-      campusOnChange={[Function]}
       campuses={Array []}
       canSearchCampus={false}
       canSearchLocation={null}
@@ -83,9 +79,8 @@ exports[`test renders result if campuses 1`] = `
       getLocation={[Function]}
       iconFill="#505050"
       inputOnChange={[Function]}
-      searchQuery={null}
+      searchQuery=""
       selectedCampus=""
-      selectedTags={Array []}
       submitTags={[Function]}
       tagOnClick={[Function]}
       tags={
@@ -95,8 +90,7 @@ exports[`test renders result if campuses 1`] = `
         ]
       }
       zip=""
-      zipDisabled={null}
-      zipOnChange={[Function]} />
+      zipDisabled={null} />
   </Left>
 </div>
 `;
@@ -121,7 +115,6 @@ exports[`test renders result if q 1`] = `
     }
     scroll={true}>
     <Layout
-      campusOnChange={[Function]}
       campuses={Array []}
       canSearchCampus={false}
       canSearchLocation={null}
@@ -137,9 +130,8 @@ exports[`test renders result if q 1`] = `
       getLocation={[Function]}
       iconFill="#505050"
       inputOnChange={[Function]}
-      searchQuery={null}
+      searchQuery=""
       selectedCampus=""
-      selectedTags={Array []}
       submitTags={[Function]}
       tagOnClick={[Function]}
       tags={
@@ -149,8 +141,7 @@ exports[`test renders result if q 1`] = `
         ]
       }
       zip=""
-      zipDisabled={null}
-      zipOnChange={[Function]} />
+      zipDisabled={null} />
   </Left>
 </div>
 `;
@@ -175,7 +166,6 @@ exports[`test renders result if schedules 1`] = `
     }
     scroll={true}>
     <Layout
-      campusOnChange={[Function]}
       campuses={Array []}
       canSearchCampus={false}
       canSearchLocation={null}
@@ -191,9 +181,8 @@ exports[`test renders result if schedules 1`] = `
       getLocation={[Function]}
       iconFill="#505050"
       inputOnChange={[Function]}
-      searchQuery={null}
+      searchQuery=""
       selectedCampus=""
-      selectedTags={Array []}
       submitTags={[Function]}
       tagOnClick={[Function]}
       tags={
@@ -203,8 +192,7 @@ exports[`test renders result if schedules 1`] = `
         ]
       }
       zip=""
-      zipDisabled={null}
-      zipOnChange={[Function]} />
+      zipDisabled={null} />
   </Left>
 </div>
 `;
@@ -229,7 +217,6 @@ exports[`test renders result if tags 1`] = `
     }
     scroll={true}>
     <Layout
-      campusOnChange={[Function]}
       campuses={Array []}
       canSearchCampus={false}
       canSearchLocation={null}
@@ -245,9 +232,8 @@ exports[`test renders result if tags 1`] = `
       getLocation={[Function]}
       iconFill="#505050"
       inputOnChange={[Function]}
-      searchQuery={null}
+      searchQuery=""
       selectedCampus=""
-      selectedTags={Array []}
       submitTags={[Function]}
       tagOnClick={[Function]}
       tags={
@@ -257,8 +243,7 @@ exports[`test renders result if tags 1`] = `
         ]
       }
       zip=""
-      zipDisabled={null}
-      zipOnChange={[Function]} />
+      zipDisabled={null} />
   </Left>
 </div>
 `;
@@ -283,7 +268,6 @@ exports[`test renders with props 1`] = `
     }
     scroll={true}>
     <Layout
-      campusOnChange={[Function]}
       campuses={Array []}
       canSearchCampus={false}
       canSearchLocation={null}
@@ -299,9 +283,8 @@ exports[`test renders with props 1`] = `
       getLocation={[Function]}
       iconFill="#505050"
       inputOnChange={[Function]}
-      searchQuery={null}
+      searchQuery=""
       selectedCampus=""
-      selectedTags={Array []}
       submitTags={[Function]}
       tagOnClick={[Function]}
       tags={
@@ -311,8 +294,7 @@ exports[`test renders with props 1`] = `
         ]
       }
       zip=""
-      zipDisabled={null}
-      zipOnChange={[Function]} />
+      zipDisabled={null} />
   </Left>
 </div>
 `;
@@ -337,7 +319,6 @@ exports[`test renders without attributes 1`] = `
     }
     scroll={true}>
     <Layout
-      campusOnChange={[Function]}
       campuses={Array []}
       canSearchCampus={false}
       canSearchLocation={null}
@@ -353,15 +334,13 @@ exports[`test renders without attributes 1`] = `
       getLocation={[Function]}
       iconFill="#505050"
       inputOnChange={[Function]}
-      searchQuery={null}
+      searchQuery=""
       selectedCampus=""
-      selectedTags={Array []}
       submitTags={[Function]}
       tagOnClick={[Function]}
       tags={Array []}
       zip=""
-      zipDisabled={null}
-      zipOnChange={[Function]} />
+      zipDisabled={null} />
   </Left>
 </div>
 `;

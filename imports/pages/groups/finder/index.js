@@ -11,7 +11,6 @@ import Split, {
 } from "../../../components/@primitives/layout/split";
 import Headerable from "../../../deprecated/mixins/mixins.Header";
 import { nav as navActions, modal } from "../../../data/store";
-import Validate from "../../../util/validate";
 
 import Layout from "./Layout";
 import ErrTemplate from "./ErrTemplate";
@@ -30,13 +29,12 @@ class TemplateWithoutData extends Component {
 
   state = {
     tags: [],
-    query: null,
+    query: "",
     latitude: null,
     longitude: null,
     campus: "",
     zip: "",
     submit: false,
-    iconFill: "#505050",
     geolocationLoading: false,
   };
 
@@ -47,7 +45,7 @@ class TemplateWithoutData extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: Object) {
     if (nextProps.location && Object.keys(nextProps.location.query).length) {
       this.props.dispatch(navActions.setLevel("BASIC_CONTENT"));
     } else {
@@ -55,36 +53,34 @@ class TemplateWithoutData extends Component {
     }
 
     // Nessesary to check if autofill even exists first
-    if (!nextProps.autofill.loading && nextProps.autofill) {
+    if (!nextProps.autofill.loading && nextProps.autofill.person) {
       if (
         nextProps.autofill.person &&
         nextProps.autofill.person.campus &&
         nextProps.autofill.person.home
       ) {
         this.setState({
+          query: nextProps.location.query.raw || "",
           campus: nextProps.autofill.person.campus.name,
           zip: nextProps.autofill.person.home.zip,
         });
       } else if (
+        nextProps.location.query.raw ||
         nextProps.location.query.campuses ||
         nextProps.location.query.zip
       ) {
         this.setState({
+          query: nextProps.location.query.raw || "",
           campus: nextProps.location.query.campuses,
           zip: nextProps.location.query.zip,
         });
       }
     } else if (
-      nextProps.location.query.tags ||
       nextProps.location.query.raw ||
       nextProps.location.query.campuses ||
       nextProps.location.query.zip
     ) {
       this.setState({
-        tags:
-          nextProps.location.query.tags && nextProps.location.query.tags.length
-            ? nextProps.location.query.tags.split(",")
-            : [],
         query: nextProps.location.query.raw,
         campus: nextProps.location.query.campuses,
         zip: nextProps.location.query.zip,
@@ -136,23 +132,31 @@ class TemplateWithoutData extends Component {
     // create an array of the attributes returned by graphql
     const attributeTags = this.props.attributes.tags.map(tag => tag.value);
 
-    const tags = [];
     const q = [];
-
-    // find the tags that aren't defined
-    this.state.tags.forEach(e => {
-      if (e && attributeTags.indexOf(e) > -1) {
-        tags.push(e);
-      } else {
-        q.push(e);
-      }
-    });
-
-    console.log(q);
+    const tags = this.state.query
+      .split(/[, ]+/)
+      .reduce((result, t, index, original) => {
+        if (attributeTags.indexOf(t) > -1) {
+          result.push(t);
+        } else if (t === "kid" && original[index + 1] === "friendly") {
+          result.push("kid friendly");
+        } else if (
+          t !== "and" &&
+          t !== "or" &&
+          t !== "the" &&
+          t !== "from" &&
+          t !== "also" &&
+          t !== "friendly" &&
+          t !== "with"
+        ) {
+          q.push(t);
+        }
+        return result;
+      }, []);
 
     if (!location.query) location.query = {};
 
-    if (q.length) location.query.q = q.join(",").toLowerCase();
+    if (q && q.length) location.query.q = q.join(",").toLowerCase();
     if (tags.length) location.query.tags = tags.join(",").toLowerCase();
 
     if (location.query.campus) delete location.query.campus;
@@ -171,72 +175,30 @@ class TemplateWithoutData extends Component {
     router.push(location);
   };
 
-  campusOnChange = (c: String) => {
+  inputOnChange = (value: String, e: any) => {
     this.setState({
-      campus: c || "",
-    });
-  };
-
-  // XXX will need to figure out way to remove submit if zip is invalid
-  zipOnChange = (z: String) => {
-    if (Validate.isLocationBasedZipCode(z)) {
-      this.setState({
-        zip: z || "",
-      });
-    }
-  };
-
-  inputOnChange = (value: String) => {
-    // split each element of the query string into its own array element
-    // at this point the query string also includes tags
-    const queryString = value.split(/[, ]+/);
-    const attributeTags = this.props.attributes.tags.map(tag => tag.value);
-    // current state of tags to work off of.
-    const newTags = [...this.state.tags];
-
-    // remove the tags that have been removed from the search field
-    const removeTags = newTags.filter(e => {
-      if (e && queryString.indexOf(e) < 0) {
-        newTags.splice(newTags.indexOf(e), 1);
-      }
-    });
-
-    // map over the querystring elements and push the elements that are found in
-    // the defined list but not currently in state
-    const addTags = queryString.filter((e, i, a) => {
-      if (e === "friendly" && a[i - 1] === "kid") {
-        newTags.push("kid friendly");
-      }
-
-      if (e && newTags.indexOf(e) < 0 && attributeTags.indexOf(e) > -1) {
-        newTags.push(e);
-      }
-    });
-
-    this.setState({
-      tags: newTags,
-      query: value,
+      [e.name]: value,
     });
   };
 
   tagOnClick = (tag: String) => {
-    const tagList = [...this.state.tags];
     let queryString = this.state.query || "";
+    const regex = `(,?\\s?\\b${tag.toString()}\\b)`;
 
-    if (tagList.indexOf(tag) > -1) {
-      queryString = queryString.replace(new RegExp(`(,? ?)${tag}`), "");
+    if (queryString.search(new RegExp(regex, "i")) > -1) {
+      queryString = queryString.replace(new RegExp(regex, "i"), "");
+
       if (queryString[0] === ",") {
         queryString = queryString.substring(1);
       }
-      tagList.splice(tagList.indexOf(tag), 1);
     } else {
       queryString =
-        queryString && queryString.length ? `${queryString}, ${tag}` : `${tag}`;
-      tagList.push(tag);
+        queryString && queryString.length
+          ? `${queryString}, ${tag.toString()}`
+          : `${tag.toString()}`;
     }
 
     this.setState({
-      tags: tagList,
       query: queryString.trim(),
     });
   };
@@ -255,37 +217,6 @@ class TemplateWithoutData extends Component {
   /* eslint-disable max-len */
   render() {
     const { attributes, autofill, content } = this.props;
-
-    // let selectedCampus = this.state.campus;
-    // let zipCode = this.state.zip;
-    // const query = location.query.raw ? location.query.raw : this.state.query;
-
-    // if (
-    //   (location.query.campus || location.query.zip) &&
-    //   (!this.state.zip || !this.state.campus)
-    // ) {
-    //   zipCode = !this.state.zip ? location.query.zip : this.state.zip;
-    //   selectedCampus = !this.state.campus
-    //     ? location.query.campus
-    //     : this.state.campus;
-    // }
-
-    // if (
-    //   !location.query.campus &&
-    //   !location.query.zip &&
-    //   !autofill.loading &&
-    //   autofill.person &&
-    //   !this.state.campus &&
-    //   !this.state.zip
-    // ) {
-    //   selectedCampus = autofill.person.campus.name;
-    //   zipCode = autofill.person.home.zip;
-    // }
-
-    // if (location.query.campuses) {
-    //   selectedCampus = location.query.campuses.split(",");
-    //   selectedCampus = selectedCampus[0];
-    // }
 
     return (
       <div>
@@ -324,20 +255,17 @@ class TemplateWithoutData extends Component {
             }
             selectedCampus={this.state.campus}
             zip={this.state.zip}
-            zipOnChange={this.zipOnChange}
             zipDisabled={this.state.latitude && this.state.longitude}
-            campusOnChange={this.campusOnChange}
-            searchQuery={this.state.query}
+            searchQuery={this.state.query || ""}
             tags={(attributes && attributes.tags) || defaultArray}
             tagOnClick={this.tagOnClick}
-            selectedTags={this.state.tags}
             submitTags={this.submitTags}
             findByQuery={this.findByQuery}
             inputOnChange={this.inputOnChange}
             content={content.loading ? defaultArray : content.entries}
             getLocation={this.geoLocateMe}
             geolocationLoading={this.state.geolocationLoading}
-            iconFill={this.state.iconFill}
+            iconFill={"#505050"}
           />
         </Left>
       </div>

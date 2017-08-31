@@ -35,7 +35,6 @@ const Layout = ({
   content,
   getLocation,
   geolocationLoading,
-  iconFill,
 }) =>
   <section className="background--light-secondary hard">
     {/* Meta */}
@@ -75,19 +74,17 @@ const Layout = ({
             tags={tags}
             searchQuery={searchQuery}
             tagOnClick={tagOnClick}
-            selectedTags={selectedTags}
             onChange={inputOnChange}
           />
           <CampusSelect
             campuses={campuses}
             selectedCampus={selectedCampus}
-            campusOnChange={campusOnChange}
+            onChange={inputOnChange}
           />
           <Location
             zip={zip}
             validation={Validate.isLocationBasedZipCode}
-            zipOnChange={zip}
-            onChange={zipOnChange}
+            onChange={inputOnChange}
             disabled={zipDisabled}
           />
           {(() => {
@@ -103,7 +100,7 @@ const Layout = ({
                 <Svg
                   name={"locate"}
                   title={"Locate Icon"}
-                  fill={iconFill}
+                  fill={"#505050"}
                   classes={"display-inline-block"}
                 />
                 <h6
@@ -112,7 +109,7 @@ const Layout = ({
                 >
                   <button
                     onClick={e => getLocation(e)}
-                    style={{ color: `${iconFill}` }}
+                    style={{ color: "#505050" }}
                   >
                     Use my current location
                   </button>
@@ -224,8 +221,6 @@ Layout.propTypes = {
   tagOnClick: PropTypes.func.isRequired,
   selectedTags: PropTypes.array.isRequired,
   submitTags: PropTypes.func.isRequired,
-  campusOnChange: PropTypes.func.isRequired,
-  zipOnChange: PropTypes.func.isRequired,
   zipDisabled: PropTypes.bool.isRequired,
   canSearchTags: PropTypes.bool.isRequired,
   canSearchCampus: PropTypes.bool.isRequired,
@@ -236,7 +231,6 @@ Layout.propTypes = {
   content: PropTypes.array.isRequired,
   getLocation: PropTypes.func.isRequired,
   geolocationLoading: PropTypes.bool.isRequired,
-  iconFill: PropTypes.string.isRequired,
 };
 
 export default Layout;
