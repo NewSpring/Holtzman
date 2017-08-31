@@ -281,6 +281,18 @@ it ("should accept errorText prop", () => {
   expect(help.text()).toEqual("my text");
 });
 
+it ("should accept a noteFieldText prop", () => {
+  let component = mount(generateComponent({
+    label: "test label",
+    type: "text",
+    maxLength: 10,
+    noteFieldText: "This is a note",
+  }));
+
+  const inputProps = getSingleSpecWrapper(component, "notes").props();
+
+  expect(inputProps.children).toEqual("This is a note");
+});
 // TODO
 // it ("should accept value prop", () => {
 //   let component = mount(generateComponent({

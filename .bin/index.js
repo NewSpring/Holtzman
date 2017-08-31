@@ -4,38 +4,31 @@
 // XXX currently this project is written to support node 0.10.*
 // when Meteor 1.4 is ready, we can rewrite in es6
 var Vorpal = require("vorpal")(),
-    Path = require("path"),
-    Fs = require("fs"),
-    Exec = require("child_process").exec,
-    Spawn = require("child_process").spawn,
-    Rimraf = require("rimraf").sync,
-    Promise = require("es6-promise").Promise,
-    GitHub = require("github-download"),
-    Mkdirp = require("mkdirp")
-    ;
+  Path = require("path"),
+  Fs = require("fs"),
+  Exec = require("child_process").exec,
+  Spawn = require("child_process").spawn,
+  Rimraf = require("rimraf").sync,
+  Promise = require("es6-promise").Promise,
+  GitHub = require("github-download"),
+  Mkdirp = require("mkdirp");
 
 var root = Path.resolve(__dirname, "../");
 
-var built = [
-  ".remote",
-  "node_modules",
-  "packages",
-  ".meteor/local"
-];
+var built = [".remote", "node_modules", "packages", ".meteor/local"];
 
-function installDep(src, dep){
-  return new Promise(function(resolve, reject){
+function installDep(src, dep) {
+  return new Promise(function(resolve, reject) {
     Mkdirp(src, function(err) {
       if (err) return reject(err);
       GitHub(dep, src)
-        .on("error", function(err){}) // XXX handle error
+        .on("error", function(err) {}) // XXX handle error
         .on("end", resolve);
     });
   });
 }
 
-Vorpal
-  .command("setup")
+Vorpal.command("setup")
   .description("Bootstrap an application. This may take some time...")
   .option("-c, --clean", "Force rebuild of application(s)")
   .option("-l, --log [level]", "Sets verbosity level.")
@@ -60,24 +53,25 @@ Vorpal
         var deps = packageFile.apollos.resource[subDir];
         for (var dep in deps) {
           if (!deps.hasOwnProperty(dep)) continue;
-          console.log("installing resource: " + dep)
+          console.log("installing resource: " + dep);
           depPromises.push(installDep(Path.join(localPath, dep), deps[dep]));
         }
       }
     }
     var npmPromises = [];
     npmPromises.push(
-      new Promise(function(p, f){
+      new Promise(function(p, f) {
         console.log("installing npm deps");
         var child = Spawn("npm", ["install"], {
-          cwd: app, stdio: "inherit"
+          cwd: app,
+          stdio: "inherit"
         });
         child.on("error", f);
       })
     );
 
     return Promise.all(npmPromises.concat(depPromises))
-      .then(function(){
+      .then(function() {
         console.log("Holtzmann should be ready to go!");
         // console.log("you will need to clone it down manually");
         // console.log("\n");
@@ -88,11 +82,10 @@ Vorpal
       .catch(function(err) {
         console.error(err);
         cb();
-      })
+      });
   });
 
-Vorpal
-  .command("run")
+Vorpal.command("run")
   .description("Start a local server to serve the site and print its address in your console")
   .option("-p, --port", "Choose a port to run the application")
   .option("-v, --verbosity [level]", "Sets verbosity level.")
@@ -102,6 +95,7 @@ Vorpal
   .option("--android", "Run the native app of a given site in the Android simulator")
   .option("--device", "Run the native app of a given site on the device of the platform")
   .option("--production", "Run the application in production mode")
+  .option("--host", "Include the hostname for the mobile server")
   .option("--debug", "Run the application in debug mode")
   .action(function(args, cb) {
     var app = root;
@@ -127,19 +121,26 @@ Vorpal
       Rimraf(Path.join(app, ".meteor/local"));
     }
 
-    var meteorArgs = [ "--settings" ];
+    var meteorArgs = ["--settings"];
     if (options.ios && !options.device) meteorArgs.unshift("run", "ios");
     if (options.android && !options.device) meteorArgs.unshift("run", "android");
     if (options.ios && options.device) meteorArgs.unshift("run", "ios-device");
     if (options.android && options.device) meteorArgs.unshift("run", "android-device");
 
     if (
-      packageFile.apollos && packageFile.apollos.settings &&
+      packageFile.apollos &&
+      packageFile.apollos.settings &&
       Fs.existsSync(Path.join(app, packageFile.apollos.settings))
     ) {
-      meteorArgs.push(packageFile.apollos.settings)
+      meteorArgs.push(packageFile.apollos.settings);
     } else {
       meteorArgs.push(Path.join(app, ".meteor/sample.settings.json"));
+    }
+
+    console.log("options.device = ", options.device);
+    console.log("options.host = ", options.host);
+    if (options.device && options.host) {
+      meteorArgs.push(`--mobile-server=http://${options.host}:3000`);
     }
 
     function run() {
@@ -154,9 +155,6 @@ Vorpal
     }
 
     run();
-
   });
 
-
-Vorpal
-  .parse(process.argv);
+Vorpal.parse(process.argv);
