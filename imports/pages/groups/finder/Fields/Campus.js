@@ -143,8 +143,9 @@ export default class Campus extends Component {
               backgroundColor: "#FFFFFF",
               top: "-1px",
               paddingLeft: "5px",
+              pointerEvents: "none",
             }}
-            onClick={this.setFocus}
+            onClick={e => e.preventDefault()}
           >
             <Svg
               name={this.state.focused ? "arrowUp" : "arrowDown"}
