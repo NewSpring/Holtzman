@@ -10,6 +10,7 @@ import SideBySide from "../../../components/@primitives/UI/cards/SideBySideCard"
 import GroupsILead from "../../../components/groups/groups-i-lead";
 import KeywordSelect from "./Fields/Keyword";
 import CampusSelect from "./Fields/Campus";
+import Location from "./Fields/Location";
 import Validate from "../../../util/validate";
 import Svg from "../../../components/@primitives/UI/svg";
 
@@ -25,6 +26,7 @@ const Layout = ({
   campuses,
   zip,
   zipOnChange,
+  zipDisabled,
   selectedCampus,
   campusOnChange,
   searchQuery,
@@ -33,8 +35,7 @@ const Layout = ({
   content,
   getLocation,
   geolocationLoading,
-  iconFill,
-}) => (
+}) =>
   <section className="background--light-secondary hard">
     {/* Meta */}
     <Meta
@@ -53,7 +54,8 @@ const Layout = ({
         <h3>Find Your People</h3>
         <h6 className="soft-half-bottom@handheld soft-bottom">
           <em>
-            Select your interests, campus, and location <br />to search for groups near you.
+            Select your interests, campus, and location <br />to search for
+            groups near you.
           </em>
         </h6>
         <Forms.Form
@@ -72,32 +74,19 @@ const Layout = ({
             tags={tags}
             searchQuery={searchQuery}
             tagOnClick={tagOnClick}
-            selectedTags={selectedTags}
             onChange={inputOnChange}
           />
           <CampusSelect
             campuses={campuses}
             selectedCampus={selectedCampus}
-            campusOnChange={campusOnChange}
+            onChange={inputOnChange}
           />
-          <div className={"text-left soft-double-top soft-half-sides"}>
-            <Forms.Input
-              inputClasses={"outlined--dotted outlined--light h6 flush-bottom text-black"}
-              label={"Zip Code"}
-              defaultValue={zip}
-              type="text"
-              name="Zip"
-              id="zip"
-              validation={Validate.isLocationBasedZipCode}
-              onChange={zipOnChange}
-              errorText="Please enter a valid zip code"
-              iconName="location"
-              iconFill="#505050"
-              iconTitle="Location Icon"
-              iconHighlightColor="#6BAC43"
-              ignoreLastPass
-            />
-          </div>
+          <Location
+            zip={zip}
+            validation={Validate.isLocationBasedZipCode}
+            onChange={inputOnChange}
+            disabled={zipDisabled}
+          />
           {(() => {
             if (geolocationLoading) {
               return (
@@ -107,18 +96,21 @@ const Layout = ({
               );
             }
             return (
-              <div className={"text-left soft-double-top soft-half-sides"}>
+              <div className={"text-left soft-half-sides"}>
                 <Svg
                   name={"locate"}
                   title={"Locate Icon"}
-                  fill={iconFill}
+                  fill={"#505050"}
                   classes={"display-inline-block"}
                 />
                 <h6
                   className="display-inline-block push-half-left"
                   style={{ fontWeight: "400", verticalAlign: "super" }}
                 >
-                  <button onClick={e => getLocation(e)} style={{ color: `${iconFill}` }}>
+                  <button
+                    onClick={e => getLocation(e)}
+                    style={{ color: "#505050" }}
+                  >
                     Use my current location
                   </button>
                 </h6>
@@ -148,7 +140,9 @@ const Layout = ({
           // XXX why can't I just pass in the function here?
           return (
             <button
-              disabled={!canSearchTags && !canSearchCampus && !canSearchLocation}
+              disabled={
+                !canSearchTags && !canSearchCampus && !canSearchLocation
+              }
               onClick={e => submitTags(e)}
               className={classes.join(" ")}
             >
@@ -189,7 +183,9 @@ const Layout = ({
                     </h4>
 
                     <p className="text-dark-primary">
-                      <small dangerouslySetInnerHTML={{ __html: entry.meta.summary }} />
+                      <small
+                        dangerouslySetInnerHTML={{ __html: entry.meta.summary }}
+                      />
                     </p>
                     <span
                       className={
@@ -204,15 +200,17 @@ const Layout = ({
               );
             }
             return (
-              <div className="grid__item one-whole one-half@palm-wide-and-up" key={key}>
+              <div
+                className="grid__item one-whole one-half@palm-wide-and-up"
+                key={key}
+              >
                 <GroupFinderFeedItem item={entry} />
               </div>
             );
           })}
       </div>
     </div>
-  </section>
-);
+  </section>;
 /* eslint-enable max-len */
 
 Layout.propTypes = {
@@ -223,8 +221,7 @@ Layout.propTypes = {
   tagOnClick: PropTypes.func.isRequired,
   selectedTags: PropTypes.array.isRequired,
   submitTags: PropTypes.func.isRequired,
-  campusOnChange: PropTypes.func.isRequired,
-  zipOnChange: PropTypes.func.isRequired,
+  zipDisabled: PropTypes.bool.isRequired,
   canSearchTags: PropTypes.bool.isRequired,
   canSearchCampus: PropTypes.bool.isRequired,
   canSearchLocation: PropTypes.bool.isRequired,
@@ -234,7 +231,6 @@ Layout.propTypes = {
   content: PropTypes.array.isRequired,
   getLocation: PropTypes.func.isRequired,
   geolocationLoading: PropTypes.bool.isRequired,
-  iconFill: PropTypes.string.isRequired,
 };
 
 export default Layout;
