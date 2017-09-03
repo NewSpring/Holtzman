@@ -98,6 +98,8 @@ App.appendToConfig(`
         <path url="/music/*" />
         <path url="/locations" />
         <path url="/watchandread" />
+        <path url="/news" />
+        <path url="/news/*" />
       </host>
       <host name="newspring.cc" scheme="https" event="universalLinkRoute">
         <path url="/articles" />
@@ -115,6 +117,8 @@ App.appendToConfig(`
         <path url="/music/*" />
         <path url="/locations" />
         <path url="/watchandread" />
+        <path url="/news" />
+        <path url="/news/*" />
       </host>
       <host name="beta-my.newspring.cc" scheme="https" event="universalLinkRoute" />
       <host name="my.newspring.cc" scheme="https" event="universalLinkRoute" />
