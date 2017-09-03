@@ -43,6 +43,7 @@ class TemplateWithoutData extends Component {
     /* eslint-enable */
     campusLocations: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
     campuses: PropTypes.string.isRequired,
+    campus: PropTypes.string.isRequired,
     schedules: PropTypes.string.isRequired,
   };
 
@@ -101,6 +102,7 @@ class TemplateWithoutData extends Component {
       data,
       tags,
       campusLocations,
+      campus,
       campuses,
       schedules,
       q,
@@ -153,6 +155,7 @@ class TemplateWithoutData extends Component {
             schedules={schedules && schedules.split(",").filter(x => x)}
             latitude={latitude}
             longitude={longitude}
+            campus={campus}
             campuses={campuses && campuses.split(",").filter(x => x)}
             campusLocations={campusLocations}
             query={q}
@@ -179,9 +182,10 @@ const mapStateToProps = ({ routing: { location } }) => {
     Object.keys(location.query).length && location.query.q
       ? location.query.q
       : null;
-  // const campus = (
-  //   Object.keys(location.query).length && location.query.campus ? location.query.campus : ""
-  // );
+  const campus =
+    Object.keys(location.query).length && location.query.campus
+      ? location.query.campus
+      : "";
   const campuses =
     Object.keys(location.query).length && location.query.campuses
       ? location.query.campuses
@@ -194,7 +198,7 @@ const mapStateToProps = ({ routing: { location } }) => {
     Object.keys(location.query).length && location.query.schedules
       ? location.query.schedules
       : "";
-  return { tags, q, location, campuses, zip, schedules };
+  return { tags, q, location, campuses, campus, zip, schedules };
 };
 
 const CAMPUS_LOCATION_QUERY = gql`
@@ -217,6 +221,7 @@ const GROUP_FINDER_QUERY = gql`
     $tags: [String]
     $limit: Int
     $offset: Int
+    $campus: String
     $campuses: [String]
     $latitude: Float
     $longitude: Float
@@ -228,6 +233,7 @@ const GROUP_FINDER_QUERY = gql`
       attributes: $tags
       limit: $limit
       offset: $offset
+      campus: $campus
       campuses: $campuses
       latitude: $latitude
       longitude: $longitude
@@ -300,8 +306,11 @@ const withGroupFinder = graphql(GROUP_FINDER_QUERY, {
       zip: ownProps.zip,
       limit: 10,
       offset: 0,
+      campus: ownProps.campus,
       campuses:
-        ownProps.campuses && ownProps.campuses.split(",").filter(x => x),
+        ownProps.campuses && ownProps.campuses.length
+          ? ownProps.campuses.split(",").filter(x => x)
+          : [],
       schedules:
         ownProps.schedules && ownProps.schedules.length
           ? ownProps.schedules.split(",").filter(x => x).map(x => getDay(x))
