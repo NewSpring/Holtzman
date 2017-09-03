@@ -51,28 +51,16 @@ exports[`test renders disabled tags 1`] = `
               },
             ]
           } />
-        <Campus />
+        <Campus
+          onChange={[Function]} />
+        <Location
+          onChange={[Function]}
+          validation={[Function]} />
         <div
-          className="text-left soft-double-top soft-half-sides">
-          <Input
-            errorText="Please enter a valid zip code"
-            iconFill="#505050"
-            iconHighlightColor="#6BAC43"
-            iconName="location"
-            iconTitle="Location Icon"
-            id="zip"
-            ignoreLastPass={true}
-            inputClasses="outlined--dotted outlined--light h6 flush-bottom text-black"
-            label="Zip Code"
-            name="Zip"
-            type="text"
-            validation={[Function]} />
-        </div>
-        <div
-          className="text-left soft-double-top soft-half-sides">
+          className="text-left soft-half-sides">
           <Svg
             classes="display-inline-block"
-            fill="#1C683E"
+            fill="#505050"
             height="24px"
             name="locate"
             title="Locate Icon"
@@ -89,7 +77,7 @@ exports[`test renders disabled tags 1`] = `
               onClick={[Function]}
               style={
                 Object {
-                  "color": "undefined",
+                  "color": "#505050",
                 }
               }>
               Use my current location
@@ -178,28 +166,16 @@ exports[`test renders loading if no tags 1`] = `
           onChange={[Function]}
           tagOnClick={[Function]}
           tags={Array []} />
-        <Campus />
+        <Campus
+          onChange={[Function]} />
+        <Location
+          onChange={[Function]}
+          validation={[Function]} />
         <div
-          className="text-left soft-double-top soft-half-sides">
-          <Input
-            errorText="Please enter a valid zip code"
-            iconFill="#505050"
-            iconHighlightColor="#6BAC43"
-            iconName="location"
-            iconTitle="Location Icon"
-            id="zip"
-            ignoreLastPass={true}
-            inputClasses="outlined--dotted outlined--light h6 flush-bottom text-black"
-            label="Zip Code"
-            name="Zip"
-            type="text"
-            validation={[Function]} />
-        </div>
-        <div
-          className="text-left soft-double-top soft-half-sides">
+          className="text-left soft-half-sides">
           <Svg
             classes="display-inline-block"
-            fill="#1C683E"
+            fill="#505050"
             height="24px"
             name="locate"
             title="Locate Icon"
@@ -216,7 +192,7 @@ exports[`test renders loading if no tags 1`] = `
               onClick={[Function]}
               style={
                 Object {
-                  "color": "undefined",
+                  "color": "#505050",
                 }
               }>
               Use my current location
@@ -312,28 +288,16 @@ exports[`test renders with props 1`] = `
               },
             ]
           } />
-        <Campus />
+        <Campus
+          onChange={[Function]} />
+        <Location
+          onChange={[Function]}
+          validation={[Function]} />
         <div
-          className="text-left soft-double-top soft-half-sides">
-          <Input
-            errorText="Please enter a valid zip code"
-            iconFill="#505050"
-            iconHighlightColor="#6BAC43"
-            iconName="location"
-            iconTitle="Location Icon"
-            id="zip"
-            ignoreLastPass={true}
-            inputClasses="outlined--dotted outlined--light h6 flush-bottom text-black"
-            label="Zip Code"
-            name="Zip"
-            type="text"
-            validation={[Function]} />
-        </div>
-        <div
-          className="text-left soft-double-top soft-half-sides">
+          className="text-left soft-half-sides">
           <Svg
             classes="display-inline-block"
-            fill="#1C683E"
+            fill="#505050"
             height="24px"
             name="locate"
             title="Locate Icon"
@@ -350,7 +314,7 @@ exports[`test renders with props 1`] = `
               onClick={[Function]}
               style={
                 Object {
-                  "color": "undefined",
+                  "color": "#505050",
                 }
               }>
               Use my current location

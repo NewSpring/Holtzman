@@ -5,10 +5,12 @@ import ReactMixin from "react-mixin";
 import gql from "graphql-tag";
 import { withRouter } from "react-router";
 
-import Split, { Left, Right } from "../../../components/@primitives/layout/split";
+import Split, {
+  Left,
+  Right,
+} from "../../../components/@primitives/layout/split";
 import Headerable from "../../../deprecated/mixins/mixins.Header";
 import { nav as navActions, modal } from "../../../data/store";
-import Validate from "../../../util/validate";
 
 import Layout from "./Layout";
 import ErrTemplate from "./ErrTemplate";
@@ -27,13 +29,12 @@ class TemplateWithoutData extends Component {
 
   state = {
     tags: [],
-    query: null,
+    query: "",
     latitude: null,
     longitude: null,
     campus: "",
     zip: "",
     submit: false,
-    iconFill: "#505050",
     geolocationLoading: false,
   };
 
@@ -44,71 +45,49 @@ class TemplateWithoutData extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: Object) {
     if (nextProps.location && Object.keys(nextProps.location.query).length) {
       this.props.dispatch(navActions.setLevel("BASIC_CONTENT"));
     } else {
       this.props.dispatch(navActions.setLevel("TOP"));
     }
 
-    // Nessesary to check if autofill even exists first
-    if (!nextProps.autofill.loading && nextProps.autofill) {
-      if (
-        nextProps.autofill.person &&
-        nextProps.autofill.person.campus &&
-        nextProps.autofill.person.home
-      ) {
-        this.setState({
-          campus: nextProps.autofill.person.campus.name,
-          zip: nextProps.autofill.person.home.zip,
-        });
-      }
+    if (!nextProps.autofill.loading) {
+      this.setState({
+        ...nextProps.autofill.person.campus,
+        ...nextProps.autofill.person.home,
+        ...nextProps.location.query,
+      });
     }
   }
 
   geoLocateMe = (e: Event) => {
     if (e) e.preventDefault();
-    // show the loading spinner while we wait for the geolocation function to return
-    this.setState({
-      geolocationLoading: true,
-    });
-    navigator.geolocation.getCurrentPosition(this.geolocationSuccess, this.geolocationError);
-  };
 
-  geolocationSuccess = (position: Object) => {
-    const zip = document.getElementById("zip");
-    if (this.state.latitude !== null || this.state.longitude !== null) {
-      // we are using a persons location already and they
-      // have clicked the "use my current location" button
-      // again. turn it off.
+    if (this.state.latitude && this.state.longitude) {
       this.setState({
         latitude: null,
         longitude: null,
-        iconFill: "#505050",
+        zip: this.props.autofill.person ? this.props.autofill.person.zip : "",
+        geoLocationLoading: false,
       });
-      if (this.state.zip) {
-        zip.value = this.state.zip;
-      } else if (
-        this.props.autofill.person &&
-        this.props.autofill.person.home &&
-        this.props.autofill.person.home.zip
-      ) {
-        zip.value = this.props.autofill.person.home.zip;
-      } else {
-        zip.value = "";
-      }
-      zip.disabled = false;
     } else {
-      // we are not yet using a persons location. turn it on.
       this.setState({
-        latitude: position.coords.latitude,
-        longitude: position.coords.longitude,
-        iconFill: "#6BAC43",
+        geolocationLoading: true,
       });
-      zip.value = "Using your location";
-      zip.disabled = true;
+
+      navigator.geolocation.getCurrentPosition(
+        this.geolocationSuccess,
+        this.geolocationError,
+      );
     }
+  };
+
+  geolocationSuccess = (position: Object) => {
     this.setState({
+      latitude: position.coords.latitude,
+      longitude: position.coords.longitude,
+      zip: "Using your location",
       geolocationLoading: false,
     });
   };
@@ -122,111 +101,80 @@ class TemplateWithoutData extends Component {
 
   getResults = () => {
     const { router, location } = this.props;
-    const { latitude, longitude, campus, zip } = this.state;
+    const { latitude, longitude, campus, zip, query } = this.state;
     // create an array of the attributes returned by graphql
     const attributeTags = this.props.attributes.tags.map(tag => tag.value);
 
-    const tags = [];
-    const query = [];
-
-    // find the tags that aren't defined
-    this.state.tags.forEach(e => {
-      if (e && attributeTags.indexOf(e) > -1) {
-        tags.push(e);
-      } else {
-        query.push(e);
-      }
-    });
+    const q = [];
+    const tags = this.state.query
+      .split(/[, ]+/)
+      .reduce((result, t, index, original) => {
+        if (attributeTags.indexOf(t) > -1) {
+          result.push(t);
+        } else if (t === "kid" && original[index + 1] === "friendly") {
+          result.push("kid friendly");
+        } else if (
+          t !== "and" &&
+          t !== "or" &&
+          t !== "the" &&
+          t !== "from" &&
+          t !== "also" &&
+          t !== "friendly" &&
+          t !== "with"
+        ) {
+          q.push(t);
+        }
+        return result;
+      }, []);
 
     if (!location.query) location.query = {};
 
-    if (query.length) location.query.q = query.join(",").toLowerCase();
+    if (q && q.length > 0 && q[0] !== "") {
+      location.query.q = q.join(",").toLowerCase();
+    }
     if (tags.length) location.query.tags = tags.join(",").toLowerCase();
 
     if (location.query.campus) delete location.query.campus;
     if (location.query.schedules) delete location.query.schedules;
 
+    if (query) location.query.query = query;
     if (latitude) location.query.latitude = latitude;
     if (longitude) location.query.longitude = longitude;
-    if (campus) location.query.campuses = campus;
+    if (campus) location.query.campus = campus.toLowerCase();
     if (zip) location.query.zip = zip;
 
-    location.pathname = "/groups/finder";
-    this.setState({ tags: [], query: null, latitude, longitude });
+    // XXX i don't like the idea of having to push history twice
+    router.push(location);
 
+    location.pathname = "/groups/finder";
     router.push(location);
   };
 
-  campusOnChange = (c: String) => {
+  inputOnChange = (value: String, e: any) => {
     this.setState({
-      campus: c || "",
-    });
-  };
-
-  // XXX will need to figure out way to remove submit if zip is invalid
-  zipOnChange = (z: String) => {
-    if (Validate.isLocationBasedZipCode(z)) {
-      this.setState({
-        zip: z || "",
-      });
-    }
-  };
-
-  inputOnChange = (value: String) => {
-    // split each element of the query string into its own array element
-    // at this point the query string also includes tags
-    const queryString = value.split(/[, ]+/);
-    const attributeTags = this.props.attributes.tags.map(tag => tag.value);
-    // current state of tags to work off of.
-    const newTags = [...this.state.tags];
-
-    // remove the tags that have been removed from the search field
-    const removeTags = newTags.filter(e => {
-      if (e && queryString.indexOf(e) < 0) {
-        newTags.splice(newTags.indexOf(e), 1);
-      }
-    });
-
-    // map over the querystring elements and push the elements that are found in
-    // the defined list but not currently in state
-    const addTags = queryString.filter((e, i, a) => {
-      if (e === "friendly" && a[i - 1] === "kid") {
-        newTags.push("kid friendly");
-      }
-
-      if (e && newTags.indexOf(e) < 0 && attributeTags.indexOf(e) > -1) {
-        newTags.push(e);
-      }
-    });
-
-    this.setState({
-      tags: newTags,
-      query: value,
-      latitude: this.state.latitude,
-      longitude: this.state.longitude,
+      [e.name]: value,
     });
   };
 
   tagOnClick = (tag: String) => {
-    const tagList = [...this.state.tags];
     let queryString = this.state.query || "";
+    const regex = `(,?\\s?\\b${tag.toString()}\\b)`;
 
-    if (tagList.indexOf(tag) > -1) {
-      queryString = queryString.replace(new RegExp(`(,? ?)${tag}`), "");
+    if (queryString.search(new RegExp(regex, "i")) > -1) {
+      queryString = queryString.replace(new RegExp(regex, "i"), "");
+
       if (queryString[0] === ",") {
         queryString = queryString.substring(1);
       }
-      tagList.splice(tagList.indexOf(tag), 1);
     } else {
-      queryString = queryString && queryString.length ? `${queryString}, ${tag}` : `${tag}`;
-      tagList.push(tag);
+      queryString =
+        queryString && queryString.length
+          ? `${queryString}, ${tag.toString()}`
+          : `${tag.toString()}`;
     }
 
     this.setState({
-      tags: tagList,
       query: queryString.trim(),
-      latitude: this.state.latitude,
-      longitude: this.state.longitude,
     });
   };
 
@@ -243,27 +191,7 @@ class TemplateWithoutData extends Component {
 
   /* eslint-disable max-len */
   render() {
-    const { attributes, location, content, autofill } = this.props;
-
-    let selectedCampus = this.state.campus;
-    let zipCode = this.state.zip;
-
-    if ((location.query.campus || location.query.zip) && (!this.state.zip || !this.state.campus)) {
-      zipCode = !this.state.zip ? location.query.zip : this.state.zip;
-      selectedCampus = !this.state.campus ? location.query.campus : this.state.campus;
-    }
-
-    if (
-      !location.query.campus &&
-      !location.query.zip &&
-      !autofill.loading &&
-      autofill.person &&
-      !this.state.campus &&
-      !this.state.zip
-    ) {
-      selectedCampus = autofill.person.campus.name;
-      zipCode = autofill.person.home.zip;
-    }
+    const { attributes, autofill, content } = this.props;
 
     return (
       <div>
@@ -276,41 +204,43 @@ class TemplateWithoutData extends Component {
         </Split>
         <Left scroll classes={["background--light-secondary"]}>
           <Layout
-            canSearchTags={false || this.state.tags.length || this.state.query}
-            canSearchCampus={false || this.state.campus}
+            canSearchTags={
+              false ||
+              Boolean(this.state.tags.length) ||
+              Boolean(this.state.query)
+            }
+            canSearchCampus={false || Boolean(this.state.campus)}
             canSearchLocation={
-              false || this.state.zip || (this.state.latitude && this.state.longitude)
+              false ||
+              this.state.zip ||
+              (this.state.latitude && this.state.longitude)
             }
             campuses={
-              autofill.loading ? (
-                [""]
-              ) : (
-                autofill.campuses
-                  .filter(x => {
-                    if (x.name === "Web") {
-                      return false;
-                    }
+              autofill.loading
+                ? [""]
+                : autofill.campuses
+                    .filter(x => {
+                      if (x.name === "Web") {
+                        return false;
+                      }
 
-                    return true;
-                  })
-                  .map(x => x.name.toLowerCase())
-              )
+                      return true;
+                    })
+                    .map(x => x.name.toLowerCase())
             }
-            selectedCampus={selectedCampus}
-            zip={zipCode}
-            zipOnChange={this.zipOnChange}
-            campusOnChange={this.campusOnChange}
-            searchQuery={this.state.query}
+            selectedCampus={this.state.campus}
+            zip={this.state.zip}
+            zipDisabled={this.state.latitude && this.state.longitude}
+            searchQuery={this.state.query || ""}
             tags={(attributes && attributes.tags) || defaultArray}
             tagOnClick={this.tagOnClick}
-            selectedTags={this.state.tags}
             submitTags={this.submitTags}
             findByQuery={this.findByQuery}
             inputOnChange={this.inputOnChange}
             content={content.loading ? defaultArray : content.entries}
             getLocation={this.geoLocateMe}
             geolocationLoading={this.state.geolocationLoading}
-            iconFill={this.state.iconFill}
+            iconFill={"#505050"}
           />
         </Left>
       </div>
@@ -329,7 +259,7 @@ const AUTOFILL_META_QUERY = gql`
         zip
       }
       campus {
-        name
+        campus: name
       }
     }
     campuses {
@@ -356,7 +286,11 @@ const withGroupAttributes = graphql(GROUP_ATTRIBUTES_QUERY, {
 });
 
 const TAGGED_CONTENT_QUERY = gql`
-  query GetTaggedContent($tagName: String!, $limit: Int, $includeChannels: [String]) {
+  query GetTaggedContent(
+    $tagName: String!
+    $limit: Int
+    $includeChannels: [String]
+  ) {
     entries: taggedContent(
       tagName: $tagName
       limit: $limit
@@ -399,9 +333,11 @@ const mapStateToProps = state => ({ location: state.routing.location });
 export default withRouter(
   connect(mapStateToProps)(
     withGroupAttributes(
-      withAutoFillMeta(withTaggedContent(ReactMixin.decorate(Headerable)(TemplateWithoutData)))
-    )
-  )
+      withAutoFillMeta(
+        withTaggedContent(ReactMixin.decorate(Headerable)(TemplateWithoutData)),
+      ),
+    ),
+  ),
 );
 
 export { TemplateWithoutData };

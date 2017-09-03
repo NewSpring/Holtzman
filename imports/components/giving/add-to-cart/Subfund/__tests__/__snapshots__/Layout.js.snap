@@ -40,7 +40,7 @@ exports[`test should accept an active prop to show the input 1`] = `
       type="tel"
       value="5.00">
       <div
-        className="input input--active input--focused soft-bottom input--active display-inline-block"
+        className="input input--active soft-bottom input--active display-inline-block"
         data-spec="input-wrapper"
         style={
           Object {
