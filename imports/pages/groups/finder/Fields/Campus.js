@@ -81,14 +81,6 @@ export default class Campus extends Component {
     }
   }
 
-  setFocus = (e: Event) => {
-    if (e) e.preventDefault();
-
-    this.setState({
-      focused: !this.state.focused,
-    });
-  };
-
   onClick = (e: Event) => {
     const campus = e.target.name || e.target.innerHTML; // eslint-disable-line
 
@@ -96,15 +88,25 @@ export default class Campus extends Component {
       campus,
       focused: false,
     });
-
-    this.props.onChange(campus, { name: "campus" });
   };
 
-  onBlur = (e: Event) => {
+  onFocus = () => {
+    this.setState({
+      focused: true,
+    });
+  };
+
+  onBlur = () => {
+    this.setState({
+      focused: false,
+    });
+  };
+
+  onTab = (e: Event) => {
     if (e.type === "keydown" && e.keyCode === 9) {
-      if (!Meteor.isCordova) {
-        this.setFocus();
-      }
+      this.setState({
+        focused: false,
+      });
     }
   };
 
@@ -117,10 +119,12 @@ export default class Campus extends Component {
         style={this.state.focused ? focusedInput : hiddenInput}
         className={"soft-double-top text-left soft-half-sides"}
         ref={this.setWrapperRef}
-        onKeyDown={this.onBlur}
-        onFocus={this.setFocus}
-        onTouchStart={this.setFocus}
+        onKeyDown={this.onTab}
+        onTouchStart={this.onFocus}
+        onFocus={this.onFocus}
       >
+        {/* onFocus === This is a hack because onFocus
+          is the only event that fires on a readonly input */}
         <Forms.Input
           classes={this.state.focused ? "soft-bottom" : ""}
           inputClasses={
@@ -129,6 +133,7 @@ export default class Campus extends Component {
           style={{ textTransform: "capitalize" }}
           type="text"
           label={"Campus"}
+          onFocus={onChange}
           labelStyles={{ pointerEvents: "none" }}
           name="campus"
           defaultValue={campus}
@@ -141,7 +146,7 @@ export default class Campus extends Component {
               position: "absolute",
               right: "0",
               backgroundColor: "#FFFFFF",
-              top: "-1px",
+              top: "-5px",
               paddingLeft: "5px",
               pointerEvents: "none",
             }}

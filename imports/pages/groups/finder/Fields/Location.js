@@ -3,10 +3,9 @@ import Forms from "../../../../components/@primitives/UI/forms";
 import Svg from "../../../../components/@primitives/UI/svg";
 
 export default class Location extends Component {
-  node: Object;
-
   state: {
     focused: boolean,
+    zip: string,
   };
 
   static propTypes = {
@@ -20,14 +19,30 @@ export default class Location extends Component {
     super(props);
     this.state = {
       focused: false,
+      zip: "",
     };
   }
 
-  setFocus = () => {
+  componentWillReceiveProps(nextProps: Object) {
+    if (nextProps.zip) {
+      this.setState({
+        zip: nextProps.zip,
+        focused: false,
+      });
+    }
+  }
+
+  onFocus = () => {
     this.setState({
-      focused: !this.state.focused,
+      focused: true,
     });
-  };
+  }
+
+  onBlur = () => {
+    this.setState({
+      focused: false,
+    });
+  }
 
   render() {
     const { zip, onChange, validation, disabled } = this.props;
@@ -35,21 +50,18 @@ export default class Location extends Component {
     return (
       <div className={"text-left soft-double-top soft-half-sides"}>
         <Forms.Input
-          ref={input => {
-            this.node = input;
-          }}
           inputClasses={
             "outlined--dotted outlined--light h6 flush-bottom text-black"
           }
           label={"Zip Code"}
-          defaultValue={zip}
+          defaultValue={this.state.zip}
           type="text"
           name="zip"
           id="zip"
           validation={validation}
           onChange={onChange}
-          onFocus={this.setFocus}
-          onBlur={this.setFocus}
+          onFocus={this.onFocus}
+          onBlur={this.onBlur}
           errorText="Please enter a valid zip code"
           disabled={disabled}
           ignoreLastPass
@@ -60,7 +72,7 @@ export default class Location extends Component {
               position: "absolute",
               right: "0",
               backgroundColor: "#FFFFFF",
-              top: "-1px",
+              top: "-5px",
               paddingLeft: "5px",
               pointerEvents: "none",
             }}

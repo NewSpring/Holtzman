@@ -98,7 +98,7 @@ class FilterWithoutData extends Component {
                 </h4>
                 <div className="two-thirds@anchored display-inline-block soft-ends@anchored">
                   {campuses.map((campus, key) => (
-                    <Tag key={key} val={campus.name} urlKey="campuses" />
+                    <Tag key={key} val={campus.name} urlKey="campus" />
                   ))}
                 </div>
               </div>

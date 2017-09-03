@@ -52,38 +52,11 @@ class TemplateWithoutData extends Component {
       this.props.dispatch(navActions.setLevel("TOP"));
     }
 
-    // Nessesary to check if autofill even exists first
-    if (!nextProps.autofill.loading && nextProps.autofill.person) {
-      if (
-        nextProps.autofill.person &&
-        nextProps.autofill.person.campus &&
-        nextProps.autofill.person.home
-      ) {
-        this.setState({
-          query: nextProps.location.query.raw || "",
-          campus: nextProps.autofill.person.campus.name,
-          zip: nextProps.autofill.person.home.zip,
-        });
-      } else if (
-        nextProps.location.query.raw ||
-        nextProps.location.query.campuses ||
-        nextProps.location.query.zip
-      ) {
-        this.setState({
-          query: nextProps.location.query.raw || "",
-          campus: nextProps.location.query.campuses,
-          zip: nextProps.location.query.zip,
-        });
-      }
-    } else if (
-      nextProps.location.query.raw ||
-      nextProps.location.query.campuses ||
-      nextProps.location.query.zip
-    ) {
+    if (!nextProps.autofill.loading) {
       this.setState({
-        query: nextProps.location.query.raw,
-        campus: nextProps.location.query.campuses,
-        zip: nextProps.location.query.zip,
+        ...nextProps.autofill.person.campus,
+        ...nextProps.autofill.person.home,
+        ...nextProps.location.query,
       });
     }
   }
@@ -152,20 +125,20 @@ class TemplateWithoutData extends Component {
           q.push(t);
         }
         return result;
-      }, []);
+      });
 
     if (!location.query) location.query = {};
 
-    if (q && q.length) location.query.q = q.join(",").toLowerCase();
+    if (q.length) location.query.q = q.join(",").toLowerCase();
     if (tags.length) location.query.tags = tags.join(",").toLowerCase();
 
     if (location.query.campus) delete location.query.campus;
     if (location.query.schedules) delete location.query.schedules;
 
-    if (query) location.query.raw = query;
+    if (query) location.query.query = query;
     if (latitude) location.query.latitude = latitude;
     if (longitude) location.query.longitude = longitude;
-    if (campus) location.query.campuses = campus;
+    if (campus) location.query.campus = campus.toLowerCase();
     if (zip) location.query.zip = zip;
 
     // XXX i don't like the idea of having to push history twice
@@ -284,7 +257,7 @@ const AUTOFILL_META_QUERY = gql`
         zip
       }
       campus {
-        name
+        campus: name
       }
     }
     campuses {

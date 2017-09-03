@@ -58,17 +58,9 @@ export default class Keywords extends Component {
   //  */
   handleClickOutside(e: Event) {
     if (this.wrapperRef && !this.wrapperRef.contains(e.target)) {
-      this.closeModal();
+      this.onBlur();
     }
   }
-
-  openModal = () => {
-    this.setState({ focused: true });
-  };
-
-  closeModal = () => {
-    this.setState({ focused: false });
-  };
 
   setFocus = (e: Event) => {
     if (e) e.preventDefault();
@@ -78,11 +70,21 @@ export default class Keywords extends Component {
     });
   };
 
-  onBlur = (e: Event) => {
+  onFocus = () => {
+    this.setState({ focused: true });
+  };
+
+  onBlur = () => {
+    this.setState({
+      focused: false,
+    });
+  };
+
+  onTab = (e: Event) => {
     if (e.type === "keydown" && e.keyCode === 9) {
-      if (!Meteor.isCordova) {
-        this.setFocus();
-      }
+      this.setState({
+        focused: false,
+      });
     }
   };
 
@@ -95,7 +97,7 @@ export default class Keywords extends Component {
         if (t === "kid" && original[index + 1] === "friendly") {
           result.push("kid friendly");
         } else if (t !== "friendly" && original[index - 1] !== "kid") {
-          result.push(t);
+          result.push(t.toLowerCase());
         }
 
         return result;
@@ -106,13 +108,13 @@ export default class Keywords extends Component {
         style={this.state.focused ? focusedInput : hiddenInput}
         className={"soft-double-top text-left soft-half-sides"}
         ref={this.setWrapperRef}
-        onKeyDown={this.onBlur}
-        onFocus={this.openModal}
+        onKeyDown={this.onTab}
+        onFocus={this.onFocus}
       >
         <Forms.Input
           classes={this.state.focused ? "soft-bottom" : ""}
           inputClasses={
-            "outlined--dotted outlined--light h6 capitalize flush-bottom text-black"
+            "outlined--dotted outlined--light h6 flush-bottom text-black"
           }
           type="text"
           label={"I'm looking for..."}
@@ -127,7 +129,7 @@ export default class Keywords extends Component {
               position: "absolute",
               right: "0",
               backgroundColor: "#FFFFFF",
-              top: "-1px",
+              top: "-5px",
               paddingLeft: "5px",
             }}
             onClick={this.setFocus}
