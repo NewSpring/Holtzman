@@ -11,13 +11,13 @@ exports[`test disables the label 1`] = `
 exports[`test displays a form label to the user 1`] = `
 <label
   htmlFor={undefined}
-  style={Object {}} />
+  style={undefined} />
 `;
 
 exports[`test displays a label name to the user 1`] = `
 <label
   htmlFor={undefined}
-  style={Object {}}>
+  style={undefined}>
   label
 </label>
 `;
@@ -25,5 +25,16 @@ exports[`test displays a label name to the user 1`] = `
 exports[`test passes the label for to the component 1`] = `
 <label
   htmlFor="goGoGadget"
-  style={Object {}} />
+  style={undefined} />
+`;
+
+exports[`test spreads styles if disabled is true 1`] = `
+<label
+  htmlFor={undefined}
+  style={
+    Object {
+      "color": "green",
+      "cursor": "inherit",
+    }
+  } />
 `;
