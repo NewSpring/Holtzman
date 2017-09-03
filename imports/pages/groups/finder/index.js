@@ -125,11 +125,13 @@ class TemplateWithoutData extends Component {
           q.push(t);
         }
         return result;
-      });
+      }, []);
 
     if (!location.query) location.query = {};
 
-    if (q.length) location.query.q = q.join(",").toLowerCase();
+    if (q && q.length > 0 && q[0] !== "") {
+      location.query.q = q.join(",").toLowerCase();
+    }
     if (tags.length) location.query.tags = tags.join(",").toLowerCase();
 
     if (location.query.campus) delete location.query.campus;
