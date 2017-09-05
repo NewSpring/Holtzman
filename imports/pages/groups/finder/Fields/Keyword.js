@@ -121,10 +121,8 @@ export default class Keywords extends Component {
           name="query"
           defaultValue={searchQuery}
           onChange={onChange}
-          autoComplete={false}
           autoCorrect={false}
           autoCapitalize={false}
-          spellCheck={false}
           ignoreLastPass
         >
           <button
@@ -159,7 +157,7 @@ export default class Keywords extends Component {
               style={{ textTransform: "capitalize" }}
               onClick={tagOnClick}
               key={i}
-              val={tag.value}
+              val={tag.value.toLowerCase()}
               active={selectedTags.indexOf(tag.value) + 1}
             />,
           )}
