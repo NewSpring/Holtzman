@@ -325,9 +325,17 @@ export default class Input extends Component {
           defaultValue={defaultValue}
           style={this.style()}
           maxLength={maxLength || ""}
-          autoComplete={autoComplete ? "on" : "off"}
-          autoCorrect={autoCorrect ? "on" : "off"}
-          autoCapitalize={autoCapitalize ? "on" : "off"}
+          autoComplete={
+            autoComplete === true || autoComplete === undefined ? "on" : "off"
+          }
+          autoCorrect={
+            autoCorrect === true || autoCorrect === undefined ? "on" : "off"
+          }
+          autoCapitalize={
+            autoCapitalize === true || autoCapitalize === undefined
+              ? "on"
+              : "off"
+          }
           spellCheck={spellCheck}
           data-spec="input"
           data-lpignore={ignoreLastPass}

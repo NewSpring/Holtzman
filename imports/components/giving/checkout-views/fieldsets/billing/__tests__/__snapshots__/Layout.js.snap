@@ -34,9 +34,9 @@ exports[`Layout renders US by default 1`] = `
         Street Address
       </label>
       <input
-        autoCapitalize="off"
-        autoComplete="off"
-        autoCorrect="off"
+        autoCapitalize="on"
+        autoComplete="on"
+        autoCorrect="on"
         className={undefined}
         data-lpignore={undefined}
         data-spec="input"
@@ -64,9 +64,9 @@ exports[`Layout renders US by default 1`] = `
         Street Address (optional)
       </label>
       <input
-        autoCapitalize="off"
-        autoComplete="off"
-        autoCorrect="off"
+        autoCapitalize="on"
+        autoComplete="on"
+        autoCorrect="on"
         className={undefined}
         data-lpignore={undefined}
         data-spec="input"
@@ -126,9 +126,9 @@ exports[`Layout renders US by default 1`] = `
         City
       </label>
       <input
-        autoCapitalize="off"
-        autoComplete="off"
-        autoCorrect="off"
+        autoCapitalize="on"
+        autoComplete="on"
+        autoCorrect="on"
         className={undefined}
         data-lpignore={undefined}
         data-spec="input"
@@ -195,9 +195,9 @@ exports[`Layout renders US by default 1`] = `
             Zip/Postal
           </label>
           <input
-            autoCapitalize="off"
-            autoComplete="off"
-            autoCorrect="off"
+            autoCapitalize="on"
+            autoComplete="on"
+            autoCorrect="on"
             className={undefined}
             data-lpignore={undefined}
             data-spec="input"
@@ -260,9 +260,9 @@ exports[`Layout renders your country instead 1`] = `
         Street Address
       </label>
       <input
-        autoCapitalize="off"
-        autoComplete="off"
-        autoCorrect="off"
+        autoCapitalize="on"
+        autoComplete="on"
+        autoCorrect="on"
         className={undefined}
         data-lpignore={undefined}
         data-spec="input"
@@ -290,9 +290,9 @@ exports[`Layout renders your country instead 1`] = `
         Street Address (optional)
       </label>
       <input
-        autoCapitalize="off"
-        autoComplete="off"
-        autoCorrect="off"
+        autoCapitalize="on"
+        autoComplete="on"
+        autoCorrect="on"
         className={undefined}
         data-lpignore={undefined}
         data-spec="input"
@@ -352,9 +352,9 @@ exports[`Layout renders your country instead 1`] = `
         City
       </label>
       <input
-        autoCapitalize="off"
-        autoComplete="off"
-        autoCorrect="off"
+        autoCapitalize="on"
+        autoComplete="on"
+        autoCorrect="on"
         className={undefined}
         data-lpignore={undefined}
         data-spec="input"
@@ -421,9 +421,9 @@ exports[`Layout renders your country instead 1`] = `
             Zip/Postal
           </label>
           <input
-            autoCapitalize="off"
-            autoComplete="off"
-            autoCorrect="off"
+            autoCapitalize="on"
+            autoComplete="on"
+            autoCorrect="on"
             className={undefined}
             data-lpignore={undefined}
             data-spec="input"

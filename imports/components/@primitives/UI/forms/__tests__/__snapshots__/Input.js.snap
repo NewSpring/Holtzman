@@ -13,9 +13,9 @@ exports[`test should render with no props 1`] = `
       </Label>
     </RenderLabel>
     <input
-      autoCapitalize="off"
-      autoComplete="off"
-      autoCorrect="off"
+      autoCapitalize="on"
+      autoComplete="on"
+      autoCorrect="on"
       data-spec="input"
       maxLength=""
       onBlur={[Function]}

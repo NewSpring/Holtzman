@@ -75,9 +75,9 @@ exports[`Layout renders custom toggles if passed 1`] = `
           Card Number
         </label>
         <input
-          autoCapitalize="off"
-          autoComplete="off"
-          autoCorrect="off"
+          autoCapitalize="on"
+          autoComplete="on"
+          autoCorrect="on"
           className={undefined}
           data-lpignore={undefined}
           data-spec="input"
@@ -116,9 +116,9 @@ exports[`Layout renders custom toggles if passed 1`] = `
               Exp (MM/YY)
             </label>
             <input
-              autoCapitalize="off"
-              autoComplete="off"
-              autoCorrect="off"
+              autoCapitalize="on"
+              autoComplete="on"
+              autoCorrect="on"
               className={undefined}
               data-lpignore={undefined}
               data-spec="input"
@@ -149,9 +149,9 @@ exports[`Layout renders custom toggles if passed 1`] = `
               CCV
             </label>
             <input
-              autoCapitalize="off"
-              autoComplete="off"
-              autoCorrect="off"
+              autoCapitalize="on"
+              autoComplete="on"
+              autoCorrect="on"
               className={undefined}
               data-lpignore={undefined}
               data-spec="input"
@@ -296,9 +296,9 @@ exports[`Layout renders default toggles by default 1`] = `
           Card Number
         </label>
         <input
-          autoCapitalize="off"
-          autoComplete="off"
-          autoCorrect="off"
+          autoCapitalize="on"
+          autoComplete="on"
+          autoCorrect="on"
           className={undefined}
           data-lpignore={undefined}
           data-spec="input"
@@ -337,9 +337,9 @@ exports[`Layout renders default toggles by default 1`] = `
               Exp (MM/YY)
             </label>
             <input
-              autoCapitalize="off"
-              autoComplete="off"
-              autoCorrect="off"
+              autoCapitalize="on"
+              autoComplete="on"
+              autoCorrect="on"
               className={undefined}
               data-lpignore={undefined}
               data-spec="input"
@@ -370,9 +370,9 @@ exports[`Layout renders default toggles by default 1`] = `
               CCV
             </label>
             <input
-              autoCapitalize="off"
-              autoComplete="off"
-              autoCorrect="off"
+              autoCapitalize="on"
+              autoComplete="on"
+              autoCorrect="on"
               className={undefined}
               data-lpignore={undefined}
               data-spec="input"

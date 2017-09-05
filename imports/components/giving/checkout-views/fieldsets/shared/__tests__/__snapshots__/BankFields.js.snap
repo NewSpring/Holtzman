@@ -12,9 +12,9 @@ exports[`test should render with props 1`] = `
       Routing Number
     </label>
     <input
-      autoCapitalize="off"
-      autoComplete="off"
-      autoCorrect="off"
+      autoCapitalize="on"
+      autoComplete="on"
+      autoCorrect="on"
       className={undefined}
       data-lpignore={undefined}
       data-spec="input"
@@ -42,9 +42,9 @@ exports[`test should render with props 1`] = `
       Account Number
     </label>
     <input
-      autoCapitalize="off"
-      autoComplete="off"
-      autoCorrect="off"
+      autoCapitalize="on"
+      autoComplete="on"
+      autoCorrect="on"
       className={undefined}
       data-lpignore={undefined}
       data-spec="input"

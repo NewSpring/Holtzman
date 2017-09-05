@@ -17,9 +17,9 @@ exports[`test renders default \`Bank Account\` if ach 1`] = `
     Saved Account Name
   </label>
   <input
-    autoCapitalize="off"
-    autoComplete="off"
-    autoCorrect="off"
+    autoCapitalize="on"
+    autoComplete="on"
+    autoCorrect="on"
     className={undefined}
     data-lpignore={undefined}
     data-spec="input"
@@ -50,9 +50,9 @@ exports[`test renders default \`Credit Card\` if not ach 1`] = `
     Saved Account Name
   </label>
   <input
-    autoCapitalize="off"
-    autoComplete="off"
-    autoCorrect="off"
+    autoCapitalize="on"
+    autoComplete="on"
+    autoCorrect="on"
     className={undefined}
     data-lpignore={undefined}
     data-spec="input"

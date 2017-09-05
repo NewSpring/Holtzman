@@ -47,9 +47,9 @@ exports[`test should accept custom classes thru classes prop 1`] = `
         <RenderLabel
           hideLabel={true} />
         <input
-          autoCapitalize="off"
-          autoComplete="off"
-          autoCorrect="off"
+          autoCapitalize="on"
+          autoComplete="on"
+          autoCorrect="on"
           className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
           data-spec="input"
           maxLength=""
@@ -173,9 +173,9 @@ exports[`test should accept multiple accounts through accounts prop 1`] = `
         <RenderLabel
           hideLabel={true} />
         <input
-          autoCapitalize="off"
-          autoComplete="off"
-          autoCorrect="off"
+          autoCapitalize="on"
+          autoComplete="on"
+          autoCorrect="on"
           className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
           data-spec="input"
           maxLength=""
@@ -303,9 +303,9 @@ exports[`test should change classes based on active state 1`] = `
         <RenderLabel
           hideLabel={true} />
         <input
-          autoCapitalize="off"
-          autoComplete="off"
-          autoCorrect="off"
+          autoCapitalize="on"
+          autoComplete="on"
+          autoCorrect="on"
           className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
           data-spec="input"
           maxLength=""
@@ -426,9 +426,9 @@ exports[`test should render with minimal props 1`] = `
         <RenderLabel
           hideLabel={true} />
         <input
-          autoCapitalize="off"
-          autoComplete="off"
-          autoCorrect="off"
+          autoCapitalize="on"
+          autoComplete="on"
+          autoCorrect="on"
           className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
           data-spec="input"
           maxLength=""
