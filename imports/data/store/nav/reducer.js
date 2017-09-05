@@ -68,7 +68,7 @@ let links = {
     {
       id: 3,
       label: "Groups",
-      link: "/groups/finder",
+      link: "/groups/home",
       icon: "icon-groups",
       isActive: ({ path, modal }) => (path.indexOf("/groups") === 0 && !modal.visible),
     },

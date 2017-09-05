@@ -1,8 +1,6 @@
 // @flow
-
 import { Component } from "react";
 import StripTags from "striptags";
-
 import Label from "./Label";
 
 type IRenderLabel = {
@@ -11,6 +9,7 @@ type IRenderLabel = {
   name: string,
   label: string,
   disabled?: boolean,
+  style?: Object, // eslint-disable-line
 };
 
 const RenderLabel = ({
@@ -19,6 +18,7 @@ const RenderLabel = ({
   name,
   label,
   disabled = false,
+  style = {},
 }: IRenderLabel) => {
   if (hideLabel) return null;
   return (
@@ -26,6 +26,7 @@ const RenderLabel = ({
       labelFor={id || name || label}
       labelName={label || name}
       disabed={disabled}
+      labelStyles={style}
     />
   );
 };
@@ -40,12 +41,16 @@ type IInputProps = {
   children: any,
   id: string,
   label: string,
+  labelStyles: Object,
   name: string,
   inputClasses: string,
   hideLabel?: boolean,
   autofocus?: boolean,
+  readOnly: string,
+  ignoreLastPass: boolean,
   format: Function,
   onChange: Function,
+  onFocus: Function,
   onBlur: Function,
   style: Object,
   value: string,
@@ -60,18 +65,23 @@ export default class Input extends Component {
   _previousValue: string;
   props: IInputProps;
 
-  state = {
-    active: false,
-    focused: false,
-    error: false,
-    value: null,
-    autofocus: false,
-  }
+  state: {
+    active: boolean,
+    focused: boolean,
+    error: boolean,
+    value: ?string,
+    autofocus: boolean,
+  };
 
-  componentWillMount() {
-    if (this.props.defaultValue) {
-      this.setState({ active: true });
-    }
+  constructor(props: Object) {
+    super(props);
+    this.state = {
+      active: Boolean(this.props.defaultValue),
+      focused: false,
+      error: false,
+      value: null,
+      autofocus: false,
+    };
   }
 
   componentDidMount() {
@@ -84,11 +94,18 @@ export default class Input extends Component {
     // until then. I'll keep on checking
     const target = this.node;
     this.interval = setInterval(() => {
-      if (this._previousValue === target.value || !target.value) { // eslint-disable-line
+      if (this._previousValue === target.value || !target.value) {
+        // eslint-disable-line
         return;
       }
 
-      if (!this._previousValue && target.value && !this.state.focused) { // eslint-disable-line
+      if (
+        !this._previousValue &&
+        target.value &&
+        !this.state.focused &&
+        !this.state.value
+      ) {
+        // eslint-disable-line
         this.setValue(target.value);
       }
 
@@ -119,19 +136,18 @@ export default class Input extends Component {
     // let value = this.node.value
     const value = this.getValue();
 
-    if (this.props.format && typeof (this.props.format) === "function") {
+    if (this.props.format && typeof this.props.format === "function") {
       const newValue = this.props.format(value, target, e);
       target.value = newValue;
     }
 
-    if (this.props.onChange && typeof (this.props.onChange) === "function") {
+    if (this.props.onChange && typeof this.props.onChange === "function") {
       this.props.onChange(target.value, target, e);
     }
-  }
+  };
 
   validate = (e?: Event) => {
     const target = this.node;
-    // const value = target.value
     const value = this.getValue();
 
     if (!value) {
@@ -145,24 +161,33 @@ export default class Input extends Component {
       focused: false,
     });
 
-    if (this.props.validation && typeof (this.props.validation) === "function") {
+    if (this.props.validation && typeof this.props.validation === "function") {
       this.setState({
         error: !this.props.validation(value, target, e),
       });
     }
 
-    if (this.props.onBlur && typeof (this.props.onBlur) === "function") {
+    if (this.props.onBlur && typeof this.props.onBlur === "function") {
       this.props.onBlur(value, target, e);
+    } else {
+      target.blur();
     }
-  }
+  };
 
-  focus = () => {
+  focus = (e: ?Event) => {
     this.setState({
       active: true,
       error: false,
       focused: true,
     });
-  }
+
+    const target = this.node;
+    const value = this.getValue();
+
+    if (this.props.onFocus && typeof this.props.onFocus === "function") {
+      this.props.onFocus(value, target, e);
+    }
+  };
 
   setValue = (value: string) => {
     const node = this.node;
@@ -172,23 +197,25 @@ export default class Input extends Component {
     } else {
       node.value = StripTags(value); // eslint-disable-line
     }
+
+    this.setState({ value: node.value });
     this.focus();
     this.validate();
-  }
+  };
 
   // http://stackoverflow.com/questions/5788527/is-strip-tags-vulnerable-to-scripting-attacks/5793453#5793453
-    // prevent XSS;
+  // prevent XSS;
   getValue = () => {
     if (this.props.name === "password") return this.node.value;
     return StripTags(this.node.value); // eslint-disable-line
-  }
+  };
 
   disabled = () => {
     if (this.props.disabled) {
       return this.props.disabled;
     }
     return undefined;
-  }
+  };
 
   renderHelpText = () => {
     if (this.state.error && this.props.errorText) {
@@ -199,7 +226,7 @@ export default class Input extends Component {
       );
     }
     return undefined;
-  }
+  };
 
   style = () => {
     let style = {};
@@ -218,27 +245,45 @@ export default class Input extends Component {
     }
 
     return style;
-  }
+  };
 
   classes = () => {
-    let inputclasses = [
-      "input",
-    ];
+    let inputclasses = ["input"];
 
     // state mangaged classes
-    if (this.state.active) { inputclasses.push("input--active"); }
-    if (this.state.focused) { inputclasses.push("input--focused"); }
-    if (this.state.error) { inputclasses.push("input--alert"); }
+    if (this.state.active) {
+      inputclasses.push("input--active");
+    }
+    if (this.state.focused) {
+      inputclasses.push("input--focused");
+    }
+    if (this.state.error) {
+      inputclasses.push("input--alert");
+    }
     // custom added classes
-    if (this.props.classes) { inputclasses = inputclasses.concat(this.props.classes); }
+    if (this.props.classes) {
+      inputclasses = inputclasses.concat(this.props.classes);
+    }
 
     return inputclasses.join(" ");
-  }
+  };
 
   render() {
     const {
-      style, hideLabel, id, name, label, type, placeholder,
-      inputClasses, defaultValue, maxLength, children,
+      style,
+      hideLabel,
+      id,
+      name,
+      label,
+      labelStyles,
+      type,
+      placeholder,
+      inputClasses,
+      defaultValue,
+      readOnly,
+      ignoreLastPass,
+      maxLength,
+      children,
     } = this.props;
 
     return (
@@ -247,17 +292,17 @@ export default class Input extends Component {
         style={style || {}}
         data-spec="input-wrapper"
       >
-
         <RenderLabel
           hideLabel={hideLabel}
           id={id}
           name={name}
           label={label}
           disabled={this.disabled()}
+          style={labelStyles}
         />
 
         <input
-          ref={(node) => (this.node = node)}
+          ref={node => (this.node = node)}
           id={id || name || label}
           type={type}
           placeholder={placeholder || label}
@@ -267,18 +312,18 @@ export default class Input extends Component {
           onBlur={this.validate}
           onFocus={this.focus}
           onChange={this.format}
+          readOnly={readOnly}
           defaultValue={defaultValue}
           style={this.style()}
           maxLength={maxLength || ""}
           data-spec="input"
+          data-lpignore={ignoreLastPass}
         />
 
         {children}
 
         {this.renderHelpText()}
-
       </div>
     );
   }
-
 }

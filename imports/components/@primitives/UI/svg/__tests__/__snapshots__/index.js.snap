@@ -1,0 +1,38 @@
+exports[`Svg Component should render a home svg 1`] = `
+<div
+  className={undefined}>
+  <svg
+    height="24px"
+    viewBox="0 0 24 24"
+    width="24px"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlnsXlink="http://www.w3.org/1999/xlink">
+    <title />
+    <defs>
+      <path
+        d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"
+        id="home" />
+    </defs>
+    <g
+      fill="none"
+      fillRule="evenodd">
+      <path
+        d="M0 0h24v24H0z" />
+      <mask
+        fill="#fff"
+        id="home_b">
+        <use
+          xlinkHref="#home" />
+      </mask>
+      <use
+        fill="#444"
+        fillRule="nonzero"
+        xlinkHref="#home" />
+      <path
+        d="M0 0h24v24H0z"
+        fill="#1C683E"
+        mask="url(#home_b)" />
+    </g>
+  </svg>
+</div>
+`;
