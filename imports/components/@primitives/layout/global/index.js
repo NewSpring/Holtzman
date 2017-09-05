@@ -17,7 +17,7 @@ import Nav from "../../nav";
 import Header from "../../UI/header";
 import { Loading } from "../../UI/states";
 
-import Likes from "../../../../deprecated/database/collections/likes";		
+import Likes from "../../../../deprecated/database/collections/likes";
 
 import { linkListener } from "../../../../util/inAppLink";
 
@@ -43,7 +43,6 @@ const Watermark = () => (
   </div>
 );
 
-
 const App = ({ children, className, native }) => (
   <div
     className={
@@ -59,14 +58,11 @@ const App = ({ children, className, native }) => (
         }
         return null;
       })()}
-      <div data-status-scroll>
-        {children}
-      </div>
+      <div data-status-scroll>{children}</div>
       <Modal />
       <Nav />
       <Watermark />
     </div>
-
   </div>
 );
 
@@ -76,37 +72,37 @@ App.propTypes = {
   native: PropTypes.bool,
 };
 
-
-const Blank = () => (<div />);
+const Blank = () => <div />;
 
 const PERSON_QUERY = gql`
   query GetPerson {
     person: currentPerson {
-      attributes(key:"NotificationIgnoreDate"){
+      attributes(key: "NotificationIgnoreDate") {
         values {
           value
         }
-      }   
+      }
     }
   }
 `;
 
 export const promptNotify = (client, dispatch) => () => {
-  const lookup = (token) => {
+  const lookup = token => {
     // no need to lookup anything since notifications are already there
     if (token === true) return;
 
-    client.query({ query: PERSON_QUERY })
-      .then((result) => {
-        const current = flatten(pluck("values", result.data.person.attributes));
-        if (current.length && moment(current[0].value).isAfter(moment())) return;
-        // wait three seconds after app launch before asking for permission
-        setTimeout(() => {
-          dispatch(modalActions.render(NotificationRequest, {
+    client.query({ query: PERSON_QUERY }).then(result => {
+      const current = flatten(pluck("values", result.data.person.attributes));
+      if (current.length && moment(current[0].value).isAfter(moment())) return;
+      // wait three seconds after app launch before asking for permission
+      setTimeout(() => {
+        dispatch(
+          modalActions.render(NotificationRequest, {
             promptModal: true,
-          }));
-        }, 3000);
-      });
+          })
+        );
+      }, 3000);
+    });
   };
 
   NativeStorage.getItem("pushNotifications", lookup, lookup);
@@ -179,14 +175,16 @@ const GlobalData = createContainer(({ dispatch, client }) => {
     if (topics && topics.length) dispatch(topicActions.set(topics));
 
     Meteor.subscribe("likes");
-    const likes = Likes.find({ userId }).fetch().map((like) => like.entryId);
+    const likes = Likes.find({ userId })
+      .fetch()
+      .map(like => like.entryId);
     if (likes.length) dispatch(likedActions.set(likes));
   }
 
   return { userId };
 }, Blank);
 
-const map = (state) => ({
+const map = state => ({
   location: state.routing.location,
   modal: state.modal,
 });
@@ -194,10 +192,10 @@ const withRedux = connect(map);
 
 export const URL_TITLE_QUERY = gql`
   query contentWithUrlTitle(
-    $parentChannel: String!,
-    $parentUrl: String!,
-    $childChannel: String = "",
-    $childUrl: String = "",
+    $parentChannel: String!
+    $parentUrl: String!
+    $childChannel: String = ""
+    $childUrl: String = ""
     $hasChild: Boolean = false
   ) {
     parent: contentWithUrlTitle(channel: $parentChannel, urlTitle: $parentUrl)
@@ -206,13 +204,12 @@ export const URL_TITLE_QUERY = gql`
 `;
 
 class GlobalWithoutData extends Component {
-
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     client: PropTypes.object.isRequired,
-  }
+  };
 
-  state = { universalLinkLoading: false }
+  state = { universalLinkLoading: false };
 
   componentWillMount() {
     if (Meteor.isCordova) {
@@ -237,7 +234,7 @@ class GlobalWithoutData extends Component {
       this.universalLinkRouting({ path });
     }, alert);
     /* eslint-enable */
-  }
+  };
 
   universalLinkRouting = ({ path }) => {
     this.setState({ universalLinkLoading: true });
@@ -255,22 +252,23 @@ class GlobalWithoutData extends Component {
       default:
         this.go(path);
     }
-  }
+  };
 
-  isQueryRoute = (path) => {
+  isQueryRoute = path => {
     const queryRoutes = [
       "/articles/",
       "/sermons/",
       "/devotionals/",
       "/studies/",
       "/stories/",
+      "/news/",
     ];
 
-    if (queryRoutes.find((url) => path.includes(url))) return path;
+    if (queryRoutes.find(url => path.includes(url))) return path;
     return false;
-  }
+  };
 
-  withQuery = (path) => {
+  withQuery = path => {
     const pathArray = path.split("/").filter(Boolean);
 
     const channel = pathArray[0];
@@ -296,14 +294,17 @@ class GlobalWithoutData extends Component {
         break;
     }
 
-    this.props.client.query({ query: URL_TITLE_QUERY,
-      variables: {
-        parentChannel: parentChannelToUse,
-        parentUrl: parent || urlTitle,
-        childChannel: parent ? childChannelToUse : "",
-        childUrl: parent ? urlTitle : "",
-        hasChild: parent,
-      } })
+    this.props.client
+      .query({
+        query: URL_TITLE_QUERY,
+        variables: {
+          parentChannel: parentChannelToUse,
+          parentUrl: parent || urlTitle,
+          childChannel: parent ? childChannelToUse : "",
+          childUrl: parent ? urlTitle : "",
+          hasChild: parent,
+        },
+      })
       .then(({ data }) => {
         switch (channel) {
           case "sermons":
@@ -325,18 +326,19 @@ class GlobalWithoutData extends Component {
         }
       });
     return;
-  }
+  };
 
-  go = (url) => {
+  go = url => {
     this.setState({ universalLinkLoading: false });
     this.props.dispatch(routeActions.push(url));
-  }
+  };
 
   render() {
     const { dispatch, client } = this.props;
     let scrollbarStyles = "";
     if (Meteor.isCordova) {
-      scrollbarStyles = "::-webkit-scrollbar, ::-webkit-scrollbar-track, ::-webkit-scrollbar-track-piece, ::-webkit-scrollbar-thumb { display: none; }";
+      scrollbarStyles =
+        "::-webkit-scrollbar, ::-webkit-scrollbar-track, ::-webkit-scrollbar-track-piece, ::-webkit-scrollbar-thumb { display: none; }";
     }
     return (
       <div id="global">
@@ -351,12 +353,4 @@ class GlobalWithoutData extends Component {
 
 export default withRedux(withApollo(GlobalWithoutData));
 
-export {
-  GlobalWithoutData,
-  map,
-  withRedux,
-  Watermark,
-  App,
-  Blank,
-  GlobalData,
-};
+export { GlobalWithoutData, map, withRedux, Watermark, App, Blank, GlobalData };
