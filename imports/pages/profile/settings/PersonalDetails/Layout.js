@@ -1,5 +1,4 @@
 import { Component, PropTypes } from "react";
-
 import Forms from "../../../../components/@primitives/UI/forms";
 import Meta from "../../../../components/shared/meta";
 import Validate from "../../../../util/validate";
@@ -7,7 +6,6 @@ import Validate from "../../../../util/validate";
 import Back from "../Back";
 
 export default class Layout extends Component {
-
   static propTypes = {
     submit: PropTypes.func.isRequired,
     person: PropTypes.object,
@@ -16,17 +14,20 @@ export default class Layout extends Component {
     days: PropTypes.array.isRequired,
     years: PropTypes.array.isRequired,
     campuses: PropTypes.array,
-  }
+  };
 
   submit = (e) => {
     e.preventDefault();
 
     const data = {};
+    let valid = true;
     // eslint-disable-next-line
     for (const ref in this.refs) {
       let value = this.refs[ref].getValue();
-      if (ref === "Email" && !Validate.isEmail(value)) {
-        continue; // eslint-disable-line
+
+      if (ref === "Email" && !this.isEmail(value)) {
+        valid = false;
+        break;
       }
 
       const number = Number(value);
@@ -37,8 +38,21 @@ export default class Layout extends Component {
       data[ref] = value;
     }
 
-    this.props.submit(data);
-  }
+    if (valid) {
+      this.props.submit(data);
+    }
+  };
+
+  isEmail = (value: string) => {
+    let isValid = value.length ? Validate.isEmail(value) : true;
+    if (
+      value.indexOf("@newspring.cc") > -1 &&
+      this.props.person.email.indexOf("@newspring.cc") <= -1
+    ) {
+      isValid = false;
+    }
+    return isValid;
+  };
 
   render() {
     const { person, months, saveMonth, days, years, campuses } = this.props;
@@ -113,7 +127,6 @@ export default class Layout extends Component {
             </div>
           </div>
 
-
           <h6 className="soft-bottom">Contact</h6>
           <Forms.Input
             name="Email"
@@ -122,11 +135,23 @@ export default class Layout extends Component {
             type="email"
             ref="Email"
             errorText="Please enter a valid email"
-            validation={Validate.isEmail}
+            validation={this.isEmail}
             defaultValue={email}
+            disabled={email && email.indexOf("@newspring") > -1}
+            noteFieldText={
+              email && email.indexOf("@newspring.cc") <= -1
+                ? <small>
+                    Note: Changing your email address will also change the email address that you
+                    use to sign in
+                  </small>
+                : <small>
+                    Note: To change your email, please visit{" "}
+                  <a href={"https://selfservice.newspring.cc"}>Self Service</a>
+                </small>
+            }
           />
 
-          <h6 className="soft-bottom">Birthday</h6>
+          <h6 className="soft-bottom push-double-top">Birthday</h6>
           <div className="grid">
             <div className="grid__item three-fifths">
               <div className="grid">
