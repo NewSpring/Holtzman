@@ -45,7 +45,7 @@ type IInputProps = {
   name: string,
   inputClasses: string,
   hideLabel?: boolean,
-  autoFocus?: boolean,
+  autofocus?: boolean,
   autoCapitalize?: boolean,
   autoComplete?: boolean,
   autoCorrect?: boolean,
@@ -90,7 +90,7 @@ export default class Input extends Component {
   }
 
   componentDidMount() {
-    if (this.props.autoFocus) {
+    if (this.props.autofocus) {
       this.node.focus();
       this.focus();
     }
