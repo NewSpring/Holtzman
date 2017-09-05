@@ -12,6 +12,10 @@ exports[`CardFields should render with props 1`] = `
       Card Number
     </label>
     <input
+      autoCapitalize="off"
+      autoComplete="off"
+      autoCorrect="off"
+      autoFocus={undefined}
       className={undefined}
       data-lpignore={undefined}
       data-spec="input"
@@ -25,6 +29,7 @@ exports[`CardFields should render with props 1`] = `
       onFocus={[Function]}
       placeholder="Card Number"
       readOnly={undefined}
+      spellCheck={undefined}
       style={Object {}}
       type="tel" />
     <div
@@ -62,6 +67,10 @@ exports[`CardFields should render with props 1`] = `
           Exp (MM/YY)
         </label>
         <input
+          autoCapitalize="off"
+          autoComplete="off"
+          autoCorrect="off"
+          autoFocus={undefined}
           className={undefined}
           data-lpignore={undefined}
           data-spec="input"
@@ -75,6 +84,7 @@ exports[`CardFields should render with props 1`] = `
           onFocus={[Function]}
           placeholder="Exp (MM/YY)"
           readOnly={undefined}
+          spellCheck={undefined}
           style={Object {}}
           type="tel" />
       </div>
@@ -91,6 +101,10 @@ exports[`CardFields should render with props 1`] = `
           CCV
         </label>
         <input
+          autoCapitalize="off"
+          autoComplete="off"
+          autoCorrect="off"
+          autoFocus={undefined}
           className={undefined}
           data-lpignore={undefined}
           data-spec="input"
@@ -104,6 +118,7 @@ exports[`CardFields should render with props 1`] = `
           onFocus={[Function]}
           placeholder="CCV"
           readOnly={undefined}
+          spellCheck={undefined}
           style={Object {}}
           type="tel" />
       </div>

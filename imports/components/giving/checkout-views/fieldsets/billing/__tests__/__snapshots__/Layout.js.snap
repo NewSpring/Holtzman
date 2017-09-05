@@ -25,7 +25,7 @@ exports[`Layout renders US by default 1`] = `
   <div
     className="soft-sides">
     <div
-      className="input input--active"
+      className="input input--active input--focused"
       data-spec="input-wrapper"
       style={Object {}}>
       <label
@@ -34,6 +34,10 @@ exports[`Layout renders US by default 1`] = `
         Street Address
       </label>
       <input
+        autoCapitalize="off"
+        autoComplete="off"
+        autoCorrect="off"
+        autoFocus={true}
         className={undefined}
         data-lpignore={undefined}
         data-spec="input"
@@ -47,6 +51,7 @@ exports[`Layout renders US by default 1`] = `
         onFocus={[Function]}
         placeholder="Street Address"
         readOnly={undefined}
+        spellCheck={undefined}
         style={Object {}}
         type={undefined} />
     </div>
@@ -60,6 +65,10 @@ exports[`Layout renders US by default 1`] = `
         Street Address (optional)
       </label>
       <input
+        autoCapitalize="off"
+        autoComplete="off"
+        autoCorrect="off"
+        autoFocus={undefined}
         className={undefined}
         data-lpignore={undefined}
         data-spec="input"
@@ -73,6 +82,7 @@ exports[`Layout renders US by default 1`] = `
         onFocus={[Function]}
         placeholder="Street Address (optional)"
         readOnly={undefined}
+        spellCheck={undefined}
         style={Object {}}
         type={undefined} />
     </div>
@@ -118,6 +128,10 @@ exports[`Layout renders US by default 1`] = `
         City
       </label>
       <input
+        autoCapitalize="off"
+        autoComplete="off"
+        autoCorrect="off"
+        autoFocus={undefined}
         className={undefined}
         data-lpignore={undefined}
         data-spec="input"
@@ -131,6 +145,7 @@ exports[`Layout renders US by default 1`] = `
         onFocus={[Function]}
         placeholder="City"
         readOnly={undefined}
+        spellCheck={undefined}
         style={Object {}}
         type={undefined} />
     </div>
@@ -183,6 +198,10 @@ exports[`Layout renders US by default 1`] = `
             Zip/Postal
           </label>
           <input
+            autoCapitalize="off"
+            autoComplete="off"
+            autoCorrect="off"
+            autoFocus={undefined}
             className={undefined}
             data-lpignore={undefined}
             data-spec="input"
@@ -196,6 +215,7 @@ exports[`Layout renders US by default 1`] = `
             onFocus={[Function]}
             placeholder="Zip/Postal"
             readOnly={undefined}
+            spellCheck={undefined}
             style={Object {}}
             type={undefined} />
         </div>
@@ -235,7 +255,7 @@ exports[`Layout renders your country instead 1`] = `
   <div
     className="soft-sides">
     <div
-      className="input input--active"
+      className="input input--active input--focused"
       data-spec="input-wrapper"
       style={Object {}}>
       <label
@@ -244,6 +264,10 @@ exports[`Layout renders your country instead 1`] = `
         Street Address
       </label>
       <input
+        autoCapitalize="off"
+        autoComplete="off"
+        autoCorrect="off"
+        autoFocus={true}
         className={undefined}
         data-lpignore={undefined}
         data-spec="input"
@@ -257,6 +281,7 @@ exports[`Layout renders your country instead 1`] = `
         onFocus={[Function]}
         placeholder="Street Address"
         readOnly={undefined}
+        spellCheck={undefined}
         style={Object {}}
         type={undefined} />
     </div>
@@ -270,6 +295,10 @@ exports[`Layout renders your country instead 1`] = `
         Street Address (optional)
       </label>
       <input
+        autoCapitalize="off"
+        autoComplete="off"
+        autoCorrect="off"
+        autoFocus={undefined}
         className={undefined}
         data-lpignore={undefined}
         data-spec="input"
@@ -283,6 +312,7 @@ exports[`Layout renders your country instead 1`] = `
         onFocus={[Function]}
         placeholder="Street Address (optional)"
         readOnly={undefined}
+        spellCheck={undefined}
         style={Object {}}
         type={undefined} />
     </div>
@@ -328,6 +358,10 @@ exports[`Layout renders your country instead 1`] = `
         City
       </label>
       <input
+        autoCapitalize="off"
+        autoComplete="off"
+        autoCorrect="off"
+        autoFocus={undefined}
         className={undefined}
         data-lpignore={undefined}
         data-spec="input"
@@ -341,6 +375,7 @@ exports[`Layout renders your country instead 1`] = `
         onFocus={[Function]}
         placeholder="City"
         readOnly={undefined}
+        spellCheck={undefined}
         style={Object {}}
         type={undefined} />
     </div>
@@ -393,6 +428,10 @@ exports[`Layout renders your country instead 1`] = `
             Zip/Postal
           </label>
           <input
+            autoCapitalize="off"
+            autoComplete="off"
+            autoCorrect="off"
+            autoFocus={undefined}
             className={undefined}
             data-lpignore={undefined}
             data-spec="input"
@@ -406,6 +445,7 @@ exports[`Layout renders your country instead 1`] = `
             onFocus={[Function]}
             placeholder="Zip/Postal"
             readOnly={undefined}
+            spellCheck={undefined}
             style={Object {}}
             type={undefined} />
         </div>

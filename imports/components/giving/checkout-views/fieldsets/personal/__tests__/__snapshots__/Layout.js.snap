@@ -38,6 +38,10 @@ exports[`Layout renders with props 1`] = `
             First Name
           </label>
           <input
+            autoCapitalize="off"
+            autoComplete="off"
+            autoCorrect="off"
+            autoFocus={undefined}
             className={undefined}
             data-lpignore={undefined}
             data-spec="input"
@@ -51,6 +55,7 @@ exports[`Layout renders with props 1`] = `
             onFocus={[Function]}
             placeholder="First Name"
             readOnly={undefined}
+            spellCheck={undefined}
             style={Object {}}
             type={undefined} />
         </div>
@@ -67,6 +72,10 @@ exports[`Layout renders with props 1`] = `
             Last Name
           </label>
           <input
+            autoCapitalize="off"
+            autoComplete="off"
+            autoCorrect="off"
+            autoFocus={undefined}
             className={undefined}
             data-lpignore={undefined}
             data-spec="input"
@@ -80,6 +89,7 @@ exports[`Layout renders with props 1`] = `
             onFocus={[Function]}
             placeholder="Last Name"
             readOnly={undefined}
+            spellCheck={undefined}
             style={Object {}}
             type={undefined} />
         </div>
@@ -95,6 +105,10 @@ exports[`Layout renders with props 1`] = `
         Email
       </label>
       <input
+        autoCapitalize="off"
+        autoComplete="off"
+        autoCorrect="off"
+        autoFocus={undefined}
         className={undefined}
         data-lpignore={undefined}
         data-spec="input"
@@ -108,6 +122,7 @@ exports[`Layout renders with props 1`] = `
         onFocus={[Function]}
         placeholder="user@email.com"
         readOnly={undefined}
+        spellCheck={undefined}
         style={Object {}}
         type="email" />
     </div>

@@ -3,7 +3,7 @@ exports[`test should not render if not ach type 1`] = `null`;
 exports[`test should render with props 1`] = `
 <div>
   <div
-    className="input input--active"
+    className="input input--active input--focused"
     data-spec="input-wrapper"
     style={Object {}}>
     <label
@@ -12,6 +12,10 @@ exports[`test should render with props 1`] = `
       Routing Number
     </label>
     <input
+      autoCapitalize="off"
+      autoComplete="off"
+      autoCorrect="off"
+      autoFocus={true}
       className={undefined}
       data-lpignore={undefined}
       data-spec="input"
@@ -25,6 +29,7 @@ exports[`test should render with props 1`] = `
       onFocus={[Function]}
       placeholder="Routing Number"
       readOnly={undefined}
+      spellCheck={undefined}
       style={Object {}}
       type="tel" />
   </div>
@@ -38,6 +43,10 @@ exports[`test should render with props 1`] = `
       Account Number
     </label>
     <input
+      autoCapitalize="off"
+      autoComplete="off"
+      autoCorrect="off"
+      autoFocus={undefined}
       className={undefined}
       data-lpignore={undefined}
       data-spec="input"
@@ -51,6 +60,7 @@ exports[`test should render with props 1`] = `
       onFocus={[Function]}
       placeholder="Account Number"
       readOnly={undefined}
+      spellCheck={undefined}
       style={Object {}}
       type="tel" />
   </div>
