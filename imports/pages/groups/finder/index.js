@@ -52,10 +52,15 @@ class TemplateWithoutData extends Component {
       this.props.dispatch(navActions.setLevel("TOP"));
     }
 
-    if (!nextProps.autofill.loading) {
+    // XXX theres a better way to write this
+    if (!nextProps.autofill.loading && nextProps.autofill.person) {
       this.setState({
         ...nextProps.autofill.person.campus,
         ...nextProps.autofill.person.home,
+        ...nextProps.location.query,
+      });
+    } else {
+      this.setState({
         ...nextProps.location.query,
       });
     }
@@ -106,6 +111,9 @@ class TemplateWithoutData extends Component {
     const attributeTags = this.props.attributes.tags.map(tag => tag.value);
 
     const q = [];
+
+    // split the query up into individual words and check to see which
+    // are actual attributes
     const tags = this.state.query
       .split(/[, ]+/)
       .reduce((result, t, index, original) => {
@@ -127,6 +135,7 @@ class TemplateWithoutData extends Component {
         return result;
       }, []);
 
+    // start building the router querystring
     if (!location.query) location.query = {};
 
     if (q && q.length > 0 && q[0] !== "") {
@@ -144,20 +153,28 @@ class TemplateWithoutData extends Component {
     if (zip) location.query.zip = zip;
 
     // XXX i don't like the idea of having to push history twice
+    // but this is the only way to preserve state with a back button
     router.push(location);
 
+    // navigate too
     location.pathname = "/groups/finder";
     router.push(location);
   };
 
+  // function that gets passed in to each field to update state on parent
+  // component
   inputOnChange = (value: String, e: any) => {
     this.setState({
       [e.name]: value,
     });
   };
 
+  // for tags only, add tags to state.query
   tagOnClick = (tag: String) => {
     let queryString = this.state.query || "";
+
+    // regex checks queryString for exact word match with optional space (\s) or
+    // comma (,?). notice the double backslashes
     const regex = `(,?\\s?\\b${tag.toString()}\\b)`;
 
     if (queryString.search(new RegExp(regex, "i")) > -1) {
@@ -167,6 +184,8 @@ class TemplateWithoutData extends Component {
         queryString = queryString.substring(1);
       }
     } else {
+      // if the tag was not found append to the end of querystring with a comma
+      // and space
       queryString =
         queryString && queryString.length
           ? `${queryString}, ${tag.toString()}`
