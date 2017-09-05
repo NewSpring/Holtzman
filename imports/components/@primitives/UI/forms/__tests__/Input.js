@@ -215,12 +215,12 @@ it("should accept maxLength prop", () => {
   expect(inputProps.maxLength).toEqual(10);
 });
 
-it("should accept autofocus prop", () => {
+it("should accept autoFocus prop", () => {
   const component = mount(
     generateComponent({
       label: "test label",
       type: "text",
-      autofocus: true,
+      autoFocus: true,
     }),
   );
 

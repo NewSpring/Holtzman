@@ -45,7 +45,12 @@ type IInputProps = {
   name: string,
   inputClasses: string,
   hideLabel?: boolean,
-  autofocus?: boolean,
+  autoFocus?: boolean,
+  autoCapitalize?: boolean,
+  autoComplete?: boolean,
+  autoCorrect?: boolean,
+  spellCheck?: boolean,
+  pattern: string,
   readOnly: string,
   ignoreLastPass: boolean,
   format: Function,
@@ -76,20 +81,15 @@ export default class Input extends Component {
   constructor(props: Object) {
     super(props);
     this.state = {
-      active: Boolean(this.props.defaultValue),
-      focused: false,
+      active: Boolean(props.defaultValue),
+      focused: Boolean(props.autoFocus),
       error: false,
       value: null,
-      autofocus: false,
+      autofocus: Boolean(props.autoFocus)
     };
   }
 
   componentDidMount() {
-    if (this.props.autofocus) {
-      this.node.focus();
-      this.focus();
-    }
-
     // one day, I dream of a universal browser auto-fill event
     // until then. I'll keep on checking
     const target = this.node;
@@ -281,9 +281,14 @@ export default class Input extends Component {
       inputClasses,
       defaultValue,
       readOnly,
+      autoCapitalize,
+      autoComplete,
+      autoCorrect,
+      spellCheck,
       ignoreLastPass,
       maxLength,
       children,
+      autoFocus,
     } = this.props;
 
     return (
@@ -316,8 +321,13 @@ export default class Input extends Component {
           defaultValue={defaultValue}
           style={this.style()}
           maxLength={maxLength || ""}
+          autoComplete={autoComplete ? "on" : "off"}
+          autoCorrect={autoCorrect ? "on" : "off"}
+          autoCapitalize={autoCapitalize ? "on" : "off"}
+          spellCheck={spellCheck}
           data-spec="input"
           data-lpignore={ignoreLastPass}
+          autoFocus={autoFocus}
         />
 
         {children}

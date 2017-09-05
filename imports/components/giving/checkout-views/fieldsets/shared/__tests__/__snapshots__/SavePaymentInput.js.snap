@@ -17,6 +17,10 @@ exports[`test renders default \`Bank Account\` if ach 1`] = `
     Saved Account Name
   </label>
   <input
+    autoCapitalize="off"
+    autoComplete="off"
+    autoCorrect="off"
+    autoFocus={undefined}
     className={undefined}
     data-lpignore={undefined}
     data-spec="input"
@@ -30,6 +34,7 @@ exports[`test renders default \`Bank Account\` if ach 1`] = `
     onFocus={[Function]}
     placeholder="Saved Account Name"
     readOnly={undefined}
+    spellCheck={undefined}
     style={Object {}}
     type={undefined} />
 </div>
@@ -46,6 +51,10 @@ exports[`test renders default \`Credit Card\` if not ach 1`] = `
     Saved Account Name
   </label>
   <input
+    autoCapitalize="off"
+    autoComplete="off"
+    autoCorrect="off"
+    autoFocus={undefined}
     className={undefined}
     data-lpignore={undefined}
     data-spec="input"
@@ -59,6 +68,7 @@ exports[`test renders default \`Credit Card\` if not ach 1`] = `
     onFocus={[Function]}
     placeholder="Saved Account Name"
     readOnly={undefined}
+    spellCheck={undefined}
     style={Object {}}
     type={undefined} />
 </div>

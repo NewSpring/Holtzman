@@ -75,6 +75,10 @@ exports[`Layout renders custom toggles if passed 1`] = `
           Card Number
         </label>
         <input
+          autoCapitalize="off"
+          autoComplete="off"
+          autoCorrect="off"
+          autoFocus={undefined}
           className={undefined}
           data-lpignore={undefined}
           data-spec="input"
@@ -88,6 +92,7 @@ exports[`Layout renders custom toggles if passed 1`] = `
           onFocus={[Function]}
           placeholder="Card Number"
           readOnly={undefined}
+          spellCheck={undefined}
           style={Object {}}
           type="tel" />
         <div
@@ -112,6 +117,10 @@ exports[`Layout renders custom toggles if passed 1`] = `
               Exp (MM/YY)
             </label>
             <input
+              autoCapitalize="off"
+              autoComplete="off"
+              autoCorrect="off"
+              autoFocus={undefined}
               className={undefined}
               data-lpignore={undefined}
               data-spec="input"
@@ -125,6 +134,7 @@ exports[`Layout renders custom toggles if passed 1`] = `
               onFocus={[Function]}
               placeholder="Exp (MM/YY)"
               readOnly={undefined}
+              spellCheck={undefined}
               style={Object {}}
               type="tel" />
           </div>
@@ -141,6 +151,10 @@ exports[`Layout renders custom toggles if passed 1`] = `
               CCV
             </label>
             <input
+              autoCapitalize="off"
+              autoComplete="off"
+              autoCorrect="off"
+              autoFocus={undefined}
               className={undefined}
               data-lpignore={undefined}
               data-spec="input"
@@ -154,6 +168,7 @@ exports[`Layout renders custom toggles if passed 1`] = `
               onFocus={[Function]}
               placeholder="CCV"
               readOnly={undefined}
+              spellCheck={undefined}
               style={Object {}}
               type="tel" />
           </div>
@@ -284,6 +299,10 @@ exports[`Layout renders default toggles by default 1`] = `
           Card Number
         </label>
         <input
+          autoCapitalize="off"
+          autoComplete="off"
+          autoCorrect="off"
+          autoFocus={undefined}
           className={undefined}
           data-lpignore={undefined}
           data-spec="input"
@@ -297,6 +316,7 @@ exports[`Layout renders default toggles by default 1`] = `
           onFocus={[Function]}
           placeholder="Card Number"
           readOnly={undefined}
+          spellCheck={undefined}
           style={Object {}}
           type="tel" />
         <div
@@ -321,6 +341,10 @@ exports[`Layout renders default toggles by default 1`] = `
               Exp (MM/YY)
             </label>
             <input
+              autoCapitalize="off"
+              autoComplete="off"
+              autoCorrect="off"
+              autoFocus={undefined}
               className={undefined}
               data-lpignore={undefined}
               data-spec="input"
@@ -334,6 +358,7 @@ exports[`Layout renders default toggles by default 1`] = `
               onFocus={[Function]}
               placeholder="Exp (MM/YY)"
               readOnly={undefined}
+              spellCheck={undefined}
               style={Object {}}
               type="tel" />
           </div>
@@ -350,6 +375,10 @@ exports[`Layout renders default toggles by default 1`] = `
               CCV
             </label>
             <input
+              autoCapitalize="off"
+              autoComplete="off"
+              autoCorrect="off"
+              autoFocus={undefined}
               className={undefined}
               data-lpignore={undefined}
               data-spec="input"
@@ -363,6 +392,7 @@ exports[`Layout renders default toggles by default 1`] = `
               onFocus={[Function]}
               placeholder="CCV"
               readOnly={undefined}
+              spellCheck={undefined}
               style={Object {}}
               type="tel" />
           </div>

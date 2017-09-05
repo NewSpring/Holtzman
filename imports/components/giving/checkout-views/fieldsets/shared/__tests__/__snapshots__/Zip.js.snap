@@ -11,6 +11,10 @@ exports[`test renders one-half if country is \`CA\` 1`] = `
       Zip/Postal
     </label>
     <input
+      autoCapitalize="off"
+      autoComplete="off"
+      autoCorrect="off"
+      autoFocus={undefined}
       className={undefined}
       data-lpignore={undefined}
       data-spec="input"
@@ -24,6 +28,7 @@ exports[`test renders one-half if country is \`CA\` 1`] = `
       onFocus={[Function]}
       placeholder="Zip/Postal"
       readOnly={undefined}
+      spellCheck={undefined}
       style={Object {}}
       type={undefined} />
   </div>
@@ -43,6 +48,10 @@ exports[`test renders one-half if country is \`US\` 1`] = `
       Zip/Postal
     </label>
     <input
+      autoCapitalize="off"
+      autoComplete="off"
+      autoCorrect="off"
+      autoFocus={undefined}
       className={undefined}
       data-lpignore={undefined}
       data-spec="input"
@@ -56,6 +65,7 @@ exports[`test renders one-half if country is \`US\` 1`] = `
       onFocus={[Function]}
       placeholder="Zip/Postal"
       readOnly={undefined}
+      spellCheck={undefined}
       style={Object {}}
       type={undefined} />
   </div>
@@ -75,6 +85,10 @@ exports[`test renders one-half if no country 1`] = `
       Zip/Postal
     </label>
     <input
+      autoCapitalize="off"
+      autoComplete="off"
+      autoCorrect="off"
+      autoFocus={undefined}
       className={undefined}
       data-lpignore={undefined}
       data-spec="input"
@@ -88,6 +102,7 @@ exports[`test renders one-half if no country 1`] = `
       onFocus={[Function]}
       placeholder="Zip/Postal"
       readOnly={undefined}
+      spellCheck={undefined}
       style={Object {}}
       type={undefined} />
   </div>
@@ -107,6 +122,10 @@ exports[`test renders one-whole for countries with no states 1`] = `
       Zip/Postal
     </label>
     <input
+      autoCapitalize="off"
+      autoComplete="off"
+      autoCorrect="off"
+      autoFocus={undefined}
       className={undefined}
       data-lpignore={undefined}
       data-spec="input"
@@ -120,6 +139,7 @@ exports[`test renders one-whole for countries with no states 1`] = `
       onFocus={[Function]}
       placeholder="Zip/Postal"
       readOnly={undefined}
+      spellCheck={undefined}
       style={Object {}}
       type={undefined} />
   </div>
