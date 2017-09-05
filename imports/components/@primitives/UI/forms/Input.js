@@ -293,7 +293,6 @@ export default class Input extends Component {
       ignoreLastPass,
       maxLength,
       children,
-      currency,
     } = this.props;
 
     return (
