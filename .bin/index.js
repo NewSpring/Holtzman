@@ -95,7 +95,7 @@ Vorpal.command("run")
   .option("--android", "Run the native app of a given site in the Android simulator")
   .option("--device", "Run the native app of a given site on the device of the platform")
   .option("--production", "Run the application in production mode")
-  .option("--host", "Include the hostname for the mobile server")
+  .option("--host <hostname>", "Include the hostname for the mobile server")
   .option("--debug", "Run the application in debug mode")
   .action(function(args, cb) {
     var app = root;
@@ -137,8 +137,6 @@ Vorpal.command("run")
       meteorArgs.push(Path.join(app, ".meteor/sample.settings.json"));
     }
 
-    console.log("options.device = ", options.device);
-    console.log("options.host = ", options.host);
     if (options.device && options.host) {
       meteorArgs.push(`--mobile-server=http://${options.host}:3000`);
     }
