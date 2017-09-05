@@ -25,14 +25,13 @@ const Primary = ({ active, fundId, accounts, preFill, changeFund, changeAmount }
 
     <Forms.Input
       hideLabel
-      type="text"
+      type={Meteor.isCordova ? "number" : "tel"}
       classes={["soft-bottom", "input--active", "display-inline-block"]}
       inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom text-brand ${css(Styles["show-placeholder"])}`}
       placeholder="$0.00"
       format={changeAmount}
       defaultValue={preFill(fundId)}
       style={{ maxWidth: "150px" }}
-      currency={Meteor.isCordova}
     />
 
     <h3 className={"text-dark-primary display-inline-block push-half-bottom push-half-right"}>

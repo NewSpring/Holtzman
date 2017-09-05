@@ -40,9 +40,8 @@ const Layout = ({
       inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom text-brand ${css(Styles["show-placeholder"])}`}
       placeholder="$0.00"
       style={{ maxWidth: "150px" }}
-      type="text"
+      type={Meteor.isCordova ? "number" : "tel"}
       value={inputVal}
-      currency={Meteor.isCordova}
     />
 
     <div className="display-block">

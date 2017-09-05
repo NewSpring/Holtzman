@@ -50,7 +50,6 @@ type IInputProps = {
   autoComplete?: boolean,
   autoCorrect?: boolean,
   spellCheck?: boolean,
-  currency?: boolean,
   pattern: string,
   readOnly: string,
   ignoreLastPass: boolean,
@@ -315,7 +314,7 @@ export default class Input extends Component {
         <input
           ref={node => (this.node = node)}
           id={id || name || label}
-          type={currency ? "number" : type}
+          type={type}
           placeholder={placeholder || label}
           name={name || label}
           className={inputClasses}
