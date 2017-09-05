@@ -121,6 +121,10 @@ export default class Keywords extends Component {
           name="query"
           defaultValue={searchQuery}
           onChange={onChange}
+          autoComplete={false}
+          autoCorrect={false}
+          autoCapitalize={false}
+          spellCheck={false}
           ignoreLastPass
         >
           <button
