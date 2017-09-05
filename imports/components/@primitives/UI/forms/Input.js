@@ -50,6 +50,8 @@ type IInputProps = {
   autoComplete?: boolean,
   autoCorrect?: boolean,
   spellCheck?: boolean,
+  currency?: boolean,
+  pattern: string,
   readOnly: string,
   ignoreLastPass: boolean,
   format: Function,
@@ -292,6 +294,7 @@ export default class Input extends Component {
       ignoreLastPass,
       maxLength,
       children,
+      currency,
     } = this.props;
 
     return (
@@ -312,7 +315,7 @@ export default class Input extends Component {
         <input
           ref={node => (this.node = node)}
           id={id || name || label}
-          type={type}
+          type={currency ? "number" : type}
           placeholder={placeholder || label}
           name={name || label}
           className={inputClasses}
@@ -324,11 +327,11 @@ export default class Input extends Component {
           defaultValue={defaultValue}
           style={this.style()}
           maxLength={maxLength || ""}
-          data-spec="input"
           autoComplete={autoComplete ? "on" : "off"}
           autoCorrect={autoCorrect ? "on" : "off"}
           autoCapitalize={autoCapitalize ? "on" : "off"}
           spellCheck={spellCheck}
+          data-spec="input"
           data-lpignore={ignoreLastPass}
         />
 
