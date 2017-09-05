@@ -40,7 +40,7 @@ const Layout = ({
       inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom text-brand ${css(Styles["show-placeholder"])}`}
       placeholder="$0.00"
       style={{ maxWidth: "150px" }}
-      type={Meteor.isCordova ? "number" : "tel"}
+      type={Meteor.isCordova ? "text" : "tel"}
       value={inputVal}
     />
 
