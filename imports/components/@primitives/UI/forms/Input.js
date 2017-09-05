@@ -45,7 +45,11 @@ type IInputProps = {
   name: string,
   inputClasses: string,
   hideLabel?: boolean,
-  autofocus?: boolean,
+  autoFocus?: boolean,
+  autoCapitalize?: boolean,
+  autoComplete?: boolean,
+  autoCorrect?: boolean,
+  spellCheck?: boolean,
   readOnly: string,
   ignoreLastPass: boolean,
   format: Function,
@@ -85,7 +89,7 @@ export default class Input extends Component {
   }
 
   componentDidMount() {
-    if (this.props.autofocus) {
+    if (this.props.autoFocus) {
       this.node.focus();
       this.focus();
     }
@@ -281,6 +285,10 @@ export default class Input extends Component {
       inputClasses,
       defaultValue,
       readOnly,
+      autoCapitalize,
+      autoComplete,
+      autoCorrect,
+      spellCheck,
       ignoreLastPass,
       maxLength,
       children,
@@ -317,6 +325,10 @@ export default class Input extends Component {
           style={this.style()}
           maxLength={maxLength || ""}
           data-spec="input"
+          autoComplete={autoComplete ? "on" : "off"}
+          autoCorrect={autoCorrect ? "on" : "off"}
+          autoCapitalize={autoCapitalize ? "on" : "off"}
+          spellCheck={spellCheck}
           data-lpignore={ignoreLastPass}
         />
 

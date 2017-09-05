@@ -139,6 +139,10 @@ export default class Campus extends Component {
           defaultValue={campus}
           ignoreLastPass
           readOnly="readonly"
+          autoComplete={false}
+          autoCorrect={false}
+          autoCapitalize={false}
+          spellCheck={false}
         >
           <button
             id="campusButton"
