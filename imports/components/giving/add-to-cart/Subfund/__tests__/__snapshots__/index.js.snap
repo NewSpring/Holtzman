@@ -57,6 +57,9 @@ exports[`SubFund sets the state to active if it has an amount 1`] = `
           <RenderLabel
             hideLabel={true} />
           <input
+            autoCapitalize="off"
+            autoComplete="off"
+            autoCorrect="off"
             className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
             data-spec="input"
             maxLength=""
@@ -187,6 +190,9 @@ exports[`SubFund should render a primary fund 1`] = `
           <RenderLabel
             hideLabel={true} />
           <input
+            autoCapitalize="off"
+            autoComplete="off"
+            autoCorrect="off"
             className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
             data-spec="input"
             maxLength=""
@@ -316,6 +322,9 @@ exports[`SubFund should render with minimal props 1`] = `
           <RenderLabel
             hideLabel={true} />
           <input
+            autoCapitalize="off"
+            autoComplete="off"
+            autoCorrect="off"
             className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
             data-spec="input"
             maxLength=""
