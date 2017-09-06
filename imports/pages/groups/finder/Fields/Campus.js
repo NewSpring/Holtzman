@@ -90,6 +90,12 @@ export default class Campus extends Component {
     });
   };
 
+  setFocus = () => {
+    this.setState({
+      focused: !this.state.focused,
+    });
+  };
+
   onFocus = () => {
     this.setState({
       focused: true,
@@ -140,7 +146,7 @@ export default class Campus extends Component {
           ignoreLastPass
           readOnly="readonly"
         >
-          <button
+          <a
             id="campusButton"
             style={{
               position: "absolute",
@@ -148,9 +154,8 @@ export default class Campus extends Component {
               backgroundColor: "#FFFFFF",
               top: "-5px",
               paddingLeft: "5px",
-              pointerEvents: "none",
             }}
-            onClick={e => e.preventDefault()}
+            onClick={this.setFocus}
           >
             <Svg
               name={this.state.focused ? "arrowUp" : "arrowDown"}
@@ -159,7 +164,7 @@ export default class Campus extends Component {
               height={"24px"}
               title={this.state.focused ? "Arrow Up Icon" : "Arrow Down Icon"}
             />
-          </button>
+          </a>
         </Forms.Input>
         <div
           className={`push-half-sides push-half-bottom ${!this.state.focused

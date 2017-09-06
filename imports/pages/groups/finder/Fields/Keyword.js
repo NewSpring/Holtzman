@@ -62,9 +62,7 @@ export default class Keywords extends Component {
     }
   }
 
-  setFocus = (e: Event) => {
-    if (e) e.preventDefault();
-
+  setFocus = () => {
     this.setState({
       focused: !this.state.focused,
     });
@@ -123,7 +121,7 @@ export default class Keywords extends Component {
           onChange={onChange}
           ignoreLastPass
         >
-          <button
+          <a
             id="keywordButton"
             style={{
               position: "absolute",
@@ -141,7 +139,7 @@ export default class Keywords extends Component {
               height={"24px"}
               title={this.state.focused ? "Arrow Up Icon" : "Arrow Down Icon"}
             />
-          </button>
+          </a>
         </Forms.Input>
         <div
           className={`push-half-sides push-half-bottom ${!this.state.focused

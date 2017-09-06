@@ -3,6 +3,8 @@ import Forms from "../../../../components/@primitives/UI/forms";
 import Svg from "../../../../components/@primitives/UI/svg";
 
 export default class Location extends Component {
+  node: Object;
+
   state: {
     focused: boolean,
     zip: string,
@@ -13,13 +15,14 @@ export default class Location extends Component {
     validation: PropTypes.func.isRequired,
     zip: PropTypes.string,
     disable: PropTypes.bool,
+    unLocate: PropTypes.func,
   };
 
   constructor(props: Object) {
     super(props);
     this.state = {
       focused: false,
-      zip: "",
+      zip: props.zip,
     };
   }
 
@@ -27,7 +30,6 @@ export default class Location extends Component {
     if (nextProps.zip) {
       this.setState({
         zip: nextProps.zip,
-        focused: false,
       });
     }
   }
@@ -36,20 +38,23 @@ export default class Location extends Component {
     this.setState({
       focused: true,
     });
-  }
+  };
 
   onBlur = () => {
-    this.setState({
-      focused: false,
-    });
-  }
+    if (this.state.zip !== "Using your location") {
+      this.setState({
+        focused: false,
+      });
+    }
+  };
 
   render() {
-    const { zip, onChange, validation, disabled } = this.props;
+    const { onChange, validation, disabled, unLocate } = this.props;
 
     return (
       <div className={"text-left soft-double-top soft-half-sides"}>
         <Forms.Input
+          classes={this.state.focused ? "input--focused" : ""}
           inputClasses={
             "outlined--dotted outlined--light h6 flush-bottom text-black"
           }
@@ -66,7 +71,7 @@ export default class Location extends Component {
           disabled={disabled}
           ignoreLastPass
         >
-          <button
+          <a
             id="locationButton"
             style={{
               position: "absolute",
@@ -74,9 +79,8 @@ export default class Location extends Component {
               backgroundColor: "#FFFFFF",
               top: "-5px",
               paddingLeft: "5px",
-              pointerEvents: "none",
             }}
-            onClick={e => e.preventDefault()}
+            onClick={unLocate}
           >
             <Svg
               name={"location"}
@@ -85,7 +89,7 @@ export default class Location extends Component {
               height={"24px"}
               title={"Location Icon"}
             />
-          </button>
+          </a>
         </Forms.Input>
       </div>
     );

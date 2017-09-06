@@ -24,7 +24,7 @@ exports[`test renders if content loading 1`] = `
       canSearchTags={false}
       content={Array []}
       findByQuery={[Function]}
-      geolocationLoading={false}
+      geoLocationLoading={false}
       getLocation={[Function]}
       iconFill="#505050"
       inputOnChange={[Function]}
@@ -39,7 +39,7 @@ exports[`test renders if content loading 1`] = `
         ]
       }
       zip=""
-      zipDisabled={null} />
+      zipDisabled={false} />
   </Left>
 </div>
 `;
@@ -75,7 +75,7 @@ exports[`test renders result if campuses 1`] = `
         ]
       }
       findByQuery={[Function]}
-      geolocationLoading={false}
+      geoLocationLoading={false}
       getLocation={[Function]}
       iconFill="#505050"
       inputOnChange={[Function]}
@@ -90,7 +90,7 @@ exports[`test renders result if campuses 1`] = `
         ]
       }
       zip=""
-      zipDisabled={null} />
+      zipDisabled={false} />
   </Left>
 </div>
 `;
@@ -126,7 +126,7 @@ exports[`test renders result if q 1`] = `
         ]
       }
       findByQuery={[Function]}
-      geolocationLoading={false}
+      geoLocationLoading={false}
       getLocation={[Function]}
       iconFill="#505050"
       inputOnChange={[Function]}
@@ -141,7 +141,7 @@ exports[`test renders result if q 1`] = `
         ]
       }
       zip=""
-      zipDisabled={null} />
+      zipDisabled={false} />
   </Left>
 </div>
 `;
@@ -177,7 +177,7 @@ exports[`test renders result if schedules 1`] = `
         ]
       }
       findByQuery={[Function]}
-      geolocationLoading={false}
+      geoLocationLoading={false}
       getLocation={[Function]}
       iconFill="#505050"
       inputOnChange={[Function]}
@@ -192,7 +192,7 @@ exports[`test renders result if schedules 1`] = `
         ]
       }
       zip=""
-      zipDisabled={null} />
+      zipDisabled={false} />
   </Left>
 </div>
 `;
@@ -228,7 +228,7 @@ exports[`test renders result if tags 1`] = `
         ]
       }
       findByQuery={[Function]}
-      geolocationLoading={false}
+      geoLocationLoading={false}
       getLocation={[Function]}
       iconFill="#505050"
       inputOnChange={[Function]}
@@ -243,7 +243,7 @@ exports[`test renders result if tags 1`] = `
         ]
       }
       zip=""
-      zipDisabled={null} />
+      zipDisabled={false} />
   </Left>
 </div>
 `;
@@ -279,7 +279,7 @@ exports[`test renders with props 1`] = `
         ]
       }
       findByQuery={[Function]}
-      geolocationLoading={false}
+      geoLocationLoading={false}
       getLocation={[Function]}
       iconFill="#505050"
       inputOnChange={[Function]}
@@ -294,7 +294,7 @@ exports[`test renders with props 1`] = `
         ]
       }
       zip=""
-      zipDisabled={null} />
+      zipDisabled={false} />
   </Left>
 </div>
 `;
@@ -330,7 +330,7 @@ exports[`test renders without attributes 1`] = `
         ]
       }
       findByQuery={[Function]}
-      geolocationLoading={false}
+      geoLocationLoading={false}
       getLocation={[Function]}
       iconFill="#505050"
       inputOnChange={[Function]}
@@ -340,7 +340,7 @@ exports[`test renders without attributes 1`] = `
       tagOnClick={[Function]}
       tags={Array []}
       zip=""
-      zipDisabled={null} />
+      zipDisabled={false} />
   </Left>
 </div>
 `;

@@ -34,7 +34,7 @@ const Layout = ({
   inputOnChange,
   content,
   getLocation,
-  geolocationLoading,
+  geoLocationLoading,
 }) =>
   <section className="background--light-secondary hard">
     {/* Meta */}
@@ -86,31 +86,35 @@ const Layout = ({
             validation={Validate.isLocationBasedZipCode}
             onChange={inputOnChange}
             disabled={zipDisabled}
+            unLocate={getLocation}
           />
           {(() => {
-            if (geolocationLoading) {
+            if (geoLocationLoading) {
               return (
                 <div className="one-whole text-center soft">
                   <Loading />
                 </div>
               );
             }
+
+            const color =
+              !geoLocationLoading && zip === "Using your location"
+                ? "#6BAC43"
+                : "#505050";
+
             return (
               <div className={"text-left soft-half-sides"}>
                 <Svg
                   name={"locate"}
                   title={"Locate Icon"}
-                  fill={"#505050"}
+                  fill={color}
                   classes={"display-inline-block"}
                 />
                 <h6
                   className="display-inline-block push-half-left"
                   style={{ fontWeight: "400", verticalAlign: "super" }}
                 >
-                  <button
-                    onClick={e => getLocation(e)}
-                    style={{ color: "#505050" }}
-                  >
+                  <button onClick={e => getLocation(e)} style={{ color }}>
                     Use my current location
                   </button>
                 </h6>
@@ -129,7 +133,7 @@ const Layout = ({
                 <Loading />
               </div>
             );
-          } else if (geolocationLoading) {
+          } else if (geoLocationLoading) {
             return null;
           }
 
@@ -230,7 +234,7 @@ Layout.propTypes = {
   inputOnChange: PropTypes.func.isRequired,
   content: PropTypes.array.isRequired,
   getLocation: PropTypes.func.isRequired,
-  geolocationLoading: PropTypes.bool.isRequired,
+  geoLocationLoading: PropTypes.bool.isRequired,
 };
 
 export default Layout;

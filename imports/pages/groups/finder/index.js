@@ -35,7 +35,7 @@ class TemplateWithoutData extends Component {
     campus: "",
     zip: "",
     submit: false,
-    geolocationLoading: false,
+    geoLocationLoading: false,
   };
 
   componentWillMount() {
@@ -68,12 +68,12 @@ class TemplateWithoutData extends Component {
       this.setState({
         latitude: null,
         longitude: null,
-        zip: this.props.autofill.person ? this.props.autofill.person.zip : "",
+        zip: this.props.autofill.person ? this.props.autofill.person.home.zip : "",
         geoLocationLoading: false,
       });
     } else {
       this.setState({
-        geolocationLoading: true,
+        geoLocationLoading: true,
       });
 
       navigator.geolocation.getCurrentPosition(
@@ -88,14 +88,14 @@ class TemplateWithoutData extends Component {
       latitude: position.coords.latitude,
       longitude: position.coords.longitude,
       zip: "Using your location",
-      geolocationLoading: false,
+      geoLocationLoading: false,
     });
   };
 
   geolocationError = error => {
     this.props.dispatch(modal.render(ErrTemplate, { errorCode: error.code }));
     this.setState({
-      geolocationLoading: false,
+      geoLocationLoading: false,
     });
   };
 
@@ -230,7 +230,7 @@ class TemplateWithoutData extends Component {
             }
             selectedCampus={this.state.campus}
             zip={this.state.zip}
-            zipDisabled={this.state.latitude && this.state.longitude}
+            zipDisabled={Boolean(this.state.latitude && this.state.longitude)}
             searchQuery={this.state.query || ""}
             tags={(attributes && attributes.tags) || defaultArray}
             tagOnClick={this.tagOnClick}
@@ -239,7 +239,7 @@ class TemplateWithoutData extends Component {
             inputOnChange={this.inputOnChange}
             content={content.loading ? defaultArray : content.entries}
             getLocation={this.geoLocateMe}
-            geolocationLoading={this.state.geolocationLoading}
+            geoLocationLoading={this.state.geoLocationLoading}
             iconFill={"#505050"}
           />
         </Left>
