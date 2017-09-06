@@ -23,7 +23,7 @@ Object {
       "id": 3,
       "isActive": [Function],
       "label": "Groups",
-      "link": "/groups/finder",
+      "link": "/groups/home",
     },
     Object {
       "action": [Function],
@@ -69,7 +69,7 @@ Object {
       "id": 3,
       "isActive": [Function],
       "label": "Groups",
-      "link": "/groups/finder",
+      "link": "/groups/home",
     },
     Object {
       "action": [Function],
@@ -116,7 +116,7 @@ Object {
       "id": 3,
       "isActive": [Function],
       "label": "Groups",
-      "link": "/groups/finder",
+      "link": "/groups/home",
     },
     Object {
       "action": [Function],
@@ -162,7 +162,7 @@ Object {
       "id": 3,
       "isActive": [Function],
       "label": "Groups",
-      "link": "/groups/finder",
+      "link": "/groups/home",
     },
     Object {
       "action": [Function],
@@ -236,7 +236,7 @@ Object {
       "id": 3,
       "isActive": [Function],
       "label": "Groups",
-      "link": "/groups/finder",
+      "link": "/groups/home",
     },
     Object {
       "action": [Function],
@@ -284,7 +284,7 @@ Object {
       "id": 3,
       "isActive": [Function],
       "label": "Groups",
-      "link": "/groups/finder",
+      "link": "/groups/home",
     },
     Object {
       "action": [Function],
