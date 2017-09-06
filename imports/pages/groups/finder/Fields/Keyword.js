@@ -119,6 +119,8 @@ export default class Keywords extends Component {
           name="query"
           defaultValue={searchQuery}
           onChange={onChange}
+          autoCorrect={false}
+          autoCapitalize={false}
           ignoreLastPass
         >
           <a
@@ -153,7 +155,7 @@ export default class Keywords extends Component {
               style={{ textTransform: "capitalize" }}
               onClick={tagOnClick}
               key={i}
-              val={tag.value}
+              val={tag.value.toLowerCase()}
               active={selectedTags.indexOf(tag.value) + 1}
             />,
           )}
