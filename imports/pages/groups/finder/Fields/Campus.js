@@ -49,8 +49,8 @@ export default class Campus extends Component {
   }
 
   componentDidMount() {
-    document.addEventListener("mousedown", this.handleClickOutside);
-    document.addEventListener("touchstart", this.handleClickOutside);
+    document.addEventListener("mousedown", this.handleClick);
+    document.addEventListener("touchstart", this.handleClick);
   }
 
   componentWillReceiveProps(nextProps: Object) {
@@ -62,8 +62,8 @@ export default class Campus extends Component {
   }
 
   componentWillUnmount() {
-    document.removeEventListener("mousedown", this.handleClickOutside);
-    document.removeEventListener("touchend", this.handleClickOutside);
+    document.removeEventListener("mousedown", this.handleClick);
+    document.removeEventListener("touchend", this.handleClick);
   }
 
   setWrapperRef(node) {
@@ -73,10 +73,22 @@ export default class Campus extends Component {
   /**
    * Alert if clicked on outside of element
    */
-  handleClickOutside(e: Event) {
-    if (this.wrapperRef && !this.wrapperRef.contains(e.target)) {
+  handleClick(e: Event) {
+    if (
+      this.wrapperRef &&
+      !this.wrapperRef.contains(e.target) &&
+      this.state.focused
+    ) {
       this.setState({
         focused: false,
+      });
+    } else if (
+      e.target.name === "campus" &&
+      e.target.tagName === "INPUT" &&
+      e.type === "touchstart"
+    ) {
+      this.setState({
+        focused: !this.state.focused,
       });
     }
   }
@@ -126,7 +138,6 @@ export default class Campus extends Component {
         className={"soft-double-top text-left soft-half-sides"}
         ref={this.setWrapperRef}
         onKeyDown={this.onTab}
-        onTouchStart={this.onFocus}
         onFocus={this.onFocus}
       >
         {/* onFocus === This is a hack because onFocus
@@ -159,7 +170,7 @@ export default class Campus extends Component {
               top: "-5px",
               paddingLeft: "5px",
             }}
-            onClick={this.setFocus}
+            onClick={this.state.focused ? this.onBlur : this.onFocus}
           >
             <Svg
               name={this.state.focused ? "arrowUp" : "arrowDown"}

@@ -73,7 +73,10 @@ class TemplateWithoutData extends Component {
       this.setState({
         latitude: null,
         longitude: null,
-        zip: this.props.autofill.person ? this.props.autofill.person.home.zip : "",
+        zip:
+          this.props.autofill.person && this.props.autofill.person.home.zip
+            ? this.props.autofill.person.home.zip
+            : "",
         geoLocationLoading: false,
       });
     } else {

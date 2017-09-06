@@ -7,7 +7,6 @@ export default class Location extends Component {
 
   state: {
     focused: boolean,
-    zip: string,
   };
 
   static propTypes = {
@@ -22,16 +21,7 @@ export default class Location extends Component {
     super(props);
     this.state = {
       focused: false,
-      zip: props.zip,
     };
-  }
-
-  componentWillReceiveProps(nextProps: Object) {
-    if (nextProps.zip) {
-      this.setState({
-        zip: nextProps.zip,
-      });
-    }
   }
 
   onFocus = () => {
@@ -41,7 +31,7 @@ export default class Location extends Component {
   };
 
   onBlur = () => {
-    if (this.state.zip !== "Using your location") {
+    if (this.props.zip !== "Using your location") {
       this.setState({
         focused: false,
       });
@@ -49,7 +39,7 @@ export default class Location extends Component {
   };
 
   render() {
-    const { onChange, validation, disabled, unLocate } = this.props;
+    const { onChange, validation, disabled, unLocate, zip } = this.props;
 
     return (
       <div className={"text-left soft-double-top soft-half-sides"}>
@@ -59,7 +49,7 @@ export default class Location extends Component {
             "outlined--dotted outlined--light h6 flush-bottom text-black"
           }
           label={"Zip Code"}
-          defaultValue={this.state.zip}
+          defaultValue={zip}
           type="text"
           name="zip"
           id="zip"
