@@ -45,7 +45,7 @@ export default class Campus extends Component {
     };
 
     this.setWrapperRef = this.setWrapperRef.bind(this);
-    this.handleClickOutside = this.handleClickOutside.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
