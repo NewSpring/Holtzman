@@ -8,6 +8,13 @@ it("displays a form label to the user", () => {
   expect(tree).toMatchSnapshot();
 });
 
+it("spreads styles if disabled is true", () => {
+  const tree = renderer.create(
+    <Label disabled labelStyles={{ color: "green" }} />,
+  );
+  expect(tree).toMatchSnapshot();
+});
+
 it("passes the label for to the component", () => {
   const tree = renderer.create(<Label labelFor="goGoGadget" />);
   expect(tree).toMatchSnapshot();
