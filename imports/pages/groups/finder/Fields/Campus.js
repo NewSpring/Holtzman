@@ -18,6 +18,8 @@ const hiddenInput = {
 };
 
 export default class Campus extends Component {
+  timeout: number;
+
   state: {
     focused: boolean,
     campus: string,
@@ -51,6 +53,7 @@ export default class Campus extends Component {
   componentDidMount() {
     document.addEventListener("mousedown", this.handleClick);
     document.addEventListener("touchstart", this.handleClick);
+    document.addEventListener("touchmove", this.handleClick);
   }
 
   componentWillReceiveProps(nextProps: Object) {
@@ -63,7 +66,8 @@ export default class Campus extends Component {
 
   componentWillUnmount() {
     document.removeEventListener("mousedown", this.handleClick);
-    document.removeEventListener("touchend", this.handleClick);
+    document.removeEventListener("touchstart", this.handleClick);
+    document.removeEventListener("touchmove", this.handleClick);
   }
 
   setWrapperRef(node) {
@@ -75,21 +79,26 @@ export default class Campus extends Component {
    */
   handleClick(e: Event) {
     if (
+      e.type !== "touchmove" &&
       this.wrapperRef &&
       !this.wrapperRef.contains(e.target) &&
       this.state.focused
     ) {
-      this.setState({
-        focused: false,
-      });
+      this.timeout = setTimeout(() => {
+        this.onBlur();
+      }, 100);
     } else if (
       e.target.name === "campus" &&
       e.target.tagName === "INPUT" &&
-      e.type === "touchstart"
+      (e.type === "touchstart" || e.type === "mousedown")
     ) {
-      this.setState({
-        focused: !this.state.focused,
-      });
+      this.timeout = setTimeout(() => {
+        this.setState({
+          focused: !this.state.focused,
+        });
+      }, 200);
+    } else if (e.type === "touchmove") {
+      clearTimeout(this.timeout);
     }
   }
 
@@ -108,7 +117,7 @@ export default class Campus extends Component {
     });
   };
 
-  onFocus = () => {
+  onFocus = (e: Event) => {
     this.setState({
       focused: true,
     });
@@ -138,7 +147,6 @@ export default class Campus extends Component {
         className={"soft-double-top text-left soft-half-sides"}
         ref={this.setWrapperRef}
         onKeyDown={this.onTab}
-        onFocus={this.onFocus}
       >
         {/* onFocus === This is a hack because onFocus
           is the only event that fires on a readonly input */}

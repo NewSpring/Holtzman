@@ -18,6 +18,8 @@ const hiddenInput = {
 };
 
 export default class Keywords extends Component {
+  timeout: number;
+
   static propTypes = {
     tags: PropTypes.array.isRequired,
     searchQuery: PropTypes.array.isRequired,
@@ -42,11 +44,13 @@ export default class Keywords extends Component {
   componentDidMount() {
     document.addEventListener("mousedown", this.handleClickOutside);
     document.addEventListener("touchstart", this.handleClickOutside);
+    document.addEventListener("touchmove", this.handleClickOutside);
   }
 
   componentWillUnmount() {
     document.removeEventListener("mousedown", this.handleClickOutside);
-    document.removeEventListener("touchend", this.handleClickOutside);
+    document.removeEventListener("touchstart", this.handleClickOutside);
+    document.removeEventListener("touchmove", this.handleClickOutside);
   }
 
   setWrapperRef(node) {
@@ -57,8 +61,17 @@ export default class Keywords extends Component {
   //  * Alert if clicked on outside of element
   //  */
   handleClickOutside(e: Event) {
-    if (this.wrapperRef && !this.wrapperRef.contains(e.target)) {
-      this.onBlur();
+    if (
+      e.type !== "touchmove" &&
+      this.wrapperRef &&
+      !this.wrapperRef.contains(e.target) &&
+      this.state.focused
+    ) {
+      this.timeout = setTimeout(() => {
+        this.onBlur();
+      }, 250);
+    } else if (e.type === "touchmove") {
+      clearTimeout(this.timeout);
     }
   }
 
