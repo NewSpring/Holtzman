@@ -94,7 +94,7 @@ export default class Campus extends Component {
     } else if (
       e.target.name === "campus" &&
       e.target.tagName === "INPUT" &&
-      e.type === "touchstart"
+      (e.type === "touchstart" || e.type === "mousedown")
     ) {
       this.timeout = setTimeout(() => {
         this.setState({
