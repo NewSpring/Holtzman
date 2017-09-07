@@ -48,12 +48,13 @@ export default class Campus extends Component {
 
     this.setWrapperRef = this.setWrapperRef.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.closeTimeout = this.closeTimeout.bind(this);
   }
 
   componentDidMount() {
     document.addEventListener("mousedown", this.handleClick);
     document.addEventListener("touchstart", this.handleClick);
-    document.addEventListener("touchmove", this.handleClick);
+    document.addEventListener("touchmove", this.closeTimout);
   }
 
   componentWillReceiveProps(nextProps: Object) {
@@ -67,17 +68,20 @@ export default class Campus extends Component {
   componentWillUnmount() {
     document.removeEventListener("mousedown", this.handleClick);
     document.removeEventListener("touchstart", this.handleClick);
-    document.removeEventListener("touchmove", this.handleClick);
+    document.removeEventListener("touchmove", this.closeTimeout);
   }
 
   setWrapperRef(node) {
     this.wrapperRef = node;
   }
 
-  /**
-   * Alert if clicked on outside of element
-   */
+  closeTimeout(e: Event) {
+    clearTimeout(this.timeout);
+  }
+
   handleClick(e: Event) {
+    console.log(e);
+
     if (
       e.type !== "touchmove" &&
       this.wrapperRef &&
@@ -86,19 +90,17 @@ export default class Campus extends Component {
     ) {
       this.timeout = setTimeout(() => {
         this.onBlur();
-      }, 100);
+      }, 300);
     } else if (
       e.target.name === "campus" &&
       e.target.tagName === "INPUT" &&
-      (e.type === "touchstart" || e.type === "mousedown")
+      e.type === "touchstart"
     ) {
       this.timeout = setTimeout(() => {
         this.setState({
           focused: !this.state.focused,
         });
-      }, 200);
-    } else if (e.type === "touchmove") {
-      clearTimeout(this.timeout);
+      }, 300);
     }
   }
 
