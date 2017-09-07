@@ -12,7 +12,11 @@ exports[`test should render with props 1`] = `
       Routing Number
     </label>
     <input
+      autoCapitalize="on"
+      autoComplete="on"
+      autoCorrect="on"
       className={undefined}
+      data-lpignore={undefined}
       data-spec="input"
       defaultValue="123456789"
       disabled={undefined}
@@ -23,6 +27,8 @@ exports[`test should render with props 1`] = `
       onChange={[Function]}
       onFocus={[Function]}
       placeholder="Routing Number"
+      readOnly={undefined}
+      spellCheck={undefined}
       style={Object {}}
       type="tel" />
   </div>
@@ -36,7 +42,11 @@ exports[`test should render with props 1`] = `
       Account Number
     </label>
     <input
+      autoCapitalize="on"
+      autoComplete="on"
+      autoCorrect="on"
       className={undefined}
+      data-lpignore={undefined}
       data-spec="input"
       defaultValue="987654321"
       disabled={undefined}
@@ -47,6 +57,8 @@ exports[`test should render with props 1`] = `
       onChange={[Function]}
       onFocus={[Function]}
       placeholder="Account Number"
+      readOnly={undefined}
+      spellCheck={undefined}
       style={Object {}}
       type="tel" />
   </div>
@@ -58,7 +70,7 @@ exports[`test should render with props 1`] = `
         className="input input--active select_15p0e27">
         <label
           htmlFor="accountType"
-          style={Object {}}>
+          style={undefined}>
           Account Type
         </label>
         <select
