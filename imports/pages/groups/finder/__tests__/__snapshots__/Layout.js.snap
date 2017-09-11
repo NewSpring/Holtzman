@@ -167,6 +167,7 @@ exports[`test renders loading if no tags 1`] = `
           tagOnClick={[Function]}
           tags={Array []} />
         <Campus
+          campuses={Array []}
           onChange={[Function]} />
         <Location
           onChange={[Function]}
