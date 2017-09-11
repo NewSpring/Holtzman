@@ -1,0 +1,293 @@
+exports[`test renders with no campus 1`] = `
+<div
+  className="soft-double-top text-left soft-half-sides"
+  style={
+    Object {
+      "border": 0,
+    }
+  }>
+  <Input
+    autoCapitalize={false}
+    autoComplete={false}
+    autoCorrect={false}
+    classes=""
+    defaultValue=""
+    ignoreLastPass={true}
+    inputClasses="outlined--dotted outlined--light h6 flush-bottom text-black"
+    label="Campus"
+    labelStyles={
+      Object {
+        "pointerEvents": "none",
+      }
+    }
+    name="campus"
+    onBlur={[Function]}
+    onFocus={[Function]}
+    spellCheck={false}
+    style={
+      Object {
+        "textTransform": "capitalize",
+      }
+    }
+    type="text"
+    validation={[Function]}>
+    <a
+      id="campusButton"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#FFFFFF",
+          "paddingLeft": "5px",
+          "position": "absolute",
+          "right": "0",
+          "top": "-5px",
+        }
+      }>
+      <Svg
+        fill="#505050"
+        height="24px"
+        name="arrowDown"
+        title="Arrow Down Icon"
+        width="24px" />
+    </a>
+  </Input>
+  <div
+    className="push-half-sides push-half-bottom visuallyhidden">
+    <Checkbox
+      classes={
+        Array [
+          "soft-half-bottom",
+          "float-left@lap-and-up",
+          "one-half@lap-and-up",
+          "display-inline-block@lap-and-up",
+        ]
+      }
+      clicked={[Function]}
+      defaultChecked=""
+      name="Greenville">
+      <span
+        className="soft-half-top"
+        style={
+          Object {
+            "textTransform": "capitalize",
+          }
+        }>
+        Greenville
+      </span>
+    </Checkbox>
+    <Checkbox
+      classes={
+        Array [
+          "soft-half-bottom",
+          "float-left@lap-and-up",
+          "one-half@lap-and-up",
+          "display-inline-block@lap-and-up",
+        ]
+      }
+      clicked={[Function]}
+      defaultChecked=""
+      name="Anderson">
+      <span
+        className="soft-half-top"
+        style={
+          Object {
+            "textTransform": "capitalize",
+          }
+        }>
+        Anderson
+      </span>
+    </Checkbox>
+    <Checkbox
+      classes={
+        Array [
+          "soft-half-bottom",
+          "float-left@lap-and-up",
+          "one-half@lap-and-up",
+          "display-inline-block@lap-and-up",
+        ]
+      }
+      clicked={[Function]}
+      defaultChecked=""
+      name="Aiken">
+      <span
+        className="soft-half-top"
+        style={
+          Object {
+            "textTransform": "capitalize",
+          }
+        }>
+        Aiken
+      </span>
+    </Checkbox>
+    <Checkbox
+      classes={
+        Array [
+          "soft-half-bottom",
+          "float-left@lap-and-up",
+          "one-half@lap-and-up",
+          "display-inline-block@lap-and-up",
+        ]
+      }
+      clicked={[Function]}
+      defaultChecked=""
+      name="Northeast Columbia">
+      <span
+        className="soft-half-top"
+        style={
+          Object {
+            "textTransform": "capitalize",
+          }
+        }>
+        Northeast Columbia
+      </span>
+    </Checkbox>
+  </div>
+</div>
+`;
+
+exports[`test renders with props 1`] = `
+<div
+  className="soft-double-top text-left soft-half-sides"
+  style={
+    Object {
+      "border": 0,
+    }
+  }>
+  <Input
+    autoCapitalize={false}
+    autoComplete={false}
+    autoCorrect={false}
+    classes=""
+    defaultValue="Anderson"
+    ignoreLastPass={true}
+    inputClasses="outlined--dotted outlined--light h6 flush-bottom text-black"
+    label="Campus"
+    labelStyles={
+      Object {
+        "pointerEvents": "none",
+      }
+    }
+    name="campus"
+    onBlur={[Function]}
+    onFocus={[Function]}
+    spellCheck={false}
+    style={
+      Object {
+        "textTransform": "capitalize",
+      }
+    }
+    type="text"
+    validation={[Function]}>
+    <a
+      id="campusButton"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#FFFFFF",
+          "paddingLeft": "5px",
+          "position": "absolute",
+          "right": "0",
+          "top": "-5px",
+        }
+      }>
+      <Svg
+        fill="#505050"
+        height="24px"
+        name="arrowDown"
+        title="Arrow Down Icon"
+        width="24px" />
+    </a>
+  </Input>
+  <div
+    className="push-half-sides push-half-bottom visuallyhidden">
+    <Checkbox
+      classes={
+        Array [
+          "soft-half-bottom",
+          "float-left@lap-and-up",
+          "one-half@lap-and-up",
+          "display-inline-block@lap-and-up",
+        ]
+      }
+      clicked={[Function]}
+      defaultChecked=""
+      name="Greenville">
+      <span
+        className="soft-half-top"
+        style={
+          Object {
+            "textTransform": "capitalize",
+          }
+        }>
+        Greenville
+      </span>
+    </Checkbox>
+    <Checkbox
+      classes={
+        Array [
+          "soft-half-bottom",
+          "float-left@lap-and-up",
+          "one-half@lap-and-up",
+          "display-inline-block@lap-and-up",
+        ]
+      }
+      clicked={[Function]}
+      defaultChecked="defaultChecked"
+      name="Anderson">
+      <span
+        className="soft-half-top"
+        style={
+          Object {
+            "textTransform": "capitalize",
+          }
+        }>
+        Anderson
+      </span>
+    </Checkbox>
+    <Checkbox
+      classes={
+        Array [
+          "soft-half-bottom",
+          "float-left@lap-and-up",
+          "one-half@lap-and-up",
+          "display-inline-block@lap-and-up",
+        ]
+      }
+      clicked={[Function]}
+      defaultChecked=""
+      name="Aiken">
+      <span
+        className="soft-half-top"
+        style={
+          Object {
+            "textTransform": "capitalize",
+          }
+        }>
+        Aiken
+      </span>
+    </Checkbox>
+    <Checkbox
+      classes={
+        Array [
+          "soft-half-bottom",
+          "float-left@lap-and-up",
+          "one-half@lap-and-up",
+          "display-inline-block@lap-and-up",
+        ]
+      }
+      clicked={[Function]}
+      defaultChecked=""
+      name="Northeast Columbia">
+      <span
+        className="soft-half-top"
+        style={
+          Object {
+            "textTransform": "capitalize",
+          }
+        }>
+        Northeast Columbia
+      </span>
+    </Checkbox>
+  </div>
+</div>
+`;
