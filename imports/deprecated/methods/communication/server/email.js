@@ -125,7 +125,6 @@ Meteor.methods({
           SenderPersonAliasId: null,
           Status: 3,
           IsBulkCommunication: false,
-          FutureSendDateTime: moment().subtract(4, "hours").add(20, "seconds").toISOString(),
           Guid: makeNewGuid(),
           Subject: subject,
           MediumData: {
@@ -146,11 +145,9 @@ Meteor.methods({
           MediumEntityTypeId: 37, // Mandrill
         });
 
-
         if (typeof PersonAliasId === "number") {
           PersonAliasId = [PersonAliasId]; // eslint-disable-line
         }
-
 
         const ids = [];
         for (const id of PersonAliasId) {
@@ -168,6 +165,7 @@ Meteor.methods({
           ids.push(CommunicationRecipientId);
         }
 
+        api.post(`Communications/Send/${CommunicationId}`);
         return ids;
       })
       .then((communications) => {
