@@ -55,6 +55,8 @@ export default class Campus extends Component {
     }
   }
 
+  validation = (value: any) => this.props.campuses.indexOf(value) > -1;
+
   onClick = (e: Event) => {
     const campus = e.target.name || e.target.innerHTML; // eslint-disable-line
 
@@ -67,7 +69,7 @@ export default class Campus extends Component {
   };
 
   onFocus = () => {
-    if (!this.state.onload) {
+    if (!this.state.onload || !this.state.campus) {
       this.setState({
         focused: true,
         onload: false,
@@ -107,6 +109,7 @@ export default class Campus extends Component {
           value={this.state.campus}
           type="text"
           label={"Campus"}
+          validation={this.validation}
           onFocus={this.onFocus}
           onBlur={this.onBlur}
           labelStyles={{ pointerEvents: "none" }}
