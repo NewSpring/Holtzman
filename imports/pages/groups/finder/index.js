@@ -46,13 +46,8 @@ class TemplateWithoutData extends Component {
   }
 
   componentWillReceiveProps(nextProps: Object) {
-    if (nextProps.location && Object.keys(nextProps.location.query).length) {
-      this.props.dispatch(navActions.setLevel("BASIC_CONTENT"));
-    } else {
-      this.props.dispatch(navActions.setLevel("TOP"));
-    }
+    this.props.dispatch(navActions.setLevel("TOP"));
 
-    // XXX theres a better way to write this
     if (!nextProps.autofill.loading && nextProps.autofill.person) {
       this.setState({
         ...nextProps.autofill.person.campus,
@@ -63,6 +58,14 @@ class TemplateWithoutData extends Component {
       this.setState({
         ...nextProps.location.query,
       });
+    }
+  }
+
+  componentDidMount() {
+    const { router, location } = this.props;
+    if (location.query.tags && location.query.tags.length) {
+      delete location.query.tags;
+      router.push(location);
     }
   }
 
@@ -139,7 +142,7 @@ class TemplateWithoutData extends Component {
       }, []);
 
     // start building the router querystring
-    if (!location.query) location.query = {};
+    location.query = {};
 
     if (q && q.length > 0 && q[0] !== "") {
       location.query.q = q.join(",").toLowerCase();
@@ -152,7 +155,7 @@ class TemplateWithoutData extends Component {
     if (query) location.query.query = query;
     if (latitude) location.query.latitude = latitude;
     if (longitude) location.query.longitude = longitude;
-    if (campus) location.query.campus = campus.toLowerCase();
+    if (campus) location.query.campus = campus;
     if (zip) location.query.zip = zip;
 
     // XXX i don't like the idea of having to push history twice

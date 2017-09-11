@@ -154,7 +154,7 @@ it("set content level nav when recieving props with location query", () => {
   });
   expect(mockDispatch).toHaveBeenCalledTimes(2);
   expect(navActions.setLevel).toHaveBeenCalledTimes(2);
-  expect(navActions.setLevel).toHaveBeenCalledWith("BASIC_CONTENT");
+  expect(navActions.setLevel).toHaveBeenCalledWith("TOP");
 });
 
 it("set top level nav when recieving props without location query", () => {
