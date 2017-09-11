@@ -60,7 +60,7 @@ export const GroupCardWithoutData = ({ group, router, onHover }) => {
 
           {theGroup.demographic && <Tag val={group.demographic} />}
 
-          {group.campus && group.campus.name && <Tag val={group.campus.name} urlKey="campuses" />}
+          {group.campus && group.campus.name && <Tag val={group.campus.name} urlKey="campus" />}
 
         </div>
 

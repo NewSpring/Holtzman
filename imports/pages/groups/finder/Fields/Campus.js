@@ -20,12 +20,6 @@ const hiddenInput = {
 export default class Campus extends Component {
   timeout: number;
 
-  state: {
-    focused: boolean,
-    campus: string,
-    onload: boolean,
-  };
-
   static propTypes = {
     campuses: PropTypes.array.isRequired,
     selectedCampus: PropTypes.string.isRequired,
@@ -42,7 +36,7 @@ export default class Campus extends Component {
     super(props);
     this.state = {
       focused: false,
-      campus: "",
+      campus: props.selectedCampus,
       onload: true,
     };
   }
@@ -50,12 +44,22 @@ export default class Campus extends Component {
   componentWillReceiveProps(nextProps: Object) {
     if (nextProps.selectedCampus) {
       this.setState({
-        campus: nextProps.selectedCampus,
+        campus: nextProps.selectedCampus.toLowerCase(),
       });
     }
   }
 
-  validation = (value: any) => this.props.campuses.indexOf(value) > -1;
+  validation = (value: any) => {
+    if (
+      this.props.campuses.indexOf(value) > -1 ||
+      value === "" ||
+      this.state.campus === ""
+    ) {
+      return true;
+    }
+
+    return false;
+  };
 
   onClick = (e: Event) => {
     const campus = e.target.name || e.target.innerHTML; // eslint-disable-line
@@ -64,8 +68,6 @@ export default class Campus extends Component {
       campus,
       onload: false,
     });
-
-    this.props.onChange(campus, { name: "campus" });
   };
 
   onFocus = () => {
@@ -91,7 +93,7 @@ export default class Campus extends Component {
   };
 
   render() {
-    const { campuses } = this.props;
+    const { onChange, campuses } = this.props;
 
     return (
       <div
@@ -106,12 +108,12 @@ export default class Campus extends Component {
             "outlined--dotted outlined--light h6 flush-bottom text-black"
           }
           style={{ textTransform: "capitalize" }}
-          value={this.state.campus}
           type="text"
           label={"Campus"}
           validation={this.validation}
           onFocus={this.onFocus}
           onBlur={this.onBlur}
+          onChange={onChange}
           labelStyles={{ pointerEvents: "none" }}
           name="campus"
           defaultValue={this.state.campus}
