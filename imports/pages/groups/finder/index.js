@@ -46,11 +46,7 @@ class TemplateWithoutData extends Component {
   }
 
   componentWillReceiveProps(nextProps: Object) {
-    if (nextProps.location && Object.keys(nextProps.location.query).length) {
-      this.props.dispatch(navActions.setLevel("BASIC_CONTENT"));
-    } else {
-      this.props.dispatch(navActions.setLevel("TOP"));
-    }
+    this.props.dispatch(navActions.setLevel("TOP"));
 
     if (!nextProps.autofill.loading && nextProps.autofill.person) {
       this.setState({
