@@ -170,6 +170,7 @@ export default class Keywords extends Component {
               key={i}
               val={tag.value.toLowerCase()}
               active={selectedTags.indexOf(tag.value) + 1}
+              urlKey="tags"
             />,
           )}
         </div>
