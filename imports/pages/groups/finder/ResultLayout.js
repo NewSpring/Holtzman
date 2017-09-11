@@ -83,7 +83,7 @@ const Layout = ({
             style={{ verticalAlign: "bottom" }}
             className="flush-bottom"
             val={campus}
-            urlKey="campuses"
+            urlKey="campus"
             key={key}
             canBeActive
           />
