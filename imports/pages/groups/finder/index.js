@@ -66,6 +66,16 @@ class TemplateWithoutData extends Component {
     }
   }
 
+  componentDidMount() {
+    // Tag Select is wrapped with router so tags will stay active even is
+    // unclicked
+    const { router, location } = this.props;
+    if (location.query.tags && location.query.tags.length) {
+      delete location.query.tags;
+      router.push(location);
+    }
+  }
+
   geoLocateMe = (e: Event) => {
     if (e) e.preventDefault();
 
