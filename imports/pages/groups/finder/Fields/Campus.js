@@ -20,12 +20,6 @@ const hiddenInput = {
 export default class Campus extends Component {
   timeout: number;
 
-  state: {
-    focused: boolean,
-    campus: string,
-    onload: boolean,
-  };
-
   static propTypes = {
     campuses: PropTypes.array.isRequired,
     selectedCampus: PropTypes.string.isRequired,
@@ -42,111 +36,71 @@ export default class Campus extends Component {
     super(props);
     this.state = {
       focused: false,
-      campus: "",
+      campus: props.selectedCampus,
       onload: true,
     };
-
-    this.setWrapperRef = this.setWrapperRef.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  componentDidMount() {
-    document.addEventListener("mousedown", this.handleClick);
-    document.addEventListener("touchstart", this.handleClick);
-    document.addEventListener("touchmove", this.handleClick);
   }
 
   componentWillReceiveProps(nextProps: Object) {
     if (nextProps.selectedCampus) {
       this.setState({
-        campus: nextProps.selectedCampus,
+        campus: nextProps.selectedCampus.toLowerCase(),
       });
     }
   }
 
-  componentWillUnmount() {
-    document.removeEventListener("mousedown", this.handleClick);
-    document.removeEventListener("touchstart", this.handleClick);
-    document.removeEventListener("touchmove", this.handleClick);
-  }
-
-  setWrapperRef(node) {
-    this.wrapperRef = node;
-  }
-
-  /**
-   * Alert if clicked on outside of element
-   */
-  handleClick(e: Event) {
+  validation = (value: any) => {
     if (
-      e.type !== "touchmove" &&
-      this.wrapperRef &&
-      !this.wrapperRef.contains(e.target) &&
-      this.state.focused
+      this.props.campuses.indexOf(value) > -1 ||
+      value === "" ||
+      this.state.campus === ""
     ) {
-      this.timeout = setTimeout(() => {
-        this.onBlur();
-      }, 100);
-    } else if (
-      e.target.name === "campus" &&
-      e.target.tagName === "INPUT" &&
-      (e.type === "touchstart" || e.type === "mousedown")
-    ) {
-      this.timeout = setTimeout(() => {
-        this.setState({
-          focused: !this.state.focused,
-        });
-      }, 200);
-    } else if (e.type === "touchmove") {
-      clearTimeout(this.timeout);
+      return true;
     }
-  }
+
+    return false;
+  };
 
   onClick = (e: Event) => {
     const campus = e.target.name || e.target.innerHTML; // eslint-disable-line
 
     this.setState({
       campus,
-      focused: false,
+      onload: false,
     });
+
+    this.props.onChange(campus, { name: "campus" });
   };
 
-  setFocus = () => {
-    this.setState({
-      focused: !this.state.focused,
-    });
-  };
-
-  onFocus = (e: Event) => {
-    this.setState({
-      focused: true,
-    });
-  };
-
-  onBlur = () => {
-    this.setState({
-      focused: false,
-    });
-  };
-
-  onTab = (e: Event) => {
-    if (e.type === "keydown" && e.keyCode === 9) {
+  onFocus = () => {
+    if (!this.state.onload || !this.state.campus) {
       this.setState({
-        focused: false,
+        focused: true,
+        onload: false,
+      });
+    } else {
+      this.setState({
+        onload: false,
       });
     }
   };
 
+  onBlur = () => {
+    this.timeout = setTimeout(() => {
+      this.setState({
+        focused: false,
+        onload: false,
+      });
+    }, 200);
+  };
+
   render() {
-    const { campuses, onChange } = this.props;
-    const { campus } = this.state;
+    const { campuses } = this.props;
 
     return (
       <div
         style={this.state.focused ? focusedInput : hiddenInput}
         className={"soft-double-top text-left soft-half-sides"}
-        ref={this.setWrapperRef}
-        onKeyDown={this.onTab}
       >
         {/* onFocus === This is a hack because onFocus
           is the only event that fires on a readonly input */}
@@ -158,12 +112,13 @@ export default class Campus extends Component {
           style={{ textTransform: "capitalize" }}
           type="text"
           label={"Campus"}
-          onFocus={onChange}
+          validation={this.validation}
+          onFocus={this.onFocus}
+          onBlur={this.onBlur}
           labelStyles={{ pointerEvents: "none" }}
           name="campus"
-          defaultValue={campus}
+          defaultValue={this.state.campus}
           ignoreLastPass
-          readOnly="readonly"
           autoComplete={false}
           autoCorrect={false}
           autoCapitalize={false}
@@ -203,7 +158,7 @@ export default class Campus extends Component {
                 "one-half@lap-and-up",
                 "display-inline-block@lap-and-up",
               ]}
-              defaultChecked={campus === c ? "defaultChecked" : ""}
+              defaultChecked={this.state.campus === c ? "defaultChecked" : ""}
               name={c}
               key={i}
               clicked={this.onClick}
