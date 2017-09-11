@@ -65,6 +65,14 @@ class TemplateWithoutData extends Component {
     }
   }
 
+  componentDidMount() {
+    const { router, location } = this.props;
+    if (location.query.tags && location.query.tags.length) {
+      delete location.query.tags;
+      router.push(location);
+    }
+  }
+
   geoLocateMe = (e: Event) => {
     if (e) e.preventDefault();
 

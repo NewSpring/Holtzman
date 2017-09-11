@@ -68,6 +68,8 @@ export default class Campus extends Component {
       campus,
       onload: false,
     });
+
+    this.props.onChange(campus, { name: "campus" });
   };
 
   onFocus = () => {
@@ -93,7 +95,7 @@ export default class Campus extends Component {
   };
 
   render() {
-    const { onChange, campuses } = this.props;
+    const { campuses } = this.props;
 
     return (
       <div
@@ -113,7 +115,6 @@ export default class Campus extends Component {
           validation={this.validation}
           onFocus={this.onFocus}
           onBlur={this.onBlur}
-          onChange={onChange}
           labelStyles={{ pointerEvents: "none" }}
           name="campus"
           defaultValue={this.state.campus}
