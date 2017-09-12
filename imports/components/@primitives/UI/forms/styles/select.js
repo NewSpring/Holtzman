@@ -4,14 +4,19 @@ export default StyleSheet.create({
   select: {
     ":after": {
       content: "\"\"",
-      borderColor: "#858585 transparent transparent transparent",
+      border: "solid #505050",
       borderStyle: "solid",
-      borderWidth: "6px 6px 0 6px",
+      borderWidth: "0 2px 2px 0",
+      borderRadius: "0 2px 2px 2px",
+      padding: "7px",
+      transform: "rotate(45deg)",
       height: 0,
       width: 0,
       position: "absolute",
-      top: "5px",
-      right: "5px",
+      display: "inline-block",
+      cursor: "pointer",
+      top: "-4px",
+      right: "4px",
     },
   },
 });

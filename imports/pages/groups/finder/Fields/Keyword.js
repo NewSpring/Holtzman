@@ -19,6 +19,7 @@ const hiddenInput = {
 
 export default class Keywords extends Component {
   timeout: number;
+  textInput: Object;
 
   static propTypes = {
     tags: PropTypes.array.isRequired,
@@ -29,12 +30,14 @@ export default class Keywords extends Component {
 
   state: {
     focused: boolean,
+    onload: boolean,
   };
 
   constructor(props: Object) {
     super(props);
     this.state = {
       focused: false,
+      onload: true,
     };
 
     this.setWrapperRef = this.setWrapperRef.bind(this);
@@ -75,13 +78,10 @@ export default class Keywords extends Component {
     }
   }
 
-  setFocus = () => {
-    this.setState({
-      focused: !this.state.focused,
-    });
-  };
-
   onFocus = () => {
+    if (!this.state.focused && this.textInput) {
+      this.textInput.node.focus();
+    }
     this.setState({ focused: true });
   };
 
@@ -119,11 +119,14 @@ export default class Keywords extends Component {
         style={this.state.focused ? focusedInput : hiddenInput}
         className={"soft-double-top text-left soft-half-sides"}
         ref={this.setWrapperRef}
-        onKeyDown={this.onTab}
         onFocus={this.onFocus}
+        onKeyDown={this.onTab}
       >
         <Forms.Input
           classes={this.state.focused ? "soft-bottom" : ""}
+          ref={input => {
+            this.textInput = input;
+          }}
           inputClasses={
             "outlined--dotted outlined--light h6 flush-bottom text-black"
           }
@@ -145,7 +148,7 @@ export default class Keywords extends Component {
               top: "-5px",
               paddingLeft: "5px",
             }}
-            onClick={this.setFocus}
+            onClick={this.state.focused ? this.onBlur : this.onFocus}
           >
             <Svg
               name={this.state.focused ? "arrowUp" : "arrowDown"}

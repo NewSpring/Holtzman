@@ -51,7 +51,7 @@ exports[`test renders disabled tags 1`] = `
               },
             ]
           } />
-        <Campus
+        <CampusSelect
           onChange={[Function]} />
         <Location
           onChange={[Function]}
@@ -166,7 +166,7 @@ exports[`test renders loading if no tags 1`] = `
           onChange={[Function]}
           tagOnClick={[Function]}
           tags={Array []} />
-        <Campus
+        <CampusSelect
           campuses={Array []}
           onChange={[Function]} />
         <Location
@@ -289,7 +289,7 @@ exports[`test renders with props 1`] = `
               },
             ]
           } />
-        <Campus
+        <CampusSelect
           onChange={[Function]} />
         <Location
           onChange={[Function]}

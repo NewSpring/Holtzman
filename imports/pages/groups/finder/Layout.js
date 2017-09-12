@@ -9,7 +9,7 @@ import SideBySide from "../../../components/@primitives/UI/cards/SideBySideCard"
 
 import GroupsILead from "../../../components/groups/groups-i-lead";
 import KeywordSelect from "./Fields/Keyword";
-import CampusSelect from "./Fields/Campus";
+import CampusSelect from "./Fields/CampusSelect";
 import Location from "./Fields/Location";
 import Validate from "../../../util/validate";
 import Svg from "../../../components/@primitives/UI/svg";

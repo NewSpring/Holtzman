@@ -18,7 +18,7 @@ const hiddenInput = {
 };
 
 export default class Campus extends Component {
-  timeout: number;
+  textInput: Object;
 
   static propTypes = {
     campuses: PropTypes.array.isRequired,
@@ -39,6 +39,14 @@ export default class Campus extends Component {
       campus: props.selectedCampus,
       onload: true,
     };
+
+    this.setWrapperRef = this.setWrapperRef.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  componentDidMount() {
+    document.addEventListener("mousedown", this.handleClick);
+    document.addEventListener("touchend", this.handleClick);
   }
 
   componentWillReceiveProps(nextProps: Object) {
@@ -46,6 +54,30 @@ export default class Campus extends Component {
       this.setState({
         campus: nextProps.selectedCampus.toLowerCase(),
       });
+    }
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("mousedown", this.handleClick);
+    document.removeEventListener("touchend", this.handleClick);
+  }
+
+  setWrapperRef(node) {
+    this.wrapperRef = node;
+  }
+
+  /**
+   * Alert if clicked on outside of element
+   */
+  handleClick(e: Event) {
+    if (
+      this.wrapperRef &&
+      !this.wrapperRef.contains(e.target) &&
+      this.state.focused
+    ) {
+      this.timeout = setTimeout(() => {
+        this.onBlur();
+      }, 100);
     }
   }
 
@@ -74,6 +106,9 @@ export default class Campus extends Component {
 
   onFocus = () => {
     if (!this.state.onload || !this.state.campus) {
+      if (!this.state.focused && this.textInput) {
+        this.textInput.node.focus();
+      }
       this.setState({
         focused: true,
         onload: false,
@@ -95,12 +130,14 @@ export default class Campus extends Component {
   };
 
   render() {
-    const { campuses } = this.props;
+    const { onChange, campuses } = this.props;
+    console.log(campuses);
 
     return (
       <div
         style={this.state.focused ? focusedInput : hiddenInput}
         className={"soft-double-top text-left soft-half-sides"}
+        ref={this.setWrapperRef}
       >
         {/* onFocus === This is a hack because onFocus
           is the only event that fires on a readonly input */}
@@ -109,12 +146,16 @@ export default class Campus extends Component {
           inputClasses={
             "outlined--dotted outlined--light h6 flush-bottom text-black"
           }
+          ref={input => {
+            this.textInput = input;
+          }}
           style={{ textTransform: "capitalize" }}
           type="text"
           label={"Campus"}
           validation={this.validation}
           onFocus={this.onFocus}
           onBlur={this.onBlur}
+          onChange={onChange}
           labelStyles={{ pointerEvents: "none" }}
           name="campus"
           defaultValue={this.state.campus}
