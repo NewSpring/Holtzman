@@ -67,7 +67,7 @@ exports[`test should render with props 1`] = `
     <div
       className="grid__item one-whole">
       <div
-        className="input input--active select_15p0e27">
+        className="input input--active select_lvcpjl">
         <label
           htmlFor="accountType"
           style={undefined}>
@@ -79,9 +79,11 @@ exports[`test should render with props 1`] = `
           disabled={undefined}
           id="accountType"
           name="billing-account-type"
+          onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
-          placeholder="Account Type">
+          placeholder="Account Type"
+          style={undefined}>
           <option
             style={
               Object {

@@ -158,9 +158,10 @@ exports[`RightPanel Layout should render a loading state 1`] = `
           }
           onChange={[Function]}>
           <div
-            className="input right-select hard flush display-inline-block select_15p0e27">
+            className="input right-select hard flush display-inline-block select_lvcpjl">
             <select
               className="outlined--dotted outlined--light text-light-primary h6 hard-top flush-bottom"
+              onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}>
               <option
@@ -391,9 +392,10 @@ exports[`RightPanel Layout should render with data 1`] = `
           }
           onChange={[Function]}>
           <div
-            className="input right-select hard flush display-inline-block select_15p0e27">
+            className="input right-select hard flush display-inline-block select_lvcpjl">
             <select
               className="outlined--dotted outlined--light text-light-primary h6 hard-top flush-bottom"
+              onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}>
               <option

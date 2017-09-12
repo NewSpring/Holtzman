@@ -22,9 +22,11 @@ class TemplateWithoutData extends Component {
     dispatch: PropTypes.func.isRequired,
     router: PropTypes.object.isRequired,
     location: PropTypes.object.isRequired,
-    autofill: PropTypes.object.isRequired,
     attributes: PropTypes.object.isRequired,
     content: PropTypes.object.isRequired,
+    campuses: PropTypes.object.isRequired,
+    campus: PropTypes.string,
+    zip: PropTypes.string,
   };
 
   state = {
@@ -46,23 +48,26 @@ class TemplateWithoutData extends Component {
   }
 
   componentWillReceiveProps(nextProps: Object) {
-    if (nextProps.location && Object.keys(nextProps.location.query).length) {
-      this.props.dispatch(navActions.setLevel("BASIC_CONTENT"));
-    } else {
-      this.props.dispatch(navActions.setLevel("TOP"));
-    }
+    this.props.dispatch(navActions.setLevel("TOP"));
 
-    // XXX theres a better way to write this
-    if (!nextProps.autofill.loading && nextProps.autofill.person) {
+    if (!nextProps.loading) {
       this.setState({
-        ...nextProps.autofill.person.campus,
-        ...nextProps.autofill.person.home,
+        campus: nextProps.campus,
+        zip: nextProps.zip,
         ...nextProps.location.query,
       });
     } else {
       this.setState({
         ...nextProps.location.query,
       });
+    }
+  }
+
+  componentDidMount() {
+    const { router, location } = this.props;
+    if (location.query.tags && location.query.tags.length) {
+      delete location.query.tags;
+      router.push(location);
     }
   }
 
@@ -73,10 +78,7 @@ class TemplateWithoutData extends Component {
       this.setState({
         latitude: null,
         longitude: null,
-        zip:
-          this.props.autofill.person && this.props.autofill.person.home.zip
-            ? this.props.autofill.person.home.zip
-            : "",
+        zip: this.props.zip,
         geoLocationLoading: false,
       });
     } else {
@@ -139,11 +141,12 @@ class TemplateWithoutData extends Component {
       }, []);
 
     // start building the router querystring
-    if (!location.query) location.query = {};
+    location.query = {};
 
     if (q && q.length > 0 && q[0] !== "") {
-      location.query.q = q.join(",").toLowerCase();
+      location.query.q = q.join(" ").toLowerCase();
     }
+
     if (tags.length) location.query.tags = tags.join(",").toLowerCase();
 
     if (location.query.campus) delete location.query.campus;
@@ -152,7 +155,7 @@ class TemplateWithoutData extends Component {
     if (query) location.query.query = query;
     if (latitude) location.query.latitude = latitude;
     if (longitude) location.query.longitude = longitude;
-    if (campus) location.query.campus = campus.toLowerCase();
+    if (campus) location.query.campus = campus;
     if (zip) location.query.zip = zip;
 
     // XXX i don't like the idea of having to push history twice
@@ -213,7 +216,7 @@ class TemplateWithoutData extends Component {
 
   /* eslint-disable max-len */
   render() {
-    const { attributes, autofill, content } = this.props;
+    const { attributes, campuses, campus, zip, content } = this.props;
 
     return (
       <div>
@@ -237,19 +240,7 @@ class TemplateWithoutData extends Component {
               this.state.zip ||
               (this.state.latitude && this.state.longitude)
             }
-            campuses={
-              autofill.loading
-                ? [""]
-                : autofill.campuses
-                    .filter(x => {
-                      if (x.name === "Web") {
-                        return false;
-                      }
-
-                      return true;
-                    })
-                    .map(x => x.name.toLowerCase())
-            }
+            campuses={campuses || defaultArray}
             selectedCampus={this.state.campus}
             zip={this.state.zip}
             zipDisabled={Boolean(this.state.latitude && this.state.longitude)}
@@ -274,24 +265,37 @@ class TemplateWithoutData extends Component {
 const AUTOFILL_META_QUERY = gql`
   query autoFillMeta {
     person: currentPerson {
-      id
-      firstName
-      nickName
       home {
         zip
       }
       campus {
-        campus: name
+        name
       }
     }
     campuses {
-      id
       name
     }
   }
 `;
 
-const withAutoFillMeta = graphql(AUTOFILL_META_QUERY, { name: "autofill" });
+const withAutoFillMeta = graphql(AUTOFILL_META_QUERY, {
+  props: ({ data, data: { person, campuses } }) => ({
+    ...data,
+    zip: person ? person.home.zip : "",
+    campus: person ? person.campus.name.toLowerCase() : "",
+    campuses: campuses
+      ? campuses
+          .filter(x => {
+            if (x.name === "Web") {
+              return false;
+            }
+
+            return true;
+          })
+          .map(x => ({ label: x.name, value: x.name.toLowerCase() }))
+      : defaultArray,
+  }),
+});
 
 const GROUP_ATTRIBUTES_QUERY = gql`
   query GetGroupAttributes {

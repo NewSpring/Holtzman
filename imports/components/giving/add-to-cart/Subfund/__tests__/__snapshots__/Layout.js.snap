@@ -95,10 +95,11 @@ exports[`test should accept an active prop to show the input 1`] = `
         }
         placeholder="select fund">
         <div
-          className="input input--active soft-bottom display-inline-block select_1rryh47 select_15p0e27">
+          className="input input--active soft-bottom display-inline-block select_1rryh47 select_lvcpjl">
           <select
             className="text-brand outlined--dotted outlined--light h3 hard-top flush-bottom"
             defaultValue="main fund"
+            onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             placeholder="select fund">
@@ -217,10 +218,11 @@ exports[`test should accept custom classes thru classes prop 1`] = `
         }
         placeholder="select fund">
         <div
-          className="input input--active soft-bottom display-inline-block select_1rryh47 select_15p0e27">
+          className="input input--active soft-bottom display-inline-block select_1rryh47 select_lvcpjl">
           <select
             className="text-dark-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
             defaultValue="main fund"
+            onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             placeholder="select fund">
@@ -344,10 +346,11 @@ exports[`test should accept multiple accounts through accounts prop 1`] = `
         }
         placeholder="select fund">
         <div
-          className="input input--active soft-bottom display-inline-block select_1rryh47 select_15p0e27">
+          className="input input--active soft-bottom display-inline-block select_1rryh47 select_lvcpjl">
           <select
             className="text-dark-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
             defaultValue="hello"
+            onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             placeholder="select fund">
@@ -469,10 +472,11 @@ exports[`test should render with minimal props 1`] = `
         }
         placeholder="select fund">
         <div
-          className="input input--active soft-bottom display-inline-block select_1rryh47 select_15p0e27">
+          className="input input--active soft-bottom display-inline-block select_1rryh47 select_lvcpjl">
           <select
             className="text-dark-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
             defaultValue="main fund"
+            onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             placeholder="select fund">

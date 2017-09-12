@@ -18,13 +18,7 @@ const hiddenInput = {
 };
 
 export default class Campus extends Component {
-  timeout: number;
-
-  state: {
-    focused: boolean,
-    campus: string,
-    onload: boolean,
-  };
+  textInput: Object;
 
   static propTypes = {
     campuses: PropTypes.array.isRequired,
@@ -42,7 +36,7 @@ export default class Campus extends Component {
     super(props);
     this.state = {
       focused: false,
-      campus: "",
+      campus: props.selectedCampus,
       onload: true,
     };
 
@@ -52,22 +46,20 @@ export default class Campus extends Component {
 
   componentDidMount() {
     document.addEventListener("mousedown", this.handleClick);
-    document.addEventListener("touchstart", this.handleClick);
-    document.addEventListener("touchmove", this.handleClick);
+    document.addEventListener("touchend", this.handleClick);
   }
 
   componentWillReceiveProps(nextProps: Object) {
     if (nextProps.selectedCampus) {
       this.setState({
-        campus: nextProps.selectedCampus,
+        campus: nextProps.selectedCampus.toLowerCase(),
       });
     }
   }
 
   componentWillUnmount() {
     document.removeEventListener("mousedown", this.handleClick);
-    document.removeEventListener("touchstart", this.handleClick);
-    document.removeEventListener("touchmove", this.handleClick);
+    document.removeEventListener("touchend", this.handleClick);
   }
 
   setWrapperRef(node) {
@@ -79,7 +71,6 @@ export default class Campus extends Component {
    */
   handleClick(e: Event) {
     if (
-      e.type !== "touchmove" &&
       this.wrapperRef &&
       !this.wrapperRef.contains(e.target) &&
       this.state.focused
@@ -87,66 +78,66 @@ export default class Campus extends Component {
       this.timeout = setTimeout(() => {
         this.onBlur();
       }, 100);
-    } else if (
-      e.target.name === "campus" &&
-      e.target.tagName === "INPUT" &&
-      (e.type === "touchstart" || e.type === "mousedown")
-    ) {
-      this.timeout = setTimeout(() => {
-        this.setState({
-          focused: !this.state.focused,
-        });
-      }, 200);
-    } else if (e.type === "touchmove") {
-      clearTimeout(this.timeout);
     }
   }
+
+  validation = (value: any) => {
+    if (
+      this.props.campuses.indexOf(value) > -1 ||
+      value === "" ||
+      this.state.campus === ""
+    ) {
+      return true;
+    }
+
+    return false;
+  };
 
   onClick = (e: Event) => {
     const campus = e.target.name || e.target.innerHTML; // eslint-disable-line
 
     this.setState({
       campus,
-      focused: false,
+      onload: false,
     });
+
+    this.props.onChange(campus, { name: "campus" });
   };
 
-  setFocus = () => {
-    this.setState({
-      focused: !this.state.focused,
-    });
-  };
-
-  onFocus = (e: Event) => {
-    this.setState({
-      focused: true,
-    });
-  };
-
-  onBlur = () => {
-    this.setState({
-      focused: false,
-    });
-  };
-
-  onTab = (e: Event) => {
-    if (e.type === "keydown" && e.keyCode === 9) {
+  onFocus = () => {
+    if (!this.state.onload || !this.state.campus) {
+      if (!this.state.focused && this.textInput) {
+        this.textInput.node.focus();
+      }
       this.setState({
-        focused: false,
+        focused: true,
+        onload: false,
+      });
+    } else {
+      this.setState({
+        onload: false,
       });
     }
   };
 
+  onBlur = () => {
+    this.timeout = setTimeout(() => {
+      this.setState({
+        focused: false,
+        onload: false,
+      });
+    }, 200);
+  };
+
   render() {
-    const { campuses, onChange } = this.props;
-    const { campus } = this.state;
+    const { onChange, campuses } = this.props;
+    console.log(campuses);
 
     return (
       <div
         style={this.state.focused ? focusedInput : hiddenInput}
         className={"soft-double-top text-left soft-half-sides"}
         ref={this.setWrapperRef}
-        onKeyDown={this.onTab}
       >
         {/* onFocus === This is a hack because onFocus
           is the only event that fires on a readonly input */}
@@ -155,15 +146,20 @@ export default class Campus extends Component {
           inputClasses={
             "outlined--dotted outlined--light h6 flush-bottom text-black"
           }
+          ref={input => {
+            this.textInput = input;
+          }}
           style={{ textTransform: "capitalize" }}
           type="text"
           label={"Campus"}
-          onFocus={onChange}
+          validation={this.validation}
+          onFocus={this.onFocus}
+          onBlur={this.onBlur}
+          onChange={onChange}
           labelStyles={{ pointerEvents: "none" }}
           name="campus"
-          defaultValue={campus}
+          defaultValue={this.state.campus}
           ignoreLastPass
-          readOnly="readonly"
           autoComplete={false}
           autoCorrect={false}
           autoCapitalize={false}
@@ -203,7 +199,7 @@ export default class Campus extends Component {
                 "one-half@lap-and-up",
                 "display-inline-block@lap-and-up",
               ]}
-              defaultChecked={campus === c ? "defaultChecked" : ""}
+              defaultChecked={this.state.campus === c ? "defaultChecked" : ""}
               name={c}
               key={i}
               clicked={this.onClick}

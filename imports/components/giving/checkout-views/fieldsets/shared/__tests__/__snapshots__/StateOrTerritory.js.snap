@@ -4,7 +4,7 @@ exports[`test renders if country is \`CA\` 1`] = `
 <div
   className="grid__item one-half">
   <div
-    className="input input--active select_15p0e27">
+    className="input input--active select_lvcpjl">
     <label
       htmlFor="State/Territory"
       style={undefined}>
@@ -16,9 +16,11 @@ exports[`test renders if country is \`CA\` 1`] = `
       disabled={undefined}
       id="State/Territory"
       name="state"
+      onBlur={[Function]}
       onChange={[Function]}
       onFocus={[Function]}
-      placeholder="State/Territory">
+      placeholder="State/Territory"
+      style={undefined}>
       <option
         style={
           Object {
@@ -48,7 +50,7 @@ exports[`test renders if no country 1`] = `
 <div
   className="grid__item one-half">
   <div
-    className="input input--active select_15p0e27">
+    className="input input--active select_lvcpjl">
     <label
       htmlFor="State/Territory"
       style={undefined}>
@@ -60,9 +62,11 @@ exports[`test renders if no country 1`] = `
       disabled={undefined}
       id="State/Territory"
       name="state"
+      onBlur={[Function]}
       onChange={[Function]}
       onFocus={[Function]}
-      placeholder="State/Territory">
+      placeholder="State/Territory"
+      style={undefined}>
       <option
         style={
           Object {
@@ -92,7 +96,7 @@ exports[`test renders with default state as SC 1`] = `
 <div
   className="grid__item one-half">
   <div
-    className="input input--active select_15p0e27">
+    className="input input--active select_lvcpjl">
     <label
       htmlFor="State/Territory"
       style={undefined}>
@@ -104,9 +108,11 @@ exports[`test renders with default state as SC 1`] = `
       disabled={undefined}
       id="State/Territory"
       name="state"
+      onBlur={[Function]}
       onChange={[Function]}
       onFocus={[Function]}
-      placeholder="State/Territory">
+      placeholder="State/Territory"
+      style={undefined}>
       <option
         style={
           Object {
@@ -136,7 +142,7 @@ exports[`test renders with predefined state 1`] = `
 <div
   className="grid__item one-half">
   <div
-    className="input input--active select_15p0e27">
+    className="input input--active select_lvcpjl">
     <label
       htmlFor="State/Territory"
       style={undefined}>
@@ -148,9 +154,11 @@ exports[`test renders with predefined state 1`] = `
       disabled={undefined}
       id="State/Territory"
       name="state"
+      onBlur={[Function]}
       onChange={[Function]}
       onFocus={[Function]}
-      placeholder="State/Territory">
+      placeholder="State/Territory"
+      style={undefined}>
       <option
         style={
           Object {

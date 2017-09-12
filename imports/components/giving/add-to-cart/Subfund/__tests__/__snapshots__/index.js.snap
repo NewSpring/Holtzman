@@ -103,10 +103,11 @@ exports[`SubFund sets the state to active if it has an amount 1`] = `
           onChange={[Function]}
           placeholder="select fund">
           <div
-            className="input input--active soft-bottom display-inline-block select_1rryh47 select_15p0e27">
+            className="input input--active soft-bottom display-inline-block select_1rryh47 select_lvcpjl">
             <select
               className="text-brand outlined--dotted outlined--light h3 hard-top flush-bottom"
               defaultValue="main fund"
+              onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
               placeholder="select fund">
@@ -236,11 +237,12 @@ exports[`SubFund should render a primary fund 1`] = `
         onChange={[Function]}
         placeholder="select fund">
         <div
-          className="input soft-bottom display-inline-block select_1rryh47 select_15p0e27">
+          className="input soft-bottom display-inline-block select_1rryh47 select_lvcpjl">
           <select
             className="text-dark-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
             id="select-account"
             name="select-account"
+            onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             placeholder="select fund">
@@ -368,10 +370,11 @@ exports[`SubFund should render with minimal props 1`] = `
           onChange={[Function]}
           placeholder="select fund">
           <div
-            className="input input--active soft-bottom display-inline-block select_1rryh47 select_15p0e27">
+            className="input input--active soft-bottom display-inline-block select_1rryh47 select_lvcpjl">
             <select
               className="text-brand outlined--dotted outlined--light h3 hard-top flush-bottom"
               defaultValue="main fund"
+              onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
               placeholder="select fund">
