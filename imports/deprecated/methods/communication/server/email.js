@@ -139,7 +139,7 @@ Meteor.methods({
           SenderPersonAliasId: null,
           Status: 3,
           IsBulkCommunication: false,
-          FutureSendDateTime: moment().add(30, "minutes").toISOString(),
+          // FutureSendDateTime: moment().add(30, "minutes").toISOString(),
           Guid: makeNewGuid(),
           Subject: subject,
           MediumData: {
