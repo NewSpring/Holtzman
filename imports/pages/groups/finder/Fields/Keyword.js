@@ -1,7 +1,8 @@
 import { Component, PropTypes } from "react";
+import { css } from "aphrodite";
 import Forms from "../../../../components/@primitives/UI/forms";
 import Tag from "../../../../components/@primitives/UI/tags";
-import Svg from "../../../../components/@primitives/UI/svg";
+import Styles from "./styles-css";
 
 const focusedInput = {
   border: "1px solid #f0f0f0",
@@ -19,6 +20,7 @@ const hiddenInput = {
 
 export default class Keywords extends Component {
   timeout: number;
+  textInput: Object;
 
   static propTypes = {
     tags: PropTypes.array.isRequired,
@@ -29,12 +31,14 @@ export default class Keywords extends Component {
 
   state: {
     focused: boolean,
+    onload: boolean,
   };
 
   constructor(props: Object) {
     super(props);
     this.state = {
       focused: false,
+      onload: true,
     };
 
     this.setWrapperRef = this.setWrapperRef.bind(this);
@@ -75,13 +79,10 @@ export default class Keywords extends Component {
     }
   }
 
-  setFocus = () => {
-    this.setState({
-      focused: !this.state.focused,
-    });
-  };
-
   onFocus = () => {
+    if (!this.state.focused && this.textInput) {
+      this.textInput.node.focus();
+    }
     this.setState({ focused: true });
   };
 
@@ -114,16 +115,23 @@ export default class Keywords extends Component {
         return result;
       }, []);
 
+    const arrowFocus = css(
+      this.state.focused ? Styles.arrowFocused : Styles.arrow,
+    );
+
     return (
       <div
         style={this.state.focused ? focusedInput : hiddenInput}
         className={"soft-double-top text-left soft-half-sides"}
         ref={this.setWrapperRef}
-        onKeyDown={this.onTab}
         onFocus={this.onFocus}
+        onKeyDown={this.onTab}
       >
         <Forms.Input
           classes={this.state.focused ? "soft-bottom" : ""}
+          ref={input => {
+            this.textInput = input;
+          }}
           inputClasses={
             "outlined--dotted outlined--light h6 flush-bottom text-black"
           }
@@ -145,14 +153,10 @@ export default class Keywords extends Component {
               top: "-5px",
               paddingLeft: "5px",
             }}
-            onClick={this.setFocus}
+            onClick={this.state.focused ? this.onBlur : this.onFocus}
           >
-            <Svg
-              name={this.state.focused ? "arrowUp" : "arrowDown"}
-              fill={this.state.focused ? "#6BAC43" : "#505050"}
-              width={"24px"}
-              height={"24px"}
-              title={this.state.focused ? "Arrow Up Icon" : "Arrow Down Icon"}
+            <div
+              className={("one-whole", "display-inline-block", `${arrowFocus}`)}
             />
           </a>
         </Forms.Input>
@@ -170,6 +174,7 @@ export default class Keywords extends Component {
               key={i}
               val={tag.value.toLowerCase()}
               active={selectedTags.indexOf(tag.value) + 1}
+              urlKey="tags"
             />,
           )}
         </div>

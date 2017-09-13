@@ -127,7 +127,7 @@ exports[`Layout renders with props 1`] = `
       .input--active select { color: #303030 }; .input--focused label { color: #858585 }
     </style>
     <div
-      className="input input--active select_15p0e27">
+      className="input input--active select_e8htpf">
       <label
         htmlFor="Campus"
         style={undefined}>
@@ -139,9 +139,11 @@ exports[`Layout renders with props 1`] = `
         disabled={undefined}
         id="Campus"
         name="campus"
+        onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
-        placeholder="Campus">
+        placeholder="Campus"
+        style={undefined}>
         <option
           style={
             Object {
