@@ -75,7 +75,11 @@ exports[`Layout renders custom toggles if passed 1`] = `
           Card Number
         </label>
         <input
+          autoCapitalize="on"
+          autoComplete="on"
+          autoCorrect="on"
           className={undefined}
+          data-lpignore={undefined}
           data-spec="input"
           defaultValue={undefined}
           disabled={undefined}
@@ -86,6 +90,8 @@ exports[`Layout renders custom toggles if passed 1`] = `
           onChange={[Function]}
           onFocus={[Function]}
           placeholder="Card Number"
+          readOnly={undefined}
+          spellCheck={undefined}
           style={Object {}}
           type="tel" />
         <div
@@ -110,7 +116,11 @@ exports[`Layout renders custom toggles if passed 1`] = `
               Exp (MM/YY)
             </label>
             <input
+              autoCapitalize="on"
+              autoComplete="on"
+              autoCorrect="on"
               className={undefined}
+              data-lpignore={undefined}
               data-spec="input"
               defaultValue={undefined}
               disabled={undefined}
@@ -121,6 +131,8 @@ exports[`Layout renders custom toggles if passed 1`] = `
               onChange={[Function]}
               onFocus={[Function]}
               placeholder="Exp (MM/YY)"
+              readOnly={undefined}
+              spellCheck={undefined}
               style={Object {}}
               type="tel" />
           </div>
@@ -137,7 +149,11 @@ exports[`Layout renders custom toggles if passed 1`] = `
               CCV
             </label>
             <input
+              autoCapitalize="on"
+              autoComplete="on"
+              autoCorrect="on"
               className={undefined}
+              data-lpignore={undefined}
               data-spec="input"
               defaultValue={undefined}
               disabled={undefined}
@@ -148,6 +164,8 @@ exports[`Layout renders custom toggles if passed 1`] = `
               onChange={[Function]}
               onFocus={[Function]}
               placeholder="CCV"
+              readOnly={undefined}
+              spellCheck={undefined}
               style={Object {}}
               type="tel" />
           </div>
@@ -160,10 +178,13 @@ exports[`Layout renders custom toggles if passed 1`] = `
       <label
         className="h6 soft-half-left push-half-left flush-bottom text-left float-left locked-top"
         htmlFor="savePayment"
+        onClick={[Function]}
         style={
           Object {
             "cursor": "pointer",
+            "display": "block",
             "marginTop": "-1px",
+            "whiteSpace": "nowrap",
           }
         }>
         <small
@@ -179,6 +200,7 @@ exports[`Layout renders custom toggles if passed 1`] = `
         disabled={undefined}
         id="savePayment"
         name="savePayment"
+        onChange={undefined}
         onClick={[Function]}
         style={
           Object {
@@ -188,7 +210,7 @@ exports[`Layout renders custom toggles if passed 1`] = `
         type="checkbox" />
       <label
         htmlFor="savePayment"
-        style={Object {}} />
+        style={undefined} />
     </div>
   </div>
   <div>
@@ -274,7 +296,11 @@ exports[`Layout renders default toggles by default 1`] = `
           Card Number
         </label>
         <input
+          autoCapitalize="on"
+          autoComplete="on"
+          autoCorrect="on"
           className={undefined}
+          data-lpignore={undefined}
           data-spec="input"
           defaultValue={undefined}
           disabled={undefined}
@@ -285,6 +311,8 @@ exports[`Layout renders default toggles by default 1`] = `
           onChange={[Function]}
           onFocus={[Function]}
           placeholder="Card Number"
+          readOnly={undefined}
+          spellCheck={undefined}
           style={Object {}}
           type="tel" />
         <div
@@ -309,7 +337,11 @@ exports[`Layout renders default toggles by default 1`] = `
               Exp (MM/YY)
             </label>
             <input
+              autoCapitalize="on"
+              autoComplete="on"
+              autoCorrect="on"
               className={undefined}
+              data-lpignore={undefined}
               data-spec="input"
               defaultValue={undefined}
               disabled={undefined}
@@ -320,6 +352,8 @@ exports[`Layout renders default toggles by default 1`] = `
               onChange={[Function]}
               onFocus={[Function]}
               placeholder="Exp (MM/YY)"
+              readOnly={undefined}
+              spellCheck={undefined}
               style={Object {}}
               type="tel" />
           </div>
@@ -336,7 +370,11 @@ exports[`Layout renders default toggles by default 1`] = `
               CCV
             </label>
             <input
+              autoCapitalize="on"
+              autoComplete="on"
+              autoCorrect="on"
               className={undefined}
+              data-lpignore={undefined}
               data-spec="input"
               defaultValue={undefined}
               disabled={undefined}
@@ -347,6 +385,8 @@ exports[`Layout renders default toggles by default 1`] = `
               onChange={[Function]}
               onFocus={[Function]}
               placeholder="CCV"
+              readOnly={undefined}
+              spellCheck={undefined}
               style={Object {}}
               type="tel" />
           </div>
@@ -359,10 +399,13 @@ exports[`Layout renders default toggles by default 1`] = `
       <label
         className="h6 soft-half-left push-half-left flush-bottom text-left float-left locked-top"
         htmlFor="savePayment"
+        onClick={[Function]}
         style={
           Object {
             "cursor": "pointer",
+            "display": "block",
             "marginTop": "-1px",
+            "whiteSpace": "nowrap",
           }
         }>
         <small
@@ -378,6 +421,7 @@ exports[`Layout renders default toggles by default 1`] = `
         disabled={undefined}
         id="savePayment"
         name="savePayment"
+        onChange={undefined}
         onClick={[Function]}
         style={
           Object {
@@ -387,7 +431,7 @@ exports[`Layout renders default toggles by default 1`] = `
         type="checkbox" />
       <label
         htmlFor="savePayment"
-        style={Object {}} />
+        style={undefined} />
     </div>
   </div>
   <div>
