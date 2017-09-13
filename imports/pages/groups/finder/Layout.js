@@ -9,7 +9,7 @@ import SideBySide from "../../../components/@primitives/UI/cards/SideBySideCard"
 
 import GroupsILead from "../../../components/groups/groups-i-lead";
 import KeywordSelect from "./Fields/Keyword";
-import CampusSelect from "./Fields/Campus";
+import CampusSelect from "./Fields/CampusSelect";
 import Location from "./Fields/Location";
 import Validate from "../../../util/validate";
 import Svg from "../../../components/@primitives/UI/svg";
@@ -18,17 +18,14 @@ import Svg from "../../../components/@primitives/UI/svg";
 const Layout = ({
   tags,
   tagOnClick,
-  selectedTags,
   submitTags,
   canSearchTags,
   canSearchCampus,
   canSearchLocation,
   campuses,
   zip,
-  zipOnChange,
   zipDisabled,
   selectedCampus,
-  campusOnChange,
   searchQuery,
   findByQuery,
   inputOnChange,
@@ -104,20 +101,20 @@ const Layout = ({
 
             return (
               <div className={"text-left soft-half-sides"}>
-                <Svg
-                  name={"locate"}
-                  title={"Locate Icon"}
-                  fill={color}
-                  classes={"display-inline-block"}
-                />
-                <h6
-                  className="display-inline-block push-half-left"
-                  style={{ fontWeight: "400", verticalAlign: "super" }}
-                >
-                  <button onClick={e => getLocation(e)} style={{ color }}>
+                <a onClick={e => getLocation(e)} style={{ color }}>
+                  <Svg
+                    name={"locate"}
+                    title={"Locate Icon"}
+                    fill={color}
+                    classes={"display-inline-block"}
+                  />
+                  <h6
+                    className="display-inline-block push-half-left"
+                    style={{ fontWeight: "400", verticalAlign: "super" }}
+                  >
                     Use my current location
-                  </button>
-                </h6>
+                  </h6>
+                </a>
               </div>
             );
           })()}
@@ -127,7 +124,7 @@ const Layout = ({
     <div className="soft-double-bottom text-center background--light-primary">
       <div className="background--light-primary soft-double-sides@lap-wide-and-up">
         {(() => {
-          if (!tags.length) {
+          if (!tags.length && !campuses.length) {
             return (
               <div className="one-whole text-center">
                 <Loading />

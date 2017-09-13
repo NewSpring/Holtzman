@@ -5,7 +5,6 @@ import toSnakeCase from "to-snake-case";
 import moment from "moment";
 import Liquid from "liquid-node";
 
-
 import { api } from "../../../../util/rock";
 import { makeNewGuid } from "../../../../util";
 
@@ -14,9 +13,9 @@ const Parser = new Liquid.Engine();
 
 const StandardFilters = { ...Liquid.StandardFilters };
 const caseChangedFilter = {};
-for (const filter in StandardFilters) { // eslint-disable-line
+for (const filter in StandardFilters) {
+  // eslint-disable-line
   const newFilter = toPascalCase(filter);
-
 
   caseChangedFilter[newFilter] = (i, format) => {
     let input = i;
@@ -44,19 +43,23 @@ function toDate(i) {
   return null;
 }
 
-Parser.registerFilters({ ...caseChangedFilter,
+Parser.registerFilters({
+  ...caseChangedFilter,
   ...{
     Attribute(variable, key) {
       if (variable === "Global") {
         const global = this.context.findVariable("GlobalAttribute");
-        return global.then((response) => response[key]);
+        return global.then(response => response[key]);
       }
       return null;
     },
     Format(value, format) {
       // hardcode number formating for now
       if (format === "#,##0.00") {
-        return `${Number(value).toFixed(2)}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        return `${Number(value).toFixed(2)}`.replace(
+          /\B(?=(\d{3})+(?!\d))/g,
+          ",",
+        );
       }
       return null;
     },
@@ -69,16 +72,19 @@ Parser.registerFilters({ ...caseChangedFilter,
       if (input == null) return "";
       if (toString(format).length === 0) return input.toUTCString();
 
-      format = format.replace(/y/gmi, "Y");
+      format = format.replace(/y/gim, "Y");
       return moment(input).format(format);
       // return Liquid.StandardFilters.date(input, format.toLowerCase())
     },
   },
 });
 
-
 Meteor.methods({
-  "communication/email/send": function sendEmail(emailId, PersonAliasId, merge) {
+  "communication/email/send": function sendEmail(
+    emailId,
+    PersonAliasId,
+    merge,
+  ) {
     let mergeFields = merge;
     check(emailId, Number);
     // check(PersonAliasId, Number)
@@ -98,12 +104,20 @@ Meteor.methods({
     */
     const GlobalAttribute = {};
     // eslint-disable-next-line max-len
-    const Globals = api.get.sync("AttributeValues?$filter=Attribute/EntityTypeId eq null&$expand=Attribute&$select=Attribute/Key,Value");
+    const Globals = api.get.sync(
+      "AttributeValues?$filter=Attribute/EntityTypeId eq null&$expand=Attribute&$select=Attribute/Key,Value",
+    );
     // eslint-disable-next-line max-len
-    const Defaults = api.get.sync("Attributes?$filter=EntityTypeId eq null&$select=DefaultValue,Key");
+    const Defaults = api.get.sync(
+      "Attributes?$filter=EntityTypeId eq null&$select=DefaultValue,Key",
+    );
 
-    for (const d of Defaults) { GlobalAttribute[d.Key] = d.DefaultValue; }
-    for (const g of Globals) { GlobalAttribute[g.Attribute.Key] = g.Value; }
+    for (const d of Defaults) {
+      GlobalAttribute[d.Key] = d.DefaultValue;
+    }
+    for (const g of Globals) {
+      GlobalAttribute[g.Attribute.Key] = g.Value;
+    }
     mergeFields = { ...mergeFields, ...{ GlobalAttribute } };
 
     return Promise.all([
@@ -125,6 +139,7 @@ Meteor.methods({
           SenderPersonAliasId: null,
           Status: 3,
           IsBulkCommunication: false,
+          // FutureSendDateTime: moment().add(30, "minutes").toISOString(),
           Guid: makeNewGuid(),
           Subject: subject,
           MediumData: {
@@ -134,7 +149,7 @@ Meteor.methods({
 
         return api.post("Communications", Communication);
       })
-      .then((CommunicationId) => {
+      .then(CommunicationId => {
         if (CommunicationId.statusText) {
           throw new Meteor.Error(CommunicationId);
         }
@@ -159,16 +174,18 @@ Meteor.methods({
           };
 
           const CommunicationRecipientId = api.post.sync(
-            "CommunicationRecipients", CommunicationRecipient
+            "CommunicationRecipients",
+            CommunicationRecipient,
           );
 
           ids.push(CommunicationRecipientId);
         }
 
-        api.post(`Communications/Send/${CommunicationId}`);
+        api.post.sync(`Communications/Send/${CommunicationId}`);
+
         return ids;
       })
-      .then((communications) => {
+      .then(communications => {
         for (const CommunicationRecipientId of communications) {
           if (CommunicationRecipientId.statusText) {
             throw new Meteor.Error(CommunicationRecipientId);
@@ -177,7 +194,7 @@ Meteor.methods({
 
         return communications;
       })
-      .catch((e) => {
+      .catch(e => {
         // eslint-disable-next-line
         console.log(e);
         throw e;

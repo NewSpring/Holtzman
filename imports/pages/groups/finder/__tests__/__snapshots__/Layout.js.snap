@@ -51,38 +51,38 @@ exports[`test renders disabled tags 1`] = `
               },
             ]
           } />
-        <Campus
+        <CampusSelect
           onChange={[Function]} />
         <Location
           onChange={[Function]}
           validation={[Function]} />
         <div
           className="text-left soft-half-sides">
-          <Svg
-            classes="display-inline-block"
-            fill="#505050"
-            height="24px"
-            name="locate"
-            title="Locate Icon"
-            width="24px" />
-          <h6
-            className="display-inline-block push-half-left"
+          <a
+            onClick={[Function]}
             style={
               Object {
-                "fontWeight": "400",
-                "verticalAlign": "super",
+                "color": "#505050",
               }
             }>
-            <button
-              onClick={[Function]}
+            <Svg
+              classes="display-inline-block"
+              fill="#505050"
+              height="24px"
+              name="locate"
+              title="Locate Icon"
+              width="24px" />
+            <h6
+              className="display-inline-block push-half-left"
               style={
                 Object {
-                  "color": "#505050",
+                  "fontWeight": "400",
+                  "verticalAlign": "super",
                 }
               }>
               Use my current location
-            </button>
-          </h6>
+            </h6>
+          </a>
         </div>
       </Form>
     </div>
@@ -166,38 +166,39 @@ exports[`test renders loading if no tags 1`] = `
           onChange={[Function]}
           tagOnClick={[Function]}
           tags={Array []} />
-        <Campus
+        <CampusSelect
+          campuses={Array []}
           onChange={[Function]} />
         <Location
           onChange={[Function]}
           validation={[Function]} />
         <div
           className="text-left soft-half-sides">
-          <Svg
-            classes="display-inline-block"
-            fill="#505050"
-            height="24px"
-            name="locate"
-            title="Locate Icon"
-            width="24px" />
-          <h6
-            className="display-inline-block push-half-left"
+          <a
+            onClick={[Function]}
             style={
               Object {
-                "fontWeight": "400",
-                "verticalAlign": "super",
+                "color": "#505050",
               }
             }>
-            <button
-              onClick={[Function]}
+            <Svg
+              classes="display-inline-block"
+              fill="#505050"
+              height="24px"
+              name="locate"
+              title="Locate Icon"
+              width="24px" />
+            <h6
+              className="display-inline-block push-half-left"
               style={
                 Object {
-                  "color": "#505050",
+                  "fontWeight": "400",
+                  "verticalAlign": "super",
                 }
               }>
               Use my current location
-            </button>
-          </h6>
+            </h6>
+          </a>
         </div>
       </Form>
     </div>
@@ -288,38 +289,38 @@ exports[`test renders with props 1`] = `
               },
             ]
           } />
-        <Campus
+        <CampusSelect
           onChange={[Function]} />
         <Location
           onChange={[Function]}
           validation={[Function]} />
         <div
           className="text-left soft-half-sides">
-          <Svg
-            classes="display-inline-block"
-            fill="#505050"
-            height="24px"
-            name="locate"
-            title="Locate Icon"
-            width="24px" />
-          <h6
-            className="display-inline-block push-half-left"
+          <a
+            onClick={[Function]}
             style={
               Object {
-                "fontWeight": "400",
-                "verticalAlign": "super",
+                "color": "#505050",
               }
             }>
-            <button
-              onClick={[Function]}
+            <Svg
+              classes="display-inline-block"
+              fill="#505050"
+              height="24px"
+              name="locate"
+              title="Locate Icon"
+              width="24px" />
+            <h6
+              className="display-inline-block push-half-left"
               style={
                 Object {
-                  "color": "#505050",
+                  "fontWeight": "400",
+                  "verticalAlign": "super",
                 }
               }>
               Use my current location
-            </button>
-          </h6>
+            </h6>
+          </a>
         </div>
       </Form>
     </div>

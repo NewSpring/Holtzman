@@ -85,7 +85,7 @@ exports[`Layout renders US by default 1`] = `
         type={undefined} />
     </div>
     <div
-      className="input input--active select_15p0e27">
+      className="input input--active select_e8htpf">
       <label
         htmlFor="Country"
         style={undefined}>
@@ -97,9 +97,11 @@ exports[`Layout renders US by default 1`] = `
         disabled={undefined}
         id="Country"
         name="country"
+        onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
-        placeholder="Country">
+        placeholder="Country"
+        style={undefined}>
         <option
           style={
             Object {
@@ -151,7 +153,7 @@ exports[`Layout renders US by default 1`] = `
       <div
         className="grid__item one-half">
         <div
-          className="input input--active select_15p0e27">
+          className="input input--active select_e8htpf">
           <label
             htmlFor="State/Territory"
             style={undefined}>
@@ -163,9 +165,11 @@ exports[`Layout renders US by default 1`] = `
             disabled={undefined}
             id="State/Territory"
             name="state"
+            onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
-            placeholder="State/Territory">
+            placeholder="State/Territory"
+            style={undefined}>
             <option
               style={
                 Object {
@@ -311,7 +315,7 @@ exports[`Layout renders your country instead 1`] = `
         type={undefined} />
     </div>
     <div
-      className="input input--active select_15p0e27">
+      className="input input--active select_e8htpf">
       <label
         htmlFor="Country"
         style={undefined}>
@@ -323,9 +327,11 @@ exports[`Layout renders your country instead 1`] = `
         disabled={undefined}
         id="Country"
         name="country"
+        onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
-        placeholder="Country">
+        placeholder="Country"
+        style={undefined}>
         <option
           style={
             Object {
@@ -377,7 +383,7 @@ exports[`Layout renders your country instead 1`] = `
       <div
         className="grid__item one-half">
         <div
-          className="input input--active select_15p0e27">
+          className="input input--active select_e8htpf">
           <label
             htmlFor="State/Territory"
             style={undefined}>
@@ -389,9 +395,11 @@ exports[`Layout renders your country instead 1`] = `
             disabled={undefined}
             id="State/Territory"
             name="state"
+            onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
-            placeholder="State/Territory">
+            placeholder="State/Territory"
+            style={undefined}>
             <option
               style={
                 Object {

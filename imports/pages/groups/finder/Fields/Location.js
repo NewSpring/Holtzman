@@ -31,11 +31,9 @@ export default class Location extends Component {
   };
 
   onBlur = () => {
-    if (this.props.zip !== "Using your location") {
-      this.setState({
-        focused: false,
-      });
-    }
+    this.setState({
+      focused: false,
+    });
   };
 
   render() {
