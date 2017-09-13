@@ -127,7 +127,7 @@ exports[`Layout renders with props 1`] = `
       .input--active select { color: #303030 }; .input--focused label { color: #858585 }
     </style>
     <div
-      className="input input--active select_lvcpjl">
+      className="input input--active select_e8htpf">
       <label
         htmlFor="Campus"
         style={undefined}>

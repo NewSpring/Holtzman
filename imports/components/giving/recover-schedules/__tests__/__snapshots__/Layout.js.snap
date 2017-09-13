@@ -96,7 +96,7 @@ exports[`Layout should render the Remind component if state is set to 'remind' 1
         I\'d like to be reminded
       </h3>
       <div
-        className="input input--active soft-bottom display-inline-block select_lvcpjl">
+        className="input input--active soft-bottom display-inline-block select_e8htpf">
         <select
           className="outlined--dotted outlined--light h3 hard-top flush-bottom"
           defaultValue="tomorrow"

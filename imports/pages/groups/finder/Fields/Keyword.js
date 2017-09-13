@@ -1,7 +1,8 @@
 import { Component, PropTypes } from "react";
+import { css } from "aphrodite";
 import Forms from "../../../../components/@primitives/UI/forms";
 import Tag from "../../../../components/@primitives/UI/tags";
-import Svg from "../../../../components/@primitives/UI/svg";
+import Styles from "./styles-css";
 
 const focusedInput = {
   border: "1px solid #f0f0f0",
@@ -114,6 +115,10 @@ export default class Keywords extends Component {
         return result;
       }, []);
 
+    const arrowFocus = css(
+      this.state.focused ? Styles.arrowFocused : Styles.arrow,
+    );
+
     return (
       <div
         style={this.state.focused ? focusedInput : hiddenInput}
@@ -150,12 +155,8 @@ export default class Keywords extends Component {
             }}
             onClick={this.state.focused ? this.onBlur : this.onFocus}
           >
-            <Svg
-              name={this.state.focused ? "arrowUp" : "arrowDown"}
-              fill={this.state.focused ? "#6BAC43" : "#505050"}
-              width={"24px"}
-              height={"24px"}
-              title={this.state.focused ? "Arrow Up Icon" : "Arrow Down Icon"}
+            <div
+              className={("one-whole", "display-inline-block", `${arrowFocus}`)}
             />
           </a>
         </Forms.Input>

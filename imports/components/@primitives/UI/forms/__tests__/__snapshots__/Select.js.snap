@@ -1,6 +1,6 @@
 exports[`test allows deselect 1`] = `
 <div
-  className="input select_lvcpjl">
+  className="input select_e8htpf">
   <Label
     labelFor="2"
     labelName="myLabel" />
@@ -34,7 +34,7 @@ exports[`test allows deselect 1`] = `
 
 exports[`test appends extra classes 1`] = `
 <div
-  className="input append me select_lvcpjl">
+  className="input append me select_e8htpf">
   <Label
     labelFor="2"
     labelName="myLabel" />
@@ -67,7 +67,7 @@ exports[`test appends extra classes 1`] = `
 
 exports[`test can hide the label 1`] = `
 <div
-  className="input select_lvcpjl">
+  className="input select_e8htpf">
   <select
     className="input classes"
     id="2"
@@ -97,7 +97,7 @@ exports[`test can hide the label 1`] = `
 
 exports[`test has active state 1`] = `
 <div
-  className="input input--active select_lvcpjl">
+  className="input input--active select_e8htpf">
   <Label
     labelFor="2"
     labelName="myLabel" />
@@ -130,7 +130,7 @@ exports[`test has active state 1`] = `
 
 exports[`test has error state 1`] = `
 <div
-  className="input input--alert select_lvcpjl">
+  className="input input--alert select_e8htpf">
   <Label
     labelFor="2"
     labelName="myLabel" />
@@ -163,7 +163,7 @@ exports[`test has error state 1`] = `
 
 exports[`test has focused state 1`] = `
 <div
-  className="input input--focused select_lvcpjl">
+  className="input input--focused select_e8htpf">
   <Label
     labelFor="2"
     labelName="myLabel" />
@@ -196,7 +196,7 @@ exports[`test has focused state 1`] = `
 
 exports[`test includes blank 1`] = `
 <div
-  className="input select_lvcpjl">
+  className="input select_e8htpf">
   <Label
     labelFor="2"
     labelName="myLabel" />
@@ -235,7 +235,7 @@ exports[`test includes blank 1`] = `
 
 exports[`test includes placeholder 1`] = `
 <div
-  className="input select_lvcpjl">
+  className="input select_e8htpf">
   <Label
     labelFor="2"
     labelName="myLabel" />
@@ -276,7 +276,7 @@ exports[`test includes placeholder 1`] = `
 
 exports[`test is active if selected prop 1`] = `
 <div
-  className="input input--active select_lvcpjl">
+  className="input input--active select_e8htpf">
   <Label
     labelFor="2"
     labelName="myLabel" />
@@ -310,7 +310,7 @@ exports[`test is active if selected prop 1`] = `
 
 exports[`test overrides with theme if present 1`] = `
 <div
-  className="override select_lvcpjl">
+  className="override select_e8htpf">
   <Label
     labelFor="2"
     labelName="myLabel" />
@@ -357,7 +357,7 @@ exports[`test renderHepText returns when status 1`] = `
 
 exports[`test renders with props 1`] = `
 <div
-  className="input select_lvcpjl">
+  className="input select_e8htpf">
   <Label
     labelFor="2"
     labelName="myLabel" />

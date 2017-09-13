@@ -67,7 +67,7 @@ exports[`test should render with props 1`] = `
     <div
       className="grid__item one-whole">
       <div
-        className="input input--active select_lvcpjl">
+        className="input input--active select_e8htpf">
         <label
           htmlFor="accountType"
           style={undefined}>

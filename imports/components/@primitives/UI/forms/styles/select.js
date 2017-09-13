@@ -15,6 +15,7 @@ export default StyleSheet.create({
       position: "absolute",
       display: "inline-block",
       cursor: "pointer",
+      pointerEvents: "none",
       top: "-4px",
       right: "4px",
     },

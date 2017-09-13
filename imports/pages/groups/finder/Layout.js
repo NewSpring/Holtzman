@@ -101,20 +101,20 @@ const Layout = ({
 
             return (
               <div className={"text-left soft-half-sides"}>
-                <Svg
-                  name={"locate"}
-                  title={"Locate Icon"}
-                  fill={color}
-                  classes={"display-inline-block"}
-                />
-                <h6
-                  className="display-inline-block push-half-left"
-                  style={{ fontWeight: "400", verticalAlign: "super" }}
-                >
-                  <button onClick={e => getLocation(e)} style={{ color }}>
+                <a onClick={e => getLocation(e)} style={{ color }}>
+                  <Svg
+                    name={"locate"}
+                    title={"Locate Icon"}
+                    fill={color}
+                    classes={"display-inline-block"}
+                  />
+                  <h6
+                    className="display-inline-block push-half-left"
+                    style={{ fontWeight: "400", verticalAlign: "super" }}
+                  >
                     Use my current location
-                  </button>
-                </h6>
+                  </h6>
+                </a>
               </div>
             );
           })()}

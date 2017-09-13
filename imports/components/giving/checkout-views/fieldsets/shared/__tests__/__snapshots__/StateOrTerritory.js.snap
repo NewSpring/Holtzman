@@ -4,7 +4,7 @@ exports[`test renders if country is \`CA\` 1`] = `
 <div
   className="grid__item one-half">
   <div
-    className="input input--active select_lvcpjl">
+    className="input input--active select_e8htpf">
     <label
       htmlFor="State/Territory"
       style={undefined}>
@@ -50,7 +50,7 @@ exports[`test renders if no country 1`] = `
 <div
   className="grid__item one-half">
   <div
-    className="input input--active select_lvcpjl">
+    className="input input--active select_e8htpf">
     <label
       htmlFor="State/Territory"
       style={undefined}>
@@ -96,7 +96,7 @@ exports[`test renders with default state as SC 1`] = `
 <div
   className="grid__item one-half">
   <div
-    className="input input--active select_lvcpjl">
+    className="input input--active select_e8htpf">
     <label
       htmlFor="State/Territory"
       style={undefined}>
@@ -142,7 +142,7 @@ exports[`test renders with predefined state 1`] = `
 <div
   className="grid__item one-half">
   <div
-    className="input input--active select_lvcpjl">
+    className="input input--active select_e8htpf">
     <label
       htmlFor="State/Territory"
       style={undefined}>

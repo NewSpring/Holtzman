@@ -95,7 +95,7 @@ exports[`test should accept an active prop to show the input 1`] = `
         }
         placeholder="select fund">
         <div
-          className="input input--active soft-bottom display-inline-block select_1rryh47 select_lvcpjl">
+          className="input input--active soft-bottom display-inline-block select_1rryh47 select_e8htpf">
           <select
             className="text-brand outlined--dotted outlined--light h3 hard-top flush-bottom"
             defaultValue="main fund"
@@ -218,7 +218,7 @@ exports[`test should accept custom classes thru classes prop 1`] = `
         }
         placeholder="select fund">
         <div
-          className="input input--active soft-bottom display-inline-block select_1rryh47 select_lvcpjl">
+          className="input input--active soft-bottom display-inline-block select_1rryh47 select_e8htpf">
           <select
             className="text-dark-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
             defaultValue="main fund"
@@ -346,7 +346,7 @@ exports[`test should accept multiple accounts through accounts prop 1`] = `
         }
         placeholder="select fund">
         <div
-          className="input input--active soft-bottom display-inline-block select_1rryh47 select_lvcpjl">
+          className="input input--active soft-bottom display-inline-block select_1rryh47 select_e8htpf">
           <select
             className="text-dark-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
             defaultValue="hello"
@@ -472,7 +472,7 @@ exports[`test should render with minimal props 1`] = `
         }
         placeholder="select fund">
         <div
-          className="input input--active soft-bottom display-inline-block select_1rryh47 select_lvcpjl">
+          className="input input--active soft-bottom display-inline-block select_1rryh47 select_e8htpf">
           <select
             className="text-dark-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
             defaultValue="main fund"

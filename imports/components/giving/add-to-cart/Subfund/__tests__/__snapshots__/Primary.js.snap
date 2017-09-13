@@ -94,7 +94,7 @@ exports[`test should accept custom classes thru classes prop 1`] = `
       placeholder="select fund"
       selected="test">
       <div
-        className="input soft-bottom display-inline-block select_1rryh47 input--active select_lvcpjl">
+        className="input soft-bottom display-inline-block select_1rryh47 input--active select_e8htpf">
         <select
           className="text-dark-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
           id="select-account"
@@ -224,7 +224,7 @@ exports[`test should accept multiple accounts through accounts prop 1`] = `
       placeholder="select fund"
       selected="test">
       <div
-        className="input soft-bottom display-inline-block select_1rryh47 input--active select_lvcpjl">
+        className="input soft-bottom display-inline-block select_1rryh47 input--active select_e8htpf">
         <select
           className="text-dark-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
           id="select-account"
@@ -352,7 +352,7 @@ exports[`test should change classes based on active state 1`] = `
       placeholder="select fund"
       selected="test">
       <div
-        className="input soft-bottom display-inline-block select_1rryh47 input--active select_lvcpjl">
+        className="input soft-bottom display-inline-block select_1rryh47 input--active select_e8htpf">
         <select
           className="text-primary outlined--dotted outlined--light h3 hard-top flush-bottom"
           id="select-account"
@@ -476,7 +476,7 @@ exports[`test should render with minimal props 1`] = `
       placeholder="select fund"
       selected="test">
       <div
-        className="input soft-bottom display-inline-block select_1rryh47 input--active select_lvcpjl">
+        className="input soft-bottom display-inline-block select_1rryh47 input--active select_e8htpf">
         <select
           className="text-dark-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
           id="select-account"

@@ -103,7 +103,7 @@ exports[`SubFund sets the state to active if it has an amount 1`] = `
           onChange={[Function]}
           placeholder="select fund">
           <div
-            className="input input--active soft-bottom display-inline-block select_1rryh47 select_lvcpjl">
+            className="input input--active soft-bottom display-inline-block select_1rryh47 select_e8htpf">
             <select
               className="text-brand outlined--dotted outlined--light h3 hard-top flush-bottom"
               defaultValue="main fund"
@@ -237,7 +237,7 @@ exports[`SubFund should render a primary fund 1`] = `
         onChange={[Function]}
         placeholder="select fund">
         <div
-          className="input soft-bottom display-inline-block select_1rryh47 select_lvcpjl">
+          className="input soft-bottom display-inline-block select_1rryh47 select_e8htpf">
           <select
             className="text-dark-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
             id="select-account"
@@ -370,7 +370,7 @@ exports[`SubFund should render with minimal props 1`] = `
           onChange={[Function]}
           placeholder="select fund">
           <div
-            className="input input--active soft-bottom display-inline-block select_1rryh47 select_lvcpjl">
+            className="input input--active soft-bottom display-inline-block select_1rryh47 select_e8htpf">
             <select
               className="text-brand outlined--dotted outlined--light h3 hard-top flush-bottom"
               defaultValue="main fund"

@@ -32,6 +32,7 @@ export default class Select extends Component {
     placeholder: PropTypes.string,
     selected: PropTypes.any, // eslint-disable-line
     includeBlank: PropTypes.bool, // eslint-disable-line
+    includeEmpty: PropTypes.bool, // eslint-disable-line
     deselect: PropTypes.bool, // eslint-disable-line
     items: PropTypes.array, // eslint-disable-line
     optionClasses: PropTypes.string,
@@ -111,7 +112,9 @@ export default class Select extends Component {
   setValue = value => {
     const node = this.node;
     node.value = value;
-    this.focus();
+    if (value) {
+      this.focus();
+    }
     // this.change()
   };
 
@@ -243,6 +246,12 @@ export default class Select extends Component {
               return (
                 <option style={{ display: "none" }}>
                   {this.props.placeholder || ""}
+                </option>
+              );
+            } else if (this.props.includeEmpty) {
+              return (
+                <option className={this.props.optionClasses} value={""}>
+                  {""}
                 </option>
               );
             }

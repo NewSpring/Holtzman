@@ -121,7 +121,8 @@ class TemplateWithoutData extends Component {
     // are actual attributes
     const tags = this.state.query
       .split(/[, ]+/)
-      .reduce((result, t, index, original) => {
+      .reduce((result, tag, index, original) => {
+        const t = tag.toLowerCase();
         if (attributeTags.indexOf(t) > -1) {
           result.push(t);
         } else if (t === "kid" && original[index + 1] === "friendly") {

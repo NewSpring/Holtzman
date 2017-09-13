@@ -2,14 +2,11 @@
 import { css } from "aphrodite";
 import Forms from "../../../../components/@primitives/UI/forms";
 import Styles from "./styles-css";
-import Svg from "../../../../components/@primitives/UI/svg";
 
 type ICampusSelect = {
   campuses: Object[],
   selectedCampus: string,
   onChange: Function,
-  // style: Object,
-  // classes: Object,
 };
 
 const CampusSelect = ({ campuses, selectedCampus, onChange }: ICampusSelect) =>
@@ -30,7 +27,7 @@ const CampusSelect = ({ campuses, selectedCampus, onChange }: ICampusSelect) =>
       name="campus"
       type="campus"
       selected={selectedCampus}
-      includeBlank
+      includeEmpty
     />
   </div>;
 
