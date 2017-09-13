@@ -13,7 +13,9 @@ if (typeof Accounts !== "undefined") {
     const Person = api.get.sync(`People/${PersonId}`);
 
     if (!RESET_EMAIL_ID) {
-      RESET_EMAIL_ID = api.get.sync("SystemEmails?$filter=Title eq 'Reset Password'");
+      RESET_EMAIL_ID = api.get.sync(
+        "SystemEmails?$filter=Title eq 'Reset Password'",
+      );
       RESET_EMAIL_ID = RESET_EMAIL_ID[0].Id;
     }
 
@@ -26,8 +28,8 @@ if (typeof Accounts !== "undefined") {
       {
         ResetPasswordUrl: `${ROOT_URL}/_/reset-password/${token}`,
         Person,
-      }
-      , () => {}
+      },
+      () => {},
     );
 
     return false;
@@ -55,7 +57,10 @@ Meteor.methods({
     let isAuthorized = false;
     if (current) {
       try {
-        isAuthorized = api.post.sync("Auth/login", { Username, Password: current });
+        isAuthorized = api.post.sync("Auth/login", {
+          Username,
+          Password: current,
+        });
       } catch (e) {
         isAuthorized = false;
       }
@@ -76,14 +81,14 @@ Meteor.methods({
         // eslint-disable-next-line
         console.error("@@GROUP_ADD_ERROR", RockUser, response);
         throw new Meteor.Error(
-          "It looks like we had an unexpected issue! We are so sorry! Please try again"
+          "It looks like we had an unexpected issue! We are so sorry! Please try again",
         );
       }
     } catch (e) {
       // eslint-disable-next-line
       console.error("@@GROUP_ADD_SECOND_ERROR", e, e.message);
       throw new Meteor.Error(
-        "It looks like we had an unexpected issue! We are so sorry! Please try again"
+        "It looks like we had an unexpected issue! We are so sorry! Please try again",
       );
     }
 
