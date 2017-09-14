@@ -190,6 +190,14 @@ const mapStateToProps = ({ routing: { location } }) => {
     Object.keys(location.query).length && location.query.campuses
       ? location.query.campuses
       : "";
+  const longitude =
+    Object.keys(location.query).length && location.query.longitude
+      ? location.query.longitude
+      : "";
+  const latitude =
+    Object.keys(location.query).length && location.query.latitude
+      ? location.query.latitude
+      : "";
   const zip =
     Object.keys(location.query).length && location.query.zip
       ? location.query.zip
@@ -198,7 +206,17 @@ const mapStateToProps = ({ routing: { location } }) => {
     Object.keys(location.query).length && location.query.schedules
       ? location.query.schedules
       : "";
-  return { tags, q, location, campuses, campus, zip, schedules };
+  return {
+    tags,
+    q,
+    location,
+    campuses,
+    campus,
+    zip,
+    latitude,
+    longitude,
+    schedules,
+  };
 };
 
 const CAMPUS_LOCATION_QUERY = gql`

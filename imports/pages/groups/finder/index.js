@@ -157,7 +157,7 @@ class TemplateWithoutData extends Component {
     if (latitude) location.query.latitude = latitude;
     if (longitude) location.query.longitude = longitude;
     if (campus) location.query.campus = campus;
-    if (zip) location.query.zip = zip;
+    if (zip && !latitude && !longitude) location.query.zip = zip;
 
     // XXX i don't like the idea of having to push history twice
     // but this is the only way to preserve state with a back button
@@ -243,7 +243,11 @@ class TemplateWithoutData extends Component {
             }
             campuses={campuses || defaultArray}
             selectedCampus={this.state.campus}
-            zip={this.state.zip}
+            zip={
+              this.state.latitude && this.state.longitude
+                ? "Using your location"
+                : this.state.zip
+            }
             zipDisabled={Boolean(this.state.latitude && this.state.longitude)}
             searchQuery={this.state.query || ""}
             tags={(attributes && attributes.tags) || defaultArray}
