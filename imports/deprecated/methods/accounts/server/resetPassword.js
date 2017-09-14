@@ -16,6 +16,7 @@ if (typeof Accounts !== "undefined") {
       RESET_EMAIL_ID = api.get.sync(
         "SystemEmails?$filter=Title eq 'Reset Password'",
       );
+      console.log(RESET_EMAIL_ID);
       RESET_EMAIL_ID = RESET_EMAIL_ID[0].Id;
     }
 
