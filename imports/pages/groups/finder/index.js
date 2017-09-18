@@ -286,7 +286,7 @@ const AUTOFILL_META_QUERY = gql`
 const withAutoFillMeta = graphql(AUTOFILL_META_QUERY, {
   props: ({ data, data: { person, campuses } }) => ({
     ...data,
-    zip: person ? person.home.zip : "",
+    zip: person && person.home && person.home.zip ? person.home.zip : "",
     campus: person ? person.campus.name.toLowerCase() : "",
     campuses: campuses
       ? campuses
