@@ -9,7 +9,6 @@ import SelectClasses from "./styles/select";
 // XXX if the options come if after the default value
 // the default value is never correctly set.
 export default class Select extends Component {
-
   static propTypes = {
     defaultValue: PropTypes.oneOfType([
       PropTypes.bool,
@@ -21,10 +20,7 @@ export default class Select extends Component {
     errorText: PropTypes.string,
     theme: PropTypes.string,
     error: PropTypes.any, // eslint-disable-line
-    classes: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.array,
-    ]),
+    classes: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
     id: PropTypes.string,
     label: PropTypes.string,
     name: PropTypes.string,
@@ -36,17 +32,18 @@ export default class Select extends Component {
     placeholder: PropTypes.string,
     selected: PropTypes.any, // eslint-disable-line
     includeBlank: PropTypes.bool, // eslint-disable-line
+    includeEmpty: PropTypes.bool, // eslint-disable-line
     deselect: PropTypes.bool, // eslint-disable-line
     items: PropTypes.array, // eslint-disable-line
     optionClasses: PropTypes.string,
-  }
+  };
 
   state = {
     active: false,
     focused: false,
     error: false,
     status: "",
-  }
+  };
 
   componentWillMount() {
     if (this.props.defaultValue) {
@@ -91,24 +88,37 @@ export default class Select extends Component {
     // }
   }
 
-  focus = () => { // eslint-disable-line
+  focus = () => {
+    // eslint-disable-line
     this.setState({
       active: true,
       error: false,
       focused: true,
     });
-  }
+  };
 
-  setValue = (value) => {
+  blur = () => {
+    const value = Boolean(this.getValue());
+    const node = this.node;
+
+    this.setState({
+      active: value,
+      focused: false,
+    });
+
+    node.blur();
+  };
+
+  setValue = value => {
     const node = this.node;
     node.value = value;
-    this.focus();
+    if (value) {
+      this.focus();
+    }
     // this.change()
-  }
+  };
 
-  getValue = () =>
-    this.node.value;
-
+  getValue = () => this.node.value;
 
   // XXX unused?
   // setStatus = (message) => {
@@ -120,7 +130,7 @@ export default class Select extends Component {
       return this.props.disabled;
     }
     return undefined;
-  }
+  };
 
   renderHelpText = () => {
     if ((this.state.error && this.props.errorText) || this.state.status) {
@@ -131,9 +141,9 @@ export default class Select extends Component {
       );
     }
     return undefined;
-  }
+  };
 
-  change = (e) => {
+  change = e => {
     const { value } = e.currentTarget;
 
     if (this.props.onChange) {
@@ -143,7 +153,7 @@ export default class Select extends Component {
     if (this.props.validation) {
       this.props.validation(value, e.currentTarget);
     }
-  }
+  };
 
   validate = () => {
     const target = this.node;
@@ -160,35 +170,48 @@ export default class Select extends Component {
       focused: false,
     });
 
-    if (this.props.validation && typeof (this.props.validation) === "function") {
+    if (this.props.validation && typeof this.props.validation === "function") {
       this.setState({
         error: !this.props.validation(value, target),
       });
     }
-  }
-
+  };
 
   render() {
-    let inputclasses = [
-      "input",
-    ];
+    let inputclasses = ["input"];
 
     // theme overwrite
-    if (this.props.theme) { inputclasses = this.props.theme; }
+    if (this.props.theme) {
+      inputclasses = this.props.theme;
+    }
     // state mangaged classes
-    if (this.state.active) { inputclasses.push("input--active"); }
-    if (this.state.focused) { inputclasses.push("input--focused"); }
-    if (this.state.error) { inputclasses.push("input--alert"); }
+    if (this.state.active) {
+      inputclasses.push("input--active");
+    }
+    if (this.state.focused) {
+      inputclasses.push("input--focused");
+    }
+    if (this.state.error) {
+      inputclasses.push("input--alert");
+    }
     // custom added classes
-    if (this.props.classes) { inputclasses = inputclasses.concat(this.props.classes); }
+    if (this.props.classes) {
+      inputclasses = inputclasses.concat(this.props.classes);
+    }
 
-    if (this.props.selected) { inputclasses.push("input--active"); }
+    if (this.props.selected) {
+      inputclasses.push("input--active");
+    }
 
     // if a selected item is passed in, we don't need a defaultValue
     // conreolled/uncontrolled react error
-    const value = this.props.selected ? { value: this.props.selected || "" } : {};
-    const defaultValue = this.props.defaultValue && !this.props.selected
-      ? { defaultValue: this.props.defaultValue || "" } : {};
+    const value = this.props.selected
+      ? { value: this.props.selected || "" }
+      : {};
+    const defaultValue =
+      this.props.defaultValue && !this.props.selected
+        ? { defaultValue: this.props.defaultValue || "" }
+        : {};
 
     return (
       <div className={`${inputclasses.join(" ")} ${css(SelectClasses.select)}`}>
@@ -196,12 +219,8 @@ export default class Select extends Component {
           if (!this.props.hideLabel) {
             return (
               <Label
-                labelFor={
-                  this.props.id || this.props.label || this.props.name
-                }
-                labelName={
-                  this.props.label || this.props.name
-                }
+                labelFor={this.props.id || this.props.label || this.props.name}
+                labelName={this.props.label || this.props.name}
               />
             );
           }
@@ -209,30 +228,38 @@ export default class Select extends Component {
         })()}
 
         <select
-          ref={(node) => (this.node = node)}
+          ref={node => (this.node = node)}
           id={this.props.id || this.props.label || this.props.name}
           placeholder={this.props.placeholder || this.props.label}
           name={this.props.name || this.props.label}
           className={this.props.inputClasses}
+          style={this.props.style}
           disabled={this.disabled()}
           onFocus={this.focus}
           onChange={this.change}
+          onBlur={this.blur}
           {...defaultValue}
           {...value}
         >
           {(() => {
             if (this.props.placeholder || this.props.includeBlank) {
               return (
-                <option style={{ display: "none" }}>{this.props.placeholder || ""}</option>
+                <option style={{ display: "none" }}>
+                  {this.props.placeholder || ""}
+                </option>
+              );
+            } else if (this.props.includeEmpty) {
+              return (
+                <option className={this.props.optionClasses} value={""}>
+                  {""}
+                </option>
               );
             }
             return undefined;
           })()}
           {(() => {
             if (this.props.deselect) {
-              return (
-                <option />
-              );
+              return <option />;
             }
             return undefined;
           })()}
@@ -243,15 +270,12 @@ export default class Select extends Component {
               key={key}
             >
               {option.label || option.value}
-            </option>
+            </option>,
           )}
         </select>
 
-
         {this.renderHelpText()}
-
       </div>
     );
   }
-
 }
