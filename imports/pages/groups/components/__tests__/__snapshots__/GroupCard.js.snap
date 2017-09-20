@@ -148,7 +148,7 @@ exports[`test doesn't render demographic tag if no 1`] = `
       <withRouter(Connect(TagWithoutData))
         val="kid friendly" />
       <withRouter(Connect(TagWithoutData))
-        urlKey="campuses"
+        urlKey="campus"
         val="Anderson" />
     </div>
   </Card>
@@ -201,7 +201,7 @@ exports[`test doesn't render kid friendly tag if no 1`] = `
       <withRouter(Connect(TagWithoutData))
         val="test demographic" />
       <withRouter(Connect(TagWithoutData))
-        urlKey="campuses"
+        urlKey="campus"
         val="Anderson" />
     </div>
   </Card>
@@ -254,7 +254,7 @@ exports[`test doesn't render tag for type \`Interests\` 1`] = `
       <withRouter(Connect(TagWithoutData))
         val="test demographic" />
       <withRouter(Connect(TagWithoutData))
-        urlKey="campuses"
+        urlKey="campus"
         val="Anderson" />
     </div>
   </Card>
@@ -309,7 +309,7 @@ exports[`test renders default photo 1`] = `
       <withRouter(Connect(TagWithoutData))
         val="test demographic" />
       <withRouter(Connect(TagWithoutData))
-        urlKey="campuses"
+        urlKey="campus"
         val="Anderson" />
     </div>
   </Card>
@@ -364,7 +364,7 @@ exports[`test renders with props 1`] = `
       <withRouter(Connect(TagWithoutData))
         val="test demographic" />
       <withRouter(Connect(TagWithoutData))
-        urlKey="campuses"
+        urlKey="campus"
         val="Anderson" />
     </div>
   </Card>
@@ -414,7 +414,7 @@ exports[`test renders without distance 1`] = `
       <withRouter(Connect(TagWithoutData))
         val="test demographic" />
       <withRouter(Connect(TagWithoutData))
-        urlKey="campuses"
+        urlKey="campus"
         val="Anderson" />
     </div>
   </Card>
@@ -465,7 +465,7 @@ exports[`test renders without schedule 1`] = `
       <withRouter(Connect(TagWithoutData))
         val="test demographic" />
       <withRouter(Connect(TagWithoutData))
-        urlKey="campuses"
+        urlKey="campus"
         val="Anderson" />
     </div>
   </Card>
@@ -516,7 +516,7 @@ exports[`test renders without schedule description 1`] = `
       <withRouter(Connect(TagWithoutData))
         val="test demographic" />
       <withRouter(Connect(TagWithoutData))
-        urlKey="campuses"
+        urlKey="campus"
         val="Anderson" />
     </div>
   </Card>

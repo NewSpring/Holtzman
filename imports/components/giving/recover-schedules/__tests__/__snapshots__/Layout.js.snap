@@ -87,6 +87,7 @@ exports[`Layout should render the Remind component if state is set to 'remind' 1
     className="hard-ends text-left hard push-top"
     id="remind"
     method={undefined}
+    onKeyPress={undefined}
     onSubmit={undefined}
     style={undefined}>
     <fieldset
@@ -96,16 +97,18 @@ exports[`Layout should render the Remind component if state is set to 'remind' 1
         I\'d like to be reminded
       </h3>
       <div
-        className="input input--active soft-bottom display-inline-block select_15p0e27">
+        className="input input--active soft-bottom display-inline-block select_e8htpf">
         <select
           className="outlined--dotted outlined--light h3 hard-top flush-bottom"
           defaultValue="tomorrow"
           disabled={undefined}
           id="remind-frequency"
           name="frequency"
+          onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
-          placeholder={undefined}>
+          placeholder={undefined}
+          style={undefined}>
           <option
             className={undefined}
             value="tomorrow">
