@@ -136,7 +136,7 @@ export default class Keywords extends Component {
             "outlined--dotted outlined--light h6 flush-bottom text-black"
           }
           type="text"
-          label={"I'm looking for..."}
+          label={"Search for..."}
           name="query"
           defaultValue={searchQuery}
           onChange={onChange}
