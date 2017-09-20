@@ -113,8 +113,8 @@ class TemplateWithoutData extends Component {
     const { router, location } = this.props;
     const { latitude, longitude, campus, zip, query } = this.state;
     // create an array of the attributes returned by graphql
-    const attributeTags = this.props.attributes.tags.map(tag =>
-      tag.value.toLowerCase(),
+    const attributeTags = this.props.attributes.tags.map(
+      tag => (tag && tag.value ? tag.value.toLowerCase() : ""),
     );
 
     const q = [];
