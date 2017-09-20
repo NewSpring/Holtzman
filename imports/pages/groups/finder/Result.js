@@ -318,13 +318,13 @@ const withGroupFinder = graphql(GROUP_FINDER_QUERY, {
     ssr: false,
     variables: {
       tags: ownProps.tags && ownProps.tags.split(",").filter(x => x),
-      query: ownProps.q,
-      latitude: ownProps.latitude,
-      longitude: ownProps.longitude,
-      zip: ownProps.zip,
+      query: ownProps.q || "",
+      latitude: ownProps.latitude || null,
+      longitude: ownProps.longitude || null,
+      zip: ownProps.zip !== "none" ? ownProps.zip : "",
       limit: 10,
       offset: 0,
-      campus: ownProps.campus,
+      campus: ownProps.campus !== "none" ? ownProps.campus : "",
       campuses:
         ownProps.campuses && ownProps.campuses.length
           ? ownProps.campuses.split(",").filter(x => x)

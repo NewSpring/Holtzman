@@ -113,7 +113,9 @@ class TemplateWithoutData extends Component {
     const { router, location } = this.props;
     const { latitude, longitude, campus, zip, query } = this.state;
     // create an array of the attributes returned by graphql
-    const attributeTags = this.props.attributes.tags.map(tag => tag.value);
+    const attributeTags = this.props.attributes.tags.map(tag =>
+      tag.value.toLowerCase(),
+    );
 
     const q = [];
 
@@ -121,8 +123,8 @@ class TemplateWithoutData extends Component {
     // are actual attributes
     const tags = this.state.query
       .split(/[, ]+/)
-      .reduce((result, tag, index, original) => {
-        const t = tag.toLowerCase();
+      .map(t => t.toLowerCase())
+      .reduce((result, t, index, original) => {
         if (attributeTags.indexOf(t) > -1) {
           result.push(t);
         } else if (t === "kid" && original[index + 1] === "friendly") {
@@ -156,8 +158,8 @@ class TemplateWithoutData extends Component {
     if (query) location.query.query = query;
     if (latitude) location.query.latitude = latitude;
     if (longitude) location.query.longitude = longitude;
-    if (campus) location.query.campus = campus;
-    if (zip && !latitude && !longitude) location.query.zip = zip;
+    location.query.campus = campus || "none";
+    location.query.zip = zip && !latitude && !longitude ? zip : "none";
 
     // XXX i don't like the idea of having to push history twice
     // but this is the only way to preserve state with a back button
@@ -234,6 +236,8 @@ class TemplateWithoutData extends Component {
   render() {
     const { attributes, campuses, campus, zip, content } = this.props;
 
+    console.log(this.state);
+
     return (
       <div>
         <Split>
@@ -257,11 +261,13 @@ class TemplateWithoutData extends Component {
               (this.state.latitude && this.state.longitude)
             }
             campuses={campuses || defaultArray}
-            selectedCampus={this.state.campus}
+            selectedCampus={
+              this.state.campus !== "none" ? this.state.campus : ""
+            }
             zip={
               this.state.latitude && this.state.longitude
                 ? "Using your location"
-                : this.state.zip
+                : this.state.zip !== "none" ? this.state.zip : ""
             }
             zipDisabled={Boolean(this.state.latitude && this.state.longitude)}
             searchQuery={this.state.query || ""}

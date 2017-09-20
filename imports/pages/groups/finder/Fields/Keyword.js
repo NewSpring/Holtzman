@@ -105,6 +105,7 @@ export default class Keywords extends Component {
 
     const selectedTags = searchQuery
       .split(/[, ]+/)
+      .map(t => t.toLowerCase())
       .reduce((result, t, index, original) => {
         if (t === "kid" && original[index + 1] === "friendly") {
           result.push("kid friendly");
@@ -174,8 +175,8 @@ export default class Keywords extends Component {
               style={{ textTransform: "capitalize" }}
               onClick={tagOnClick}
               key={i}
-              val={tag.value.toLowerCase()}
-              active={selectedTags.indexOf(tag.value) + 1}
+              val={tag.value}
+              active={selectedTags.indexOf(tag.value.toLowerCase()) + 1}
               urlKey="tags"
             />,
           )}
