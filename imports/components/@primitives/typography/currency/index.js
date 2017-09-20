@@ -78,7 +78,7 @@ const Currency = ({
     </BaseCurrencySize>
     {!roundCurrency &&
       <ReducedHeadingSize className="floating__item flush">
-        .{getCents(`${amount.toFixed(2)}`)}
+        .{getCents(`${amount}`)}
       </ReducedHeadingSize>}
   </div>;
 
