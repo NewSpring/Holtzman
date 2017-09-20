@@ -19,6 +19,7 @@ const Layout = ({
   tags,
   tagOnClick,
   submitTags,
+  submitForm,
   canSearchTags,
   canSearchCampus,
   canSearchLocation,
@@ -65,6 +66,7 @@ const Layout = ({
             "push-bottom",
           ]}
           submit={e => findByQuery(e)}
+          keypress={submitForm}
           action
         >
           <KeywordSelect
@@ -220,8 +222,8 @@ Layout.propTypes = {
   zip: PropTypes.string.isRequired,
   selectedCampus: PropTypes.object.isRequired,
   tagOnClick: PropTypes.func.isRequired,
-  selectedTags: PropTypes.array.isRequired,
   submitTags: PropTypes.func.isRequired,
+  submitForm: PropTypes.func.isRequired,
   zipDisabled: PropTypes.bool.isRequired,
   canSearchTags: PropTypes.bool.isRequired,
   canSearchCampus: PropTypes.bool.isRequired,

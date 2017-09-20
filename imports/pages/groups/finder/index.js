@@ -204,6 +204,21 @@ class TemplateWithoutData extends Component {
     });
   };
 
+  submitForm = (e: Event) => {
+    if (e.type === "keypress" && e.key === "Enter") {
+      if (
+        this.state.tags.length ||
+        this.state.query ||
+        this.state.campus ||
+        this.state.zip ||
+        (this.state.latitude || this.state.longitude)
+      ) {
+        e.preventDefault();
+        this.submitTags();
+      }
+    }
+  };
+
   submitTags = (e: Event) => {
     if (e) e.preventDefault();
     this.getResults();
@@ -253,6 +268,7 @@ class TemplateWithoutData extends Component {
             tags={(attributes && attributes.tags) || defaultArray}
             tagOnClick={this.tagOnClick}
             submitTags={this.submitTags}
+            submitForm={this.submitForm}
             findByQuery={this.findByQuery}
             inputOnChange={this.inputOnChange}
             content={content.loading ? defaultArray : content.entries}
