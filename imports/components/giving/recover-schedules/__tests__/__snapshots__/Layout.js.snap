@@ -87,6 +87,7 @@ exports[`Layout should render the Remind component if state is set to 'remind' 1
     className="hard-ends text-left hard push-top"
     id="remind"
     method={undefined}
+    onKeyPress={undefined}
     onSubmit={undefined}
     style={undefined}>
     <fieldset
