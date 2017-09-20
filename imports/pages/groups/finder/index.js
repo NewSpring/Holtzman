@@ -211,7 +211,7 @@ class TemplateWithoutData extends Component {
         this.state.query ||
         this.state.campus ||
         this.state.zip ||
-        (this.state.latitude || this.state.longitude)
+        (this.state.latitude && this.state.longitude)
       ) {
         e.preventDefault();
         this.submitTags();
