@@ -18,10 +18,19 @@ exports[`test renders if content loading 1`] = `
     }
     scroll={true}>
     <Layout
-      canSearchTags={null}
+      campuses={Array []}
+      canSearchCampus={false}
+      canSearchLocation={null}
+      canSearchTags={false}
       content={Array []}
       findByQuery={[Function]}
+      geoLocationLoading={false}
+      getLocation={[Function]}
+      iconFill="#505050"
       inputOnChange={[Function]}
+      searchQuery=""
+      selectedCampus=""
+      submitForm={[Function]}
       submitTags={[Function]}
       tagOnClick={[Function]}
       tags={
@@ -29,18 +38,220 @@ exports[`test renders if content loading 1`] = `
           Object {},
           Object {},
         ]
-      } />
+      }
+      zip=""
+      zipDisabled={false} />
   </Left>
 </div>
 `;
 
-exports[`test renders result if campuses 1`] = `<withRouter(Apollo(Connect(Apollo(InfiniteScrollContainer)))) />`;
+exports[`test renders result if campuses 1`] = `
+<div>
+  <Connect(SplitContainerWithoutData)>
+    <Right
+      background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/groups/groups.1x1_1700_1700_90_c1.jpg"
+      classes={
+        Array [
+          "background--left",
+        ]
+      }
+      mobile={false} />
+  </Connect(SplitContainerWithoutData)>
+  <Left
+    classes={
+      Array [
+        "background--light-secondary",
+      ]
+    }
+    scroll={true}>
+    <Layout
+      campuses={Array []}
+      canSearchCampus={false}
+      canSearchLocation={null}
+      canSearchTags={false}
+      content={
+        Array [
+          Object {},
+          Object {},
+        ]
+      }
+      findByQuery={[Function]}
+      geoLocationLoading={false}
+      getLocation={[Function]}
+      iconFill="#505050"
+      inputOnChange={[Function]}
+      searchQuery=""
+      selectedCampus=""
+      submitForm={[Function]}
+      submitTags={[Function]}
+      tagOnClick={[Function]}
+      tags={
+        Array [
+          Object {},
+          Object {},
+        ]
+      }
+      zip=""
+      zipDisabled={false} />
+  </Left>
+</div>
+`;
 
-exports[`test renders result if q 1`] = `<withRouter(Apollo(Connect(Apollo(InfiniteScrollContainer)))) />`;
+exports[`test renders result if q 1`] = `
+<div>
+  <Connect(SplitContainerWithoutData)>
+    <Right
+      background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/groups/groups.1x1_1700_1700_90_c1.jpg"
+      classes={
+        Array [
+          "background--left",
+        ]
+      }
+      mobile={false} />
+  </Connect(SplitContainerWithoutData)>
+  <Left
+    classes={
+      Array [
+        "background--light-secondary",
+      ]
+    }
+    scroll={true}>
+    <Layout
+      campuses={Array []}
+      canSearchCampus={false}
+      canSearchLocation={null}
+      canSearchTags={false}
+      content={
+        Array [
+          Object {},
+          Object {},
+        ]
+      }
+      findByQuery={[Function]}
+      geoLocationLoading={false}
+      getLocation={[Function]}
+      iconFill="#505050"
+      inputOnChange={[Function]}
+      searchQuery=""
+      selectedCampus=""
+      submitForm={[Function]}
+      submitTags={[Function]}
+      tagOnClick={[Function]}
+      tags={
+        Array [
+          Object {},
+          Object {},
+        ]
+      }
+      zip=""
+      zipDisabled={false} />
+  </Left>
+</div>
+`;
 
-exports[`test renders result if schedules 1`] = `<withRouter(Apollo(Connect(Apollo(InfiniteScrollContainer)))) />`;
+exports[`test renders result if schedules 1`] = `
+<div>
+  <Connect(SplitContainerWithoutData)>
+    <Right
+      background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/groups/groups.1x1_1700_1700_90_c1.jpg"
+      classes={
+        Array [
+          "background--left",
+        ]
+      }
+      mobile={false} />
+  </Connect(SplitContainerWithoutData)>
+  <Left
+    classes={
+      Array [
+        "background--light-secondary",
+      ]
+    }
+    scroll={true}>
+    <Layout
+      campuses={Array []}
+      canSearchCampus={false}
+      canSearchLocation={null}
+      canSearchTags={false}
+      content={
+        Array [
+          Object {},
+          Object {},
+        ]
+      }
+      findByQuery={[Function]}
+      geoLocationLoading={false}
+      getLocation={[Function]}
+      iconFill="#505050"
+      inputOnChange={[Function]}
+      searchQuery=""
+      selectedCampus=""
+      submitForm={[Function]}
+      submitTags={[Function]}
+      tagOnClick={[Function]}
+      tags={
+        Array [
+          Object {},
+          Object {},
+        ]
+      }
+      zip=""
+      zipDisabled={false} />
+  </Left>
+</div>
+`;
 
-exports[`test renders result if tags 1`] = `<withRouter(Apollo(Connect(Apollo(InfiniteScrollContainer)))) />`;
+exports[`test renders result if tags 1`] = `
+<div>
+  <Connect(SplitContainerWithoutData)>
+    <Right
+      background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/groups/groups.1x1_1700_1700_90_c1.jpg"
+      classes={
+        Array [
+          "background--left",
+        ]
+      }
+      mobile={false} />
+  </Connect(SplitContainerWithoutData)>
+  <Left
+    classes={
+      Array [
+        "background--light-secondary",
+      ]
+    }
+    scroll={true}>
+    <Layout
+      campuses={Array []}
+      canSearchCampus={false}
+      canSearchLocation={null}
+      canSearchTags={false}
+      content={
+        Array [
+          Object {},
+          Object {},
+        ]
+      }
+      findByQuery={[Function]}
+      geoLocationLoading={false}
+      getLocation={[Function]}
+      iconFill="#505050"
+      inputOnChange={[Function]}
+      searchQuery=""
+      selectedCampus=""
+      submitForm={[Function]}
+      submitTags={[Function]}
+      tagOnClick={[Function]}
+      tags={
+        Array [
+          Object {},
+          Object {},
+        ]
+      }
+      zip=""
+      zipDisabled={false} />
+  </Left>
+</div>
+`;
 
 exports[`test renders with props 1`] = `
 <div>
@@ -62,7 +273,10 @@ exports[`test renders with props 1`] = `
     }
     scroll={true}>
     <Layout
-      canSearchTags={null}
+      campuses={Array []}
+      canSearchCampus={false}
+      canSearchLocation={null}
+      canSearchTags={false}
       content={
         Array [
           Object {},
@@ -70,7 +284,13 @@ exports[`test renders with props 1`] = `
         ]
       }
       findByQuery={[Function]}
+      geoLocationLoading={false}
+      getLocation={[Function]}
+      iconFill="#505050"
       inputOnChange={[Function]}
+      searchQuery=""
+      selectedCampus=""
+      submitForm={[Function]}
       submitTags={[Function]}
       tagOnClick={[Function]}
       tags={
@@ -78,7 +298,9 @@ exports[`test renders with props 1`] = `
           Object {},
           Object {},
         ]
-      } />
+      }
+      zip=""
+      zipDisabled={false} />
   </Left>
 </div>
 `;
@@ -103,7 +325,10 @@ exports[`test renders without attributes 1`] = `
     }
     scroll={true}>
     <Layout
-      canSearchTags={null}
+      campuses={Array []}
+      canSearchCampus={false}
+      canSearchLocation={null}
+      canSearchTags={false}
       content={
         Array [
           Object {},
@@ -111,10 +336,18 @@ exports[`test renders without attributes 1`] = `
         ]
       }
       findByQuery={[Function]}
+      geoLocationLoading={false}
+      getLocation={[Function]}
+      iconFill="#505050"
       inputOnChange={[Function]}
+      searchQuery=""
+      selectedCampus=""
+      submitForm={[Function]}
       submitTags={[Function]}
       tagOnClick={[Function]}
-      tags={Array []} />
+      tags={Array []}
+      zip=""
+      zipDisabled={false} />
   </Left>
 </div>
 `;
