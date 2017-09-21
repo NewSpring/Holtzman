@@ -19,11 +19,8 @@ exports[`test renders if content loading 1`] = `
     scroll={true}>
     <Layout
       campuses={Array []}
-      canSearchCampus={false}
-      canSearchLocation={null}
-      canSearchTags={false}
+      canSubmit={false}
       content={Array []}
-      findByQuery={[Function]}
       geoLocationLoading={false}
       getLocation={[Function]}
       iconFill="#505050"
@@ -31,7 +28,6 @@ exports[`test renders if content loading 1`] = `
       searchQuery=""
       selectedCampus=""
       submitForm={[Function]}
-      submitTags={[Function]}
       tagOnClick={[Function]}
       tags={
         Array [
@@ -66,16 +62,13 @@ exports[`test renders result if campuses 1`] = `
     scroll={true}>
     <Layout
       campuses={Array []}
-      canSearchCampus={false}
-      canSearchLocation={null}
-      canSearchTags={false}
+      canSubmit={false}
       content={
         Array [
           Object {},
           Object {},
         ]
       }
-      findByQuery={[Function]}
       geoLocationLoading={false}
       getLocation={[Function]}
       iconFill="#505050"
@@ -83,7 +76,6 @@ exports[`test renders result if campuses 1`] = `
       searchQuery=""
       selectedCampus=""
       submitForm={[Function]}
-      submitTags={[Function]}
       tagOnClick={[Function]}
       tags={
         Array [
@@ -118,16 +110,13 @@ exports[`test renders result if q 1`] = `
     scroll={true}>
     <Layout
       campuses={Array []}
-      canSearchCampus={false}
-      canSearchLocation={null}
-      canSearchTags={false}
+      canSubmit={false}
       content={
         Array [
           Object {},
           Object {},
         ]
       }
-      findByQuery={[Function]}
       geoLocationLoading={false}
       getLocation={[Function]}
       iconFill="#505050"
@@ -135,7 +124,6 @@ exports[`test renders result if q 1`] = `
       searchQuery=""
       selectedCampus=""
       submitForm={[Function]}
-      submitTags={[Function]}
       tagOnClick={[Function]}
       tags={
         Array [
@@ -170,16 +158,13 @@ exports[`test renders result if schedules 1`] = `
     scroll={true}>
     <Layout
       campuses={Array []}
-      canSearchCampus={false}
-      canSearchLocation={null}
-      canSearchTags={false}
+      canSubmit={false}
       content={
         Array [
           Object {},
           Object {},
         ]
       }
-      findByQuery={[Function]}
       geoLocationLoading={false}
       getLocation={[Function]}
       iconFill="#505050"
@@ -187,7 +172,6 @@ exports[`test renders result if schedules 1`] = `
       searchQuery=""
       selectedCampus=""
       submitForm={[Function]}
-      submitTags={[Function]}
       tagOnClick={[Function]}
       tags={
         Array [
@@ -222,16 +206,13 @@ exports[`test renders result if tags 1`] = `
     scroll={true}>
     <Layout
       campuses={Array []}
-      canSearchCampus={false}
-      canSearchLocation={null}
-      canSearchTags={false}
+      canSubmit={false}
       content={
         Array [
           Object {},
           Object {},
         ]
       }
-      findByQuery={[Function]}
       geoLocationLoading={false}
       getLocation={[Function]}
       iconFill="#505050"
@@ -239,7 +220,6 @@ exports[`test renders result if tags 1`] = `
       searchQuery=""
       selectedCampus=""
       submitForm={[Function]}
-      submitTags={[Function]}
       tagOnClick={[Function]}
       tags={
         Array [
@@ -274,16 +254,13 @@ exports[`test renders with props 1`] = `
     scroll={true}>
     <Layout
       campuses={Array []}
-      canSearchCampus={false}
-      canSearchLocation={null}
-      canSearchTags={false}
+      canSubmit={false}
       content={
         Array [
           Object {},
           Object {},
         ]
       }
-      findByQuery={[Function]}
       geoLocationLoading={false}
       getLocation={[Function]}
       iconFill="#505050"
@@ -291,7 +268,6 @@ exports[`test renders with props 1`] = `
       searchQuery=""
       selectedCampus=""
       submitForm={[Function]}
-      submitTags={[Function]}
       tagOnClick={[Function]}
       tags={
         Array [
@@ -326,16 +302,13 @@ exports[`test renders without attributes 1`] = `
     scroll={true}>
     <Layout
       campuses={Array []}
-      canSearchCampus={false}
-      canSearchLocation={null}
-      canSearchTags={false}
+      canSubmit={false}
       content={
         Array [
           Object {},
           Object {},
         ]
       }
-      findByQuery={[Function]}
       geoLocationLoading={false}
       getLocation={[Function]}
       iconFill="#505050"
@@ -343,7 +316,6 @@ exports[`test renders without attributes 1`] = `
       searchQuery=""
       selectedCampus=""
       submitForm={[Function]}
-      submitTags={[Function]}
       tagOnClick={[Function]}
       tags={Array []}
       zip=""

@@ -36,8 +36,7 @@ exports[`test renders disabled tags 1`] = `
             "display-inline-block",
             "push-bottom",
           ]
-        }
-        submit={[Function]}>
+        }>
         <Keywords
           onChange={[Function]}
           tagOnClick={[Function]}
@@ -93,8 +92,7 @@ exports[`test renders disabled tags 1`] = `
       className="background--light-primary soft-double-sides@lap-wide-and-up">
       <button
         className="btn push-top@lap-and-up btn--disabled"
-        disabled={true}
-        onClick={[Function]}>
+        disabled={true}>
         Let\'s Go!
       </button>
     </div>
@@ -160,8 +158,7 @@ exports[`test renders loading if no tags 1`] = `
             "display-inline-block",
             "push-bottom",
           ]
-        }
-        submit={[Function]}>
+        }>
         <Keywords
           onChange={[Function]}
           tagOnClick={[Function]}
@@ -274,8 +271,7 @@ exports[`test renders with props 1`] = `
             "display-inline-block",
             "push-bottom",
           ]
-        }
-        submit={[Function]}>
+        }>
         <Keywords
           onChange={[Function]}
           tagOnClick={[Function]}
@@ -330,9 +326,8 @@ exports[`test renders with props 1`] = `
     <div
       className="background--light-primary soft-double-sides@lap-wide-and-up">
       <button
-        className="btn push-top@lap-and-up"
-        disabled={false}
-        onClick={[Function]}>
+        className="btn push-top@lap-and-up btn--disabled"
+        disabled={true}>
         Let\'s Go!
       </button>
     </div>

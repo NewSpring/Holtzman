@@ -209,12 +209,9 @@ class TemplateWithoutData extends Component {
 
   // XXX these three functions need to be merged
   submitForm = (e: Event) => {
-    if (e.type === "keypress" && e.key === "Enter") {
-      if (this.state.campus || this.state.zip || this.state.query) {
-        e.preventDefault();
-        this.getResults();
-      }
-    } else if (e.type !== "keypress") {
+    console.log(e);
+    if ((e.type === "keypress" && e.key === "Enter") || e.type === "click") {
+      e.preventDefault();
       this.getResults();
     }
   };

@@ -217,28 +217,30 @@ it("tagOnClick removes tag from state if found", () => {
   expect(wrapper.state().query).toEqual("and two");
 });
 
-it("submitTags calls preventDefault", () => {
+it("submitForm calls preventDefault", () => {
   const wrapper = shallow(generateComponent());
   const mockPreventDefault = jest.fn();
-  wrapper.instance().submitTags({
+  wrapper.instance().submitForm({
+    type: "click",
     preventDefault: mockPreventDefault,
   });
   expect(mockPreventDefault).toHaveBeenCalledTimes(1);
 });
 
-it("findByQuery calls preventDefault and blurs the search", () => {
-  const mockPreventDefault = jest.fn();
-  const mockBlur = jest.fn();
-  const mockGetElementById = jest.fn().mockReturnValue({
-    blur: mockBlur,
-  });
-  document.getElementById = mockGetElementById;
-  const wrapper = shallow(generateComponent());
-  wrapper.instance().findByQuery({
-    preventDefault: mockPreventDefault,
-  });
-  expect(mockPreventDefault).toHaveBeenCalledTimes(1);
-  expect(mockGetElementById).toHaveBeenCalledTimes(1);
-  expect(mockGetElementById).toHaveBeenCalledWith("search");
-  expect(mockBlur).toHaveBeenCalledTimes(1);
-});
+// this test doesn't follow current UI pattern
+// it("findByQuery calls preventDefault and blurs the search", () => {
+//   const mockPreventDefault = jest.fn();
+//   const mockBlur = jest.fn();
+//   const mockGetElementById = jest.fn().mockReturnValue({
+//     blur: mockBlur,
+//   });
+//   document.getElementById = mockGetElementById;
+//   const wrapper = shallow(generateComponent());
+//   wrapper.instance().findByQuery({
+//     preventDefault: mockPreventDefault,
+//   });
+//   expect(mockPreventDefault).toHaveBeenCalledTimes(1);
+//   expect(mockGetElementById).toHaveBeenCalledTimes(1);
+//   expect(mockGetElementById).toHaveBeenCalledWith("search");
+//   expect(mockBlur).toHaveBeenCalledTimes(1);
+// });
