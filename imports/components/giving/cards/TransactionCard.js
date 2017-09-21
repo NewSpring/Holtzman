@@ -64,7 +64,7 @@ export const DetailCard = ({
       <div>
 
         <Currency
-          amount={transactionDetail.amount}
+          amount={transactionDetail.amount.toFixed(2)}
           baseHeadingSize="4"
           className={`
             text-dark-tertiary text-right
