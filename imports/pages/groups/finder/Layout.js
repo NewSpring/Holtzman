@@ -18,17 +18,13 @@ import Svg from "../../../components/@primitives/UI/svg";
 const Layout = ({
   tags,
   tagOnClick,
-  submitTags,
   submitForm,
-  canSearchTags,
-  canSearchCampus,
-  canSearchLocation,
+  canSubmit,
   campuses,
   zip,
   zipDisabled,
   selectedCampus,
   searchQuery,
-  findByQuery,
   inputOnChange,
   content,
   getLocation,
@@ -65,7 +61,7 @@ const Layout = ({
             "display-inline-block",
             "push-bottom",
           ]}
-          submit={e => findByQuery(e)}
+          submit={submitForm}
           keypress={submitForm}
           action
         >
@@ -137,16 +133,14 @@ const Layout = ({
           }
 
           const classes = ["btn", "push-top@lap-and-up"];
-          if (!canSearchTags && !canSearchCampus && !canSearchLocation) {
+          if (!canSubmit) {
             classes.push("btn--disabled");
           }
           // XXX why can't I just pass in the function here?
           return (
             <button
-              disabled={
-                !canSearchTags && !canSearchCampus && !canSearchLocation
-              }
-              onClick={e => submitTags(e)}
+              disabled={!canSubmit}
+              onClick={submitForm}
               className={classes.join(" ")}
             >
               Let&#39;s Go!
@@ -222,14 +216,10 @@ Layout.propTypes = {
   zip: PropTypes.string.isRequired,
   selectedCampus: PropTypes.object.isRequired,
   tagOnClick: PropTypes.func.isRequired,
-  submitTags: PropTypes.func.isRequired,
   submitForm: PropTypes.func.isRequired,
   zipDisabled: PropTypes.bool.isRequired,
-  canSearchTags: PropTypes.bool.isRequired,
-  canSearchCampus: PropTypes.bool.isRequired,
-  canSearchLocation: PropTypes.bool.isRequired,
+  canSubmit: PropTypes.bool.isRequired,
   searchQuery: PropTypes.array.isRequired,
-  findByQuery: PropTypes.func.isRequired,
   inputOnChange: PropTypes.func.isRequired,
   content: PropTypes.array.isRequired,
   getLocation: PropTypes.func.isRequired,

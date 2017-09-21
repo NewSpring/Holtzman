@@ -36,7 +36,6 @@ class TemplateWithoutData extends Component {
     longitude: null,
     campus: "",
     zip: "",
-    submit: false,
     geoLocationLoading: false,
   };
 
@@ -47,28 +46,30 @@ class TemplateWithoutData extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps: Object) {
-    this.props.dispatch(navActions.setLevel("TOP"));
-
-    if (!nextProps.loading) {
-      this.setState({
-        campus: nextProps.campus,
-        zip: nextProps.zip,
-        ...nextProps.location.query,
-      });
-    } else {
-      this.setState({
-        ...nextProps.location.query,
-      });
-    }
-  }
-
   componentDidMount() {
     const { router, location } = this.props;
     if (location.query.tags && location.query.tags.length) {
       delete location.query.tags;
       router.push(location);
     }
+  }
+
+  componentWillReceiveProps() {
+    this.props.dispatch(navActions.setLevel("TOP"));
+
+    this.setState((prevState, props) => {
+      const newState = {
+        ...prevState,
+        campus: props.campus,
+        zip: props.zip,
+        ...props.location.query,
+      };
+
+      if (newState.campus === "none") newState.campus = "";
+      if (newState.zip === "none") newState.zip = "";
+
+      return newState;
+    });
   }
 
   geoLocateMe = (e: Event) => {
@@ -102,7 +103,7 @@ class TemplateWithoutData extends Component {
     });
   };
 
-  geolocationError = error => {
+  geolocationError = (error: Object) => {
     this.props.dispatch(modal.render(ErrTemplate, { errorCode: error.code }));
     this.setState({
       geoLocationLoading: false,
@@ -206,37 +207,21 @@ class TemplateWithoutData extends Component {
     });
   };
 
+  // XXX these three functions need to be merged
   submitForm = (e: Event) => {
     if (e.type === "keypress" && e.key === "Enter") {
-      if (
-        this.state.tags.length ||
-        this.state.query ||
-        this.state.campus ||
-        this.state.zip ||
-        (this.state.latitude && this.state.longitude)
-      ) {
+      if (this.state.campus || this.state.zip || this.state.query) {
         e.preventDefault();
-        this.submitTags();
+        this.getResults();
       }
+    } else if (e.type !== "keypress") {
+      this.getResults();
     }
-  };
-
-  submitTags = (e: Event) => {
-    if (e) e.preventDefault();
-    this.getResults();
-  };
-
-  findByQuery = (e: Event) => {
-    if (e) e.preventDefault();
-    document.getElementById("search").blur();
-    this.getResults();
   };
 
   /* eslint-disable max-len */
   render() {
-    const { attributes, campuses, campus, zip, content } = this.props;
-
-    console.log(this.state);
+    const { attributes, campuses, content } = this.props;
 
     return (
       <div>
@@ -249,33 +234,24 @@ class TemplateWithoutData extends Component {
         </Split>
         <Left scroll classes={["background--light-secondary"]}>
           <Layout
-            canSearchTags={
-              false ||
-              Boolean(this.state.tags.length) ||
-              Boolean(this.state.query)
-            }
-            canSearchCampus={false || Boolean(this.state.campus)}
-            canSearchLocation={
-              false ||
-              this.state.zip ||
-              (this.state.latitude && this.state.longitude)
-            }
+            canSubmit={Boolean(
+              this.state.campus ||
+                this.state.zip ||
+                this.state.query ||
+                (this.state.latitude && this.state.longitude),
+            )}
             campuses={campuses || defaultArray}
-            selectedCampus={
-              this.state.campus !== "none" ? this.state.campus : ""
-            }
+            selectedCampus={this.state.campus}
             zip={
               this.state.latitude && this.state.longitude
                 ? "Using your location"
-                : this.state.zip !== "none" ? this.state.zip : ""
+                : this.state.zip
             }
             zipDisabled={Boolean(this.state.latitude && this.state.longitude)}
             searchQuery={this.state.query || ""}
             tags={(attributes && attributes.tags) || defaultArray}
             tagOnClick={this.tagOnClick}
-            submitTags={this.submitTags}
             submitForm={this.submitForm}
-            findByQuery={this.findByQuery}
             inputOnChange={this.inputOnChange}
             content={content.loading ? defaultArray : content.entries}
             getLocation={this.geoLocateMe}
