@@ -31,7 +31,7 @@ export default class Keywords extends Component {
 
   state: {
     focused: boolean,
-    onload: boolean,
+    onload: boolean
   };
 
   constructor(props: Object) {
@@ -116,9 +116,7 @@ export default class Keywords extends Component {
         return result;
       }, []);
 
-    const arrowFocus = css(
-      this.state.focused ? Styles.arrowFocused : Styles.arrow,
-    );
+    const arrowFocus = css(this.state.focused ? Styles.arrowFocused : Styles.arrow);
 
     return (
       <div
@@ -133,11 +131,9 @@ export default class Keywords extends Component {
           ref={input => {
             this.textInput = input;
           }}
-          inputClasses={
-            "outlined--dotted outlined--light h6 flush-bottom text-black"
-          }
+          inputClasses={"outlined--dotted outlined--light h6 flush-bottom text-black"}
           type="text"
-          label={"Search for..."}
+          label={"Groups I'm looking for..."}
           name="query"
           defaultValue={searchQuery}
           onChange={onChange}
@@ -158,9 +154,7 @@ export default class Keywords extends Component {
             }}
             onClick={this.state.focused ? this.onBlur : this.onFocus}
           >
-            <div
-              className={("one-whole", "display-inline-block", `${arrowFocus}`)}
-            />
+            <div className={("one-whole", "display-inline-block", `${arrowFocus}`)} />
           </a>
         </Forms.Input>
         <div
@@ -169,7 +163,7 @@ export default class Keywords extends Component {
             : ""}`}
         >
           {/* weird SSR stuff here to investigate */}
-          {tags.map((tag, i) =>
+          {tags.map((tag, i) => (
             <Tag
               className=""
               style={{ textTransform: "capitalize" }}
@@ -178,8 +172,8 @@ export default class Keywords extends Component {
               val={tag.value}
               active={selectedTags.indexOf(tag.value.toLowerCase()) + 1}
               urlKey="tags"
-            />,
-          )}
+            />
+          ))}
         </div>
       </div>
     );
