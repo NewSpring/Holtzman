@@ -6,10 +6,7 @@ import ReactMixin from "react-mixin";
 import { Meteor } from "meteor/meteor";
 
 import OnBoard from "../../../components/people/accounts";
-import Split, {
-  Left,
-  Right
-} from "../../../components/@primitives/layout/split";
+import Split, { Left, Right } from "../../../components/@primitives/layout/split";
 
 import GoogleMap from "../../../components/@primitives/map";
 import Loading from "../../../components/@primitives/UI/loading";
@@ -37,19 +34,18 @@ const PHONE_QUERY = gql`
 
 export const phonePropsReducer = ({ phoneNumbers }) => ({
   phonesLoading: phoneNumbers ? phoneNumbers.loading : true,
-  phones: !phoneNumbers ||
-    phoneNumbers.loading ||
-    !phoneNumbers.currentPerson.phoneNumbers.length
-    ? null
-    : phoneNumbers.currentPerson.phoneNumbers
+  phones:
+    !phoneNumbers || phoneNumbers.loading || !phoneNumbers.currentPerson.phoneNumbers.length
+      ? null
+      : phoneNumbers.currentPerson.phoneNumbers,
 });
 
 export const JoinWithPhones = graphql(PHONE_QUERY, {
   name: "phoneNumbers",
   props: phonePropsReducer,
   options: {
-    forceFetch: true
-  }
+    forceFetch: true,
+  },
 })(Join);
 
 export const PHONE_NUMBER_MUTATION = gql`
@@ -74,15 +70,19 @@ const withAddPhoneNumber = graphql(PHONE_NUMBER_MUTATION, {
             if (!success || error) return prev;
             prev.currentPerson.phoneNumbers.push({ rawNumber: phoneNumber });
             return prev;
-          }
-        }
-      })
-  })
+          },
+        },
+      }),
+  }),
 });
 
 export const GROUP_MUTATION = gql`
   mutation AddToGroup($groupId: ID!, $message: String!, $communicationPreference: String!) {
-    requestGroupInfo(groupId: $groupId, message: $message, communicationPreference: $communicationPreference) {
+    requestGroupInfo(
+      groupId: $groupId
+      message: $message
+      communicationPreference: $communicationPreference
+    ) {
       error
       success
       code
@@ -94,35 +94,31 @@ const withGroupMutation = graphql(GROUP_MUTATION, {
   props: ({ mutate }) => ({
     addToGroup: (groupId, message, communicationPreference) =>
       mutate({
-        variables: { groupId, message, communicationPreference }
-      })
-  })
+        variables: { groupId, message, communicationPreference },
+      }),
+  }),
 });
 
 const defaultArray = [];
 
 // UTILITIES
 export const getLeaders = group =>
-  group &&
-  group.members &&
-  group.members.filter(x => x.role.toLowerCase() === "leader");
+  group && group.members && group.members.filter(x => x.role.toLowerCase() === "leader");
 
 export const isCurrentPersonLeader = (person, leaders) =>
-  person &&
-  Array.isArray(leaders) &&
-  leaders.filter(x => x.person.id === person.id).length;
+  person && Array.isArray(leaders) && leaders.filter(x => x.person.id === person.id).length;
 
 class TemplateWithoutData extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     data: PropTypes.object.isRequired,
     addPhone: PropTypes.function.isRequired,
-    addToGroup: PropTypes.function.isRequired
+    addToGroup: PropTypes.function.isRequired,
   };
 
   state = {
     phoneNumber: "",
-    communicationPreference: "No Preference"
+    communicationPreference: "No Preference",
   };
 
   componentWillMount() {
@@ -180,11 +176,7 @@ class TemplateWithoutData extends Component {
     }
 
     this.props
-      .addToGroup(
-        this.props.data.group.entityId,
-        message,
-        this.state.communicationPreference
-      )
+      .addToGroup(this.props.data.group.entityId, message, this.state.communicationPreference)
       .then(response => {
         callback(null, response);
       })
@@ -202,7 +194,7 @@ class TemplateWithoutData extends Component {
           onClick: this.sendRequest,
           onChange: this.onPhoneNumberChange,
           validatePhoneNumber: this.validatePhoneNumber,
-          onCommunicationPreferenceChange: this.onCommunicationPreferenceChange
+          onCommunicationPreferenceChange: this.onCommunicationPreferenceChange,
         })
       );
     };
@@ -212,7 +204,7 @@ class TemplateWithoutData extends Component {
     this.props.dispatch(
       modal.render(OnBoard, {
         onFinished: joinModal,
-        coverHeader: true
+        coverHeader: true,
       })
     );
 
@@ -244,16 +236,11 @@ class TemplateWithoutData extends Component {
     const loginParam = person ? person.impersonationParameter : "";
 
     if (!group.photo) {
-      group.photo =
-        "//s3.amazonaws.com/ns.assets/apollos/group-profile-placeholder.png";
+      group.photo = "//s3.amazonaws.com/ns.assets/apollos/group-profile-placeholder.png";
     }
 
     let markers = defaultArray;
-    if (
-      group.locations &&
-      group.locations.length &&
-      group.locations[0].location
-    ) {
+    if (group.locations && group.locations.length && group.locations[0].location) {
       const { latitude, longitude } = group.locations[0].location;
       markers = [{ latitude, longitude }];
     }
@@ -306,13 +293,34 @@ const GROUP_QUERY = gql`
         photo
         kidFriendly
         ageRange
-        campus { name }
-        tags { id, value }
-        locations { location { city, state, latitude, longitude } }
-        schedule { description }
+        campus {
+          name
+        }
+        tags {
+          id
+          value
+        }
+        locations {
+          location {
+            city
+            state
+            latitude
+            longitude
+          }
+        }
+        schedule {
+          description
+        }
         members {
           role
-          person { id, photo, firstName, nickName, lastName }
+          person {
+            id
+            photo
+            firstName
+            nickName
+            lastName
+          }
+          status
         }
         groupType
       }
@@ -322,19 +330,15 @@ const GROUP_QUERY = gql`
 
 const withGroup = graphql(GROUP_QUERY, {
   options: ownProps => ({
-    variables: { id: ownProps.params.id }
-  })
+    variables: { id: ownProps.params.id },
+  }),
 });
 
 export default connect()(
   withGroup(
     canLike(props => (props.data.loading ? null : props.data.group.id))(
       ReactMixin.decorate(Shareable)(
-        withGroupMutation(
-          withAddPhoneNumber(
-            ReactMixin.decorate(Headerable)(TemplateWithoutData)
-          )
-        )
+        withGroupMutation(withAddPhoneNumber(ReactMixin.decorate(Headerable)(TemplateWithoutData)))
       )
     )
   )

@@ -34,11 +34,13 @@ const defaultProps = {
         person: {
           photo: "http://test.com/person.jpg",
         },
+        status: true,
       },
       {
         person: {
           photo: "http://test.com/person.jpg",
         },
+        status: false,
       },
     ],
     tags: ["one", "two"],
