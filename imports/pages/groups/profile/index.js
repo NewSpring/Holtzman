@@ -7,10 +7,7 @@ import ReactMixin from "react-mixin";
 import { Meteor } from "meteor/meteor";
 
 import OnBoard from "../../../components/people/accounts";
-import Split, {
-  Left,
-  Right,
-} from "../../../components/@primitives/layout/split";
+import Split, { Left, Right } from "../../../components/@primitives/layout/split";
 
 import GoogleMap from "../../../components/@primitives/map";
 import Loading from "../../../components/@primitives/UI/loading";
@@ -37,11 +34,10 @@ const PHONE_QUERY = gql`
 
 export const phonePropsReducer = ({ phoneNumbers }) => ({
   phonesLoading: phoneNumbers ? phoneNumbers.loading : true,
-  phones: !phoneNumbers ||
-    phoneNumbers.loading ||
-    !phoneNumbers.currentPerson.phoneNumbers.length
-    ? null
-    : phoneNumbers.currentPerson.phoneNumbers,
+  phones:
+    !phoneNumbers || phoneNumbers.loading || !phoneNumbers.currentPerson.phoneNumbers.length
+      ? null
+      : phoneNumbers.currentPerson.phoneNumbers,
 });
 
 export const JoinWithPhones = graphql(PHONE_QUERY, {
@@ -324,6 +320,7 @@ const GROUP_QUERY = gql`
             nickName
             lastName
           }
+          status
         }
         groupType
       }
