@@ -12,6 +12,10 @@ Array [
   },
   Object {
     "component": [Function],
+    "path": "groups/home",
+  },
+  Object {
+    "component": [Function],
     "path": "groups/finder",
   },
   Object {
