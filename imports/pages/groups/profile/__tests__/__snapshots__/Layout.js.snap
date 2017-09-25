@@ -197,18 +197,6 @@ exports[`test doesn't render Interest type tag 1`] = `
                 <div
                   className="ratio__item" />
               </div>
-              <div
-                className="ratio--square round display-inline-block push-half-right background--fill"
-                style={
-                  Object {
-                    "backgroundImage": "url(\'http://test.com/person.jpg\')",
-                    "height": "40px",
-                    "width": "40px",
-                  }
-                }>
-                <div
-                  className="ratio__item" />
-              </div>
             </div>
           </div>
           <div>
@@ -450,18 +438,6 @@ exports[`test doesn't render demographic tag if none 1`] = `
             </h7>
             <div
               className="soft-half-top flush-bottom">
-              <div
-                className="ratio--square round display-inline-block push-half-right background--fill"
-                style={
-                  Object {
-                    "backgroundImage": "url(\'http://test.com/person.jpg\')",
-                    "height": "40px",
-                    "width": "40px",
-                  }
-                }>
-                <div
-                  className="ratio__item" />
-              </div>
               <div
                 className="ratio--square round display-inline-block push-half-right background--fill"
                 style={
@@ -727,18 +703,6 @@ exports[`test renders adult only version 1`] = `
                 <div
                   className="ratio__item" />
               </div>
-              <div
-                className="ratio--square round display-inline-block push-half-right background--fill"
-                style={
-                  Object {
-                    "backgroundImage": "url(\'http://test.com/person.jpg\')",
-                    "height": "40px",
-                    "width": "40px",
-                  }
-                }>
-                <div
-                  className="ratio__item" />
-              </div>
             </div>
           </div>
           <div>
@@ -980,18 +944,6 @@ exports[`test renders leader version 1`] = `
             </h7>
             <div
               className="soft-half-top flush-bottom">
-              <div
-                className="ratio--square round display-inline-block push-half-right background--fill"
-                style={
-                  Object {
-                    "backgroundImage": "url(\'http://test.com/person.jpg\')",
-                    "height": "40px",
-                    "width": "40px",
-                  }
-                }>
-                <div
-                  className="ratio__item" />
-              </div>
               <div
                 className="ratio--square round display-inline-block push-half-right background--fill"
                 style={
@@ -1257,18 +1209,6 @@ exports[`test renders with props 1`] = `
                 <div
                   className="ratio__item" />
               </div>
-              <div
-                className="ratio--square round display-inline-block push-half-right background--fill"
-                style={
-                  Object {
-                    "backgroundImage": "url(\'http://test.com/person.jpg\')",
-                    "height": "40px",
-                    "width": "40px",
-                  }
-                }>
-                <div
-                  className="ratio__item" />
-              </div>
             </div>
           </div>
           <div>
@@ -1510,18 +1450,6 @@ exports[`test renders without campus 1`] = `
             </h7>
             <div
               className="soft-half-top flush-bottom">
-              <div
-                className="ratio--square round display-inline-block push-half-right background--fill"
-                style={
-                  Object {
-                    "backgroundImage": "url(\'http://test.com/person.jpg\')",
-                    "height": "40px",
-                    "width": "40px",
-                  }
-                }>
-                <div
-                  className="ratio__item" />
-              </div>
               <div
                 className="ratio--square round display-inline-block push-half-right background--fill"
                 style={
@@ -1787,18 +1715,6 @@ exports[`test renders without group locations 1`] = `
                 <div
                   className="ratio__item" />
               </div>
-              <div
-                className="ratio--square round display-inline-block push-half-right background--fill"
-                style={
-                  Object {
-                    "backgroundImage": "url(\'http://test.com/person.jpg\')",
-                    "height": "40px",
-                    "width": "40px",
-                  }
-                }>
-                <div
-                  className="ratio__item" />
-              </div>
             </div>
           </div>
           <div>
@@ -2052,18 +1968,6 @@ exports[`test renders without schedule 1`] = `
                 <div
                   className="ratio__item" />
               </div>
-              <div
-                className="ratio--square round display-inline-block push-half-right background--fill"
-                style={
-                  Object {
-                    "backgroundImage": "url(\'http://test.com/person.jpg\')",
-                    "height": "40px",
-                    "width": "40px",
-                  }
-                }>
-                <div
-                  className="ratio__item" />
-              </div>
             </div>
           </div>
           <div>
@@ -2305,18 +2209,6 @@ exports[`test renders without schedule description 1`] = `
             </h7>
             <div
               className="soft-half-top flush-bottom">
-              <div
-                className="ratio--square round display-inline-block push-half-right background--fill"
-                style={
-                  Object {
-                    "backgroundImage": "url(\'http://test.com/person.jpg\')",
-                    "height": "40px",
-                    "width": "40px",
-                  }
-                }>
-                <div
-                  className="ratio__item" />
-              </div>
               <div
                 className="ratio--square round display-inline-block push-half-right background--fill"
                 style={
