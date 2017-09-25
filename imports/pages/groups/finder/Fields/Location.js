@@ -40,7 +40,7 @@ export default class Location extends Component {
     const { onChange, validation, disabled, unLocate, zip } = this.props;
 
     return (
-      <div className={"text-left soft-double-top soft-half-sides"}>
+      <div className={"text-left soft-double-top soft-top@handheld soft-half-sides"}>
         <Forms.Input
           classes={this.state.focused ? "input--focused" : ""}
           inputClasses={
