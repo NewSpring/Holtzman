@@ -136,7 +136,7 @@ export default class Campus extends Component {
     return (
       <div
         style={this.state.focused ? focusedInput : hiddenInput}
-        className={"soft-double-top text-left soft-half-sides"}
+        className={"soft-double-top soft-top@handheld text-left soft-half-sides"}
         ref={this.setWrapperRef}
       >
         {/* onFocus === This is a hack because onFocus
