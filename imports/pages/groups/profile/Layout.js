@@ -202,7 +202,7 @@ const Layout = ({ group, leaders, isLeader, join, loginParam }) => (
               <h7 className="text-dark-secondary">Members</h7>
               <div className="soft-half-top flush-bottom">
                 {group.members
-                  .filter(x => x.status && x.person && x.person.photo)
+                  .filter(x => x.status === 1 && x.person && x.person.photo)
                   .map((member, i) => (
                     <div
                       className={
