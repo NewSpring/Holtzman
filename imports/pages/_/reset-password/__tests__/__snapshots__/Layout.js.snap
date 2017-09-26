@@ -11,6 +11,7 @@ exports[`test render with enabled button if newP and newPDup 1`] = `
     className="hard-ends soft one-whole two-thirds@portable one-half@anchored display-inline-block"
     id="reset-password"
     method={undefined}
+    onKeyPress={undefined}
     onSubmit={[Function]}
     style={undefined}>
     <fieldset
@@ -32,7 +33,11 @@ exports[`test render with enabled button if newP and newPDup 1`] = `
           New Password
         </label>
         <input
+          autoCapitalize="on"
+          autoComplete="on"
+          autoCorrect="on"
           className={undefined}
+          data-lpignore={undefined}
           data-spec="input"
           defaultValue={undefined}
           disabled={undefined}
@@ -43,6 +48,8 @@ exports[`test render with enabled button if newP and newPDup 1`] = `
           onChange={[Function]}
           onFocus={[Function]}
           placeholder="New Password"
+          readOnly={undefined}
+          spellCheck={undefined}
           style={Object {}}
           type="password" />
       </div>
@@ -56,7 +63,11 @@ exports[`test render with enabled button if newP and newPDup 1`] = `
           Repeat New Password
         </label>
         <input
+          autoCapitalize="on"
+          autoComplete="on"
+          autoCorrect="on"
           className={undefined}
+          data-lpignore={undefined}
           data-spec="input"
           defaultValue={undefined}
           disabled={undefined}
@@ -67,6 +78,8 @@ exports[`test render with enabled button if newP and newPDup 1`] = `
           onChange={[Function]}
           onFocus={[Function]}
           placeholder="Repeat New Password"
+          readOnly={undefined}
+          spellCheck={undefined}
           style={Object {}}
           type="password" />
       </div>
@@ -99,6 +112,7 @@ exports[`test renders with disabled button without newP 1`] = `
     className="hard-ends soft one-whole two-thirds@portable one-half@anchored display-inline-block"
     id="reset-password"
     method={undefined}
+    onKeyPress={undefined}
     onSubmit={[Function]}
     style={undefined}>
     <fieldset
@@ -120,7 +134,11 @@ exports[`test renders with disabled button without newP 1`] = `
           New Password
         </label>
         <input
+          autoCapitalize="on"
+          autoComplete="on"
+          autoCorrect="on"
           className={undefined}
+          data-lpignore={undefined}
           data-spec="input"
           defaultValue={undefined}
           disabled={undefined}
@@ -131,6 +149,8 @@ exports[`test renders with disabled button without newP 1`] = `
           onChange={[Function]}
           onFocus={[Function]}
           placeholder="New Password"
+          readOnly={undefined}
+          spellCheck={undefined}
           style={Object {}}
           type="password" />
       </div>
@@ -144,7 +164,11 @@ exports[`test renders with disabled button without newP 1`] = `
           Repeat New Password
         </label>
         <input
+          autoCapitalize="on"
+          autoComplete="on"
+          autoCorrect="on"
           className={undefined}
+          data-lpignore={undefined}
           data-spec="input"
           defaultValue={undefined}
           disabled={undefined}
@@ -155,6 +179,8 @@ exports[`test renders with disabled button without newP 1`] = `
           onChange={[Function]}
           onFocus={[Function]}
           placeholder="Repeat New Password"
+          readOnly={undefined}
+          spellCheck={undefined}
           style={Object {}}
           type="password" />
       </div>
@@ -187,6 +213,7 @@ exports[`test renders with disabled button without newPDup 1`] = `
     className="hard-ends soft one-whole two-thirds@portable one-half@anchored display-inline-block"
     id="reset-password"
     method={undefined}
+    onKeyPress={undefined}
     onSubmit={[Function]}
     style={undefined}>
     <fieldset
@@ -208,7 +235,11 @@ exports[`test renders with disabled button without newPDup 1`] = `
           New Password
         </label>
         <input
+          autoCapitalize="on"
+          autoComplete="on"
+          autoCorrect="on"
           className={undefined}
+          data-lpignore={undefined}
           data-spec="input"
           defaultValue={undefined}
           disabled={undefined}
@@ -219,6 +250,8 @@ exports[`test renders with disabled button without newPDup 1`] = `
           onChange={[Function]}
           onFocus={[Function]}
           placeholder="New Password"
+          readOnly={undefined}
+          spellCheck={undefined}
           style={Object {}}
           type="password" />
       </div>
@@ -232,7 +265,11 @@ exports[`test renders with disabled button without newPDup 1`] = `
           Repeat New Password
         </label>
         <input
+          autoCapitalize="on"
+          autoComplete="on"
+          autoCorrect="on"
           className={undefined}
+          data-lpignore={undefined}
           data-spec="input"
           defaultValue={undefined}
           disabled={undefined}
@@ -243,6 +280,8 @@ exports[`test renders with disabled button without newPDup 1`] = `
           onChange={[Function]}
           onFocus={[Function]}
           placeholder="Repeat New Password"
+          readOnly={undefined}
+          spellCheck={undefined}
           style={Object {}}
           type="password" />
       </div>
