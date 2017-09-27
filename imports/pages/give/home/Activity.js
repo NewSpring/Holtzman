@@ -52,7 +52,7 @@ export class GivingActivity extends Component {
     //   return null;
     // });
 
-    transactions.map((transaction) => {
+    transactions.map(transaction => {
       if (transaction.details[0].amount !== 0) {
         if (activityToShow.length < 3) {
           activityToShow.push(transaction);

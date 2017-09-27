@@ -71,16 +71,16 @@ class PersonalDetailsWithoutData extends Component {
     return arr;
   }
 
-  saveMonth = (value) => {
+  saveMonth = value => {
     this.setState({ month: value });
 
     return true;
   }
 
-  updatePerson = (data) => {
+  updatePerson = data => {
     this.setState({ state: "loading" });
 
-    update(data, (err) => {
+    update(data, err => {
       if (err) {
         this.setState({ state: "error", err });
         setTimeout(() => this.setState({ state: "default" }), 3000);
@@ -96,7 +96,7 @@ class PersonalDetailsWithoutData extends Component {
 
   render() {
     let { campuses } = this.props.campuses;
-    campuses = campuses && campuses.map((campus) => ({
+    campuses = campuses && campuses.map(campus => ({
       label: campus.name, value: campus.id,
     }));
     const { state, err } = this.state;
@@ -161,7 +161,7 @@ const PERSON_QUERY = gql`
 `;
 const withPerson = graphql(PERSON_QUERY, {
   name: "person",
-  skip: (ownProps) => !ownProps.authorized,
+  skip: ownProps => !ownProps.authorized,
   options: () => ({
     variables: { cache: false },
     forceFetch: true,

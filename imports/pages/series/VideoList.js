@@ -94,7 +94,7 @@ const SERMONS_QUERY = gql`
 
 const withSermons = graphql(SERMONS_QUERY, {
   name: "sermons",
-  options: (ownProps) => ({
+  options: ownProps => ({
     variables: { id: ownProps.id },
   }),
 });

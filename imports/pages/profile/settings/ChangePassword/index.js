@@ -29,11 +29,11 @@ class ChangePasswordWithoutData extends Component {
     this.props.dispatch(nav.setLevel("TOP"));
   }
 
-  submit = (e) => {
+  submit = e => {
     e.preventDefault();
     this.setState({ state: "loading" });
 
-    reset(this.state.current, this.state.newP, (err) => {
+    reset(this.state.current, this.state.newP, err => {
       if (err) {
         this.setState({ state: "error", err });
         setTimeout(() => {

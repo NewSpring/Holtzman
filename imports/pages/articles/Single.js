@@ -126,7 +126,7 @@ const ARTICLE_QUERY = gql`
 
 const withArticle = graphql(ARTICLE_QUERY, {
   name: "article",
-  options: (ownProps) => ({
+  options: ownProps => ({
     variables: { id: ownProps.params.id },
   }),
 });
@@ -136,7 +136,7 @@ export default connect()(
     ReactMixin.decorate(Shareable)(
       ReactMixin.decorate(Headerable)(
         canLike(
-          (props) => (props.article.loading ? null : props.article.content.id)
+          props => (props.article.loading ? null : props.article.content.id)
         )(ArticlesSingle)
       )
     )

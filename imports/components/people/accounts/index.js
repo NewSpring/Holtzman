@@ -88,7 +88,7 @@ class AccountsContainer extends Component {
         if (this.props.onFinished) return this.props.onFinished();
 
         // redirect after signin or register
-        const whiteListed = (url) =>
+        const whiteListed = url =>
           url.indexOf("https://alpha-rock.newspring.cc") === 0 ||
           url.indexOf("https://beta-rock.newspring.cc") === 0 ||
           url.indexOf("https://rock.newspring.cc") === 0;
@@ -139,34 +139,34 @@ class AccountsContainer extends Component {
     // if (process.env.NATIVE) this.props.dispatch(headerActions.show());
   }
 
-  setAccountWrapper = (bool) => {
+  setAccountWrapper = bool => {
     this.setState({ account: null });
     this.props.setAccount(bool);
   };
 
-  goBack = (e) => {
+  goBack = e => {
     e.preventDefault();
     if (typeof window !== "undefined" && window != null) {
       window.history.back();
     }
   };
 
-  goSignIn = (e) => {
+  goSignIn = e => {
     if (e) e.preventDefault();
     this.props.remember();
   };
 
-  goBackToDefaultOnBoard = (e) => {
+  goBackToDefaultOnBoard = e => {
     if (e) e.preventDefault();
     this.props.resetAccount();
   };
 
-  goForgotPassword = (e) => {
+  goForgotPassword = e => {
     if (e) e.preventDefault();
     this.props.forgot();
   };
 
-  signout = (e) => {
+  signout = e => {
     if (e) e.preventDefault();
     Meteor.logout();
     this.props.authorize(false);
@@ -276,7 +276,7 @@ const PERSON_QUERY = gql`
 `;
 
 const withPerson = graphql(PERSON_QUERY, {
-  options: (ownProps) => ({
+  options: ownProps => ({
     ssr: false,
     variables: {
       guid: ownProps.location &&
@@ -287,7 +287,7 @@ const withPerson = graphql(PERSON_QUERY, {
 });
 
 const AccountsContainerWithData = withApollo(connect(
-  (state) => ({
+  state => ({
     accounts: state.accounts,
   }),
   mapDispatchToProps,
@@ -295,7 +295,7 @@ const AccountsContainerWithData = withApollo(connect(
 
 export default withPerson(
   connect(
-    (state) => ({
+    state => ({
       location: state.routing.location,
     }),
     mapDispatchToProps,

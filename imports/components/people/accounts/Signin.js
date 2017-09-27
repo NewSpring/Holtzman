@@ -345,7 +345,7 @@ class SignIn extends Component {
                   const { data, account } = this.props;
                   const btnClasses = ["push-double-bottom"];
 
-                  if (!data.email || !data.password  || (!account && !data.terms)) {
+                  if (!data.email || !data.password || (!account && !data.terms)) {
                     btnClasses.push("btn--disabled");
                   } else {
                     btnClasses.push("btn");

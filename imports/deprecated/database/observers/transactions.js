@@ -202,7 +202,7 @@ const transactions = () => {
           mergeFields.AccountNumberMasked = FinancialPaymentDetail.AccountNumberMasked.slice(-4);
 
           // remove record
-          TransactionReciepts.remove(_id, (err) => {
+          TransactionReciepts.remove(_id, err => {
             if (!err) {
               if (!GIVING_EMAIL_ID) {
                 GIVING_EMAIL_ID = api.get.sync("SystemEmails?$filter=Title eq 'Giving Receipt'");

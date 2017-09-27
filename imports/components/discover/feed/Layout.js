@@ -1,27 +1,12 @@
-
 import { PropTypes } from "react";
 import { Link } from "react-router";
 import Loading from "../../@primitives/UI/loading/Spinner";
-import Hero from "../../@primitives/UI/hero";
-import { MiniCard } from "../../@primitives/UI/cards";
 
 import FeedItemCard from "../../content/feed-item-card";
 
 import RecentLikes from "../../shared/likes-list";
 
-// reducer helpers
-import backgrounds from "../../../util/backgrounds";
-import categories from "../../../util/categories";
-
 import inAppLink from "../../../util/inAppLink";
-
-const cardPropsReducer = (c) => ({
-  title: c.title,
-  category: categories.name(c),
-  icon: categories.icon(c),
-  image: c ? backgrounds.image(c, { label: "2:1" }) : "",
-  link: c.meta.urlTitle,
-});
 
 function getImage(images, label = "2:1") {
   let selectedImage = "";
@@ -36,20 +21,20 @@ function getImage(images, label = "2:1") {
   return selectedImage;
 }
 
-const RenderRecentLikes = ({
-  recentLikes,
-  recentLoading,
-  show,
-}) => {
+const RenderRecentLikes = ({ recentLikes, recentLoading, show }) => {
   if (!show) return null;
   return (
     <section className="soft-half background--light-secondary">
-      {(recentLoading || (!recentLoading && recentLikes && recentLikes.length)) &&
-        <div className="one-whole text-center">
-          <h5 className="flush soft-bottom">Recently Liked By Others</h5>
+      {(recentLoading || (!recentLoading && recentLikes && recentLikes.length)) && (
+      <div className="one-whole text-center">
+        <h5 className="flush soft-bottom">Recently Liked By Others</h5>
+      </div>
+        )}
+      {recentLoading && (
+        <div className="text-center" data-spec="loading">
+          <Loading />
         </div>
-      }
-      {recentLoading && <div className="text-center" data-spec="loading"><Loading /></div>}
+      )}
       {recentLikes && <RecentLikes likes={recentLikes} />}
     </section>
   );
@@ -61,21 +46,16 @@ RenderRecentLikes.propTypes = {
   show: PropTypes.bool,
 };
 
-const Layout = ({
-  featuredItems,
-  textItems,
-  recentLikes,
-  recentLoading,
-}) => (
+const Layout = ({ featuredItems, textItems, recentLikes, recentLoading }) => (
   <div style={{ overflowY: "hidden", height: "100%" }} className="background--light-primary">
-
     <section className="hard background--light-secondary">
       <h6 className="push-left hard-bottom soft-top">Recommended by NewSpring</h6>
     </section>
 
     <section className="soft-half background--light-secondary">
       <div className="grid flush">
-        {featuredItems && featuredItems.map((item, i) =>
+        {featuredItems &&
+          featuredItems.map((item, i) => (
             <FeedItemCard
               key={i}
               item={item}
@@ -83,7 +63,7 @@ const Layout = ({
               link={item.meta.urlTitle}
               disableLike
             />
-        )}
+          ))}
       </div>
     </section>
 
@@ -111,16 +91,14 @@ const Layout = ({
 
                     return (
                       <span key={i}>
-                        <Link to={x.meta.urlTitle} >{x.title}</Link>
+                        <Link to={x.meta.urlTitle}>{x.title}</Link>
                         {delimeter}
                       </span>
                     );
                   })}?
                 </em>
               </small>
-
             </p>
-
           </div>
         </div>
       </div>
@@ -137,7 +115,4 @@ Layout.propTypes = {
 
 export default Layout;
 
-export {
-  RenderRecentLikes,
-  getImage,
-};
+export { RenderRecentLikes, getImage };

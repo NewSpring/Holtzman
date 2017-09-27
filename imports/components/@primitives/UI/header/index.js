@@ -34,7 +34,7 @@ class HeaderWithoutData extends Component {
     return undefined;
   }
 
-  cancelSearch = (event) => {
+  cancelSearch = event => {
     event.preventDefault();
     const { dispatch } = this.props;
 
@@ -98,7 +98,7 @@ class HeaderWithoutData extends Component {
                     <i className="icon-search locked-left push-half-top text-light-primary" />
                     <input
                       id="search"
-                      ref={(ref) => (this.searchInput = ref)}
+                      ref={ref => (this.searchInput = ref)}
                       type="text"
                       name="search"
                       className="h5 text-light-primary"

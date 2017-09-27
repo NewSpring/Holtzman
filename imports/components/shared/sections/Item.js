@@ -5,7 +5,7 @@ import { VelocityTransitionGroup } from "velocity-react";
 
 import { ImageLoader } from "../../@primitives/UI/loading";
 
-export const ExternalLinkWrapper = (props) => {
+export const ExternalLinkWrapper = props => {
   let url = props.to;
   if (props.to.match("//") === null) {
     return (
@@ -179,7 +179,7 @@ export default class SectionItem extends Component {
     section: null,
   }
 
-  expandOrGo = (e) => {
+  expandOrGo = e => {
     const { id } = e.currentTarget;
 
     for (const section of this.props.sections) {
@@ -239,7 +239,7 @@ export default class SectionItem extends Component {
     );
   }
 
-  renderArrow = (sectionItem) => {
+  renderArrow = sectionItem => {
     const { section } = this.state;
 
     if (!section) {

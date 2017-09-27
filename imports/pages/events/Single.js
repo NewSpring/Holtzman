@@ -141,7 +141,7 @@ const GET_EVENT_QUERY = gql`
 
 const withEvent = graphql(GET_EVENT_QUERY, {
   name: "event",
-  options: (ownProps) => ({
+  options: ownProps => ({
     variables: { id: ownProps.params.id },
   }),
 });

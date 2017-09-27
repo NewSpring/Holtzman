@@ -41,7 +41,7 @@ export default class SeriesHero extends Component {
     this.setState({ playing: false });
   }
 
-  ready = (player) => {
+  ready = player => {
     this.player = player;
   }
 

@@ -13,20 +13,20 @@ export const createItemClasses = (itemClasses?: [string], linkAll: boolean): str
   compose(
     join(" "),
     flatten,
-    ifElse(() => itemClasses, append(itemClasses), (x) => x),
-    ifElse(() => linkAll, append("background--light-primary"), (x) => x)
+    ifElse(() => itemClasses, append(itemClasses), x => x),
+    ifElse(() => linkAll, append("background--light-primary"), x => x)
   )(["card__item", "soft", "text-center", "soft-double-ends"]);
 
 export const cardClasses = (classes: [string]): string =>
   compose(
     join(" "),
     flatten,
-    ifElse(() => classes, append(classes), (x) => x)
+    ifElse(() => classes, append(classes), x => x)
   )(["card"]);
 
 export const createStyles = (linkAll: boolean): Object =>
   compose(
-    ifElse(() => linkAll, merge({ color: "inherit", textDecoration: "none" }), (x) => x)
+    ifElse(() => linkAll, merge({ color: "inherit", textDecoration: "none" }), x => x)
   )({ overflow: "hidden", display: "block" });
 
 export const imageStyles = (full: boolean, url: string): Object =>
@@ -52,7 +52,7 @@ export const createImage = (
   loader: Function,
 ) =>
   compose(
-    (classes) =>
+    classes =>
       <ImageLoader
         src={url}
         imageclasses={classes}
@@ -69,7 +69,7 @@ export const createImage = (
 // boolean -> string -> strng
 export const createWrapperClasses = (mobile?: boolean) => compose(
   concat("plain "),
-  ifElse(() => mobile === false, append("visuallyhidden@handheld "), (x) => x),
+  ifElse(() => mobile === false, append("visuallyhidden@handheld "), x => x),
 );
 
 type ICard = {

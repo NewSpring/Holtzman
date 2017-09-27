@@ -73,7 +73,7 @@ class ListDetailWithoutData extends Component {
     }
   }
 
-  share = (event) => {
+  share = event => {
     event.preventDefault();
     const { dispatch } = this.props;
     dispatch(shareActions.share());
@@ -81,7 +81,7 @@ class ListDetailWithoutData extends Component {
 
   render() {
     const url = `/music/${this.props.album.entryId}`;
-    const smallImage = _.find(this.props.album.content.images, (image) => (
+    const smallImage = _.find(this.props.album.content.images, image => (
       image.fileName.indexOf("blur") === -1 && image.size === "small"
     ));
     return (
@@ -120,7 +120,7 @@ class ListDetailWithoutData extends Component {
 
 }
 
-const mapStateToProps = (state) => (
+const mapStateToProps = state => (
   {
     audio: {
       visibility: state.audio.visibility,
