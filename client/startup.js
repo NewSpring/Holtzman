@@ -44,7 +44,9 @@ if (process.env.NATIVE) {
       a.media !== d && (a.media = d);
     }), a;
   }
-  loadCSS("https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic");
+  loadCSS(
+    "https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic",
+  );
 
   function openUrl(url) {
     try {
@@ -58,7 +60,7 @@ if (process.env.NATIVE) {
               transition: "curl", // unless animated is false you can choose from: curl, flip, fade, slide (default)
               enterReaderModeIfAvailable: false, // default false
               controlTintColor: "#6BAC43",
-              tintColor: "#6BAC43" // default to ios blue
+              tintColor: "#6BAC43", // default to ios blue
             },
             // this success handler will be invoked for the lifecycle events 'opened', 'loaded' and 'closed'
             result => {
@@ -73,7 +75,7 @@ if (process.env.NATIVE) {
             // error function?
             msg => {
               alert("KO: " + msg);
-            }
+            },
           );
         } else {
           // potentially powered by InAppBrowser because that (currently) clobbers window.open
@@ -146,17 +148,23 @@ if (process.env.NATIVE) {
           easing: "ease-in",
           // header + live banner should never be more than 100,
           // and this shouldn't affect instances where no offset is needed
-          offset: -100
+          offset: -100,
         };
 
         // this is the main view used by most content
-        const scroll = flatten(document.querySelectorAll("[data-status-scroll]"));
+        const scroll = flatten(
+          document.querySelectorAll("[data-status-scroll]"),
+        );
         // this will be the absolutely positioned containers
         // there may be multiple
-        const containers = flatten(document.querySelectorAll("[data-status-scroll-container]"));
+        const containers = flatten(
+          document.querySelectorAll("[data-status-scroll-container]"),
+        );
         // this will be the items inside absolutely positioned containers
         // there may be multiple
-        const items = flatten(document.querySelectorAll("[data-status-scroll-item]"));
+        const items = flatten(
+          document.querySelectorAll("[data-status-scroll-item]"),
+        );
 
         if (items.length > 0 && containers.length > 0) {
           // handle items inside positioned containers
@@ -191,7 +199,7 @@ Meteor.startup(() => {
       }
 
       const config = {
-        kitId: kitID
+        kitId: kitID,
       };
       let d = false;
       const tk = document.createElement("script");
@@ -214,7 +222,7 @@ Meteor.startup(() => {
       window._sf_async_config = {
         uid: Meteor.settings.public.chartbeat,
         domain: window.location.hostname,
-        useCanonical: true
+        useCanonical: true,
       };
       (function() {
         function loadChartbeat() {
@@ -249,9 +257,20 @@ Meteor.startup(() => {
         a.async = 1;
         a.src = g;
         m.parentNode.insertBefore(a, m);
-      })(window, document, "script", "//www.google-analytics.com/analytics.js", "ga");
+      })(
+        window,
+        document,
+        "script",
+        "//www.google-analytics.com/analytics.js",
+        "ga",
+      );
 
-      ga("create", Meteor.settings.public.ga, "auto");
+      if (Meteor.isCordova) {
+        ga("create", Meteor.settings.public.ga.mobile, "auto");
+      } else {
+        ga("create", Meteor.settings.public.ga.web, "auto");
+      }
+
       ga("send", "pageview");
       ga("require", "ecommerce");
     }
@@ -262,7 +281,7 @@ Meteor.startup(() => {
         w[l] = w[l] || [];
         w[l].push({
           "gtm.start": new Date().getTime(),
-          event: "gtm.js"
+          event: "gtm.js",
         });
         var f = d.getElementsByTagName(s)[0],
           j = d.createElement(s),

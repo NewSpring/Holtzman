@@ -3,10 +3,7 @@ import { shallowToJson } from "enzyme-to-json";
 import Layout from "../Layout";
 
 const defaultProps = {
-  tags: [
-    { value: "test" },
-    { value: "test" },
-  ],
+  tags: [{ value: "test" }, { value: "test" }],
   tagOnClick: jest.fn(),
   submitTags: jest.fn(),
   canSearchTags: true,
@@ -20,7 +17,7 @@ const generateComponent = (additionalProps = {}) => {
     ...defaultProps,
     ...additionalProps,
   };
-  return <Layout { ...newProps } />;
+  return <Layout {...newProps} />;
 };
 
 it("renders with props", () => {
@@ -29,15 +26,20 @@ it("renders with props", () => {
 });
 
 it("renders disabled tags", () => {
-  const wrapper = shallow(generateComponent({
-    canSearchTags: false,
-  }));
+  const wrapper = shallow(
+    generateComponent({
+      canSearchTags: false,
+    }),
+  );
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 
 it("renders loading if no tags", () => {
-  const wrapper = shallow(generateComponent({
-    tags: [],
-  }));
+  const wrapper = shallow(
+    generateComponent({
+      tags: [],
+      campuses: [],
+    }),
+  );
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
