@@ -50,7 +50,7 @@ class DiscoverWithoutData extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({ audio: state.audio });
+const mapStateToProps = state => ({ audio: state.audio });
 const Template = connect(mapStateToProps)(DiscoverWithoutData);
 
 const Routes = [

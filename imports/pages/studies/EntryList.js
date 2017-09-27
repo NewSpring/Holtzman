@@ -82,7 +82,7 @@ class StudyEntryWithoutData extends Component {
         <section
           className="soft-half-top"
           style={this.dynamicWidth()}
-          ref={(n) => { this.slider = n; }}
+          ref={n => { this.slider = n; }}
         >
           {studyEntries.map((studyEntry, i) => (
             <SeriesVideoListItem
@@ -128,15 +128,15 @@ const STUDY_ENTRY_QUERY = gql`
 
 const withStudyEntries = graphql(STUDY_ENTRY_QUERY, {
   name: "studyEntries",
-  options: (ownProps) => ({
+  options: ownProps => ({
     variables: { id: ownProps.id },
   }),
 });
 
 export default connect()(
   withStudyEntries(
-    StudyEntryWithoutData
-  )
+    StudyEntryWithoutData,
+  ),
 );
 
 export {

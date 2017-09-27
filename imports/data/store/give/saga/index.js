@@ -110,7 +110,7 @@ function* recoverTransactions() {
   if (!schedules) schedules = [];
   hasRecovered = true;
   const bulkUpdate = {};
-  schedules = schedules.filter((x) => !x.gateway);
+  schedules = schedules.filter(x => !x.gateway);
   if (schedules.length) {
     for (const schedule of schedules) {
       // only recover schedules that are missing info (i.e. not turned off in Rock)
@@ -131,7 +131,7 @@ function* recoverTransactions() {
     yield put(actions.saveSchedules(bulkUpdate));
 
     // delay to wait for published meteor user
-    yield call(() => new Promise((r) => setTimeout(r, 1000)));
+    yield call(() => new Promise(r => setTimeout(r, 1000)));
     user = Meteor.user();
     if (user && user.profile && user.profile.reminderDate) {
       yield put(actions.setReminder(user.profile.reminderDate));

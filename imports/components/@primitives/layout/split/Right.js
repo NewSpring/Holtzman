@@ -8,7 +8,7 @@ import Styles from "../../UI/loading/FeedItemSkeleton-css";
 import Hover from "./right-css";
 import PanelStyles from "./panel-css";
 
-export const DefaultWrapper = (props) => (
+export const DefaultWrapper = props => (
   <section className={props.imageclasses.join(" ")}>{props.children}</section>
 );
 

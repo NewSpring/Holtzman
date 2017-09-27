@@ -31,6 +31,7 @@ before_install:
 script:
   - yarn
   - yarn danger
+  - yarn lint
   - yarn test
 after_success:
   - 'if [ "$TRAVIS_EVENT_TYPE" == "cron" ]; then bash ./.travis/run_for_coverage; fi'

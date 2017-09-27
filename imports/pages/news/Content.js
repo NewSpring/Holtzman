@@ -21,7 +21,7 @@ StoryImage.propTypes = {
   story: PropTypes.object.isRequired,
 };
 
-const StoriesContent = (props) => {
+const StoriesContent = props => {
   const { story } = props;
   return (
     <div>

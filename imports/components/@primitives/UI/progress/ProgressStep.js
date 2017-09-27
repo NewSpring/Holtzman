@@ -7,7 +7,7 @@ export default class ProgressStep extends Component {
     active: PropTypes.number.isRequired,
   }
 
-  getLayer = (count) =>
+  getLayer = count =>
     ((this.props.steps + 2) - count);
 
   steps = () => {
@@ -19,7 +19,7 @@ export default class ProgressStep extends Component {
     }
 
     return stepsArray.map((value, count) =>
-      ({ count })
+      ({ count }),
     );
   }
 

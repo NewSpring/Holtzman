@@ -15,10 +15,10 @@ class AudioControlsWithoutData extends Component {
     dispatch: PropTypes.func,
   }
 
-  getTertiaryTextColor = (dark) =>
+  getTertiaryTextColor = dark =>
     (dark ? { color: "rgba(255,255,255,.5)" } : { color: "rgba(0,0,0,.5)" });
 
-  getPrimaryTextColor = (dark) =>
+  getPrimaryTextColor = dark =>
     (dark ? { color: "rgba(255,255,255,1)" } : { color: "rgba(0,0,0,1)" });
 
   getTertiaryTextClass = () =>
@@ -91,7 +91,7 @@ class AudioControlsWithoutData extends Component {
   listDetail = () => {
     const { album, track } = this.props.audio.playing;
 
-    const trackNumber = album.content.tracks.findIndex((current) => current.title === track.title);
+    const trackNumber = album.content.tracks.findIndex(current => current.title === track.title);
 
     this.props.dispatch(modal.render(ListDetail, {
       color: "background--dark-primary",
@@ -128,7 +128,7 @@ class AudioControlsWithoutData extends Component {
       "icon-skip-next",
     ].join(" ");
 
-  toggleClasses = (toggleIcon) =>
+  toggleClasses = toggleIcon =>
     [
       "soft-sides",
       "flush",
@@ -152,7 +152,7 @@ class AudioControlsWithoutData extends Component {
     };
   }
 
-  toggle = (e) => {
+  toggle = e => {
     e.preventDefault();
     e.stopPropagation();
     const { state } = this.props.audio;
@@ -164,11 +164,10 @@ class AudioControlsWithoutData extends Component {
 
     if (state === "playing") {
       this.props.dispatch(audioActions.pause());
-      return;
     }
   };
 
-  next = (e) => {
+  next = e => {
     e.preventDefault();
     e.stopPropagation();
     const { album } = this.props.audio.playing;
@@ -179,7 +178,7 @@ class AudioControlsWithoutData extends Component {
     }
   };
 
-  back = (e) => {
+  back = e => {
     e.preventDefault();
     e.stopPropagation();
     const { album } = this.props.audio.playing;
@@ -190,7 +189,7 @@ class AudioControlsWithoutData extends Component {
     }
   };
 
-  repeat = (e) => {
+  repeat = e => {
     e.preventDefault();
     e.stopPropagation();
     const { repeat } = this.props.audio;
@@ -204,7 +203,7 @@ class AudioControlsWithoutData extends Component {
     }
   };
 
-  shuffle = (e) => {
+  shuffle = e => {
     e.preventDefault();
     e.stopPropagation();
     const { order } = this.props.audio;

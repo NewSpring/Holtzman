@@ -20,16 +20,16 @@ const hiddenInput = {
 export default class Campus extends Component {
   textInput: Object;
 
-  static propTypes = {
-    campuses: PropTypes.array.isRequired,
-    selectedCampus: PropTypes.string.isRequired,
-    onChange: PropTypes.func.isRequired,
-  };
-
   state: {
     focused: boolean,
     campus: string,
     onload: boolean,
+  };
+
+  static propTypes = {
+    campuses: PropTypes.array.isRequired,
+    selectedCampus: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
   };
 
   constructor(props: Object) {
@@ -70,11 +70,7 @@ export default class Campus extends Component {
    * Alert if clicked on outside of element
    */
   handleClick(e: Event) {
-    if (
-      this.wrapperRef &&
-      !this.wrapperRef.contains(e.target) &&
-      this.state.focused
-    ) {
+    if (this.wrapperRef && !this.wrapperRef.contains(e.target) && this.state.focused) {
       this.timeout = setTimeout(() => {
         this.onBlur();
       }, 100);
@@ -82,11 +78,7 @@ export default class Campus extends Component {
   }
 
   validation = (value: any) => {
-    if (
-      this.props.campuses.indexOf(value) > -1 ||
-      value === "" ||
-      this.state.campus === ""
-    ) {
+    if (this.props.campuses.indexOf(value) > -1 || value === "" || this.state.campus === "") {
       return true;
     }
 
@@ -131,7 +123,6 @@ export default class Campus extends Component {
 
   render() {
     const { onChange, campuses } = this.props;
-    console.log(campuses);
 
     return (
       <div
@@ -143,9 +134,7 @@ export default class Campus extends Component {
           is the only event that fires on a readonly input */}
         <Forms.Input
           classes={this.state.focused ? "soft-bottom" : ""}
-          inputClasses={
-            "outlined--dotted outlined--light h6 flush-bottom text-black"
-          }
+          inputClasses={"outlined--dotted outlined--light h6 flush-bottom text-black"}
           ref={input => {
             this.textInput = input;
           }}
@@ -191,7 +180,7 @@ export default class Campus extends Component {
             : "display-inline-block"}`}
         >
           {/* weird SSR stuff here to investigate */}
-          {campuses.map((c, i) =>
+          {campuses.map((c, i) => (
             <Forms.Checkbox
               classes={[
                 "soft-half-bottom",
@@ -204,14 +193,11 @@ export default class Campus extends Component {
               key={i}
               clicked={this.onClick}
             >
-              <span
-                className="soft-half-top"
-                style={{ textTransform: "capitalize" }}
-              >
+              <span className="soft-half-top" style={{ textTransform: "capitalize" }}>
                 {c}
               </span>
-            </Forms.Checkbox>,
-          )}
+            </Forms.Checkbox>
+          ))}
         </div>
       </div>
     );

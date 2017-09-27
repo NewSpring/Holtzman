@@ -71,7 +71,7 @@ class FullPlayerWithoutData extends Component {
   // };
 
 
-  getArtworkStyles = (album) => {
+  getArtworkStyles = album => {
     const artworkContainer = this.refs.artworkContainer;
     const awStyles = backgrounds.styles(album);
 
@@ -84,7 +84,7 @@ class FullPlayerWithoutData extends Component {
     return awStyles;
   };
 
-  getArtworkClasses = (album) => {
+  getArtworkClasses = album => {
     const classes = [
       "one-whole",
       "overlay--gradient",
@@ -147,7 +147,6 @@ class FullPlayerWithoutData extends Component {
 
     if (state === "playing") {
       this.props.pause();
-      return;
     }
   }
 

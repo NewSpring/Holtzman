@@ -43,7 +43,7 @@ class SeriesSingleWithoutData extends Component {
     this.handleHeaderStyle(nextProps);
   }
 
-  handleHeaderStyle = (nextProps) => {
+  handleHeaderStyle = nextProps => {
     const content = nextProps.series.content;
     if (!content) return;
     const { isLight } = nextProps.series.content.content;
@@ -149,7 +149,7 @@ const SERIES_SINGLE_QUERY = gql`
 
 const withSingleSeries = graphql(SERIES_SINGLE_QUERY, {
   name: "series",
-  options: (ownProps) => ({
+  options: ownProps => ({
     variables: { id: ownProps.params.id },
   }),
 });
@@ -159,11 +159,11 @@ export default connect()(
     ReactMixin.decorate(Shareable)(
       ReactMixin.decorate(Headerable)(
         canLike(
-          (props) => (props.series.loading ? null : props.series.content.id)
-        )(SeriesSingleWithoutData)
-      )
-    )
-  )
+          props => (props.series.loading ? null : props.series.content.id),
+        )(SeriesSingleWithoutData),
+      ),
+    ),
+  ),
 );
 
 export {

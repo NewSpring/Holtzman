@@ -11,7 +11,7 @@ export default class Layout extends Component {
     update: PropTypes.func,
   }
 
-  submit = (e) => {
+  submit = e => {
     e.preventDefault();
 
     const data = {};

@@ -77,7 +77,7 @@ export default class DateComponent extends Component {
       formatWeekdayShort: (i, locale) => WEEKDAYS_SHORT[locale][i],
       formatWeekdayLong: (i, locale) => WEEKDAYS_LONG[locale][i],
       getFirstDayOfWeek: () => 0,
-      formatDay: (d) => d.toDateString(),
+      formatDay: d => d.toDateString(),
     };
 
     let formattedDay = selectedDay && selectedDay.toLocaleDateString();
@@ -127,8 +127,8 @@ export default class DateComponent extends Component {
                     locale="en"
                     localeUtils={localUtils}
                     modifiers={{
-                      selected: (day) => DateUtils.isSameDay(selectedDay, day),
-                      disabled: (day) =>
+                      selected: day => DateUtils.isSameDay(selectedDay, day),
+                      disabled: day =>
                         (
                           (this.props.past === false && DateUtils.isPastDay(day)) ||
                           (this.props.today === false && DateUtils.isSameDay(day, new Date()))

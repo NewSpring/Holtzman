@@ -122,7 +122,7 @@ const TRANSACTIONS_QUERY = gql`
 `;
 
 const withTransactions = graphql(TRANSACTIONS_QUERY, {
-  options: (ownProps) => ({
+  options: ownProps => ({
     variables: {
       transactionId: ownProps.params.id,
     },
@@ -132,9 +132,9 @@ const withTransactions = graphql(TRANSACTIONS_QUERY, {
 const Details = connect()(
   withEntries(
     withTransactions(
-      DetailsWithoutData
-    )
-  )
+      DetailsWithoutData,
+    ),
+  ),
 );
 
 const Routes = [

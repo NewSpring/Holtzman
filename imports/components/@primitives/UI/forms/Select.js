@@ -264,13 +264,13 @@ export default class Select extends Component {
             return undefined;
           })()}
           {this.props.items.map((option, key) =>
-            <option
+            (<option
               className={this.props.optionClasses}
               value={option.value || option.label}
               key={key}
             >
               {option.label || option.value}
-            </option>,
+            </option>),
           )}
         </select>
 

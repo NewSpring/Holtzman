@@ -72,7 +72,7 @@ class MenuWithoutData extends Component {
     }
   }
 
-  signout = (e) => {
+  signout = e => {
     e.preventDefault();
     Meteor.logout();
   }
@@ -158,12 +158,12 @@ class MenuWithoutData extends Component {
                   {(() => {
                     if (!process.env.NATIVE) {
                       return (
-                        <input onChange={(e) => this.upload(e, "upload")} type="file" className="locked-ends locked-sides" style={{ opacity: 0, zIndex: 1 }} />
+                        <input onChange={e => this.upload(e, "upload")} type="file" className="locked-ends locked-sides" style={{ opacity: 0, zIndex: 1 }} />
                       );
                     }
 
                     return (
-                      <div onClick={(e) => this.upload(e, "upload")} className="locked-ends locked-sides" style={{ opacity: 0, zIndex: 1 }} />
+                      <div onClick={e => this.upload(e, "upload")} className="locked-ends locked-sides" style={{ opacity: 0, zIndex: 1 }} />
                     );
                   })()}
                 </RenderCell>
@@ -173,7 +173,7 @@ class MenuWithoutData extends Component {
                   return (
                     <button className="plain text-dark-secondary display-inline-block one-whole" style={{ position: "relative" }}>
                       <RenderCell name="Take Profile Photo" iconFunc={this.captureIcon}>
-                        <div onClick={(e) => this.upload(e, "capture", { sourceType: Camera.PictureSourceType.CAMERA })} className="locked-ends locked-sides" style={{ opacity: 0, zIndex: 1 }} />
+                        <div onClick={e => this.upload(e, "capture", { sourceType: Camera.PictureSourceType.CAMERA })} className="locked-ends locked-sides" style={{ opacity: 0, zIndex: 1 }} />
                       </RenderCell>
                     </button>
                   );
@@ -271,10 +271,10 @@ export default withGetPhoto(
   withProfileUpload(
     connect()(
       ReactMixin.decorate(Headerable)(
-        MenuWithoutData
-      )
-    )
-  )
+        MenuWithoutData,
+      ),
+    ),
+  ),
 );
 
 export {

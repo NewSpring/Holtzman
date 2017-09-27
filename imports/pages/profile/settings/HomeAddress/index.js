@@ -44,9 +44,9 @@ class HomeAddressWithoutData extends Component {
     this.props.dispatch(nav.setLevel("TOP"));
   }
 
-  updateAddress = (data) => {
+  updateAddress = data => {
     this.setState({ state: "loading" });
-    updateHome(data, (err) => {
+    updateHome(data, err => {
       if (err) {
         this.setState({ state: "error", err });
         setTimeout(() => {
@@ -113,8 +113,8 @@ const withPersonHome = graphql(PERSON_HOME_QUERY, {
 
 export default connect()(
   withPersonHome(
-    HomeAddressWithoutData
-  )
+    HomeAddressWithoutData,
+  ),
 );
 
 export {

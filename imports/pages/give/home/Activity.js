@@ -13,11 +13,11 @@ import LoadingActivityCard from "../../../components/@primitives/UI/loading/Acti
 import SummaryChart from "./GivingSummary";
 
 const ActivityButton = () =>
-  <SmallButton
+  (<SmallButton
     text="See All"
     linkUrl="/give/history"
     className="btn--dark-tertiary flush"
-  />;
+  />);
 
 type IGivingActivity = {
   feed: Object,
@@ -52,7 +52,7 @@ export class GivingActivity extends Component {
     //   return null;
     // });
 
-    transactions.map((transaction) => {
+    transactions.map(transaction => {
       if (transaction.details[0].amount !== 0) {
         if (activityToShow.length < 3) {
           activityToShow.push(transaction);
@@ -140,14 +140,14 @@ export class GivingActivity extends Component {
   };
 
   renderExpiringAccount = (account: Object): any =>
-    <ActivityCard
+    (<ActivityCard
       key={account.id}
       status=""
       message={`Your saved payment ${account.name} is expiring soon.`}
       linkText={"Update it Now"}
       linkUrl={"/"}
       date={"2016-12-01"}
-    />
+    />)
   ;
 
   renderActivity = (feedItems: ?[Object]): ?[any] => {
