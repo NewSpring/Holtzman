@@ -55,7 +55,7 @@ class AudioTrackWithoutData extends Component {
     return classes.join(" ");
   }
 
-  play = (e) => {
+  play = e => {
     e.preventDefault();
     const index = this.props.trackNumber;
 

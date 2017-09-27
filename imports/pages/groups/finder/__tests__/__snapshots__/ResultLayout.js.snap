@@ -218,8 +218,7 @@ exports[`test renders with props 1`] = `
             className="flush hard">
             <em>
               <small>
-                Unfortunately, we didn\'t find any groups matching your search. You can start a group
-                 
+                Unfortunately, we didn\'t find any groups matching your search. You can start a group 
                 <a
                   href="https://rock.newspring.cc/workflows/81">
                   here!
@@ -366,8 +365,7 @@ exports[`test shows down arrow on filter tag when tag drawer is closed 1`] = `
             className="flush hard">
             <em>
               <small>
-                Unfortunately, we didn\'t find any groups matching your search. You can start a group
-                 
+                Unfortunately, we didn\'t find any groups matching your search. You can start a group 
                 <a
                   href="https://rock.newspring.cc/workflows/81">
                   here!
@@ -514,8 +512,7 @@ exports[`test shows up arrow on filter tag when tags are shown 1`] = `
             className="flush hard">
             <em>
               <small>
-                Unfortunately, we didn\'t find any groups matching your search. You can start a group
-                 
+                Unfortunately, we didn\'t find any groups matching your search. You can start a group 
                 <a
                   href="https://rock.newspring.cc/workflows/81">
                   here!

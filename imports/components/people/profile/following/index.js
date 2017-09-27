@@ -24,7 +24,7 @@ export const topics = [
 ];
 
 // XXX make this dynamic via heighliner
-const map = (state) => ({ topics: state.topics.topics });
+const map = state => ({ topics: state.topics.topics });
 // @connect(map)
 export class FollowingContainer extends Component {
 
@@ -37,13 +37,13 @@ export class FollowingContainer extends Component {
   h7Classes = "flush outlined--light outlined--bottom display-block soft-sides soft-half-top soft-bottom text-center soft-double-sides@lap-and-up soft-double-bottom@lap-and-up"
   containerClasses = "cell-wrapper push-half-bottom background--light-primary outlined--light outlined--bottom text-dark-secondary"
 
-  changed = (id) => {
+  changed = id => {
     const topic = topics[id];
     this.props.dispatch(topicActions.toggle({ topic }));
     Meteor.call("toggleTopic", topic);
   }
 
-  active = (item) => {
+  active = item => {
     if (this.props.topics) return this.props.topics.indexOf(item) === -1;
     return true;
   }

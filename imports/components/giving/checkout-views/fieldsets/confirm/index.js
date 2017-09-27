@@ -129,7 +129,7 @@ export default class Confirm extends Component {
       );
     }
 
-    const transactions = Object.keys(this.props.transactions).map((t) => (
+    const transactions = Object.keys(this.props.transactions).map(t => (
       this.props.transactions[t]
     ));
     return (

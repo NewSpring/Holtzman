@@ -37,11 +37,11 @@ class FitTextWithoutData extends Component {
   }
 
   render() {
-    return <div ref={(node) => { this.element = node; }}>{this.props.children}</div>;
+    return <div ref={node => { this.element = node; }}>{this.props.children}</div>;
   }
 }
 
-const map = (store) => ({
+const map = store => ({
   width: store.responsive.width,
 });
 

@@ -41,7 +41,7 @@ const createReduxStore = (initialState, history) => {
     sharedCompose = [...sharedCompose, ...[
       typeof window === "object" && typeof window.devToolsExtension !== "undefined" ?
         window.devToolsExtension() :
-        (f) => f,
+        f => f,
     ]];
   }
 
@@ -49,7 +49,7 @@ const createReduxStore = (initialState, history) => {
     combineReducers(joinedReducers), initialState
   );
 
-  sagas.forEach((saga) => sagaMiddleware.run(saga()));
+  sagas.forEach(saga => sagaMiddleware.run(saga()));
 
   return store;
 };

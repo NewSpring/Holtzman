@@ -42,7 +42,7 @@ export const updateQuery = (id: string, name: ?string) => (
 
 export const withPaymentRemove = graphql(REMOVE_PAYMENT_MUTATION, {
   props: ({ mutate }) => ({
-    remove: (id) => mutate({
+    remove: id => mutate({
       variables: { id },
       optimisticResponse: {
         __typename: "Mutation",

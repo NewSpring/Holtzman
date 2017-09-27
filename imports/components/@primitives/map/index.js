@@ -58,9 +58,9 @@ export default class Map extends Component {
   componentDidUpdate(prevProps) {
     const didChange = !_.isEqual(this.props.markers, prevProps.markers);
     if (didChange && prevProps.autoCenter && this.map) {
-      const markers = this.props.markers.filter((x) =>
+      const markers = this.props.markers.filter(x =>
         (x.latitude && x.longitude)
-      ).map((marker) => (
+      ).map(marker => (
         new google.maps.LatLng(marker.latitude, marker.longitude)
       ));
 
@@ -81,7 +81,7 @@ export default class Map extends Component {
     }
   }
 
-  onChildClick = (key) => {
+  onChildClick = key => {
     const { markers } = this.props;
 
     let marker;
@@ -97,7 +97,7 @@ export default class Map extends Component {
     }
   }
 
-  onChildMouseEnter = (key) => {
+  onChildMouseEnter = key => {
     const { markers } = this.props;
 
     let marker;
@@ -155,8 +155,8 @@ export default class Map extends Component {
             onGoogleApiLoaded={({ map }) => {
               this.map = map;
               const markers = this.props.markers
-                .filter((x) => x.latitude && x.longitude)
-                .map((marker) => (
+                .filter(x => x.latitude && x.longitude)
+                .map(marker => (
                   new google.maps.LatLng(marker.latitude, marker.longitude)
                 ));
 
@@ -167,7 +167,7 @@ export default class Map extends Component {
               }
             }}
           >
-            {this.props.markers && this.props.markers.map((marker) => (
+            {this.props.markers && this.props.markers.map(marker => (
               <Marker
                 lat={marker.latitude}
                 lng={marker.longitude}

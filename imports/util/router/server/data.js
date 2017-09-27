@@ -54,7 +54,7 @@ export default function patchSubscribeData(ReactRouterSSR) {
 
   const originalAutorun = Tracker.autorun;
 
-  Tracker.autorun = (fn) => {
+  Tracker.autorun = fn => {
     // if autorun is in the ssrContext, we need fake and run the callback
     // in the same eventloop
     if (ReactRouterSSR.ssrContext.get()) {
@@ -69,7 +69,7 @@ export default function patchSubscribeData(ReactRouterSSR) {
   // By default, Meteor[call,apply] also inherit SsrContext
   // So, they can't access the full MongoDB dataset because of that
   // Then, we need to remove the SsrContext within Method calls
-  ["call", "apply"].forEach((methodName) => {
+  ["call", "apply"].forEach(methodName => {
     const original = Meteor[methodName];
     Meteor[methodName] = (...args) => {
       const response = ReactRouterSSR.ssrContext.withValue(null, () => (

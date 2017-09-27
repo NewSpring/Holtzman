@@ -19,7 +19,7 @@ export default class Layout extends Component {
     transaction: PropTypes.object,
   }
 
-  formatDate = (date) => (
+  formatDate = date => (
     moment(new Date(date)).format("MMM D, YYYY")
   )
 

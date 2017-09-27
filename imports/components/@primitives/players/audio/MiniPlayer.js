@@ -110,7 +110,7 @@ class MiniPlayerWithoutData extends Component {
     return classes.join(" ");
   }
 
-  toggle = (e) => {
+  toggle = e => {
     e.preventDefault();
     e.stopPropagation();
     const { state } = this.props.audio;
@@ -144,14 +144,14 @@ class MiniPlayerWithoutData extends Component {
     this.props.dispatch(audioActions.setVisibility("expand"));
   };
 
-  touchStart = (e) => {
+  touchStart = e => {
     this.setState({
       startX: e.touches[0].clientX,
       transition: false,
     });
   }
 
-  touchMove = (e) => {
+  touchMove = e => {
     const percent = this.calculatePercent(e.currentTarget, e.touches[0].clientX);
     this.setState({
       lastPercent: percent,
@@ -211,7 +211,7 @@ class MiniPlayerWithoutData extends Component {
     const { playing } = this.props.audio;
     const { album } = playing;
     const { images } = album.content;
-    const smallImage = _.find(images, (image) => {
+    const smallImage = _.find(images, image => {
       if (image.fileLabel && image.size) {
         return image.fileLabel === "1:1" && image.size === "small";
       }

@@ -384,10 +384,10 @@ Object {
   ],
   "kind": "Document",
   "loc": Object {
-    "end": 508,
+    "end": 509,
     "source": Source {
       "body": "
-  query getSeries($limit: Int!, $skip: Int!){
+  query getSeries($limit: Int!, $skip: Int!) {
     content(channel: \"studies\", limit: $limit, skip: $skip) {
       id
       entryId: id

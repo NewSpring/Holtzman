@@ -32,7 +32,7 @@ if (process.env.NATIVE) {
     );
   }
   @scriptLoader(...scripts)
-  @connect((state) => ({ audio: state.audio, pathname: state.routing.location.pathname }))
+  @connect(state => ({ audio: state.audio, pathname: state.routing.location.pathname }))
   class AppGlobal extends Component {
 
     static propTypes = {
