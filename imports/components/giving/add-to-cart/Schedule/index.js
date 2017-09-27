@@ -73,7 +73,6 @@ export class Schedule extends Component {
 
     if ((!this.state.start && start) || (!this.state.frequency && frequency)) {
       this.props.setCanCheckout(false);
-      return;
     }
   }
 
@@ -137,7 +136,7 @@ export class Schedule extends Component {
 
   startClick = (value: string) => {
     const filtered = START_DATES.find(
-      x => moment(x.value).isValid() && moment(x.value).isSame(value, "day")
+      x => moment(x.value).isValid() && moment(x.value).isSame(value, "day"),
     );
     const label = filtered ? filtered.label : "Custom"; // the tag label
 

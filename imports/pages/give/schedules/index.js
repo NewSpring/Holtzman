@@ -144,9 +144,9 @@ const mapStateToProps = ({ give, accounts }) => ({
 const Template = connect(mapStateToProps)(
   withFinancialAccounts(
     withScheduledTransactions(
-      TemplateWithoutData
-    )
-  )
+      TemplateWithoutData,
+    ),
+  ),
 );
 
 const Routes = [

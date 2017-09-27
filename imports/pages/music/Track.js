@@ -76,7 +76,7 @@ class AudioTrackWithoutData extends Component {
     }));
 
     this.props.dispatch(audioActions.setPlaylist(
-      this.props.album.content.tracks
+      this.props.album.content.tracks,
     ));
   }
 

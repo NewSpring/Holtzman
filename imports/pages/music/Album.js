@@ -217,11 +217,11 @@ export default connect()(
     ReactMixin.decorate(Shareable)(
       ReactMixin.decorate(Headerable)(
         canLike(
-          props => (props.album.loading ? null : props.album.content.id)
-        )(MusicAlbumWithoutData)
-      )
-    )
-  )
+          props => (props.album.loading ? null : props.album.content.id),
+        )(MusicAlbumWithoutData),
+      ),
+    ),
+  ),
 );
 
 export {

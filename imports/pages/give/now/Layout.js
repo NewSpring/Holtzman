@@ -59,7 +59,7 @@ const Layout = ({ alive, accounts }) => (
                       <div className="display-inline-block" style={{ verticalAlign: "middle" }}>
                         <i className="soft-half-right icon-category-text text-dark-tertiary" style={{ verticalAlign: "middle" }} />
                         <h7 className="text-dark-tertiary" style={{ verticalAlign: "middle" }}>Contribution Fund</h7>
-                        {/* <h7 className="text-right float-right text-dark-tertiary"></h7>*/}
+                        {/* <h7 className="text-right float-right text-dark-tertiary"></h7> */}
                       </div>
                     </Link>
                   );

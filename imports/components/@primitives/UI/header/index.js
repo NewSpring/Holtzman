@@ -1,5 +1,4 @@
-
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { Component } from "react";
 import { Link } from "react-router";
 import { connect } from "react-redux";
@@ -9,7 +8,6 @@ import { search as searchActions } from "../../../../data/store";
 import Live from "../live";
 
 class HeaderWithoutData extends Component {
-
   static propTypes = {
     showSettings: PropTypes.bool,
     dispatch: PropTypes.func,
@@ -22,18 +20,21 @@ class HeaderWithoutData extends Component {
     text: PropTypes.string,
     subText: PropTypes.string,
     fontWeight: PropTypes.string,
-  }
+  };
 
   showSettings = () => {
     if (this.props.showSettings) {
       return (
-        <Link to="/profile/settings" className="text-light-primary plain soft-half-top soft-half-right overlay__item locked-top locked-right">
+        <Link
+          to="/profile/settings"
+          className="text-light-primary plain soft-half-top soft-half-right overlay__item locked-top locked-right"
+        >
           <i className="icon-settings h4" />
         </Link>
       );
     }
     return undefined;
-  }
+  };
 
   cancelSearch = event => {
     event.preventDefault();
@@ -42,7 +43,7 @@ class HeaderWithoutData extends Component {
     dispatch(searchActions.searching(false));
     dispatch(searchActions.term(null));
     this.searchInput.value = "";
-  }
+  };
 
   render() {
     const lightColor = "text-light-primary";
@@ -90,11 +91,7 @@ class HeaderWithoutData extends Component {
           {(() => {
             if (this.props.isSearch) {
               return (
-                <form
-                  onSubmit={this.props.searchSubmit}
-                  className={"hard-ends soft-sides"}
-                  action
-                >
+                <form onSubmit={this.props.searchSubmit} className={"hard-ends soft-sides"} action>
                   <div className={"input hard-bottom"}>
                     <i className="icon-search locked-left push-half-top text-light-primary" />
                     <input
@@ -141,7 +138,6 @@ class HeaderWithoutData extends Component {
               </h6>
             );
           })()}
-
         </div>
 
         {(() => {
@@ -197,8 +193,4 @@ const withRedux = connect(map);
 
 export default withRedux(HeaderWithoutData);
 
-export {
-  HeaderWithoutData,
-  map,
-  withRedux,
-};
+export { HeaderWithoutData, map, withRedux };

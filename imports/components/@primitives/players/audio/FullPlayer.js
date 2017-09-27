@@ -150,7 +150,6 @@ class FullPlayerWithoutData extends Component {
 
     if (state === "playing") {
       this.props.pause();
-      return;
     }
   }
 

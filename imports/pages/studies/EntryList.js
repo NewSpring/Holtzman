@@ -136,8 +136,8 @@ const withStudyEntries = graphql(STUDY_ENTRY_QUERY, {
 
 export default connect()(
   withStudyEntries(
-    StudyEntryWithoutData
-  )
+    StudyEntryWithoutData,
+  ),
 );
 
 export {

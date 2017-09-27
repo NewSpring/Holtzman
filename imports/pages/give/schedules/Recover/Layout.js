@@ -200,7 +200,7 @@ export default class Layout extends Component {
                                 >
                                   <h6 className="text-dark-tertiary push-half-bottom">
                                     {this.capitalizeFirstLetter(
-                                      schedule.schedule.description.toLowerCase()
+                                      schedule.schedule.description.toLowerCase(),
                                     )}
                                   </h6>
                                   <h5 className="flush text-dark">

@@ -82,11 +82,11 @@ export default connect()(
     ReactMixin.decorate(Shareable)(
       ReactMixin.decorate(Headerable)(
         canLike(
-          props => (props.story.loading ? null : props.story.content.id)
-        )(StoriesSingleWithoutData)
-      )
-    )
-  )
+          props => (props.story.loading ? null : props.story.content.id),
+        )(StoriesSingleWithoutData),
+      ),
+    ),
+  ),
 );
 
 export {

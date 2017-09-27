@@ -20,7 +20,7 @@ export default class ProgressStep extends Component {
     }
 
     return stepsArray.map((value, count) =>
-      ({ count })
+      ({ count }),
     );
   }
 

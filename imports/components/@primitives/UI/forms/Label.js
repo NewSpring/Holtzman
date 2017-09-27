@@ -12,9 +12,9 @@ function style(disabled, labelStyles) {
 }
 
 const Label = ({ labelFor, labelName, disabled, labelStyles }) =>
-  <label htmlFor={labelFor} style={style(disabled, labelStyles)}>
+  (<label htmlFor={labelFor} style={style(disabled, labelStyles)}>
     {labelName}
-  </label>;
+  </label>);
 
 Label.propTypes = {
   labelFor: PropTypes.string,

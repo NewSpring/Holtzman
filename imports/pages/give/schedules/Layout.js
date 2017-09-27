@@ -220,7 +220,7 @@ export default class Layout extends Component {
                             >
                               <h6 className="text-dark-tertiary push-half-bottom">
                                 {this.capitalizeFirstLetter(
-                                  schedule.schedule.description.toLowerCase()
+                                  schedule.schedule.description.toLowerCase(),
                                 )}
                                 <span className="text-dark-secondary">
                                   {complete ? " - Complete" : ""}
@@ -332,7 +332,7 @@ export default class Layout extends Component {
                               >
                                 <h6 className="text-dark-tertiary push-half-bottom">
                                   {this.capitalizeFirstLetter(
-                                    schedule.schedule.description.toLowerCase()
+                                    schedule.schedule.description.toLowerCase(),
                                   )}
                                   <span className="text-dark-secondary">
                                     {complete ? " - Complete" : ""}

@@ -28,7 +28,7 @@ if (process.env.NATIVE) {
   ];
   if (Meteor.isCordova) {
     scripts.push(
-      "//player.ooyala.com/static/v4/stable/4.6.9/video-plugin/bit_wrapper.min.js"
+      "//player.ooyala.com/static/v4/stable/4.6.9/video-plugin/bit_wrapper.min.js",
     );
   }
   @scriptLoader(...scripts)

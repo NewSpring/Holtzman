@@ -100,7 +100,6 @@ class AudioPlayerUtilityWithoutData extends Component {
         this.props.play();
         if (Meteor.isCordova) return;
         player.play();
-        return;
       }
     }, () => {}, function audioEventStream(STATUS) {
       if (this.done) return;

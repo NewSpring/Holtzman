@@ -50,9 +50,9 @@ const withCampuses = graphql(CAMPUSES_QUERY);
 const LayoutWithData = connect()(
   withApollo(
     withCampuses(
-      LayoutWithoutData
-    )
-  )
+      LayoutWithoutData,
+    ),
+  ),
 );
 
 const Routes = [

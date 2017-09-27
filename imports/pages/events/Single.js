@@ -151,9 +151,9 @@ const withEvent = graphql(GET_EVENT_QUERY, {
 export default connect()(
   withEvent(
     ReactMixin.decorate(Headerable)(
-      EventSingleWithoutData
-    )
-  )
+      EventSingleWithoutData,
+    ),
+  ),
 );
 
 export {

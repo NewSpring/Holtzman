@@ -87,9 +87,9 @@ export const mapStateToProps = ({ accounts }) => ({
 const Template = withProfileUpload(
   connect(mapStateToProps)(
     withPerson(
-      TemplateWithoutData
-    )
-  )
+      TemplateWithoutData,
+    ),
+  ),
 );
 
 const Routes = [

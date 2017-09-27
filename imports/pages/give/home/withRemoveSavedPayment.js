@@ -25,7 +25,7 @@ export const REMOVE_PAYMENT_MUTATION = gql`
 
 export const updateQuery = (id: string, name: ?string) => (
   prev: Object,
-  { mutationResult }: Object
+  { mutationResult }: Object,
 ) => {
   const { error } = mutationResult.data.payment;
   if (error) return prev;

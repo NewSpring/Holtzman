@@ -26,7 +26,7 @@ export const TOGGLE_LIKE_MUTATION = gql`
 const withToggleLike = graphql(TOGGLE_LIKE_MUTATION, {});
 
 export const classWrapper = (propsReducer: Function = () => null, updateNav: boolean = true) => (
-  WrappedComponent: any
+  WrappedComponent: any,
 ) => {
   type ILikesWrapper = {
     dispatch: Function,
@@ -45,7 +45,7 @@ export const classWrapper = (propsReducer: Function = () => null, updateNav: boo
           navActions.setAction("CONTENT", {
             id: 2,
             action: this.toggleLike,
-          })
+          }),
         );
       }
     }
@@ -77,7 +77,7 @@ export const classWrapper = (propsReducer: Function = () => null, updateNav: boo
           modal.render(OnBoard, {
             coverHeader: true,
             modalBackground: "light",
-          })
+          }),
         );
       } else {
         // if logged in, toggle like state in redux, remote with gql query

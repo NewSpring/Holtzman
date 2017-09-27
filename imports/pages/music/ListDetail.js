@@ -50,7 +50,7 @@ class ListDetailWithoutData extends Component {
   componentWillUnmount() {
     if (process.env.NATIVE) {
       this.props.dispatch(
-        headerActions.statusBarColor(this.state.previousHeaderColor)
+        headerActions.statusBarColor(this.state.previousHeaderColor),
       );
       this.props.dispatch(navActions.setLevel("CONTENT"));
     }
@@ -132,8 +132,8 @@ const mapStateToProps = state => (
 
 export default connect(mapStateToProps)(
   ReactMixin.decorate(Shareable)(
-    ListDetailWithoutData
-  )
+    ListDetailWithoutData,
+  ),
 );
 
 export {

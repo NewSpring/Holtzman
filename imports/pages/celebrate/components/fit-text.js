@@ -32,7 +32,7 @@ class FitTextWithoutData extends Component {
       Math.min(
         (width / (this.props.compressor * 10)),
         parseFloat(this.props.maxFontSize)),
-        parseFloat(this.props.minFontSize)
+        parseFloat(this.props.minFontSize),
     );
     element.style.fontSize = `${max}px`;
   }

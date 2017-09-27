@@ -187,10 +187,10 @@ export default withRouter(
   withAttributes(
     withCampusLocations(
       connect(state => ({ location: state.routing.location }))(
-        FilterWithoutData
-      )
-    )
-  )
+        FilterWithoutData,
+      ),
+    ),
+  ),
 );
 
 export {

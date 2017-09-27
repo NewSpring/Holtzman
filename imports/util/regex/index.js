@@ -10,14 +10,14 @@ Regex.addRegex = (name, test, validate) => {
   if (Regex[name]) {
     throw new Error(
       "Regex assigned",
-      `Regex ${name} is already registered`
+      `Regex ${name} is already registered`,
     );
   }
 
   if (!test || !(test instanceof RegExp)) {
     throw new Error(
       "Regex TypeError",
-      `Regexter ${name} requires a regex`
+      `Regexter ${name} requires a regex`,
     );
   }
 
@@ -27,7 +27,6 @@ Regex.addRegex = (name, test, validate) => {
     const funcName = `is${capitalize(name)}`;
     Validate.addValidator(funcName, str => (test.test(str)));
   }
-  return;
 };
 
 /*

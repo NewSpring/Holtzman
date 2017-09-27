@@ -27,7 +27,7 @@ class Meta extends Component {
         window.fabric.Answers.sendContentView(
           this.props.title,
           "",
-          this.props.id ? this.props.id : ""
+          this.props.id ? this.props.id : "",
         );
       }
     }

@@ -33,7 +33,7 @@ export default ({
   canCheckout,
   setCanCheckout,
 }: ILayout) =>
-  <div className="push-top@handheld soft-half-top@lap-and-up">
+  (<div className="push-top@handheld soft-half-top@lap-and-up">
     <Forms.Form
       classes={["text-left", "hard"]}
       submit={e => {
@@ -45,13 +45,13 @@ export default ({
         {/* Subund Layout */}
         {subfunds &&
           subfunds.map(subfund =>
-            <SubFund
+            (<SubFund
               preFill={preFill}
               key={subfund.id}
               changeAmount={changeAmount}
               changeFund={changeFund}
               {...subfund}
-            />
+            />),
           )}
 
         <div className="display-block one-whole soft-bottom">
@@ -94,4 +94,4 @@ export default ({
         <CheckoutButtons disabled={!canCheckout} />
       </div>
     </Forms.Form>
-  </div>;
+  </div>);

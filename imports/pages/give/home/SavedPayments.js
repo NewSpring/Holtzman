@@ -50,16 +50,16 @@ export class SavedPaymentsList extends Component {
   // this doesn't make sense
   // ~ Angry James
   SavedPaymentsButton = () =>
-    <SmallButton
+    (<SmallButton
       text="Add Account"
       onClick={this.openModal}
       className="btn--dark-tertiary flush"
-    />;
+    />);
 
   renderPayments(payments: Object) {
     if (!Array.isArray(payments)) return null;
     return payments.map(payment =>
-      <SavedPaymentWithAction payment={payment} key={payment.id} />
+      <SavedPaymentWithAction payment={payment} key={payment.id} />,
     );
   }
 

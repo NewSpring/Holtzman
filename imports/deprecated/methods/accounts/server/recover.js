@@ -29,7 +29,7 @@ if (typeof Accounts !== "undefined") {
           ResetPasswordUrl: `${ROOT_URL}/_/reset-password/${token}`,
           Person,
         }
-        , () => {}
+        , () => {},
       );
     }
 
@@ -63,7 +63,7 @@ Meteor.methods({
       }
     } catch (e) {
       throw new Meteor.Error(
-        "There was a problem finishing your account, please try again or create a new account"
+        "There was a problem finishing your account, please try again or create a new account",
       );
     }
 
@@ -80,7 +80,7 @@ Meteor.methods({
     const createdUser = api.post.sync("UserLogins", user);
     if (createdUser.statusText) {
       throw new Meteor.Error(
-        "There was a problem finishing your account, please try again or create a new account"
+        "There was a problem finishing your account, please try again or create a new account",
       );
     }
 
@@ -106,7 +106,7 @@ Meteor.methods({
       // eslint-disable-next-line
       console.error("@@RECOVER_ERROR", e);
       throw new Meteor.Error(
-        "There was a problem finishing your account, please try again or create a new account"
+        "There was a problem finishing your account, please try again or create a new account",
       );
     }
   },

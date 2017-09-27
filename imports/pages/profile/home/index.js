@@ -88,9 +88,9 @@ const mapStateToProps = state => ({ authorized: state.accounts.authorized });
 export default withPerson(
   withProfileUpload(
     connect(mapStateToProps)(
-      HomeWithoutData
-    )
-  )
+      HomeWithoutData,
+    ),
+  ),
 );
 
 export {

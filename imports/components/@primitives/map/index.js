@@ -60,7 +60,7 @@ export default class Map extends Component {
     const didChange = !_.isEqual(this.props.markers, prevProps.markers);
     if (didChange && prevProps.autoCenter && this.map) {
       const markers = this.props.markers.filter(x =>
-        (x.latitude && x.longitude)
+        (x.latitude && x.longitude),
       ).map(marker => (
         new google.maps.LatLng(marker.latitude, marker.longitude)
       ));

@@ -35,7 +35,7 @@ Meteor.methods({
       },
         err => {
           if (!err) Accounts.sendResetPasswordEmail(meteorUserId);
-        }
+        },
       );
     } catch (e) {
       // eslint-disable-next-line

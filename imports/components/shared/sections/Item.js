@@ -227,7 +227,7 @@ export default class SectionItem extends Component {
 
     return (
       <div className="soft-half-right soft-left soft-top background--dark-primary push-bottom">
-        {/* <h4 className="soft-half-bottom text-light-primary text-center">{section.text}</h4>*/}
+        {/* <h4 className="soft-half-bottom text-light-primary text-center">{section.text}</h4> */}
         <div className="grid ">
 
           {children.map((sectionItem, i) => (

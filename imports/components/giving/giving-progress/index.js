@@ -65,7 +65,7 @@ const Progress = ({
   percentDone,
   style,
 }: IProgress) =>
-  <div style={{ ...themeStyles(theme).wrapper, ...style }}>
+  (<div style={{ ...themeStyles(theme).wrapper, ...style }}>
     <div className="floating floating--left one-half display-inline-block push-half-top" style={{ verticalAlign: "middle" }}>
       <h5 className="floating__item" data-spec="title">
         {title}
@@ -81,7 +81,7 @@ const Progress = ({
       />
     </div>
     <ProgressBar percentDone={percentDone} />
-  </div>
+  </div>)
   ;
 
 export default Progress;

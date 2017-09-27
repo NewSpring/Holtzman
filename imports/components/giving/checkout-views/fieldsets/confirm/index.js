@@ -61,7 +61,7 @@ export default class Confirm extends Component {
         total,
         data,
         userId: Meteor.userId(),
-      })
+      }),
     );
 
     // ensure trailing slash
@@ -76,7 +76,7 @@ export default class Confirm extends Component {
       giveUrl,
       null,
       () => { this.props.clearData(); },
-      null
+      null,
     );
   }
 

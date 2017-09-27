@@ -20,6 +20,7 @@ export default class Authorized extends Component {
     auth: PropTypes.bool,
     modal: PropTypes.object,
     children: PropTypes.object,
+    previous: PropTypes.object,
   }
 
   componentWillMount() {
