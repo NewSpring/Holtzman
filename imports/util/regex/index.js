@@ -25,7 +25,7 @@ Regex.addRegex = (name, test, validate) => {
 
   if (validate) {
     const funcName = `is${capitalize(name)}`;
-    Validate.addValidator(funcName, (str) => (test.test(str)));
+    Validate.addValidator(funcName, str => (test.test(str)));
   }
   return;
 };

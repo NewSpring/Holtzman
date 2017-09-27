@@ -31,8 +31,8 @@ export default class SsrContext {
   addData(data) {
     _.each(data, (collDataCollection, collectionName) => {
       const collection = this.getCollection(collectionName);
-      collDataCollection.forEach((collData) => {
-        collData.forEach((item) => {
+      collDataCollection.forEach(collData => {
+        collData.forEach(item => {
           const existingDoc = collection.findOne(item._id);
           if (existingDoc) {
             const newDoc = { ...existingDoc, ...item };

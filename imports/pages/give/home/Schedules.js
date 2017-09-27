@@ -26,7 +26,7 @@ export class SchedulesList extends Component {
   renderSchedules(schedules: Object) {
     if (!Array.isArray(schedules)) return null;
 
-    return schedules.map((schedule) =>
+    return schedules.map(schedule =>
       <ScheduleCard
         classes="grid__item one-whole"
         key={schedule.id}

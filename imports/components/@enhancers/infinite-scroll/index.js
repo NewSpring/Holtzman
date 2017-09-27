@@ -1,21 +1,19 @@
-
 import PropTypes from 'prop-types';
 import { Component, createElement } from "react";
 import Loading from "../../@primitives/UI/loading";
 
 const defaultOptions = { percent: 70 };
-const defaultReducer = (x) => x;
+const defaultReducer = x => x;
 
-export default (reducer = defaultReducer, options) => (WrappedComponent) => {
+export default (reducer = defaultReducer, options) => WrappedComponent => {
   const mergedOptions = { ...defaultOptions, ...options };
   class InfiniteScrollContainer extends Component {
-
     static propTypes = {
       loading: PropTypes.bool, // eslint-disable-line
-      done: PropTypes.bool, // eslint-disable-line
-    }
+      done: PropTypes.bool // eslint-disable-line
+    };
 
-    state = { loading: false }
+    state = { loading: false };
 
     componentDidMount() {
       if (typeof window !== "undefined" && window !== null) {
@@ -33,7 +31,7 @@ export default (reducer = defaultReducer, options) => (WrappedComponent) => {
       const scrollPosition = window.scrollY;
       const deviceHeight = window.outerHeight;
       const contentHeight = document.body.clientHeight;
-      const threshold = (mergedOptions.percent) * 0.01;
+      const threshold = mergedOptions.percent * 0.01;
 
       if ((scrollPosition + deviceHeight) / contentHeight > threshold) {
         const { loading, fetchMore, done } = reducer(this.props);
@@ -43,14 +41,13 @@ export default (reducer = defaultReducer, options) => (WrappedComponent) => {
 
         this.setState({ loading: true });
         // fetch more goodness
-        fetchMore()
-          .then((x) => {
-            this.setState({ loading: false });
-            return x;
-          });
+        fetchMore().then(x => {
+          this.setState({ loading: false });
+          return x;
+        });
       }
       return null;
-    }
+    };
 
     renderLoading = () => {
       const { loading, done } = reducer(this.props);
@@ -60,7 +57,11 @@ export default (reducer = defaultReducer, options) => (WrappedComponent) => {
       if (!isLoading && done && mergedOptions.doneText) {
         return (
           <div className="one-whole soft-double text-center display-inline-block">
-            <p className="flush"><small><em>{mergedOptions.doneText}</em></small></p>
+            <p className="flush">
+              <small>
+                <em>{mergedOptions.doneText}</em>
+              </small>
+            </p>
           </div>
         );
       }
@@ -70,13 +71,12 @@ export default (reducer = defaultReducer, options) => (WrappedComponent) => {
           <Loading />
         </div>
       );
-    }
+    };
 
     render() {
       const mergedProps = { ...this.props, ...{ Loading: this.renderLoading } };
       return createElement(WrappedComponent, mergedProps);
     }
-
   }
 
   return InfiniteScrollContainer;

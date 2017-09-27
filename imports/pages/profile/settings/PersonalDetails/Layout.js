@@ -19,7 +19,7 @@ export default class Layout extends Component {
     campuses: PropTypes.array,
   }
 
-  submit = (e) => {
+  submit = e => {
     e.preventDefault();
 
     const data = {};

@@ -33,7 +33,7 @@ RenderLikes.propTypes = {
   recentLikes: PropTypes.array,
 };
 
-const LikesContainer = (props) => {
+const LikesContainer = props => {
   const { likes, recentLikes } = props;
 
   return (

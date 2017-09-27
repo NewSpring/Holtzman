@@ -72,7 +72,7 @@ const GET_NEWS_QUERY = gql`
 
 const withNews = graphql(GET_NEWS_QUERY, {
   name: "news",
-  options: (ownProps) => ({
+  options: ownProps => ({
     variables: { id: ownProps.params.id },
   }),
 });
@@ -82,7 +82,7 @@ export default connect()(
     ReactMixin.decorate(Shareable)(
       ReactMixin.decorate(Headerable)(
         canLike(
-          (props) => (props.news.loading ? null : props.news.content.id)
+          props => (props.news.loading ? null : props.news.content.id)
         )(StoriesSingleWithoutData)
       )
     )

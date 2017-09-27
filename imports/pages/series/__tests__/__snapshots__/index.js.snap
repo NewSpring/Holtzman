@@ -386,11 +386,16 @@ Object {
   ],
   "kind": "Document",
   "loc": Object {
-    "end": 517,
+    "end": 518,
     "source": Source {
       "body": "
+<<<<<<< HEAD
   query getSeries($limit: Int!, $skip: Int!){
     content(channel: \\"series_newspring\\", limit: $limit, skip: $skip) {
+=======
+  query getSeries($limit: Int!, $skip: Int!) {
+    content(channel: \"series_newspring\", limit: $limit, skip: $skip) {
+>>>>>>> updated eslint packages, updated some eslint rules, fixed broken eslint things in our code, and updated/fixed any tests that broke because of the fixes.
       id
       entryId: id
       title

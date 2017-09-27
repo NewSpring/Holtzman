@@ -19,8 +19,7 @@ import Headerable from "../../../deprecated/mixins/mixins.Header";
 import Shareable from "../../../deprecated/mixins/mixins.Shareable";
 import canLike from "../../../components/@enhancers/likes/toggle";
 
-import { nav as navActions } from "../../../data/store";
-import { modal } from "../../../data/store";
+import { modal, nav as navActions } from "../../../data/store";
 
 import Layout from "./Layout";
 import Join from "./Join";
@@ -83,7 +82,11 @@ const withAddPhoneNumber = graphql(PHONE_NUMBER_MUTATION, {
 
 export const GROUP_MUTATION = gql`
   mutation AddToGroup($groupId: ID!, $message: String!, $communicationPreference: String!) {
-    requestGroupInfo(groupId: $groupId, message: $message, communicationPreference: $communicationPreference) {
+    requestGroupInfo(
+      groupId: $groupId
+      message: $message
+      communicationPreference: $communicationPreference
+    ) {
       error
       success
       code
@@ -104,14 +107,10 @@ const defaultArray = [];
 
 // UTILITIES
 export const getLeaders = group =>
-  group &&
-  group.members &&
-  group.members.filter(x => x.role.toLowerCase() === "leader");
+  group && group.members && group.members.filter(x => x.role.toLowerCase() === "leader");
 
 export const isCurrentPersonLeader = (person, leaders) =>
-  person &&
-  Array.isArray(leaders) &&
-  leaders.filter(x => x.person.id === person.id).length;
+  person && Array.isArray(leaders) && leaders.filter(x => x.person.id === person.id).length;
 
 class TemplateWithoutData extends Component {
   static propTypes = {
@@ -132,10 +131,6 @@ class TemplateWithoutData extends Component {
     }
   }
 
-  componentWillUnmount() {
-    this.props.dispatch(modal.update({ onFinished: null }));
-  }
-
   componentWillReceiveProps(nextProps) {
     // don't show like or share buttons for non-community groups (!== 25)
     if (
@@ -146,6 +141,10 @@ class TemplateWithoutData extends Component {
     ) {
       nextProps.dispatch(navActions.setLevel("BASIC_CONTENT"));
     }
+  }
+
+  componentWillUnmount() {
+    this.props.dispatch(modal.update({ onFinished: null }));
   }
 
   closeModal = e => {
@@ -181,11 +180,7 @@ class TemplateWithoutData extends Component {
     }
 
     this.props
-      .addToGroup(
-        this.props.data.group.entityId,
-        message,
-        this.state.communicationPreference
-      )
+      .addToGroup(this.props.data.group.entityId, message, this.state.communicationPreference)
       .then(response => {
         callback(null, response);
       })
@@ -204,7 +199,7 @@ class TemplateWithoutData extends Component {
           onChange: this.onPhoneNumberChange,
           validatePhoneNumber: this.validatePhoneNumber,
           onCommunicationPreferenceChange: this.onCommunicationPreferenceChange,
-        })
+        }),
       );
     };
 
@@ -214,7 +209,7 @@ class TemplateWithoutData extends Component {
       modal.render(OnBoard, {
         onFinished: joinModal,
         coverHeader: true,
-      })
+      }),
     );
 
     return null;
@@ -245,16 +240,11 @@ class TemplateWithoutData extends Component {
     const loginParam = person ? person.impersonationParameter : "";
 
     if (!group.photo) {
-      group.photo =
-        "//s3.amazonaws.com/ns.assets/apollos/group-profile-placeholder.png";
+      group.photo = "//s3.amazonaws.com/ns.assets/apollos/group-profile-placeholder.png";
     }
 
     let markers = defaultArray;
-    if (
-      group.locations &&
-      group.locations.length &&
-      group.locations[0].location
-    ) {
+    if (group.locations && group.locations.length && group.locations[0].location) {
       const { latitude, longitude } = group.locations[0].location;
       markers = [{ latitude, longitude }];
     }
@@ -307,13 +297,33 @@ const GROUP_QUERY = gql`
         photo
         kidFriendly
         ageRange
-        campus { name }
-        tags { id, value }
-        locations { location { city, state, latitude, longitude } }
-        schedule { description }
+        campus {
+          name
+        }
+        tags {
+          id
+          value
+        }
+        locations {
+          location {
+            city
+            state
+            latitude
+            longitude
+          }
+        }
+        schedule {
+          description
+        }
         members {
           role
-          person { id, photo, firstName, nickName, lastName }
+          person {
+            id
+            photo
+            firstName
+            nickName
+            lastName
+          }
         }
         groupType
       }
@@ -331,14 +341,10 @@ export default connect()(
   withGroup(
     canLike(props => (props.data.loading ? null : props.data.group.id))(
       ReactMixin.decorate(Shareable)(
-        withGroupMutation(
-          withAddPhoneNumber(
-            ReactMixin.decorate(Headerable)(TemplateWithoutData)
-          )
-        )
-      )
-    )
-  )
+        withGroupMutation(withAddPhoneNumber(ReactMixin.decorate(Headerable)(TemplateWithoutData))),
+      ),
+    ),
+  ),
 );
 
 export { TemplateWithoutData };

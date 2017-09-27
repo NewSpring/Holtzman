@@ -2,7 +2,7 @@
 // stored state for use with other packages
 const reducers = {};
 
-const addReducer = (obj) => {
+const addReducer = obj => {
   // eslint-disable-next-line no-restricted-syntax, guard-for-in
   for (const name in obj) {
     const handler = obj[name];

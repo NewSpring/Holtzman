@@ -11,9 +11,8 @@ import { Left } from "../../components/@primitives/layout/split";
 
 import ApollosPullToRefresh from "../../components/@enhancers/pull-to-refresh";
 import infiniteScroll from "../../components/@enhancers/infinite-scroll";
-import { canSee } from "../../components/@enhancers/security-roles";
 
-import FeedItem from "../../components/content/feed-item-card";
+import HomeFeedItem from "../../components/content/feed-item-card";
 import { topics } from "../../components/people/profile/following";
 import { nav as navActions } from "../../data/store";
 import Headerable from "../../deprecated/mixins/mixins.Header";
@@ -32,7 +31,10 @@ class HomeWithoutData extends Component {
   }
 
   handleRefresh = (resolve, reject) => {
-    this.props.data.refetch({ cache: false }).then(resolve).catch(reject);
+    this.props.data
+      .refetch({ cache: false })
+      .then(resolve)
+      .catch(reject);
   };
 
   renderFeed = () => {
@@ -46,12 +48,12 @@ class HomeWithoutData extends Component {
       <div
         className={
           "grid__item one-half@palm-wide-and-up flush-bottom@palm " +
-            "push-half-bottom@palm-wide push-bottom@portable push-bottom@anchored"
+          "push-half-bottom@palm-wide push-bottom@portable push-bottom@anchored"
         }
         key={i}
       >
         {typeof item === "number" && <FeedItemSkeleton />}
-        {typeof item !== "number" && <FeedItem item={item} />}
+        {typeof item !== "number" && <HomeFeedItem item={item} />}
       </div>
     ));
   };
@@ -63,12 +65,10 @@ class HomeWithoutData extends Component {
           <section
             className={
               "background--light-secondary soft-half@palm " +
-                "soft@palm-wide-and-up soft-double@anchored"
+              "soft@palm-wide-and-up soft-double@anchored"
             }
           >
-            <div className="grid">
-              {this.renderFeed()}
-            </div>
+            <div className="grid">{this.renderFeed()}</div>
           </section>
         </Left>
       </ApollosPullToRefresh>
@@ -118,7 +118,7 @@ const CONTENT_FEED_QUERY = gql`
   ${contentFragment}
 `;
 
-const getTopics = (opts) => {
+const getTopics = opts => {
   let channels = opts.topics;
 
   // only include what user hasn't excluded
@@ -128,11 +128,11 @@ const getTopics = (opts) => {
   if (channels.length === 0 || !Meteor.userId()) channels = [...topics];
 
   // return for the graphql call
-  return channels.map((x) => x.toLowerCase());
+  return channels.map(x => x.toLowerCase());
 };
 
 const withFeedContent = graphql(CONTENT_FEED_QUERY, {
-  options: (ownProps) => ({
+  options: ownProps => ({
     variables: {
       filters: ["CONTENT"],
       options: JSON.stringify({ content: { channels: getTopics(ownProps) } }),
@@ -157,8 +157,8 @@ const withFeedContent = graphql(CONTENT_FEED_QUERY, {
   }),
 });
 
-export default connect((state) => ({ topics: state.topics.topics }))(
-  withFeedContent(infiniteScroll()(ReactMixin.decorate(Headerable)(HomeWithoutData)))
+export default connect(state => ({ topics: state.topics.topics }))(
+  withFeedContent(infiniteScroll()(ReactMixin.decorate(Headerable)(HomeWithoutData))),
 );
 
 export { HomeWithoutData };

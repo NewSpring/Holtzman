@@ -1,5 +1,5 @@
 /* eslint-disable react/prefer-stateless-function */
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 import { Component } from "react";
 import { connect } from "react-redux";
@@ -11,7 +11,6 @@ import Loading from "../../components/@primitives/UI/loading";
 import Meta from "../../components/shared/meta";
 
 class TemplateWithoutData extends Component {
-
   render() {
     if (Meteor.isServer) {
       return (
@@ -21,7 +20,10 @@ class TemplateWithoutData extends Component {
             "locked-sides@palm-wide-and-up locked-ends@palm-wide-and-up " +
             "floating soft-double-ends push-double-left@lap-and-up soft-double-left@lap-and-up"
           }
-          style={{ backgroundImage: "url('https://dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/homepage/event.auditorium.2x1_1700_850_c1.png')" }}
+          style={{
+            backgroundImage:
+              "url('https://dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/homepage/event.auditorium.2x1_1700_850_c1.png')",
+          }}
         >
           <Meta title="Sign up" />
           <div className="floating__item" style={{ maxWidth: "460px" }}>
@@ -36,10 +38,8 @@ class TemplateWithoutData extends Component {
                 <div className="soft-double">
                   <Loading />
                 </div>
-
               </div>
             </div>
-
           </div>
         </div>
       );
@@ -54,7 +54,8 @@ class TemplateWithoutData extends Component {
             "floating soft-double-ends push-double-left@lap-and-up soft-double-left@lap-and-up"
           }
           style={{
-            backgroundImage: "url('https://dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/homepage/event.auditorium.2x1_1700_850_c1.png')",
+            backgroundImage:
+              "url('https://dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/homepage/event.auditorium.2x1_1700_850_c1.png')",
           }}
         >
           <Meta title="Sign up" />
@@ -70,7 +71,6 @@ class TemplateWithoutData extends Component {
                 <AccountsWithData />
               </div>
             </div>
-
           </div>
         </div>
       );
@@ -89,8 +89,8 @@ TemplateWithoutData.propTypes = {
   breakpoints: PropTypes.array.isRequired,
 };
 
-const Template = connect((state) => ({ breakpoints: state.responsive.breakpoints }))(
-  TemplateWithoutData
+const Template = connect(state => ({ breakpoints: state.responsive.breakpoints }))(
+  TemplateWithoutData,
 );
 
 const Routes = [
@@ -102,7 +102,10 @@ const Routes = [
 
       // XXX no query param - check if logged in. redirect to profile if so
       if (!query.redirect) {
-        if (!Meteor.userId()) { callback(); return; }
+        if (!Meteor.userId()) {
+          callback();
+          return;
+        }
         replace({ pathname: Meteor.isCordova ? "profile" : "profile/settings" });
         callback();
         return;
@@ -113,13 +116,14 @@ const Routes = [
         return;
       }
 
-      const whiteListed = (url) =>
+      const whiteListed = url =>
         url.indexOf("https://alpha-rock.newspring.cc") === 0 ||
         url.indexOf("https://beta-rock.newspring.cc") === 0 ||
         url.indexOf("https://rock.newspring.cc") === 0;
 
       if (!whiteListed(query.redirect)) {
-        callback(); return;
+        callback();
+        return;
       }
 
       // assume logged in
@@ -133,10 +137,10 @@ const Routes = [
         });
         callback();
       })
-      .catch((e) => {
-        console.error(e);
-        callback();
-      });
+        .catch(e => {
+          console.error(e); // eslint-disable-line
+          callback();
+        });
     },
   },
 ];
@@ -145,6 +149,4 @@ export default {
   Routes,
 };
 
-export {
-  TemplateWithoutData,
-};
+export { TemplateWithoutData };

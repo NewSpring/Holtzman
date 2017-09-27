@@ -59,7 +59,7 @@ export default class NavLink extends Component {
     return classes.join(" ");
   }
 
-  handleAction = (e) => {
+  handleAction = e => {
     e.preventDefault();
     const { navItem } = this.props;
 

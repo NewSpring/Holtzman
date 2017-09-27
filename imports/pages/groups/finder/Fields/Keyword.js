@@ -23,16 +23,16 @@ export default class Keywords extends Component {
   timeout: number;
   textInput: Object;
 
+  state: {
+    focused: boolean,
+    onload: boolean,
+  };
+
   static propTypes = {
     tags: PropTypes.array.isRequired,
     searchQuery: PropTypes.array.isRequired,
     tagOnClick: PropTypes.func.isRequired,
     onChange: PropTypes.func.isRequired,
-  };
-
-  state: {
-    focused: boolean,
-    onload: boolean
   };
 
   constructor(props: Object) {

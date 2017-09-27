@@ -8,19 +8,19 @@ function backgroundImage(contentItem, { label = "1:1" } = {}) {
   }
   const channel = contentItem.channelName;
 
-  let bgImage = _.find(images, (image) => (
+  let bgImage = _.find(images, image => (
     image.fileLabel === label
   ));
 
   if (!bgImage) {
     if (channel === "devotionals") {
-      const editorialImage = _.find(images, (image) => (
+      const editorialImage = _.find(images, image => (
         image.fileLabel === "2:1"
       ));
-      const inlineImage = _.find(images, (image) => (
+      const inlineImage = _.find(images, image => (
         image.fileLabel === "inline"
       ));
-      const defaultImage = _.find(images, (image) => (
+      const defaultImage = _.find(images, image => (
         image.fileLabel === "default"
       ));
       if (editorialImage) bgImage = editorialImage;

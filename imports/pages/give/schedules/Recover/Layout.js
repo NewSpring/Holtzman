@@ -30,7 +30,7 @@ export default class Layout extends Component {
     }
   }
 
-  expandSchedule = (e) => {
+  expandSchedule = e => {
     e.preventDefault();
 
     const { dataset } = e.currentTarget;
@@ -52,7 +52,7 @@ export default class Layout extends Component {
     });
   }
 
-  formatDate = (date) => (
+  formatDate = date => (
     moment(date).format("MMM D, YYYY")
   )
 
@@ -75,7 +75,7 @@ export default class Layout extends Component {
     return `$${strVal}`;
   }
 
-  capitalizeFirstLetter = (string) => (
+  capitalizeFirstLetter = string => (
     string.charAt(0).toUpperCase() + string.slice(1)
   )
 
@@ -137,7 +137,7 @@ export default class Layout extends Component {
 
           {(() => {
             let count = 0; // eslint-disable-line no-unused-vars
-            if (recoverableSchedules && recoverableSchedules.filter((x) => !x.gateway).length) {
+            if (recoverableSchedules && recoverableSchedules.filter(x => !x.gateway).length) {
               return (
                 <div>
                   <div
@@ -165,7 +165,7 @@ export default class Layout extends Component {
                     </h4>
 
                     */}
-                    {recoverableSchedules.filter((x) => !x.gateway).map((schedule, i) => {
+                    {recoverableSchedules.filter(x => !x.gateway).map((schedule, i) => {
                       count += 1;
                       if (!schedule.details || !schedule.details[0].account) {
                         return null;

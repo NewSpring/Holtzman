@@ -6,7 +6,7 @@ import Split, { Left, Right } from "../../components/@primitives/layout/split";
 
 import ResetPassword from "./reset-password";
 
-const Template = (props) => {
+const Template = props => {
   const photo = "https://s3.amazonaws.com/ns.assets/apollos/leaves.png";
   return (
     <div>

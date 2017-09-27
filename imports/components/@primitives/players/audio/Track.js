@@ -33,7 +33,7 @@ export default class AudioTrack extends Component {
     return classes.join(" ");
   }
 
-  play = (e) => {
+  play = e => {
     e.preventDefault();
     if (!this.props.track.file) return;
 

@@ -7,7 +7,7 @@ import { accounts as accountsActions, modal } from "../../../data/store";
 import { routeActions } from "../../../data/store/routing";
 import OnBoard from "../accounts";
 
-const map = (state) => ({
+const map = state => ({
   auth: state.accounts.authorized,
   modal: state.modal,
   previous: state.routing.location.previous,

@@ -95,7 +95,7 @@ Meteor.methods({
             Person,
             Group,
           }
-          , (err) => {
+          , err => {
             // in case this messed up, let the job handle it in Rock
             if (err) {
               api.patch.sync(`GroupMembers/${GroupMemberId}`, {

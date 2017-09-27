@@ -32,7 +32,7 @@ export default class Layout extends Component {
     expandedSchedule: null,
   }
 
-  expandSchedule = (e) => {
+  expandSchedule = e => {
     e.preventDefault();
 
     const { dataset } = e.currentTarget;
@@ -56,11 +56,11 @@ export default class Layout extends Component {
 
   // XXX this is a timezone related formatting issue
   // so add a day to show correct dates
-  formatDate = (date) => (
+  formatDate = date => (
     moment(date).add(1, "day").format("MMM D, YYYY")
   )
 
-  capitalizeFirstLetter = (string) => (
+  capitalizeFirstLetter = string => (
     string.charAt(0).toUpperCase() + string.slice(1)
   )
 

@@ -23,10 +23,10 @@ class ChangePassword extends Component {
     state: "default",
   }
 
-  submit = (e) => {
+  submit = e => {
     e.preventDefault();
     this.setState({ state: "loading" });
-    Accounts.resetPassword(this.props.params.token, this.state.newP, (err) => {
+    Accounts.resetPassword(this.props.params.token, this.state.newP, err => {
       if (err) {
         this.setState({ state: "error", err });
         setTimeout(() => {
@@ -35,7 +35,7 @@ class ChangePassword extends Component {
         return;
       }
 
-      reset(false, this.state.newP, (error) => {
+      reset(false, this.state.newP, error => {
         if (error) {
           this.setState({ state: "error", error });
           setTimeout(() => {

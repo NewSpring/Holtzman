@@ -33,7 +33,7 @@ Meteor.methods({
           },
         },
       },
-        (err) => {
+        err => {
           if (!err) Accounts.sendResetPasswordEmail(meteorUserId);
         }
       );
