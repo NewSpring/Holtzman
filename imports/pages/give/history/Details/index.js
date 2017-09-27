@@ -132,9 +132,9 @@ const withTransactions = graphql(TRANSACTIONS_QUERY, {
 const Details = connect()(
   withEntries(
     withTransactions(
-      DetailsWithoutData
-    )
-  )
+      DetailsWithoutData,
+    ),
+  ),
 );
 
 const Routes = [

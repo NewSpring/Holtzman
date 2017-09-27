@@ -30,7 +30,7 @@ const Layout = ({
   getLocation,
   geoLocationLoading,
 }) =>
-  <section className="background--light-secondary hard">
+  (<section className="background--light-secondary hard">
     {/* Meta */}
     <Meta
       title="Group Finder"
@@ -207,7 +207,7 @@ const Layout = ({
           })}
       </div>
     </div>
-  </section>;
+  </section>);
 /* eslint-enable max-len */
 
 Layout.propTypes = {

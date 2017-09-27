@@ -10,14 +10,14 @@ const addReducer = obj => {
     if (reducers[name]) {
       throw new Error(
         "Reducer assigned",
-        `reducers function ${name} is already registered`
+        `reducers function ${name} is already registered`,
       );
     }
 
     if (!handler || typeof (handler) !== "function") {
       throw new Error(
         "Reducer TypeError",
-        `Reducer ${name} requires a function`
+        `Reducer ${name} requires a function`,
       );
     }
 

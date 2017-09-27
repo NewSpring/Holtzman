@@ -1,4 +1,3 @@
-
 /* eslint-disable react/no-multi-comp */
 import { Meteor } from "meteor/meteor";
 import { Component, PropTypes } from "react";
@@ -22,6 +21,7 @@ class Accounts extends Component {
     setAccount: PropTypes.func.isRequired,
     save: PropTypes.func.isRequired,
     peopleWithoutAccountEmails: PropTypes.func.isRequired,
+    data: PropTypes.object,
   };
 
   componentWillReceiveProps(nextProps) {
@@ -57,6 +57,7 @@ class AccountsContainer extends Component {
     clear: PropTypes.func,
     submit: PropTypes.func,
     location: PropTypes.object,
+    client: PropTypes.object,
   };
 
   state = {
@@ -93,19 +94,24 @@ class AccountsContainer extends Component {
           url.indexOf("https://beta-rock.newspring.cc") === 0 ||
           url.indexOf("https://rock.newspring.cc") === 0;
 
-        /* eslint-disable camelcase*/
+        /* eslint-disable camelcase */
         const { redirect, return_person_guid } = this.props.location.query;
         if (redirect) {
-          if (
-            typeof return_person_guid !== "undefined" && whiteListed(redirect)
-          ) {
-            nextProps.client.query({
-              query: gql`{ currentPerson { guid }}`,
-              forceFetch: true,
-            })
-            .then(({ data }) => {
-              window.location.href = `${redirect}&person_guid=${data.currentPerson.guid}`;
-            });
+          if (typeof return_person_guid !== "undefined" && whiteListed(redirect)) {
+            nextProps.client
+              .query({
+                query: gql`
+                  {
+                    currentPerson {
+                      guid
+                    }
+                  }
+                `,
+                forceFetch: true,
+              })
+              .then(({ data }) => {
+                window.location.href = `${redirect}&person_guid=${data.currentPerson.guid}`;
+              });
           } else {
             window.location.href = redirect;
           }
@@ -119,7 +125,10 @@ class AccountsContainer extends Component {
 
       if (this.props.onSignin) {
         this.setState({ loading: true });
-        this.props.onSignin().then(finish).catch(finish);
+        this.props
+          .onSignin()
+          .then(finish)
+          .catch(finish);
       }
 
       finish();
@@ -234,9 +243,7 @@ class AccountsContainer extends Component {
           break;
         }
       }
-      return (
-        <SuccessCreate email={email} goBack={this.goBackToDefaultOnBoard} />
-      );
+      return <SuccessCreate email={email} goBack={this.goBackToDefaultOnBoard} />;
     }
 
     return (
@@ -263,8 +270,8 @@ class AccountsContainer extends Component {
 const mapDispatchToProps = { ...accountsActions, ...modalActions };
 
 const PERSON_QUERY = gql`
-  query GetPersonByGuid($guid:ID) {
-    person(guid:$guid) {
+  query GetPersonByGuid($guid: ID) {
+    person(guid: $guid) {
       firstName
       lastName
       email
@@ -279,19 +286,19 @@ const withPerson = graphql(PERSON_QUERY, {
   options: ownProps => ({
     ssr: false,
     variables: {
-      guid: ownProps.location &&
-        ownProps.location.query &&
-        ownProps.location.query.guid,
+      guid: ownProps.location && ownProps.location.query && ownProps.location.query.guid,
     },
   }),
 });
 
-const AccountsContainerWithData = withApollo(connect(
-  state => ({
-    accounts: state.accounts,
-  }),
-  mapDispatchToProps,
-)(AccountsContainer));
+const AccountsContainerWithData = withApollo(
+  connect(
+    state => ({
+      accounts: state.accounts,
+    }),
+    mapDispatchToProps,
+  )(AccountsContainer),
+);
 
 export default withPerson(
   connect(

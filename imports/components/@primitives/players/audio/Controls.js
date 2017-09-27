@@ -164,7 +164,6 @@ class AudioControlsWithoutData extends Component {
 
     if (state === "playing") {
       this.props.dispatch(audioActions.pause());
-      return;
     }
   };
 

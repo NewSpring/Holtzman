@@ -196,7 +196,7 @@ class CartContainer extends Component {
       // so we find which funds are selected
       // then remove them from the subfunds accounts
       const selectedFunds = [id, ...subfunds.map(({ amount, fundId }) => amount && fundId)].filter(
-        x => !!x
+        x => !!x,
       );
 
       // move the fund around

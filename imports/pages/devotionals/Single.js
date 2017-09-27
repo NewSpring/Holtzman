@@ -233,10 +233,10 @@ export default connect(mapStateToProps)(
   withDevotional(
     ReactMixin.decorate(Shareable)(
       canLike(
-        props => (props.devotion.loading ? null : props.devotion.content.id)
-      )(DevotionsSingle)
-    )
-  )
+        props => (props.devotion.loading ? null : props.devotion.content.id),
+      )(DevotionsSingle),
+    ),
+  ),
 );
 
 export {

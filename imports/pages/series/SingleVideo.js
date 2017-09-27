@@ -209,12 +209,12 @@ export default connect(mapStateToProps)(
       ReactMixin.decorate(Shareable)(
         ReactMixin.decorate(Headerable)(
           canLike(
-            props => (props.currentSermon.loading ? null : props.currentSermon.content.entryId)
-          )(SeriesSingleVideoWithoutData)
-        )
-      )
-    )
-  )
+            props => (props.currentSermon.loading ? null : props.currentSermon.content.entryId),
+          )(SeriesSingleVideoWithoutData),
+        ),
+      ),
+    ),
+  ),
 );
 
 export {

@@ -113,8 +113,8 @@ const withPersonHome = graphql(PERSON_HOME_QUERY, {
 
 export default connect()(
   withPersonHome(
-    HomeAddressWithoutData
-  )
+    HomeAddressWithoutData,
+  ),
 );
 
 export {

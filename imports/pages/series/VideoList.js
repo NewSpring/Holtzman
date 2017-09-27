@@ -101,8 +101,8 @@ const withSermons = graphql(SERMONS_QUERY, {
 
 export default connect()(
   withSermons(
-    SeriesVideoListWithoutData
-  )
+    SeriesVideoListWithoutData,
+  ),
 );
 
 export {

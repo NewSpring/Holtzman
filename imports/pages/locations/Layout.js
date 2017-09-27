@@ -127,7 +127,7 @@ export default class Layout extends Component {
             {/* <span
               style={{zIndex: 1, paddingTop: "5px", "cursor": "pointer"}}
               className="h7 locked-right flush-bottom"
-            >Cancel</span>*/}
+            >Cancel</span> */}
             <Forms.Input
               hideLabel
               classes={["hard-bottom"]}

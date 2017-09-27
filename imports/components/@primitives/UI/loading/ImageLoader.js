@@ -107,13 +107,11 @@ export default class ImageLoader extends Component {
           // remove related event listener and add a new one back
           window.removeEventListener("scroll", this.debounce, false);
           window.addEventListener("scroll", this.debounce, false);
-          return;
         };
         // SetTimeout to prevent false calls on scrolling
         setTimeout(callback, 300);
         // remove inital eventlistener to scope a new one inside the timeout function
         window.removeEventListener("scroll", this.debounce, false);
-        return;
       }
     };
 

@@ -271,10 +271,10 @@ export default withGetPhoto(
   withProfileUpload(
     connect()(
       ReactMixin.decorate(Headerable)(
-        MenuWithoutData
-      )
-    )
-  )
+        MenuWithoutData,
+      ),
+    ),
+  ),
 );
 
 export {

@@ -175,9 +175,9 @@ export const mapStateToProps = ({ accounts }) => ({
 export default withCampuses(
   connect(mapStateToProps)(
     withPerson(
-      PersonalDetailsWithoutData
-    )
-  )
+      PersonalDetailsWithoutData,
+    ),
+  ),
 );
 
 export {

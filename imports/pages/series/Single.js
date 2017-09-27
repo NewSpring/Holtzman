@@ -159,11 +159,11 @@ export default connect()(
     ReactMixin.decorate(Shareable)(
       ReactMixin.decorate(Headerable)(
         canLike(
-          props => (props.series.loading ? null : props.series.content.id)
-        )(SeriesSingleWithoutData)
-      )
-    )
-  )
+          props => (props.series.loading ? null : props.series.content.id),
+        )(SeriesSingleWithoutData),
+      ),
+    ),
+  ),
 );
 
 export {

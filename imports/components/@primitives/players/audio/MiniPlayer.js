@@ -124,7 +124,6 @@ class MiniPlayerWithoutData extends Component {
     if (state === "playing") {
       this.startHideTimer();
       this.props.pause();
-      return;
     }
   }
 

@@ -116,7 +116,7 @@ Meteor.methods({
           User: UserLogin,
 
         }
-        , () => {}
+        , () => {},
       );
 
       if (process.env.NODE_ENV === "production") {

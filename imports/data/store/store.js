@@ -32,7 +32,7 @@ const createReduxStore = (initialState, history) => {
     applyMiddleware(
       ...sharedMiddlewares,
       sagaMiddleware,
-      reduxRouterMiddleware
+      reduxRouterMiddleware,
     ),
     reduxReset(),
   ];
@@ -46,7 +46,7 @@ const createReduxStore = (initialState, history) => {
   }
 
   const store = compose(...sharedCompose)(createStore)(
-    combineReducers(joinedReducers), initialState
+    combineReducers(joinedReducers), initialState,
   );
 
   sagas.forEach(saga => sagaMiddleware.run(saga()));

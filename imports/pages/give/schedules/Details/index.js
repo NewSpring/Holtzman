@@ -179,10 +179,10 @@ const Details = connect()(
   withEntries(
     withScheduleTransaction(
       withCancelSchedule(
-        DetailsWithoutData
-      )
-    )
-  )
+        DetailsWithoutData,
+      ),
+    ),
+  ),
 );
 
 const Routes = [

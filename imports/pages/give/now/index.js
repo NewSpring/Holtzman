@@ -58,7 +58,7 @@ const IsAlive = () => {
 
 // Bind reactive data to component
 const TemplateWithData = createContainer(IsAlive,
-  (props => <Page {...props} />)
+  (props => <Page {...props} />),
 );
 
 const Routes = [

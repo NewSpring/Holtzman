@@ -121,8 +121,6 @@ class SignIn extends Component {
     }
 
     if (data.email && data.password) this.props.submit();
-
-    return;
   }
 
   selectPerson = (id: string) => {

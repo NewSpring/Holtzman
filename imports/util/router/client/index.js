@@ -1,4 +1,3 @@
-
 // used to create the wrapper
 import React from "react";
 import ReactDOM from "react-dom";
@@ -66,8 +65,7 @@ export default function run(routes, clientOptions = {}) {
     ReactDOM.render(app, rootElement);
 
     const collectorEl = document.getElementById(
-      clientOptions.styleCollectorId ||
-      "css-style-collector-data"
+      clientOptions.styleCollectorId || "css-style-collector-data",
     );
     if (collectorEl) collectorEl.parentNode.removeChild(collectorEl);
   });

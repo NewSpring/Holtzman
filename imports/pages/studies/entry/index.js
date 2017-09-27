@@ -307,11 +307,11 @@ export default connect(mapStateToProps)(
     withStudy(
       ReactMixin.decorate(Shareable)(
         canLike(
-          props => (props.studyEntry.loading ? null : props.studyEntry.content.entryId)
-        )(StudyEntrySingle)
-      )
-    )
-  )
+          props => (props.studyEntry.loading ? null : props.studyEntry.content.entryId),
+        )(StudyEntrySingle),
+      ),
+    ),
+  ),
 );
 
 export {

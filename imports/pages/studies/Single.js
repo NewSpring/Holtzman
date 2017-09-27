@@ -177,11 +177,11 @@ export default connect()(
     ReactMixin.decorate(Shareable)(
       ReactMixin.decorate(Headerable)(
         canLike(
-          props => (props.study.loading ? null : props.study.content.id)
-        )(StudiesSingleWithoutData)
-      )
-    )
-  )
+          props => (props.study.loading ? null : props.study.content.id),
+        )(StudiesSingleWithoutData),
+      ),
+    ),
+  ),
 );
 
 export {
