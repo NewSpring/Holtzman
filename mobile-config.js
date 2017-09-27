@@ -74,6 +74,10 @@ App.configurePlugin("cordova-plugin-fcm", {
   APP_DOMAIN: "rm2y5.app.goo.gl",
 });
 
+App.configurePlugin("cordova-plugin-geolocation", {
+  GEOLOCATION_USAGE_DESCRIPTION: "Searching for Groups",
+});
+
 App.appendToConfig(`
     <universal-links>
       <ios-team-id value="7TM8C6252Z" />
@@ -94,6 +98,8 @@ App.appendToConfig(`
         <path url="/music/*" />
         <path url="/locations" />
         <path url="/watchandread" />
+        <path url="/news" />
+        <path url="/news/*" />
       </host>
       <host name="newspring.cc" scheme="https" event="universalLinkRoute">
         <path url="/articles" />
@@ -111,10 +117,11 @@ App.appendToConfig(`
         <path url="/music/*" />
         <path url="/locations" />
         <path url="/watchandread" />
+        <path url="/news" />
+        <path url="/news/*" />
       </host>
       <host name="beta-my.newspring.cc" scheme="https" event="universalLinkRoute" />
       <host name="my.newspring.cc" scheme="https" event="universalLinkRoute" />
       <host name="rm2y5.app.goo.gl" scheme="https" event="universalLinkRoute" />
     </universal-links>
 `);
-

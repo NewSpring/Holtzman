@@ -110,7 +110,7 @@ exports[`TransactionDetail renders with failure 1`] = `
     }>
     <div>
       <Currency
-        amount={2}
+        amount="2.00"
         baseHeadingSize="4"
         className="
                   text-dark-tertiary text-right
@@ -188,7 +188,7 @@ exports[`TransactionDetail renders with failure and status 1`] = `
     }>
     <div>
       <Currency
-        amount={2}
+        amount="2.00"
         baseHeadingSize="4"
         className="
                   text-dark-tertiary text-right
@@ -265,7 +265,7 @@ exports[`TransactionDetail renders with props 1`] = `
     }>
     <div>
       <Currency
-        amount={2}
+        amount="2.00"
         baseHeadingSize="4"
         className="
                   text-dark-tertiary text-right
@@ -342,7 +342,7 @@ exports[`TransactionDetail renders without icon 1`] = `
     }>
     <div>
       <Currency
-        amount={2}
+        amount="2.00"
         baseHeadingSize="4"
         className="
                   text-dark-tertiary text-right
