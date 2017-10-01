@@ -27,8 +27,8 @@ timbrandin:fetch
 promise@0.9.0
 force-ssl@1.0.15
 
-meteorhacks:fast-render@2.12.0
 crosswalk@1.7.1
 shell-server@0.2.4
 dispatch:reload-on-resume
 dynamic-import
+staringatlights:fast-render

@@ -3,9 +3,10 @@
 import { Component, PropTypes } from "react";
 import { css } from "aphrodite";
 
+let velocity = () => {};
 if (Meteor.isClient) {
   // eslint-disable-next-line no-unused-vars
-  import velocity from "velocity-animate";
+  velocity = require("velocity-animate");
 }
 
 import { routeActions } from "../../../data/store/routing";
