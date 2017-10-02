@@ -9,6 +9,10 @@ window.Moment = global.Moment;
 
 global.__meteor_runtime_config__ = true;
 
+// Not the best idea but needed until I can find
+// out what is causing the prop-types warning
+console.warn = function() {}; // eslint-disable-line
+
 /* eslint-enable no-underscore-dangle */
 
 window.matchMedia = window.matchMedia || function matchMedia() {
