@@ -8164,15 +8164,7 @@ react-transform-sentry@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/react-transform-sentry/-/react-transform-sentry-1.0.0.tgz#473818540b443e53666fc05117302d7b76dcf0c9"
 
-react@^15.0.0:
-  version "15.4.0"
-  resolved "https://registry.yarnpkg.com/react/-/react-15.4.0.tgz#736c1c7c542e8088127106e1f450b010f86d172b"
-  dependencies:
-    fbjs "^0.8.4"
-    loose-envify "^1.1.0"
-    object-assign "^4.1.0"
-
-"react@^15.0.0 || ^0.14.0", react@^15.4.1:
+react@15.4.2, "react@^15.0.0 || ^0.14.0", react@^15.4.1:
   version "15.4.2"
   resolved "https://registry.yarnpkg.com/react/-/react-15.4.2.tgz#41f7991b26185392ba9bae96c8889e7e018397ef"
   dependencies:
