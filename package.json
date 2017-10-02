@@ -77,16 +77,12 @@
     }
   },
   "babel": {
-<<<<<<< HEAD
     "presets": [
       "meteor",
       "es2015",
       "stage-0",
       "react"
     ],
-=======
-    "presets": ["meteor", "es2015-loose", "stage-0", "react"],
->>>>>>> updated eslint packages, updated some eslint rules, fixed broken eslint things in our code, and updated/fixed any tests that broke because of the fixes.
     "plugins": [
       "babel-root-slash-import",
       "transform-react-router-optimize",
@@ -164,12 +160,8 @@
     "@kadira/storybook-addon-knobs": "^1.3.3",
     "@kadira/storybook-addon-options": "^1.0.1",
     "@kadira/storybook-database-cloud": "^2.3.1",
-<<<<<<< HEAD
-    "babel-eslint": "^7.1.0",
     "babel-jest": "^21.2.0",
-=======
     "babel-eslint": "^7.2.3",
->>>>>>> updated eslint packages, updated some eslint rules, fixed broken eslint things in our code, and updated/fixed any tests that broke because of the fixes.
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-react-require": "^3.0.0",
     "babel-plugin-react-transform": "^2.0.2",
