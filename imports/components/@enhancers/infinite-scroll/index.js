@@ -1,5 +1,6 @@
 
-import { Component, createElement, PropTypes } from "react";
+import PropTypes from 'prop-types';
+import { Component, createElement } from "react";
 import Loading from "../../@primitives/UI/loading";
 
 const defaultOptions = { percent: 70 };

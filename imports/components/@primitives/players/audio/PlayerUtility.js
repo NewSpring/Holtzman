@@ -1,5 +1,7 @@
 /* eslint-disable import/no-named-as-default */
-import { Component, PropTypes } from "react";
+import PropTypes from 'prop-types';
+
+import { Component } from "react";
 import { connect } from "react-redux";
 import { Meteor } from "meteor/meteor";
 

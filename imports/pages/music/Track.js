@@ -1,5 +1,6 @@
 
-import { Component, PropTypes } from "react";
+import PropTypes from 'prop-types';
+import { Component } from "react";
 import { connect } from "react-redux";
 
 import { modal, audio as audioActions } from "../../data/store";

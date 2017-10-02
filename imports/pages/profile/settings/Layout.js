@@ -1,4 +1,4 @@
-import { PropTypes } from "react";
+import PropTypes from 'prop-types';
 
 import Split, { Left, Right } from "../../../components/@primitives/layout/split";
 import Meta from "../../../components/shared/meta";

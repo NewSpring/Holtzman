@@ -1,5 +1,7 @@
 /* eslint-disable max-len */
-import { Component, PropTypes } from "react";
+import PropTypes from 'prop-types';
+
+import { Component } from "react";
 import { connect } from "react-redux";
 import { graphql } from "react-apollo";
 import { withRouter } from "react-router";

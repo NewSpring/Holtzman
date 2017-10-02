@@ -1,7 +1,10 @@
 
-/* eslint-disable react/no-multi-comp */
 import { Meteor } from "meteor/meteor";
-import { Component, PropTypes } from "react";
+
+/* eslint-disable react/no-multi-comp */
+import PropTypes from 'prop-types';
+
+import { Component } from "react";
 import { graphql, withApollo } from "react-apollo";
 import { connect } from "react-redux";
 import gql from "graphql-tag";

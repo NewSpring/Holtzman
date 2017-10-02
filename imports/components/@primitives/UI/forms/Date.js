@@ -1,5 +1,6 @@
 
-import { Component, PropTypes } from "react";
+import PropTypes from 'prop-types';
+import { Component } from "react";
 import DayPicker, { DateUtils } from "react-day-picker";
 // import Moment from "moment";
 // import ReactDOM from "react-dom";

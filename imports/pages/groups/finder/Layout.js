@@ -1,5 +1,6 @@
 /* eslint-disable react/no-danger */
-import { PropTypes } from "react";
+import PropTypes from 'prop-types';
+
 import Meta from "../../../components/shared/meta";
 import Loading from "../../../components/@primitives/UI/loading";
 import Forms from "../../../components/@primitives/UI/forms";

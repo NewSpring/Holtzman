@@ -1,4 +1,4 @@
-import { PropTypes } from "react";
+import PropTypes from 'prop-types';
 import { WindowLoading } from "../loading";
 
 const Err = ({ msg, error, style }) => {

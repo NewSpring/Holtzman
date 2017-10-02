@@ -1,4 +1,4 @@
-import { PropTypes } from "react";
+import PropTypes from 'prop-types';
 import gql from "graphql-tag";
 
 import { GraphQL } from "../../data/graphql";

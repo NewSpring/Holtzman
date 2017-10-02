@@ -1,4 +1,4 @@
-import { PropTypes } from "react";
+import PropTypes from 'prop-types';
 import { Meteor } from "meteor/meteor";
 import Meta from "../../../components/shared/meta";
 

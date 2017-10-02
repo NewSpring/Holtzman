@@ -1,5 +1,7 @@
 /* eslint-disable react/no-danger */
-import { Component, PropTypes } from "react";
+import PropTypes from 'prop-types';
+
+import { Component } from "react";
 import ReactMixin from "react-mixin";
 import { graphql } from "react-apollo";
 import { connect } from "react-redux";

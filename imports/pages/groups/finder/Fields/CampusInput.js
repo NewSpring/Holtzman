@@ -1,4 +1,5 @@
-import { Component, PropTypes } from "react";
+import PropTypes from 'prop-types';
+import { Component } from "react";
 import Forms from "../../../../components/@primitives/UI/forms";
 import Svg from "../../../../components/@primitives/UI/svg";
 
