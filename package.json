@@ -208,7 +208,7 @@
     "raw-loader": "^0.5.1",
     "react-addons-test-utils": "^15.3.2",
     "react-storybook-addon-backgrounds": "0.0.7",
-    "react-test-renderer": "^15.3.1",
+    "react-test-renderer": "^15.6.2",
     "redux-saga-testing": "^0.1.1",
     "rimraf": "^2.5.2",
     "sass-loader": "6.0.6",

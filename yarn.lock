@@ -8153,9 +8153,12 @@ react-swipeable-views@^0.8.3:
     react-native "^0.39.1"
     warning "^3.0.0"
 
-react-test-renderer@^15.3.1:
-  version "15.4.0"
-  resolved "https://registry.yarnpkg.com/react-test-renderer/-/react-test-renderer-15.4.0.tgz#80138338e40903821847c3e4edd87d0d74c77cc8"
+react-test-renderer@^15.6.2:
+  version "15.6.2"
+  resolved "https://registry.yarnpkg.com/react-test-renderer/-/react-test-renderer-15.6.2.tgz#d0333434fc2c438092696ca770da5ed48037efa8"
+  dependencies:
+    fbjs "^0.8.9"
+    object-assign "^4.1.0"
 
 react-textarea-autosize@^4.0.5:
   version "4.0.5"

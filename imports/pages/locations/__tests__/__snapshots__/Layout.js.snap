@@ -1,4 +1,6 @@
-exports[`test overflow contains styles 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`overflow contains styles 1`] = `
 Object {
   "WebkitOverflowScrolling": "touch",
   "overflowX": "scroll",
@@ -6,7 +8,7 @@ Object {
 }
 `;
 
-exports[`test parses campusLookup query 1`] = `
+exports[`parses campusLookup query 1`] = `
 Object {
   "definitions": Array [
     Object {
@@ -251,14 +253,17 @@ Object {
 }
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <div>
   <Meta
-    title="Locations" />
+    title="Locations"
+  />
   <div
-    className="soft soft-double-ends soft-double@palm-wide-and-up text-center background--light-primary">
+    className="soft soft-double-ends soft-double@palm-wide-and-up text-center background--light-primary"
+  >
     <h3
-      className="push-half-ends">
+      className="push-half-ends"
+    >
       Find Your Closest Campus
     </h3>
     <Form
@@ -269,9 +274,11 @@ exports[`test renders with props 1`] = `
           "one-whole",
         ]
       }
-      submit={[Function]}>
+      submit={[Function]}
+    >
       <i
-        className="icon-search locked-left soft-half-left" />
+        className="icon-search locked-left soft-half-left"
+      />
       <Input
         classes={
           Array [
@@ -283,9 +290,11 @@ exports[`test renders with props 1`] = `
         inputClasses="soft-double-left soft-half-bottom"
         onChange={[Function]}
         placeholder="Type your search here..."
-        type="text" />
+        type="text"
+      />
       <div
-        className="one-whole text-left">
+        className="one-whole text-left"
+      >
         <h6>
           <em>
             Find a campus by city, state, or zip
@@ -295,9 +304,11 @@ exports[`test renders with props 1`] = `
     </Form>
   </div>
   <div
-    className="background--light-secondary soft-ends text-center">
+    className="background--light-secondary soft-ends text-center"
+  >
     <h3
-      className="push-half-top">
+      className="push-half-top"
+    >
       Campus Directory
     </h3>
     <div
@@ -308,14 +319,16 @@ exports[`test renders with props 1`] = `
           "overflowX": "scroll",
           "overflowY": "hidden",
         }
-      }>
+      }
+    >
       <section
         className="soft-half"
         style={
           Object {
             "width": "1654.4px",
           }
-        }>
+        }
+      >
         <Link
           className="text-dark-secondary transition floating ratio--square display-inline-block rounded  push-right card text-left"
           onClick={[Function]}
@@ -325,30 +338,37 @@ exports[`test renders with props 1`] = `
               "height": 787.2,
               "width": 787.2,
             }
-          }>
+          }
+        >
           <div
-            className="one-whole soft-sides text-left floating__item">
+            className="one-whole soft-sides text-left floating__item"
+          >
             <h4>
               anderson
             </h4>
             <h7
-              className="italic display-block">
+              className="italic display-block"
+            >
               0.00
                miles away
             </h7>
             <p
-              className="flush-bottom soft-half-bottom">
+              className="flush-bottom soft-half-bottom"
+            >
               9:00
             </p>
             <p
-              className="flush-bottom soft-half-bottom">
+              className="flush-bottom soft-half-bottom"
+            >
               11:00
             </p>
             <h5
-              className="text-primary plain">
+              className="text-primary plain"
+            >
               Learn More 
               <span
-                className="icon-arrow-next text-primary" />
+                className="icon-arrow-next text-primary"
+              />
             </h5>
           </div>
         </Link>
@@ -361,30 +381,37 @@ exports[`test renders with props 1`] = `
               "height": 787.2,
               "width": 787.2,
             }
-          }>
+          }
+        >
           <div
-            className="one-whole soft-sides text-left floating__item">
+            className="one-whole soft-sides text-left floating__item"
+          >
             <h4>
               anderson
             </h4>
             <h7
-              className="italic display-block">
+              className="italic display-block"
+            >
               0.00
                miles away
             </h7>
             <p
-              className="flush-bottom soft-half-bottom">
+              className="flush-bottom soft-half-bottom"
+            >
               9:00
             </p>
             <p
-              className="flush-bottom soft-half-bottom">
+              className="flush-bottom soft-half-bottom"
+            >
               11:00
             </p>
             <h5
-              className="text-primary plain">
+              className="text-primary plain"
+            >
               Learn More 
               <span
-                className="icon-arrow-next text-primary" />
+                className="icon-arrow-next text-primary"
+              />
             </h5>
           </div>
         </Link>
@@ -394,14 +421,17 @@ exports[`test renders with props 1`] = `
 </div>
 `;
 
-exports[`test renders without campus distance 1`] = `
+exports[`renders without campus distance 1`] = `
 <div>
   <Meta
-    title="Locations" />
+    title="Locations"
+  />
   <div
-    className="soft soft-double-ends soft-double@palm-wide-and-up text-center background--light-primary">
+    className="soft soft-double-ends soft-double@palm-wide-and-up text-center background--light-primary"
+  >
     <h3
-      className="push-half-ends">
+      className="push-half-ends"
+    >
       Find Your Closest Campus
     </h3>
     <Form
@@ -412,9 +442,11 @@ exports[`test renders without campus distance 1`] = `
           "one-whole",
         ]
       }
-      submit={[Function]}>
+      submit={[Function]}
+    >
       <i
-        className="icon-search locked-left soft-half-left" />
+        className="icon-search locked-left soft-half-left"
+      />
       <Input
         classes={
           Array [
@@ -426,9 +458,11 @@ exports[`test renders without campus distance 1`] = `
         inputClasses="soft-double-left soft-half-bottom"
         onChange={[Function]}
         placeholder="Type your search here..."
-        type="text" />
+        type="text"
+      />
       <div
-        className="one-whole text-left">
+        className="one-whole text-left"
+      >
         <h6>
           <em>
             Find a campus by city, state, or zip
@@ -438,9 +472,11 @@ exports[`test renders without campus distance 1`] = `
     </Form>
   </div>
   <div
-    className="background--light-secondary soft-ends text-center">
+    className="background--light-secondary soft-ends text-center"
+  >
     <h3
-      className="push-half-top">
+      className="push-half-top"
+    >
       Campus Directory
     </h3>
     <div
@@ -451,14 +487,16 @@ exports[`test renders without campus distance 1`] = `
           "overflowX": "scroll",
           "overflowY": "hidden",
         }
-      }>
+      }
+    >
       <section
         className="soft-half"
         style={
           Object {
             "width": "1654.4px",
           }
-        }>
+        }
+      >
         <Link
           className="text-dark-secondary transition floating ratio--square display-inline-block rounded  push-right card text-left"
           onClick={[Function]}
@@ -468,25 +506,31 @@ exports[`test renders without campus distance 1`] = `
               "height": 787.2,
               "width": 787.2,
             }
-          }>
+          }
+        >
           <div
-            className="one-whole soft-sides text-left floating__item">
+            className="one-whole soft-sides text-left floating__item"
+          >
             <h4>
               anderson
             </h4>
             <p
-              className="flush-bottom soft-half-bottom">
+              className="flush-bottom soft-half-bottom"
+            >
               9:00
             </p>
             <p
-              className="flush-bottom soft-half-bottom">
+              className="flush-bottom soft-half-bottom"
+            >
               11:00
             </p>
             <h5
-              className="text-primary plain">
+              className="text-primary plain"
+            >
               Learn More 
               <span
-                className="icon-arrow-next text-primary" />
+                className="icon-arrow-next text-primary"
+              />
             </h5>
           </div>
         </Link>
@@ -499,30 +543,37 @@ exports[`test renders without campus distance 1`] = `
               "height": 787.2,
               "width": 787.2,
             }
-          }>
+          }
+        >
           <div
-            className="one-whole soft-sides text-left floating__item">
+            className="one-whole soft-sides text-left floating__item"
+          >
             <h4>
               anderson
             </h4>
             <h7
-              className="italic display-block">
+              className="italic display-block"
+            >
               0.00
                miles away
             </h7>
             <p
-              className="flush-bottom soft-half-bottom">
+              className="flush-bottom soft-half-bottom"
+            >
               9:00
             </p>
             <p
-              className="flush-bottom soft-half-bottom">
+              className="flush-bottom soft-half-bottom"
+            >
               11:00
             </p>
             <h5
-              className="text-primary plain">
+              className="text-primary plain"
+            >
               Learn More 
               <span
-                className="icon-arrow-next text-primary" />
+                className="icon-arrow-next text-primary"
+              />
             </h5>
           </div>
         </Link>

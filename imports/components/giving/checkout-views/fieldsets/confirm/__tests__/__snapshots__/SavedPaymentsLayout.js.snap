@@ -1,10 +1,12 @@
-exports[`test should accept billing and payment props 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should accept billing and payment props 1`] = `
 <Component
   billing={
     Object {
       "city": "Cincinnati",
       "state": "OH",
-      "streetAddress": "Harambe\'s old place",
+      "streetAddress": "Harambe's old place",
       "zip": "12345",
     }
   }
@@ -13,45 +15,53 @@ exports[`test should accept billing and payment props 1`] = `
       "cardNumber": "5575-1234-1234-1234",
       "ccv": "123",
       "expiration": "01/19",
-      "name": "Harambe\'s Card",
+      "name": "Harambe's Card",
     }
-  }>
+  }
+>
   <div>
     <div
-      className="push-double@lap-and-up push">
+      className="push-double@lap-and-up push"
+    >
       <Header>
         <h4
-          className="text-center">
+          className="text-center"
+        >
           Review
         </h4>
       </Header>
     </div>
     <div
-      className="soft-sides text-left">
+      className="soft-sides text-left"
+    >
       <h7
-        className="display-block text-dark-tertiary">
+        className="display-block text-dark-tertiary"
+      >
         Billing Address
       </h7>
       <h6>
-        Harambe\'s old place
+        Harambe's old place
       </h6>
       <h6>
         Cincinnati, OH 12345
       </h6>
       <hr />
       <h7
-        className="display-block text-dark-tertiary">
+        className="display-block text-dark-tertiary"
+      >
         Account Details
       </h7>
       <h6>
         <AccountNumber
-          accountNumber="5575-1234-1234-1234">
+          accountNumber="5575-1234-1234-1234"
+        >
           <span />
         </AccountNumber>
         <mockConstructor
           cardType="MasterCard"
           height="12px"
-          width="19px">
+          width="19px"
+        >
           <div />
         </mockConstructor>
       </h6>
@@ -62,23 +72,26 @@ exports[`test should accept billing and payment props 1`] = `
         123
       </h6>
       <h6>
-        Harambe\'s Card
+        Harambe's Card
       </h6>
       <hr />
       <button
         className="btn one-whole push-double-top soft-sides push-half-bottom"
-        type="submit">
+        type="submit"
+      >
         Create Account
       </button>
       <div
-        className="text-center">
+        className="text-center"
+      >
         <h6
           className="outlined--light outlined--bottom display-inline-block text-dark-tertiary"
           style={
             Object {
               "cursor": "pointer",
             }
-          }>
+          }
+        >
           Edit Details
         </h6>
       </div>
@@ -87,4 +100,4 @@ exports[`test should accept billing and payment props 1`] = `
 </Component>
 `;
 
-exports[`test should render with minimal props 1`] = `<Component />`;
+exports[`should render with minimal props 1`] = `<Component />`;

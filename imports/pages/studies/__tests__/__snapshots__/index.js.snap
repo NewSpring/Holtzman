@@ -1,4 +1,6 @@
-exports[`test parses series query 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`parses series query 1`] = `
 Object {
   "definitions": Array [
     Object {
@@ -388,7 +390,7 @@ Object {
     "source": Source {
       "body": "
   query getSeries($limit: Int!, $skip: Int!){
-    content(channel: \"studies\", limit: $limit, skip: $skip) {
+    content(channel: \\"studies\\", limit: $limit, skip: $skip) {
       id
       entryId: id
       title
@@ -401,7 +403,7 @@ Object {
         channelId
       }
       content {
-        images(sizes: [\"large\"]) {
+        images(sizes: [\\"large\\"]) {
           fileName
           fileType
           fileLabel
@@ -424,7 +426,7 @@ Object {
 }
 `;
 
-exports[`test renders loading if no content 1`] = `
+exports[`renders loading if no content 1`] = `
 <TemplateWithoutData
   Loading={[Function]}
   data={
@@ -434,10 +436,11 @@ exports[`test renders loading if no content 1`] = `
       "refetch": [Function],
     }
   }
-  dispatch={[Function]} />
+  dispatch={[Function]}
+/>
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <TemplateWithoutData
   Loading={[Function]}
   data={
@@ -450,5 +453,6 @@ exports[`test renders with props 1`] = `
       "refetch": [Function],
     }
   }
-  dispatch={[Function]} />
+  dispatch={[Function]}
+/>
 `;

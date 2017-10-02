@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Layout renders 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)
@@ -6,12 +8,15 @@ exports[`Layout renders 1`] = `
         "background--light-primary",
       ]
     }
-    nav={true}>
+    nav={true}
+  >
     <Meta
-      title="Edit Schedule" />
+      title="Edit Schedule"
+    />
     <Right
       background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg"
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -19,7 +24,8 @@ exports[`Layout renders 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     Edit A Schedule
   </Left>
 </div>

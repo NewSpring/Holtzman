@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Giving Schedules List should render properly with data 1`] = `
 <SchedulesList
   schedules={
@@ -62,45 +64,55 @@ exports[`Giving Schedules List should render properly with data 1`] = `
         },
       ],
     }
-  }>
+  }
+>
   <div
-    className="soft-half-sides soft-double-sides@lap-and-up">
+    className="soft-half-sides soft-double-sides@lap-and-up"
+  >
     <SectionHeader
       link={<SchedulesButton />}
-      title="Active Schedules">
+      title="Active Schedules"
+    >
       <div
-        className="one-whole">
+        className="one-whole"
+      >
         <div
-          className="one-half floating display-inline-block floating--left soft soft-half-left">
+          className="one-half floating display-inline-block floating--left soft soft-half-left"
+        >
           <h6
-            className="floating__item text-dark-tertiary flush">
+            className="floating__item text-dark-tertiary flush"
+          >
             Active Schedules
           </h6>
         </div>
         <div
-          className="one-half floating display-inline-block floating--right soft soft-half-right">
+          className="one-half floating display-inline-block floating--right soft soft-half-right"
+        >
           <SchedulesButton>
             <SmallButton
               className="btn--dark-tertiary flush"
               linkUrl="/give/now?schedule=true"
-              text="New Schedule">
+              text="New Schedule"
+            >
               <Link
                 className="
-                  btn btn--small@next
-                  
-                  btn--dark-tertiary flush
-                "
+    btn btn--small@next
+    
+    btn--dark-tertiary flush
+  "
                 onlyActiveOnIndex={false}
                 style={Object {}}
-                to="/give/now?schedule=true">
+                to="/give/now?schedule=true"
+              >
                 <a
                   className="
-                    btn btn--small@next
-                    
-                    btn--dark-tertiary flush
-                  "
+    btn btn--small@next
+    
+    btn--dark-tertiary flush
+  "
                   onClick={[Function]}
-                  style={Object {}}>
+                  style={Object {}}
+                >
                   New Schedule
                 </a>
               </Link>
@@ -110,7 +122,8 @@ exports[`Giving Schedules List should render properly with data 1`] = `
       </div>
     </SectionHeader>
     <div
-      className="grid">
+      className="grid"
+    >
       <ScheduleCard
         amount="20.00"
         classes="grid__item one-whole"
@@ -119,38 +132,48 @@ exports[`Giving Schedules List should render properly with data 1`] = `
         latest="2016-03-17"
         onDetailClick={[Function]}
         onEditClick={[Function]}
-        started="2016-03-16">
+        started="2016-03-16"
+      >
         <div
-          className="grid__item one-whole">
+          className="grid__item one-whole"
+        >
           <div
-            className="card">
+            className="card"
+          >
             <div
-              className="card__item soft push-half-ends one-whole">
+              className="card__item soft push-half-ends one-whole"
+            >
               <Currency
                 amount="20.00"
                 baseHeadingSize="1"
-                className="text-left">
+                className="text-left"
+              >
                 <div
-                  className="floating text-dark-primary text-left">
+                  className="floating text-dark-primary text-left"
+                >
                   <h3
                     className="floating__item flush"
                     style={
                       Object {
                         "paddingRight": "5px",
                       }
-                    }>
+                    }
+                  >
                     $
                   </h3>
                   <h1
-                    className="floating__item flush">
+                    className="floating__item flush"
+                  >
                     20
                   </h1>
                   <h3
-                    className="floating__item flush" />
+                    className="floating__item flush"
+                  />
                 </div>
               </Currency>
               <h5
-                className="floating__item soft-half-right push-half--bottom text-dark-primary">
+                className="floating__item soft-half-right push-half--bottom text-dark-primary"
+              >
                 One Time
               </h5>
               <p
@@ -159,18 +182,21 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                   Object {
                     "marginBottom": "5px",
                   }
-                }>
+                }
+              >
                 <span
                   className="h7 text-dark-tertiary push-half-right"
                   style={
                     Object {
                       "verticalAlign": "middle",
                     }
-                  }>
+                  }
+                >
                   Start Date:
                 </span>
                 <em
-                  className="text-dark-primary">
+                  className="text-dark-primary"
+                >
                   Mar 16, 2016
                 </em>
               </p>
@@ -181,11 +207,13 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                     Object {
                       "verticalAlign": "middle",
                     }
-                  }>
+                  }
+                >
                   Latest Contribution:
                 </span>
                 <em
-                  className="text-dark-primary">
+                  className="text-dark-primary"
+                >
                   Mar 17, 2016
                 </em>
               </p>
@@ -197,9 +225,11 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                     "borderColor": "inherit",
                     "borderWidth": "2px",
                   }
-                }>
+                }
+              >
                 <h6
-                  className="display-inline-block soft-half-right flush-bottom">
+                  className="display-inline-block soft-half-right flush-bottom"
+                >
                   View Schedule Details
                 </h6>
                 <span
@@ -209,7 +239,8 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                       "right": "-5px",
                       "top": "1px",
                     }
-                  } />
+                  }
+                />
               </button>
             </div>
           </div>
@@ -223,38 +254,48 @@ exports[`Giving Schedules List should render properly with data 1`] = `
         latest="2016-03-18"
         onDetailClick={[Function]}
         onEditClick={[Function]}
-        started="2016-03-16">
+        started="2016-03-16"
+      >
         <div
-          className="grid__item one-whole">
+          className="grid__item one-whole"
+        >
           <div
-            className="card">
+            className="card"
+          >
             <div
-              className="card__item soft push-half-ends one-whole">
+              className="card__item soft push-half-ends one-whole"
+            >
               <Currency
                 amount="100.00"
                 baseHeadingSize="1"
-                className="text-left">
+                className="text-left"
+              >
                 <div
-                  className="floating text-dark-primary text-left">
+                  className="floating text-dark-primary text-left"
+                >
                   <h3
                     className="floating__item flush"
                     style={
                       Object {
                         "paddingRight": "5px",
                       }
-                    }>
+                    }
+                  >
                     $
                   </h3>
                   <h1
-                    className="floating__item flush">
+                    className="floating__item flush"
+                  >
                     100
                   </h1>
                   <h3
-                    className="floating__item flush" />
+                    className="floating__item flush"
+                  />
                 </div>
               </Currency>
               <h5
-                className="floating__item soft-half-right push-half--bottom text-dark-primary">
+                className="floating__item soft-half-right push-half--bottom text-dark-primary"
+              >
                 Once a Month
               </h5>
               <p
@@ -263,18 +304,21 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                   Object {
                     "marginBottom": "5px",
                   }
-                }>
+                }
+              >
                 <span
                   className="h7 text-dark-tertiary push-half-right"
                   style={
                     Object {
                       "verticalAlign": "middle",
                     }
-                  }>
+                  }
+                >
                   Start Date:
                 </span>
                 <em
-                  className="text-dark-primary">
+                  className="text-dark-primary"
+                >
                   Mar 16, 2016
                 </em>
               </p>
@@ -285,11 +329,13 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                     Object {
                       "verticalAlign": "middle",
                     }
-                  }>
+                  }
+                >
                   Latest Contribution:
                 </span>
                 <em
-                  className="text-dark-primary">
+                  className="text-dark-primary"
+                >
                   Mar 18, 2016
                 </em>
               </p>
@@ -301,9 +347,11 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                     "borderColor": "inherit",
                     "borderWidth": "2px",
                   }
-                }>
+                }
+              >
                 <h6
-                  className="display-inline-block soft-half-right flush-bottom">
+                  className="display-inline-block soft-half-right flush-bottom"
+                >
                   View Schedule Details
                 </h6>
                 <span
@@ -313,7 +361,8 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                       "right": "-5px",
                       "top": "1px",
                     }
-                  } />
+                  }
+                />
               </button>
             </div>
           </div>
@@ -327,54 +376,67 @@ exports[`Giving Schedules List should render properly with data 1`] = `
         latest=""
         onDetailClick={[Function]}
         onEditClick={[Function]}
-        started="2016-03-16">
+        started="2016-03-16"
+      >
         <div
-          className="grid__item one-whole">
+          className="grid__item one-whole"
+        >
           <div
-            className="card">
+            className="card"
+          >
             <div
-              className="card__item soft push-half-ends one-whole">
+              className="card__item soft push-half-ends one-whole"
+            >
               <Currency
                 amount="50.00"
                 baseHeadingSize="1"
-                className="text-left">
+                className="text-left"
+              >
                 <div
-                  className="floating text-dark-primary text-left">
+                  className="floating text-dark-primary text-left"
+                >
                   <h3
                     className="floating__item flush"
                     style={
                       Object {
                         "paddingRight": "5px",
                       }
-                    }>
+                    }
+                  >
                     $
                   </h3>
                   <h1
-                    className="floating__item flush">
+                    className="floating__item flush"
+                  >
                     50
                   </h1>
                   <h3
-                    className="floating__item flush" />
+                    className="floating__item flush"
+                  />
                 </div>
               </Currency>
               <h5
-                className="floating__item soft-half-right push-half--bottom text-dark-primary">
+                className="floating__item soft-half-right push-half--bottom text-dark-primary"
+              >
                 One Time
               </h5>
               <p
                 className="flush-bottom soft-half-top"
-                style={Object {}}>
+                style={Object {}}
+              >
                 <span
                   className="h7 text-dark-tertiary push-half-right"
                   style={
                     Object {
                       "verticalAlign": "middle",
                     }
-                  }>
+                  }
+                >
                   Start Date:
                 </span>
                 <em
-                  className="text-dark-primary">
+                  className="text-dark-primary"
+                >
                   Mar 16, 2016
                 </em>
               </p>
@@ -386,9 +448,11 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                     "borderColor": "inherit",
                     "borderWidth": "2px",
                   }
-                }>
+                }
+              >
                 <h6
-                  className="display-inline-block soft-half-right flush-bottom">
+                  className="display-inline-block soft-half-right flush-bottom"
+                >
                   View Schedule Details
                 </h6>
                 <span
@@ -398,7 +462,8 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                       "right": "-5px",
                       "top": "1px",
                     }
-                  } />
+                  }
+                />
               </button>
             </div>
           </div>
@@ -406,7 +471,8 @@ exports[`Giving Schedules List should render properly with data 1`] = `
       </ScheduleCard>
     </div>
     <p
-      className="soft-double-top soft-half-sides text-left@handheld text-center">
+      className="soft-double-top soft-half-sides text-left@handheld text-center"
+    >
       <small>
         <em>
           To change details about a schedule, please cancel the current one and create a new schedule with the desired information. We are sorry for any inconvenience this may cause and are working to provide the ability to edit contribution schedules in the future.

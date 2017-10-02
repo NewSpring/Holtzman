@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Hero should render with content object passed in 1`] = `
 <Hero
   content={
@@ -19,31 +21,39 @@ exports[`Hero should render with content object passed in 1`] = `
       },
       "title": "hello",
     }
-  }>
+  }
+>
   <HeroLink
-    to="/harambe">
+    to="/harambe"
+  >
     <a
-      href="/harambe">
+      href="/harambe"
+    >
       <section
         className="hard floating--bottom text-left background--dark-primary ratio--square
-              background--fill overlay--gradient"
+        background--fill overlay--gradient"
         style={
           Object {
             "backgroundImage": "
-                    url(\'harambe-square.jpg\')
-                  ",
+          url('harambe-square.jpg')
+        ",
           }
-        }>
+        }
+      >
         <div
-          className="one-whole overlay__item floating__item soft">
+          className="one-whole overlay__item floating__item soft"
+        >
           <h3
-            className="text-light-primary flush soft-half-bottom capitalize">
+            className="text-light-primary flush soft-half-bottom capitalize"
+          >
             hello
           </h3>
           <i
-            className="text-light-primary soft-half-right categories.icon" />
+            className="text-light-primary soft-half-right categories.icon"
+          />
           <h7
-            className="text-light-primary">
+            className="text-light-primary"
+          >
             categories.name
           </h7>
           <h7
@@ -52,7 +62,8 @@ exports[`Hero should render with content object passed in 1`] = `
               Object {
                 "marginTop": "5px",
               }
-            } />
+            }
+          />
         </div>
       </section>
     </a>
@@ -65,31 +76,39 @@ exports[`Hero should render with data passed as separate props 1`] = `
   hideDate={false}
   image="harambe.jpg"
   link="/harambe"
-  title="miss you">
+  title="miss you"
+>
   <HeroLink
-    to="/harambe">
+    to="/harambe"
+  >
     <a
-      href="/harambe">
+      href="/harambe"
+    >
       <section
         className="hard floating--bottom text-left background--dark-primary ratio--square
-              "
+        "
         style={
           Object {
             "backgroundImage": "
-                    url(\'harambe.jpg\')
-                  ",
+          url('harambe.jpg')
+        ",
           }
-        }>
+        }
+      >
         <div
-          className="one-whole overlay__item floating__item soft">
+          className="one-whole overlay__item floating__item soft"
+        >
           <h3
-            className="text-light-primary flush soft-half-bottom capitalize">
+            className="text-light-primary flush soft-half-bottom capitalize"
+          >
             miss you
           </h3>
           <i
-            className={null} />
+            className={null}
+          />
           <h7
-            className="text-light-primary" />
+            className="text-light-primary"
+          />
         </div>
       </section>
     </a>
@@ -102,28 +121,35 @@ exports[`Hero should render with no props 1`] = `
   <HeroLink>
     <Link
       onlyActiveOnIndex={false}
-      style={Object {}}>
+      style={Object {}}
+    >
       <a
         onClick={[Function]}
-        style={Object {}}>
+        style={Object {}}
+      >
         <section
           className="hard floating--bottom text-left background--dark-primary ratio--square
-                "
+        "
           style={
             Object {
               "backgroundImage": "
-                      url(\'\')
-                    ",
+          url('')
+        ",
             }
-          }>
+          }
+        >
           <div
-            className="one-whole overlay__item floating__item soft">
+            className="one-whole overlay__item floating__item soft"
+          >
             <h3
-              className="text-light-primary flush soft-half-bottom capitalize" />
+              className="text-light-primary flush soft-half-bottom capitalize"
+            />
             <i
-              className={null} />
+              className={null}
+            />
             <h7
-              className="text-light-primary" />
+              className="text-light-primary"
+            />
           </div>
         </section>
       </a>

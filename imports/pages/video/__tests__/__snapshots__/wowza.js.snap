@@ -1,10 +1,15 @@
-exports[`test renders with props 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders with props 1`] = `
 <div
-  className="locked-ends locked-sides background--dark-primary floating offset_b736ty">
+  className="locked-ends locked-sides background--dark-primary floating offset_b736ty"
+>
   <Meta
-    title="Watch Live Services" />
+    title="Watch Live Services"
+  />
   <div
-    className="floating__item one-whole">
+    className="floating__item one-whole"
+  >
     <ReactJWPlayer
       aspectRatio="inherit"
       isMuted={false}
@@ -31,7 +36,8 @@ exports[`test renders with props 1`] = `
       onVideoLoad={[Function]}
       playerId="wowza-live-video"
       playerScript="//content.jwplatform.com/libraries/SgGdRKN7.js"
-      playlist="//content.jwplatform.com/feeds/STml6Fs1.json" />
+      playlist="//content.jwplatform.com/feeds/STml6Fs1.json"
+    />
     ,
   </div>
 </div>

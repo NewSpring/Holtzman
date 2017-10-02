@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`SubFund sets the state to active if it has an amount 1`] = `
 <SubFund
   accounts={
@@ -10,7 +12,8 @@ exports[`SubFund sets the state to active if it has an amount 1`] = `
   amount={10}
   changeAmount={[Function]}
   changeFund={[Function]}
-  preFill={[Function]}>
+  preFill={[Function]}
+>
   <Layout
     accounts={
       Array [
@@ -22,10 +25,12 @@ exports[`SubFund sets the state to active if it has an amount 1`] = `
     active={true}
     changeAmount={[Function]}
     changeFund={[Function]}
-    preFill={[Function]}>
+    preFill={[Function]}
+  >
     <div>
       <div
-        className="display-inline-block push-half-bottom h3 push-half-right text-dark-primary">
+        className="display-inline-block push-half-bottom h3 push-half-right text-dark-primary"
+      >
         and give
       </div>
       <Input
@@ -45,7 +50,8 @@ exports[`SubFund sets the state to active if it has an amount 1`] = `
             "maxWidth": "150px",
           }
         }
-        type="tel">
+        type="tel"
+      >
         <div
           className="input soft-bottom input--active display-inline-block"
           data-spec="input-wrapper"
@@ -53,9 +59,11 @@ exports[`SubFund sets the state to active if it has an amount 1`] = `
             Object {
               "maxWidth": "150px",
             }
-          }>
+          }
+        >
           <RenderLabel
-            hideLabel={true} />
+            hideLabel={true}
+          />
           <input
             autoCapitalize="on"
             autoComplete="on"
@@ -72,13 +80,16 @@ exports[`SubFund sets the state to active if it has an amount 1`] = `
                 "maxWidth": "150px",
               }
             }
-            type="tel" />
+            type="tel"
+          />
         </div>
       </Input>
       <div
-        className="display-block">
+        className="display-block"
+      >
         <h3
-          className="text-dark-primary push-half-bottom push-half-right display-inline-block">
+          className="text-dark-primary push-half-bottom push-half-right display-inline-block"
+        >
           to
         </h3>
         <Select
@@ -101,26 +112,31 @@ exports[`SubFund sets the state to active if it has an amount 1`] = `
             ]
           }
           onChange={[Function]}
-          placeholder="select fund">
+          placeholder="select fund"
+        >
           <div
-            className="input input--active soft-bottom display-inline-block select_1rryh47 select_e8htpf">
+            className="input input--active soft-bottom display-inline-block select_1rryh47 select_e8htpf"
+          >
             <select
               className="text-brand outlined--dotted outlined--light h3 hard-top flush-bottom"
               defaultValue="main fund"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
-              placeholder="select fund">
+              placeholder="select fund"
+            >
               <option
                 style={
                   Object {
                     "display": "none",
                   }
-                }>
+                }
+              >
                 select fund
               </option>
               <option
-                value="main fund">
+                value="main fund"
+              >
                 main fund
               </option>
             </select>
@@ -144,7 +160,8 @@ exports[`SubFund should render a primary fund 1`] = `
   changeAmount={[Function]}
   changeFund={[Function]}
   preFill={[Function]}
-  primary={true}>
+  primary={true}
+>
   <Primary
     accounts={
       Array [
@@ -156,11 +173,13 @@ exports[`SubFund should render a primary fund 1`] = `
     active={false}
     changeAmount={[Function]}
     changeFund={[Function]}
-    preFill={[Function]}>
+    preFill={[Function]}
+  >
     <div>
       <h3
-        className="text-dark-primary display-inline-block push-half-bottom push-half-right">
-        I\'d like to give
+        className="text-dark-primary display-inline-block push-half-bottom push-half-right"
+      >
+        I'd like to give
       </h3>
       <Input
         classes={
@@ -179,7 +198,8 @@ exports[`SubFund should render a primary fund 1`] = `
             "maxWidth": "150px",
           }
         }
-        type="tel">
+        type="tel"
+      >
         <div
           className="input soft-bottom input--active display-inline-block"
           data-spec="input-wrapper"
@@ -187,9 +207,11 @@ exports[`SubFund should render a primary fund 1`] = `
             Object {
               "maxWidth": "150px",
             }
-          }>
+          }
+        >
           <RenderLabel
-            hideLabel={true} />
+            hideLabel={true}
+          />
           <input
             autoCapitalize="on"
             autoComplete="on"
@@ -206,11 +228,13 @@ exports[`SubFund should render a primary fund 1`] = `
                 "maxWidth": "150px",
               }
             }
-            type="tel" />
+            type="tel"
+          />
         </div>
       </Input>
       <h3
-        className="text-dark-primary display-inline-block push-half-bottom push-half-right">
+        className="text-dark-primary display-inline-block push-half-bottom push-half-right"
+      >
         to
       </h3>
       <style>
@@ -235,9 +259,11 @@ exports[`SubFund should render a primary fund 1`] = `
         }
         name="select-account"
         onChange={[Function]}
-        placeholder="select fund">
+        placeholder="select fund"
+      >
         <div
-          className="input soft-bottom display-inline-block select_1rryh47 select_e8htpf">
+          className="input soft-bottom display-inline-block select_1rryh47 select_e8htpf"
+        >
           <select
             className="text-dark-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
             id="select-account"
@@ -245,17 +271,20 @@ exports[`SubFund should render a primary fund 1`] = `
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
-            placeholder="select fund">
+            placeholder="select fund"
+          >
             <option
               style={
                 Object {
                   "display": "none",
                 }
-              }>
+              }
+            >
               select fund
             </option>
             <option
-              value="main fund">
+              value="main fund"
+            >
               main fund
             </option>
           </select>
@@ -277,7 +306,8 @@ exports[`SubFund should render with minimal props 1`] = `
   }
   changeAmount={[Function]}
   changeFund={[Function]}
-  preFill={[Function]}>
+  preFill={[Function]}
+>
   <Layout
     accounts={
       Array [
@@ -289,10 +319,12 @@ exports[`SubFund should render with minimal props 1`] = `
     active={true}
     changeAmount={[Function]}
     changeFund={[Function]}
-    preFill={[Function]}>
+    preFill={[Function]}
+  >
     <div>
       <div
-        className="display-inline-block push-half-bottom h3 push-half-right text-dark-primary">
+        className="display-inline-block push-half-bottom h3 push-half-right text-dark-primary"
+      >
         and give
       </div>
       <Input
@@ -312,7 +344,8 @@ exports[`SubFund should render with minimal props 1`] = `
             "maxWidth": "150px",
           }
         }
-        type="tel">
+        type="tel"
+      >
         <div
           className="input soft-bottom input--active display-inline-block"
           data-spec="input-wrapper"
@@ -320,9 +353,11 @@ exports[`SubFund should render with minimal props 1`] = `
             Object {
               "maxWidth": "150px",
             }
-          }>
+          }
+        >
           <RenderLabel
-            hideLabel={true} />
+            hideLabel={true}
+          />
           <input
             autoCapitalize="on"
             autoComplete="on"
@@ -339,13 +374,16 @@ exports[`SubFund should render with minimal props 1`] = `
                 "maxWidth": "150px",
               }
             }
-            type="tel" />
+            type="tel"
+          />
         </div>
       </Input>
       <div
-        className="display-block">
+        className="display-block"
+      >
         <h3
-          className="text-dark-primary push-half-bottom push-half-right display-inline-block">
+          className="text-dark-primary push-half-bottom push-half-right display-inline-block"
+        >
           to
         </h3>
         <Select
@@ -368,26 +406,31 @@ exports[`SubFund should render with minimal props 1`] = `
             ]
           }
           onChange={[Function]}
-          placeholder="select fund">
+          placeholder="select fund"
+        >
           <div
-            className="input input--active soft-bottom display-inline-block select_1rryh47 select_e8htpf">
+            className="input input--active soft-bottom display-inline-block select_1rryh47 select_e8htpf"
+          >
             <select
               className="text-brand outlined--dotted outlined--light h3 hard-top flush-bottom"
               defaultValue="main fund"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
-              placeholder="select fund">
+              placeholder="select fund"
+            >
               <option
                 style={
                   Object {
                     "display": "none",
                   }
-                }>
+                }
+              >
                 select fund
               </option>
               <option
-                value="main fund">
+                value="main fund"
+              >
                 main fund
               </option>
             </select>

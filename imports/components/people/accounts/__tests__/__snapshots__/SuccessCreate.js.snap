@@ -1,22 +1,29 @@
-exports[`test render with props 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render with props 1`] = `
 <div
-  className="soft soft-double-ends one-whole text-center">
+  className="soft soft-double-ends one-whole text-center"
+>
   <h4
-    className="text-center push-ends">
+    className="text-center push-ends"
+  >
     Thanks for finishing your account!
   </h4>
   <p
-    className="text-left">
+    className="text-left"
+  >
     Congratulations on setting up your NewSpring account! This will help us to serve you better in your walk with Jesus. We have sent an email to 
     <span
-      className="text-primary">
+      className="text-primary"
+    >
       test@gmail.com
     </span>
      with instructions on finishing your account.
   </p>
   <button
     className="btn--thin btn--small btn--dark-tertiary one-whole "
-    onClick={[Function]}>
+    onClick={[Function]}
+  >
     Back
   </button>
 </div>

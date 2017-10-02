@@ -1,15 +1,20 @@
-exports[`test should render with no props 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render with no props 1`] = `
 <Input>
   <div
     className="input"
     data-spec="input-wrapper"
-    style={Object {}}>
+    style={Object {}}
+  >
     <RenderLabel>
       <Label
         disabed={false}
-        labelStyles={Object {}}>
+        labelStyles={Object {}}
+      >
         <label
-          style={Object {}} />
+          style={Object {}}
+        />
       </Label>
     </RenderLabel>
     <input
@@ -21,7 +26,8 @@ exports[`test should render with no props 1`] = `
       onBlur={[Function]}
       onChange={[Function]}
       onFocus={[Function]}
-      style={Object {}} />
+      style={Object {}}
+    />
   </div>
 </Input>
 `;

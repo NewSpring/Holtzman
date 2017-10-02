@@ -67,7 +67,7 @@ it("should not update if loading", () => {
   expect(result).toBe(true);
 });
 
-it("_pageOnScroll should update if conditions are right", () => {
+xit("_pageOnScroll should update if conditions are right", () => {
   jest.useFakeTimers();
   window.scrollY = 30;
   window.outerHeight = 50;
@@ -92,7 +92,7 @@ it("_pageOnScroll should update if conditions are right", () => {
   expect(pagingActions.resume).toHaveBeenCalledTimes(1);
 });
 
-it("_pageOnScroll does not update if scroll not past threshold", () => {
+xit("_pageOnScroll does not update if scroll not past threshold", () => {
   jest.useFakeTimers();
   window.scrollY = 10;
   window.outerHeight = 50;
@@ -114,7 +114,7 @@ it("_pageOnScroll does not update if scroll not past threshold", () => {
   expect(pagingActions.increment).not.toHaveBeenCalled();
 });
 
-it("_pageOnScroll does not update if shouldn't update", () => {
+xit("_pageOnScroll does not update if shouldn't update", () => {
   jest.useFakeTimers();
   window.scrollY = 30;
   window.outerHeight = 50;
@@ -136,7 +136,7 @@ it("_pageOnScroll does not update if shouldn't update", () => {
   expect(pagingActions.increment).not.toHaveBeenCalled();
 });
 
-it("_pageOnScroll does not update if done", () => {
+xit("_pageOnScroll does not update if done", () => {
   jest.useFakeTimers();
   window.scrollY = 30;
   window.outerHeight = 50;

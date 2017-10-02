@@ -1,4 +1,6 @@
-exports[`test parses query 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`parses query 1`] = `
 Object {
   "definitions": Array [
     Object {
@@ -175,7 +177,7 @@ Object {
 }
 `;
 
-exports[`test renders error version 1`] = `
+exports[`renders error version 1`] = `
 <div
   style={
     Object {
@@ -184,14 +186,16 @@ exports[`test renders error version 1`] = `
       "top": 0,
       "width": "100%",
     }
-  }>
+  }
+>
   <Err
-    msg="Looks like there was a problem" />
+    msg="Looks like there was a problem"
+  />
   ;
 </div>
 `;
 
-exports[`test renders loading version 1`] = `
+exports[`renders loading version 1`] = `
 <div
   style={
     Object {
@@ -200,25 +204,29 @@ exports[`test renders loading version 1`] = `
       "top": 0,
       "width": "100%",
     }
-  }>
+  }
+>
   <Loading
-    msg="Updating your information..." />
+    msg="Updating your information..."
+  />
   ;
 </div>
 `;
 
-exports[`test renders success version 1`] = `
+exports[`renders success version 1`] = `
 <Success
-  msg="Your information has been updated!" />
+  msg="Your information has been updated!"
+/>
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <Layout
   home={Object {}}
-  update={[Function]} />
+  update={[Function]}
+/>
 `;
 
-exports[`test renders without person home 1`] = `
+exports[`renders without person home 1`] = `
 <Layout
   home={
     Object {
@@ -230,5 +238,6 @@ exports[`test renders without person home 1`] = `
       "zip": null,
     }
   }
-  update={[Function]} />
+  update={[Function]}
+/>
 `;

@@ -1,26 +1,28 @@
-exports[`test childClasses adjusts for float 1`] = `"hard one-whole interior_9nddxf scrollable floating__item"`;
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`test childClasses appends additional childClasses 1`] = `"hard one-whole interior_9nddxf scrollable one two inline-block locked-top"`;
+exports[`childClasses adjusts for float 1`] = `"hard one-whole interior_9nddxf scrollable floating__item"`;
 
-exports[`test childClasses returns default 1`] = `"hard one-whole interior_9nddxf scrollable inline-block locked-top"`;
+exports[`childClasses appends additional childClasses 1`] = `"hard one-whole interior_9nddxf scrollable one two inline-block locked-top"`;
 
-exports[`test does not render if no component 1`] = `<div />`;
+exports[`childClasses returns default 1`] = `"hard one-whole interior_9nddxf scrollable inline-block locked-top"`;
 
-exports[`test does not render if not visible 1`] = `<div />`;
+exports[`does not render if no component 1`] = `<div />`;
 
-exports[`test layoutClasses appends additional classes 1`] = `"hard flush one two background--light-primary"`;
+exports[`does not render if not visible 1`] = `<div />`;
 
-exports[`test layoutClasses appends layout overrides 1`] = `"hard flush side-panel_x7puo background--light-primary three four"`;
+exports[`layoutClasses appends additional classes 1`] = `"hard flush one two background--light-primary"`;
 
-exports[`test layoutClasses handles float 1`] = `"hard flush side-panel_x7puo background--light-primary floating"`;
+exports[`layoutClasses appends layout overrides 1`] = `"hard flush side-panel_x7puo background--light-primary three four"`;
 
-exports[`test layoutClasses handles offset 1`] = `"hard flush side-panel_x7puo background--light-primary offset_b736ty"`;
+exports[`layoutClasses handles float 1`] = `"hard flush side-panel_x7puo background--light-primary floating"`;
 
-exports[`test layoutClasses has dark version 1`] = `"hard flush side-panel_x7puo background--dark-primary"`;
+exports[`layoutClasses handles offset 1`] = `"hard flush side-panel_x7puo background--light-primary offset_b736ty"`;
 
-exports[`test layoutClasses returns default 1`] = `"hard flush side-panel_x7puo background--light-primary"`;
+exports[`layoutClasses has dark version 1`] = `"hard flush side-panel_x7puo background--dark-primary"`;
 
-exports[`test overrides with theme 1`] = `
+exports[`layoutClasses returns default 1`] = `"hard flush side-panel_x7puo background--light-primary"`;
+
+exports[`overrides with theme 1`] = `
 <div
   className="panel overlay--solid-dark fixed"
   data-side-modal={true}
@@ -31,7 +33,8 @@ exports[`test overrides with theme 1`] = `
       "position": "fixed",
       "zIndex": 100,
     }
-  }>
+  }
+>
   <VelocityComponent
     animation={
       Object {
@@ -48,7 +51,8 @@ exports[`test overrides with theme 1`] = `
     }
     duration={300}
     runOnMount={true}
-    targetQuerySelector={null}>
+    targetQuerySelector={null}
+  >
     <section
       className="mytheme"
       style={
@@ -57,14 +61,16 @@ exports[`test overrides with theme 1`] = `
           "top": "46px",
           "transform": "translateY(-20px)",
         }
-      }>
+      }
+    >
       <div
         className="hard one-whole interior_9nddxf scrollable inline-block locked-top"
         style={
           Object {
             "height": "100%",
           }
-        }>
+        }
+      >
         <component />
       </div>
     </section>
@@ -72,7 +78,7 @@ exports[`test overrides with theme 1`] = `
 </div>
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <div
   className="panel overlay--solid-dark fixed"
   data-side-modal={true}
@@ -83,7 +89,8 @@ exports[`test renders with props 1`] = `
       "position": "fixed",
       "zIndex": 100,
     }
-  }>
+  }
+>
   <VelocityComponent
     animation={
       Object {
@@ -100,7 +107,8 @@ exports[`test renders with props 1`] = `
     }
     duration={300}
     runOnMount={true}
-    targetQuerySelector={null}>
+    targetQuerySelector={null}
+  >
     <section
       className="hard flush side-panel_x7puo background--light-primary"
       style={
@@ -109,14 +117,16 @@ exports[`test renders with props 1`] = `
           "top": "46px",
           "transform": "translateY(-20px)",
         }
-      }>
+      }
+    >
       <div
         className="hard one-whole interior_9nddxf scrollable inline-block locked-top"
         style={
           Object {
             "height": "100%",
           }
-        }>
+        }
+      >
         <component />
       </div>
     </section>
@@ -124,7 +134,7 @@ exports[`test renders with props 1`] = `
 </div>
 `;
 
-exports[`test styles accounts for coverHeader 1`] = `
+exports[`styles accounts for coverHeader 1`] = `
 Object {
   "opacity": 0,
   "top": "0px",
@@ -132,7 +142,7 @@ Object {
 }
 `;
 
-exports[`test styles returns styles if styles 1`] = `
+exports[`styles returns styles if styles 1`] = `
 Object {
   "color": "red",
   "opacity": 0,
@@ -141,7 +151,7 @@ Object {
 }
 `;
 
-exports[`test updates styles with mobile styles 1`] = `
+exports[`updates styles with mobile styles 1`] = `
 <div
   className="panel overlay--solid-dark fixed"
   data-side-modal={true}
@@ -152,7 +162,8 @@ exports[`test updates styles with mobile styles 1`] = `
       "position": "fixed",
       "zIndex": 100,
     }
-  }>
+  }
+>
   <VelocityComponent
     animation={
       Object {
@@ -169,7 +180,8 @@ exports[`test updates styles with mobile styles 1`] = `
     }
     duration={300}
     runOnMount={true}
-    targetQuerySelector={null}>
+    targetQuerySelector={null}
+  >
     <section
       className="hard flush side-panel_x7puo background--light-primary"
       style={
@@ -178,14 +190,16 @@ exports[`test updates styles with mobile styles 1`] = `
           "top": "46px",
           "transform": "translateY(80px)",
         }
-      }>
+      }
+    >
       <div
         className="hard one-whole interior_9nddxf scrollable inline-block locked-top"
         style={
           Object {
             "height": "100%",
           }
-        }>
+        }
+      >
         <component />
       </div>
     </section>
@@ -193,7 +207,7 @@ exports[`test updates styles with mobile styles 1`] = `
 </div>
 `;
 
-exports[`test updates styles with non mobile styles 1`] = `
+exports[`updates styles with non mobile styles 1`] = `
 <div
   className="panel overlay--solid-dark fixed"
   data-side-modal={true}
@@ -204,7 +218,8 @@ exports[`test updates styles with non mobile styles 1`] = `
       "position": "fixed",
       "zIndex": 100,
     }
-  }>
+  }
+>
   <VelocityComponent
     animation={
       Object {
@@ -221,7 +236,8 @@ exports[`test updates styles with non mobile styles 1`] = `
     }
     duration={300}
     runOnMount={true}
-    targetQuerySelector={null}>
+    targetQuerySelector={null}
+  >
     <section
       className="hard flush side-panel_x7puo background--light-primary"
       style={
@@ -230,14 +246,16 @@ exports[`test updates styles with non mobile styles 1`] = `
           "top": "46px",
           "transform": "translateY(-20px)",
         }
-      }>
+      }
+    >
       <div
         className="hard one-whole interior_9nddxf scrollable inline-block locked-top"
         style={
           Object {
             "height": "100%",
           }
-        }>
+        }
+      >
         <component />
       </div>
     </section>

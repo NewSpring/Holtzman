@@ -1,4 +1,6 @@
-exports[`test should return css class for content color gradient backgrounds 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should return css class for content color gradient backgrounds 1`] = `
 "
     .overlay-color--0000ff:after{
       background: linear-gradient(

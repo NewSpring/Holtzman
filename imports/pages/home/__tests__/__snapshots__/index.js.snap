@@ -1,30 +1,41 @@
-exports[`test renders feed skeleton if loading 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders feed skeleton if loading 1`] = `
 <Connect(ApollosPullToRefreshWithoutData)
-  handleRefresh={[Function]}>
+  handleRefresh={[Function]}
+>
   <Left
-    scroll={true}>
+    scroll={true}
+  >
     <section
-      className="background--light-secondary soft-half@palm soft@palm-wide-and-up soft-double@anchored">
+      className="background--light-secondary soft-half@palm soft@palm-wide-and-up soft-double@anchored"
+    >
       <div
-        className="grid">
+        className="grid"
+      >
         <div
-          className="grid__item one-half@palm-wide-and-up flush-bottom@palm push-half-bottom@palm-wide push-bottom@portable push-bottom@anchored">
+          className="grid__item one-half@palm-wide-and-up flush-bottom@palm push-half-bottom@palm-wide push-bottom@portable push-bottom@anchored"
+        >
           <FeedItemSkeleton />
         </div>
         <div
-          className="grid__item one-half@palm-wide-and-up flush-bottom@palm push-half-bottom@palm-wide push-bottom@portable push-bottom@anchored">
+          className="grid__item one-half@palm-wide-and-up flush-bottom@palm push-half-bottom@palm-wide push-bottom@portable push-bottom@anchored"
+        >
           <FeedItemSkeleton />
         </div>
         <div
-          className="grid__item one-half@palm-wide-and-up flush-bottom@palm push-half-bottom@palm-wide push-bottom@portable push-bottom@anchored">
+          className="grid__item one-half@palm-wide-and-up flush-bottom@palm push-half-bottom@palm-wide push-bottom@portable push-bottom@anchored"
+        >
           <FeedItemSkeleton />
         </div>
         <div
-          className="grid__item one-half@palm-wide-and-up flush-bottom@palm push-half-bottom@palm-wide push-bottom@portable push-bottom@anchored">
+          className="grid__item one-half@palm-wide-and-up flush-bottom@palm push-half-bottom@palm-wide push-bottom@portable push-bottom@anchored"
+        >
           <FeedItemSkeleton />
         </div>
         <div
-          className="grid__item one-half@palm-wide-and-up flush-bottom@palm push-half-bottom@palm-wide push-bottom@portable push-bottom@anchored">
+          className="grid__item one-half@palm-wide-and-up flush-bottom@palm push-half-bottom@palm-wide push-bottom@portable push-bottom@anchored"
+        >
           <FeedItemSkeleton />
         </div>
       </div>
@@ -33,17 +44,22 @@ exports[`test renders feed skeleton if loading 1`] = `
 </Connect(ApollosPullToRefreshWithoutData)>
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <Connect(ApollosPullToRefreshWithoutData)
-  handleRefresh={[Function]}>
+  handleRefresh={[Function]}
+>
   <Left
-    scroll={true}>
+    scroll={true}
+  >
     <section
-      className="background--light-secondary soft-half@palm soft@palm-wide-and-up soft-double@anchored">
+      className="background--light-secondary soft-half@palm soft@palm-wide-and-up soft-double@anchored"
+    >
       <div
-        className="grid">
+        className="grid"
+      >
         <div
-          className="grid__item one-half@palm-wide-and-up flush-bottom@palm push-half-bottom@palm-wide push-bottom@portable push-bottom@anchored">
+          className="grid__item one-half@palm-wide-and-up flush-bottom@palm push-half-bottom@palm-wide push-bottom@portable push-bottom@anchored"
+        >
           <Connect(Apollo(LikesWrapper))
             item={
               Object {
@@ -58,10 +74,12 @@ exports[`test renders with props 1`] = `
                 },
                 "entryId": "1",
               }
-            } />
+            }
+          />
         </div>
         <div
-          className="grid__item one-half@palm-wide-and-up flush-bottom@palm push-half-bottom@palm-wide push-bottom@portable push-bottom@anchored">
+          className="grid__item one-half@palm-wide-and-up flush-bottom@palm push-half-bottom@palm-wide push-bottom@portable push-bottom@anchored"
+        >
           <Connect(Apollo(LikesWrapper))
             item={
               Object {
@@ -76,7 +94,8 @@ exports[`test renders with props 1`] = `
                 },
                 "entryId": "2",
               }
-            } />
+            }
+          />
         </div>
       </div>
     </section>

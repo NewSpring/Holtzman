@@ -1,23 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Fun Facts renders a layout 1`] = `
 <div
-  className="background--light-secondary">
+  className="background--light-secondary"
+>
   <div
-    className="grid flush">
+    className="grid flush"
+  >
     <div
-      className="constrain-page">
+      className="constrain-page"
+    >
       <div
-        className="grid__item one-whole text-dark-primary text-center hard">
+        className="grid__item one-whole text-dark-primary text-center hard"
+      >
         <div
-          className="soft-double@lap-and-up soft push-double@lap-and-up soft-double-bottom push-bottom">
+          className="soft-double@lap-and-up soft push-double@lap-and-up soft-double-bottom push-bottom"
+        >
           <div
-            className="one-whole text-center push-bottom push-double-top@handheld soft-top">
+            className="one-whole text-center push-bottom push-double-top@handheld soft-top"
+          >
             <h1
-              className="uppercase">
+              className="uppercase"
+            >
               Fun Facts
             </h1>
           </div>
           <div
-            className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld">
+            className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld"
+          >
             <img
               alt="icons"
               className="push-double-bottom@lap-and-up push-bottom"
@@ -26,15 +36,18 @@ exports[`Fun Facts renders a layout 1`] = `
                 Object {
                   "maxHeight": "100px",
                 }
-              } />
+              }
+            />
             <Connect(FitTextWithoutData)
-              compressor={0.6}>
+              compressor={0.6}
+            >
               <h1
                 style={
                   Object {
                     "fontWeight": 900,
                   }
-                }>
+                }
+              >
                 25,000+
               </h1>
             </Connect(FitTextWithoutData)>
@@ -43,7 +56,8 @@ exports[`Fun Facts renders a layout 1`] = `
             </h4>
           </div>
           <div
-            className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld">
+            className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld"
+          >
             <img
               alt="icons"
               className="push-double-bottom@lap-and-up push-bottom"
@@ -52,15 +66,18 @@ exports[`Fun Facts renders a layout 1`] = `
                 Object {
                   "maxHeight": "100px",
                 }
-              } />
+              }
+            />
             <Connect(FitTextWithoutData)
-              compressor={0.6}>
+              compressor={0.6}
+            >
               <h1
                 style={
                   Object {
                     "fontWeight": 900,
                   }
-                }>
+                }
+              >
                 700,000+
               </h1>
             </Connect(FitTextWithoutData)>
@@ -69,7 +86,8 @@ exports[`Fun Facts renders a layout 1`] = `
             </h4>
           </div>
           <div
-            className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld">
+            className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld"
+          >
             <img
               alt="icons"
               className="push-double-bottom@lap-and-up push-bottom"
@@ -78,15 +96,18 @@ exports[`Fun Facts renders a layout 1`] = `
                 Object {
                   "maxHeight": "100px",
                 }
-              } />
+              }
+            />
             <Connect(FitTextWithoutData)
-              compressor={0.6}>
+              compressor={0.6}
+            >
               <h1
                 style={
                   Object {
                     "fontWeight": 900,
                   }
-                }>
+                }
+              >
                 4,000+
               </h1>
             </Connect(FitTextWithoutData)>
@@ -95,7 +116,8 @@ exports[`Fun Facts renders a layout 1`] = `
             </h4>
           </div>
           <div
-            className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld">
+            className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld"
+          >
             <img
               alt="icons"
               className="push-double-bottom@lap-and-up push-bottom"
@@ -104,15 +126,18 @@ exports[`Fun Facts renders a layout 1`] = `
                 Object {
                   "maxHeight": "100px",
                 }
-              } />
+              }
+            />
             <Connect(FitTextWithoutData)
-              compressor={0.6}>
+              compressor={0.6}
+            >
               <h1
                 style={
                   Object {
                     "fontWeight": 900,
                   }
-                }>
+                }
+              >
                 4,900+
               </h1>
             </Connect(FitTextWithoutData)>
@@ -121,7 +146,8 @@ exports[`Fun Facts renders a layout 1`] = `
             </h4>
           </div>
           <div
-            className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld">
+            className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld"
+          >
             <img
               alt="icons"
               className="push-double-bottom@lap-and-up push-bottom"
@@ -130,15 +156,18 @@ exports[`Fun Facts renders a layout 1`] = `
                 Object {
                   "maxHeight": "100px",
                 }
-              } />
+              }
+            />
             <Connect(FitTextWithoutData)
-              compressor={0.6}>
+              compressor={0.6}
+            >
               <h1
                 style={
                   Object {
                     "fontWeight": 900,
                   }
-                }>
+                }
+              >
                 220,000+
               </h1>
             </Connect(FitTextWithoutData)>
@@ -147,7 +176,8 @@ exports[`Fun Facts renders a layout 1`] = `
             </h4>
           </div>
           <div
-            className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld">
+            className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld"
+          >
             <img
               alt="icons"
               className="push-double-bottom@lap-and-up push-bottom"
@@ -156,15 +186,18 @@ exports[`Fun Facts renders a layout 1`] = `
                 Object {
                   "maxHeight": "100px",
                 }
-              } />
+              }
+            />
             <Connect(FitTextWithoutData)
-              compressor={0.6}>
+              compressor={0.6}
+            >
               <h1
                 style={
                   Object {
                     "fontWeight": 900,
                   }
-                }>
+                }
+              >
                 57,000+
               </h1>
             </Connect(FitTextWithoutData)>

@@ -1,8 +1,10 @@
-exports[`test cardClasses appends additional item classes 1`] = `"card three four"`;
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`test cardClasses renders defaults 1`] = `"card"`;
+exports[`cardClasses appends additional item classes 1`] = `"card three four"`;
 
-exports[`test createImage renders default 1`] = `
+exports[`cardClasses renders defaults 1`] = `"card"`;
+
+exports[`createImage renders default 1`] = `
 <ImageLoader
   imageclasses={
     Array [
@@ -22,13 +24,14 @@ exports[`test createImage renders default 1`] = `
   src="http://test.com/1x1.jpg"
   style={
     Object {
-      "backgroundImage": "url(\'http://test.com/1x1.jpg\')",
+      "backgroundImage": "url('http://test.com/1x1.jpg')",
     }
   }
-  wrapper={[Function]} />
+  wrapper={[Function]}
+/>
 `;
 
-exports[`test createImage uses custom ratio class 1`] = `
+exports[`createImage uses custom ratio class 1`] = `
 <ImageLoader
   imageclasses={
     Array [
@@ -48,13 +51,14 @@ exports[`test createImage uses custom ratio class 1`] = `
   src="http://test.com/1x1.jpg"
   style={
     Object {
-      "backgroundImage": "url(\'http://test.com/1x1.jpg\')",
+      "backgroundImage": "url('http://test.com/1x1.jpg')",
     }
   }
-  wrapper={[Function]} />
+  wrapper={[Function]}
+/>
 `;
 
-exports[`test createImage uses default image if no images 1`] = `
+exports[`createImage uses default image if no images 1`] = `
 <ImageLoader
   imageclasses={
     Array [
@@ -74,26 +78,29 @@ exports[`test createImage uses default image if no images 1`] = `
   src="http://test.com/default.jpg"
   style={
     Object {
-      "backgroundImage": "url(\'http://test.com/default.jpg\')",
+      "backgroundImage": "url('http://test.com/default.jpg')",
     }
   }
-  wrapper={[Function]} />
+  wrapper={[Function]}
+/>
 `;
 
-exports[`test itemClasses appends additional item classes 1`] = `"card__item soft text-left soft-double@anchored one-whole@palm one-whole@lap three-fifths@lap-wide three-fifths@palm-wide one-half@anchored one two"`;
+exports[`itemClasses appends additional item classes 1`] = `"card__item soft text-left soft-double@anchored one-whole@palm one-whole@lap three-fifths@lap-wide three-fifths@palm-wide one-half@anchored one two"`;
 
-exports[`test itemClasses renders defaults 1`] = `"card__item soft text-left soft-double@anchored one-whole@palm one-whole@lap three-fifths@lap-wide three-fifths@palm-wide one-half@anchored"`;
+exports[`itemClasses renders defaults 1`] = `"card__item soft text-left soft-double@anchored one-whole@palm one-whole@lap three-fifths@lap-wide three-fifths@palm-wide one-half@anchored"`;
 
-exports[`test overrides item theme 1`] = `
+exports[`overrides item theme 1`] = `
 <div
   className="card"
   style={
     Object {
       "overflow": "hidden",
     }
-  }>
+  }
+>
   <div
-    className="relative@lap relative@palm plain locked-ends@lap-wide-and-up locked-right@lap-wide-and-up locked-ends@palm-wide locked-right@palm-wide one-whole@lap one-whole@palm two-fifths@lap-wide two-fifths@palm-wide one-half@anchored">
+    className="relative@lap relative@palm plain locked-ends@lap-wide-and-up locked-right@lap-wide-and-up locked-ends@palm-wide locked-right@palm-wide one-whole@lap one-whole@palm two-fifths@lap-wide two-fifths@palm-wide one-half@anchored"
+  >
     <ImageLoader
       imageclasses={
         Array [
@@ -113,10 +120,11 @@ exports[`test overrides item theme 1`] = `
       src="http://test.com/1x1.jpg"
       style={
         Object {
-          "backgroundImage": "url(\'http://test.com/1x1.jpg\')",
+          "backgroundImage": "url('http://test.com/1x1.jpg')",
         }
       }
-      wrapper={[Function]} />
+      wrapper={[Function]}
+    />
   </div>
   <div
     className="myItem"
@@ -124,7 +132,8 @@ exports[`test overrides item theme 1`] = `
       Object {
         "color": "red",
       }
-    }>
+    }
+  >
     <h1>
       test
     </h1>
@@ -132,16 +141,18 @@ exports[`test overrides item theme 1`] = `
 </div>
 `;
 
-exports[`test overrides with styles 1`] = `
+exports[`overrides with styles 1`] = `
 <div
   className="card"
   style={
     Object {
       "color": "orange",
     }
-  }>
+  }
+>
   <div
-    className="relative@lap relative@palm plain locked-ends@lap-wide-and-up locked-right@lap-wide-and-up locked-ends@palm-wide locked-right@palm-wide one-whole@lap one-whole@palm two-fifths@lap-wide two-fifths@palm-wide one-half@anchored">
+    className="relative@lap relative@palm plain locked-ends@lap-wide-and-up locked-right@lap-wide-and-up locked-ends@palm-wide locked-right@palm-wide one-whole@lap one-whole@palm two-fifths@lap-wide two-fifths@palm-wide one-half@anchored"
+  >
     <ImageLoader
       imageclasses={
         Array [
@@ -161,10 +172,11 @@ exports[`test overrides with styles 1`] = `
       src="http://test.com/1x1.jpg"
       style={
         Object {
-          "backgroundImage": "url(\'http://test.com/1x1.jpg\')",
+          "backgroundImage": "url('http://test.com/1x1.jpg')",
         }
       }
-      wrapper={[Function]} />
+      wrapper={[Function]}
+    />
   </div>
   <div
     className="card__item soft text-left soft-double@anchored one-whole@palm one-whole@lap three-fifths@lap-wide three-fifths@palm-wide one-half@anchored"
@@ -172,7 +184,8 @@ exports[`test overrides with styles 1`] = `
       Object {
         "color": "red",
       }
-    }>
+    }
+  >
     <h1>
       test
     </h1>
@@ -180,16 +193,18 @@ exports[`test overrides with styles 1`] = `
 </div>
 `;
 
-exports[`test overrides with theme 1`] = `
+exports[`overrides with theme 1`] = `
 <div
   className="override me"
   style={
     Object {
       "overflow": "hidden",
     }
-  }>
+  }
+>
   <div
-    className="relative@lap relative@palm plain locked-ends@lap-wide-and-up locked-right@lap-wide-and-up locked-ends@palm-wide locked-right@palm-wide one-whole@lap one-whole@palm two-fifths@lap-wide two-fifths@palm-wide one-half@anchored">
+    className="relative@lap relative@palm plain locked-ends@lap-wide-and-up locked-right@lap-wide-and-up locked-ends@palm-wide locked-right@palm-wide one-whole@lap one-whole@palm two-fifths@lap-wide two-fifths@palm-wide one-half@anchored"
+  >
     <ImageLoader
       imageclasses={
         Array [
@@ -209,10 +224,11 @@ exports[`test overrides with theme 1`] = `
       src="http://test.com/1x1.jpg"
       style={
         Object {
-          "backgroundImage": "url(\'http://test.com/1x1.jpg\')",
+          "backgroundImage": "url('http://test.com/1x1.jpg')",
         }
       }
-      wrapper={[Function]} />
+      wrapper={[Function]}
+    />
   </div>
   <div
     className="card__item soft text-left soft-double@anchored one-whole@palm one-whole@lap three-fifths@lap-wide three-fifths@palm-wide one-half@anchored"
@@ -220,7 +236,8 @@ exports[`test overrides with theme 1`] = `
       Object {
         "color": "red",
       }
-    }>
+    }
+  >
     <h1>
       test
     </h1>
@@ -228,19 +245,21 @@ exports[`test overrides with theme 1`] = `
 </div>
 `;
 
-exports[`test renders link version 1`] = `
+exports[`renders link version 1`] = `
 <div
   className="card"
   style={
     Object {
       "overflow": "hidden",
     }
-  }>
+  }
+>
   <Link
     className="relative@lap relative@palm plain locked-ends@lap-wide-and-up locked-right@lap-wide-and-up locked-ends@palm-wide locked-right@palm-wide one-whole@lap one-whole@palm two-fifths@lap-wide two-fifths@palm-wide one-half@anchored"
     onlyActiveOnIndex={false}
     style={Object {}}
-    to="http://test.com/link">
+    to="http://test.com/link"
+  >
     <ImageLoader
       imageclasses={
         Array [
@@ -260,10 +279,11 @@ exports[`test renders link version 1`] = `
       src="http://test.com/1x1.jpg"
       style={
         Object {
-          "backgroundImage": "url(\'http://test.com/1x1.jpg\')",
+          "backgroundImage": "url('http://test.com/1x1.jpg')",
         }
       }
-      wrapper={[Function]} />
+      wrapper={[Function]}
+    />
   </Link>
   <div
     className="card__item soft text-left soft-double@anchored one-whole@palm one-whole@lap three-fifths@lap-wide three-fifths@palm-wide one-half@anchored"
@@ -271,7 +291,8 @@ exports[`test renders link version 1`] = `
       Object {
         "color": "red",
       }
-    }>
+    }
+  >
     <h1>
       test
     </h1>
@@ -279,19 +300,21 @@ exports[`test renders link version 1`] = `
 </div>
 `;
 
-exports[`test renders link version with item theme override 1`] = `
+exports[`renders link version with item theme override 1`] = `
 <div
   className="card"
   style={
     Object {
       "overflow": "hidden",
     }
-  }>
+  }
+>
   <Link
     className="relative@lap relative@palm plain locked-ends@lap-wide-and-up locked-right@lap-wide-and-up locked-ends@palm-wide locked-right@palm-wide one-whole@lap one-whole@palm two-fifths@lap-wide two-fifths@palm-wide one-half@anchored"
     onlyActiveOnIndex={false}
     style={Object {}}
-    to="http://test.com/link">
+    to="http://test.com/link"
+  >
     <ImageLoader
       imageclasses={
         Array [
@@ -311,10 +334,11 @@ exports[`test renders link version with item theme override 1`] = `
       src="http://test.com/1x1.jpg"
       style={
         Object {
-          "backgroundImage": "url(\'http://test.com/1x1.jpg\')",
+          "backgroundImage": "url('http://test.com/1x1.jpg')",
         }
       }
-      wrapper={[Function]} />
+      wrapper={[Function]}
+    />
   </Link>
   <div
     className="myOtherItem"
@@ -322,7 +346,8 @@ exports[`test renders link version with item theme override 1`] = `
       Object {
         "color": "red",
       }
-    }>
+    }
+  >
     <h1>
       test
     </h1>
@@ -330,19 +355,21 @@ exports[`test renders link version with item theme override 1`] = `
 </div>
 `;
 
-exports[`test renders link version with style override 1`] = `
+exports[`renders link version with style override 1`] = `
 <div
   className="card"
   style={
     Object {
       "color": "blue",
     }
-  }>
+  }
+>
   <Link
     className="relative@lap relative@palm plain locked-ends@lap-wide-and-up locked-right@lap-wide-and-up locked-ends@palm-wide locked-right@palm-wide one-whole@lap one-whole@palm two-fifths@lap-wide two-fifths@palm-wide one-half@anchored"
     onlyActiveOnIndex={false}
     style={Object {}}
-    to="http://test.com/link">
+    to="http://test.com/link"
+  >
     <ImageLoader
       imageclasses={
         Array [
@@ -362,10 +389,11 @@ exports[`test renders link version with style override 1`] = `
       src="http://test.com/1x1.jpg"
       style={
         Object {
-          "backgroundImage": "url(\'http://test.com/1x1.jpg\')",
+          "backgroundImage": "url('http://test.com/1x1.jpg')",
         }
       }
-      wrapper={[Function]} />
+      wrapper={[Function]}
+    />
   </Link>
   <div
     className="card__item soft text-left soft-double@anchored one-whole@palm one-whole@lap three-fifths@lap-wide three-fifths@palm-wide one-half@anchored"
@@ -373,7 +401,8 @@ exports[`test renders link version with style override 1`] = `
       Object {
         "color": "red",
       }
-    }>
+    }
+  >
     <h1>
       test
     </h1>
@@ -381,19 +410,21 @@ exports[`test renders link version with style override 1`] = `
 </div>
 `;
 
-exports[`test renders link version with theme override 1`] = `
+exports[`renders link version with theme override 1`] = `
 <div
   className="override link"
   style={
     Object {
       "overflow": "hidden",
     }
-  }>
+  }
+>
   <Link
     className="relative@lap relative@palm plain locked-ends@lap-wide-and-up locked-right@lap-wide-and-up locked-ends@palm-wide locked-right@palm-wide one-whole@lap one-whole@palm two-fifths@lap-wide two-fifths@palm-wide one-half@anchored"
     onlyActiveOnIndex={false}
     style={Object {}}
-    to="http://test.com/link">
+    to="http://test.com/link"
+  >
     <ImageLoader
       imageclasses={
         Array [
@@ -413,10 +444,11 @@ exports[`test renders link version with theme override 1`] = `
       src="http://test.com/1x1.jpg"
       style={
         Object {
-          "backgroundImage": "url(\'http://test.com/1x1.jpg\')",
+          "backgroundImage": "url('http://test.com/1x1.jpg')",
         }
       }
-      wrapper={[Function]} />
+      wrapper={[Function]}
+    />
   </Link>
   <div
     className="card__item soft text-left soft-double@anchored one-whole@palm one-whole@lap three-fifths@lap-wide three-fifths@palm-wide one-half@anchored"
@@ -424,7 +456,8 @@ exports[`test renders link version with theme override 1`] = `
       Object {
         "color": "red",
       }
-    }>
+    }
+  >
     <h1>
       test
     </h1>
@@ -432,16 +465,18 @@ exports[`test renders link version with theme override 1`] = `
 </div>
 `;
 
-exports[`test should render with props 1`] = `
+exports[`should render with props 1`] = `
 <div
   className="card"
   style={
     Object {
       "overflow": "hidden",
     }
-  }>
+  }
+>
   <div
-    className="relative@lap relative@palm plain locked-ends@lap-wide-and-up locked-right@lap-wide-and-up locked-ends@palm-wide locked-right@palm-wide one-whole@lap one-whole@palm two-fifths@lap-wide two-fifths@palm-wide one-half@anchored">
+    className="relative@lap relative@palm plain locked-ends@lap-wide-and-up locked-right@lap-wide-and-up locked-ends@palm-wide locked-right@palm-wide one-whole@lap one-whole@palm two-fifths@lap-wide two-fifths@palm-wide one-half@anchored"
+  >
     <ImageLoader
       imageclasses={
         Array [
@@ -461,10 +496,11 @@ exports[`test should render with props 1`] = `
       src="http://test.com/1x1.jpg"
       style={
         Object {
-          "backgroundImage": "url(\'http://test.com/1x1.jpg\')",
+          "backgroundImage": "url('http://test.com/1x1.jpg')",
         }
       }
-      wrapper={[Function]} />
+      wrapper={[Function]}
+    />
   </div>
   <div
     className="card__item soft text-left soft-double@anchored one-whole@palm one-whole@lap three-fifths@lap-wide three-fifths@palm-wide one-half@anchored"
@@ -472,7 +508,8 @@ exports[`test should render with props 1`] = `
       Object {
         "color": "red",
       }
-    }>
+    }
+  >
     <h1>
       test
     </h1>

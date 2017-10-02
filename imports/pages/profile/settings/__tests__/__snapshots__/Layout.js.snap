@@ -1,15 +1,19 @@
-exports[`test renders with props 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders with props 1`] = `
 <div>
   <Meta
     image="http://test.com/test.jpg"
-    title="jimothy bob" />
+    title="jimothy bob"
+  />
   <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
       ]
     }
-    nav={true}>
+    nav={true}
+  >
     <Right
       background="http://test.com/test.jpg"
       blur={true}
@@ -27,18 +31,21 @@ exports[`test renders with props 1`] = `
           "one-whole",
           "text-center",
         ]
-      }>
+      }
+    >
       <div
-        className="soft one-whole">
+        className="soft one-whole"
+      >
         <label
           className="background--fill ratio--square round two-fifths display-inline-block"
           htmlFor="file"
           style={
             Object {
-              "backgroundImage": "url(\'http://test.com/test.jpg\')",
+              "backgroundImage": "url('http://test.com/test.jpg')",
               "position": "relative",
             }
-          }>
+          }
+        >
           <input
             className="locked-ends locked-sides"
             onChange={[Function]}
@@ -47,16 +54,19 @@ exports[`test renders with props 1`] = `
                 "opacity": 0,
               }
             }
-            type="file" />
+            type="file"
+          />
         </label>
         <h4
-          className="text-light-primary soft-half-top flush-bottom">
+          className="text-light-primary soft-half-top flush-bottom"
+        >
           jimothy
            
           bob
         </h4>
         <p
-          className="text-light-primary flush">
+          className="text-light-primary flush"
+        >
           <em>
             anderson
             , 
@@ -72,7 +82,8 @@ exports[`test renders with props 1`] = `
         "background--light-primary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <h1>
       test
     </h1>
@@ -80,18 +91,20 @@ exports[`test renders with props 1`] = `
 </div>
 `;
 
-exports[`test says \`Profile\` if no nick name 1`] = `
+exports[`says \`Profile\` if no nick name 1`] = `
 <div>
   <Meta
     image="http://test.com/test.jpg"
-    title="Profile" />
+    title="Profile"
+  />
   <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
       ]
     }
-    nav={true}>
+    nav={true}
+  >
     <Right
       background="http://test.com/test.jpg"
       blur={true}
@@ -109,18 +122,21 @@ exports[`test says \`Profile\` if no nick name 1`] = `
           "one-whole",
           "text-center",
         ]
-      }>
+      }
+    >
       <div
-        className="soft one-whole">
+        className="soft one-whole"
+      >
         <label
           className="background--fill ratio--square round two-fifths display-inline-block"
           htmlFor="file"
           style={
             Object {
-              "backgroundImage": "url(\'http://test.com/test.jpg\')",
+              "backgroundImage": "url('http://test.com/test.jpg')",
               "position": "relative",
             }
-          }>
+          }
+        >
           <input
             className="locked-ends locked-sides"
             onChange={[Function]}
@@ -129,16 +145,19 @@ exports[`test says \`Profile\` if no nick name 1`] = `
                 "opacity": 0,
               }
             }
-            type="file" />
+            type="file"
+          />
         </label>
         <h4
-          className="text-light-primary soft-half-top flush-bottom">
+          className="text-light-primary soft-half-top flush-bottom"
+        >
           jim
            
           bob
         </h4>
         <p
-          className="text-light-primary flush">
+          className="text-light-primary flush"
+        >
           <em>
             anderson
             , 
@@ -154,7 +173,8 @@ exports[`test says \`Profile\` if no nick name 1`] = `
         "background--light-primary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <h1>
       test
     </h1>
@@ -162,18 +182,20 @@ exports[`test says \`Profile\` if no nick name 1`] = `
 </div>
 `;
 
-exports[`test works without a photo 1`] = `
+exports[`works without a photo 1`] = `
 <div>
   <Meta
     image={null}
-    title="jimothy bob" />
+    title="jimothy bob"
+  />
   <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
       ]
     }
-    nav={true}>
+    nav={true}
+  >
     <Right
       background={null}
       blur={true}
@@ -191,18 +213,21 @@ exports[`test works without a photo 1`] = `
           "one-whole",
           "text-center",
         ]
-      }>
+      }
+    >
       <div
-        className="soft one-whole">
+        className="soft one-whole"
+      >
         <label
           className="background--fill ratio--square round two-fifths display-inline-block"
           htmlFor="file"
           style={
             Object {
-              "backgroundImage": "url(\'\')",
+              "backgroundImage": "url('')",
               "position": "relative",
             }
-          }>
+          }
+        >
           <input
             className="locked-ends locked-sides"
             onChange={[Function]}
@@ -211,16 +236,19 @@ exports[`test works without a photo 1`] = `
                 "opacity": 0,
               }
             }
-            type="file" />
+            type="file"
+          />
         </label>
         <h4
-          className="text-light-primary soft-half-top flush-bottom">
+          className="text-light-primary soft-half-top flush-bottom"
+        >
           jimothy
            
           bob
         </h4>
         <p
-          className="text-light-primary flush">
+          className="text-light-primary flush"
+        >
           <em>
             anderson
             , 
@@ -236,7 +264,8 @@ exports[`test works without a photo 1`] = `
         "background--light-primary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <h1>
       test
     </h1>

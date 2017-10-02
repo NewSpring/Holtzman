@@ -1,33 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`ChildItem does not render if no section 1`] = `
 <div
-  className="one-whole grid__item">
+  className="one-whole grid__item"
+>
   <div
-    className="rounded ratio--landscape soft-ends">
+    className="rounded ratio--landscape soft-ends"
+  >
     <div
-      className="ratio__item" />
+      className="ratio__item"
+    />
   </div>
 </div>
 `;
 
 exports[`ChildItem render with props 1`] = `
 <div
-  className="one-whole soft-half-left grid__item push-half-bottom">
+  className="one-whole soft-half-left grid__item push-half-bottom"
+>
   <ExternalLinkWrapper
     className="plain"
     id="1"
     onClick={[Function]}
-    to="http://test.com">
+    to="http://test.com"
+  >
     <div
-      className="rounded one-whole grid rounded flush background--light-primary">
+      className="rounded one-whole grid rounded flush background--light-primary"
+    >
       <div
         className="grid__item two-thirds hard"
         style={
           Object {
             "verticalAlign": "middle",
           }
-        }>
+        }
+      >
         <h6
-          className="soft-left text-dark-primary flush-bottom">
+          className="soft-left text-dark-primary flush-bottom"
+        >
           test text
         </h6>
       </div>
@@ -37,7 +47,8 @@ exports[`ChildItem render with props 1`] = `
           Object {
             "verticalAlign": "middle",
           }
-        }>
+        }
+      >
         <ImageLoader
           force={true}
           imageclasses={
@@ -53,13 +64,15 @@ exports[`ChildItem render with props 1`] = `
           src="http://test.com/test.jpg"
           style={
             Object {
-              "backgroundImage": "url(\'http://test.com/test.jpg\')",
+              "backgroundImage": "url('http://test.com/test.jpg')",
               "borderRadius": "0px 6px 6px 0px",
             }
           }
-          wrapper={[Function]}>
+          wrapper={[Function]}
+        >
           <div
-            className="ratio__item" />
+            className="ratio__item"
+          />
         </ImageLoader>
       </div>
     </div>
@@ -70,7 +83,8 @@ exports[`ChildItem render with props 1`] = `
 exports[`ExternalLinkWrapper renders external link 1`] = `
 <a
   href="//test.com"
-  to="//test.com">
+  to="//test.com"
+>
   <h1>
     test
   </h1>
@@ -81,7 +95,8 @@ exports[`ExternalLinkWrapper renders internal link 1`] = `
 <Link
   onlyActiveOnIndex={false}
   style={Object {}}
-  to="/test">
+  to="/test"
+>
   <h1>
     test
   </h1>
@@ -104,14 +119,17 @@ exports[`SectionItem renderArrow renders if state id matches section id 1`] = `
       "marginTop": "2px",
       "width": 0,
     }
-  } />
+  }
+/>
 `;
 
 exports[`SectionItem renderChildren renders children of a section 1`] = `
 <div
-  className="soft-half-right soft-left soft-top background--dark-primary push-bottom">
+  className="soft-half-right soft-left soft-top background--dark-primary push-bottom"
+>
   <div
-    className="grid ">
+    className="grid "
+  >
     <ChildItem
       go={[Function]}
       section={
@@ -122,7 +140,8 @@ exports[`SectionItem renderChildren renders children of a section 1`] = `
           "link": "http://test.com",
           "text": "test text",
         }
-      } />
+      }
+    />
     <ChildItem
       go={[Function]}
       section={
@@ -133,7 +152,8 @@ exports[`SectionItem renderChildren renders children of a section 1`] = `
           "link": "http://test.com",
           "text": "test text",
         }
-      } />
+      }
+    />
   </div>
 </div>
 `;
@@ -141,13 +161,17 @@ exports[`SectionItem renderChildren renders children of a section 1`] = `
 exports[`SectionItem renders with props 1`] = `
 <div>
   <div
-    className="soft-half-right soft-left">
+    className="soft-half-right soft-left"
+  >
     <div
-      className="grid">
+      className="grid"
+    >
       <div
-        className="grid__item one-whole">
+        className="grid__item one-whole"
+      >
         <div
-          className="grid">
+          className="grid"
+        >
           <SingleItem
             go={[Function]}
             section={
@@ -174,7 +198,8 @@ exports[`SectionItem renders with props 1`] = `
                 "link": "http://test.com",
                 "text": "test text",
               }
-            } />
+            }
+          />
           <SingleItem
             go={[Function]}
             section={
@@ -201,13 +226,15 @@ exports[`SectionItem renders with props 1`] = `
                 "link": "http://test.com",
                 "text": "test text",
               }
-            } />
+            }
+          />
         </div>
       </div>
     </div>
   </div>
   <div
-    className="one-whole">
+    className="one-whole"
+  >
     <VelocityTransitionGroup
       enter={
         Object {
@@ -231,30 +258,36 @@ exports[`SectionItem renders with props 1`] = `
           "duration": 250,
         }
       }
-      runOnMount={false} />
+      runOnMount={false}
+    />
   </div>
 </div>
 `;
 
 exports[`SingleItem does not render if no section 1`] = `
 <div
-  className="one-half grid__item">
+  className="one-half grid__item"
+>
   <div
-    className="rounded ratio--landscape">
+    className="rounded ratio--landscape"
+  >
     <div
-      className="ratio__item" />
+      className="ratio__item"
+    />
   </div>
 </div>
 `;
 
 exports[`SingleItem renders with props 1`] = `
 <div
-  className="one-half soft-half-left grid__item push-half-bottom">
+  className="one-half soft-half-left grid__item push-half-bottom"
+>
   <ExternalLinkWrapper
     className="plain"
     id="1"
     onClick={[Function]}
-    to="http://test.com">
+    to="http://test.com"
+  >
     <ImageLoader
       imageclasses={
         Array [
@@ -272,14 +305,17 @@ exports[`SingleItem renders with props 1`] = `
       src="http://test.com/test.jpg"
       style={
         Object {
-          "backgroundImage": "url(\'http://test.com/test.jpg\')",
+          "backgroundImage": "url('http://test.com/test.jpg')",
         }
       }
-      wrapper={[Function]}>
+      wrapper={[Function]}
+    >
       <div
-        className="overlay__item floating__item ratio__item">
+        className="overlay__item floating__item ratio__item"
+      >
         <h6
-          className="text-light-primary soft-left">
+          className="text-light-primary soft-left"
+        >
           test text
         </h6>
       </div>
@@ -294,7 +330,8 @@ exports[`SingleItem renders with props 1`] = `
 exports[`preloader renders 1`] = `
 <div
   className="one two"
-  id="2">
+  id="2"
+>
   <h1>
     test
   </h1>
@@ -309,7 +346,8 @@ exports[`renderElement renders 1`] = `
     Object {
       "color": "red",
     }
-  }>
+  }
+>
   <h1>
     test
   </h1>

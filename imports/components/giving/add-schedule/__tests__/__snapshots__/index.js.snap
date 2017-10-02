@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`CartContainer receives props and resets the form 1`] = `
 <Layout
   accounts={
@@ -61,7 +63,8 @@ exports[`CartContainer receives props and resets the form 1`] = `
     }
   }
   text=""
-  total={50} />
+  total={50}
+/>
 `;
 
 exports[`CartContainer renders checkout ready when schedule is valid 1`] = `
@@ -127,7 +130,8 @@ exports[`CartContainer renders checkout ready when schedule is valid 1`] = `
     }
   }
   text=""
-  total={50} />
+  total={50}
+/>
 `;
 
 exports[`CartContainer renders null if no accounts exist 1`] = `null`;
@@ -182,5 +186,6 @@ exports[`CartContainer renders the default component 1`] = `
     }
   }
   text=""
-  total={NaN} />
+  total={NaN}
+/>
 `;

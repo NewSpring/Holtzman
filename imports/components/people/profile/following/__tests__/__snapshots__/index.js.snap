@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Following renders the 'following' items with authorization 1`] = `
 <section
   className="background--light-secondary hard-sides"
@@ -5,58 +7,70 @@ exports[`Following renders the 'following' items with authorization 1`] = `
     Object {
       "marginTop": "-20px",
     }
-  }>
+  }
+>
   <h7
-    className="flush outlined--light outlined--bottom display-block soft-sides soft-half-top soft-bottom text-center soft-double-sides@lap-and-up soft-double-bottom@lap-and-up">
+    className="flush outlined--light outlined--bottom display-block soft-sides soft-half-top soft-bottom text-center soft-double-sides@lap-and-up soft-double-bottom@lap-and-up"
+  >
     Personalize your NewSpring Home and follow the types of content you care about.
   </h7>
   <div
-    className="cell-wrapper push-half-bottom background--light-primary outlined--light outlined--bottom text-dark-secondary">
+    className="cell-wrapper push-half-bottom background--light-primary outlined--light outlined--bottom text-dark-secondary"
+  >
     <FollowingItem
       active={true}
       changed={[Function]}
       item="Articles"
-      switchId={0} />
+      switchId={0}
+    />
     <FollowingItem
       active={true}
       changed={[Function]}
       item="Devotionals"
-      switchId={1} />
+      switchId={1}
+    />
     <FollowingItem
       active={true}
       changed={[Function]}
       item="Events"
-      switchId={2} />
+      switchId={2}
+    />
     <FollowingItem
       active={true}
       changed={[Function]}
       item="Music"
-      switchId={3} />
+      switchId={3}
+    />
     <FollowingItem
       active={true}
       changed={[Function]}
       item="News"
-      switchId={4} />
+      switchId={4}
+    />
     <FollowingItem
       active={true}
       changed={[Function]}
       item="Series"
-      switchId={5} />
+      switchId={5}
+    />
     <FollowingItem
       active={true}
       changed={[Function]}
       item="Sermons"
-      switchId={6} />
+      switchId={6}
+    />
     <FollowingItem
       active={true}
       changed={[Function]}
       item="Stories"
-      switchId={7} />
+      switchId={7}
+    />
     <FollowingItem
       active={true}
       changed={[Function]}
       item="Studies"
-      switchId={8} />
+      switchId={8}
+    />
   </div>
 </section>
 `;
@@ -68,53 +82,64 @@ exports[`Following renders the 'following' items without authorization 1`] = `
     Object {
       "marginTop": "-20px",
     }
-  }>
+  }
+>
   <h7
-    className="flush outlined--light outlined--bottom display-block soft-sides soft-half-top soft-bottom text-center soft-double-sides@lap-and-up soft-double-bottom@lap-and-up">
+    className="flush outlined--light outlined--bottom display-block soft-sides soft-half-top soft-bottom text-center soft-double-sides@lap-and-up soft-double-bottom@lap-and-up"
+  >
     Personalize your NewSpring Home and follow the types of content you care about.
   </h7>
   <div
-    className="cell-wrapper push-half-bottom background--light-primary outlined--light outlined--bottom text-dark-secondary">
+    className="cell-wrapper push-half-bottom background--light-primary outlined--light outlined--bottom text-dark-secondary"
+  >
     <FollowingItem
       active={true}
       changed={[Function]}
       item="Articles"
-      switchId={0} />
+      switchId={0}
+    />
     <FollowingItem
       active={true}
       changed={[Function]}
       item="Devotionals"
-      switchId={1} />
+      switchId={1}
+    />
     <FollowingItem
       active={true}
       changed={[Function]}
       item="Music"
-      switchId={3} />
+      switchId={3}
+    />
     <FollowingItem
       active={true}
       changed={[Function]}
       item="News"
-      switchId={4} />
+      switchId={4}
+    />
     <FollowingItem
       active={true}
       changed={[Function]}
       item="Series"
-      switchId={5} />
+      switchId={5}
+    />
     <FollowingItem
       active={true}
       changed={[Function]}
       item="Sermons"
-      switchId={6} />
+      switchId={6}
+    />
     <FollowingItem
       active={true}
       changed={[Function]}
       item="Stories"
-      switchId={7} />
+      switchId={7}
+    />
     <FollowingItem
       active={true}
       changed={[Function]}
       item="Studies"
-      switchId={8} />
+      switchId={8}
+    />
   </div>
 </section>
 `;

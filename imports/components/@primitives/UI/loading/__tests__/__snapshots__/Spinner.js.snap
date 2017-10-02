@@ -1,33 +1,38 @@
-exports[`test appends classes 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`appends classes 1`] = `
 <div
   className="loader_9h6gj one two"
   style={
     Object {
       "color": "red",
     }
-  } />
+  }
+/>
 `;
 
-exports[`test getClasses merges classes passed in 1`] = `"loader_9h6gj one two"`;
+exports[`getClasses merges classes passed in 1`] = `"loader_9h6gj one two"`;
 
-exports[`test getClasses returns default 1`] = `"loader_9h6gj"`;
+exports[`getClasses returns default 1`] = `"loader_9h6gj"`;
 
-exports[`test overrides with theme 1`] = `
+exports[`overrides with theme 1`] = `
 <div
   className="my theme"
   style={
     Object {
       "color": "red",
     }
-  } />
+  }
+/>
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <div
   className="loader_9h6gj"
   style={
     Object {
       "color": "red",
     }
-  } />
+  }
+/>
 `;
