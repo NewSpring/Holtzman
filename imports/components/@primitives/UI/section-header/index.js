@@ -9,7 +9,7 @@ type ISectionHeader = {
 };
 
 const SectionHeader = ({ title, link }: ISectionHeader) =>
-  <div className="one-whole">
+  (<div className="one-whole">
     <div className={`${halvesClasses} floating--left soft soft-half-left`}>
       <h6 className="floating__item text-dark-tertiary flush">
         {title}
@@ -18,7 +18,7 @@ const SectionHeader = ({ title, link }: ISectionHeader) =>
     <div className={`${halvesClasses} floating--right soft soft-half-right`}>
       {link}
     </div>
-  </div>
+  </div>)
   ;
 
 export default SectionHeader;

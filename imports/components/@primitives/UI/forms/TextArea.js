@@ -102,7 +102,7 @@ export default class TextArea extends Component {
     }
   }
 
-  validate = (e) => {
+  validate = e => {
     const target = this.node;
     const value = target.value;
 
@@ -136,7 +136,7 @@ export default class TextArea extends Component {
     });
   }
 
-  setValue = (value) => {
+  setValue = value => {
     const node = this.node;
     node.value = value;
     this.focus();
@@ -145,7 +145,7 @@ export default class TextArea extends Component {
 
   getValue = () => this.node.value;
 
-  setStatus = (message) => {
+  setStatus = message => {
     this.props.status = message;
   }
 
@@ -223,7 +223,7 @@ export default class TextArea extends Component {
 
 
         <textarea
-          ref={(node) => (this.node = node)}
+          ref={node => (this.node = node)}
           id={this.props.id || this.props.name || this.props.label}
           type={this.props.type}
           placeholder={this.props.placeholder || this.props.label}

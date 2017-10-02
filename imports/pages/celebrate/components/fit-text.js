@@ -31,17 +31,17 @@ class FitTextWithoutData extends Component {
       Math.min(
         (width / (this.props.compressor * 10)),
         parseFloat(this.props.maxFontSize)),
-        parseFloat(this.props.minFontSize)
+        parseFloat(this.props.minFontSize),
     );
     element.style.fontSize = `${max}px`;
   }
 
   render() {
-    return <div ref={(node) => { this.element = node; }}>{this.props.children}</div>;
+    return <div ref={node => { this.element = node; }}>{this.props.children}</div>;
   }
 }
 
-const map = (store) => ({
+const map = store => ({
   width: store.responsive.width,
 });
 

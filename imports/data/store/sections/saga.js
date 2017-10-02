@@ -9,7 +9,7 @@ import { addSaga } from "../utilities";
 import { GraphQL } from "../../graphql";
 
 // XXX abstract action creators to file that isn't index
-const set = (content) => ({ type: "SECTIONS.SET_CONTENT", content });
+const set = content => ({ type: "SECTIONS.SET_CONTENT", content });
 
 function* getSectionsData() {
   if (Meteor.isServer) return;
@@ -71,21 +71,21 @@ function* getSectionsData() {
     if (!images.length) return null;
 
     // prefer 1x1 image
-    const oneByOne = _.find(images, (image) => (
+    const oneByOne = _.find(images, image => (
       image.label === "1:1"
     ));
 
     if (oneByOne) return oneByOne.url;
 
     // then try 2x1, especially for devotions that only have 2x1
-    const twoByOne = _.find(images, (image) => (
+    const twoByOne = _.find(images, image => (
       image.label === "2:1"
     ));
 
     if (twoByOne) return twoByOne.url;
 
     // then try default, for devotions with leather times
-    const defaultImage = _.find(images, (image) => (
+    const defaultImage = _.find(images, image => (
       image.label === "default"
     ));
 

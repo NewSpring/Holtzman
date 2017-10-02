@@ -14,8 +14,8 @@ addReducer({
 });
 
 export default {
-  toggle: (props) => ({ type: "TOPIC.TOGGLE", props }),
+  toggle: props => ({ type: "TOPIC.TOGGLE", props }),
 
-  set: (content) => ({ type: "TOPIC.SET", content }),
+  set: content => ({ type: "TOPIC.SET", content }),
 
 };

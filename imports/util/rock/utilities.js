@@ -9,7 +9,7 @@ const api = {
 };
 
 // registration of required data for Rock
-api.registerEndpoint = (obj) => {
+api.registerEndpoint = obj => {
   if (obj.tokenName && obj.token && obj.baseURL) {
     api._ = obj;
 
@@ -40,7 +40,6 @@ api.call = function call(method, endpoint, data, callback) {
     };
   }
 
-
   if (typeof data === "function") {
     callback = data;
     data = {};
@@ -49,7 +48,6 @@ api.call = function call(method, endpoint, data, callback) {
   if (!this._.tokenName || !this._.token || !this._.baseURL) {
     throw new Error("Rock api credientials are missing");
   }
-
 
   const body = JSON.stringify(data);
 
@@ -66,9 +64,10 @@ api.call = function call(method, endpoint, data, callback) {
   };
 
   endpoint = `${this._.baseURL}api/${endpoint}`;
+  // eslint-disable-next-line
   return fetch(endpoint, options)
     .then(checkStatus)
-    .then((response) => {
+    .then(response => {
       if (response.status === 204) {
         return true;
       }
@@ -79,21 +78,20 @@ api.call = function call(method, endpoint, data, callback) {
 
       return response;
     })
-    .then((responseData) => {
+    .then(responseData => {
       if (callback) {
         callback(null, responseData);
       }
 
       return responseData;
     })
-    .catch((er) => {
+    .catch(er => {
       if (callback) {
         callback(er);
       }
       return er;
     });
 };
-
 
 api.get = function get() {
   const args = _.values(arguments);
@@ -125,16 +123,18 @@ api.patch = function patch() {
   return api.call.apply(this, args);
 };
 
-const parseEndpoint = (str) => (
-  str.split("\n").map((x) => {
-    let trimmed = x.trim();
-    if (trimmed.slice(-3) === "and" || trimmed.slice(-2) === "or") {
-      trimmed += " ";
-    }
+const parseEndpoint = str =>
+  str
+    .split("\n")
+    .map(x => {
+      let trimmed = x.trim();
+      if (trimmed.slice(-3) === "and" || trimmed.slice(-2) === "or") {
+        trimmed += " ";
+      }
 
-    return trimmed;
-  }).join("")
-);
+      return trimmed;
+    })
+    .join("");
 api.parseEndpoint = parseEndpoint;
 
 if (Meteor.isServer) {
@@ -144,8 +144,4 @@ if (Meteor.isServer) {
   }
 }
 
-
-export {
-  api,
-  parseEndpoint,
-};
+export { api, parseEndpoint };

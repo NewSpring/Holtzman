@@ -46,7 +46,7 @@ class StudiesSingleWithoutData extends Component {
     this.handleHeaderStyle(nextProps);
   }
 
-  handleHeaderStyle = (nextProps) => {
+  handleHeaderStyle = nextProps => {
     const content = nextProps.study.content;
     if (!content) return;
     const { isLight } = nextProps.study.content.content;
@@ -167,7 +167,7 @@ const STUDY_SINGLE_QUERY = gql`
 
 const withStudySingle = graphql(STUDY_SINGLE_QUERY, {
   name: "study",
-  options: (ownProps) => ({
+  options: ownProps => ({
     variables: { id: ownProps.params.id },
   }),
 });
@@ -177,11 +177,11 @@ export default connect()(
     ReactMixin.decorate(Shareable)(
       ReactMixin.decorate(Headerable)(
         canLike(
-          (props) => (props.study.loading ? null : props.study.content.id)
-        )(StudiesSingleWithoutData)
-      )
-    )
-  )
+          props => (props.study.loading ? null : props.study.content.id),
+        )(StudiesSingleWithoutData),
+      ),
+    ),
+  ),
 );
 
 export {

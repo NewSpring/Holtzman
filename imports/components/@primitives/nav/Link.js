@@ -8,8 +8,10 @@ if (Meteor.isClient) {
   import velocity from "velocity-animate";
 }
 
+/* eslint-disable */
 import { routeActions } from "../../../data/store/routing";
 import styles from "./nav-css";
+/* eslint-enable */
 
 export default class NavLink extends Component {
 
@@ -56,7 +58,7 @@ export default class NavLink extends Component {
     return classes.join(" ");
   }
 
-  handleAction = (e) => {
+  handleAction = e => {
     e.preventDefault();
     const { navItem } = this.props;
 

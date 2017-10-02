@@ -99,7 +99,7 @@ export const promptNotify = (client, dispatch) => () => {
         dispatch(
           modalActions.render(NotificationRequest, {
             promptModal: true,
-          })
+          }),
         );
       }, 3000);
     });
@@ -325,7 +325,6 @@ class GlobalWithoutData extends Component {
             this.go(`/${channel}/${data.parent}`);
         }
       });
-    return;
   };
 
   go = url => {

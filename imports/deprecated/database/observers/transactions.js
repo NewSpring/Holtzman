@@ -97,7 +97,7 @@ const transactions = () => {
         };
 
         const FinancialPaymentDetailId = api.post.sync(
-          "FinancialPaymentDetails", FinancialPaymentDetail
+          "FinancialPaymentDetails", FinancialPaymentDetail,
         );
 
         if (FinancialPaymentDetailId.status) return;
@@ -143,7 +143,7 @@ const transactions = () => {
           };
 
           const SecondFinancialPaymentDetailId = api.post.sync(
-            "FinancialPaymentDetails", SecondFinancialPaymentDetail
+            "FinancialPaymentDetails", SecondFinancialPaymentDetail,
           );
 
           if (SecondFinancialPaymentDetailId.status) return;
@@ -202,7 +202,7 @@ const transactions = () => {
           mergeFields.AccountNumberMasked = FinancialPaymentDetail.AccountNumberMasked.slice(-4);
 
           // remove record
-          TransactionReciepts.remove(_id, (err) => {
+          TransactionReciepts.remove(_id, err => {
             if (!err) {
               if (!GIVING_EMAIL_ID) {
                 GIVING_EMAIL_ID = api.get.sync("SystemEmails?$filter=Title eq 'Giving Receipt'");
@@ -216,7 +216,7 @@ const transactions = () => {
                 mergeFields,
                 () => {
                   // async stub
-                }
+                },
               );
             }
           });

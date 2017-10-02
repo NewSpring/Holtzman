@@ -18,7 +18,7 @@ type ILineGraph = {
 };
 
 const getTickFormat = (data: Object[]) => {
-  const ticks = data.map((x) => (x.tick));
+  const ticks = data.map(x => (x.tick));
   return ticks;
 };
 
@@ -68,7 +68,7 @@ class LineGraph extends Component {
     return (
       <div
         className=""
-        ref={(el) => (this.graphContainer = el)}
+        ref={el => (this.graphContainer = el)}
       >
         <VictoryChart
           height={160}

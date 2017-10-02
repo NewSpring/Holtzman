@@ -86,7 +86,7 @@ class MusicAlbumWithoutData extends Component {
       return {};
     };
 
-    const getUrl = (image) => {
+    const getUrl = image => {
       let url = image.url;
 
       if (!url) {
@@ -101,12 +101,12 @@ class MusicAlbumWithoutData extends Component {
     };
 
     const album = content;
-    const tracks = _.filter(album.content.tracks, (track) => (!!track.file));
+    const tracks = _.filter(album.content.tracks, track => (!!track.file));
 
-    const xsmallBlurImage = _.find(album.content.images, (image) => (
+    const xsmallBlurImage = _.find(album.content.images, image => (
       image.fileName.indexOf("blur") > -1 && image.size === "xsmall"
     ));
-    const mediumImage = _.find(album.content.images, (image) => (
+    const mediumImage = _.find(album.content.images, image => (
       image.fileName.indexOf("blur") === -1 && image.size === "medium"
     ));
 
@@ -206,7 +206,7 @@ const ALBUM_QUERY = gql`
 
 const withAlbum = graphql(ALBUM_QUERY, {
   name: "album",
-  options: (ownProps) => ({
+  options: ownProps => ({
     variables: { id: ownProps.params.id },
   }),
 });
@@ -216,11 +216,11 @@ export default connect()(
     ReactMixin.decorate(Shareable)(
       ReactMixin.decorate(Headerable)(
         canLike(
-          (props) => (props.album.loading ? null : props.album.content.id)
-        )(MusicAlbumWithoutData)
-      )
-    )
-  )
+          props => (props.album.loading ? null : props.album.content.id),
+        )(MusicAlbumWithoutData),
+      ),
+    ),
+  ),
 );
 
 export {

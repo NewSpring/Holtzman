@@ -10,6 +10,7 @@ import { addSaga } from "../utilities";
 
 import actions from "./actions";
 
+// eslint-disable-next-line
 export const PRELOAD_PERSON = gql`
   query GetPersonData {
     person: currentPerson {
@@ -66,11 +67,10 @@ function* checkAccount({ data }) {
   inFlight = true;
   try {
     // make call to Rock to check if account is open
-    const {
-      isAvailable,
-      alternateAccounts,
-      peopleWithoutAccountEmails,
-    } = yield cps(accounts.available, email);
+    const { isAvailable, alternateAccounts, peopleWithoutAccountEmails } = yield cps(
+      accounts.available,
+      email,
+    );
 
     inFlight = false;
     // end the run of this saga iteration by setting account
@@ -87,7 +87,8 @@ function* completeAccount() {
   const state = yield select();
   const { email, personId } = state.accounts.data;
   // eslint-disable-next-line
-  let created = false, error;
+  let created = false,
+    error;
 
   // XXX dead code removal broke this
   function canComplete() {
@@ -180,7 +181,7 @@ function* signup() {
 
         if (isAuthorized) {
           return { result: isAuthorized };
-        // eslint-disable-next-line
+          // eslint-disable-next-line
         } else {
           return { error: new Meteor.Error("An unkown error occured") };
         }

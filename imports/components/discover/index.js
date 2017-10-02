@@ -101,7 +101,7 @@ class SearchContainerWithoutData extends Component {
     this.props.dispatch(modal.hide())
   )
 
-  searchSubmit = (event) => {
+  searchSubmit = event => {
     event.preventDefault();
     document.getElementById("search").blur();
     const { dispatch } = this.props;
@@ -117,7 +117,7 @@ class SearchContainerWithoutData extends Component {
     });
   }
 
-  loadMore = (event) => {
+  loadMore = event => {
     event.preventDefault();
     const { dispatch } = this.props;
 
@@ -138,7 +138,7 @@ class SearchContainerWithoutData extends Component {
   }
 }
 
-const map = (state) => ({ search: state.search });
+const map = state => ({ search: state.search });
 const withRedux = connect(map);
 const withHeader = ReactMixin.decorate(Headerable);
 

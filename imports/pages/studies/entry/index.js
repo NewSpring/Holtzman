@@ -79,7 +79,7 @@ class StudyEntrySingle extends Component {
     this.props.dispatch(liveActions.unfloat());
   }
 
-  onClickLink = (event) => {
+  onClickLink = event => {
     event.preventDefault();
     this.setState({ liveSet: false, livePush: false });
   }
@@ -119,7 +119,7 @@ class StudyEntrySingle extends Component {
     }
   }
 
-  handleHeader = (nextProps) => {
+  handleHeader = nextProps => {
     const content = nextProps.study.content;
     if (!content || this.headerSet) return;
 
@@ -248,7 +248,7 @@ const CURRENT_STUDY_ENTRY_QUERY = gql`
 `;
 const withCurrentStudyEntry = graphql(CURRENT_STUDY_ENTRY_QUERY, {
   name: "studyEntry",
-  options: (ownProps) => ({
+  options: ownProps => ({
     variables: { studyEntryId: ownProps.params.studyEntryId },
   }),
 });
@@ -292,12 +292,12 @@ const STUDY_QUERY = gql`
 
 const withStudy = graphql(STUDY_QUERY, {
   name: "study",
-  options: (ownProps) => ({
+  options: ownProps => ({
     variables: { id: ownProps.params.id },
   }),
 });
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   modal: { visible: state.modal.visible },
   live: state.live,
 });
@@ -307,11 +307,11 @@ export default connect(mapStateToProps)(
     withStudy(
       ReactMixin.decorate(Shareable)(
         canLike(
-          (props) => (props.studyEntry.loading ? null : props.studyEntry.content.entryId)
-        )(StudyEntrySingle)
-      )
-    )
-  )
+          props => (props.studyEntry.loading ? null : props.studyEntry.content.entryId),
+        )(StudyEntrySingle),
+      ),
+    ),
+  ),
 );
 
 export {

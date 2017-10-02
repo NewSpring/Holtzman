@@ -35,7 +35,7 @@ class TemplateWithoutData extends Component {
     this.props.dispatch(navActions.setLevel("TOP"));
   }
 
-  onUpload = (e) => {
+  onUpload = e => {
     this.props.upload(e).then(() => this.props.data.refetch());
   }
 
@@ -73,7 +73,7 @@ const PERSON_QUERY = gql`
 `;
 
 const withPerson = graphql(PERSON_QUERY, {
-  skip: (ownProps) => !ownProps.authorized,
+  skip: ownProps => !ownProps.authorized,
   options: {
     forceFetch: true,
   },
@@ -86,9 +86,9 @@ export const mapStateToProps = ({ accounts }) => ({
 const Template = withProfileUpload(
   connect(mapStateToProps)(
     withPerson(
-      TemplateWithoutData
-    )
-  )
+      TemplateWithoutData,
+    ),
+  ),
 );
 
 const Routes = [

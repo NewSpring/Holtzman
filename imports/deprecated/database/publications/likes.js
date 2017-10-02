@@ -12,11 +12,11 @@ if (Meteor.isServer) {
         sort: {
           dateLiked: -1,
         },
-      }
+      },
     );
   });
 
   Meteor.publish("recently-liked", () => Likes.find(
-    {}, { sort: { dateLiked: -1 }, limit: 15 }
+    {}, { sort: { dateLiked: -1 }, limit: 15 },
   ));
 }
