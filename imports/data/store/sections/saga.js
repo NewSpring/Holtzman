@@ -112,6 +112,7 @@ function* getSectionsData() {
   function bindForeignImages(sections) {
     // remap the images of the section panel
     // eslint-disable-next-line
+    let imageUrl
     for (const section in sections) {
       let name = sections[section].text.toLowerCase();
       if (name.includes("studies")) name = "studies";
@@ -123,7 +124,16 @@ function* getSectionsData() {
 
       // ensure protocol relative
       // eslint-disable-next-line
-      sections[section].image = sections[section].image.replace(/^http:|^https:/i, "");
+      imageUrl = sections[section].image.replace(/^http:|^https:/i, "");
+      Object.defineProperties(sections[section], {
+        image: {
+          value: imageUrl,
+          writable: true,
+        },
+      },
+      );
+
+      // sections[section].image = sections[section].image.replace(/^http:|^https:/i, "");
 
       // pre download images for super speed
       if (process.env.NATIVE && sections[section].image) {
