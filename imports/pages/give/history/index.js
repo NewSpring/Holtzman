@@ -165,7 +165,7 @@ const withTransactions = graphql(TRANSACTIONS_QUERY, {
       start: "",
       end: "",
     },
-    forceFetch: true,
+    fetchPolicy: "network-only",
     skip: !authorized,
     ssr: false,
   }),

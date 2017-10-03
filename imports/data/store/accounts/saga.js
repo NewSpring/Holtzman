@@ -1,7 +1,6 @@
 /* eslint-disable import/no-named-as-default-member */
 import "regenerator-runtime/runtime";
-import { takeLatest, takeEvery } from "redux-saga";
-import { fork, put, cps, select } from "redux-saga/effects";
+import { takeLatest, takeEvery, fork, put, cps, select } from "redux-saga/effects";
 import gql from "graphql-tag";
 
 import { GraphQL } from "../../graphql";
@@ -221,8 +220,8 @@ function* onboard({ state }) {
       // reset the UI
       yield put(actions.setState("default"));
     } else {
-      // forceFetch for someone signs out and signs back in again
-      const { data } = yield GraphQL.query({ query: PRELOAD_PERSON, forceFetch: true });
+      // fetchPolicy don't pull from cache for someone signs out and signs back in again
+      const { data } = yield GraphQL.query({ query: PRELOAD_PERSON, fetchPolicy: "network-only" });
       const { person } = data;
 
       if (person) yield put(actions.person(person));

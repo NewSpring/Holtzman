@@ -165,7 +165,7 @@ const withPerson = graphql(PERSON_QUERY, {
   skip: (ownProps) => !ownProps.authorized,
   options: () => ({
     variables: { cache: false },
-    forceFetch: true,
+    fetchPolicy: "network-only",
   }),
 });
 

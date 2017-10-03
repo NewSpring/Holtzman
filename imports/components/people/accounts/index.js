@@ -104,7 +104,7 @@ class AccountsContainer extends Component {
           ) {
             nextProps.client.query({
               query: gql`{ currentPerson { guid }}`,
-              forceFetch: true,
+              fetchPolicy: "network-only",
             })
             .then(({ data }) => {
               window.location.href = `${redirect}&person_guid=${data.currentPerson.guid}`;

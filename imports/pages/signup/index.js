@@ -125,7 +125,7 @@ const Routes = [
       // assume logged in
       graphql.query({
         query: gql`{ currentPerson { guid }}`,
-        forceFetch: true,
+        fetchPolicy: "network-only",
       })
       .then(({ data }) => {
         replace({

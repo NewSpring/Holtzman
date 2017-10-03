@@ -1,8 +1,7 @@
 import "regenerator-runtime/runtime";
 import { Meteor } from "meteor/meteor";
 import moment from "moment";
-import { takeLatest, takeEvery } from "redux-saga";
-import { fork, take, put, select, call } from "redux-saga/effects";
+import { takeLatest, takeEvery, fork, take, put, select, call } from "redux-saga/effects";
 import gql from "graphql-tag";
 
 import { GraphQL } from "../../../graphql";

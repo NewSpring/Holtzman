@@ -82,7 +82,7 @@ class SearchContainerWithoutData extends Component {
       site: "https://newspring.cc",
     };
 
-    this.props.client.query({ query: SEARCH_QUERY, variables, forceFetch: true })
+    this.props.client.query({ query: SEARCH_QUERY, variables, fetchPolicy: "network-only" })
       .then(({ data }) => {
         const { search } = data;
         const propsSearch = this.props.search;

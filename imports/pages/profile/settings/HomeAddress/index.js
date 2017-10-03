@@ -108,7 +108,7 @@ const PERSON_HOME_QUERY = gql`
 const withPersonHome = graphql(PERSON_HOME_QUERY, {
   options: {
     variables: { cache: true },
-    forceFetch: true,
+    fetchPolicy: "network-only",
   },
 });
 

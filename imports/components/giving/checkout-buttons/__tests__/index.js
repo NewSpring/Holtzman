@@ -42,14 +42,6 @@ describe("graphql integration", () => {
   //   });
   // });
 
-  // it("forceFetches on each load", () => {
-  //   const options = calls[1].options;
-
-  //   const calculatedOptions = options();
-
-  //   expect(calculatedOptions.forceFetch).toBe(true);
-  // });
-
   it("correctly delivers props to child component", (done) => {
 
     const query = addTypenameToDocument(SAVED_ACCTS_QUERY);

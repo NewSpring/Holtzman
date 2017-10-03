@@ -113,7 +113,7 @@ const SCHEDULED_TRANSACTIONS_QUERY = gql`
 
 const withScheduledTransactions = graphql(SCHEDULED_TRANSACTIONS_QUERY, {
   skip: () => !Meteor.userId(),
-  options: { ssr: false, forceFetch: true },
+  options: { ssr: false, fetchPolicy: "network-only" },
   name: "schedules",
 });
 
