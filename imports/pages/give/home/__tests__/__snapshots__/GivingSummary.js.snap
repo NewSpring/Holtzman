@@ -167,6 +167,6 @@ exports[`GivingSummary should pass correct props to graph with data 1`] = `
 
 exports[`GivingSummary should render if the breakpoints don't match 1`] = `<MeteorDataContainer />`;
 
-exports[`GivingSummary should render nothing if the breakpoints don't match 1`] = `null`;
+exports[`GivingSummary should render nothing if the breakpoints don't match 1`] = `""`;
 
 exports[`GivingSummary should render with minimal props 1`] = `<Display />`;

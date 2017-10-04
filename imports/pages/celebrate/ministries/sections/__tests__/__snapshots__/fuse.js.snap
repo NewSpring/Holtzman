@@ -65,66 +65,82 @@ exports[`Fuse renders a layout 1`] = `
     <Connect(CardSlider)>
       <MetricCard
         count="59"
+        key="0"
         label="Aiken"
       />
       <MetricCard
         count="883"
+        key="1"
         label="Anderson"
       />
       <MetricCard
         count="189"
+        key="2"
         label="Boiling Springs"
       />
       <MetricCard
         count="361"
+        key="3"
         label="Charleston"
       />
       <MetricCard
         count="213"
+        key="4"
         label="Clemson"
       />
       <MetricCard
         count="485"
+        key="5"
         label="Columbia"
       />
       <MetricCard
         count="243"
+        key="6"
         label="Florence"
       />
       <MetricCard
         count="529"
+        key="7"
         label="Greenville"
       />
       <MetricCard
         count="173"
+        key="8"
         label="Greenwood"
       />
       <MetricCard
         count="18"
+        key="9"
         label="Hilton Head"
       />
       <MetricCard
         count="201"
+        key="10"
         label="Lexington"
       />
       <MetricCard
         count="305"
+        key="11"
         label="Myrtle Beach"
       />
       <MetricCard
         count="202"
+        key="12"
         label="Powdersville"
       />
       <MetricCard
         count="28"
+        key="13"
         label="Rock Hill"
       />
       <MetricCard
         count="313"
+        key="14"
         label="Spartanburg"
       />
       <MetricCard
         count="80"
+        key="15"
         label="Sumter"
       />
     </Connect(CardSlider)>
@@ -290,18 +306,22 @@ exports[`Fuse renders a layout 1`] = `
       <Connect(CardSlider)>
         <MetricCard
           count="671"
+          key="0"
           label="Salvations"
         />
         <MetricCard
           count="1,407"
+          key="1"
           label="Baptisms"
         />
         <MetricCard
           count="5,182"
+          key="2"
           label="Students"
         />
         <MetricCard
           count="1,368"
+          key="3"
           label="Volunteers"
         />
       </Connect(CardSlider)>

@@ -21,6 +21,7 @@ exports[`renders spinner when loading is true 1`] = `
     <withRouter(Connect(TagWithoutData))
       canBeActive={true}
       className="flush-bottom"
+      key="0"
       style={
         Object {
           "verticalAlign": "bottom",
@@ -31,6 +32,7 @@ exports[`renders spinner when loading is true 1`] = `
     <withRouter(Connect(TagWithoutData))
       canBeActive={true}
       className="flush-bottom"
+      key="1"
       style={
         Object {
           "verticalAlign": "bottom",
@@ -41,6 +43,7 @@ exports[`renders spinner when loading is true 1`] = `
     <withRouter(Connect(TagWithoutData))
       canBeActive={true}
       className="flush-bottom"
+      key="0"
       style={
         Object {
           "verticalAlign": "bottom",
@@ -91,6 +94,7 @@ exports[`renders spinner when loading is true 1`] = `
       <h6
         className="em text-dark-secondary flush"
       >
+        0
          results of 
         12
       </h6>
@@ -152,6 +156,7 @@ exports[`renders with props 1`] = `
     <withRouter(Connect(TagWithoutData))
       canBeActive={true}
       className="flush-bottom"
+      key="0"
       style={
         Object {
           "verticalAlign": "bottom",
@@ -162,6 +167,7 @@ exports[`renders with props 1`] = `
     <withRouter(Connect(TagWithoutData))
       canBeActive={true}
       className="flush-bottom"
+      key="1"
       style={
         Object {
           "verticalAlign": "bottom",
@@ -172,6 +178,7 @@ exports[`renders with props 1`] = `
     <withRouter(Connect(TagWithoutData))
       canBeActive={true}
       className="flush-bottom"
+      key="0"
       style={
         Object {
           "verticalAlign": "bottom",
@@ -239,6 +246,7 @@ exports[`renders with props 1`] = `
       <h6
         className="em text-dark-secondary flush"
       >
+        0
          results of 
         12
       </h6>
@@ -325,6 +333,7 @@ exports[`shows down arrow on filter tag when tag drawer is closed 1`] = `
     <withRouter(Connect(TagWithoutData))
       canBeActive={true}
       className="flush-bottom"
+      key="0"
       style={
         Object {
           "verticalAlign": "bottom",
@@ -335,6 +344,7 @@ exports[`shows down arrow on filter tag when tag drawer is closed 1`] = `
     <withRouter(Connect(TagWithoutData))
       canBeActive={true}
       className="flush-bottom"
+      key="1"
       style={
         Object {
           "verticalAlign": "bottom",
@@ -345,6 +355,7 @@ exports[`shows down arrow on filter tag when tag drawer is closed 1`] = `
     <withRouter(Connect(TagWithoutData))
       canBeActive={true}
       className="flush-bottom"
+      key="0"
       style={
         Object {
           "verticalAlign": "bottom",
@@ -412,6 +423,7 @@ exports[`shows down arrow on filter tag when tag drawer is closed 1`] = `
       <h6
         className="em text-dark-secondary flush"
       >
+        0
          results of 
         12
       </h6>
@@ -498,6 +510,7 @@ exports[`shows up arrow on filter tag when tags are shown 1`] = `
     <withRouter(Connect(TagWithoutData))
       canBeActive={true}
       className="flush-bottom"
+      key="0"
       style={
         Object {
           "verticalAlign": "bottom",
@@ -508,6 +521,7 @@ exports[`shows up arrow on filter tag when tags are shown 1`] = `
     <withRouter(Connect(TagWithoutData))
       canBeActive={true}
       className="flush-bottom"
+      key="1"
       style={
         Object {
           "verticalAlign": "bottom",
@@ -518,6 +532,7 @@ exports[`shows up arrow on filter tag when tags are shown 1`] = `
     <withRouter(Connect(TagWithoutData))
       canBeActive={true}
       className="flush-bottom"
+      key="0"
       style={
         Object {
           "verticalAlign": "bottom",
@@ -585,6 +600,7 @@ exports[`shows up arrow on filter tag when tags are shown 1`] = `
       <h6
         className="em text-dark-secondary flush"
       >
+        0
          results of 
         12
       </h6>

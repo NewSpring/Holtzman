@@ -53,7 +53,10 @@ exports[`LikesContainer should render children 1`] = `
       }
     }
   >
-    <RenderLikes>
+    <RenderLikes
+      likes={undefined}
+      recentLikes={undefined}
+    >
       <div
         className="text-center"
       >

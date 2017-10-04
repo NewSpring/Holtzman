@@ -100,6 +100,8 @@ exports[`Giving Schedules List should render properly with data 1`] = `
     
     btn--dark-tertiary flush
   "
+                disabled={undefined}
+                onClick={undefined}
                 onlyActiveOnIndex={false}
                 style={Object {}}
                 to="/give/now?schedule=true"
@@ -110,6 +112,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
     
     btn--dark-tertiary flush
   "
+                  disabled={undefined}
                   onClick={[Function]}
                   style={Object {}}
                 >
@@ -129,6 +132,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
         classes="grid__item one-whole"
         frequency="One Time"
         fund="General Fund"
+        key="12345678"
         latest="2016-03-17"
         onDetailClick={[Function]}
         onEditClick={[Function]}
@@ -163,12 +167,16 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                   </h3>
                   <h1
                     className="floating__item flush"
+                    style={undefined}
                   >
                     20
                   </h1>
                   <h3
                     className="floating__item flush"
-                  />
+                  >
+                    .
+                    00
+                  </h3>
                 </div>
               </Currency>
               <h5
@@ -251,6 +259,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
         classes="grid__item one-whole"
         frequency="Once a Month"
         fund="Step Up Fund"
+        key="7654"
         latest="2016-03-18"
         onDetailClick={[Function]}
         onEditClick={[Function]}
@@ -285,12 +294,16 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                   </h3>
                   <h1
                     className="floating__item flush"
+                    style={undefined}
                   >
                     100
                   </h1>
                   <h3
                     className="floating__item flush"
-                  />
+                  >
+                    .
+                    00
+                  </h3>
                 </div>
               </Currency>
               <h5
@@ -373,6 +386,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
         classes="grid__item one-whole"
         frequency="One Time"
         fund="Christmas Offering"
+        key="8743456"
         latest=""
         onDetailClick={[Function]}
         onEditClick={[Function]}
@@ -407,12 +421,16 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                   </h3>
                   <h1
                     className="floating__item flush"
+                    style={undefined}
                   >
                     50
                   </h1>
                   <h3
                     className="floating__item flush"
-                  />
+                  >
+                    .
+                    00
+                  </h3>
                 </div>
               </Currency>
               <h5

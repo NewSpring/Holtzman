@@ -90,6 +90,7 @@ exports[`doesn't render account type if none 1`] = `
       >
         <div
           className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+          key="0"
         >
           <Card
             classes={
@@ -124,6 +125,7 @@ exports[`doesn't render account type if none 1`] = `
         </div>
         <div
           className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+          key="1"
         >
           <Card
             classes={
@@ -344,6 +346,7 @@ exports[`doesn't render payment account at all if none 1`] = `
       >
         <div
           className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+          key="0"
         >
           <Card
             classes={
@@ -378,6 +381,7 @@ exports[`doesn't render payment account at all if none 1`] = `
         </div>
         <div
           className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+          key="1"
         >
           <Card
             classes={
@@ -579,6 +583,7 @@ exports[`renders loading if no transaction 1`] = `
       >
         <div
           className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+          key="0"
         >
           <Card
             classes={
@@ -613,6 +618,7 @@ exports[`renders loading if no transaction 1`] = `
         </div>
         <div
           className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+          key="1"
         >
           <Card
             classes={
@@ -746,6 +752,7 @@ exports[`renders with props 1`] = `
       >
         <div
           className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+          key="0"
         >
           <Card
             classes={
@@ -780,6 +787,7 @@ exports[`renders with props 1`] = `
         </div>
         <div
           className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+          key="1"
         >
           <Card
             classes={
@@ -913,6 +921,7 @@ exports[`works with credit card 1`] = `
       >
         <div
           className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+          key="0"
         >
           <Card
             classes={
@@ -947,6 +956,7 @@ exports[`works with credit card 1`] = `
         </div>
         <div
           className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+          key="1"
         >
           <Card
             classes={
@@ -1080,6 +1090,7 @@ exports[`works with nickname 1`] = `
       >
         <div
           className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+          key="0"
         >
           <Card
             classes={
@@ -1114,6 +1125,7 @@ exports[`works with nickname 1`] = `
         </div>
         <div
           className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+          key="1"
         >
           <Card
             classes={

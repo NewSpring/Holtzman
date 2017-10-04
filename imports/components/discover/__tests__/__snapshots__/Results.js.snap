@@ -56,9 +56,11 @@ exports[`Results renders with props 1`] = `
 >
   <SearchItem
     item={Object {}}
+    key="0"
   />
   <SearchItem
     item={Object {}}
+    key="1"
   />
   <LoadMore
     loadMore={[Function]}

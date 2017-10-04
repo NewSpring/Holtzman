@@ -481,6 +481,7 @@ exports[`renders people without accounts version 1`] = `
       </h6>
       <div
         className="text-left soft-double-left push-top relative"
+        key="0"
         onClick={[Function]}
       >
         <div
@@ -531,6 +532,7 @@ exports[`renders people without accounts version 1`] = `
       </div>
       <div
         className="text-left soft-double-left push-top relative"
+        key="1"
         onClick={[Function]}
       >
         <div

@@ -18,26 +18,31 @@ exports[`renders loading if no content 1`] = `
       >
         <div
           className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored"
+          key="0"
         >
           <FeedItemSkeleton />
         </div>
         <div
           className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored"
+          key="1"
         >
           <FeedItemSkeleton />
         </div>
         <div
           className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored"
+          key="2"
         >
           <FeedItemSkeleton />
         </div>
         <div
           className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored"
+          key="3"
         >
           <FeedItemSkeleton />
         </div>
         <div
           className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored"
+          key="4"
         >
           <FeedItemSkeleton />
         </div>
@@ -70,6 +75,7 @@ exports[`renders with props 1`] = `
       >
         <div
           className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored"
+          key="0"
         >
           <Connect(Apollo(LikesWrapper))
             item={Object {}}
@@ -77,6 +83,7 @@ exports[`renders with props 1`] = `
         </div>
         <div
           className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored"
+          key="1"
         >
           <Connect(Apollo(LikesWrapper))
             item={Object {}}

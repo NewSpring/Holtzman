@@ -62,6 +62,7 @@ exports[`should accept a default value 1`] = `
   >
     <label
       className="h6 soft-half-left push-half-left flush-bottom text-left float-left locked-top"
+      htmlFor={undefined}
       onClick={[Function]}
       style={
         Object {
@@ -79,7 +80,13 @@ exports[`should accept a default value 1`] = `
     </label>
     <input
       checked="checked"
+      className={undefined}
       data-spec="input"
+      disabled={undefined}
+      id={undefined}
+      name={undefined}
+      onChange={undefined}
+      onClick={undefined}
       style={
         Object {
           "width": 0,
@@ -87,8 +94,13 @@ exports[`should accept a default value 1`] = `
       }
       type="checkbox"
     />
-    <Label>
-      <label />
+    <Label
+      labelFor={undefined}
+    >
+      <label
+        htmlFor={undefined}
+        style={undefined}
+      />
     </Label>
   </div>
 </Checkbox>
@@ -122,8 +134,13 @@ exports[`should accept an id 1`] = `
     </label>
     <input
       checked=""
+      className={undefined}
       data-spec="input"
+      disabled={undefined}
       id="harambe"
+      name={undefined}
+      onChange={undefined}
+      onClick={undefined}
       style={
         Object {
           "width": 0,
@@ -136,6 +153,7 @@ exports[`should accept an id 1`] = `
     >
       <label
         htmlFor="harambe"
+        style={undefined}
       />
     </Label>
   </div>
@@ -170,9 +188,13 @@ exports[`should accept label 1`] = `
     </label>
     <input
       checked=""
+      className={undefined}
       data-spec="input"
+      disabled={undefined}
       id="harambe"
       name="harambe"
+      onChange={undefined}
+      onClick={undefined}
       style={
         Object {
           "width": 0,
@@ -185,6 +207,7 @@ exports[`should accept label 1`] = `
     >
       <label
         htmlFor="harambe"
+        style={undefined}
       />
     </Label>
   </div>
@@ -219,9 +242,13 @@ exports[`should accept name prop 1`] = `
     </label>
     <input
       checked=""
+      className={undefined}
       data-spec="input"
+      disabled={undefined}
       id="harambe"
       name="harambe"
+      onChange={undefined}
+      onClick={undefined}
       style={
         Object {
           "width": 0,
@@ -234,6 +261,7 @@ exports[`should accept name prop 1`] = `
     >
       <label
         htmlFor="harambe"
+        style={undefined}
       />
     </Label>
   </div>
@@ -255,6 +283,7 @@ exports[`should add classes with classes prop 1`] = `
   >
     <label
       className="h6 soft-half-left push-half-left flush-bottom text-left float-left locked-top"
+      htmlFor={undefined}
       onClick={[Function]}
       style={
         Object {
@@ -272,7 +301,13 @@ exports[`should add classes with classes prop 1`] = `
     </label>
     <input
       checked=""
+      className={undefined}
       data-spec="input"
+      disabled={undefined}
+      id={undefined}
+      name={undefined}
+      onChange={undefined}
+      onClick={undefined}
       style={
         Object {
           "width": 0,
@@ -280,8 +315,13 @@ exports[`should add classes with classes prop 1`] = `
       }
       type="checkbox"
     />
-    <Label>
-      <label />
+    <Label
+      labelFor={undefined}
+    >
+      <label
+        htmlFor={undefined}
+        style={undefined}
+      />
     </Label>
   </div>
 </Checkbox>
@@ -297,6 +337,7 @@ exports[`should add classes with classes prop 2`] = `
   >
     <label
       className="h6 soft-half-left push-half-left flush-bottom text-left float-left locked-top"
+      htmlFor={undefined}
       onClick={[Function]}
       style={
         Object {
@@ -314,7 +355,13 @@ exports[`should add classes with classes prop 2`] = `
     </label>
     <input
       checked=""
+      className={undefined}
       data-spec="input"
+      disabled={undefined}
+      id={undefined}
+      name={undefined}
+      onChange={undefined}
+      onClick={undefined}
       style={
         Object {
           "width": 0,
@@ -322,8 +369,13 @@ exports[`should add classes with classes prop 2`] = `
       }
       type="checkbox"
     />
-    <Label>
-      <label />
+    <Label
+      labelFor={undefined}
+    >
+      <label
+        htmlFor={undefined}
+        style={undefined}
+      />
     </Label>
   </div>
 </Checkbox>
@@ -339,6 +391,7 @@ exports[`should add inputClasses with inputClasses prop 1`] = `
   >
     <label
       className="h6 soft-half-left push-half-left flush-bottom text-left float-left locked-top"
+      htmlFor={undefined}
       onClick={[Function]}
       style={
         Object {
@@ -358,6 +411,11 @@ exports[`should add inputClasses with inputClasses prop 1`] = `
       checked=""
       className="test1 harambe"
       data-spec="input"
+      disabled={undefined}
+      id={undefined}
+      name={undefined}
+      onChange={undefined}
+      onClick={undefined}
       style={
         Object {
           "width": 0,
@@ -365,8 +423,13 @@ exports[`should add inputClasses with inputClasses prop 1`] = `
       }
       type="checkbox"
     />
-    <Label>
-      <label />
+    <Label
+      labelFor={undefined}
+    >
+      <label
+        htmlFor={undefined}
+        style={undefined}
+      />
     </Label>
   </div>
 </Checkbox>
@@ -382,6 +445,7 @@ exports[`should disable input with disabled prop 1`] = `
   >
     <label
       className="h6 soft-half-left push-half-left flush-bottom text-left float-left locked-top"
+      htmlFor={undefined}
       onClick={[Function]}
       style={
         Object {
@@ -399,8 +463,13 @@ exports[`should disable input with disabled prop 1`] = `
     </label>
     <input
       checked=""
+      className={undefined}
       data-spec="input"
       disabled={true}
+      id={undefined}
+      name={undefined}
+      onChange={undefined}
+      onClick={undefined}
       style={
         Object {
           "width": 0,
@@ -408,8 +477,13 @@ exports[`should disable input with disabled prop 1`] = `
       }
       type="checkbox"
     />
-    <Label>
-      <label />
+    <Label
+      labelFor={undefined}
+    >
+      <label
+        htmlFor={undefined}
+        style={undefined}
+      />
     </Label>
   </div>
 </Checkbox>
@@ -423,6 +497,7 @@ exports[`should display children 1`] = `
   >
     <label
       className="h6 soft-half-left push-half-left flush-bottom text-left float-left locked-top"
+      htmlFor={undefined}
       onClick={[Function]}
       style={
         Object {
@@ -442,7 +517,13 @@ exports[`should display children 1`] = `
     </label>
     <input
       checked=""
+      className={undefined}
       data-spec="input"
+      disabled={undefined}
+      id={undefined}
+      name={undefined}
+      onChange={undefined}
+      onClick={undefined}
       style={
         Object {
           "width": 0,
@@ -450,8 +531,13 @@ exports[`should display children 1`] = `
       }
       type="checkbox"
     />
-    <Label>
-      <label />
+    <Label
+      labelFor={undefined}
+    >
+      <label
+        htmlFor={undefined}
+        style={undefined}
+      />
     </Label>
   </div>
 </Checkbox>
@@ -467,6 +553,7 @@ exports[`should hide label with hideLabel prop 1`] = `
   >
     <label
       className="h6 soft-half-left push-half-left flush-bottom text-left float-left locked-top"
+      htmlFor={undefined}
       onClick={[Function]}
       style={
         Object {
@@ -484,7 +571,13 @@ exports[`should hide label with hideLabel prop 1`] = `
     </label>
     <input
       checked=""
+      className={undefined}
       data-spec="input"
+      disabled={undefined}
+      id={undefined}
+      name={undefined}
+      onChange={undefined}
+      onClick={undefined}
       style={
         Object {
           "width": 0,
@@ -504,6 +597,7 @@ exports[`should render with minimal props 1`] = `
   >
     <label
       className="h6 soft-half-left push-half-left flush-bottom text-left float-left locked-top"
+      htmlFor={undefined}
       onClick={[Function]}
       style={
         Object {
@@ -521,7 +615,13 @@ exports[`should render with minimal props 1`] = `
     </label>
     <input
       checked=""
+      className={undefined}
       data-spec="input"
+      disabled={undefined}
+      id={undefined}
+      name={undefined}
+      onChange={undefined}
+      onClick={undefined}
       style={
         Object {
           "width": 0,
@@ -529,8 +629,13 @@ exports[`should render with minimal props 1`] = `
       }
       type="checkbox"
     />
-    <Label>
-      <label />
+    <Label
+      labelFor={undefined}
+    >
+      <label
+        htmlFor={undefined}
+        style={undefined}
+      />
     </Label>
   </div>
 </Checkbox>
@@ -546,6 +651,7 @@ exports[`should respond to onclick prop 1`] = `
   >
     <label
       className="h6 soft-half-left push-half-left flush-bottom text-left float-left locked-top"
+      htmlFor={undefined}
       onClick={[Function]}
       style={
         Object {
@@ -563,7 +669,12 @@ exports[`should respond to onclick prop 1`] = `
     </label>
     <input
       checked=""
+      className={undefined}
       data-spec="input"
+      disabled={undefined}
+      id={undefined}
+      name={undefined}
+      onChange={undefined}
       onClick={[Function]}
       style={
         Object {
@@ -572,8 +683,13 @@ exports[`should respond to onclick prop 1`] = `
       }
       type="checkbox"
     />
-    <Label>
-      <label />
+    <Label
+      labelFor={undefined}
+    >
+      <label
+        htmlFor={undefined}
+        style={undefined}
+      />
     </Label>
   </div>
 </Checkbox>

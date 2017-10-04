@@ -29,13 +29,16 @@ exports[`likes list should properly skip any likes with a __typename that's null
   }
 >
   <div>
-    <MiniCard>
+    <MiniCard
+      key="0"
+    >
       <div />
     </MiniCard>
     <MiniCard
       category="Devotionals"
       icon="icon-category-text"
       image="harambe"
+      key="1"
       link="/studies/null/entry/12345"
       title="harambe"
     >
@@ -97,6 +100,7 @@ exports[`likes list should render likes 1`] = `
       category="Groups"
       icon="icon-groups"
       image="zookeeper"
+      key="0"
       link="/groups/12345"
       title="hello"
     >
@@ -106,6 +110,7 @@ exports[`likes list should render likes 1`] = `
       category="Devotionals"
       icon="icon-category-text"
       image="harambe"
+      key="1"
       link="/studies/null/entry/12345"
       title="harambe"
     >
@@ -115,6 +120,7 @@ exports[`likes list should render likes 1`] = `
       category="Albums"
       icon="icon-category-audio"
       image="harambe-tribute-one"
+      key="2"
       link="/music/3776"
       title="Able"
     >

@@ -25,12 +25,14 @@ exports[`allows deselect 1`] = `
     <option />
     <option
       className="one two"
+      key="0"
       value="1"
     >
       1
     </option>
     <option
       className="one two"
+      key="1"
       value="2"
     >
       2
@@ -63,12 +65,14 @@ exports[`appends extra classes 1`] = `
   >
     <option
       className="one two"
+      key="0"
       value="1"
     >
       1
     </option>
     <option
       className="one two"
+      key="1"
       value="2"
     >
       2
@@ -97,12 +101,14 @@ exports[`can hide the label 1`] = `
   >
     <option
       className="one two"
+      key="0"
       value="1"
     >
       1
     </option>
     <option
       className="one two"
+      key="1"
       value="2"
     >
       2
@@ -135,12 +141,14 @@ exports[`has active state 1`] = `
   >
     <option
       className="one two"
+      key="0"
       value="1"
     >
       1
     </option>
     <option
       className="one two"
+      key="1"
       value="2"
     >
       2
@@ -173,12 +181,14 @@ exports[`has error state 1`] = `
   >
     <option
       className="one two"
+      key="0"
       value="1"
     >
       1
     </option>
     <option
       className="one two"
+      key="1"
       value="2"
     >
       2
@@ -211,12 +221,14 @@ exports[`has focused state 1`] = `
   >
     <option
       className="one two"
+      key="0"
       value="1"
     >
       1
     </option>
     <option
       className="one two"
+      key="1"
       value="2"
     >
       2
@@ -256,12 +268,14 @@ exports[`includes blank 1`] = `
     />
     <option
       className="one two"
+      key="0"
       value="1"
     >
       1
     </option>
     <option
       className="one two"
+      key="1"
       value="2"
     >
       2
@@ -303,12 +317,14 @@ exports[`includes placeholder 1`] = `
     </option>
     <option
       className="one two"
+      key="0"
       value="1"
     >
       1
     </option>
     <option
       className="one two"
+      key="1"
       value="2"
     >
       2
@@ -342,12 +358,14 @@ exports[`is active if selected prop 1`] = `
   >
     <option
       className="one two"
+      key="0"
       value="1"
     >
       1
     </option>
     <option
       className="one two"
+      key="1"
       value="2"
     >
       2
@@ -380,12 +398,14 @@ exports[`overrides with theme if present 1`] = `
   >
     <option
       className="one two"
+      key="0"
       value="1"
     >
       1
     </option>
     <option
       className="one two"
+      key="1"
       value="2"
     >
       2
@@ -434,12 +454,14 @@ exports[`renders with props 1`] = `
   >
     <option
       className="one two"
+      key="0"
       value="1"
     >
       1
     </option>
     <option
       className="one two"
+      key="1"
       value="2"
     >
       2

@@ -91,6 +91,7 @@ exports[`doesn't render incompleted schedule as completed schedule 1`] = `
       <div>
         <div
           className="soft card"
+          key="0"
         >
           <Link
             onlyActiveOnIndex={false}
@@ -99,6 +100,7 @@ exports[`doesn't render incompleted schedule as completed schedule 1`] = `
           >
             <div
               className="grid"
+              key="0"
               style={
                 Object {
                   "verticalAlign": "middle",
@@ -201,6 +203,7 @@ exports[`doesn't render incompleted schedule as completed schedule 1`] = `
         </h4>
         <div
           className="soft card"
+          key="1"
         >
           <Link
             onlyActiveOnIndex={false}
@@ -209,6 +212,7 @@ exports[`doesn't render incompleted schedule as completed schedule 1`] = `
           >
             <div
               className="grid"
+              key="1"
               style={
                 Object {
                   "verticalAlign": "middle",
@@ -408,6 +412,7 @@ exports[`doesn't render one time completed schedule if no details 1`] = `
         </h4>
         <div
           className="soft card"
+          key="0"
         >
           <Link
             onlyActiveOnIndex={false}
@@ -416,6 +421,7 @@ exports[`doesn't render one time completed schedule if no details 1`] = `
           >
             <div
               className="grid"
+              key="0"
               style={
                 Object {
                   "verticalAlign": "middle",
@@ -615,6 +621,7 @@ exports[`doesn't render one time completed schedule if no details account 1`] = 
         </h4>
         <div
           className="soft card"
+          key="0"
         >
           <Link
             onlyActiveOnIndex={false}
@@ -623,6 +630,7 @@ exports[`doesn't render one time completed schedule if no details account 1`] = 
           >
             <div
               className="grid"
+              key="0"
               style={
                 Object {
                   "verticalAlign": "middle",
@@ -1016,6 +1024,7 @@ exports[`renders loading if accounts not ready 1`] = `
       <div>
         <div
           className="soft card"
+          key="0"
         >
           <Link
             onlyActiveOnIndex={false}
@@ -1024,6 +1033,7 @@ exports[`renders loading if accounts not ready 1`] = `
           >
             <div
               className="grid"
+              key="0"
               style={
                 Object {
                   "verticalAlign": "middle",
@@ -1216,6 +1226,7 @@ exports[`renders loading if no accounts 1`] = `
       <div>
         <div
           className="soft card"
+          key="0"
         >
           <Link
             onlyActiveOnIndex={false}
@@ -1224,6 +1235,7 @@ exports[`renders loading if no accounts 1`] = `
           >
             <div
               className="grid"
+              key="0"
               style={
                 Object {
                   "verticalAlign": "middle",
@@ -1401,6 +1413,7 @@ exports[`renders loading if no accounts 2`] = `
               }
             />
           </div>
+          0
         </div>
       </div>
     </div>
@@ -1416,6 +1429,7 @@ exports[`renders loading if no accounts 2`] = `
       <div>
         <div
           className="soft card"
+          key="0"
         >
           <Link
             onlyActiveOnIndex={false}
@@ -1424,6 +1438,7 @@ exports[`renders loading if no accounts 2`] = `
           >
             <div
               className="grid"
+              key="0"
               style={
                 Object {
                   "verticalAlign": "middle",
@@ -1837,6 +1852,7 @@ exports[`renders one time completed schedules 1`] = `
         </h4>
         <div
           className="soft card"
+          key="0"
         >
           <Link
             onlyActiveOnIndex={false}
@@ -1845,6 +1861,7 @@ exports[`renders one time completed schedules 1`] = `
           >
             <div
               className="grid"
+              key="0"
               style={
                 Object {
                   "verticalAlign": "middle",
@@ -2127,6 +2144,7 @@ exports[`renders with props 1`] = `
       <div>
         <div
           className="soft card"
+          key="0"
         >
           <Link
             onlyActiveOnIndex={false}
@@ -2135,6 +2153,7 @@ exports[`renders with props 1`] = `
           >
             <div
               className="grid"
+              key="0"
               style={
                 Object {
                   "verticalAlign": "middle",
@@ -2322,6 +2341,7 @@ exports[`renders without schedule details 1`] = `
       <div>
         <div
           className="soft card"
+          key="0"
         >
           <Link
             onlyActiveOnIndex={false}
@@ -2330,6 +2350,7 @@ exports[`renders without schedule details 1`] = `
           >
             <div
               className="grid"
+              key="0"
               style={
                 Object {
                   "verticalAlign": "middle",
@@ -2517,6 +2538,7 @@ exports[`renders without schedule details account 1`] = `
       <div>
         <div
           className="soft card"
+          key="0"
         >
           <Link
             onlyActiveOnIndex={false}
@@ -2525,6 +2547,7 @@ exports[`renders without schedule details account 1`] = `
           >
             <div
               className="grid"
+              key="0"
               style={
                 Object {
                   "verticalAlign": "middle",
@@ -2712,6 +2735,7 @@ exports[`works with nickName 1`] = `
       <div>
         <div
           className="soft card"
+          key="0"
         >
           <Link
             onlyActiveOnIndex={false}
@@ -2720,6 +2744,7 @@ exports[`works with nickName 1`] = `
           >
             <div
               className="grid"
+              key="0"
               style={
                 Object {
                   "verticalAlign": "middle",
@@ -2843,6 +2868,7 @@ exports[`works without recoverableSchedules 1`] = `
     }
     scroll={true}
   >
+    0
     <div
       className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary"
     >
@@ -2879,6 +2905,7 @@ exports[`works without recoverableSchedules 1`] = `
       <div>
         <div
           className="soft card"
+          key="0"
         >
           <Link
             onlyActiveOnIndex={false}
@@ -2887,6 +2914,7 @@ exports[`works without recoverableSchedules 1`] = `
           >
             <div
               className="grid"
+              key="0"
               style={
                 Object {
                   "verticalAlign": "middle",

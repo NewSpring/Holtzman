@@ -118,7 +118,9 @@ exports[`Hero should render with data passed as separate props 1`] = `
 
 exports[`Hero should render with no props 1`] = `
 <Hero>
-  <HeroLink>
+  <HeroLink
+    to={undefined}
+  >
     <Link
       onlyActiveOnIndex={false}
       style={Object {}}

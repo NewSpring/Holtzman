@@ -71,6 +71,7 @@ exports[`ProgressBar should render with minimal props 1`] = `
       }
     >
       <Currency
+        amount={undefined}
         baseHeadingSize="4"
         className="floating__item text-right"
         roundCurrency={true}
@@ -91,13 +92,16 @@ exports[`ProgressBar should render with minimal props 1`] = `
           </h6>
           <h4
             className="floating__item flush"
+            style={undefined}
           >
             NaN
           </h4>
         </div>
       </Currency>
     </div>
-    <Progress>
+    <Progress
+      percentDone={undefined}
+    >
       <div
         className="one-whole"
         style={

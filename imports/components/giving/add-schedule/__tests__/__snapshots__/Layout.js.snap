@@ -585,7 +585,7 @@ exports[`Layout enables checkout when total is positive and ready 1`] = `
 </div>
 `;
 
-exports[`Layout renders null if no accounts exist 1`] = `null`;
+exports[`Layout renders null if no accounts exist 1`] = `""`;
 
 exports[`Layout renders the prefilled amount for an existing schedule 1`] = `
 <div

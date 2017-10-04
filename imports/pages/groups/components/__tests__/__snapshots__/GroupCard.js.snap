@@ -45,9 +45,11 @@ exports[`doesn't render campus tag if no campus 1`] = `
       className="soft-half-top"
     >
       <withRouter(Connect(TagWithoutData))
+        key="0"
         val="one"
       />
       <withRouter(Connect(TagWithoutData))
+        key="1"
         val="two"
       />
       <withRouter(Connect(TagWithoutData))
@@ -109,9 +111,11 @@ exports[`doesn't render campus tag if no campus name 1`] = `
       className="soft-half-top"
     >
       <withRouter(Connect(TagWithoutData))
+        key="0"
         val="one"
       />
       <withRouter(Connect(TagWithoutData))
+        key="1"
         val="two"
       />
       <withRouter(Connect(TagWithoutData))
@@ -173,9 +177,11 @@ exports[`doesn't render demographic tag if no 1`] = `
       className="soft-half-top"
     >
       <withRouter(Connect(TagWithoutData))
+        key="0"
         val="one"
       />
       <withRouter(Connect(TagWithoutData))
+        key="1"
         val="two"
       />
       <withRouter(Connect(TagWithoutData))
@@ -238,9 +244,11 @@ exports[`doesn't render kid friendly tag if no 1`] = `
       className="soft-half-top"
     >
       <withRouter(Connect(TagWithoutData))
+        key="0"
         val="one"
       />
       <withRouter(Connect(TagWithoutData))
+        key="1"
         val="two"
       />
       <withRouter(Connect(TagWithoutData))
@@ -303,9 +311,11 @@ exports[`doesn't render tag for type \`Interests\` 1`] = `
       className="soft-half-top"
     >
       <withRouter(Connect(TagWithoutData))
+        key="0"
         val="one"
       />
       <withRouter(Connect(TagWithoutData))
+        key="1"
         val="two"
       />
       <withRouter(Connect(TagWithoutData))
@@ -368,9 +378,11 @@ exports[`renders default photo 1`] = `
       className="soft-half-top"
     >
       <withRouter(Connect(TagWithoutData))
+        key="0"
         val="one"
       />
       <withRouter(Connect(TagWithoutData))
+        key="1"
         val="two"
       />
       <withRouter(Connect(TagWithoutData))
@@ -436,9 +448,11 @@ exports[`renders with props 1`] = `
       className="soft-half-top"
     >
       <withRouter(Connect(TagWithoutData))
+        key="0"
         val="one"
       />
       <withRouter(Connect(TagWithoutData))
+        key="1"
         val="two"
       />
       <withRouter(Connect(TagWithoutData))
@@ -498,9 +512,11 @@ exports[`renders without distance 1`] = `
       className="soft-half-top"
     >
       <withRouter(Connect(TagWithoutData))
+        key="0"
         val="one"
       />
       <withRouter(Connect(TagWithoutData))
+        key="1"
         val="two"
       />
       <withRouter(Connect(TagWithoutData))
@@ -561,9 +577,11 @@ exports[`renders without schedule 1`] = `
       className="soft-half-top"
     >
       <withRouter(Connect(TagWithoutData))
+        key="0"
         val="one"
       />
       <withRouter(Connect(TagWithoutData))
+        key="1"
         val="two"
       />
       <withRouter(Connect(TagWithoutData))
@@ -624,9 +642,11 @@ exports[`renders without schedule description 1`] = `
       className="soft-half-top"
     >
       <withRouter(Connect(TagWithoutData))
+        key="0"
         val="one"
       />
       <withRouter(Connect(TagWithoutData))
+        key="1"
         val="two"
       />
       <withRouter(Connect(TagWithoutData))

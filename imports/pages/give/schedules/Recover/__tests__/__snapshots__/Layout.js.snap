@@ -362,6 +362,7 @@ exports[`expands the schedule if it matches state 1`] = `
       >
         <div
           className="card"
+          key="0"
         >
           <div
             className="soft"
@@ -375,6 +376,7 @@ exports[`expands the schedule if it matches state 1`] = `
           >
             <div
               className="grid"
+              key="0"
               style={
                 Object {
                   "verticalAlign": "middle",
@@ -598,6 +600,7 @@ exports[`renders with props 1`] = `
       >
         <div
           className="card"
+          key="0"
         >
           <div
             className="soft"
@@ -611,6 +614,7 @@ exports[`renders with props 1`] = `
           >
             <div
               className="grid"
+              key="0"
               style={
                 Object {
                   "verticalAlign": "middle",
@@ -920,6 +924,7 @@ exports[`works with nickName 1`] = `
       >
         <div
           className="card"
+          key="0"
         >
           <div
             className="soft"
@@ -933,6 +938,7 @@ exports[`works with nickName 1`] = `
           >
             <div
               className="grid"
+              key="0"
               style={
                 Object {
                   "verticalAlign": "middle",

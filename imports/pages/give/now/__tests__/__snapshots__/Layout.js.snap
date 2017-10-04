@@ -100,6 +100,7 @@ exports[`renders not alive version 1`] = `
     >
       <div
         className="grid__item one-whole push-half-bottom flush-bottom@handheld hard-bottom"
+        key="0"
       >
         <Card
           fallbackImage={null}
@@ -109,6 +110,7 @@ exports[`renders not alive version 1`] = `
       </div>
       <div
         className="grid__item one-whole push-half-bottom flush-bottom@handheld hard-bottom"
+        key="1"
       >
         <Card
           fallbackImage={null}
@@ -175,6 +177,7 @@ exports[`renders with props 1`] = `
     >
       <div
         className="grid__item one-whole push-half-bottom flush-bottom@handheld hard-bottom"
+        key="0"
       >
         <Card
           fallbackImage={null}
@@ -184,6 +187,7 @@ exports[`renders with props 1`] = `
       </div>
       <div
         className="grid__item one-whole push-half-bottom flush-bottom@handheld hard-bottom"
+        key="1"
       >
         <Card
           fallbackImage={null}

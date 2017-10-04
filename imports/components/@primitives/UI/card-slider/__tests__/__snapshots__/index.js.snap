@@ -19,6 +19,7 @@ exports[`CardSlider should render with default props 1`] = `
   >
     <div
       className="card floating display-inline-block push-right"
+      key="0"
       style={
         Object {
           "height": 393.6,
@@ -28,11 +29,13 @@ exports[`CardSlider should render with default props 1`] = `
     >
       <MetricCard
         count="11,130"
+        key="0"
         label="Total Salvations"
       />
     </div>
     <div
       className="card floating display-inline-block "
+      key="1"
       style={
         Object {
           "height": 393.6,
@@ -42,6 +45,7 @@ exports[`CardSlider should render with default props 1`] = `
     >
       <MetricCard
         count="3,982"
+        key="1"
         label="Student Salvations at Fuse and Gauntlet"
       />
     </div>

@@ -76,6 +76,7 @@ exports[`adjust style if modal visible 1`] = `
             },
           }
         }
+        key="0"
         track={
           Object {
             "file": "http://test.com/test.mp3",
@@ -115,6 +116,7 @@ exports[`adjust style if modal visible 1`] = `
             },
           }
         }
+        key="1"
         track={
           Object {
             "file": "http://test.com/test.mp3",
@@ -154,6 +156,7 @@ exports[`adjust style if modal visible 1`] = `
             },
           }
         }
+        key="2"
         track={
           Object {
             "file": "http://test.com/test.mp3",
@@ -719,6 +722,7 @@ exports[`renders with props 1`] = `
             },
           }
         }
+        key="0"
         track={
           Object {
             "file": "http://test.com/test.mp3",
@@ -758,6 +762,7 @@ exports[`renders with props 1`] = `
             },
           }
         }
+        key="1"
         track={
           Object {
             "file": "http://test.com/test.mp3",
@@ -797,6 +802,7 @@ exports[`renders with props 1`] = `
             },
           }
         }
+        key="2"
         track={
           Object {
             "file": "http://test.com/test.mp3",
@@ -881,6 +887,7 @@ exports[`renders without album artist 1`] = `
             },
           }
         }
+        key="0"
         track={
           Object {
             "file": "http://test.com/test.mp3",
@@ -920,6 +927,7 @@ exports[`renders without album artist 1`] = `
             },
           }
         }
+        key="1"
         track={
           Object {
             "file": "http://test.com/test.mp3",
@@ -959,6 +967,7 @@ exports[`renders without album artist 1`] = `
             },
           }
         }
+        key="2"
         track={
           Object {
             "file": "http://test.com/test.mp3",

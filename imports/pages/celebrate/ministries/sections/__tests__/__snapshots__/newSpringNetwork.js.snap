@@ -33,14 +33,17 @@ exports[`NewSpring Network renders a layout 1`] = `
   <Connect(CardSlider)>
     <MetricCard
       count="46,344"
+      key="0"
       label="Leaders Served"
     />
     <MetricCard
       count="56,282"
+      key="1"
       label="Downloads of free content"
     />
     <MetricCard
       count="2,287"
+      key="2"
       label="Leaders attended a conference"
     />
   </Connect(CardSlider)>
@@ -54,6 +57,7 @@ exports[`NewSpring Network renders a layout 1`] = `
         content="<p>&#34;We've been using NewSpring's free children's curriculum exclusively since the beginning of 2016, and the kids love it, especially the acting and the games! Our kids leave excited to tell their friends about church and want to come back every week.&#34;</p>"
         heading="Hear from childrens ministry director"
         image="//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/stories/story-img7.1.png"
+        key="0"
         location="Arkansas"
         name="Liz Wynn"
       />

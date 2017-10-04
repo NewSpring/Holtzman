@@ -23,7 +23,9 @@ exports[`should accept billing and payment props 1`] = `
     <div
       className="push-double@lap-and-up push"
     >
-      <Header>
+      <Header
+        override={undefined}
+      >
         <h4
           className="text-center"
         >
@@ -55,8 +57,12 @@ exports[`should accept billing and payment props 1`] = `
         <AccountNumber
           accountNumber="5575-1234-1234-1234"
         >
-          <span />
+          <span>
+            **************
+            1234
+          </span>
         </AccountNumber>
+          
         <mockConstructor
           cardType="MasterCard"
           height="12px"
@@ -86,6 +92,7 @@ exports[`should accept billing and payment props 1`] = `
       >
         <h6
           className="outlined--light outlined--bottom display-inline-block text-dark-tertiary"
+          onClick={undefined}
           style={
             Object {
               "cursor": "pointer",

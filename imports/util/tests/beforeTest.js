@@ -1,4 +1,8 @@
 /* eslint-disable no-underscore-dangle */
+import Enzyme from 'enzyme';
+import Adapter from 'enzyme-adapter-react-15';
+
+Enzyme.configure({ adapter: new Adapter() });
 
 global.Meteor = require("meteor/meteor");
 global._ = require("underscore");

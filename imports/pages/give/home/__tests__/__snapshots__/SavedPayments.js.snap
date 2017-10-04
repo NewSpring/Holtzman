@@ -96,6 +96,7 @@ exports[`Saved Payments List should render properly with data 1`] = `
     
     btn--dark-tertiary flush
   "
+                disabled={undefined}
                 onClick={[Function]}
                 style={Object {}}
               >
@@ -110,6 +111,7 @@ exports[`Saved Payments List should render properly with data 1`] = `
       className="grid"
     >
       <Component
+        key="1"
         payment={
           Object {
             "id": 1,
@@ -124,6 +126,7 @@ exports[`Saved Payments List should render properly with data 1`] = `
         <div />
       </Component>
       <Component
+        key="2"
         payment={
           Object {
             "id": 2,
@@ -182,6 +185,7 @@ exports[`Saved Payments List should render without saved payments 1`] = `
     
     btn--dark-tertiary flush
   "
+                disabled={undefined}
                 onClick={[Function]}
                 style={Object {}}
               >

@@ -21,6 +21,7 @@ exports[`Dashboard should render with the children 1`] = `
     >
       <Link
         className="floating__item text-center plain outlined--bottom"
+        key="0"
         onlyActiveOnIndex={false}
         style={
           Object {
@@ -35,6 +36,7 @@ exports[`Dashboard should render with the children 1`] = `
       </Link>
       <Link
         className="floating__item text-center plain text-dark-primary"
+        key="1"
         onlyActiveOnIndex={false}
         style={
           Object {
@@ -49,6 +51,7 @@ exports[`Dashboard should render with the children 1`] = `
       </Link>
       <Link
         className="floating__item text-center plain text-dark-primary"
+        key="2"
         onlyActiveOnIndex={false}
         style={
           Object {
@@ -105,6 +108,7 @@ exports[`Dashboard should render with the default set of props 1`] = `
     >
       <Link
         className="floating__item text-center plain outlined--bottom"
+        key="0"
         onlyActiveOnIndex={false}
         style={
           Object {
@@ -119,6 +123,7 @@ exports[`Dashboard should render with the default set of props 1`] = `
       </Link>
       <Link
         className="floating__item text-center plain text-dark-primary"
+        key="1"
         onlyActiveOnIndex={false}
         style={
           Object {
@@ -133,6 +138,7 @@ exports[`Dashboard should render with the default set of props 1`] = `
       </Link>
       <Link
         className="floating__item text-center plain text-dark-primary"
+        key="2"
         onlyActiveOnIndex={false}
         style={
           Object {

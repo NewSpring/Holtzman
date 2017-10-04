@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`doesn't render on cordova 1`] = `null`;
+exports[`doesn't render on cordova 1`] = `""`;
 
 exports[`renders 1`] = `
 <Link

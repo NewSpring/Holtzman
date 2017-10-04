@@ -97,6 +97,7 @@ exports[`doesn't render family members if there are none 1`] = `
               }
             />
           }
+          key="1"
           label="Start Date"
           onClick={[Function]}
           val="StartDate"
@@ -116,6 +117,7 @@ exports[`doesn't render family members if there are none 1`] = `
               }
             />
           }
+          key="2"
           label="End Date"
           onClick={[Function]}
           val="EndDate"
@@ -177,6 +179,7 @@ exports[`renders family members when expanded is true 1`] = `
       </h7>
       <div
         className=""
+        key="0"
         onClick={[Function]}
         style={
           Object {
@@ -197,6 +200,7 @@ exports[`renders family members when expanded is true 1`] = `
       </div>
       <div
         className=""
+        key="1"
         onClick={[Function]}
         style={
           Object {
@@ -280,6 +284,7 @@ exports[`renders family members when expanded is true 1`] = `
               }
             />
           }
+          key="1"
           label="Start Date"
           onClick={[Function]}
           val="StartDate"
@@ -299,6 +304,7 @@ exports[`renders family members when expanded is true 1`] = `
               }
             />
           }
+          key="2"
           label="End Date"
           onClick={[Function]}
           val="EndDate"
@@ -393,6 +399,7 @@ exports[`works with nickname 1`] = `
       </h7>
       <div
         className=""
+        key="0"
         onClick={[Function]}
         style={
           Object {
@@ -413,6 +420,7 @@ exports[`works with nickname 1`] = `
       </div>
       <div
         className=""
+        key="1"
         onClick={[Function]}
         style={
           Object {
@@ -496,6 +504,7 @@ exports[`works with nickname 1`] = `
               }
             />
           }
+          key="1"
           label="Start Date"
           onClick={[Function]}
           val="StartDate"
@@ -515,6 +524,7 @@ exports[`works with nickname 1`] = `
               }
             />
           }
+          key="2"
           label="End Date"
           onClick={[Function]}
           val="EndDate"

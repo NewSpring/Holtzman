@@ -21,54 +21,63 @@ exports[`Following renders the 'following' items with authorization 1`] = `
       active={true}
       changed={[Function]}
       item="Articles"
+      key="0"
       switchId={0}
     />
     <FollowingItem
       active={true}
       changed={[Function]}
       item="Devotionals"
+      key="1"
       switchId={1}
     />
     <FollowingItem
       active={true}
       changed={[Function]}
       item="Events"
+      key="2"
       switchId={2}
     />
     <FollowingItem
       active={true}
       changed={[Function]}
       item="Music"
+      key="3"
       switchId={3}
     />
     <FollowingItem
       active={true}
       changed={[Function]}
       item="News"
+      key="4"
       switchId={4}
     />
     <FollowingItem
       active={true}
       changed={[Function]}
       item="Series"
+      key="5"
       switchId={5}
     />
     <FollowingItem
       active={true}
       changed={[Function]}
       item="Sermons"
+      key="6"
       switchId={6}
     />
     <FollowingItem
       active={true}
       changed={[Function]}
       item="Stories"
+      key="7"
       switchId={7}
     />
     <FollowingItem
       active={true}
       changed={[Function]}
       item="Studies"
+      key="8"
       switchId={8}
     />
   </div>
@@ -96,48 +105,56 @@ exports[`Following renders the 'following' items without authorization 1`] = `
       active={true}
       changed={[Function]}
       item="Articles"
+      key="0"
       switchId={0}
     />
     <FollowingItem
       active={true}
       changed={[Function]}
       item="Devotionals"
+      key="1"
       switchId={1}
     />
     <FollowingItem
       active={true}
       changed={[Function]}
       item="Music"
+      key="3"
       switchId={3}
     />
     <FollowingItem
       active={true}
       changed={[Function]}
       item="News"
+      key="4"
       switchId={4}
     />
     <FollowingItem
       active={true}
       changed={[Function]}
       item="Series"
+      key="5"
       switchId={5}
     />
     <FollowingItem
       active={true}
       changed={[Function]}
       item="Sermons"
+      key="6"
       switchId={6}
     />
     <FollowingItem
       active={true}
       changed={[Function]}
       item="Stories"
+      key="7"
       switchId={7}
     />
     <FollowingItem
       active={true}
       changed={[Function]}
       item="Studies"
+      key="8"
       switchId={8}
     />
   </div>

@@ -75,6 +75,7 @@ exports[`renders complete message 1`] = `
         >
           <div
             className="floating one-whole display-inline-block"
+            key="0"
           >
             <div
               className="floating__item float-left"
@@ -197,6 +198,7 @@ exports[`renders complete message 1`] = `
       >
         <div
           className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+          key="0"
         >
           <Card
             classes={
@@ -231,6 +233,7 @@ exports[`renders complete message 1`] = `
         </div>
         <div
           className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+          key="1"
         >
           <Card
             classes={
@@ -345,6 +348,7 @@ exports[`renders loading if no entries 1`] = `
         >
           <div
             className="floating one-whole display-inline-block"
+            key="0"
           >
             <div
               className="floating__item float-left"
@@ -548,6 +552,7 @@ exports[`renders loading if no schedule 1`] = `
       >
         <div
           className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+          key="0"
         >
           <Card
             classes={
@@ -582,6 +587,7 @@ exports[`renders loading if no schedule 1`] = `
         </div>
         <div
           className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+          key="1"
         >
           <Card
             classes={
@@ -708,6 +714,7 @@ exports[`renders loading if not ready 1`] = `
         >
           <div
             className="floating one-whole display-inline-block"
+            key="0"
           >
             <div
               className="floating__item float-left"
@@ -831,6 +838,7 @@ exports[`renders loading if not ready 1`] = `
       >
         <div
           className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+          key="0"
         >
           <Card
             classes={
@@ -865,6 +873,7 @@ exports[`renders loading if not ready 1`] = `
         </div>
         <div
           className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+          key="1"
         >
           <Card
             classes={
@@ -979,6 +988,7 @@ exports[`renders no contributions message 1`] = `
         >
           <div
             className="floating one-whole display-inline-block"
+            key="0"
           >
             <div
               className="floating__item float-left"
@@ -1082,6 +1092,7 @@ exports[`renders no contributions message 1`] = `
       >
         <div
           className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+          key="0"
         >
           <Card
             classes={
@@ -1116,6 +1127,7 @@ exports[`renders no contributions message 1`] = `
         </div>
         <div
           className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+          key="1"
         >
           <Card
             classes={
@@ -1230,6 +1242,7 @@ exports[`renders stopped message 1`] = `
         >
           <div
             className="floating one-whole display-inline-block"
+            key="0"
           >
             <div
               className="floating__item float-left"
@@ -1352,6 +1365,7 @@ exports[`renders stopped message 1`] = `
       >
         <div
           className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+          key="0"
         >
           <Card
             classes={
@@ -1386,6 +1400,7 @@ exports[`renders stopped message 1`] = `
         </div>
         <div
           className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+          key="1"
         >
           <Card
             classes={
@@ -1500,6 +1515,7 @@ exports[`renders with props 1`] = `
         >
           <div
             className="floating one-whole display-inline-block"
+            key="0"
           >
             <div
               className="floating__item float-left"
@@ -1623,6 +1639,7 @@ exports[`renders with props 1`] = `
       >
         <div
           className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+          key="0"
         >
           <Card
             classes={
@@ -1657,6 +1674,7 @@ exports[`renders with props 1`] = `
         </div>
         <div
           className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+          key="1"
         >
           <Card
             classes={
@@ -1770,6 +1788,7 @@ exports[`renders without schedule 1`] = `
       >
         <div
           className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+          key="0"
         >
           <Card
             classes={
@@ -1804,6 +1823,7 @@ exports[`renders without schedule 1`] = `
         </div>
         <div
           className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+          key="1"
         >
           <Card
             classes={
@@ -1906,6 +1926,7 @@ exports[`renders without schedule payment 1`] = `
         >
           <div
             className="floating one-whole display-inline-block"
+            key="0"
           >
             <div
               className="floating__item float-left"
@@ -2029,6 +2050,7 @@ exports[`renders without schedule payment 1`] = `
       >
         <div
           className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+          key="0"
         >
           <Card
             classes={
@@ -2063,6 +2085,7 @@ exports[`renders without schedule payment 1`] = `
         </div>
         <div
           className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+          key="1"
         >
           <Card
             classes={
@@ -2177,6 +2200,7 @@ exports[`works with credit card 1`] = `
         >
           <div
             className="floating one-whole display-inline-block"
+            key="0"
           >
             <div
               className="floating__item float-left"
@@ -2300,6 +2324,7 @@ exports[`works with credit card 1`] = `
       >
         <div
           className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+          key="0"
         >
           <Card
             classes={
@@ -2334,6 +2359,7 @@ exports[`works with credit card 1`] = `
         </div>
         <div
           className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+          key="1"
         >
           <Card
             classes={

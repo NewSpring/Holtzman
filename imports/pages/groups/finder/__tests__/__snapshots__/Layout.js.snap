@@ -127,6 +127,7 @@ exports[`renders disabled tags 1`] = `
     >
       <div
         className="grid__item one-whole one-half@palm-wide-and-up"
+        key="0"
       >
         <Connect(Apollo(LikesWrapper))
           item={Object {}}
@@ -134,6 +135,7 @@ exports[`renders disabled tags 1`] = `
       </div>
       <div
         className="grid__item one-whole one-half@palm-wide-and-up"
+        key="1"
       >
         <Connect(Apollo(LikesWrapper))
           item={Object {}}
@@ -262,6 +264,7 @@ exports[`renders loading if no tags 1`] = `
     >
       <div
         className="grid__item one-whole one-half@palm-wide-and-up"
+        key="0"
       >
         <Connect(Apollo(LikesWrapper))
           item={Object {}}
@@ -269,6 +272,7 @@ exports[`renders loading if no tags 1`] = `
       </div>
       <div
         className="grid__item one-whole one-half@palm-wide-and-up"
+        key="1"
       >
         <Connect(Apollo(LikesWrapper))
           item={Object {}}
@@ -406,6 +410,7 @@ exports[`renders with props 1`] = `
     >
       <div
         className="grid__item one-whole one-half@palm-wide-and-up"
+        key="0"
       >
         <Connect(Apollo(LikesWrapper))
           item={Object {}}
@@ -413,6 +418,7 @@ exports[`renders with props 1`] = `
       </div>
       <div
         className="grid__item one-whole one-half@palm-wide-and-up"
+        key="1"
       >
         <Connect(Apollo(LikesWrapper))
           item={Object {}}

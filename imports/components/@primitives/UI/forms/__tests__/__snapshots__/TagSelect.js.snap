@@ -4,12 +4,14 @@ exports[`renders with props 1`] = `
 <div>
   <Component
     active={false}
+    key="0"
     label="foo"
     onClick={[Function]}
     val="bar"
   />
   <Component
     active={false}
+    key="1"
     label="baz"
     onClick={[Function]}
     val="zoo"

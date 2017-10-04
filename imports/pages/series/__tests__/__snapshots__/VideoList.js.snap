@@ -37,10 +37,12 @@ exports[`renders with props 1`] = `
     }
   >
     <SeriesVideoListItem
+      key="0"
       order={0}
       sermon={Object {}}
     />
     <SeriesVideoListItem
+      key="1"
       order={1}
       sermon={Object {}}
     />

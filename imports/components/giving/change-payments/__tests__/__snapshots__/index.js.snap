@@ -122,6 +122,7 @@ exports[`renders layout correctly delivers props to layout 1`] = `
         <Component
           accountId={1}
           accountName="Test Card 1"
+          key="0"
           onClick={[Function]}
           paymentAccount="4111111111111111"
           paymentType="Visa"
@@ -152,6 +153,7 @@ exports[`renders layout correctly delivers props to layout 1`] = `
               <h5
                 className="hard one-whole flush-bottom text-dark-tertiary"
               >
+                ************1111
                 <span
                   className="float-right soft-half-left"
                 >
@@ -223,6 +225,7 @@ exports[`renders layout correctly delivers props to layout 1`] = `
         <Component
           accountId={2}
           accountName="Test Card 2"
+          key="1"
           onClick={[Function]}
           paymentAccount="4111111111111111"
           paymentType="Visa"
@@ -253,6 +256,7 @@ exports[`renders layout correctly delivers props to layout 1`] = `
               <h5
                 className="hard one-whole flush-bottom text-dark-tertiary"
               >
+                ************1111
                 <span
                   className="float-right soft-half-left"
                 >

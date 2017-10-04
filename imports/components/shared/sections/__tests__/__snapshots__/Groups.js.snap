@@ -6,10 +6,12 @@ exports[`renders with props 1`] = `
 >
   <SectionItem
     hide={[Function]}
+    key="0"
     sections={Object {}}
   />
   <SectionItem
     hide={[Function]}
+    key="1"
     sections={Object {}}
   />
 </section>

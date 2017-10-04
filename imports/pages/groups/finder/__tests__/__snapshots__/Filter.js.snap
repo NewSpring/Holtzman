@@ -14,8 +14,12 @@ exports[`hides search when false 1`] = `
       <div
         className="two-thirds@anchored display-inline-block soft-ends@anchored"
       >
-        <withRouter(Connect(TagWithoutData)) />
-        <withRouter(Connect(TagWithoutData)) />
+        <withRouter(Connect(TagWithoutData))
+          key="0"
+        />
+        <withRouter(Connect(TagWithoutData))
+          key="1"
+        />
       </div>
     </div>
     <div
@@ -30,30 +34,37 @@ exports[`hides search when false 1`] = `
         className="two-thirds@anchored display-inline-block soft-ends@anchored"
       >
         <withRouter(Connect(TagWithoutData))
+          key="0"
           urlKey="schedules"
           val="Sunday"
         />
         <withRouter(Connect(TagWithoutData))
+          key="1"
           urlKey="schedules"
           val="Monday"
         />
         <withRouter(Connect(TagWithoutData))
+          key="2"
           urlKey="schedules"
           val="Tuesday"
         />
         <withRouter(Connect(TagWithoutData))
+          key="3"
           urlKey="schedules"
           val="Wednesday"
         />
         <withRouter(Connect(TagWithoutData))
+          key="4"
           urlKey="schedules"
           val="Thursday"
         />
         <withRouter(Connect(TagWithoutData))
+          key="5"
           urlKey="schedules"
           val="Friday"
         />
         <withRouter(Connect(TagWithoutData))
+          key="6"
           urlKey="schedules"
           val="Saturday"
         />
@@ -71,9 +82,11 @@ exports[`hides search when false 1`] = `
         className="two-thirds@anchored display-inline-block soft-ends@anchored"
       >
         <withRouter(Connect(TagWithoutData))
+          key="0"
           urlKey="campuses"
         />
         <withRouter(Connect(TagWithoutData))
+          key="1"
           urlKey="campuses"
         />
       </div>
@@ -161,8 +174,12 @@ exports[`renders with props 1`] = `
       <div
         className="two-thirds@anchored display-inline-block soft-ends@anchored"
       >
-        <withRouter(Connect(TagWithoutData)) />
-        <withRouter(Connect(TagWithoutData)) />
+        <withRouter(Connect(TagWithoutData))
+          key="0"
+        />
+        <withRouter(Connect(TagWithoutData))
+          key="1"
+        />
       </div>
     </div>
     <div
@@ -177,30 +194,37 @@ exports[`renders with props 1`] = `
         className="two-thirds@anchored display-inline-block soft-ends@anchored"
       >
         <withRouter(Connect(TagWithoutData))
+          key="0"
           urlKey="schedules"
           val="Sunday"
         />
         <withRouter(Connect(TagWithoutData))
+          key="1"
           urlKey="schedules"
           val="Monday"
         />
         <withRouter(Connect(TagWithoutData))
+          key="2"
           urlKey="schedules"
           val="Tuesday"
         />
         <withRouter(Connect(TagWithoutData))
+          key="3"
           urlKey="schedules"
           val="Wednesday"
         />
         <withRouter(Connect(TagWithoutData))
+          key="4"
           urlKey="schedules"
           val="Thursday"
         />
         <withRouter(Connect(TagWithoutData))
+          key="5"
           urlKey="schedules"
           val="Friday"
         />
         <withRouter(Connect(TagWithoutData))
+          key="6"
           urlKey="schedules"
           val="Saturday"
         />
@@ -218,9 +242,11 @@ exports[`renders with props 1`] = `
         className="two-thirds@anchored display-inline-block soft-ends@anchored"
       >
         <withRouter(Connect(TagWithoutData))
+          key="0"
           urlKey="campuses"
         />
         <withRouter(Connect(TagWithoutData))
+          key="1"
           urlKey="campuses"
         />
       </div>
@@ -303,8 +329,12 @@ exports[`renders without campuses 1`] = `
       <div
         className="two-thirds@anchored display-inline-block soft-ends@anchored"
       >
-        <withRouter(Connect(TagWithoutData)) />
-        <withRouter(Connect(TagWithoutData)) />
+        <withRouter(Connect(TagWithoutData))
+          key="0"
+        />
+        <withRouter(Connect(TagWithoutData))
+          key="1"
+        />
       </div>
     </div>
     <div
@@ -319,30 +349,37 @@ exports[`renders without campuses 1`] = `
         className="two-thirds@anchored display-inline-block soft-ends@anchored"
       >
         <withRouter(Connect(TagWithoutData))
+          key="0"
           urlKey="schedules"
           val="Sunday"
         />
         <withRouter(Connect(TagWithoutData))
+          key="1"
           urlKey="schedules"
           val="Monday"
         />
         <withRouter(Connect(TagWithoutData))
+          key="2"
           urlKey="schedules"
           val="Tuesday"
         />
         <withRouter(Connect(TagWithoutData))
+          key="3"
           urlKey="schedules"
           val="Wednesday"
         />
         <withRouter(Connect(TagWithoutData))
+          key="4"
           urlKey="schedules"
           val="Thursday"
         />
         <withRouter(Connect(TagWithoutData))
+          key="5"
           urlKey="schedules"
           val="Friday"
         />
         <withRouter(Connect(TagWithoutData))
+          key="6"
           urlKey="schedules"
           val="Saturday"
         />

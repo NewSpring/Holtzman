@@ -11,9 +11,11 @@ exports[`renders scriptures 1`] = `
   data-status-scroll-offset={-50}
 >
   <ScriptureItem
+    key="0"
     scripture="Job 2"
   />
   <ScriptureItem
+    key="1"
     scripture="Job 3"
   />
   <p

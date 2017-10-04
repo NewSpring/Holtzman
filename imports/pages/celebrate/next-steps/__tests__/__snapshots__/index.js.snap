@@ -199,46 +199,7 @@ exports[`Next Steps renders a layout 1`] = `
               "verticalAlign": "middle",
             }
           }
-        >
-          <undefined
-            colorScale={
-              Array [
-                "#6BAC43",
-                "#1C683E",
-                "#2A4930",
-              ]
-            }
-            data={
-              Array [
-                Object {
-                  "color": "#6BAC43",
-                  "count": "21,635",
-                  "ministry": "VIP Room",
-                },
-                Object {
-                  "color": "#1C683E",
-                  "count": "11,559",
-                  "ministry": "KidSpring",
-                },
-                Object {
-                  "color": "#2A4930",
-                  "count": "13,943",
-                  "ministry": "Fuse",
-                },
-              ]
-            }
-            labelRadius={100}
-            style={
-              Object {
-                "labels": Object {
-                  "display": "none",
-                },
-              }
-            }
-            x="ministry"
-            y="count"
-          />
-        </div>
+        />
       </div>
       <div
         className="floating push-double-left@handheld soft-top@lap-and-up"
@@ -248,6 +209,7 @@ exports[`Next Steps renders a layout 1`] = `
         >
           <div
             className="push-half display-inline-block@lap-and-up"
+            key="0"
           >
             <div
               className="display-inline-block"
@@ -264,6 +226,7 @@ exports[`Next Steps renders a layout 1`] = `
             />
             <h6
               className="display-inline-block push-half-left"
+              key="0"
               style={
                 Object {
                   "marginBottom": "0",
@@ -278,6 +241,7 @@ exports[`Next Steps renders a layout 1`] = `
           </div>
           <div
             className="push-half display-inline-block@lap-and-up"
+            key="1"
           >
             <div
               className="display-inline-block"
@@ -294,6 +258,7 @@ exports[`Next Steps renders a layout 1`] = `
             />
             <h6
               className="display-inline-block push-half-left"
+              key="1"
               style={
                 Object {
                   "marginBottom": "0",
@@ -308,6 +273,7 @@ exports[`Next Steps renders a layout 1`] = `
           </div>
           <div
             className="push-half display-inline-block@lap-and-up"
+            key="2"
           >
             <div
               className="display-inline-block"
@@ -324,6 +290,7 @@ exports[`Next Steps renders a layout 1`] = `
             />
             <h6
               className="display-inline-block push-half-left"
+              key="2"
               style={
                 Object {
                   "marginBottom": "0",
@@ -437,66 +404,82 @@ exports[`Next Steps renders a layout 1`] = `
     <Connect(CardSlider)>
       <MetricCard
         count="178"
+        key="0"
         label="Aiken"
       />
       <MetricCard
         count="2,165"
+        key="1"
         label="Anderson"
       />
       <MetricCard
         count="359"
+        key="2"
         label="Boiling Springs"
       />
       <MetricCard
         count="689"
+        key="3"
         label="Charleston"
       />
       <MetricCard
         count="375"
+        key="4"
         label="Clemson"
       />
       <MetricCard
         count="1,187"
+        key="5"
         label="Columbia"
       />
       <MetricCard
         count="576"
+        key="6"
         label="Florence"
       />
       <MetricCard
         count="1,208"
+        key="7"
         label="Greenville"
       />
       <MetricCard
         count="440"
+        key="8"
         label="Greenwood"
       />
       <MetricCard
         count="75"
+        key="9"
         label="Hilton Head"
       />
       <MetricCard
         count="478"
+        key="10"
         label="Myrtle Beach"
       />
       <MetricCard
         count="161"
+        key="11"
         label="Northeast Columbia"
       />
       <MetricCard
         count="585"
+        key="12"
         label="Powdersville"
       />
       <MetricCard
         count="136"
+        key="13"
         label="Rock Hill"
       />
       <MetricCard
         count="726"
+        key="14"
         label="Spartanburg"
       />
       <MetricCard
         count="109"
+        key="15"
         label="Sumter"
       />
     </Connect(CardSlider)>

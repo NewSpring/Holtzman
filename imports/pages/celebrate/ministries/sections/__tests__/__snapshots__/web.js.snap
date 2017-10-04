@@ -27,6 +27,7 @@ exports[`Web renders a layout 1`] = `
           </div>
           <div
             className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld"
+            key="0"
           >
             <img
               alt="icon"
@@ -57,6 +58,7 @@ exports[`Web renders a layout 1`] = `
           </div>
           <div
             className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld"
+            key="1"
           >
             <img
               alt="icon"
@@ -87,6 +89,7 @@ exports[`Web renders a layout 1`] = `
           </div>
           <div
             className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld"
+            key="2"
           >
             <img
               alt="icon"
@@ -117,6 +120,7 @@ exports[`Web renders a layout 1`] = `
           </div>
           <div
             className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld"
+            key="3"
           >
             <img
               alt="icon"
@@ -147,6 +151,7 @@ exports[`Web renders a layout 1`] = `
           </div>
           <div
             className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld"
+            key="4"
           >
             <img
               alt="icon"
@@ -177,6 +182,7 @@ exports[`Web renders a layout 1`] = `
           </div>
           <div
             className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld"
+            key="5"
           >
             <img
               alt="icon"
@@ -233,22 +239,27 @@ exports[`Web renders a layout 1`] = `
       <Connect(CardSlider)>
         <MetricCard
           count="942,436"
+          key="0"
           label="Articles Pageviews"
         />
         <MetricCard
           count="443,252"
+          key="1"
           label="Devotionals Pageviews"
         />
         <MetricCard
           count="252,566"
+          key="2"
           label="Studies Pageviews"
         />
         <MetricCard
           count="143,972"
+          key="3"
           label="Stories Pageviews"
         />
         <MetricCard
           count="429,514"
+          key="4"
           label="Sermons Pageviews"
         />
       </Connect(CardSlider)>
