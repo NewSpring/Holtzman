@@ -1,6 +1,6 @@
-
+// node doesn't like reassigning stuff here so we use the spread and
+// Object.assign to create new objects and keeping the old ones immutable.
 // XXX we need to abstract this to the component level
-
 import "regenerator-runtime/runtime";
 
 import { fork, put } from "redux-saga/effects";
@@ -109,31 +109,22 @@ function* getSectionsData() {
     }
   }
 
-  function bindForeignImages(sections) {
+  function bindForeignImages(s) {
+    const sections = { ...s };
     // remap the images of the section panel
     // eslint-disable-next-line
-    let imageUrl
-    for (const section in sections) {
+    for (const section in sections) { // eslint-disable-line
       let name = sections[section].text.toLowerCase();
       if (name.includes("studies")) name = "studies";
       if (name.includes("devotionals")) name = "studies";
       if (filteredItems[name]) {
         // eslint-disable-next-line
-        sections[section].image = filteredItems[name];
+        sections[section] = Object.assign({}, { image: filteredItems[name] });
       }
 
       // ensure protocol relative
       // eslint-disable-next-line
-      imageUrl = sections[section].image.replace(/^http:|^https:/i, "");
-      Object.defineProperties(sections[section], {
-        image: {
-          value: imageUrl,
-          writable: true,
-        },
-      },
-      );
-
-      // sections[section].image = sections[section].image.replace(/^http:|^https:/i, "");
+      sections[section] = Object.assign({}, { image: sections[section].image.replace(/^http:|^https:/i, "")});
 
       // pre download images for super speed
       if (process.env.NATIVE && sections[section].image) {
@@ -147,11 +138,13 @@ function* getSectionsData() {
     }
   }
 
-  function fixInternaLinks(sections) {
+  function fixInternaLinks(s) {
+    const sections = { ...s };
     // eslint-disable-next-line
     for (const section in sections) {
       let url = sections[section].link;
       const regex = new RegExp(__meteor_runtime_config__.ROOT_URL, "gmi");
+
       if (url.match(regex)) {
         url = url.replace(regex, "");
         if (url[0] !== "/") {
@@ -162,7 +155,7 @@ function* getSectionsData() {
       }
 
       // eslint-disable-next-line
-      sections[section].link = url;
+      sections[section] = Object.assign({ link: String(url) });
 
       fixInternaLinks(sections[section].children);
     }
