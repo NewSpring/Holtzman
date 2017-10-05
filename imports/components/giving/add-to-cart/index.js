@@ -3,7 +3,7 @@
 import { Component } from "react";
 import { connect } from "react-redux";
 
-import { give as giveActions } from "../../../data/store";
+import { give as mapDispatchToProps } from "../../../data/store";
 import Layout from "./Layout";
 
 type IStore = {
@@ -13,14 +13,14 @@ type IStore = {
 };
 
 // We only care about the give state
-export const map = ({ routing, give, accounts }: IStore) => ({
+export const map = ({ routing, give, accounts }: IStore): Object => ({
   status: give.state,
   total: give.total,
   query: routing.location.query,
   authorized: accounts.authorized,
 });
 
-export const withGiveActions = connect(map, giveActions);
+export const withGiveActions = connect(map, mapDispatchToProps);
 
 type ICartContainer = {
   clearTransaction: Function,
@@ -105,7 +105,7 @@ class CartContainer extends Component {
         let amount = null;
 
         const obj: ISubFund = {
-          accounts: [...accounts].map((x) => ({ label: x.name, value: x.id })),
+          accounts: [...accounts].map(x => ({ label: x.name, value: x.id })),
           primary: this.props.accounts.length === accounts.length,
           id: index + 1,
           fundId,
@@ -122,7 +122,7 @@ class CartContainer extends Component {
             // eslint-disable-next-line
             if (earlyReturn) continue;
             prefilled = true;
-            accounts = accounts.filter((x) => x.id !== id);
+            accounts = accounts.filter(x => x.id !== id);
             amount = Number(query[name]);
             fundId = id;
             // eslint-disable-next-line
@@ -139,10 +139,10 @@ class CartContainer extends Component {
 
         return obj;
       })
-      .filter((x) => !!x.id);
+      .filter(x => !!x.id);
   };
 
-  getFund = (id: number) => this.props.accounts.filter((x) => x.id === id)[0];
+  getFund = (id: number) => this.props.accounts.filter(x => x.id === id)[0];
 
   changeAmount = (amount: number, id: number) => {
     let newAmount = `${amount}`;
@@ -168,7 +168,7 @@ class CartContainer extends Component {
     // the subfunds as needed
     this.setState(({ subfunds }) => {
       // move the fund around
-      const newFunds = subfunds.map((subfund) => {
+      const newFunds = subfunds.map(subfund => {
         const newFund = subfund;
         if (subfund.fundId === id) newFund.amount = value;
         return newFund;
@@ -196,11 +196,11 @@ class CartContainer extends Component {
       // so we find which funds are selected
       // then remove them from the subfunds accounts
       const selectedFunds = [id, ...subfunds.map(({ amount, fundId }) => amount && fundId)].filter(
-        (x) => !!x
+        x => !!x
       );
 
       // move the fund around
-      const newFunds = subfunds.map((subfund) => {
+      const newFunds = subfunds.map(subfund => {
         const newFund = subfund;
         // change the id of the active subfund
         if (subfund.id === subfundId) {
@@ -213,8 +213,8 @@ class CartContainer extends Component {
           }
           // update the accounts of the other funds
           newFund.accounts = this.props.accounts
-            .filter((x) => selectedFunds.indexOf(x.id) === -1)
-            .map((x) => ({ label: x.name, value: x.id }));
+            .filter(x => selectedFunds.indexOf(x.id) === -1)
+            .map(x => ({ label: x.name, value: x.id }));
         }
 
         return newFund;
@@ -226,7 +226,7 @@ class CartContainer extends Component {
     // this is a side effect
     // it wont rerender
     // this subfund instance was managing the following subfund
-    const currentFund: Object[] = state.subfunds.filter((x) => x.id === subfundId);
+    const currentFund: Object[] = state.subfunds.filter(x => x.id === subfundId);
 
     if (currentFund.length) {
       this.props.clearTransaction(currentFund[0].fundId);
@@ -259,7 +259,7 @@ class CartContainer extends Component {
         const { fundId, amount } = subfunds[0];
 
         const newSubfund = {
-          accounts: [...this.props.accounts].map((x) => ({
+          accounts: [...this.props.accounts].map(x => ({
             label: x.name,
             value: x.id,
           })),
@@ -272,7 +272,7 @@ class CartContainer extends Component {
         if (amount) {
           newSubfund.accounts = [...this.props.accounts]
             .filter(({ id }) => id !== fundId)
-            .map((x) => ({ label: x.name, value: x.id }));
+            .map(x => ({ label: x.name, value: x.id }));
         }
 
         subfunds.push(newSubfund);

@@ -26,11 +26,11 @@ type IGivingActivity = {
 export class GivingActivity extends Component {
   props: IGivingActivity;
 
-  filterActivity = (data: [Object]): [any] => {
+  filterActivity = (data: [Object]): Array<any> => {
     if (!Array.isArray(data)) return [];
 
     const transactions = [];
-    // const accounts = [];
+    // const accounts = [{}];
     const activityToShow = [];
 
     // separate feed by transactions and accoutns
@@ -51,8 +51,7 @@ export class GivingActivity extends Component {
     //   }
     //   return null;
     // });
-
-    transactions.map((transaction) => {
+    transactions.map(transaction => {
       if (transaction.details[0].amount !== 0) {
         if (activityToShow.length < 3) {
           activityToShow.push(transaction);
@@ -150,7 +149,7 @@ export class GivingActivity extends Component {
     />
   ;
 
-  renderActivity = (feedItems: ?[Object]): ?[any] => {
+  renderActivity = (feedItems: ?Array<Object>): any => {
     if (Array.isArray(feedItems) && feedItems.length > 0) {
       return feedItems.map((feedItem: Object) => {
         if (feedItem.__typename === "Transaction") { //eslint-disable-line

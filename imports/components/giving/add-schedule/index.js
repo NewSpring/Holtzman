@@ -115,7 +115,7 @@ class CartContainer extends Component {
   }
 
   setFund = (id: number) => {
-    const selectedFund = this.props.accounts.filter((fund) => fund.id === Number(id));
+    const selectedFund = this.props.accounts.filter(fund => fund.id === Number(id));
     const { name } = selectedFund[0];
 
     if (this.state.fundId !== id) this.props.removeSchedule(this.state.fundId);
@@ -213,8 +213,11 @@ class CartContainer extends Component {
   }
 }
 
+type IConnect = {
+  state: Object
+};
 // We only care about the give state
-const map = (state) => ({ give: state.give });
+const map = ({ state }: IConnect): Object => ({ give: state.give });
 
 // spins up a cart if Rock is online
 export default createContainer(() => {

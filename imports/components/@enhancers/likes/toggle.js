@@ -1,6 +1,4 @@
-
 // @flow
-
 // $FlowMeteor
 import { Meteor } from "meteor/meteor";
 import React, { Component } from "react";
@@ -93,9 +91,9 @@ export const classWrapper = (
     }
 
     render() {
-      const id = this.getNodeId(this.props);
+      const id = this.getNodeId();
       const { likes } = this.props;
-      const isLiked = Boolean(id) && likes.length > 0 && likes.filter((x) => id === x).length !== 0;
+      const isLiked = Boolean(id) && likes.length > 0 && likes.filter(x => id === x).length !== 0;
       return (
         <WrappedComponent
           {...this.props}
@@ -107,10 +105,9 @@ export const classWrapper = (
   }
 
   return LikesWrapper;
-
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   modal: state.modal,
   likes: state.liked.likes,
 });

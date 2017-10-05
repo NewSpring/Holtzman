@@ -1,4 +1,6 @@
-// From: https://github.com/flowtype/flow-typed/blob/master/definitions/npm/prop-types_v15.x.x/flow_v0.41.x-/prop-types_v15.x.x.js
+// flow-typed signature: 3eaa1f24c7397b78a7481992d2cddcb2
+// flow-typed version: a1a20d4928/prop-types_v15.x.x/flow_>=v0.41.x
+
 type $npm$propTypes$ReactPropsCheckType = (
   props: any,
   propName: string,
