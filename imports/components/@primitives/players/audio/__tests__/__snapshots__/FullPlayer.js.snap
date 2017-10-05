@@ -1,11 +1,13 @@
-exports[`test getArtworkClasses returns default classes if short 1`] = `"one-whole overlay--gradient background--fill overlay-color--ff0000"`;
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`test getArtworkClasses returns ratio classes if not short 1`] = `"one-whole overlay--gradient background--fill overlay-color--ff0000 ratio--square"`;
+exports[`getArtworkClasses returns default classes if short 1`] = `"one-whole overlay--gradient background--fill overlay-color--ff0000"`;
 
-exports[`test getArtworkContainerStyles returns styles object if short 1`] = `
+exports[`getArtworkClasses returns ratio classes if not short 1`] = `"one-whole overlay--gradient background--fill overlay-color--ff0000 ratio--square"`;
+
+exports[`getArtworkContainerStyles returns styles object if short 1`] = `
 Object {
   "backgroundImage": "
-        url(\'http://test.com/1x1.blur.jpg\')
+        url('http://test.com/1x1.blur.jpg')
       ",
   "backgroundSize": "cover",
   "height": "100%",
@@ -14,31 +16,32 @@ Object {
 }
 `;
 
-exports[`test getArtworkStyles returns regular styles if not short 1`] = `
+exports[`getArtworkStyles returns regular styles if not short 1`] = `
 Object {
-  "backgroundImage": "url(\'http://test.com/1x1.jpg\')",
+  "backgroundImage": "url('http://test.com/1x1.jpg')",
 }
 `;
 
-exports[`test getArtworkStyles short styles if short 1`] = `
+exports[`getArtworkStyles short styles if short 1`] = `
 Object {
   "backgroundColor": "transparent",
-  "backgroundImage": "url(\'http://test.com/1x1.jpg\')",
+  "backgroundImage": "url('http://test.com/1x1.jpg')",
   "backgroundSize": "contain",
   "height": "1px",
 }
 `;
 
-exports[`test hackBackgroundStyles returns style object 1`] = `[Function]`;
+exports[`hackBackgroundStyles returns style object 1`] = `[Function]`;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <div
   style={
     Object {
       "backgroundColor": "#ff0000",
       "height": "100%",
     }
-  }>
+  }
+>
   <div
     className="overlay-color--ff0000"
     style={
@@ -50,44 +53,50 @@ exports[`test renders with props 1`] = `
         "width": "100%",
         "zIndex": -1,
       }
-    } />
+    }
+  />
   <style>
     
-        .overlay-color--ff0000:after{
-          background: linear-gradient(
-            to bottom, rgba(255, 0, 0, 0) 0%, #ff0000 100%
-          );
-        }
-      
+    .overlay-color--ff0000:after{
+      background: linear-gradient(
+        to bottom, rgba(255, 0, 0, 0) 0%, #ff0000 100%
+      );
+    }
+  
   </style>
   <style>
     
-        .overlay-color--ff0000 {
-          background-color: #ff0000;
-        }
-      
+    .overlay-color--ff0000 {
+      background-color: #ff0000;
+    }
+  
   </style>
   <div
-    className="player-flex_ucdycx player-container_1uu1wdg">
+    className="player-flex_ucdycx player-container_1uu1wdg"
+  >
     <section
       className="hard"
-      style={Object {}}>
+      style={Object {}}
+    >
       <div
         className="one-whole overlay--gradient background--fill overlay-color--ff0000 ratio--square"
         style={
           Object {
-            "backgroundImage": "url(\'http://test.com/1x1.jpg\')",
+            "backgroundImage": "url('http://test.com/1x1.jpg')",
           }
-        } />
+        }
+      />
     </section>
     <div
-      className="text-center soft-sides player-flex-one_e0s8li">
+      className="text-center soft-sides player-flex-one_e0s8li"
+    >
       <AudioTitle
         albumTitle="test album"
         artistName="track artist"
         channelName="music"
         isLight={false}
-        isPlaying={false} />
+        isPlaying={false}
+      />
       <Connect(AudioControlsWithoutData)
         audio={
           Object {
@@ -166,19 +175,21 @@ exports[`test renders with props 1`] = `
             "state": "default",
           }
         }
-        isLight={false} />
+        isLight={false}
+      />
     </div>
   </div>
 </div>
 `;
 
-exports[`test renders without color 1`] = `
+exports[`renders without color 1`] = `
 <div
   style={
     Object {
       "height": "100%",
     }
-  }>
+  }
+>
   <div
     className="overlay-color--000"
     style={
@@ -190,44 +201,50 @@ exports[`test renders without color 1`] = `
         "width": "100%",
         "zIndex": -1,
       }
-    } />
+    }
+  />
   <style>
     
-        .overlay-color--000:after{
-          background: linear-gradient(
-            to bottom, rgba(0, 0, 0, 0) 0%, #000 100%
-          );
-        }
-      
+    .overlay-color--000:after{
+      background: linear-gradient(
+        to bottom, rgba(0, 0, 0, 0) 0%, #000 100%
+      );
+    }
+  
   </style>
   <style>
     
-        .overlay-color--000 {
-          background-color: #000;
-        }
-      
+    .overlay-color--000 {
+      background-color: #000;
+    }
+  
   </style>
   <div
-    className="player-flex_ucdycx player-container_1uu1wdg">
+    className="player-flex_ucdycx player-container_1uu1wdg"
+  >
     <section
       className="hard"
-      style={Object {}}>
+      style={Object {}}
+    >
       <div
         className="one-whole overlay--gradient background--fill overlay-color--000 ratio--square"
         style={
           Object {
-            "backgroundImage": "url(\'http://test.com/1x1.jpg\')",
+            "backgroundImage": "url('http://test.com/1x1.jpg')",
           }
-        } />
+        }
+      />
     </section>
     <div
-      className="text-center soft-sides player-flex-one_e0s8li">
+      className="text-center soft-sides player-flex-one_e0s8li"
+    >
       <AudioTitle
         albumTitle="test album"
         artistName="track artist"
         channelName="music"
         isLight={false}
-        isPlaying={false} />
+        isPlaying={false}
+      />
       <Connect(AudioControlsWithoutData)
         audio={
           Object {
@@ -301,7 +318,8 @@ exports[`test renders without color 1`] = `
             "state": "default",
           }
         }
-        isLight={false} />
+        isLight={false}
+      />
     </div>
   </div>
 </div>

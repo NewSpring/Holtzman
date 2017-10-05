@@ -1,7 +1,7 @@
 import moment from "moment";
 import defaultRegex from "../regex/defaults";
 
-const creditCard = (value) => {
+const creditCard = value => {
   const replaceValue = value.replace(/-/g, "");
 
   if (defaultRegex.startOfVisa.test(replaceValue)) {
@@ -21,7 +21,7 @@ const creditCard = (value) => {
   return false;
 };
 
-const creditExpiry = (value) => {
+const creditExpiry = value => {
   let d;
 
   if (value.length <= 3) {
@@ -38,7 +38,7 @@ const creditExpiry = (value) => {
   return true;
 };
 
-const creditCVV = (value) => {
+const creditCVV = value => {
   const regex = /^[0-9]{3,4}$/;
   return regex.test(value);
 };

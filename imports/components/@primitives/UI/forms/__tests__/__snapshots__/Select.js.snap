@@ -1,285 +1,13 @@
-exports[`test allows deselect 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`allows deselect 1`] = `
 <div
-  className="input select_e8htpf">
+  className="input select_e8htpf"
+>
   <Label
     labelFor="2"
-    labelName="myLabel" />
-  <select
-    className="input classes"
-    id="2"
-    name="myName"
-    onBlur={[Function]}
-    onChange={[Function]}
-    onFocus={[Function]}
-    placeholder="myLabel"
-    style={
-      Object {
-        "color": "green",
-      }
-    }>
-    <option />
-    <option
-      className="one two"
-      value="1">
-      1
-    </option>
-    <option
-      className="one two"
-      value="2">
-      2
-    </option>
-  </select>
-</div>
-`;
-
-exports[`test appends extra classes 1`] = `
-<div
-  className="input append me select_e8htpf">
-  <Label
-    labelFor="2"
-    labelName="myLabel" />
-  <select
-    className="input classes"
-    id="2"
-    name="myName"
-    onBlur={[Function]}
-    onChange={[Function]}
-    onFocus={[Function]}
-    placeholder="myLabel"
-    style={
-      Object {
-        "color": "green",
-      }
-    }>
-    <option
-      className="one two"
-      value="1">
-      1
-    </option>
-    <option
-      className="one two"
-      value="2">
-      2
-    </option>
-  </select>
-</div>
-`;
-
-exports[`test can hide the label 1`] = `
-<div
-  className="input select_e8htpf">
-  <select
-    className="input classes"
-    id="2"
-    name="myName"
-    onBlur={[Function]}
-    onChange={[Function]}
-    onFocus={[Function]}
-    placeholder="myLabel"
-    style={
-      Object {
-        "color": "green",
-      }
-    }>
-    <option
-      className="one two"
-      value="1">
-      1
-    </option>
-    <option
-      className="one two"
-      value="2">
-      2
-    </option>
-  </select>
-</div>
-`;
-
-exports[`test has active state 1`] = `
-<div
-  className="input input--active select_e8htpf">
-  <Label
-    labelFor="2"
-    labelName="myLabel" />
-  <select
-    className="input classes"
-    id="2"
-    name="myName"
-    onBlur={[Function]}
-    onChange={[Function]}
-    onFocus={[Function]}
-    placeholder="myLabel"
-    style={
-      Object {
-        "color": "green",
-      }
-    }>
-    <option
-      className="one two"
-      value="1">
-      1
-    </option>
-    <option
-      className="one two"
-      value="2">
-      2
-    </option>
-  </select>
-</div>
-`;
-
-exports[`test has error state 1`] = `
-<div
-  className="input input--alert select_e8htpf">
-  <Label
-    labelFor="2"
-    labelName="myLabel" />
-  <select
-    className="input classes"
-    id="2"
-    name="myName"
-    onBlur={[Function]}
-    onChange={[Function]}
-    onFocus={[Function]}
-    placeholder="myLabel"
-    style={
-      Object {
-        "color": "green",
-      }
-    }>
-    <option
-      className="one two"
-      value="1">
-      1
-    </option>
-    <option
-      className="one two"
-      value="2">
-      2
-    </option>
-  </select>
-</div>
-`;
-
-exports[`test has focused state 1`] = `
-<div
-  className="input input--focused select_e8htpf">
-  <Label
-    labelFor="2"
-    labelName="myLabel" />
-  <select
-    className="input classes"
-    id="2"
-    name="myName"
-    onBlur={[Function]}
-    onChange={[Function]}
-    onFocus={[Function]}
-    placeholder="myLabel"
-    style={
-      Object {
-        "color": "green",
-      }
-    }>
-    <option
-      className="one two"
-      value="1">
-      1
-    </option>
-    <option
-      className="one two"
-      value="2">
-      2
-    </option>
-  </select>
-</div>
-`;
-
-exports[`test includes blank 1`] = `
-<div
-  className="input select_e8htpf">
-  <Label
-    labelFor="2"
-    labelName="myLabel" />
-  <select
-    className="input classes"
-    id="2"
-    name="myName"
-    onBlur={[Function]}
-    onChange={[Function]}
-    onFocus={[Function]}
-    placeholder="myLabel"
-    style={
-      Object {
-        "color": "green",
-      }
-    }>
-    <option
-      style={
-        Object {
-          "display": "none",
-        }
-      } />
-    <option
-      className="one two"
-      value="1">
-      1
-    </option>
-    <option
-      className="one two"
-      value="2">
-      2
-    </option>
-  </select>
-</div>
-`;
-
-exports[`test includes placeholder 1`] = `
-<div
-  className="input select_e8htpf">
-  <Label
-    labelFor="2"
-    labelName="myLabel" />
-  <select
-    className="input classes"
-    id="2"
-    name="myName"
-    onBlur={[Function]}
-    onChange={[Function]}
-    onFocus={[Function]}
-    placeholder="myPlaceholder"
-    style={
-      Object {
-        "color": "green",
-      }
-    }>
-    <option
-      style={
-        Object {
-          "display": "none",
-        }
-      }>
-      myPlaceholder
-    </option>
-    <option
-      className="one two"
-      value="1">
-      1
-    </option>
-    <option
-      className="one two"
-      value="2">
-      2
-    </option>
-  </select>
-</div>
-`;
-
-exports[`test is active if selected prop 1`] = `
-<div
-  className="input input--active select_e8htpf">
-  <Label
-    labelFor="2"
-    labelName="myLabel" />
+    labelName="myLabel"
+  />
   <select
     className="input classes"
     id="2"
@@ -293,27 +21,34 @@ exports[`test is active if selected prop 1`] = `
         "color": "green",
       }
     }
-    value="2">
+  >
+    <option />
     <option
       className="one two"
-      value="1">
+      key="0"
+      value="1"
+    >
       1
     </option>
     <option
       className="one two"
-      value="2">
+      key="1"
+      value="2"
+    >
       2
     </option>
   </select>
 </div>
 `;
 
-exports[`test overrides with theme if present 1`] = `
+exports[`appends extra classes 1`] = `
 <div
-  className="override select_e8htpf">
+  className="input append me select_e8htpf"
+>
   <Label
     labelFor="2"
-    labelName="myLabel" />
+    labelName="myLabel"
+  />
   <select
     className="input classes"
     id="2"
@@ -326,41 +61,383 @@ exports[`test overrides with theme if present 1`] = `
       Object {
         "color": "green",
       }
-    }>
+    }
+  >
     <option
       className="one two"
-      value="1">
+      key="0"
+      value="1"
+    >
       1
     </option>
     <option
       className="one two"
-      value="2">
+      key="1"
+      value="2"
+    >
       2
     </option>
   </select>
 </div>
 `;
 
-exports[`test renderHepText returns when error and error text 1`] = `
+exports[`can hide the label 1`] = `
+<div
+  className="input select_e8htpf"
+>
+  <select
+    className="input classes"
+    id="2"
+    name="myName"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    placeholder="myLabel"
+    style={
+      Object {
+        "color": "green",
+      }
+    }
+  >
+    <option
+      className="one two"
+      key="0"
+      value="1"
+    >
+      1
+    </option>
+    <option
+      className="one two"
+      key="1"
+      value="2"
+    >
+      2
+    </option>
+  </select>
+</div>
+`;
+
+exports[`has active state 1`] = `
+<div
+  className="input input--active select_e8htpf"
+>
+  <Label
+    labelFor="2"
+    labelName="myLabel"
+  />
+  <select
+    className="input classes"
+    id="2"
+    name="myName"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    placeholder="myLabel"
+    style={
+      Object {
+        "color": "green",
+      }
+    }
+  >
+    <option
+      className="one two"
+      key="0"
+      value="1"
+    >
+      1
+    </option>
+    <option
+      className="one two"
+      key="1"
+      value="2"
+    >
+      2
+    </option>
+  </select>
+</div>
+`;
+
+exports[`has error state 1`] = `
+<div
+  className="input input--alert select_e8htpf"
+>
+  <Label
+    labelFor="2"
+    labelName="myLabel"
+  />
+  <select
+    className="input classes"
+    id="2"
+    name="myName"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    placeholder="myLabel"
+    style={
+      Object {
+        "color": "green",
+      }
+    }
+  >
+    <option
+      className="one two"
+      key="0"
+      value="1"
+    >
+      1
+    </option>
+    <option
+      className="one two"
+      key="1"
+      value="2"
+    >
+      2
+    </option>
+  </select>
+</div>
+`;
+
+exports[`has focused state 1`] = `
+<div
+  className="input input--focused select_e8htpf"
+>
+  <Label
+    labelFor="2"
+    labelName="myLabel"
+  />
+  <select
+    className="input classes"
+    id="2"
+    name="myName"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    placeholder="myLabel"
+    style={
+      Object {
+        "color": "green",
+      }
+    }
+  >
+    <option
+      className="one two"
+      key="0"
+      value="1"
+    >
+      1
+    </option>
+    <option
+      className="one two"
+      key="1"
+      value="2"
+    >
+      2
+    </option>
+  </select>
+</div>
+`;
+
+exports[`includes blank 1`] = `
+<div
+  className="input select_e8htpf"
+>
+  <Label
+    labelFor="2"
+    labelName="myLabel"
+  />
+  <select
+    className="input classes"
+    id="2"
+    name="myName"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    placeholder="myLabel"
+    style={
+      Object {
+        "color": "green",
+      }
+    }
+  >
+    <option
+      style={
+        Object {
+          "display": "none",
+        }
+      }
+    />
+    <option
+      className="one two"
+      key="0"
+      value="1"
+    >
+      1
+    </option>
+    <option
+      className="one two"
+      key="1"
+      value="2"
+    >
+      2
+    </option>
+  </select>
+</div>
+`;
+
+exports[`includes placeholder 1`] = `
+<div
+  className="input select_e8htpf"
+>
+  <Label
+    labelFor="2"
+    labelName="myLabel"
+  />
+  <select
+    className="input classes"
+    id="2"
+    name="myName"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    placeholder="myPlaceholder"
+    style={
+      Object {
+        "color": "green",
+      }
+    }
+  >
+    <option
+      style={
+        Object {
+          "display": "none",
+        }
+      }
+    >
+      myPlaceholder
+    </option>
+    <option
+      className="one two"
+      key="0"
+      value="1"
+    >
+      1
+    </option>
+    <option
+      className="one two"
+      key="1"
+      value="2"
+    >
+      2
+    </option>
+  </select>
+</div>
+`;
+
+exports[`is active if selected prop 1`] = `
+<div
+  className="input input--active select_e8htpf"
+>
+  <Label
+    labelFor="2"
+    labelName="myLabel"
+  />
+  <select
+    className="input classes"
+    id="2"
+    name="myName"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    placeholder="myLabel"
+    style={
+      Object {
+        "color": "green",
+      }
+    }
+    value="2"
+  >
+    <option
+      className="one two"
+      key="0"
+      value="1"
+    >
+      1
+    </option>
+    <option
+      className="one two"
+      key="1"
+      value="2"
+    >
+      2
+    </option>
+  </select>
+</div>
+`;
+
+exports[`overrides with theme if present 1`] = `
+<div
+  className="override select_e8htpf"
+>
+  <Label
+    labelFor="2"
+    labelName="myLabel"
+  />
+  <select
+    className="input classes"
+    id="2"
+    name="myName"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    placeholder="myLabel"
+    style={
+      Object {
+        "color": "green",
+      }
+    }
+  >
+    <option
+      className="one two"
+      key="0"
+      value="1"
+    >
+      1
+    </option>
+    <option
+      className="one two"
+      key="1"
+      value="2"
+    >
+      2
+    </option>
+  </select>
+</div>
+`;
+
+exports[`renderHepText returns when error and error text 1`] = `
 <span
-  className="input__status">
+  className="input__status"
+>
   error
 </span>
 `;
 
-exports[`test renderHepText returns when status 1`] = `
+exports[`renderHepText returns when status 1`] = `
 <span
-  className="input__status">
+  className="input__status"
+>
   some status
 </span>
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <div
-  className="input select_e8htpf">
+  className="input select_e8htpf"
+>
   <Label
     labelFor="2"
-    labelName="myLabel" />
+    labelName="myLabel"
+  />
   <select
     className="input classes"
     id="2"
@@ -373,15 +450,20 @@ exports[`test renders with props 1`] = `
       Object {
         "color": "green",
       }
-    }>
+    }
+  >
     <option
       className="one two"
-      value="1">
+      key="0"
+      value="1"
+    >
       1
     </option>
     <option
       className="one two"
-      value="2">
+      key="1"
+      value="2"
+    >
       2
     </option>
   </select>

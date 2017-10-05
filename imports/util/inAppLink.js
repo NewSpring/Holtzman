@@ -4,7 +4,7 @@ import { Meteor } from "meteor/meteor";
 
 function openUrl(url, opened, loaded, closed) {
   try {
-    SafariViewController.isAvailable((available) => {
+    SafariViewController.isAvailable(available => {
       if (available) {
         SafariViewController.show({
           url,
@@ -14,7 +14,7 @@ function openUrl(url, opened, loaded, closed) {
           enterReaderModeIfAvailable: false,
           tintColor: "#6BAC43",
         },
-            (result) => {
+            result => {
               if (result.event === "opened" && opened) {
                 opened();
               } else if (result.event === "loaded" && loaded) {
@@ -24,7 +24,7 @@ function openUrl(url, opened, loaded, closed) {
               }
             },
             // error function?
-            (msg) => {
+            msg => {
               // eslint-disable-next-line no-console
               console.log(`KO: ${msg}`);
             });
@@ -38,7 +38,7 @@ function openUrl(url, opened, loaded, closed) {
   }
 }
 
-const inAppLink = (e) => {
+const inAppLink = e => {
   if (Meteor.isCordova) {
     if (SafariViewController || (cordova.InAppBrowser && cordova.InAppBrowser.open)) {
       e.preventDefault();
@@ -49,7 +49,7 @@ const inAppLink = (e) => {
 };
 
 
-const linkListener = (event) => {
+const linkListener = event => {
   // aggressively get all clicks of <a></a> links in cordova
   let target = event.target;
 

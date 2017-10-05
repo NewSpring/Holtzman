@@ -59,7 +59,7 @@ const clearTransaction = (state, action) => {
   };
 };
 
-const clearTransactions = (state) => (
+const clearTransactions = state => (
   { ...state,
     ...{
       total: 0,

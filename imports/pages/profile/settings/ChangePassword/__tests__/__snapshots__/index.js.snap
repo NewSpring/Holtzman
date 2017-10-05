@@ -1,4 +1,6 @@
-exports[`test renders error version 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders error version 1`] = `
 <div
   style={
     Object {
@@ -7,15 +9,17 @@ exports[`test renders error version 1`] = `
       "top": 0,
       "width": "100%",
     }
-  }>
+  }
+>
   <Err
     error={[Function]}
-    msg="Looks like there was a problem" />
+    msg="Looks like there was a problem"
+  />
   ;
 </div>
 `;
 
-exports[`test renders loading version 1`] = `
+exports[`renders loading version 1`] = `
 <div
   style={
     Object {
@@ -24,19 +28,22 @@ exports[`test renders loading version 1`] = `
       "top": 0,
       "width": "100%",
     }
-  }>
+  }
+>
   <Loading
-    msg="Updating your password..." />
+    msg="Updating your password..."
+  />
   ;
 </div>
 `;
 
-exports[`test renders success version 1`] = `
+exports[`renders success version 1`] = `
 <Success
-  msg="Your password has been updated!" />
+  msg="Your password has been updated!"
+/>
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <Layout
   save={[Function]}
   state={
@@ -47,5 +54,6 @@ exports[`test renders with props 1`] = `
       "state": "default",
     }
   }
-  submit={[Function]} />
+  submit={[Function]}
+/>
 `;

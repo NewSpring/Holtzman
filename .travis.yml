@@ -8,7 +8,7 @@ os:
 language: node_js
 dist: precise
 node_js:
-- '6'
+- '8.4.0'
 addons:
   apt:
     sources:
@@ -31,6 +31,7 @@ before_install:
 script:
   - yarn
   - yarn danger
+  - yarn lint
   - yarn test
 after_success:
   - 'if [ "$TRAVIS_EVENT_TYPE" == "cron" ]; then bash ./.travis/run_for_coverage; fi'
