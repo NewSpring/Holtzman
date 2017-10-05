@@ -1,5 +1,5 @@
 
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { Component } from "react";
 import { connect } from "react-redux";
 import { css } from "aphrodite";
@@ -52,10 +52,12 @@ class FullPlayerWithoutData extends Component {
   }
 
   setArtworkState = () => {
-    const artworkContainer = this.refs.artworkContainer;
-    this.setState({
-      isShort: artworkContainer.clientWidth > artworkContainer.clientHeight,
-    });
+    const artworkContainer = this.refs.artworkContainer || {};
+    if (artworkContainer.clientWidth && artworkContainer.clientHeight) {
+      this.setState({
+        isShort: artworkContainer.clientWidth > artworkContainer.clientHeight,
+      });
+    }
     return null;
   }
 
@@ -72,7 +74,7 @@ class FullPlayerWithoutData extends Component {
   // };
 
 
-  getArtworkStyles = (album) => {
+  getArtworkStyles = album => {
     const artworkContainer = this.refs.artworkContainer;
     const awStyles = backgrounds.styles(album);
 
@@ -85,7 +87,7 @@ class FullPlayerWithoutData extends Component {
     return awStyles;
   };
 
-  getArtworkClasses = (album) => {
+  getArtworkClasses = album => {
     const classes = [
       "one-whole",
       "overlay--gradient",

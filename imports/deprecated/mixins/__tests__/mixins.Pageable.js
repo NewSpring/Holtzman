@@ -29,7 +29,7 @@ it("binds scrolling events on mount", () => {
   const wrapper = shallow(generateComponent());
   wrapper.instance().componentDidMount();
   expect(wrapper.instance()._bindPageOnScroll).toBeTruthy();
-  expect(window.addEventListener).toHaveBeenCalledTimes(1);
+  expect(window.addEventListener).toHaveBeenCalled();
   expect(window.addEventListener).toHaveBeenCalledWith("scroll", wrapper.instance()._bindPageOnScroll);
 });
 
