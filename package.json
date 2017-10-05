@@ -17,10 +17,7 @@
     "danger": "danger run --verbose"
   },
   "lint-staged": {
-    "*.js": [
-      "eslint",
-      "jest --bail --findRelatedTests"
-    ]
+    "*.js": ["eslint", "jest --bail --findRelatedTests"]
   },
   "repository": {
     "type": "git",
@@ -55,17 +52,12 @@
       "<rootDir>/imports/util/tests/beforeTest.js",
       "<rootDir>/imports/util/tests/jestPreprocessor.js"
     ],
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "/.meteor/"
-    ],
+    "testPathIgnorePatterns": ["/node_modules/", "/.meteor/"],
     "moduleNameMapper": {
       "meteor/bjwiley2:server-watch": "<rootDir>/.meteor/mocks/bjwiley2-server-watch.js",
       "^meteor/(.*)": "<rootDir>/.meteor/mocks/$1.js"
     },
-    "setupFiles": [
-      "<rootDir>/imports/util/tests/beforeTest.js"
-    ]
+    "setupFiles": ["<rootDir>/imports/util/tests/beforeTest.js"]
   },
   "apollos": {
     "settings": "./.meteor/settings.json",
@@ -75,9 +67,12 @@
         "fonts": "NewSpring/newspring-fonts"
       },
       "./packages": {
-        "meteor-scss": "https://github.com/NewSpring/meteor-scss.git#432a60bded46edd02561e87b6a947b88072e9c68",
-        "fetch": "https://github.com/NewSpring/meteor-fetch.git#c36567418edd59564d54de9747c1f59e0ed0bf7f",
-        "inject-data": "https://github.com/NewSpring/inject-data.git#ea2e078e4763f8fd3875c77fb1073e3794bf8e6a"
+        "meteor-scss":
+          "https://github.com/NewSpring/meteor-scss.git#432a60bded46edd02561e87b6a947b88072e9c68",
+        "fetch":
+          "https://github.com/NewSpring/meteor-fetch.git#c36567418edd59564d54de9747c1f59e0ed0bf7f",
+        "inject-data":
+          "https://github.com/NewSpring/inject-data.git#ea2e078e4763f8fd3875c77fb1073e3794bf8e6a"
       }
     }
   },
@@ -142,7 +137,8 @@
     "react-router": "^2.4.0",
     "react-router-scroll": "^0.2.1",
     "react-slick": "^0.13.1",
-    "react-swipe-views": "https://git@github.com/NewSpring/react-swipe-views.git#d531949ddccb84ec53e634f7964c1c5cfac2c9b5",
+    "react-swipe-views":
+      "https://git@github.com/NewSpring/react-swipe-views.git#d531949ddccb84ec53e634f7964c1c5cfac2c9b5",
     "react-swipeable-views": "^0.8.3",
     "react-tooltip": "^3.0.13",
     "react-transform-sentry": "^1.0.0",

@@ -1,6 +1,4 @@
-
 // @flow
-
 import React, { Component } from "react";
 import { Link } from "react-router";
 
@@ -51,7 +49,6 @@ export class GivingActivity extends Component {
     //   }
     //   return null;
     // });
-    //
     transactions.map(transaction => {
       if (transaction.details[0].amount !== 0) {
         if (activityToShow.length < 3) {

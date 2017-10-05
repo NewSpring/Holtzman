@@ -1,5 +1,4 @@
 import { Meteor } from "meteor/meteor";
-
 /* eslint-disable react/no-multi-comp */
 import PropTypes from "prop-types";
 
