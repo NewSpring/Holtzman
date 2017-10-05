@@ -1,9 +1,13 @@
-exports[`test renders additional padding when audio player active 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders additional padding when audio player active 1`] = `
 <div
   className="background--light-primary locked-ends locked-sides scrollable soft-double-bottom offset_b736ty"
-  data-status-scroll-container={true}>
+  data-status-scroll-container={true}
+>
   <Meta
-    title="Discover" />
+    title="Discover"
+  />
   <div
     data-status-scroll-item={true}
     data-status-scroll-offset={-50}
@@ -11,18 +15,21 @@ exports[`test renders additional padding when audio player active 1`] = `
       Object {
         "paddingBottom": "50px",
       }
-    }>
+    }
+  >
     <withApollo(Connect(SearchContainerWithoutData)) />
   </div>
 </div>
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <div
   className="background--light-primary locked-ends locked-sides scrollable soft-double-bottom offset_b736ty"
-  data-status-scroll-container={true}>
+  data-status-scroll-container={true}
+>
   <Meta
-    title="Discover" />
+    title="Discover"
+  />
   <div
     data-status-scroll-item={true}
     data-status-scroll-offset={-50}
@@ -30,7 +37,8 @@ exports[`test renders with props 1`] = `
       Object {
         "paddingBottom": "10px",
       }
-    }>
+    }
+  >
     <withApollo(Connect(SearchContainerWithoutData)) />
   </div>
 </div>

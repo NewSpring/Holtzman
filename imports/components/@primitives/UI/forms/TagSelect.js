@@ -4,10 +4,10 @@ import { Component } from "react";
 import Tag from "../tags";
 
 type ITagSelectProps = {
-  items: [{
+  items: Array<{
     label: ?string,
     value: string | number
-  }],
+  }>,
   onClick: ?Function,
   overrideActive?: boolean,
   currentActive?: string,

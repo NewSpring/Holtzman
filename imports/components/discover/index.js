@@ -1,5 +1,6 @@
 import { Meteor } from "meteor/meteor";
-import { Component, PropTypes } from "react";
+import PropTypes from "prop-types";
+import { Component } from "react";
 import { connect } from "react-redux";
 import ReactMixin from "react-mixin";
 import gql from "graphql-tag";
@@ -81,7 +82,7 @@ class SearchContainerWithoutData extends Component {
       site: "https://newspring.cc",
     };
 
-    this.props.client.query({ query: SEARCH_QUERY, variables, forceFetch: true })
+    this.props.client.query({ query: SEARCH_QUERY, variables, fetchPolicy: "network-only" })
       .then(({ data }) => {
         const { search } = data;
         const propsSearch = this.props.search;
@@ -101,7 +102,7 @@ class SearchContainerWithoutData extends Component {
     this.props.dispatch(modal.hide())
   )
 
-  searchSubmit = (event) => {
+  searchSubmit = event => {
     event.preventDefault();
     document.getElementById("search").blur();
     const { dispatch } = this.props;
@@ -117,7 +118,7 @@ class SearchContainerWithoutData extends Component {
     });
   }
 
-  loadMore = (event) => {
+  loadMore = event => {
     event.preventDefault();
     const { dispatch } = this.props;
 
@@ -138,7 +139,7 @@ class SearchContainerWithoutData extends Component {
   }
 }
 
-const map = (state) => ({ search: state.search });
+const map = state => ({ search: state.search });
 const withRedux = connect(map);
 const withHeader = ReactMixin.decorate(Headerable);
 

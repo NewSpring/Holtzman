@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from "react";
+import PropTypes from "prop-types";
+import React, { Component } from "react";
 import Debouncer from "../../../../util/debounce";
 
 const { span } = React.DOM;
@@ -84,7 +85,7 @@ export default class ImageLoader extends Component {
     let el = this.loader;
     el = el.children[0];
 
-    const isElementInView = (e) => {
+    const isElementInView = e => {
       const coords = e.getBoundingClientRect();
       return (
         // if item is left of the screen's left side
@@ -107,13 +108,11 @@ export default class ImageLoader extends Component {
           // remove related event listener and add a new one back
           window.removeEventListener("scroll", this.debounce, false);
           window.addEventListener("scroll", this.debounce, false);
-          return;
         };
         // SetTimeout to prevent false calls on scrolling
         setTimeout(callback, 300);
         // remove inital eventlistener to scope a new one inside the timeout function
         window.removeEventListener("scroll", this.debounce, false);
-        return;
       }
     };
 
@@ -203,7 +202,7 @@ export default class ImageLoader extends Component {
     }
 
     return (
-      <span ref={(node) => { this.loader = node; }}>
+      <span ref={node => { this.loader = node; }}>
         {this.props.wrapper(...wrapperArgs)}
       </span>
     );

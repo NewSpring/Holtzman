@@ -8,7 +8,7 @@ import { makeNewGuid } from "../../../../util";
 let NEW_USER_EMAL_ID = false;
 Meteor.methods({
 
-  "rock/accounts/signup": (account) => {
+  "rock/accounts/signup": account => {
     check(account.email, String);
     check(account.firstName, String);
     check(account.lastName, String);
@@ -116,7 +116,7 @@ Meteor.methods({
           User: UserLogin,
 
         }
-        , () => {}
+        , () => {},
       );
 
       if (process.env.NODE_ENV === "production") {

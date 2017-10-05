@@ -9,11 +9,11 @@ import SectionHeader from "../../../components/@primitives/UI/section-header";
 import SmallButton from "../../../components/@primitives/UI/buttons/SmallButton";
 
 const SchedulesButton = () =>
-  <SmallButton
+  (<SmallButton
     text="New Schedule"
     linkUrl="/give/now?schedule=true"
     className="btn--dark-tertiary flush"
-  />;
+  />);
 
 type ISchedulesList = {
   schedules: Object,
@@ -26,8 +26,8 @@ export class SchedulesList extends Component {
   renderSchedules(schedules: Object) {
     if (!Array.isArray(schedules)) return null;
 
-    return schedules.map((schedule) =>
-      <ScheduleCard
+    return schedules.map(schedule =>
+      (<ScheduleCard
         classes="grid__item one-whole"
         key={schedule.id}
         amount={schedule.details.reduce((i, { amount }) => i + amount, 0).toFixed(2)}
@@ -37,7 +37,7 @@ export class SchedulesList extends Component {
         latest={schedule.transactions[0] ? schedule.transactions[0].date : ""}
         onEditClick={() => { this.props.router.push(`/give/schedules/edit/${schedule.id}`); }}
         onDetailClick={() => { this.props.router.push(`/give/schedules/${schedule.id}`); }}
-      />
+      />),
     );
   }
 

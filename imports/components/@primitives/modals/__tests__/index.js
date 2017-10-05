@@ -36,7 +36,7 @@ const generateComponent = (additionalProps = {}) => {
     ...defaultProps,
     ...additionalProps,
   };
-  return <SideModalContainer { ...newProps } />;
+  return <SideModalContainer {...newProps} />;
 };
 
 it("render with props", () => {
@@ -58,8 +58,8 @@ it("updates nav if not keeping the nav and modal visible", () => {
     },
   }));
   wrapper.instance().componentDidMount();
-  expect(mockDispatch).toHaveBeenCalledTimes(1);
-  expect(navActions.setLevel).toHaveBeenCalledTimes(1);
+  expect(mockDispatch).toHaveBeenCalled();
+  expect(navActions.setLevel).toHaveBeenCalled();
   expect(navActions.setLevel).toHaveBeenCalledWith("MODAL");
 });
 
@@ -233,7 +233,7 @@ it("handles esc key to dispatch closing the modal", () => {
     dispatch: mockDispatch,
   }));
 
-  const esc =  new CustomEvent("keydown");
+  const esc = new CustomEvent("keydown");
   esc.keyCode = 27;
 
   document.dispatchEvent(esc);
@@ -249,7 +249,7 @@ it("handles esc key to dispatch closing the modal", () => {
   const { handleKeyPress } = wrapper.instance();
 
   handleKeyPress({ keyCode: 27 });
-   expect(mockDispatch).toBeCalledWith(modalActions.hide());
+  expect(mockDispatch).toBeCalledWith(modalActions.hide());
 });
 
 it("handles down key to scroll within the component", () => {

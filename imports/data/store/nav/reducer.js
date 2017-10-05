@@ -95,7 +95,7 @@ let links = {
       action: false,
       icon: "icon-like",
       activeIcon: "icon-like-solid",
-      isActive: (props) => props.liked,
+      isActive: props => props.liked,
     },
     { id: 3, action: shareActions.share, icon: "icon-share" },
   ],
