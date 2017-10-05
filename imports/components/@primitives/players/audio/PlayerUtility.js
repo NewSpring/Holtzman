@@ -1,5 +1,5 @@
 /* eslint-disable import/no-named-as-default */
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 import { Component } from "react";
 import { connect } from "react-redux";

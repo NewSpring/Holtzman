@@ -1,5 +1,5 @@
 
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { Component } from "react";
 import { graphql } from "react-apollo";
 import { connect } from "react-redux";

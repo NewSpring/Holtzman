@@ -25,7 +25,7 @@ Object {
                 },
                 "value": Object {
                   "kind": "StringValue",
-                  "value": "series_newspring",
+                  "value": "studies",
                 },
               },
               Object {
@@ -386,11 +386,11 @@ Object {
   ],
   "kind": "Document",
   "loc": Object {
-    "end": 518,
+    "end": 509,
     "source": Source {
       "body": "
   query getSeries($limit: Int!, $skip: Int!) {
-    content(channel: \\"series_newspring\\", limit: $limit, skip: $skip) {
+    content(channel: \\"studies\\", limit: $limit, skip: $skip) {
       id
       entryId: id
       title
@@ -426,102 +426,33 @@ Object {
 }
 `;
 
-exports[`renders loading 1`] = `
-<Connect(ApollosPullToRefreshWithoutData)
-  handleRefresh={[Function]}
->
-  <Meta
-    title="Series"
-  />
-  <div
-    className="background--light-secondary"
-  >
-    <section
-      className="soft-half"
-    >
-      <div
-        className="grid"
-      >
-        <div
-          className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored"
-          key="0"
-        >
-          <FeedItemSkeleton />
-        </div>
-        <div
-          className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored"
-          key="1"
-        >
-          <FeedItemSkeleton />
-        </div>
-        <div
-          className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored"
-          key="2"
-        >
-          <FeedItemSkeleton />
-        </div>
-        <div
-          className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored"
-          key="3"
-        >
-          <FeedItemSkeleton />
-        </div>
-        <div
-          className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored"
-          key="4"
-        >
-          <FeedItemSkeleton />
-        </div>
-        <div
-          className="grid__item one-whole"
-        >
-          <mockConstructor />
-        </div>
-      </div>
-    </section>
-  </div>
-</Connect(ApollosPullToRefreshWithoutData)>
+exports[`renders loading if no content 1`] = `
+<TemplateWithoutData
+  Loading={[Function]}
+  data={
+    Object {
+      "content": Array [],
+      "loading": false,
+      "refetch": [Function],
+    }
+  }
+  dispatch={[Function]}
+/>
 `;
 
 exports[`renders with props 1`] = `
-<Connect(ApollosPullToRefreshWithoutData)
-  handleRefresh={[Function]}
->
-  <Meta
-    title="Series"
-  />
-  <div
-    className="background--light-secondary"
-  >
-    <section
-      className="soft-half"
-    >
-      <div
-        className="grid"
-      >
-        <div
-          className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored"
-          key="0"
-        >
-          <Connect(Apollo(LikesWrapper))
-            item={Object {}}
-          />
-        </div>
-        <div
-          className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored"
-          key="1"
-        >
-          <Connect(Apollo(LikesWrapper))
-            item={Object {}}
-          />
-        </div>
-        <div
-          className="grid__item one-whole"
-        >
-          <mockConstructor />
-        </div>
-      </div>
-    </section>
-  </div>
-</Connect(ApollosPullToRefreshWithoutData)>
+<TemplateWithoutData
+  Loading={[Function]}
+  data={
+    Object {
+      "content": Array [
+        Object {},
+        Object {},
+      ],
+      "loading": false,
+      "refetch": [Function],
+    }
+  }
+  dispatch={[Function]}
+/>
 `;

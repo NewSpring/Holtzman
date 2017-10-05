@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { Link } from "react-router";
 
 import AddToCart from "../../../components/giving/add-to-cart";

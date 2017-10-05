@@ -1,5 +1,5 @@
 
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 import { Accounts } from "../../@primitives/UI/icons";
 

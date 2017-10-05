@@ -17,7 +17,10 @@
     "danger": "danger run --verbose"
   },
   "lint-staged": {
-    "*.js": ["eslint", "jest --bail --findRelatedTests"]
+    "*.js": [
+      "eslint",
+      "jest --bail --findRelatedTests"
+    ]
   },
   "repository": {
     "type": "git",
@@ -52,12 +55,17 @@
       "<rootDir>/imports/util/tests/beforeTest.js",
       "<rootDir>/imports/util/tests/jestPreprocessor.js"
     ],
-    "testPathIgnorePatterns": ["/node_modules/", "/.meteor/"],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/.meteor/"
+    ],
     "moduleNameMapper": {
       "meteor/bjwiley2:server-watch": "<rootDir>/.meteor/mocks/bjwiley2-server-watch.js",
       "^meteor/(.*)": "<rootDir>/.meteor/mocks/$1.js"
     },
-    "setupFiles": ["<rootDir>/imports/util/tests/beforeTest.js"]
+    "setupFiles": [
+      "<rootDir>/imports/util/tests/beforeTest.js"
+    ]
   },
   "apollos": {
     "settings": "./.meteor/settings.json",
@@ -67,12 +75,9 @@
         "fonts": "NewSpring/newspring-fonts"
       },
       "./packages": {
-        "meteor-scss":
-          "https://github.com/NewSpring/meteor-scss.git#432a60bded46edd02561e87b6a947b88072e9c68",
-        "fetch":
-          "https://github.com/NewSpring/meteor-fetch.git#c36567418edd59564d54de9747c1f59e0ed0bf7f",
-        "inject-data":
-          "https://github.com/NewSpring/inject-data.git#ea2e078e4763f8fd3875c77fb1073e3794bf8e6a"
+        "meteor-scss": "https://github.com/NewSpring/meteor-scss.git#432a60bded46edd02561e87b6a947b88072e9c68",
+        "fetch": "https://github.com/NewSpring/meteor-fetch.git#c36567418edd59564d54de9747c1f59e0ed0bf7f",
+        "inject-data": "https://github.com/NewSpring/inject-data.git#ea2e078e4763f8fd3875c77fb1073e3794bf8e6a"
       }
     }
   },
@@ -98,7 +103,7 @@
     "aphrodite": "https://github.com/NewSpring/aphrodite.git#release",
     "apollo-client": "1.9.3",
     "audio5": "^0.1.10",
-    "babel-jest": "^17.0.2",
+    "babel-jest": "^21.2.0",
     "babel-plugin-ramda": "^1.2.0",
     "babel-polyfill": "^6.23.0",
     "bcrypt": "^0.8.7",
@@ -106,6 +111,8 @@
     "cheerio": "^0.20.0",
     "compression": "^1.6.2",
     "cookie-parser": "^1.4.3",
+    "enzyme": "^3.1.0",
+    "enzyme-adapter-react-15": "^1.0.1",
     "fibers": "^1.0.15",
     "file-saver": "^1.3.3",
     "google-map-react": "^0.14.8",
@@ -135,8 +142,7 @@
     "react-router": "^2.4.0",
     "react-router-scroll": "^0.2.1",
     "react-slick": "^0.13.1",
-    "react-swipe-views":
-      "https://git@github.com/NewSpring/react-swipe-views.git#d531949ddccb84ec53e634f7964c1c5cfac2c9b5",
+    "react-swipe-views": "https://git@github.com/NewSpring/react-swipe-views.git#d531949ddccb84ec53e634f7964c1c5cfac2c9b5",
     "react-swipeable-views": "^0.8.3",
     "react-tooltip": "^3.0.13",
     "react-transform-sentry": "^1.0.0",
@@ -160,7 +166,6 @@
     "@kadira/storybook-addon-knobs": "^1.3.3",
     "@kadira/storybook-addon-options": "^1.0.1",
     "@kadira/storybook-database-cloud": "^2.3.1",
-    "babel-jest": "^21.2.0",
     "babel-eslint": "^7.2.3",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-react-require": "^3.0.0",
@@ -182,14 +187,15 @@
     "babel-traverse": "^6.11.4",
     "css-loader": "^0.25.0",
     "danger": "^0.15.0",
-    "enzyme": "^3.1.0",
-    "enzyme-adapter-react-15": "^1.0.1",
     "enzyme-to-json": "^3.1.0",
     "es6-promise": "^3.2.1",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "15.0.0",
     "eslint-config-airbnb-base": "9.0.0",
     "eslint-plugin-compat": "^0.1.3",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.4.0",
     "flow-bin": "^0.52.0",
     "gagarin": "^0.4.12",
     "github-download": "^0.5.0",

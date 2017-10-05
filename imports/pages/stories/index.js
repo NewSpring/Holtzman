@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { Component } from "react";
 import ReactMixin from "react-mixin";
 import { connect } from "react-redux";

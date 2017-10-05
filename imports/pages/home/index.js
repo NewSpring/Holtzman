@@ -2,7 +2,7 @@ import { Component } from "react";
 import ReactMixin from "react-mixin";
 import { connect } from "react-redux";
 import { graphql } from "react-apollo";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { difference } from "ramda";
 import gql from "graphql-tag";
 

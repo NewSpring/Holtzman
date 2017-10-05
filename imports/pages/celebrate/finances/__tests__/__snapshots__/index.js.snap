@@ -1,0 +1,664 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Finances renders a layout 1`] = `
+<div>
+  <Meta
+    title="Finances"
+  />
+  <div
+    className="background--primary text-center text-light-primary soft-double-ends"
+  >
+    <h3
+      className="push-top soft-half-sides"
+    >
+      General Tithes and Offerings
+    </h3>
+    <div
+      className="push-half-bottom"
+    >
+      <div
+        className="display-inline-block"
+      >
+        <Connect(FitTextWithoutData)
+          compressor={1.5}
+          maxFontSize={18}
+        >
+          <Currency
+            amount="49329319.14"
+            baseHeadingSize="1"
+            className="display-inline-block text-center soft-bottom"
+            roundCurrency={true}
+            style={
+              Object {
+                "fontWeight": "900",
+              }
+            }
+            theme="light"
+          />
+        </Connect(FitTextWithoutData)>
+      </div>
+    </div>
+    <div
+      className="floating push-right push-bottom"
+    >
+      <div
+        className="grid floating__item three-quarters@lap-wide-and-up nine-tenths@lap-and-up text-center"
+      >
+        <div
+          className="grid__item one-half@lap-and-up push-half-bottom"
+          key="0"
+        >
+          <div
+            className="grid__item one-whole"
+          >
+            <Progress
+              key="0"
+              percentDone={0.9977887158813115}
+              style={Object {}}
+              theme="dark"
+              title="Aiken"
+              total="492202.38"
+            />
+          </div>
+        </div>
+        <div
+          className="grid__item one-half@lap-and-up push-half-bottom"
+          key="1"
+        >
+          <div
+            className="grid__item one-whole"
+          >
+            <Progress
+              key="1"
+              percentDone={28.45033299602116}
+              style={Object {}}
+              theme="dark"
+              title="Anderson"
+              total="14034355.56"
+            />
+          </div>
+        </div>
+        <div
+          className="grid__item one-half@lap-and-up push-half-bottom"
+          key="2"
+        >
+          <div
+            className="grid__item one-whole"
+          >
+            <Progress
+              key="2"
+              percentDone={2.5218144942756244}
+              style={Object {}}
+              theme="dark"
+              title="Boiling Springs"
+              total="1243993.92"
+            />
+          </div>
+        </div>
+        <div
+          className="grid__item one-half@lap-and-up push-half-bottom"
+          key="3"
+        >
+          <div
+            className="grid__item one-whole"
+          >
+            <Progress
+              key="3"
+              percentDone={0.23958350137487833}
+              style={Object {}}
+              theme="dark"
+              title="Central"
+              total="118184.91"
+            />
+          </div>
+        </div>
+        <div
+          className="grid__item one-half@lap-and-up push-half-bottom"
+          key="4"
+        >
+          <div
+            className="grid__item one-whole"
+          >
+            <Progress
+              key="4"
+              percentDone={6.626845691347201}
+              style={Object {}}
+              theme="dark"
+              title="Charleston"
+              total="3268977.86"
+            />
+          </div>
+        </div>
+        <div
+          className="grid__item one-half@lap-and-up push-half-bottom"
+          key="5"
+        >
+          <div
+            className="grid__item one-whole"
+          >
+            <Progress
+              key="5"
+              percentDone={2.497786998646988}
+              style={Object {}}
+              theme="dark"
+              title="Clemson"
+              total="1232141.32"
+            />
+          </div>
+        </div>
+        <div
+          className="grid__item one-half@lap-and-up push-half-bottom"
+          key="6"
+        >
+          <div
+            className="grid__item one-whole"
+          >
+            <Progress
+              key="6"
+              percentDone={9.441375942737166}
+              style={Object {}}
+              theme="dark"
+              title="Columbia*"
+              total="4657366.47"
+            />
+          </div>
+        </div>
+        <div
+          className="grid__item one-half@lap-and-up push-half-bottom"
+          key="7"
+        >
+          <div
+            className="grid__item one-whole"
+          >
+            <Progress
+              key="7"
+              percentDone={5.848441029182225}
+              style={Object {}}
+              theme="dark"
+              title="Florence"
+              total="2884996.14"
+            />
+          </div>
+        </div>
+        <div
+          className="grid__item one-half@lap-and-up push-half-bottom"
+          key="8"
+        >
+          <div
+            className="grid__item one-whole"
+          >
+            <Progress
+              key="8"
+              percentDone={16.67178404927808}
+              style={Object {}}
+              theme="dark"
+              title="Greenville"
+              total="8224077.56"
+            />
+          </div>
+        </div>
+        <div
+          className="grid__item one-half@lap-and-up push-half-bottom"
+          key="9"
+        >
+          <div
+            className="grid__item one-whole"
+          >
+            <Progress
+              key="9"
+              percentDone={3.6908021066191425}
+              style={Object {}}
+              theme="dark"
+              title="Greenwood"
+              total="1820647.55"
+            />
+          </div>
+        </div>
+        <div
+          className="grid__item one-half@lap-and-up push-half-bottom"
+          key="10"
+        >
+          <div
+            className="grid__item one-whole"
+          >
+            <Progress
+              key="10"
+              percentDone={0.6854857839012938}
+              style={Object {}}
+              theme="dark"
+              title="Hilton Head"
+              total="338145.47"
+            />
+          </div>
+        </div>
+        <div
+          className="grid__item one-half@lap-and-up push-half-bottom"
+          key="11"
+        >
+          <div
+            className="grid__item one-whole"
+          >
+            <Progress
+              key="11"
+              percentDone={2.5644133794140176}
+              style={Object {}}
+              theme="dark"
+              title="Lexington*"
+              total="1265007.66"
+            />
+          </div>
+        </div>
+        <div
+          className="grid__item one-half@lap-and-up push-half-bottom"
+          key="12"
+        >
+          <div
+            className="grid__item one-whole"
+          >
+            <Progress
+              key="12"
+              percentDone={4.697388024804592}
+              style={Object {}}
+              theme="dark"
+              title="Myrtle Beach"
+              total="2317189.53"
+            />
+          </div>
+        </div>
+        <div
+          className="grid__item one-half@lap-and-up push-half-bottom"
+          key="13"
+        >
+          <div
+            className="grid__item one-whole"
+          >
+            <Progress
+              key="13"
+              percentDone={1.1259060122515203}
+              style={Object {}}
+              theme="dark"
+              title="Northeast Columbia"
+              total="555401.77"
+            />
+          </div>
+        </div>
+        <div
+          className="grid__item one-half@lap-and-up push-half-bottom"
+          key="14"
+        >
+          <div
+            className="grid__item one-whole"
+          >
+            <Progress
+              key="14"
+              percentDone={5.237526698204494}
+              style={Object {}}
+              theme="dark"
+              title="Powdersville"
+              total="2583636.26"
+            />
+          </div>
+        </div>
+        <div
+          className="grid__item one-half@lap-and-up push-half-bottom"
+          key="15"
+        >
+          <div
+            className="grid__item one-whole"
+          >
+            <Progress
+              key="15"
+              percentDone={0.9665421869027645}
+              style={Object {}}
+              theme="dark"
+              title="Rock Hill"
+              total="476788.68"
+            />
+          </div>
+        </div>
+        <div
+          className="grid__item one-half@lap-and-up push-half-bottom"
+          key="16"
+        >
+          <div
+            className="grid__item one-whole"
+          >
+            <Progress
+              key="16"
+              percentDone={6.357380528808165}
+              style={Object {}}
+              theme="dark"
+              title="Spartanburg"
+              total="3136052.53"
+            />
+          </div>
+        </div>
+        <div
+          className="grid__item one-half@lap-and-up push-half-bottom"
+          key="17"
+        >
+          <div
+            className="grid__item one-whole"
+          >
+            <Progress
+              key="17"
+              percentDone={0.5842372346191681}
+              style={Object {}}
+              theme="dark"
+              title="Sumter"
+              total="288200.25"
+            />
+          </div>
+        </div>
+        <div
+          className="soft-left one-half@lap-and-up push-half-bottom"
+          key="18"
+        >
+          <div
+            className="grid__item one-whole"
+          >
+            <Progress
+              key="18"
+              percentDone={0.7945666529221833}
+              style={Object {}}
+              theme="dark"
+              title="Web"
+              total="391954.32"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="soft-sides"
+    >
+      <small
+        className="text-center"
+      >
+        <em>
+          Lexington campus merged with Columbia campus on Oct. 30.
+        </em>
+      </small>
+      <br />
+      <small
+        className="text-center"
+      >
+        <em>
+          Financials have been audited.
+        </em>
+      </small>
+    </div>
+  </div>
+  <div
+    className="background--light-primary text-center soft-double-top"
+  >
+    <h3
+      className="push-top push-half-bottom"
+    >
+      Land and Building Giving
+    </h3>
+    <div
+      className="push-top"
+    >
+      <Connect(FitTextWithoutData)
+        compressor={1.5}
+        maxFontSize={18}
+      >
+        <Currency
+          amount="1792258.15"
+          baseHeadingSize="1"
+          className="display-inline-block text-center soft-bottom text-dark-primary"
+          roundCurrency={true}
+          style={
+            Object {
+              "fontWeight": "900",
+            }
+          }
+        />
+      </Connect(FitTextWithoutData)>
+    </div>
+    <div
+      className="floating"
+    >
+      <div
+        className="soft-double-sides soft-sides@handheld text-center three-quarters@lap-wide-and-up nine-tenths@lap floating__item"
+      >
+        <hr
+          className="push-ends"
+          style={
+            Object {
+              "borderTop": "1px solid #dddddd",
+            }
+          }
+        />
+        <div
+          className="soft-ends"
+        >
+          <div
+            className="grid push-ends"
+          >
+            <div
+              className="grid__item one-half@lap-and-up one-whole"
+            >
+              <h3
+                className="italic"
+                style={
+                  Object {
+                    "fontFamily": "ff-meta-serif-web-pro, serif",
+                  }
+                }
+              >
+                We had
+              </h3>
+              <Connect(FitTextWithoutData)
+                compressor={0.5}
+              >
+                <h1
+                  className="uppercase flush-bottom soft-half-bottom"
+                  style={
+                    Object {
+                      "fontWeight": "900",
+                    }
+                  }
+                >
+                  5,400
+                </h1>
+              </Connect(FitTextWithoutData)>
+              <h3>
+                first time givers
+              </h3>
+            </div>
+            <div
+              className="grid__item one-half@lap-and-up"
+            >
+              <h3
+                className="italic"
+                style={
+                  Object {
+                    "fontFamily": "ff-meta-serif-web-pro, serif",
+                  }
+                }
+              >
+                and
+              </h3>
+              <Connect(FitTextWithoutData)
+                compressor={0.5}
+              >
+                <h1
+                  className="uppercase flush-bottom soft-half-bottom"
+                  style={
+                    Object {
+                      "fontWeight": "900",
+                    }
+                  }
+                >
+                  18,173
+                </h1>
+              </Connect(FitTextWithoutData)>
+              <div
+                className="floating text-center"
+              >
+                <h3
+                  className="floating__item push-half-bottom"
+                >
+                  households gave.
+                </h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="background--dark-primary soft floating"
+  >
+    <div
+      className="floating__item two-thirds@lap-and-up"
+    >
+      <h3
+        className="push-double-top text-light-primary"
+      >
+        Christmas Offering
+      </h3>
+      <Connect(FitTextWithoutData)
+        compressor={1.5}
+        maxFontSize={18}
+      >
+        <Currency
+          amount="1125052.43"
+          baseHeadingSize="1"
+          className="display-inline-block text-center soft-double-bottom"
+          roundCurrency={true}
+          style={
+            Object {
+              "fontWeight": "900",
+            }
+          }
+          theme="light"
+        />
+      </Connect(FitTextWithoutData)>
+      <hr
+        className="visuallyhidden@handheld push-ends"
+        style={
+          Object {
+            "borderTop": "1px solid #ffffff",
+          }
+        }
+      />
+      <div
+        className="text-light-primary text-left push-top@lap-and-up soft-double-top@lap-and-up push-double-bottom"
+      >
+        <div
+          className="floating"
+        >
+          <div
+            className="floating__item three-quarters@lap-and-up text-left"
+          >
+            <p>
+              This year's Christmas Offering will support these three projects:
+            </p>
+            <ul>
+              <li>
+                Campus expansion to help our
+                 
+                <a
+                  alt="link to locations page"
+                  className="text-light-primary"
+                  href="https://newspring.cc/locations"
+                  target="_blank"
+                >
+                  current campuses
+                </a>
+                 
+                take their next step.
+              </li>
+              <li>
+                Global missions to support
+                 
+                <a
+                  alt="link to Freedom Church"
+                  className="text-light-primary"
+                  href="http://www.freedomchurch.cc/"
+                  target="_blank"
+                >
+                  Freedom Church
+                </a>
+                 
+                as they launch three new campuses in 2017.
+              </li>
+              <li>
+                Local missions in the communities where we have
+                 
+                <a
+                  alt="link to locations page"
+                  className="text-light-primary"
+                  href="https://newspring.cc/locations"
+                  target="_blank"
+                >
+                  campuses
+                </a>
+                .
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="background--light-primary soft"
+  >
+    <h3
+      className="text-center push-top"
+    >
+      Annual Audit
+    </h3>
+    <p
+      className="constrain-copy push-bottom"
+    >
+      NewSpring is audited annually by an external accounting firm according to Generally Accepted Accounting Principles. God calls His people to live above reproach, so for us, the annual audit is a financial and spiritual responsibility (
+      <a
+        alt="Philippians 2:15"
+        href="https://www.bible.com/search/bible?q=philippians%202:15&version_id=111"
+        target="_blank"
+      >
+        Philippians 2:15
+      </a>
+      ).
+    </p>
+    <div
+      className="text-center"
+    >
+      <a
+        className="btn push-bottom"
+        href="https://s3.amazonaws.com/ns.assets/apollos/annual+report/2016/2016+Audit.pdf"
+        onClick={[Function]}
+        target="_blank"
+      >
+        Detailed Report
+      </a>
+    </div>
+  </div>
+  <div
+    className="background--primary text-center text-light-primary soft"
+  >
+    <h3
+      className="push-double-top"
+    >
+      Keep Reading
+    </h3>
+    <p>
+      Up next in the NewSpring 2016 Annual Report is information on Next Steps.
+    </p>
+    <Link
+      className="btn--light push-double-bottom"
+      onlyActiveOnIndex={false}
+      style={Object {}}
+      to="/annualreport/next-steps"
+    >
+      Go To Next Steps Report
+    </Link>
+  </div>
+</div>
+`;

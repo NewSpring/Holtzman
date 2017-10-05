@@ -1,14 +1,13 @@
 /* eslint-disable import/imports-first */
 
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 import { Component } from "react";
 import { css } from "aphrodite";
 
 let velocity = () => {};
 if (Meteor.isClient) {
-  // eslint-disable-next-line no-unused-vars
-  velocity = require("velocity-animate");
+  velocity = require("velocity-animate"); // eslint-disable-line
 }
 
 /* eslint-disable */

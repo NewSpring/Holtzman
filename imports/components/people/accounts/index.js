@@ -24,7 +24,7 @@ class Accounts extends Component {
     setAccount: PropTypes.func.isRequired,
     save: PropTypes.func.isRequired,
     peopleWithoutAccountEmails: PropTypes.func.isRequired,
-    // data: PropTypes.object,
+    data: PropTypes.object,
   };
 
   componentWillReceiveProps(nextProps) {
@@ -60,7 +60,7 @@ class AccountsContainer extends Component {
     clear: PropTypes.func,
     submit: PropTypes.func,
     location: PropTypes.object,
-    // client: PropTypes.object,
+    client: PropTypes.object,
   };
 
   state = {

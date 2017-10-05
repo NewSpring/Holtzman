@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { Link } from "react-router";
 import Loading from "../../@primitives/UI/loading/Spinner";
 

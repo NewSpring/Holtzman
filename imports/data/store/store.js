@@ -5,7 +5,7 @@ import { ApolloProvider } from "react-apollo";
 import createSagaMiddleware from "redux-saga";
 import reduxReset from "redux-reset";
 
-import GraphQL from "../graphql";
+import { GraphQL } from "../graphql";
 
 import { reducers, middlewares, sagas } from "./utilities";
 import { syncHistory, routeReducer } from "./routing";

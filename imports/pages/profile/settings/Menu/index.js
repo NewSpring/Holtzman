@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 import { Component } from "react";
 import { Meteor } from "meteor/meteor";
