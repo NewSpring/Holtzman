@@ -14,19 +14,19 @@ export const createItemClasses = (itemClasses?: [string], linkAll: boolean): str
     join(" "),
     flatten,
     ifElse(() => itemClasses, append(itemClasses), x => x),
-    ifElse(() => linkAll, append("background--light-primary"), x => x)
+    ifElse(() => linkAll, append("background--light-primary"), x => x),
   )(["card__item", "soft", "text-center", "soft-double-ends"]);
 
 export const cardClasses = (classes: Array<string>): string =>
   compose(
     join(" "),
     flatten,
-    ifElse(() => classes, append(classes), x => x)
+    ifElse(() => classes, append(classes), x => x),
   )(["card"]);
 
 export const createStyles = (linkAll: boolean): Object =>
   compose(
-    ifElse(() => linkAll, merge({ color: "inherit", textDecoration: "none" }), x => x)
+    ifElse(() => linkAll, merge({ color: "inherit", textDecoration: "none" }), x => x),
   )({ overflow: "hidden", display: "block" });
 
 export const imageStyles = (full: boolean, url: string): Object =>
@@ -53,17 +53,17 @@ export const createImage = (
 ) =>
   compose(
     classes =>
-      <ImageLoader
+      (<ImageLoader
         src={url}
         imageclasses={classes}
         renderElement={renderer}
         preloader={loader ? loader(classes) : null}
         style={full !== true ? ({ backgroundImage: `url('${url}')` }) : ({})}
         data-spec="card-image-loader"
-      />,
+      />),
     flatten,
     ifElse(() => imageClasses, append(imageClasses), identity),
-    ifElse(() => ratio, append(`ratio--${ratio}`), append("ratio--landscape"))
+    ifElse(() => ratio, append(`ratio--${ratio}`), append("ratio--landscape")),
   )(["background--fill", "card__image", "background-light-tertiary"]);
 
 // boolean -> string -> strng

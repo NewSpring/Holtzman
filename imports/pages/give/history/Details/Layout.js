@@ -1,5 +1,5 @@
 /* eslint-disable react/no-danger */
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 import { Component } from "react";
 import moment from "moment";
@@ -21,7 +21,7 @@ export default class Layout extends Component {
     transaction: PropTypes.object,
   }
 
-  formatDate = (date) => (
+  formatDate = date => (
     moment(new Date(date)).format("MMM D, YYYY")
   )
 

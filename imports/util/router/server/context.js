@@ -9,6 +9,7 @@ export default class SsrContext {
     let collection = this._collections[collName];
     if (!collection) {
       const minimongo = Package.minimongo;
+      // eslint-disable-next-line
       collection = this._collections[collName] = new minimongo.LocalCollection();
     }
 
@@ -18,9 +19,7 @@ export default class SsrContext {
   addSubscription(name, params) {
     const fastRenderContext = FastRender.frContext.get();
     if (!fastRenderContext) {
-      throw new Error(
-        `Cannot add a subscription: ${name} without FastRender Context`
-      );
+      throw new Error(`Cannot add a subscription: ${name} without FastRender Context`);
     }
 
     const args = [name].concat(params);
@@ -31,8 +30,8 @@ export default class SsrContext {
   addData(data) {
     _.each(data, (collDataCollection, collectionName) => {
       const collection = this.getCollection(collectionName);
-      collDataCollection.forEach((collData) => {
-        collData.forEach((item) => {
+      collDataCollection.forEach(collData => {
+        collData.forEach(item => {
           const existingDoc = collection.findOne(item._id);
           if (existingDoc) {
             const newDoc = { ...existingDoc, ...item };

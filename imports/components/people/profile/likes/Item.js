@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { Component } from "react";
 import moment from "moment";
 import { Link } from "react-router";
@@ -57,7 +57,7 @@ export default class LikesItem extends Component {
     </div>
   )
 
-  onClick = (e) => {
+  onClick = e => {
     const targetLink = e.currentTarget.href;
     // direct to in app helper unless it's an internal link
     if (targetLink.match(/^(http|https):\/\/localhost.*/) === null) {

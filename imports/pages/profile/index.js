@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import Home from "./home";
 import Settings from "./settings";
 

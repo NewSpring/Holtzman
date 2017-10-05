@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { Component } from "react";
 import { connect } from "react-redux";
 import { graphql } from "react-apollo";
@@ -51,7 +51,7 @@ class DetailsWithoutData extends Component {
     }
   }
 
-  stop = (e) => {
+  stop = e => {
     e.preventDefault();
 
     this.props.dispatch(modalActions.render(Confirm, {
@@ -149,7 +149,7 @@ const SCHEDULE_TRANSACTION_QUERY = gql`
 `;
 
 const withScheduleTransaction = graphql(SCHEDULE_TRANSACTION_QUERY, {
-  options: (ownProps) => ({
+  options: ownProps => ({
     variables: { scheduleTransactionId: ownProps.params.id },
     fetchPolicy: "network-only",
   }),
@@ -172,7 +172,7 @@ const withCancelSchedule = graphql(CANCEL_SCHEDULE_QUERY, {
   props: ({ mutate }) => ({
     // XXX add in optimistic reponse and remove need for state management
     // XXX add in updateQueries to remove need for refetch on schedules pages
-    cancel: (id) => mutate({ variables: { id } }),
+    cancel: id => mutate({ variables: { id } }),
   }),
 });
 
@@ -180,10 +180,10 @@ const Details = connect()(
   withEntries(
     withScheduleTransaction(
       withCancelSchedule(
-        DetailsWithoutData
-      )
-    )
-  )
+        DetailsWithoutData,
+      ),
+    ),
+  ),
 );
 
 const Routes = [

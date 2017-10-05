@@ -32,6 +32,7 @@ script:
   - yarn
   - yarn danger
   - yarn test --ci
+  - yarn lint
 after_success:
   - 'if [ "$TRAVIS_EVENT_TYPE" == "cron" ]; then bash ./.travis/run_for_coverage; fi'
   - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then bash ./.travis/run_on_pull_requests; fi'

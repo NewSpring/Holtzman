@@ -20,7 +20,7 @@ const initial = {
 
 export default createReducer(initial, {
 
-  "SHARE.SHARE": (state) => (
+  "SHARE.SHARE": state => (
     { ...state,
       sharing: !state.sharing,
     }

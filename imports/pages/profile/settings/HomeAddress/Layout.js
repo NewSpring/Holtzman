@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { Component } from "react";
 
 import Meta from "../../../../components/shared/meta";
@@ -12,7 +12,7 @@ export default class Layout extends Component {
     update: PropTypes.func,
   }
 
-  submit = (e) => {
+  submit = e => {
     e.preventDefault();
 
     const data = {};

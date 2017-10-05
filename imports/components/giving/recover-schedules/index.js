@@ -10,7 +10,7 @@ import giveActions from "../../../data/store/give";
 
 import Layout from "./Layout";
 
-const map = (store) => ({ give: store.give });
+const map = store => ({ give: store.give });
 
 type IRecoverSchedules = {
   dispatch: Function,

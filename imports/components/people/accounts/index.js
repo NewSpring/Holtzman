@@ -1,8 +1,6 @@
-
 import { Meteor } from "meteor/meteor";
-
 /* eslint-disable react/no-multi-comp */
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 import { Component } from "react";
 import { graphql, withApollo } from "react-apollo";
@@ -25,6 +23,7 @@ class Accounts extends Component {
     setAccount: PropTypes.func.isRequired,
     save: PropTypes.func.isRequired,
     peopleWithoutAccountEmails: PropTypes.func.isRequired,
+    data: PropTypes.object,
   };
 
   componentWillReceiveProps(nextProps) {
@@ -60,6 +59,7 @@ class AccountsContainer extends Component {
     clear: PropTypes.func,
     submit: PropTypes.func,
     location: PropTypes.object,
+    client: PropTypes.object,
   };
 
   state = {
@@ -91,12 +91,12 @@ class AccountsContainer extends Component {
         if (this.props.onFinished) return this.props.onFinished();
 
         // redirect after signin or register
-        const whiteListed = (url) =>
+        const whiteListed = url =>
           url.indexOf("https://alpha-rock.newspring.cc") === 0 ||
           url.indexOf("https://beta-rock.newspring.cc") === 0 ||
           url.indexOf("https://rock.newspring.cc") === 0;
 
-        /* eslint-disable camelcase*/
+        /* eslint-disable camelcase */
         const { redirect, return_person_guid } = this.props.location.query;
         if (redirect) {
           if (
@@ -122,7 +122,10 @@ class AccountsContainer extends Component {
 
       if (this.props.onSignin) {
         this.setState({ loading: true });
-        this.props.onSignin().then(finish).catch(finish);
+        this.props
+          .onSignin()
+          .then(finish)
+          .catch(finish);
       }
 
       finish();
@@ -142,34 +145,34 @@ class AccountsContainer extends Component {
     // if (process.env.NATIVE) this.props.dispatch(headerActions.show());
   }
 
-  setAccountWrapper = (bool) => {
+  setAccountWrapper = bool => {
     this.setState({ account: null });
     this.props.setAccount(bool);
   };
 
-  goBack = (e) => {
+  goBack = e => {
     e.preventDefault();
     if (typeof window !== "undefined" && window != null) {
       window.history.back();
     }
   };
 
-  goSignIn = (e) => {
+  goSignIn = e => {
     if (e) e.preventDefault();
     this.props.remember();
   };
 
-  goBackToDefaultOnBoard = (e) => {
+  goBackToDefaultOnBoard = e => {
     if (e) e.preventDefault();
     this.props.resetAccount();
   };
 
-  goForgotPassword = (e) => {
+  goForgotPassword = e => {
     if (e) e.preventDefault();
     this.props.forgot();
   };
 
-  signout = (e) => {
+  signout = e => {
     if (e) e.preventDefault();
     Meteor.logout();
     this.props.authorize(false);
@@ -237,9 +240,7 @@ class AccountsContainer extends Component {
           break;
         }
       }
-      return (
-        <SuccessCreate email={email} goBack={this.goBackToDefaultOnBoard} />
-      );
+      return <SuccessCreate email={email} goBack={this.goBackToDefaultOnBoard} />;
     }
 
     return (
@@ -266,8 +267,8 @@ class AccountsContainer extends Component {
 const mapDispatchToProps = { ...accountsActions, ...modalActions };
 
 const PERSON_QUERY = gql`
-  query GetPersonByGuid($guid:ID) {
-    person(guid:$guid) {
+  query GetPersonByGuid($guid: ID) {
+    person(guid: $guid) {
       firstName
       lastName
       email
@@ -279,26 +280,26 @@ const PERSON_QUERY = gql`
 `;
 
 const withPerson = graphql(PERSON_QUERY, {
-  options: (ownProps) => ({
+  options: ownProps => ({
     ssr: false,
     variables: {
-      guid: ownProps.location &&
-        ownProps.location.query &&
-        ownProps.location.query.guid,
+      guid: ownProps.location && ownProps.location.query && ownProps.location.query.guid,
     },
   }),
 });
 
-const AccountsContainerWithData = withApollo(connect(
-  (state) => ({
-    accounts: state.accounts,
-  }),
-  mapDispatchToProps,
-)(AccountsContainer));
+const AccountsContainerWithData = withApollo(
+  connect(
+    state => ({
+      accounts: state.accounts,
+    }),
+    mapDispatchToProps,
+  )(AccountsContainer),
+);
 
 export default withPerson(
   connect(
-    (state) => ({
+    state => ({
       location: state.routing.location,
     }),
     mapDispatchToProps,

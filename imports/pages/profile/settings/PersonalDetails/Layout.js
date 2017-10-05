@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { Component } from "react";
 
 import Forms from "../../../../components/@primitives/UI/forms";
@@ -19,7 +19,7 @@ export default class Layout extends Component {
     campuses: PropTypes.array,
   }
 
-  submit = (e) => {
+  submit = e => {
     e.preventDefault();
 
     const data = {};

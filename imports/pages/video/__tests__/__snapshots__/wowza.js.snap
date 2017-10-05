@@ -12,10 +12,11 @@ exports[`renders with props 1`] = `
   >
     <ReactJWPlayer
       aspectRatio="inherit"
-      isMuted={false}
+      file=""
       onAdPause={[Function]}
       onAdPlay={[Function]}
       onAdResume={[Function]}
+      onAdSkipped={[Function]}
       onAutoStart={[Function]}
       onClose={[Function]}
       onEnterFullScreen={[Function]}
@@ -29,9 +30,11 @@ exports[`renders with props 1`] = `
       onPlay={[Function]}
       onReady={[Function]}
       onResume={[Function]}
+      onSeventyFivePercent={[Function]}
       onTenSeconds={[Function]}
       onThirtySeconds={[Function]}
       onThreeSeconds={[Function]}
+      onTwentyFivePercent={[Function]}
       onUnmute={[Function]}
       onVideoLoad={[Function]}
       playerId="wowza-live-video"

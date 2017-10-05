@@ -1,5 +1,5 @@
 /* eslint-disable react/no-danger */
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 import { Component } from "react";
 import ReactMixin from "react-mixin";
@@ -46,7 +46,7 @@ class SeriesSingleVideoWithoutData extends Component {
     this.handleHeader(nextProps);
   }
 
-  handleHeader = (nextProps) => {
+  handleHeader = nextProps => {
     const content = nextProps.series.content;
     if (!content) return;
 
@@ -66,7 +66,7 @@ class SeriesSingleVideoWithoutData extends Component {
     this.props.dispatch(headerActions.set(options));
   }
 
-  playAudio = (e) => {
+  playAudio = e => {
     e.preventDefault();
     const currentSermon = this.props.currentSermon.content;
     const series = this.props.series.content;
@@ -155,7 +155,7 @@ const CURRENT_SERMON_QUERY = gql`
 `;
 const withCurrentSermon = graphql(CURRENT_SERMON_QUERY, {
   name: "currentSermon",
-  options: (ownProps) => ({
+  options: ownProps => ({
     variables: { sermonId: ownProps.params.sermonId },
   }),
 });
@@ -198,12 +198,12 @@ const SERIES_QUERY = gql`
 `;
 const withSeries = graphql(SERIES_QUERY, {
   name: "series",
-  options: (ownProps) => ({
+  options: ownProps => ({
     variables: { id: ownProps.params.id },
   }),
 });
 
-const mapStateToProps = (state) => ({ live: state.live });
+const mapStateToProps = state => ({ live: state.live });
 
 export default connect(mapStateToProps)(
   withCurrentSermon(
@@ -211,12 +211,12 @@ export default connect(mapStateToProps)(
       ReactMixin.decorate(Shareable)(
         ReactMixin.decorate(Headerable)(
           canLike(
-            (props) => (props.currentSermon.loading ? null : props.currentSermon.content.entryId)
-          )(SeriesSingleVideoWithoutData)
-        )
-      )
-    )
-  )
+            props => (props.currentSermon.loading ? null : props.currentSermon.content.entryId),
+          )(SeriesSingleVideoWithoutData),
+        ),
+      ),
+    ),
+  ),
 );
 
 export {

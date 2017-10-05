@@ -24,6 +24,7 @@ type ICartContainer = {
   setTransactionType: Function,
   text: string,
   dataId: number,
+  give: Object,
 };
 
 type IState = {
@@ -36,10 +37,10 @@ type IState = {
 
 // XXX move this to a global constructs file?
 const GIVING_SCHEDULES = [
-    { label: "one time", value: "One-Time" },
-    { label: "every week", value: "Weekly" },
-    { label: "every two weeks", value: "Bi-Weekly" },
-    { label: "once a month", value: "Monthly" },
+  { label: "one time", value: "One-Time" },
+  { label: "every week", value: "Weekly" },
+  { label: "every two weeks", value: "Bi-Weekly" },
+  { label: "once a month", value: "Monthly" },
 ];
 
 class CartContainer extends Component {
@@ -101,18 +102,17 @@ class CartContainer extends Component {
       });
 
       this.props.clearTransactions();
-      this.props.addTransactions(
-        {
-          [cartFundId]: {
-            value: cartTotal,
-            label: cartFundLabel,
-          },
-        });
+      this.props.addTransactions({
+        [cartFundId]: {
+          value: cartTotal,
+          label: cartFundLabel,
+        },
+      });
     }
 
     if (this.props.onClick) keepGoing = this.props.onClick(e);
     return keepGoing;
-  }
+  };
 
   setFund = (id: number) => {
     const selectedFund = this.props.accounts.filter(fund => fund.id === Number(id));
@@ -127,14 +127,14 @@ class CartContainer extends Component {
     });
 
     this.props.setTransactionType("recurring");
-  }
+  };
 
   setFrequency = (value: string) => {
     this.setState({ frequency: value });
     if (this.state.fundId) {
       this.props.saveSchedule({ frequency: value });
     }
-  }
+  };
 
   format = (val: string, target: Object) => {
     const { id, name } = target;
@@ -148,7 +148,7 @@ class CartContainer extends Component {
     });
 
     return value;
-  }
+  };
 
   saveData = (val: string, target: Object) => {
     const { id, name } = target;
@@ -161,7 +161,7 @@ class CartContainer extends Component {
     });
 
     return true;
-  }
+  };
 
   saveDate = (value: string) => {
     const { fundId } = this.state;
@@ -172,7 +172,7 @@ class CartContainer extends Component {
 
     if (fundId) this.props.saveSchedule({ start: new Date(value) });
     return true;
-  }
+  };
 
   render() {
     if (!this.props.alive) return <Offline />;
@@ -222,10 +222,10 @@ const map = ({ state }: IConnect): Object => ({ give: state.give });
 // spins up a cart if Rock is online
 export default createContainer(() => {
   let alive = true;
-  try { alive = serverWatch.isAlive("ROCK"); } catch (e) {} // eslint-disable-line
+  try {
+    alive = serverWatch.isAlive("ROCK");
+  } catch (e) {} // eslint-disable-line
   return { alive };
 }, connect(map, giveActions)(CartContainer));
 
-export {
-  CartContainer,
-};
+export { CartContainer };

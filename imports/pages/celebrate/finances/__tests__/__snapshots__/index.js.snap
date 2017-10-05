@@ -560,7 +560,8 @@ exports[`Finances renders a layout 1`] = `
             </p>
             <ul>
               <li>
-                Campus expansion to help our 
+                Campus expansion to help our
+                 
                 <a
                   alt="link to locations page"
                   className="text-light-primary"
@@ -569,10 +570,12 @@ exports[`Finances renders a layout 1`] = `
                 >
                   current campuses
                 </a>
-                 take their next step.
+                 
+                take their next step.
               </li>
               <li>
-                Global missions to support 
+                Global missions to support
+                 
                 <a
                   alt="link to Freedom Church"
                   className="text-light-primary"
@@ -581,10 +584,12 @@ exports[`Finances renders a layout 1`] = `
                 >
                   Freedom Church
                 </a>
-                 as they launch three new campuses in 2017.
+                 
+                as they launch three new campuses in 2017.
               </li>
               <li>
-                Local missions in the communities where we have 
+                Local missions in the communities where we have
+                 
                 <a
                   alt="link to locations page"
                   className="text-light-primary"

@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { Component } from "react";
 import { connect } from "react-redux";
 import { graphql } from "react-apollo";
@@ -95,15 +95,15 @@ const SERMONS_QUERY = gql`
 
 const withSermons = graphql(SERMONS_QUERY, {
   name: "sermons",
-  options: (ownProps) => ({
+  options: ownProps => ({
     variables: { id: ownProps.id },
   }),
 });
 
 export default connect()(
   withSermons(
-    SeriesVideoListWithoutData
-  )
+    SeriesVideoListWithoutData,
+  ),
 );
 
 export {
