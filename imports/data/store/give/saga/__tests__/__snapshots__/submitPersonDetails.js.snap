@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`submit with a saved payment should try to submit an empty set of payment details 1`] = `
 FormData {
   Symbol(impl): FormDataImpl {
