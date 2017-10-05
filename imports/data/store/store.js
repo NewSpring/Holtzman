@@ -5,7 +5,7 @@ import { ApolloProvider } from "react-apollo";
 import createSagaMiddleware from "redux-saga";
 import reduxReset from "redux-reset";
 
-import GraphQL from "../graphql";
+import { GraphQL } from "../graphql";
 
 import { reducers, middlewares, sagas } from "./utilities";
 import { syncHistory, routeReducer } from "./routing";
@@ -33,7 +33,7 @@ const createReduxStore = (initialState, history) => {
     applyMiddleware(
       ...sharedMiddlewares,
       sagaMiddleware,
-      reduxRouterMiddleware
+      reduxRouterMiddleware,
     ),
     reduxReset(),
   ];
@@ -47,7 +47,7 @@ const createReduxStore = (initialState, history) => {
   }
 
   const store = compose(...sharedCompose)(createStore)(
-    combineReducers(joinedReducers), initialState
+    combineReducers(joinedReducers), initialState,
   );
 
   sagas.forEach(saga => sagaMiddleware.run(saga()));

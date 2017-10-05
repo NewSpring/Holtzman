@@ -1,5 +1,5 @@
 /* eslint-disable import/no-named-as-default */
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 import { Component } from "react";
 import { connect } from "react-redux";
@@ -61,7 +61,7 @@ class AudioPlayerUtilityWithoutData extends Component {
 
   tracksWithFiles = () => {
     const { playlist } = this.props.audio;
-    return _.filter(playlist, (track) => (
+    return _.filter(playlist, track => (
       track.file
     ));
   }
@@ -100,7 +100,6 @@ class AudioPlayerUtilityWithoutData extends Component {
         this.props.play();
         if (Meteor.isCordova) return;
         player.play();
-        return;
       }
     }, () => {}, function audioEventStream(STATUS) {
       if (this.done) return;
@@ -126,7 +125,7 @@ class AudioPlayerUtilityWithoutData extends Component {
       player.play();
     }
 
-    player.timeupdate((pos) => {
+    player.timeupdate(pos => {
       const [durMin, durSec] = track.duration.split(":");
       const length = Number((durMin * 60)) + Number(durSec);
 
@@ -158,7 +157,7 @@ class AudioPlayerUtilityWithoutData extends Component {
     return player;
   }
 
-  toggle = (playerState) => {
+  toggle = playerState => {
     if (!this.player || !this.player.playPause) { return; }
     if (playerState === "playing") {
       this.player.play();
@@ -171,7 +170,7 @@ class AudioPlayerUtilityWithoutData extends Component {
     this.player.playPause();
   }
 
-  seek = (value) => {
+  seek = value => {
     // value is percent of how far to scrub
 
     if (!this.player || !this.player.seekTo) { return; }

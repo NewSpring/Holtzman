@@ -50,6 +50,7 @@ exports[`overrides with theme 1`] = `
       }
     }
     duration={300}
+    interruptBehavior="stop"
     runOnMount={true}
     targetQuerySelector={null}
   >
@@ -106,6 +107,7 @@ exports[`renders with props 1`] = `
       }
     }
     duration={300}
+    interruptBehavior="stop"
     runOnMount={true}
     targetQuerySelector={null}
   >
@@ -179,6 +181,7 @@ exports[`updates styles with mobile styles 1`] = `
       }
     }
     duration={300}
+    interruptBehavior="stop"
     runOnMount={true}
     targetQuerySelector={null}
   >
@@ -235,6 +238,7 @@ exports[`updates styles with non mobile styles 1`] = `
       }
     }
     duration={300}
+    interruptBehavior="stop"
     runOnMount={true}
     targetQuerySelector={null}
   >

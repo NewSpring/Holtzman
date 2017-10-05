@@ -1,5 +1,5 @@
 
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { Component } from "react";
 import { connect } from "react-redux";
 
@@ -75,7 +75,7 @@ class VideoPlayerWithoutData extends Component {
         // eslint-disable-next-line max-len
         inline: { shareScreen: { embed: { source: "<iframe width='640' height='480' frameborder='0' allowfullscreen src='//player.ooyala.com/static/v4/stable/4.5.5/skin-plugin/iframe.html?ec=<ASSET_ID>&pbid=<PLAYER_ID>&pcode=<PUBLISHER_ID>'></iframe>" } } },
       },
-      onCreate: (player) => {
+      onCreate: player => {
         if (player.isPlaying()) this.props.dispatch(audioActions.pause());
 
         // bind message bus for reporting analaytics

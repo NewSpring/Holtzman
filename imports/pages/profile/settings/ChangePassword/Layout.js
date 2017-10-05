@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import Forms from "../../../../components/@primitives/UI/forms";
 import Meta from "../../../../components/shared/meta";
 

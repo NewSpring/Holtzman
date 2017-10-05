@@ -386,10 +386,10 @@ Object {
   ],
   "kind": "Document",
   "loc": Object {
-    "end": 517,
+    "end": 518,
     "source": Source {
       "body": "
-  query getSeries($limit: Int!, $skip: Int!){
+  query getSeries($limit: Int!, $skip: Int!) {
     content(channel: \\"series_newspring\\", limit: $limit, skip: $skip) {
       id
       entryId: id

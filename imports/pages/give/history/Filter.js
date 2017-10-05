@@ -1,5 +1,5 @@
 // @flow
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 import { Component } from "react";
 import moment from "moment";
@@ -53,7 +53,7 @@ export default class Filter extends Component {
 
   componentWillReceiveProps(nextProps: Object) {
     if (this.props.family.length !== nextProps.family.length) {
-      this.setState({ people: nextProps.family.map((x) => x.person.id) });
+      this.setState({ people: nextProps.family.map(x => x.person.id) });
     }
   }
 

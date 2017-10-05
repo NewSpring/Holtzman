@@ -73,11 +73,11 @@ Object {
   ],
   "kind": "Document",
   "loc": Object {
-    "end": 103,
+    "end": 104,
     "source": Source {
       "body": "
   query GetSecurityRoles {
-    currentPerson{
+    currentPerson {
       roles {
         name
         id

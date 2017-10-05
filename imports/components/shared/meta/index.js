@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { Component } from "react";
 import Helmet from "react-helmet";
 
@@ -27,7 +27,7 @@ class Meta extends Component {
         window.fabric.Answers.sendContentView(
           this.props.title,
           "",
-          this.props.id ? this.props.id : ""
+          this.props.id ? this.props.id : "",
         );
       }
     }

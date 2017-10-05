@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { Component } from "react";
 import ReactMixin from "react-mixin";
 import { connect } from "react-redux";
@@ -65,7 +65,7 @@ class DevotionsSingle extends Component {
     this.props.dispatch(liveActions.unfloat());
   }
 
-  onClickLink = (event) => {
+  onClickLink = event => {
     event.preventDefault();
     this.setState({
       selectedIndex: 1,
@@ -113,7 +113,7 @@ class DevotionsSingle extends Component {
     }
   }
 
-  renderContent = (devotion) => {
+  renderContent = devotion => {
     if (!devotion.content.scripture) {
       return (
         <div title="Devotional">
@@ -220,12 +220,12 @@ const DEVOTIONAL_QUERY = gql`
 
 const withDevotional = graphql(DEVOTIONAL_QUERY, {
   name: "devotion",
-  options: (ownProps) => ({
+  options: ownProps => ({
     variables: { id: ownProps.params.id },
   }),
 });
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   modal: { visible: state.modal.visible },
   live: state.live,
 });
@@ -234,10 +234,10 @@ export default connect(mapStateToProps)(
   withDevotional(
     ReactMixin.decorate(Shareable)(
       canLike(
-        (props) => (props.devotion.loading ? null : props.devotion.content.id)
-      )(DevotionsSingle)
-    )
-  )
+        props => (props.devotion.loading ? null : props.devotion.content.id),
+      )(DevotionsSingle),
+    ),
+  ),
 );
 
 export {

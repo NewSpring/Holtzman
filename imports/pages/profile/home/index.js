@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { Component } from "react";
 import { connect } from "react-redux";
 import { graphql } from "react-apollo";
@@ -37,7 +37,7 @@ class HomeWithoutData extends Component {
     this.props.dispatch(navActions.setLevel("TOP"));
   }
 
-  onToggle = (content) => this.setState({ content })
+  onToggle = content => this.setState({ content })
   getContent = () => this.content[this.state.content]
 
   content = [<Likes />, <Following />]
@@ -83,14 +83,14 @@ const withPerson = graphql(GET_PERSON_QUERY, {
   // XXX authorized is still not returning well enough
   // skip: (ownProps) => !Meteor.userId()  !ownProps.authorized,
 });
-const mapStateToProps = (state) => ({ authorized: state.accounts.authorized });
+const mapStateToProps = state => ({ authorized: state.accounts.authorized });
 
 export default withPerson(
   withProfileUpload(
     connect(mapStateToProps)(
-      HomeWithoutData
-    )
-  )
+      HomeWithoutData,
+    ),
+  ),
 );
 
 export {

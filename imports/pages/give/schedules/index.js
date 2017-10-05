@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { Component } from "react";
 import { connect } from "react-redux";
 import { graphql } from "react-apollo";
@@ -36,7 +36,7 @@ class TemplateWithoutData extends Component {
     }
   }
 
-  confirm = (e) => {
+  confirm = e => {
     const { dataset } = e.currentTarget;
     const { id } = dataset;
     this.props.dispatch(giveActions.setRecoverableSchedule(Number(id)));
@@ -44,7 +44,7 @@ class TemplateWithoutData extends Component {
     return true;
   }
 
-  cancel = (e) => {
+  cancel = e => {
     const { dataset } = e.currentTarget;
     const { id } = dataset;
     const { dispatch } = this.props;
@@ -144,9 +144,9 @@ const mapStateToProps = ({ give, accounts }) => ({
 const Template = connect(mapStateToProps)(
   withFinancialAccounts(
     withScheduledTransactions(
-      TemplateWithoutData
-    )
-  )
+      TemplateWithoutData,
+    ),
+  ),
 );
 
 const Routes = [

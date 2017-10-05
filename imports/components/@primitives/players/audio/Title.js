@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { Component } from "react";
 
 export default class AudioTitle extends Component {
@@ -12,7 +12,7 @@ export default class AudioTitle extends Component {
     channelName: PropTypes.string.isRequired,
   }
 
-  getTertiaryTextColor = (dark) =>
+  getTertiaryTextColor = dark =>
     (dark ? { color: "rgba(255,255,255,.5)" } : { color: "rgba(0,0,0,.5)" });
 
   getTertiaryTextClass = () =>

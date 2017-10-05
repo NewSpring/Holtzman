@@ -1,5 +1,5 @@
 
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router";
@@ -50,7 +50,7 @@ class ListDetailWithoutData extends Component {
   componentWillUnmount() {
     if (process.env.NATIVE) {
       this.props.dispatch(
-        headerActions.statusBarColor(this.state.previousHeaderColor)
+        headerActions.statusBarColor(this.state.previousHeaderColor),
       );
       this.props.dispatch(navActions.setLevel("CONTENT"));
     }
@@ -74,7 +74,7 @@ class ListDetailWithoutData extends Component {
     }
   }
 
-  share = (event) => {
+  share = event => {
     event.preventDefault();
     const { dispatch } = this.props;
     dispatch(shareActions.share());
@@ -82,7 +82,7 @@ class ListDetailWithoutData extends Component {
 
   render() {
     const url = `/music/${this.props.album.entryId}`;
-    const smallImage = _.find(this.props.album.content.images, (image) => (
+    const smallImage = _.find(this.props.album.content.images, image => (
       image.fileName.indexOf("blur") === -1 && image.size === "small"
     ));
     return (
@@ -121,7 +121,7 @@ class ListDetailWithoutData extends Component {
 
 }
 
-const mapStateToProps = (state) => (
+const mapStateToProps = state => (
   {
     audio: {
       visibility: state.audio.visibility,
@@ -132,8 +132,8 @@ const mapStateToProps = (state) => (
 
 export default connect(mapStateToProps)(
   ReactMixin.decorate(Shareable)(
-    ListDetailWithoutData
-  )
+    ListDetailWithoutData,
+  ),
 );
 
 export {

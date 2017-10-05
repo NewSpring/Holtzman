@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { Component } from "react";
 import { css } from "aphrodite";
 // import ReactSelect from "react-select";
@@ -265,13 +265,13 @@ export default class Select extends Component {
             return undefined;
           })()}
           {this.props.items.map((option, key) =>
-            <option
+            (<option
               className={this.props.optionClasses}
               value={option.value || option.label}
               key={key}
             >
               {option.label || option.value}
-            </option>,
+            </option>),
           )}
         </select>
 

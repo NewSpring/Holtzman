@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { Component } from "react";
 import Forms from "../../../../components/@primitives/UI/forms";
 import Svg from "../../../../components/@primitives/UI/svg";
@@ -14,7 +14,7 @@ export default class Location extends Component {
     onChange: PropTypes.func.isRequired,
     validation: PropTypes.func.isRequired,
     zip: PropTypes.string,
-    disable: PropTypes.bool,
+    disabled: PropTypes.bool,
     unLocate: PropTypes.func,
   };
 
@@ -44,9 +44,7 @@ export default class Location extends Component {
       <div className={"text-left soft-double-top soft-top@handheld soft-half-sides"}>
         <Forms.Input
           classes={this.state.focused ? "input--focused" : ""}
-          inputClasses={
-            "outlined--dotted outlined--light h6 flush-bottom text-black"
-          }
+          inputClasses={"outlined--dotted outlined--light h6 flush-bottom text-black"}
           label={"Zip Code"}
           defaultValue={zip}
           type="text"

@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import Results from "./Results";
 import Feed from "./feed";
 

@@ -1,5 +1,5 @@
 import { Meteor } from "meteor/meteor";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { Component } from "react";
 import { connect } from "react-redux";
 
@@ -72,7 +72,7 @@ class SideModalContainerWithoutData extends Component {
       if (!nextProps.modal.visible) {
         root.className = root.className
           .split(" ")
-          .filter((className) => className !== "modal--opened")
+          .filter(className => className !== "modal--opened")
           .join(" ");
       } else if (!this.props.modal.visible && nextProps.modal.visible) {
         root.className += " modal--opened";
@@ -84,7 +84,7 @@ class SideModalContainerWithoutData extends Component {
     if (Meteor.isClient) {
       document.removeEventListener("keyup", this.bindEsc, false);
     }
-   this.props.dispatch(navActions.resetColor());
+    this.props.dispatch(navActions.resetColor());
   }
 
   handleKeyPress = ({ keyCode }) => {
@@ -98,7 +98,7 @@ class SideModalContainerWithoutData extends Component {
     if (keyCode === 38 && this.scrollElement) this.scrollElement.scrollTop -= 10;
   };
 
-  close = (e) => {
+  close = e => {
     const { target } = e;
     const { id } = target;
     if (id !== "@@modal") return;
@@ -107,7 +107,7 @@ class SideModalContainerWithoutData extends Component {
     this.props.dispatch(modalActions.hide());
   };
 
-  captureRef = (ref) => {
+  captureRef = ref => {
     this.scrollElement = ref;
   };
 
@@ -140,7 +140,7 @@ class SideModalContainerWithoutData extends Component {
   }
 }
 
-const map = (state) => ({
+const map = state => ({
   navigation: state.nav,
   modal: state.modal,
   path: state.routing.path,
