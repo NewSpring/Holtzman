@@ -1,1 +1,3 @@
-exports[`test renders nothing but span 1`] = `<span />`;
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders nothing but span 1`] = `<span />`;

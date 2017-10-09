@@ -1,4 +1,6 @@
-exports[`test parses query correctly 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`parses query correctly 1`] = `
 Object {
   "definitions": Array [
     Object {
@@ -389,7 +391,7 @@ Object {
           body
           ooyalaId
           tags
-          images(sizes: [\"large\"]) {
+          images(sizes: [\\"large\\"]) {
             fileName
             fileType
             fileLabel
@@ -411,7 +413,7 @@ Object {
 }
 `;
 
-exports[`test renders an on demand video if present, and not live 1`] = `
+exports[`renders an on demand video if present, and not live 1`] = `
 <div>
   <Meta
     id="10458239056qaklpstjw40951281"
@@ -424,26 +426,33 @@ exports[`test renders an on demand video if present, and not live 1`] = `
         },
       ]
     }
-    title="Stuff" />
+    title="Stuff"
+  />
   <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
       ]
     }
-    nav={true}>
+    nav={true}
+  >
     <Connect(VideoPlayerWithoutData)
       autoplay="false"
-      id="owqoitpuq52059akplsat0520" />
+      id="owqoitpuq52059akplsat0520"
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
-    scroll={true}>
+    scroll={true}
+  >
     <div
-      className="one-whole">
+      className="one-whole"
+    >
       <section
-        className="soft@palm soft-double-sides@palm-wide-and-up soft@lap soft-double@lap-wide-and-up push-top push-double-top@lap-and-up">
+        className="soft@palm soft-double-sides@palm-wide-and-up soft@lap soft-double@lap-wide-and-up push-top push-double-top@lap-and-up"
+      >
         <h2
-          className="capitalize">
+          className="capitalize"
+        >
           Stuff
         </h2>
         <div
@@ -451,7 +460,8 @@ exports[`test renders an on demand video if present, and not live 1`] = `
             Object {
               "__html": "<p>some kind of content about harambe</p>",
             }
-          } />
+          }
+        />
       </section>
       <Apollo(Connect(Template))
         excludedIds={
@@ -459,23 +469,26 @@ exports[`test renders an on demand video if present, and not live 1`] = `
             "10458239056qaklpstjw40951281",
           ]
         }
-        tags={Array []} />
+        tags={Array []}
+      />
     </div>
   </Left>
 </div>
 `;
 
-exports[`test renders loading if no content 1`] = `
+exports[`renders loading if no content 1`] = `
 <div
-  className="locked-ends locked-sides floating">
+  className="locked-ends locked-sides floating"
+>
   <div
-    className="floating__item">
+    className="floating__item"
+  >
     <Loading />
   </div>
 </div>
 `;
 
-exports[`test renders the live video when live 1`] = `
+exports[`renders the live video when live 1`] = `
 <div>
   <Meta
     id="10458239056qaklpstjw40951281"
@@ -488,26 +501,33 @@ exports[`test renders the live video when live 1`] = `
         },
       ]
     }
-    title="Stuff" />
+    title="Stuff"
+  />
   <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
       ]
     }
-    nav={true}>
+    nav={true}
+  >
     <Connect(VideoPlayerWithoutData)
       autoplay="false"
-      id="1234LIVETEST4321" />
+      id="1234LIVETEST4321"
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
-    scroll={true}>
+    scroll={true}
+  >
     <div
-      className="one-whole">
+      className="one-whole"
+    >
       <section
-        className="soft@palm soft-double-sides@palm-wide-and-up soft@lap soft-double@lap-wide-and-up push-top push-double-top@lap-and-up">
+        className="soft@palm soft-double-sides@palm-wide-and-up soft@lap soft-double@lap-wide-and-up push-top push-double-top@lap-and-up"
+      >
         <h2
-          className="capitalize">
+          className="capitalize"
+        >
           Stuff
         </h2>
         <div
@@ -515,7 +535,8 @@ exports[`test renders the live video when live 1`] = `
             Object {
               "__html": "<p>some kind of content about harambe</p>",
             }
-          } />
+          }
+        />
       </section>
       <Apollo(Connect(Template))
         excludedIds={
@@ -523,13 +544,14 @@ exports[`test renders the live video when live 1`] = `
             "10458239056qaklpstjw40951281",
           ]
         }
-        tags={Array []} />
+        tags={Array []}
+      />
     </div>
   </Left>
 </div>
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <div>
   <Meta
     id="10458239056qaklpstjw40951281"
@@ -542,26 +564,33 @@ exports[`test renders with props 1`] = `
         },
       ]
     }
-    title="Stuff" />
+    title="Stuff"
+  />
   <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
       ]
     }
-    nav={true}>
+    nav={true}
+  >
     <Connect(VideoPlayerWithoutData)
       autoplay="false"
-      id="owqoitpuq52059akplsat0520" />
+      id="owqoitpuq52059akplsat0520"
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
-    scroll={true}>
+    scroll={true}
+  >
     <div
-      className="one-whole">
+      className="one-whole"
+    >
       <section
-        className="soft@palm soft-double-sides@palm-wide-and-up soft@lap soft-double@lap-wide-and-up push-top push-double-top@lap-and-up">
+        className="soft@palm soft-double-sides@palm-wide-and-up soft@lap soft-double@lap-wide-and-up push-top push-double-top@lap-and-up"
+      >
         <h2
-          className="capitalize">
+          className="capitalize"
+        >
           Stuff
         </h2>
         <div
@@ -569,7 +598,8 @@ exports[`test renders with props 1`] = `
             Object {
               "__html": "<p>some kind of content about harambe</p>",
             }
-          } />
+          }
+        />
       </section>
       <Apollo(Connect(Template))
         excludedIds={
@@ -577,7 +607,8 @@ exports[`test renders with props 1`] = `
             "10458239056qaklpstjw40951281",
           ]
         }
-        tags={Array []} />
+        tags={Array []}
+      />
     </div>
   </Left>
 </div>

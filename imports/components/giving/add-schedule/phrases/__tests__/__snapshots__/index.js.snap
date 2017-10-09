@@ -1,13 +1,17 @@
-exports[`test appends additional classes 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`appends additional classes 1`] = `
 <h3
-  className="text-dark-tertiary display-inline-block push-half-bottom one two three">
+  className="text-dark-tertiary display-inline-block push-half-bottom one two three"
+>
   test
 </h3>
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <h3
-  className="text-dark-tertiary display-inline-block push-half-bottom">
+  className="text-dark-tertiary display-inline-block push-half-bottom"
+>
   test
 </h3>
 `;

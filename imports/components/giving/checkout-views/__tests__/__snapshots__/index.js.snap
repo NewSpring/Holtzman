@@ -1,4 +1,6 @@
-exports[`test renders with props 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders with props 1`] = `
 <Layout
   back={[Function]}
   campuses={Array []}
@@ -25,5 +27,6 @@ exports[`test renders with props 1`] = `
   onSubmit={[Function]}
   save={[Function]}
   savedPayments={Array []}
-  states={Array []} />
+  states={Array []}
+/>
 `;

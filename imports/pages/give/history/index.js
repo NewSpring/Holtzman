@@ -1,5 +1,7 @@
 // @flow
-import { Component, PropTypes } from "react";
+import PropTypes from "prop-types";
+
+import { Component } from "react";
 // $FlowMeteor
 import { Meteor } from "meteor/meteor";
 import { graphql } from "react-apollo";
@@ -41,7 +43,7 @@ class TemplateWithoutData extends Component {
   wrapRefetch = (refetch: Function) =>
     (...args: Object[]) => {
       this.setState({ refetching: true });
-      return refetch(...args).then((x) => {
+      return refetch(...args).then(x => {
         this.setState({ refetching: false });
         return x;
       });
@@ -125,7 +127,7 @@ const GET_STATEMENT = gql`
 `;
 
 const withStatement = graphql(GET_STATEMENT, {
-  props: ({ mutate }) => ({ getPDF: (variables) => mutate({ variables }) }),
+  props: ({ mutate }) => ({ getPDF: variables => mutate({ variables }) }),
 });
 
 const TRANSACTIONS_QUERY = gql`
@@ -163,7 +165,7 @@ const withTransactions = graphql(TRANSACTIONS_QUERY, {
       start: "",
       end: "",
     },
-    forceFetch: true,
+    fetchPolicy: "network-only",
     skip: !authorized,
     ssr: false,
   }),
@@ -185,7 +187,7 @@ const withTransactions = graphql(TRANSACTIONS_QUERY, {
             ...fetchMoreResult.data.transactions,
           ];
           return {
-            transactions: transactions.filter((x) => !!x.id),
+            transactions: transactions.filter(x => !!x.id),
           };
         },
       }),

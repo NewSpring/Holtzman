@@ -1,14 +1,18 @@
-exports[`test should not render if not ach type 1`] = `null`;
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`test should render with props 1`] = `
+exports[`should not render if not ach type 1`] = `null`;
+
+exports[`should render with props 1`] = `
 <div>
   <div
     className="input input--active"
     data-spec="input-wrapper"
-    style={Object {}}>
+    style={Object {}}
+  >
     <label
       htmlFor="routingNumber"
-      style={Object {}}>
+      style={Object {}}
+    >
       Routing Number
     </label>
     <input
@@ -30,15 +34,18 @@ exports[`test should render with props 1`] = `
       readOnly={undefined}
       spellCheck={undefined}
       style={Object {}}
-      type="tel" />
+      type="tel"
+    />
   </div>
   <div
     className="input input--active"
     data-spec="input-wrapper"
-    style={Object {}}>
+    style={Object {}}
+  >
     <label
       htmlFor="accountNumber"
-      style={Object {}}>
+      style={Object {}}
+    >
       Account Number
     </label>
     <input
@@ -60,17 +67,22 @@ exports[`test should render with props 1`] = `
       readOnly={undefined}
       spellCheck={undefined}
       style={Object {}}
-      type="tel" />
+      type="tel"
+    />
   </div>
   <div
-    className="grid">
+    className="grid"
+  >
     <div
-      className="grid__item one-whole">
+      className="grid__item one-whole"
+    >
       <div
-        className="input input--active select_e8htpf">
+        className="input input--active select_e8htpf"
+      >
         <label
           htmlFor="accountType"
-          style={undefined}>
+          style={undefined}
+        >
           Account Type
         </label>
         <select
@@ -83,23 +95,27 @@ exports[`test should render with props 1`] = `
           onChange={[Function]}
           onFocus={[Function]}
           placeholder="Account Type"
-          style={undefined}>
+          style={undefined}
+        >
           <option
             style={
               Object {
                 "display": "none",
               }
-            }>
+            }
+          >
             
           </option>
           <option
             className={undefined}
-            value="checking">
+            value="checking"
+          >
             Checking
           </option>
           <option
             className={undefined}
-            value="savings">
+            value="savings"
+          >
             Savings
           </option>
         </select>

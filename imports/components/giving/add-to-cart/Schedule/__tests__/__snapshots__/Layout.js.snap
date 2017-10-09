@@ -1,4 +1,6 @@
-exports[`test should render schedule options if checked 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render schedule options if checked 1`] = `
 <div>
   <Checkbox
     classes={
@@ -8,20 +10,24 @@ exports[`test should render schedule options if checked 1`] = `
     }
     clicked={[Function]}
     defaultValue={true}
-    name="schedule">
+    name="schedule"
+  >
     <span
-      className="soft-half-top">
+      className="soft-half-top"
+    >
       Schedule This Contribution
     </span>
   </Checkbox>
   <div>
     <div
-      className="display-block soft-half-ends">
+      className="display-block soft-half-ends"
+    >
       <h7>
         Frequency
       </h7>
       <div
-        className="display-block soft-half-top">
+        className="display-block soft-half-top"
+      >
         <Component
           items={
             Array [
@@ -30,16 +36,19 @@ exports[`test should render schedule options if checked 1`] = `
               },
             ]
           }
-          onClick={[Function]} />
+          onClick={[Function]}
+        />
       </div>
     </div>
     <div
-      className="display-block soft-bottom">
+      className="display-block soft-bottom"
+    >
       <h7>
         Start Date
       </h7>
       <div
-        className="display-block soft-half-top">
+        className="display-block soft-half-top"
+      >
         <Component
           items={
             Array [
@@ -48,14 +57,15 @@ exports[`test should render schedule options if checked 1`] = `
               },
             ]
           }
-          onClick={[Function]} />
+          onClick={[Function]}
+        />
       </div>
     </div>
   </div>
 </div>
 `;
 
-exports[`test should render the date picker if told to 1`] = `
+exports[`should render the date picker if told to 1`] = `
 <div>
   <Checkbox
     classes={
@@ -65,20 +75,24 @@ exports[`test should render the date picker if told to 1`] = `
     }
     clicked={[Function]}
     defaultValue={true}
-    name="schedule">
+    name="schedule"
+  >
     <span
-      className="soft-half-top">
+      className="soft-half-top"
+    >
       Schedule This Contribution
     </span>
   </Checkbox>
   <div>
     <div
-      className="display-block soft-half-ends">
+      className="display-block soft-half-ends"
+    >
       <h7>
         Frequency
       </h7>
       <div
-        className="display-block soft-half-top">
+        className="display-block soft-half-top"
+      >
         <Component
           items={
             Array [
@@ -87,16 +101,19 @@ exports[`test should render the date picker if told to 1`] = `
               },
             ]
           }
-          onClick={[Function]} />
+          onClick={[Function]}
+        />
       </div>
     </div>
     <div
-      className="display-block soft-bottom">
+      className="display-block soft-bottom"
+    >
       <h7>
         Start Date
       </h7>
       <div
-        className="display-block soft-half-top">
+        className="display-block soft-half-top"
+      >
         <Component
           items={
             Array [
@@ -105,18 +122,20 @@ exports[`test should render the date picker if told to 1`] = `
               },
             ]
           }
-          onClick={[Function]} />
+          onClick={[Function]}
+        />
       </div>
     </div>
   </div>
   <Component
     onDayClick={[Function]}
     start="now"
-    toggleDatePicker={[Function]} />
+    toggleDatePicker={[Function]}
+  />
 </div>
 `;
 
-exports[`test should render with minimal props 1`] = `
+exports[`should render with minimal props 1`] = `
 <div>
   <Checkbox
     classes={
@@ -126,9 +145,11 @@ exports[`test should render with minimal props 1`] = `
     }
     clicked={[Function]}
     defaultValue={false}
-    name="schedule">
+    name="schedule"
+  >
     <span
-      className="soft-half-top">
+      className="soft-half-top"
+    >
       Schedule This Contribution
     </span>
   </Checkbox>

@@ -1,6 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Header renders default if no override 1`] = `
 <h4
-  className="text-center">
+  className="text-center"
+>
   Personal Details
 </h4>
 `;
@@ -14,7 +17,8 @@ exports[`Header renders override if override 1`] = `
 exports[`Layout renders with props 1`] = `
 <div>
   <div
-    className="push-double@lap-and-up push">
+    className="push-double@lap-and-up push"
+  >
     <span>
       header
     </span>
@@ -23,18 +27,23 @@ exports[`Layout renders with props 1`] = `
     child
   </span>
   <div
-    className="soft-sides">
+    className="soft-sides"
+  >
     <div
-      className="grid">
+      className="grid"
+    >
       <div
-        className="grid__item one-half">
+        className="grid__item one-half"
+      >
         <div
           className="input input--active"
           data-spec="input-wrapper"
-          style={Object {}}>
+          style={Object {}}
+        >
           <label
             htmlFor="firstName"
-            style={Object {}}>
+            style={Object {}}
+          >
             First Name
           </label>
           <input
@@ -56,18 +65,22 @@ exports[`Layout renders with props 1`] = `
             readOnly={undefined}
             spellCheck={undefined}
             style={Object {}}
-            type={undefined} />
+            type={undefined}
+          />
         </div>
       </div>
       <div
-        className="grid__item one-half">
+        className="grid__item one-half"
+      >
         <div
           className="input"
           data-spec="input-wrapper"
-          style={Object {}}>
+          style={Object {}}
+        >
           <label
             htmlFor="lastName"
-            style={Object {}}>
+            style={Object {}}
+          >
             Last Name
           </label>
           <input
@@ -89,17 +102,20 @@ exports[`Layout renders with props 1`] = `
             readOnly={undefined}
             spellCheck={undefined}
             style={Object {}}
-            type={undefined} />
+            type={undefined}
+          />
         </div>
       </div>
     </div>
     <div
       className="input input--active"
       data-spec="input-wrapper"
-      style={Object {}}>
+      style={Object {}}
+    >
       <label
         htmlFor="email"
-        style={Object {}}>
+        style={Object {}}
+      >
         Email
       </label>
       <input
@@ -121,16 +137,19 @@ exports[`Layout renders with props 1`] = `
         readOnly={undefined}
         spellCheck={undefined}
         style={Object {}}
-        type="email" />
+        type="email"
+      />
     </div>
     <style>
       .input--active select { color: #303030 }; .input--focused label { color: #858585 }
     </style>
     <div
-      className="input input--active select_e8htpf">
+      className="input input--active select_e8htpf"
+    >
       <label
         htmlFor="Campus"
-        style={undefined}>
+        style={undefined}
+      >
         Campus
       </label>
       <select
@@ -143,13 +162,15 @@ exports[`Layout renders with props 1`] = `
         onChange={[Function]}
         onFocus={[Function]}
         placeholder="Campus"
-        style={undefined}>
+        style={undefined}
+      >
         <option
           style={
             Object {
               "display": "none",
             }
-          }>
+          }
+        >
           
         </option>
       </select>
@@ -159,7 +180,8 @@ exports[`Layout renders with props 1`] = `
     <button
       className="btn"
       disabled={false}
-      onClick={[Function]}>
+      onClick={[Function]}
+    >
       Next
     </button>
   </div>
@@ -171,7 +193,8 @@ exports[`NextButton renders disabled styles if no campusId 1`] = `
   <button
     className="btn--disabled"
     disabled={true}
-    onClick={[Function]}>
+    onClick={[Function]}
+  >
     Next
   </button>
 </div>
@@ -182,7 +205,8 @@ exports[`NextButton renders disabled styles if no email 1`] = `
   <button
     className="btn--disabled"
     disabled={true}
-    onClick={[Function]}>
+    onClick={[Function]}
+  >
     Next
   </button>
 </div>
@@ -193,7 +217,8 @@ exports[`NextButton renders disabled styles if no firstName 1`] = `
   <button
     className="btn--disabled"
     disabled={true}
-    onClick={[Function]}>
+    onClick={[Function]}
+  >
     Next
   </button>
 </div>
@@ -204,7 +229,8 @@ exports[`NextButton renders enabled styles if everything present 1`] = `
   <button
     className="btn"
     disabled={false}
-    onClick={[Function]}>
+    onClick={[Function]}
+  >
     Next
   </button>
 </div>
