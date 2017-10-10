@@ -27,17 +27,20 @@ Holtzmann is a reactive application framework for building high speed, web + nat
 ## Prerequisites
 
 - [Meteor](curl https://install.meteor.com/ | sh): `curl https://install.meteor.com/ | sh`;
-- [Node 6](https://nodejs.org/en/download/)
+- [Install Node](https://github.com/creationix/nvm) via NVM. Latest stable:
+  8.4.0+
 
 ## Quick Start
 
 ```
-git clone git@github.com:NewSpring/Holtzmann.git
-cd Holtzmann
-npm link
-apollos setup
-apollos run
+$ git clone git@github.com:NewSpring/Holtzmann.git
+$ cd Holtzmann
+$ npm link
+$ apollos setup
+$ cp ./.meteor/sample.settings.json ./.meteor/settings.json
+$ WEB=true meteor run --settings ./.meteor/settings.json
 ```
+You may need some additional parameters for your meteor settings file.
 
 ## Structure
 
@@ -77,22 +80,38 @@ To install all dependencies, we use [Yarn](https://yarnpkg.com/). To get started
 3. Run `yarn`.
 4. run `npm link`. This will bind `apollos` to your system to be used to run this app ([more info](https://docs.npmjs.com/cli/link)).
 
-`apollos setup`: This command will bootstrap the application. This may take some time.
+`apollos setup`: This command will bootstrap the application. This may take some time. It installs several meteor specific packages which can be altered in the package.json file under the `apollos` heading.
 
   - `-c || --clean`: Force rebuild of application
   - `-l || --log <level>`: NOT IMPLEMENTED
 
-`apollos run`: This will start a local server to serve the site and print its address in your console.
+Use the `meteor run` command as its the most reliable. It may be helpful to
+alias the command in your command line for quick startups.
 
-  - `-p || --port`: NOT IMPLEMENTED
-  - `-v || --verbosity`: NOT IMPLEMENTED
-  - `-q || --quick`: Removes built files (`.meteor/local`)
-  - `-n || --native`: This will run the native version of the application but allow you to work on most of the code in your web browser
-  - `--ios`: Run the native app in the iOS simulator
-  - `--android`: Run the native app in the Android simulator
-  - `--device`: Run the native app on a device. Use in conjunction with `--ios` or `--android`
-  - `--production`: Run the application in production mode
-  - `--debug`: Run the application in debug mode
+Holtzman uses environment variables to control certain aspects of building.
+Setting these variables will cause either the web version or the mobile version
+to build.
+
+`$ WEB=true`
+`$ NATIVE=true`
+
+you can leave these off instead of setting them to false. Its not recommended to
+set these using `export`. Instead you can add them to the command like this:
+
+- `WEB=true meteor run --settings ./.meteor/settings.json`
+- `NATIVE=true meteor run ios-device --settings ./.meteor/settings.json`
+
+*Building*
+
+The build done for production on web is this:
+
+`NODE_ENV="production" WEB=true meteor build .build --architecture os.linux.x86_64 --server https://my.newspring.cc --mobile-settings ./.meteor/settings.json`
+
+The build for native is this:
+
+`NODE_ENV="production" NATIVE=true meteor build .build --architecture os.linux.x86_64 --server https://native.newspring.cc --mobile-settings ./.meteor/settings.json`
+
+- all builds are done from the project root.
 
 ### Testing
 
