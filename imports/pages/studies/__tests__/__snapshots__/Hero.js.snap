@@ -1,6 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`StudyHero changes class name based on props 1`] = `
 <section
-  className="relative hard">
+  className="relative hard"
+>
   <div
     className="one-whole ratio--square ratio--landscape@palm-wide"
     style={
@@ -8,19 +11,23 @@ exports[`StudyHero changes class name based on props 1`] = `
         "position": "absolute",
         "zIndex": "10",
       }
-    }>
+    }
+  >
     <div
-      className="ratio__item" />
+      className="ratio__item"
+    />
   </div>
   <div
     className="one-whole overlay--gradient ratio--square ratio--landscape@palm-wide background--fill overlay-color--000"
     style={
       Object {
-        "backgroundImage": "url(\'http://exampleimage.org\')",
+        "backgroundImage": "url('http://exampleimage.org')",
       }
-    }>
+    }
+  >
     <div
-      className="overlay__item text-light-primary text-center soft-sides push-top" />
+      className="overlay__item text-light-primary text-center soft-sides push-top"
+    />
   </div>
 </section>
 `;

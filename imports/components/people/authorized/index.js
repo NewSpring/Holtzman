@@ -1,12 +1,13 @@
 import { Meteor } from "meteor/meteor";
-import { Component, PropTypes, cloneElement } from "react";
+import PropTypes from "prop-types";
+import { Component, cloneElement } from "react";
 import { connect } from "react-redux";
 
 import { accounts as accountsActions, modal } from "../../../data/store";
 import { routeActions } from "../../../data/store/routing";
 import OnBoard from "../accounts";
 
-const map = (state) => ({
+const map = state => ({
   auth: state.accounts.authorized,
   modal: state.modal,
   previous: state.routing.location.previous,
@@ -19,6 +20,7 @@ export default class Authorized extends Component {
     auth: PropTypes.bool,
     modal: PropTypes.object,
     children: PropTypes.object,
+    previous: PropTypes.object,
   }
 
   componentWillMount() {

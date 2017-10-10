@@ -1,5 +1,6 @@
 
-import { Component, PropTypes } from "react";
+import PropTypes from "prop-types";
+import { Component } from "react";
 import moment from "moment";
 import { Link } from "react-router";
 import { Meteor } from "meteor/meteor";
@@ -31,7 +32,7 @@ export default class Layout extends Component {
     expandedSchedule: null,
   }
 
-  expandSchedule = (e) => {
+  expandSchedule = e => {
     e.preventDefault();
 
     const { dataset } = e.currentTarget;
@@ -55,11 +56,11 @@ export default class Layout extends Component {
 
   // XXX this is a timezone related formatting issue
   // so add a day to show correct dates
-  formatDate = (date) => (
+  formatDate = date => (
     moment(date).add(1, "day").format("MMM D, YYYY")
   )
 
-  capitalizeFirstLetter = (string) => (
+  capitalizeFirstLetter = string => (
     string.charAt(0).toUpperCase() + string.slice(1)
   )
 
@@ -219,7 +220,7 @@ export default class Layout extends Component {
                             >
                               <h6 className="text-dark-tertiary push-half-bottom">
                                 {this.capitalizeFirstLetter(
-                                  schedule.schedule.description.toLowerCase()
+                                  schedule.schedule.description.toLowerCase(),
                                 )}
                                 <span className="text-dark-secondary">
                                   {complete ? " - Complete" : ""}
@@ -331,7 +332,7 @@ export default class Layout extends Component {
                               >
                                 <h6 className="text-dark-tertiary push-half-bottom">
                                   {this.capitalizeFirstLetter(
-                                    schedule.schedule.description.toLowerCase()
+                                    schedule.schedule.description.toLowerCase(),
                                   )}
                                   <span className="text-dark-secondary">
                                     {complete ? " - Complete" : ""}

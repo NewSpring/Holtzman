@@ -13,6 +13,7 @@ const Parser = new Liquid.Engine();
 
 const StandardFilters = { ...Liquid.StandardFilters };
 const caseChangedFilter = {};
+/* eslint-disable */
 for (const filter in StandardFilters) {
   // eslint-disable-line
   const newFilter = toPascalCase(filter);
@@ -24,6 +25,7 @@ for (const filter in StandardFilters) {
     return StandardFilters[filter](input, format);
   };
 }
+/* eslint-enable */
 
 function toDate(i) {
   let input = i;
@@ -56,10 +58,7 @@ Parser.registerFilters({
     Format(value, format) {
       // hardcode number formating for now
       if (format === "#,##0.00") {
-        return `${Number(value).toFixed(2)}`.replace(
-          /\B(?=(\d{3})+(?!\d))/g,
-          ",",
-        );
+        return `${Number(value).toFixed(2)}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
       }
       return null;
     },
@@ -80,11 +79,7 @@ Parser.registerFilters({
 });
 
 Meteor.methods({
-  "communication/email/send": function sendEmail(
-    emailId,
-    PersonAliasId,
-    merge,
-  ) {
+  "communication/email/send": function sendEmail(emailId, PersonAliasId, merge) {
     let mergeFields = merge;
     check(emailId, Number);
     // check(PersonAliasId, Number)

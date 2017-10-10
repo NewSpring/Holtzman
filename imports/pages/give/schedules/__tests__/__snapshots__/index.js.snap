@@ -1,4 +1,6 @@
-exports[`test renders with props 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders with props 1`] = `
 <Layout
   accounts={Array []}
   accountsReady={true}
@@ -6,5 +8,6 @@ exports[`test renders with props 1`] = `
   confirm={[Function]}
   recoverableSchedules={Array []}
   schedules={Array []}
-  schedulesReady={true} />
+  schedulesReady={true}
+/>
 `;
