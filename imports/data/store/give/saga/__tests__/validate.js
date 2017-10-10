@@ -1,7 +1,5 @@
-
 import sagaHelper from "redux-saga-testing";
-import { takeLatest } from "redux-saga";
-import { put, select, call, cps } from "redux-saga/effects";
+import { takeLatest, put, select, call, cps } from "redux-saga/effects";
 
 import { initial } from "../../reducer";
 

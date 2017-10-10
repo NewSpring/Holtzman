@@ -1,12 +1,12 @@
 /* eslint-disable */
 import { Meteor } from "meteor/meteor";
-import { storiesOf } from "@kadira/storybook";
+import { storiesOf } from '@storybook/react';
 import {
   withKnobs,
   text,
   select,
   boolean,
-} from "@kadira/storybook-addon-knobs";
+} from '@storybook/addon-knobs';
 import withReadme from "storybook-readme/with-readme";
 import backgrounds from "react-storybook-addon-backgrounds";
 

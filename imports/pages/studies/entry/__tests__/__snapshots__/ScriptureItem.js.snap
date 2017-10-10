@@ -1,30 +1,39 @@
-exports[`test renders loading without scriptureData 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders loading without scriptureData 1`] = `
 <div
-  className="soft push-top">
+  className="soft push-top"
+>
   <h4
-    className="soft-bottom display-inline-block">
+    className="soft-bottom display-inline-block"
+  >
     Job 2
   </h4>
   <p
-    className="small push-half-left display-inline-block">
+    className="small push-half-left display-inline-block"
+  >
     ESV
   </p>
   <div
-    className="one-whole text-center">
+    className="one-whole text-center"
+  >
     <Loading />
   </div>
 </div>
 `;
 
-exports[`test renders scripture when state updated 1`] = `
+exports[`renders scripture when state updated 1`] = `
 <div
-  className="soft push-top">
+  className="soft push-top"
+>
   <h4
-    className="soft-bottom display-inline-block">
+    className="soft-bottom display-inline-block"
+  >
     Job 2
   </h4>
   <p
-    className="small push-half-left display-inline-block">
+    className="small push-half-left display-inline-block"
+  >
     ESV
   </p>
   <div
@@ -32,6 +41,7 @@ exports[`test renders scripture when state updated 1`] = `
       Object {
         "__html": "<h1>scipture</h1>",
       }
-    } />
+    }
+  />
 </div>
 `;

@@ -53,8 +53,16 @@ function moveScripts(data) {
   $("body").append([...heads, ...bodies]);
 
   // Remove empty lines caused by removing scripts
-  $("head").html($("head").html().replace(/(^[ \t]*\n)/gm, ""));
-  $("body").html($("body").html().replace(/(^[ \t]*\n)/gm, ""));
+  $("head").html(
+    $("head")
+      .html()
+      .replace(/(^[ \t]*\n)/gm, ""),
+  );
+  $("body").html(
+    $("body")
+      .html()
+      .replace(/(^[ \t]*\n)/gm, ""),
+  );
   return $.html();
 }
 
@@ -64,11 +72,15 @@ function moveStyles(data) {
   $("head").append(styles);
 
   // Remove empty lines caused by removing scripts
-  $("head").html($("head").html().replace(/(^[ \t]*\n)/gm, ""));
+  $("head").html(
+    $("head")
+      .html()
+      .replace(/(^[ \t]*\n)/gm, ""),
+  );
   return $.html();
 }
 
-const _getCacheKey = (url) => `${Meteor.userId()}::${url}`;
+const _getCacheKey = url => `${Meteor.userId()}::${url}`;
 
 function generateSSRData(serverOptions, req, res, renderProps, history) {
   let html;
@@ -101,11 +113,7 @@ function generateSSRData(serverOptions, req, res, renderProps, history) {
         if (reduxStore) {
           wrapperProps.store = reduxStore;
         }
-        app = (
-          <serverOptions.wrapper {...wrapperProps}>
-            {app}
-          </serverOptions.wrapper>
-        );
+        app = <serverOptions.wrapper {...wrapperProps}>{app}</serverOptions.wrapper>;
       }
 
       // Do the rendering.
@@ -162,7 +170,7 @@ function patchResWrite(serverOptions, originalWrite, css, html, head, req, res) 
         // Add react-helmet stuff in the header (yay SEO!)
         data = data.replace(
           "<head>",
-          `<head>${head.title}${head.base}${head.meta}${head.link}${head.script}`
+          `<head>${head.title}${head.base}${head.meta}${head.link}${head.script}`,
         );
       }
 
@@ -171,7 +179,7 @@ function patchResWrite(serverOptions, originalWrite, css, html, head, req, res) 
         `<body><!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=${Meteor.settings.public.gtm}"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) --><div id="react-app">${html}</div>`
+<!-- End Google Tag Manager (noscript) --><div id="react-app">${html}</div>`,
       );
     }
 
@@ -270,10 +278,11 @@ export default function run(routes, serverOptions = {}) {
                 res.write("Not found");
                 res.end();
               }
-            })
+            }),
           );
         });
-      })
+        return true;
+      }),
     );
   })();
 }

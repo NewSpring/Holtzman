@@ -1,4 +1,5 @@
-import { Component, PropTypes } from "react";
+import PropTypes from "prop-types";
+import { Component } from "react";
 import { graphql } from "react-apollo";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
@@ -24,7 +25,7 @@ class FilterWithoutData extends Component {
 
   state = { query: null }
 
-  findByQuery = (e) => {
+  findByQuery = e => {
     if (e && e.preventDefault) e.preventDefault();
     document.getElementById("search").blur();
 
@@ -39,7 +40,7 @@ class FilterWithoutData extends Component {
     router.push(location);
   }
 
-  removeQuery = (e) => {
+  removeQuery = e => {
     if (e && e.preventDefault) e.preventDefault();
 
     this.props.toggleSearch();
@@ -52,7 +53,7 @@ class FilterWithoutData extends Component {
     router.push(location);
   }
 
-  inputOnChange = (value) => {
+  inputOnChange = value => {
     this.setState({ query: value });
   }
 
@@ -118,7 +119,7 @@ class FilterWithoutData extends Component {
 
               <Forms.Form
                 classes={["hard", "display-inline-block", "one-whole"]}
-                submit={(e) => this.findByQuery(e)}
+                submit={e => this.findByQuery(e)}
                 action
               >
                 <i className="icon-search locked-left soft-half-left" />
@@ -142,7 +143,7 @@ class FilterWithoutData extends Component {
                   placeholder="Type your search here..."
                   type="text"
                   defaultValue={q}
-                  onChange={(e) => this.inputOnChange(e)}
+                  onChange={e => this.inputOnChange(e)}
                   autoFocus
                 />
 
@@ -185,11 +186,11 @@ const withCampusLocations = graphql(CAMPUS_LOCATIONS_QUERY, { name: "campusLocat
 export default withRouter(
   withAttributes(
     withCampusLocations(
-      connect((state) => ({ location: state.routing.location }))(
-        FilterWithoutData
-      )
-    )
-  )
+      connect(state => ({ location: state.routing.location }))(
+        FilterWithoutData,
+      ),
+    ),
+  ),
 );
 
 export {

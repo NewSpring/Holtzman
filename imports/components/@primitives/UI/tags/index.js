@@ -1,4 +1,5 @@
-import { Component, PropTypes } from "react";
+import PropTypes from "prop-types";
+import { Component } from "react";
 import { withRouter } from "react-router";
 import { connect } from "react-redux";
 import { Meteor } from "meteor/meteor";
@@ -46,7 +47,7 @@ class TagWithoutData extends Component {
     }
   }
 
-  onClick = (e) => {
+  onClick = e => {
     if (e) e.stopPropagation();
     let { val } = this.props;
     const { onClick, router, location, clickAble, canBeActive, urlKey } = this.props;
@@ -73,7 +74,7 @@ class TagWithoutData extends Component {
       tags.push(val);
     }
 
-    tags = tags.filter((x) => x);
+    tags = tags.filter(x => x);
 
     if (!tags.length && location.query[urlKey]) {
       delete location.query[urlKey];
@@ -84,12 +85,12 @@ class TagWithoutData extends Component {
     router.replace(newPath);
   };
 
-  isInQueryString = (props) => {
+  isInQueryString = props => {
     const { val, urlKey } = props;
     const { query } = props.location;
     if (!query || !query[urlKey]) return false;
 
-    const tags = query[urlKey].toLowerCase().split(",").filter((x) => x);
+    const tags = query[urlKey].toLowerCase().split(",").filter(x => x);
     return tags.indexOf(val.toLowerCase()) > -1;
   };
 
@@ -134,6 +135,6 @@ class TagWithoutData extends Component {
   }
 }
 
-export default withRouter(connect((state) => ({ location: state.routing.location }))(TagWithoutData));
+export default withRouter(connect(state => ({ location: state.routing.location }))(TagWithoutData));
 
 export { TagWithoutData };

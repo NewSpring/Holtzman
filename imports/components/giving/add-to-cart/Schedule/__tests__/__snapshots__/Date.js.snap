@@ -1,8 +1,11 @@
-exports[`test should render with minimal props 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render with minimal props 1`] = `
 <div>
   <Styles />
   <div
-    id="datepicker">
+    id="datepicker"
+  >
     <div
       style={
         Object {
@@ -16,7 +19,8 @@ exports[`test should render with minimal props 1`] = `
           "top": 0,
           "zIndex": 999,
         }
-      }>
+      }
+    >
       <component
         locale="en"
         localeUtils={
@@ -34,12 +38,15 @@ exports[`test should render with minimal props 1`] = `
             "selected": [Function],
           }
         }
-        onDayClick={[Function]} />
+        onDayClick={[Function]}
+      />
       <div
-        className="background--light-secondary soft text-center">
+        className="background--light-secondary soft text-center"
+      >
         <button
           className="btn flush btn--small"
-          onClick={[Function]}>
+          onClick={[Function]}
+        >
           Done
         </button>
       </div>
@@ -56,7 +63,8 @@ exports[`test should render with minimal props 1`] = `
           "top": 0,
           "zIndex": 998,
         }
-      } />
+      }
+    />
   </div>
 </div>
 `;

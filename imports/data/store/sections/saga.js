@@ -1,6 +1,6 @@
-
+// node doesn't like reassigning stuff here so we use the spread and
+// Object.assign to create new objects and keeping the old ones immutable.
 // XXX we need to abstract this to the component level
-
 import "regenerator-runtime/runtime";
 
 import { fork, put } from "redux-saga/effects";
@@ -9,7 +9,7 @@ import { addSaga } from "../utilities";
 import { GraphQL } from "../../graphql";
 
 // XXX abstract action creators to file that isn't index
-const set = (content) => ({ type: "SECTIONS.SET_CONTENT", content });
+const set = content => ({ type: "SECTIONS.SET_CONTENT", content });
 
 function* getSectionsData() {
   if (Meteor.isServer) return;
@@ -71,21 +71,21 @@ function* getSectionsData() {
     if (!images.length) return null;
 
     // prefer 1x1 image
-    const oneByOne = _.find(images, (image) => (
+    const oneByOne = _.find(images, image => (
       image.label === "1:1"
     ));
 
     if (oneByOne) return oneByOne.url;
 
     // then try 2x1, especially for devotions that only have 2x1
-    const twoByOne = _.find(images, (image) => (
+    const twoByOne = _.find(images, image => (
       image.label === "2:1"
     ));
 
     if (twoByOne) return twoByOne.url;
 
     // then try default, for devotions with leather times
-    const defaultImage = _.find(images, (image) => (
+    const defaultImage = _.find(images, image => (
       image.label === "default"
     ));
 
@@ -98,31 +98,33 @@ function* getSectionsData() {
   // go ahead and make the query on load (this will be cached on heighliner)
   const { data } = yield GraphQL.query({ query, variables });
   const navigation = data.navigation;
-  delete data.navigation;
   const filteredItems = {};
 
   // parse the results and only get a single usable image
   // eslint-disable-next-line
   for (const item in data) {
-    const image = extractImage(data[item][0]);
-    filteredItems[item] = image;
+    if (item !== "navigation") {
+      const image = extractImage(data[item][0]);
+      filteredItems[item] = image;
+    }
   }
 
-  function bindForeignImages(sections) {
+  function bindForeignImages(s) {
+    const sections = { ...s };
     // remap the images of the section panel
     // eslint-disable-next-line
-    for (const section in sections) {
+    for (const section in sections) { // eslint-disable-line
       let name = sections[section].text.toLowerCase();
       if (name.includes("studies")) name = "studies";
       if (name.includes("devotionals")) name = "studies";
       if (filteredItems[name]) {
         // eslint-disable-next-line
-        sections[section].image = filteredItems[name];
+        sections[section] = Object.assign({}, { image: filteredItems[name] });
       }
 
       // ensure protocol relative
       // eslint-disable-next-line
-      sections[section].image = sections[section].image.replace(/^http:|^https:/i, "");
+      sections[section] = Object.assign({}, { image: sections[section].image.replace(/^http:|^https:/i, "")});
 
       // pre download images for super speed
       if (process.env.NATIVE && sections[section].image) {
@@ -136,11 +138,13 @@ function* getSectionsData() {
     }
   }
 
-  function fixInternaLinks(sections) {
+  function fixInternaLinks(s) {
+    const sections = { ...s };
     // eslint-disable-next-line
     for (const section in sections) {
       let url = sections[section].link;
       const regex = new RegExp(__meteor_runtime_config__.ROOT_URL, "gmi");
+
       if (url.match(regex)) {
         url = url.replace(regex, "");
         if (url[0] !== "/") {
@@ -151,7 +155,7 @@ function* getSectionsData() {
       }
 
       // eslint-disable-next-line
-      sections[section].link = url;
+      sections[section] = Object.assign({ link: String(url) });
 
       fixInternaLinks(sections[section].children);
     }

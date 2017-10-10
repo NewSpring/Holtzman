@@ -1,4 +1,3 @@
-
 import "regenerator-runtime/runtime";
 import React from "react";
 import ReactDOM from "react-dom";
@@ -49,14 +48,12 @@ export default function* submitPaymentDetails(data, url) {
 
   // @TODO test on older browsers
   // store data in NMI's system
+  // eslint-disable-next-line
   yield fetch(url, {
     method: "POST",
     body: new FormData(form),
     mode: "no-cors",
-  })
-    .catch(() => {
-      // @TODO error handling
-    });
-
-  return;
+  }).catch(() => {
+    // @TODO error handling
+  });
 }

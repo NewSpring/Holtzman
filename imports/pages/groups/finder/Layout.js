@@ -1,5 +1,6 @@
 /* eslint-disable react/no-danger */
-import { PropTypes } from "react";
+import PropTypes from "prop-types";
+
 import Meta from "../../../components/shared/meta";
 import Loading from "../../../components/@primitives/UI/loading";
 import Forms from "../../../components/@primitives/UI/forms";
@@ -30,7 +31,7 @@ const Layout = ({
   getLocation,
   geoLocationLoading,
 }) =>
-  <section className="background--light-secondary hard">
+  (<section className="background--light-secondary hard">
     {/* Meta */}
     <Meta
       title="Group Finder"
@@ -207,7 +208,7 @@ const Layout = ({
           })}
       </div>
     </div>
-  </section>;
+  </section>);
 /* eslint-enable max-len */
 
 Layout.propTypes = {
