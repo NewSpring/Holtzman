@@ -29,6 +29,13 @@ Holtzmann is a reactive application framework for building high speed, web + nat
 - [Meteor](curl https://install.meteor.com/ | sh): `curl https://install.meteor.com/ | sh`;
 - [Install Node](https://github.com/creationix/nvm) via NVM. Latest stable:
   8.4.0+
+- On Mac run `xcode-select --install` to install command line tools.
+- \*[Xcode](https://developer.apple.com/xcode/) for iOS.
+- \*[Cocoapods](https://cocoapods.org) for iOS.
+- \*[Android Dev Tools](https://guide.meteor.com/mobile.html) instructions for
+  Android.
+
+  \* optional unless you want to build natively
 
 ## Quick Start
 
@@ -37,6 +44,7 @@ $ git clone git@github.com:NewSpring/Holtzmann.git
 $ cd Holtzmann
 $ npm link
 $ apollos setup
+& yarn install
 $ cp ./.meteor/sample.settings.json ./.meteor/settings.json
 $ WEB=true meteor run --settings ./.meteor/settings.json
 ```

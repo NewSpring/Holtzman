@@ -3,6 +3,9 @@ import Meteor from "meteor/meteor";
 import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 
+import scriptLoader from "react-async-script-loader";
+import AudioPlayer from "./components/@primitives/players/audio";
+
 import {
   wrapper,
   createReduxStore,
@@ -16,9 +19,6 @@ import Global from "./components/@primitives/layout/global";
 let App = null;
 
 if (process.env.NATIVE) {
-  import scriptLoader from "react-async-script-loader";
-  import AudioPlayer from "./components/@primitives/players/audio";
-
   // sync load ooyala scripts
   // XXX can we move this to just the video component?
   const scripts = [
