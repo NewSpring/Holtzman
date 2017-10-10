@@ -5,7 +5,7 @@ Church](https://img.shields.io/badge/NEWSPRING_CHURCH-Holtzmann-6BAC43.svg?style
 [![Build Status](https://travis-ci.org/NewSpring/Holtzman.svg)](https://travis-ci.org/NewSpring/Holtzman)
 [![Coverage Status](https://coveralls.io/repos/github/NewSpring/Holtzman/badge.svg?branch=master)](https://coveralls.io/github/NewSpring/Holtzman?branch=master)
 
-Holtzmann is a reactive application framework for building high speed, web + native, reactive applications. It is built using Reactjs, Redux, and Meteor. This repository contains the application framework and instructions for usage.
+Holtzmann is an application framework for building high speed, web + native, reactive applications. It is built using Reactjs, Redux, and Meteor. This repository contains the application framework and instructions for usage.
 
 **Table of Contents**
 
@@ -26,10 +26,11 @@ Holtzmann is a reactive application framework for building high speed, web + nat
 
 ## Prerequisites
 
-- [Meteor](curl https://install.meteor.com/ | sh): `curl https://install.meteor.com/ | sh`;
-- [Install Node](https://github.com/creationix/nvm) via NVM. Latest stable:
-  8.4.0+
+- [Meteor](https://www.meteor.com/): `curl https://install.meteor.com/ | sh`;
+- [Install Node](https://github.com/creationix/nvm) via NVM. Latest stable: 8.4.0+
 - On Mac run `xcode-select --install` to install command line tools.
+- [Install Yarn](https://yarnpkg.com/en/docs/install) via your preferred method. We use [Homebrew](https://brew.sh/). Latest stable
+  version can be found [here](https://github.com/yarnpkg/yarn/releases/).
 - \*[Xcode](https://developer.apple.com/xcode/) for iOS.
 - \*[Cocoapods](https://cocoapods.org) for iOS.
 - \*[Android Dev Tools](https://guide.meteor.com/mobile.html) instructions for
@@ -40,7 +41,7 @@ Holtzmann is a reactive application framework for building high speed, web + nat
 ## Quick Start
 
 ```
-$ git clone git@github.com:NewSpring/Holtzmann.git
+$ git clone git@github.com:NewSpring/Holtzman.git
 $ cd Holtzmann
 $ npm link
 $ apollos setup
@@ -129,15 +130,7 @@ To run tests, call `yarn test` or `yarn test -- --watch`. This will also run `es
 
 ### Linting
 
-This project includes linting using [ESLint](http://eslint.org/).  To enable linting in Visual Studio Code, you will need to install the [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).
-
-To install the extension you'll need to press `⌘+P`, paste the following command and press enter.
-
-```
-ext install vscode-eslint
-```
-
-To manually run eslint, use `yarn lint`.
+This project includes linting using [ESLint](http://eslint.org/). To manually run eslint, use `yarn lint`. There are tools available for many editors to show you errors while you work. Its recommended to use one of these tools and enable the option to use project based eslint which will use the eslint thats installed with yarn.
 
 ### Typing
 
