@@ -6,7 +6,7 @@
 //   boolean,
 // } from "@kadira/storybook-addon-knobs";
 // import withReadme from "storybook-readme/with-readme";
-// import backgrounds from "react-storybook-addon-backgrounds";
+// import backgrounds from "@storybook/addon-backgrounds";
 // import centered from "/.storybook/decorators/centered";
 // import defaultColors from "/.storybook/defaults";
 

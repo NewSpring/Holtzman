@@ -1,13 +1,8 @@
 /* eslint-disable */
-import { storiesOf } from '@storybook/react';
-import {
-  withKnobs,
-  text,
-  select,
-  color,
-} from '@storybook/addon-knobs';
+import { storiesOf } from "@storybook/react";
+import { withKnobs, text, select, color } from "@storybook/addon-knobs";
 import withReadme from "storybook-readme/with-readme";
-import backgrounds from "react-storybook-addon-backgrounds";
+import backgrounds from "@storybook/addon-backgrounds";
 import centered from "/.storybook/decorators/centered";
 import defaultColors from "/.storybook/defaults";
 
@@ -17,15 +12,19 @@ import FeedItem from "../";
 const story = storiesOf("Cards", module)
   .addDecorator(withKnobs)
   .addDecorator(centered)
-  .addDecorator(backgrounds(defaultColors("light-primary", "light-secondary", "dark-primary", "dark-secondary")))
-  ;
+  .addDecorator(
+    backgrounds(
+      defaultColors("light-primary", "light-secondary", "dark-primary", "dark-secondary"),
+    ),
+  );
 
 // We don't use description quite yet. As such, it's not really styled.
 // So let's not pass it on this story.
 // description={text("description", "MiniCard description")}
 
-story
-  .add("FeedItem", withReadme(Readme, () => {
+story.add(
+  "FeedItem",
+  withReadme(Readme, () => {
     // set channel name options
     const channelOptions = {
       articles: "Articles",
@@ -38,11 +37,12 @@ story
     const content = {
       channelName: "articles",
       content: {
-        colors: [
-          { description: "primary", id: null, value: "303030" },
-        ],
+        colors: [{ description: "primary", id: null, value: "303030" }],
         images: [
-          { fileLabel: "2:1", url: "http://i.huffpost.com/gen/1647376/images/o-JEFF-GOLDBLUM-facebook.jpg" },
+          {
+            fileLabel: "2:1",
+            url: "http://i.huffpost.com/gen/1647376/images/o-JEFF-GOLDBLUM-facebook.jpg",
+          },
         ],
       },
       meta: {
@@ -68,15 +68,15 @@ story
     if (content.channelName === "series_newspring") {
       const label = "Background Color";
       const defaultValue = "#303030";
-      content.content.colors[0].value = color(label, defaultValue).replace('#','');
+      content.content.colors[0].value = color(label, defaultValue).replace("#", "");
     }
 
     return (
       <div className={"floating"}>
         <div className={"grid__item"} style={{ maxWidth: "480px" }}>
-          <FeedItem
-            item={content}
-          />
+          <FeedItem item={content} />
         </div>
-      </div>);
-  }));
+      </div>
+    );
+  }),
+);
