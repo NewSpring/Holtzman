@@ -5,7 +5,7 @@ Church](https://img.shields.io/badge/NEWSPRING_CHURCH-Holtzmann-6BAC43.svg?style
 [![Build Status](https://travis-ci.org/NewSpring/Holtzman.svg)](https://travis-ci.org/NewSpring/Holtzman)
 [![Coverage Status](https://coveralls.io/repos/github/NewSpring/Holtzman/badge.svg?branch=master)](https://coveralls.io/github/NewSpring/Holtzman?branch=master)
 
-Holtzmann is a reactive application framework for building high speed, web + native, reactive applications. It is built using Reactjs, Redux, and Meteor. This repository contains the application framework and instructions for usage.
+Holtzmann is an application framework for building high speed, web + native, reactive applications. It is built using Reactjs, Redux, and Meteor. This repository contains the application framework and instructions for usage.
 
 **Table of Contents**
 
@@ -29,14 +29,17 @@ Holtzmann is a reactive application framework for building high speed, web + nat
 - [Meteor](curl https://install.meteor.com/ | sh): `curl https://install.meteor.com/ | sh`;
 - [Install Node](https://github.com/creationix/nvm) via NVM. Latest stable:
   8.4.0+
+- [Install Yarn](https://yarnpkg.com/en/docs/install) via your preferred method. We use [Homebrew](https://brew.sh/). Latest stable
+  version can be found [here](https://github.com/yarnpkg/yarn/releases/).
 
 ## Quick Start
 
 ```
-$ git clone git@github.com:NewSpring/Holtzmann.git
+$ git clone git@github.com:NewSpring/Holtzman.git
 $ cd Holtzmann
 $ npm link
 $ apollos setup
+$ yarn
 $ cp ./.meteor/sample.settings.json ./.meteor/settings.json
 $ WEB=true meteor run --settings ./.meteor/settings.json
 ```
