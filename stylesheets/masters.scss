@@ -2,13 +2,13 @@
 // @import "./base/_select";
 
 // import default vars
-@import "/.remote/junction/lib/mixins";
+@import "../.remote/junction/lib/mixins";
 
 // make changes specific to this app
 @import "./vars";
 
 // import full library
-@import "/.remote/junction/lib/framework";
+@import "../.remote/junction/lib/framework";
 
 // hacks
 @import "./hacks";

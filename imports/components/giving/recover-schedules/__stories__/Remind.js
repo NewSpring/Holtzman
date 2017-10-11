@@ -1,12 +1,12 @@
 /* eslint-disable */
 import { storiesOf } from "@storybook/react";
 import { withKnobs } from "@storybook/addon-knobs";
-import withReadme from "storybook-readme";
+// import withReadme from "storybook-readme";
 import backgrounds from "@storybook/addon-backgrounds";
 import centered from "/.storybook/decorators/centered";
 import defaultColors from "/.storybook/defaults";
 
-import Readme from "./Remind.md";
+// import Readme from "./Remind.md";
 import Remind from "../Remind";
 
 const story = storiesOf("Schedules", module)
@@ -16,7 +16,7 @@ const story = storiesOf("Schedules", module)
 
 story.add(
   "Remind Me Later",
-  withReadme(Readme, () => (
+  () => (
     <div className={"floating"}>
       <div className={"grid__item soft background--light-primary"} style={{ maxWidth: "375px" }}>
         <Remind
@@ -31,5 +31,5 @@ story.add(
         />
       </div>
     </div>
-  )),
+  ),
 );
