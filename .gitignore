@@ -33,7 +33,7 @@ settings.json
 
 # Users Environment Variables
 .lock-wscript
-.env
+builder
 
 # Norma development assistant
 .norma
