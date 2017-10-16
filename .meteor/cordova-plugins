@@ -2,7 +2,7 @@ cordova-custom-config@4.0.2
 cordova-fabric-plugin@1.0.8
 cordova-plugin-camera@2.4.1
 cordova-plugin-device@1.1.6
-cordova-plugin-fcm@https://github.com/NewSpring/cordova-plugin-fcm.git#5a75bb0ee8f16faed2d5a3a30bf9c0b1c3e527de
+cordova-plugin-fcm@https://github.com/NewSpring/cordova-plugin-fcm.git#feca8acef29779d33787dec9b4254ada7184324d
 cordova-plugin-file-transfer@1.6.3
 cordova-plugin-geolocation@2.4.3
 cordova-plugin-inappbrowser@1.7.1
