@@ -1,0 +1,155 @@
+@import "positions";
+@import "vendor";
+
+$use-fixed-ratio: true!default;
+$ratios: (
+  ratio--portrait: (
+    width: 1,
+    height: 2
+  ),
+  ratio--square: (
+    width: 1,
+    height: 1
+  ),
+  ratio--landscape: (
+    width: 2,
+    height: 1
+  )
+) !default;
+
+
+// @if $use-fixed-ratio == true {
+//   @if $use-positions == true {
+    //
+    // @name %_ratio
+    // @description hidden object to contain base styles of ratio parent elements
+    //
+    // @extension true
+    // @private true
+    //
+    // @block %_ratio
+    // @element %_ratio__item
+    //
+    // @state :before - pseudo element to expand to ratio size
+    //
+    // @note This extendable object will be the first thing listed in stylesheets if it is used.
+    //
+    %_ratio {
+      // Set position as relative to contain absolute child
+      position: relative;
+
+      display: block;
+      // Make sure that child container can fill parent entirely
+
+      padding: 0;
+
+      list-style: none;
+
+      &:before {
+        display: block;
+
+        content: "";
+      }
+    }
+
+    //
+    // @name %_ratio__item
+    // @description hidden object to contain base styles of ratio child elements
+    //
+    // @extension true
+    // @private true
+    //
+    // @block %_ratio
+    // @element %_ratio__item
+    //
+    //
+    %_ratio__item {
+      @include absolute(top 0 left 0 bottom 0 right 0);
+      @include vendor(box-sizing, border-box);
+
+      z-index: 1;
+    }
+
+    //
+    // @name fixed-ratio
+    // @description Used to generate empty ratio based containers
+    //
+    // @mixin true
+    //
+    // @parameter $width - numerical value of width
+    // @parameter $height - numerical value of height
+    // @parameter $child - name of child class
+    // @default $child - "ratio__item"
+    //
+    //
+    // @sass
+    // .className {
+    //   @include fixed-ratio(1, 1, square)
+    // }
+    //
+    // @css
+    // .className {
+    //   position: relative;
+    //   display: block;
+    //   padding: 0;
+    //   list-style: none;
+    // }
+    //
+    // .className:before {
+    //   display: block;
+    //   content: "";
+    //   padding-top: 100%;
+    // }
+    //
+    // .className > .square {
+    //   position: absolute;
+    //   top: 0;
+    //   bottom: 0;
+    //   left: 0;
+    //   right: 0;
+    //   -webkit-box-sizing: border-box;
+    //   -moz-box-sizing: border-box;
+    //   -ms-box-sizing: border-box;
+    //   -o-box-sizing: border-box;
+    //   z-index: 1;
+    // }
+    //
+    // @markup
+    // <div class="className">
+    //    <div class="square">
+    //        <!-- content goes here -->
+    //    </div>
+    // </div>
+    //
+    @mixin fixed-ratio($width, $height, $child: "ratio__item") {
+      // Get percentage based off of width and height variables
+      $percentage : ($height/$width * 100%);
+
+      position: relative;
+      display: block;
+      // Make sure that child container can fill parent entirely
+      padding: 0;
+      list-style: none;
+
+      // Use pseudo element to inflate container to ratio size
+      &:before {
+        display: block;
+        content: "";
+        padding-top: $percentage;
+      }
+
+      @if $child == "ratio__item" {
+      } @else {
+        // Set child to fill all of parent element
+        & > .#{$child} {
+          @include absolute(top 0 left 0 bottom 0 right 0);
+          @include vendor(box-sizing, border-box);
+
+          z-index: 1;
+        }
+      }
+    }
+  // } @else {
+  //   @warn "@fixed-ratio depends on @positions"
+  // }
+// }

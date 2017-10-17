@@ -31,9 +31,6 @@
   "bugs": {
     "url": "https://github.com/NewSpring/holzman/issues"
   },
-  "bin": {
-    "apollos": "./.bin/index.js"
-  },
   "homepage": "https://github.com/NewSpring/holzman",
   "jest": {
     "transform": {
@@ -66,20 +63,6 @@
     "setupFiles": [
       "<rootDir>/imports/util/tests/beforeTest.js"
     ]
-  },
-  "apollos": {
-    "settings": "./.meteor/settings.json",
-    "resource": {
-      "./.remote": {
-        "junction": "NewSpring/junction-framework",
-        "fonts": "NewSpring/newspring-fonts"
-      },
-      "./packages": {
-        "meteor-scss": "https://github.com/NewSpring/meteor-scss.git#432a60bded46edd02561e87b6a947b88072e9c68",
-        "fetch": "https://github.com/NewSpring/meteor-fetch.git#c36567418edd59564d54de9747c1f59e0ed0bf7f",
-        "inject-data": "https://github.com/NewSpring/inject-data.git#ea2e078e4763f8fd3875c77fb1073e3794bf8e6a"
-      }
-    }
   },
   "babel": {
     "presets": [
@@ -217,7 +200,6 @@
     "storybook-readme": "^1.2.0",
     "style-loader": "^0.13.1",
     "symlink-or-copy": "^1.1.3",
-    "vorpal": "^1.12.0",
     "write-json-file": "^2.0.0"
   }
 }

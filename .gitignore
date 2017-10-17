@@ -27,9 +27,9 @@ build/Release
 # Commenting this out is preferred by some people, see
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git-
 node_modules
-/packages
 .meteor/local
 settings.json
+*.settings.json
 
 # Users Environment Variables
 .lock-wscript
