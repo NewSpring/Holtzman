@@ -112,7 +112,6 @@ platform :ios do
       project: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/ios/project/#{ENV['XCODE_SCHEME_NAME']}.xcodeproj",
       clean: true,
       scheme: ENV['XCODE_SCHEME_NAME'],
-      xcconfig: "./.fastlane/build-fastlane.xcconfig",
       include_bitcode: false,
       export_team_id: ENV['TEAM_ID'],
       codesigning_identity: ENV["CODESIGNING_IDENTITY"],

@@ -31,11 +31,17 @@ App.icons({
   android_xxxhdpi: "assets/icons/android/icon-192x192-xxxhpdi.png",
 });
 
-// Modifying the XCBuildConfiguration in the Xcode Project
 App.appendToConfig(`
-  <preference name="cordova-custom-config-hook" value="before_compile" />
   <platform name="ios">
-    <preference name="ios-XCBuildConfiguration-SWIFT_VERSION" value="3.0" quote="value" />
+    <preference name="ios-XCBuildConfiguration-SWIFT_VERSION" value="3.0" quote="none" />
+    <preference name="ios-XCBuildConfiguration-IPHONEOS_DEPLOYMENT_TARGET" value="9.0" buildType="release" quote="none" />
+    <preference name="ios-XCBuildConfiguration-DEVELOPMENT_TEAM" value="7TM8C6252Z" quote="none" />
+    <preference name="ios-XCBuildConfiguration-PRODUCT_NAME" value="NewSpring" quote="none"/>
+    <preference name="ios-XCBuildConfiguration-PRODUCT_BUNDLE_IDENTIFIER" value="com.subsplashstudio31.NewSpring-Church" quote="value" />
+    <preference name="ios-XCBuildConfiguration-PROVISIONING_PROFILE" value="f4c35518-3dbf-4d62-a659-1b34a937166e" quote="value" buildType="release" />
+    <preference name="ios-XCBuildConfiguration-PROVISIONING_PROFILE_SPECIFIER" value="match AppStore com.subsplashstudio31.NewSpring-Church" quote="value" buildType="release" />
+    <preference name="ios-XCBuildConfiguration-PROVISIONING_PROFILE" value="b12ab0d1-c552-4211-98e0-eab8b6012c45" quote="value" buildType="debug"/>
+    <preference name="ios-XCBuildConfiguration-PROVISIONING_PROFILE_SPECIFIER" value="match Development com.subsplashstudio31.NewSpring-Church" quote="value" buildType="debug"/>
     <config-file platform="ios" target="*-Info.plist" parent="UIBackgroundModes" mode="merge" >
       <array>
         <string>audio</string>
