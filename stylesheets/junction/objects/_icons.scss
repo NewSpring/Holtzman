@@ -1,0 +1,154 @@
+
+$use-icons: true!default;
+
+@if $use-icons == true {
+  @include keyframe(spin) {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  //
+  // @name %_icon
+  // @description base selector for icons to extend that sets the width, height, and position to relative to contain sub items
+  //
+  // @extend true
+  //
+  %icon {
+    @extend %_circle;
+
+    position: relative;
+
+    display: block;
+
+    width: ($base-icon-size + ($base-border-size*2));
+    height: ($base-icon-size + ($base-border-size*2));
+
+    vertical-align: top;
+    text-decoration: none;
+
+    &[class*="fa-"] {
+      margin-bottom: 0;
+
+      text-align: center;
+
+      &:before {
+        font-size: $base-icon-size - $base-border-size;
+      }
+    }
+  }
+
+  //
+  // @name icon
+  // @class .icon
+  // @description icon class to set size from default variable
+  //
+  // @block .icon
+  // @modifier .icon--filled
+  //
+  // @extends %icon
+  //
+  // @state .icon fa-* - any fontawesome class will be set to correct size in icon
+  //
+  // @object true
+  //
+  // @markup
+  // <div class="icon fa fa-close"></div>
+  //
+  .icon {
+    @extend %icon;
+  }
+
+  //
+  // @name .icon--filled
+  // @class .icon--filled
+  // @description icon with background primary and light text
+  //
+  // @block .icon
+  // @modifier .icon--filled
+  //
+  // @extends %icon
+  //
+  // @object true
+  //
+  // @markup
+  // <div class="icon--filled fa fa-close"></div>
+  //
+  .icon--filled {
+    @extend %icon;
+
+    color: $light-color;
+    background-color: $brand-color;
+  }
+
+  //
+  // @name .icon--alert
+  // @class .icon--alert
+  // @description icon with background of alert color and light text
+  //
+  // @block .icon
+  // @modifier .icon--alert
+  //
+  // @extends %icon
+  //
+  // @object true
+  //
+  // @markup
+  // <div class="icon--alert fa fa-close"></div>
+  //
+  .icon--alert {
+    @extend %icon;
+
+    color: $light-color;
+    background-color: map-get($colors, alert);
+  }
+
+  //
+  // @name .icon--base
+  // @class .icon--base
+  // @description icon with background primary and light text
+  //
+  // @block .icon
+  // @modifier .icon--base
+  //
+  // @extends %icon
+  //
+  // @object true
+  //
+  // @markup
+  // <div class="icon--base fa fa-close"></div>
+  //
+  .icon--base {
+    @extend %icon;
+
+    color: $light-color;
+    border: $base-border-size solid $light-color;
+
+
+    &:before {
+      color: $light-color;
+    }
+  }
+
+  .icon--outlined {
+    @extend %icon;
+
+    color: map-get($colors, dark-tertiary);
+    border: $base-border-size solid map-get($colors, dark-tertiary);
+
+    &:before {
+      color: map-get($colors, dark-tertiary);
+    }
+  }
+
+  // overwrites for font-awesome alignment
+  .fa-angle-right:before {
+    margin-left: $base-border-size * 2;
+  }
+
+  .fa-angle-left:before {
+    margin-right: $base-border-size * 2;
+  }
+}

@@ -6,7 +6,7 @@
 const TRANSITION = "@@router/TRANSITION";
 const UPDATE_LOCATION = "@@router/UPDATE_LOCATION";
 
-const SELECT_LOCATION = (state) => state.routing.location;
+const SELECT_LOCATION = state => state.routing.location;
 
 function transition(method) {
   return (...args) => ({
@@ -54,10 +54,10 @@ export function syncHistory(history) {
   let connected = false;
   let syncing = false;
 
-  history.listen((location) => { initialState.location = location; })();
+  history.listen(location => { initialState.location = location; })();
 
   function middleware(store) {
-    unsubscribeHistory = history.listen((location) => {
+    unsubscribeHistory = history.listen(location => {
       currentKey = location.key;
       if (syncing) {
         // Don't dispatch a new action if we're replaying location.
@@ -86,7 +86,7 @@ export function syncHistory(history) {
     connected = true;
 
     // eslint-disable-next-line consistent-return
-    return (next) => (action) => {
+    return next => action => {
       if (action.type !== TRANSITION || !connected) {
         return next(action);
       }

@@ -1,4 +1,6 @@
-exports[`test should render with minimal props 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render with minimal props 1`] = `
 <mockConstructor
   GIVING_SCHEDULES={
     Array [
@@ -43,5 +45,6 @@ exports[`test should render with minimal props 1`] = `
   start={null}
   startClick={[Function]}
   toggleDatePicker={[Function]}
-  toggleSchedule={[Function]} />
+  toggleSchedule={[Function]}
+/>
 `;

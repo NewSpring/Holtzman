@@ -1,0 +1,136 @@
+
+$use-modals: true !default;
+
+@if $use-modals == true {
+  //
+  // @name %_modal
+  // @description The base modal object to be extended by different modal types
+  //
+  // @note open -to call a modal use `data-modal-open="ModalName"` on an element
+  // @noe close - to close a modal use `data-modal-close="ModalName"` on
+  //   an element within the modal
+  //
+  // @private
+  //
+  // @extend true
+  //
+  %_modal {
+    @include vendor(transition, opacity .2s ease-in-out .2s);
+
+    z-index: map-get($zindex, "modal");
+
+    overflow: hidden;
+
+    width: 0;
+    max-width: 0;
+    height: 0;
+    max-height: 0;
+    margin: 0;
+    padding: 0;
+
+    opacity: 0;
+
+    @if map-has-key($zindex, modal) == false {
+      $zindex: extend($zindex,
+      (
+          modal: 100
+        )
+      );
+    }
+
+    &:not(.modal--active) {
+      * {
+        @include vendor(transition, all .2s ease-in-out 0s);
+
+        height: 0;
+        max-height: 0;
+        margin: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+
+        opacity: 0;
+      }
+    }
+  }
+
+  //
+  // @name Modal
+  // @class .modal
+  // @description The .modal class is an object that set a container to fill the browser window
+  //
+  // @note open -to call a modal use `data-modal-open="ModalName"` on an element
+  // @noe close - to close a modal use `data-modal-close="ModalName"` on
+  //   an element within the modal
+  //
+  // @block .modal
+  //
+  // @state .modal--active - shows the modal on the screen
+  //
+  // @markup
+  // <div class="modal">
+  //   <h1>Modal!</h1>
+  // </div>
+  //
+  .modal {
+    @extend %_modal;
+
+    background-color: rgba(#fff, .96);
+  }
+
+
+  .modal--active {
+    @extend %_modal;
+    @include fixed(top 0 right 0 left 0 bottom 0);
+    @include vendor(transition, opacity .3s ease-in-out 0s);
+
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    max-height: none;
+
+    opacity: 1;
+  }
+
+  //
+  // @name .modal--dark
+  // @class .modal--dark
+  // @description dark version of basic modal
+  //
+  // @note open -to call a modal use `data-modal-open="ModalName"` on an element
+  // @noe close - to close a modal use `data-modal-close="ModalName"` on
+  //   an element within the modal
+  //
+  // @block .modal
+  // @modifier .modal--dark
+  //
+  // @state .modal--active - shows the modal on the screen
+  //
+  // @markup
+  // <div class="modal--dark">
+  //   <h1>Modal!</h1>
+  // </div>
+  //
+  .modal--dark {
+    @extend %_modal;
+
+    background-color: rgba(#000, .96);
+  }
+
+  html.modal--opened {
+    overflow: hidden;
+    body {
+      overflow: hidden;
+
+      height: 100%;
+      min-height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    .scrollable {
+      overflow: hidden;
+    }
+  }
+}

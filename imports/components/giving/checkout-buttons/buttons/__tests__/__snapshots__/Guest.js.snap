@@ -1,6 +1,9 @@
-exports[`test has dark styles if not disabled 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`has dark styles if not disabled 1`] = `
 <div
-  className="display-block soft-half-top">
+  className="display-block soft-half-top"
+>
   <h6
     className="outlined--bottom outlined--light text-dark-tertiary"
     onClick={[Function]}
@@ -9,15 +12,17 @@ exports[`test has dark styles if not disabled 1`] = `
         "cursor": "pointer",
         "display": "inline",
       }
-    }>
+    }
+  >
     meow
   </h6>
 </div>
 `;
 
-exports[`test has light styles if disabled 1`] = `
+exports[`has light styles if disabled 1`] = `
 <div
-  className="display-block soft-half-top">
+  className="display-block soft-half-top"
+>
   <h6
     className="outlined--bottom outlined--light text-light-tertiary"
     onClick={[Function]}
@@ -26,7 +31,8 @@ exports[`test has light styles if disabled 1`] = `
         "cursor": "text",
         "display": "inline",
       }
-    }>
+    }
+  >
     meow
   </h6>
 </div>

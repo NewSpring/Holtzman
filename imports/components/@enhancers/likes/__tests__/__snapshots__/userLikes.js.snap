@@ -1,6 +1,8 @@
-exports[`test should contain user likes query 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should contain user likes query 1`] = `
 "query UserLikes {
-  userFeed(filters: [\"LIKES\"]) {
+  userFeed(filters: [\\"LIKES\\"]) {
     ...ContentCard
     ...GroupCard
   }
@@ -15,7 +17,7 @@ fragment ContentCard on Content {
     channelName
     id
     content {
-      images(sizes: [\"medium\"]) {
+      images(sizes: [\\"medium\\"]) {
         url
         label
         fileLabel
@@ -24,7 +26,7 @@ fragment ContentCard on Content {
     }
   }
   content {
-    images(sizes: [\"medium\"]) {
+    images(sizes: [\\"medium\\"]) {
       url
       label
       fileLabel

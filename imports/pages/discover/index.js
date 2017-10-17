@@ -1,4 +1,5 @@
-import { Component, PropTypes } from "react";
+import PropTypes from "prop-types";
+import { Component } from "react";
 import { connect } from "react-redux";
 import { css } from "aphrodite";
 import Meta from "../../components/shared/meta";
@@ -50,7 +51,7 @@ class DiscoverWithoutData extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({ audio: state.audio });
+const mapStateToProps = state => ({ audio: state.audio });
 const Template = connect(mapStateToProps)(DiscoverWithoutData);
 
 const Routes = [

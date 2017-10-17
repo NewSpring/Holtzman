@@ -1,0 +1,321 @@
+$use-buttons: true !default;
+
+// @if $use-buttons == true {
+  // we want our btns to end up the same height for one liners
+  $button-height: $base-icon-size!default;
+
+  //
+  // @name %btn
+  // @description base selector to be extended for buttons
+  //
+  // @variable $button-height - maps btns to icons for ease of use
+  //
+  // @extend true
+  //
+  %btn {
+    @extend %h5;
+    // round corners into half circles no matter the height
+    @include radius(1000px);
+    // contain all children elements (like abs position icons)
+
+    position: relative;
+    // inline-block btns so they will flow in line with text
+
+    display: inline-block;
+    // don't let anything escape the btn
+    overflow: hidden;
+    // the + 1 and - 1 help with leading of many fonts where equal
+    // padding doesn't look equal in practice
+    // the /4 is to pad half of the btn
+
+    padding: ($button-height * .2) + .5 ($button-height * .6) ($button-height * .2) - 1.5;
+
+    cursor: pointer;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    // text-transform: uppercase;
+
+    color: $brand-color;
+    border: $base-border-size solid $brand-color;
+    // these seem like magic numbers, need to investigate
+
+
+    &:hover {
+      color: $light-color;
+      background: $brand-color;
+    }
+  }
+
+
+  //
+  // @name button
+  // @class .btn
+  // @description The .btn class is a small object class that classfies an element as a button on all NewSpring Sites
+  //
+  // @extends %btn - extends base button object
+  //
+  // @state :hover - fills in btn on hover
+  //
+  // @block .btn
+  //
+  // @object true
+  //
+  // @markup
+  // <a href="#" class="btn">Click Me Now</div>
+  //
+  .btn {
+    @extend %btn;
+  }
+
+  //
+  // @name .btn--small
+  // @class .btn--small
+  // @description cut button size in half
+  //
+  // @extends %btn - extends base button object
+  //
+  // @block .btn
+  // @modifier .btn--small - half size btn
+  //
+  // @object true
+  //
+  // @markup
+  // <a href="#" class="btn--small">Click Me</div>
+  //
+  .btn--small {
+    @extend %btn;
+
+    padding: ($button-height * .23) $button-height * .6 ($button-height * .23);
+
+    border: 2px solid $brand-color;
+
+    font-size: $button-height * .375;
+  }
+
+
+  //
+  // @name .btn--disabled
+  // @class .btn--disabled
+  // @description disabled button state
+  //
+  // @extends %btn - extends base button object
+  //
+  // @state :hover - removes cursor and change of color
+  //
+  // @block .btn
+  // @modifier .btn--disabled - disabled button state
+  //
+  // @object true
+  //
+  // @markup
+  // <a href="#" class="btn--disabled">Click Me</div>
+  //
+  .btn--disabled,
+  .btn:disabled {
+    @extend %btn;
+
+    cursor: text;
+
+    color: map-get($colors, light-tertiary);
+    border-color: map-get($colors, light-tertiary);
+
+    &:hover {
+      cursor: text;
+
+      color: map-get($colors, light-tertiary);
+      background-color: inherit;
+    }
+  }
+
+  //
+  // @name .btn--corners
+  // @class .btn--corners
+  // @description removes rounding of btn
+  //
+  // @extends %btn - extends base button object
+  //
+  // @block .btn
+  // @modifier .btn--corners - removes rounding of btn
+  //
+  // @object true
+  //
+  // @markup
+  // <a href="#" class="btn--corners">Click me</div>
+  //
+  .btn--corners {
+    @extend %btn;
+    @include radius(0);
+  }
+
+
+  //
+  // @name .btn--light
+  // @class .btn--light
+  // @description makes a light colored button
+  //
+  // @extends %btn - extends base button object
+  //
+  //
+  // @state :hover - changes hover color to light with base text
+  //
+  // @block .btn
+  // @modifier .btn--light - makes a light colored button
+  //
+  // @object true
+  //
+  // @markup
+  // <a href="#" class="btn--light">Click Me</div>
+  //
+  .btn--light {
+    @extend %btn;
+
+    color: $light-color;
+    border-color: $light-color;
+
+    &:hover {
+      color: $base-font-color;
+      background-color: $light-color;
+    }
+  }
+
+  //
+  // @name .btn--filled
+  // @class .btn--filled
+  // @description makes a filled button
+  //
+  // @extends %btn - extends base button object
+  //
+  //
+  // @state :hover - changes hover color to filled with darker text
+  //
+  // @block .btn
+  // @modifier .btn--filled - makes a filled colored button
+  //
+  // @object true
+  //
+  // @markup
+  // <a href="#" class="btn--filled">Click Me</div>
+  //
+  .btn--filled {
+    @extend %btn;
+
+    color: $light-color;
+    border-color: $brand-color;
+    background-color: $brand-color;
+
+    &:hover {
+      border-color: map-get($colors, secondary);
+      background-color: map-get($colors, secondary);
+    }
+  }
+
+  .btn--dark-tertiary {
+    @extend %btn;
+
+    color: map-get($colors, dark-tertiary);
+    border-color: map-get($colors, dark-tertiary);
+
+    &:hover {
+      border-color: map-get($colors, dark-secondary);
+      background-color: map-get($colors, dark-secondary);
+    }
+  }
+
+
+  //
+  // @name .btn--alert
+  // @class .btn--alert
+  // @description makes a alert button
+  //
+  // @extends %btn - extends base button object
+  //
+  // @state :hover - changes hover color to alert with darker text
+  //
+  // @block .btn
+  // @modifier .btn--alert - makes a alert colored button
+  //
+  // @object true
+  //
+  // @markup
+  // <a href="#" class="btn--alert">Click Me</div>
+  //
+  .btn--alert {
+    @extend %btn;
+
+    color: map-get($colors, alert);
+    border-color: map-get($colors, alert);
+    background-color: $light-color;
+
+    &:hover {
+      color: $light-color;
+      background-color: map-get($colors, alert);
+    }
+  }
+
+
+
+
+  //
+  // @name %btn--icon
+  // @description base selector to be extended for buttons with icons
+  //
+  // @extend true
+  //
+  %btn--icon {
+    @extend %btn;
+
+    padding-right: ($button-height * 1.5)  + $base-border-size;
+
+    &:after {
+      @include absolute(right $base-icon-size * .25);
+
+      width: $base-icon-size * .75 + $base-border-size;
+      // used to shrink font awesome
+
+      font-size: 90%;
+    }
+  }
+
+
+
+  //
+  // @name icon button
+  // @class .btn--icon
+  // @description The .btn--icon class is a small object class that classfies a btn as a button with a right icon inlcuded on all NewSpring Sites
+  //
+  //
+  // @extends %btn - extends base button object
+  // @extends %btn--icon - extends base button icon object
+  //
+  // @state :after - adds a blank space for an icon to fit
+  // @state :hover - fills in btn on hover
+  //
+  // @block .btn
+  // @modifier .btn--icon - button with icon in it
+  //
+  // @object true
+  //
+  // @markup
+  // <a href="#" class="btn--icon"><i class="icon fa fa-times"></i>Click Me</a>
+  //
+  .btn--icon {
+    @extend %btn--icon;
+    &:hover {
+      .icon:before,
+      .icon:after {
+        border-color: $light-color;
+      }
+    }
+
+    .icon {
+      @include absolute(right $base-icon-size * .25);
+
+      top: 0;
+
+      width: $base-icon-size * .75 + $base-border-size;
+      // remove height of icons to force 100% height
+      height: auto;
+    }
+  }
+// }

@@ -1,14 +1,9 @@
+@import "fonts";
 
-// @import "./base/_select";
-
-// import default vars
-@import "/.remote/junction/lib/mixins";
-
-// make changes specific to this app
+@import "./junction/_mixins";
 @import "./vars";
-
 // import full library
-@import "/.remote/junction/lib/framework";
+@import "./junction/framework";
 
 // hacks
 @import "./hacks";
