@@ -1,4 +1,6 @@
-exports[`test allows clearing individual data fields 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`allows clearing individual data fields 1`] = `
 Object {
   "account": true,
   "alternateAccounts": Array [],
@@ -51,7 +53,7 @@ Object {
 }
 `;
 
-exports[`test allows saving data 1`] = `
+exports[`allows saving data 1`] = `
 Object {
   "account": true,
   "alternateAccounts": Array [],
@@ -104,7 +106,7 @@ Object {
 }
 `;
 
-exports[`test can disable the users account 1`] = `
+exports[`can disable the users account 1`] = `
 Object {
   "account": false,
   "alternateAccounts": Array [],
@@ -157,7 +159,7 @@ Object {
 }
 `;
 
-exports[`test can remove data from a persons account 1`] = `
+exports[`can remove data from a persons account 1`] = `
 Object {
   "account": true,
   "alternateAccounts": Array [],
@@ -210,7 +212,7 @@ Object {
 }
 `;
 
-exports[`test can remove errors from the state 1`] = `
+exports[`can remove errors from the state 1`] = `
 Object {
   "account": true,
   "alternateAccounts": Array [],
@@ -263,7 +265,7 @@ Object {
 }
 `;
 
-exports[`test checks whether or not a user is logged in 1`] = `
+exports[`checks whether or not a user is logged in 1`] = `
 Object {
   "account": true,
   "alternateAccounts": Array [],
@@ -316,7 +318,7 @@ Object {
 }
 `;
 
-exports[`test doesn't change state when removing if missing info 1`] = `
+exports[`doesn't change state when removing if missing info 1`] = `
 Object {
   "account": true,
   "alternateAccounts": Array [],
@@ -369,7 +371,7 @@ Object {
 }
 `;
 
-exports[`test has a known initial state 1`] = `
+exports[`has a known initial state 1`] = `
 Object {
   "account": true,
   "alternateAccounts": Array [],
@@ -417,7 +419,7 @@ Object {
 }
 `;
 
-exports[`test it can clear all errors from the state 1`] = `
+exports[`it can clear all errors from the state 1`] = `
 Object {
   "account": true,
   "alternateAccounts": Array [],
@@ -470,7 +472,7 @@ Object {
 }
 `;
 
-exports[`test saves indiviual data about a person 1`] = `
+exports[`saves indiviual data about a person 1`] = `
 Object {
   "account": true,
   "alternateAccounts": Array [],
@@ -523,7 +525,7 @@ Object {
 }
 `;
 
-exports[`test sets the account to a forgot password state 1`] = `
+exports[`sets the account to a forgot password state 1`] = `
 Object {
   "account": true,
   "alternateAccounts": Array [],
@@ -576,7 +578,7 @@ Object {
 }
 `;
 
-exports[`test shows a welcome message when its the first time 1`] = `
+exports[`shows a welcome message when its the first time 1`] = `
 Object {
   "account": true,
   "alternateAccounts": Array [],
@@ -629,7 +631,7 @@ Object {
 }
 `;
 
-exports[`test will save an error to the state 1`] = `
+exports[`will save an error to the state 1`] = `
 Object {
   "account": true,
   "alternateAccounts": Array [],

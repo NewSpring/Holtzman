@@ -11,6 +11,7 @@ App.info({
 
 App.icons({
   // iOS
+  app_store: "assets/icons/ios/icon-1024x1024.png",
   iphone_2x: "assets/icons/ios/icon-60x60@2x.png",
   iphone_3x: "assets/icons/ios/icon-60x60@3x.png",
   ipad: "assets/icons/ios/icon-76x76.png",
@@ -29,6 +30,20 @@ App.icons({
   android_xxhdpi: "assets/icons/android/icon-144x144-xxhdpi.png",
   android_xxxhdpi: "assets/icons/android/icon-192x192-xxxhpdi.png",
 });
+
+// Modifying the XCBuildConfiguration in the Xcode Project
+App.appendToConfig(`
+  <preference name="cordova-custom-config-hook" value="before_compile" />
+  <platform name="ios">
+    <preference name="ios-XCBuildConfiguration-SWIFT_VERSION" value="3.0" quote="value" />
+    <config-file platform="ios" target="*-Info.plist" parent="UIBackgroundModes" mode="merge" >
+      <array>
+        <string>audio</string>
+        <string>remote-notification</string>
+      </array>
+    </config-file>
+  </platform>
+`);
 
 App.launchScreens({
   // iOS
@@ -58,11 +73,9 @@ App.accessRule("*");
 App.setPreference("EnableBitcode", false);
 App.setPreference("ShowSplashScreenSpinner", false);
 App.setPreference("SplashMaintainAspectRatio", true);
-
 App.setPreference("StatusBarBackgroundColor", "#6bac43");
 App.setPreference("StatusBarStyle", "lightcontent");
 App.setPreference("StatusBarOverlaysWebView", false);
-
 App.setPreference("Orientation", "portrait");
 
 App.configurePlugin("cordova-fabric-plugin", {
@@ -78,6 +91,7 @@ App.configurePlugin("cordova-plugin-geolocation", {
   GEOLOCATION_USAGE_DESCRIPTION: "Searching for Groups",
 });
 
+// Universal Links
 App.appendToConfig(`
     <universal-links>
       <ios-team-id value="7TM8C6252Z" />
@@ -125,3 +139,4 @@ App.appendToConfig(`
       <host name="rm2y5.app.goo.gl" scheme="https" event="universalLinkRoute" />
     </universal-links>
 `);
+

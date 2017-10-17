@@ -43,7 +43,7 @@ export const RELATED_CONTENT_QUERY = gql`
 const defaultArray = [];
 export const withRelatedContent = graphql(RELATED_CONTENT_QUERY, {
   name: "content",
-  options: (ownProps) => ({
+  options: ownProps => ({
     variables: {
       tags: ownProps.tags || defaultArray,
       includeChannels: ownProps.includeChannels || defaultArray,

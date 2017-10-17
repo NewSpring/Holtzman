@@ -1,4 +1,6 @@
-exports[`test render with props 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render with props 1`] = `
 <SideModal
   captureRef={[Function]}
   childClasses={Array []}
@@ -30,5 +32,6 @@ exports[`test render with props 1`] = `
     }
   }
   styles={Object {}}
-  visible={false} />
+  visible={false}
+/>
 `;

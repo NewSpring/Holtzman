@@ -1,19 +1,25 @@
-exports[`test renders loading with no study 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders loading with no study 1`] = `
 <div
-  className="locked-ends locked-sides floating">
+  className="locked-ends locked-sides floating"
+>
   <div
-    className="floating__item">
+    className="floating__item"
+  >
     <div
       className="loader_9h6gj"
-      style={Object {}} />
+      style={Object {}}
+    />
   </div>
 </div>
 `;
 
-exports[`test renders studies content 1`] = `
+exports[`renders studies content 1`] = `
 <div>
   <div
-    className="overlay-color--000 background--light-primary">
+    className="overlay-color--000 background--light-primary"
+  >
     <div
       className="overlay-color--000"
       style={
@@ -25,40 +31,44 @@ exports[`test renders studies content 1`] = `
           "width": "100%",
           "zIndex": -1,
         }
-      } />
+      }
+    />
     <style>
       
-          .overlay-color--000:after{
-            background: linear-gradient(
-              to bottom, rgba(0, 0, 0, 0) 0%, #000 100%
-            );
-          }
-        
+    .overlay-color--000:after{
+      background: linear-gradient(
+        to bottom, rgba(0, 0, 0, 0) 0%, #000 100%
+      );
+    }
+  
     </style>
     <style>
       
-          .overlay-color--000 {
-            background-color: #000;
-          }
-        
+    .overlay-color--000 {
+      background-color: #000;
+    }
+  
     </style>
     <section
-      className="text-light-primary hard-ends soft-double-sides@palm-wide">
+      className="text-light-primary hard-ends soft-double-sides@palm-wide"
+    >
       <div
         dangerouslySetInnerHTML={
           Object {
             "__html": "<h1>study</h1>",
           }
-        } />
+        }
+      />
     </section>
   </div>
 </div>
 `;
 
-exports[`test renders with no image 1`] = `
+exports[`renders with no image 1`] = `
 <div>
   <div
-    className="overlay-color--000 background--light-primary">
+    className="overlay-color--000 background--light-primary"
+  >
     <div
       className="overlay-color--000"
       style={
@@ -70,38 +80,43 @@ exports[`test renders with no image 1`] = `
           "width": "100%",
           "zIndex": -1,
         }
-      } />
+      }
+    />
     <style>
       
-          .overlay-color--000:after{
-            background: linear-gradient(
-              to bottom, rgba(0, 0, 0, 0) 0%, #000 100%
-            );
-          }
-        
+    .overlay-color--000:after{
+      background: linear-gradient(
+        to bottom, rgba(0, 0, 0, 0) 0%, #000 100%
+      );
+    }
+  
     </style>
     <style>
       
-          .overlay-color--000 {
-            background-color: #000;
-          }
-        
+    .overlay-color--000 {
+      background-color: #000;
+    }
+  
     </style>
     <section
-      className="text-light-primary hard-ends soft-double-sides@palm-wide">
+      className="text-light-primary hard-ends soft-double-sides@palm-wide"
+    >
       <div
         dangerouslySetInnerHTML={
           Object {
             "__html": "<h1>study</h1>",
           }
-        } />
+        }
+      />
     </section>
     <div
-      className="one-whole text-center soft-bottom">
+      className="one-whole text-center soft-bottom"
+    >
       <a
         className="btn--light plain"
         href="https://newspring.cc/studies/study"
-        onClick={[Function]}>
+        onClick={[Function]}
+      >
         View Study
       </a>
     </div>

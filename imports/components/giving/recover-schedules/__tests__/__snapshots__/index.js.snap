@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`RecoverSchedules has and calls the close method 1`] = `
 Array [
   Object {
@@ -16,7 +18,8 @@ exports[`RecoverSchedules has and calls the onRemind method 1`] = `
   recoverOnClick={[Function]}
   reminderDate="20200101"
   schedules={Array []}
-  state="remind" />
+  state="remind"
+/>
 `;
 
 exports[`RecoverSchedules should be default if default props are passed 1`] = `
@@ -28,5 +31,6 @@ exports[`RecoverSchedules should be default if default props are passed 1`] = `
   recoverOnClick={[Function]}
   reminderDate="20200101"
   schedules={Array []}
-  state="default" />
+  state="default"
+/>
 `;

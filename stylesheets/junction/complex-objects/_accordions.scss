@@ -1,0 +1,99 @@
+$use-accordions: true!default;
+
+@if $use-accordions == true {
+  //
+  // @name Accordion
+  // @class .accordion
+  // @description The .accordion class is a complex object class that classfies a block and element as a single or mulptile accordion
+  //
+  // @complex-object true
+  //
+  // @block .accordion
+  // @element .accordion__item
+  //
+  //
+  // @markup
+  // <div class="accordion" data-accordion>
+  //
+  //   <div class="accordion__item">
+  //
+  //     <h1 class="accordion__item--trigger" data-accordion-trigger>Pizza?</h1>
+  //     <p>lots of pizza is always better</p>
+  //
+  //   </div>
+  //
+  //   <div class="accordion__item">
+  //
+  //     <h1 class="accordion__item--trigger" data-accordion-trigger>Hamburgers?</h1>
+  //     <p>tasty but pizza is better</p>
+  //
+  //   </div>
+  //
+  // </div>
+  //
+  .accordion {
+    > .expanded {
+      * {
+        visibility: visible;
+
+        max-height: inherit;
+        margin: inherit;
+        padding-top: inherit;
+        padding-bottom: inherit;
+
+        opacity: 1;
+      }
+    }
+  }
+
+
+
+  // -----------------------------------
+  //    $ACCORDION-ITEM
+  // -----------------------------------
+  //
+  // @name Accordion Item
+  // @class .accordion__item
+  //
+  // @description child element to the .accordion class
+  // @complex-object true
+  //
+  // @block .accordion
+  // @element .accordion__item
+  //
+  // @state .expanded - applied to show contents of .accordion__item container
+  //
+  .accordion__item {
+    overflow: hidden;
+
+    &:not(.expanded) {
+      *:not(.accordion__item--trigger) {
+        visibility: hidden;
+
+        height: 0;
+        max-height: 0;
+        margin: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+
+        opacity: 0;
+      }
+    }
+
+    *:not(.accordion__item--trigger) {
+      transition: max-height .25s, visibility .25s, margin .25s, opacity .25s;
+    }
+  }
+
+
+
+  // -----------------------------------
+  //    $ACCORDION-TRIGGER
+  // -----------------------------------
+
+  .accordion__item--trigger {
+    visibility: visible;
+
+    cursor: pointer;
+  }
+}

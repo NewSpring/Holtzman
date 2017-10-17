@@ -45,6 +45,6 @@ export const GivingSummary = (props: IGivingSummary) => {
 };
 
 
-export default connect((state) => ({ breakpoints: state.responsive.breakpoints }))(
-  GivingSummary
+export default connect(state => ({ breakpoints: state.responsive.breakpoints }))(
+  GivingSummary,
 );

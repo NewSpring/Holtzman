@@ -1,0 +1,18 @@
+
+$use-links: true !default;
+
+@if $use-links == true {
+  //
+  // @name links
+  // @description declerations to be applied to <a> tags
+  //
+  // @base true
+  //
+  a {
+    position: relative;
+
+    word-wrap: break-word;
+
+    color: $brand-color;
+  }
+}
