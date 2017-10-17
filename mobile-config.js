@@ -48,6 +48,9 @@ App.appendToConfig(`
         <string>remote-notification</string>
       </array>
     </config-file>
+    <config-file platform="ios" target="*-Info.plist" parent="CFBundleIdentifier">
+      <string>com.subsplashstudio31.NewSpring-Church</string>
+    </config-file>
   </platform>
 `);
 
