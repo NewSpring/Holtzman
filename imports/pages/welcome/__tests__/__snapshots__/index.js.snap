@@ -1,4 +1,6 @@
-exports[`test renders 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders 1`] = `
 <div
   className="background--primary"
   style={
@@ -8,70 +10,81 @@ exports[`test renders 1`] = `
       "position": "absolute",
       "width": "100%",
     }
-  }>
+  }
+>
   <Slider
     arrows={false}
     dots={true}
     edgeFriction={0}
     infinite={false}
-    speed={300}>
+    speed={300}
+  >
     <div>
       <img
         data-index={0}
         onClick={[Function]}
         role="presentation"
-        src="/welcome/tablet/onboard-img1.jpg" />
+        src="/welcome/tablet/onboard-img1.jpg"
+      />
     </div>
     <div>
       <img
         data-index={1}
         onClick={[Function]}
         role="presentation"
-        src="/welcome/tablet/onboard-img2.jpg" />
+        src="/welcome/tablet/onboard-img2.jpg"
+      />
     </div>
     <div>
       <img
         data-index={2}
         onClick={[Function]}
         role="presentation"
-        src="/welcome/tablet/onboard-img3.jpg" />
+        src="/welcome/tablet/onboard-img3.jpg"
+      />
     </div>
     <div>
       <img
         data-index={3}
         onClick={[Function]}
         role="presentation"
-        src="/welcome/tablet/onboard-img4.jpg" />
+        src="/welcome/tablet/onboard-img4.jpg"
+      />
     </div>
     <div>
       <img
         data-index={4}
         onClick={[Function]}
         role="presentation"
-        src="/welcome/tablet/onboard-img5.jpg" />
+        src="/welcome/tablet/onboard-img5.jpg"
+      />
     </div>
     <div>
       <img
         data-index={5}
         onClick={[Function]}
         role="presentation"
-        src="/welcome/tablet/onboard-img6.jpg" />
+        src="/welcome/tablet/onboard-img6.jpg"
+      />
     </div>
     <div>
       <img
         data-index={6}
         onClick={[Function]}
         role="presentation"
-        src="/welcome/tablet/onboard-img7.jpg" />
+        src="/welcome/tablet/onboard-img7.jpg"
+      />
     </div>
     <div>
       <Link
         onlyActiveOnIndex={false}
         style={Object {}}
-        to="/">
+        to="/"
+      >
         <img
           role="presentation"
-          src="/welcome/tablet/onboard-img8.jpg" />
+          src="/welcome/tablet/onboard-img8.jpg"
+        />
       </Link>
     </div>
   </Slider>
@@ -88,7 +101,8 @@ exports[`test renders 1`] = `
         "textDecoration": "none",
       }
     }
-    to="/">
+    to="/"
+  >
     Skip
   </Link>
 </div>

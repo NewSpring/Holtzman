@@ -1,16 +1,18 @@
-exports[`test doesn't render if don't show 1`] = `null`;
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`test doesn't render if no embed code 1`] = `null`;
+exports[`doesn't render if don't show 1`] = `""`;
 
-exports[`test doesn't render if not live 1`] = `null`;
+exports[`doesn't render if no embed code 1`] = `""`;
 
-exports[`test getClasses returns default classes 1`] = `"text-center soft-half-ends display-inline-block plain one-whole live-banner_58jhza"`;
+exports[`doesn't render if not live 1`] = `""`;
 
-exports[`test getClasses returns float version 1`] = `"text-center soft-half-ends display-inline-block plain one-whole live-banner_58jhza live-float_1aks88i"`;
+exports[`getClasses returns default classes 1`] = `"text-center soft-half-ends display-inline-block plain one-whole live-banner_58jhza"`;
 
-exports[`test getTextClasses returns default classes 1`] = `"flush hard text-light-primary live-text_sb3i5d"`;
+exports[`getClasses returns float version 1`] = `"text-center soft-half-ends display-inline-block plain one-whole live-banner_58jhza live-float_1aks88i"`;
 
-exports[`test parses query 1`] = `
+exports[`getTextClasses returns default classes 1`] = `"flush hard text-light-primary live-text_sb3i5d"`;
+
+exports[`parses query 1`] = `
 "query IsLive {
   live {
     live
@@ -20,7 +22,7 @@ exports[`test parses query 1`] = `
 "
 `;
 
-exports[`test renders float version 1`] = `
+exports[`renders float version 1`] = `
 <mockConstructor
   defaultStyle={
     Object {
@@ -31,10 +33,11 @@ exports[`test renders float version 1`] = `
     Object {
       "height": undefined,
     }
-  } />
+  }
+/>
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <mockConstructor
   defaultStyle={
     Object {
@@ -45,5 +48,6 @@ exports[`test renders with props 1`] = `
     Object {
       "height": undefined,
     }
-  } />
+  }
+/>
 `;

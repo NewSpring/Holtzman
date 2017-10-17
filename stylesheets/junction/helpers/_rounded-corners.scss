@@ -1,0 +1,25 @@
+
+$use-rounded-corners: true !default;
+
+@if $use-rounded-corners == true {
+  $round: $base-border-size * 2;
+  .rounded {
+    @include radius($round);
+  }
+
+  .rounded-top {
+    @include radius($round $round 0 0);
+  }
+
+  .rounded-bottom {
+    @include radius(0 0 $round $round);
+  }
+
+  .rounded-right {
+    @include radius(0 $round $round 0);
+  }
+
+  .rounded-left {
+    @include radius($round 0 0 $round);
+  }
+}

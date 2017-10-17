@@ -1,24 +1,29 @@
-exports[`test appends classes if present 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`appends classes if present 1`] = `
 <fieldset
-  className="flush-bottom one two">
+  className="flush-bottom one two"
+>
   <h1>
     test
   </h1>
 </fieldset>
 `;
 
-exports[`test overrides with theme if present 1`] = `
+exports[`overrides with theme if present 1`] = `
 <fieldset
-  className="override">
+  className="override"
+>
   <h1>
     test
   </h1>
 </fieldset>
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <fieldset
-  className="flush-bottom">
+  className="flush-bottom"
+>
   <h1>
     test
   </h1>

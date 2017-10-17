@@ -1,0 +1,216 @@
+
+$use-inputs: true !default;
+
+@if $use-inputs == true {
+  //
+  // @name %input
+  // @description base object for extending to create a wrapper around inputs in forms
+  //
+  // @extend true
+  //
+  // @scss
+  // .input--alert {
+  //   @extend %input;
+  //   @extend %input--status;
+  //
+  //   input {
+  //     border-bottom-color: map-get($colors, alert);
+  //   }
+  //
+  //   & %input__item {
+  //     color: map-get($colors, alert);
+  //   }
+  // }
+  //
+  %input {
+    @extend %transition--all;
+
+    position: relative;
+
+    padding-bottom: ($base-spacing-unit * 2) + $half-spacing-unit;
+
+    &.fa-caret-down:before {
+      position: absolute;
+      top: $half-spacing-unit * .5;
+      right: $half-spacing-unit;
+
+      color: map-get($colors, dark-tertiary);
+    }
+    label {
+      @include absolute(top 5px);
+
+      left: $half-spacing-unit;
+
+      -webkit-transition-timing-function: cubic-bezier(.4,0,.2,1);
+              transition-timing-function: cubic-bezier(.4,0,.2,1);
+      -webkit-transition-duration: .2s;
+              transition-duration: .2s;
+      -webkit-transition-property: transform;
+              transition-property: transform;
+
+      font-size: .875em;
+    }
+
+    input {
+      @include placeholder {
+        color: #fff;
+      }
+    }
+
+    select {
+      & + label {
+        visibility: hidden;
+      }
+    }
+  }
+
+  //
+  // @name %input--with-status
+  // @description base object for extending to signfiy an input wrapper has a message with it
+  //
+  // @extend true
+  //
+  // @extends %input
+  //
+  %input--with-status {
+    @extend %input;
+
+
+    //margin-bottom: $base-spacing-unit;
+  }
+
+  //
+  // @name %input--message
+  // @description base object for extending to signfiy a message is present in the input container
+  //
+  // @extend true
+  //
+  //
+  %input__message {
+    @extend %h7;
+
+    position: absolute;
+    top: $base-spacing-unit * 2;
+    bottom: -$base-spacing-unit;
+    left: $half-spacing-unit / 2;
+    font-weight: 400;
+    -webkit-transition-timing-function: cubic-bezier(.4,0,.2,1);
+            transition-timing-function: cubic-bezier(.4,0,.2,1);
+    -webkit-transition-duration: .2s;
+            transition-duration: .2s;
+    text-align: left;
+
+    font-weight: bold;
+  }
+
+  //
+  // @name .input
+  // @class .input
+  // @description base wrapper class for inputs to contain labels, placeholders, messges, etc
+  //
+  // @complex-object true
+  //
+  // @block .input
+  //
+  //
+  // @markup
+  // <div class="input">
+  //   <label for="password">Password</label>
+  //   <input name="password" data-value type="password" placeholder="Password"/>
+  // </div>
+  //
+  .input {
+    @extend %input;
+  }
+
+  .input--active {
+    label {
+      $h1-family: map-get($typography, h1);
+      $family: map-fetch($fonts, $h1-family, h1, font-family);
+
+      visibility: visible;
+
+      margin-bottom: 0;
+
+      transform: translateY(-$base-spacing-unit);
+      left: $half-spacing-unit / 2;
+
+      font-family: $family;
+      font-size: .785em;
+      font-weight: 400;
+    }
+
+
+    select {
+      color: map-get($colors, dark-primary);
+
+      & + label {
+        visibility: visible;
+      }
+    }
+  }
+
+  .input--focused {
+    label {
+      color: $brand-color;
+    }
+  }
+
+  //
+  // @name .input--alert
+  // @class .input--alert
+  // @description input wrapper with an alert / error state applied
+  //
+  // @complex-object true
+  //
+  // @block .input
+  //
+  //
+  // @markup
+  // <div class="input--alert">
+  //   <label for="password">Password</label>
+  //   <input name="password" data-value type="password" placeholder="Password"/>
+  //   <span class="input__status">Incorrect Password</span>
+  // </div>
+  //
+  .input--alert {
+    @extend %input--with-status;
+
+    input {
+      border-bottom-color: map-get($colors, alert);
+    }
+
+    label {
+      color: map-get($colors, alert);
+    }
+
+    %input__message {
+      color: map-get($colors, alert);
+      // font-weight: 400;
+    }
+  }
+
+
+  //
+  // @name .input__status
+  // @class .input__status
+  // @description input child for containing statuses
+  //
+  // @complex-object true
+  //
+  // @block .input
+  // @element .input__status
+  //
+  //
+  // @markup
+  // <div class="input--alert">
+  //   <label for="password">Password</label>
+  //   <input name="password" data-value type="password" placeholder="Password"/>
+  //   <span class="input__status">Incorrect Password</span>
+  // </div>
+  //
+  .input__status {
+    @extend %input__message;
+    // font-weight: 400;
+  }
+}

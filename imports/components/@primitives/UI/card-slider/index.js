@@ -43,7 +43,7 @@ const dynamicWidth = () => {
   return {};
 };
 
-const map = (store) => ({
+const map = store => ({
   width: store.responsive.width,
 });
 

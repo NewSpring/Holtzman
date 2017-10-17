@@ -1,4 +1,5 @@
-import { Component, PropTypes } from "react";
+import PropTypes from "prop-types";
+import { Component } from "react";
 
 import Video from "../../components/@primitives/players/video";
 import collections from "../../util/collections";
@@ -41,7 +42,7 @@ export default class SeriesHero extends Component {
     this.setState({ playing: false });
   }
 
-  ready = (player) => {
+  ready = player => {
     this.player = player;
   }
 

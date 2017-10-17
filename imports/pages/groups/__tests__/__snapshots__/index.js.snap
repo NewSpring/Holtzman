@@ -1,10 +1,12 @@
-exports[`test has a template for some reason 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`has a template for some reason 1`] = `
 <h1>
   Lets find some groups!
 </h1>
 `;
 
-exports[`test supplies the routes 1`] = `
+exports[`supplies the routes 1`] = `
 Array [
   Object {
     "component": [Function],

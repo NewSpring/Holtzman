@@ -58,7 +58,7 @@ const Currency = ({
   roundCurrency,
   style,
 }: ICurrency) =>
-  <div className={`floating ${textTheme(theme)} ${className || "text-left"}`}>
+  (<div className={`floating ${textTheme(theme)} ${className || "text-left"}`}>
     {currencySizeCalc(baseHeadingSize || "2")}
     <ReducedHeadingSize
       className="floating__item flush"
@@ -80,7 +80,7 @@ const Currency = ({
       <ReducedHeadingSize className="floating__item flush">
         .{getCents(`${amount}`)}
       </ReducedHeadingSize>}
-  </div>;
+  </div>);
 
 export default Currency;
 
