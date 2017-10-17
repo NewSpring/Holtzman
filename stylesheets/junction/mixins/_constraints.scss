@@ -1,0 +1,32 @@
+
+
+$use-contraints: true !default;
+$constraints: (
+  copy: (
+    min-width: 280px,
+    max-width: 768px
+  ),
+  page: (
+    max-width: $base-page-width
+  )
+) !default;
+
+// @if $use-contraints == true {
+  %_spaced {
+    position: relative;
+
+    margin: 0 auto;
+  }
+
+  @mixin constrain() {
+    // Loop through the list of widths we’ve provided in our settings file.
+    @each $_size, $_settings in $constraints {
+      .constrain-#{$_size} {
+        @extend %_spaced;
+        @each $_property, $_value in $_settings {
+          #{$_property}: $_value;
+        }
+      }
+    }
+  }
+// }
