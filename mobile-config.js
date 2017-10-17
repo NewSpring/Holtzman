@@ -11,6 +11,7 @@ App.info({
 
 App.icons({
   // iOS
+  app_store: "assets/icons/ios/icon-1024x1024.png",
   iphone_2x: "assets/icons/ios/icon-60x60@2x.png",
   iphone_3x: "assets/icons/ios/icon-60x60@3x.png",
   ipad: "assets/icons/ios/icon-76x76.png",
@@ -32,8 +33,8 @@ App.icons({
 
 // Modifying the XCBuildConfiguration in the Xcode Project
 App.appendToConfig(`
+  <preference name="cordova-custom-config-hook" value="before_compile" />
   <platform name="ios">
-    <icon height="1024" width="1024" src="../../../assets/icons/ios/icon-1024x1024.png" />
     <preference name="ios-XCBuildConfiguration-SWIFT_VERSION" value="3.0" quote="value" />
     <config-file platform="ios" target="*-Info.plist" parent="UIBackgroundModes" mode="merge" >
       <array>
