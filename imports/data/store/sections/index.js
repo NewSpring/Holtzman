@@ -22,7 +22,7 @@ addReducer({
 export default {
   reducer,
 
-  set: (content) => ({ type: "SECTIONS.SET_CONTENT", content }),
-  style: (props) => ({ type: "SECTIONS.SET_PROPS", props }),
+  set: content => ({ type: "SECTIONS.SET_CONTENT", content }),
+  style: props => ({ type: "SECTIONS.SET_PROPS", props }),
 
 };

@@ -1,4 +1,4 @@
-import { PropTypes } from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router";
 import Forms from "../../../components/@primitives/UI/forms";
 

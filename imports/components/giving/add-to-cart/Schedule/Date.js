@@ -17,7 +17,7 @@ const localUtils = {
   formatWeekdayShort: (i, locale) => WEEKDAYS_SHORT[locale][i],
   formatWeekdayLong: (i, locale) => WEEKDAYS_LONG[locale][i],
   getFirstDayOfWeek: () => 0,
-  formatDay: (d) => d.toDateString(),
+  formatDay: d => d.toDateString(),
 };
 
 type IDateProps = {
@@ -53,8 +53,8 @@ export default ({
           locale="en"
           localeUtils={localUtils}
           modifiers={{
-            selected: (day) => DateUtils.isSameDay(start, day),
-            disabled: (day) => (
+            selected: day => DateUtils.isSameDay(start, day),
+            disabled: day => (
               !allTime && (DateUtils.isPastDay(day) || DateUtils.isSameDay(day, new Date()))
             ),
           }}

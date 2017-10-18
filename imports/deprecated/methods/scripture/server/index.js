@@ -11,14 +11,15 @@ Meteor.methods({
 
     const f = new Future();
 
+    // eslint-disable-next-line
     fetch(baseUrl)
-      .then((response) => { // eslint-disable-line
-        return response.text();
-      })
-      .then((data) => {
+      .then(response =>
+        // eslint-disable-line
+         response.text())
+      .then(data => {
         f.return(data);
       })
-      .catch((error) => {
+      .catch(error => {
         console.error(error); // eslint-disable-line
         f.throw(error);
       });

@@ -1,10 +1,14 @@
-exports[`test renders disabled tags 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders disabled tags 1`] = `
 <section
-  className="background--light-secondary hard">
+  className="background--light-secondary hard"
+>
   <Meta
-    description="Who are your people? We know it\'s important to be connected, but it\'s hard to build lasting friendships. What if taking one simple step changed everything? At NewSpring, we’re trying to make it easier for you to find people who share your interests. We know that when you get together with people and have fun, you’ll begin to grow into a strong community that serves and grows together. What if you are one step away from saying, “These are my people”?"
+    description="Who are your people? We know it's important to be connected, but it's hard to build lasting friendships. What if taking one simple step changed everything? At NewSpring, we’re trying to make it easier for you to find people who share your interests. We know that when you get together with people and have fun, you’ll begin to grow into a strong community that serves and grows together. What if you are one step away from saying, “These are my people”?"
     image="https://dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/groups/groups.2x1_2000_1000_90_a789ae07aae81961.jpg"
-    title="Group Finder" />
+    title="Group Finder"
+  />
   <Apollo(Component) />
   <div
     className="background--light-primary soft soft-double-top soft-double-top@lap-and-up text-center"
@@ -12,13 +16,15 @@ exports[`test renders disabled tags 1`] = `
       Object {
         "overflow": "visible",
       }
-    }>
+    }
+  >
     <div>
       <h3>
         Find Your People
       </h3>
       <h6
-        className="soft-half-bottom@handheld soft-bottom">
+        className="soft-half-bottom@handheld soft-bottom"
+      >
         <em>
           Select your interests, campus, and location 
           <br />
@@ -36,7 +42,8 @@ exports[`test renders disabled tags 1`] = `
             "display-inline-block",
             "push-bottom",
           ]
-        }>
+        }
+      >
         <Keywords
           onChange={[Function]}
           tagOnClick={[Function]}
@@ -49,28 +56,34 @@ exports[`test renders disabled tags 1`] = `
                 "value": "test",
               },
             ]
-          } />
+          }
+        />
         <CampusSelect
-          onChange={[Function]} />
+          onChange={[Function]}
+        />
         <Location
           onChange={[Function]}
-          validation={[Function]} />
+          validation={[Function]}
+        />
         <div
-          className="text-left soft-half-sides">
+          className="text-left soft-half-sides"
+        >
           <a
             onClick={[Function]}
             style={
               Object {
                 "color": "#505050",
               }
-            }>
+            }
+          >
             <Svg
               classes="display-inline-block"
               fill="#505050"
               height="24px"
               name="locate"
               title="Locate Icon"
-              width="24px" />
+              width="24px"
+            />
             <h6
               className="display-inline-block push-half-left"
               style={
@@ -78,7 +91,8 @@ exports[`test renders disabled tags 1`] = `
                   "fontWeight": "400",
                   "verticalAlign": "super",
                 }
-              }>
+              }
+            >
               Use my current location
             </h6>
           </a>
@@ -87,46 +101,60 @@ exports[`test renders disabled tags 1`] = `
     </div>
   </div>
   <div
-    className="soft-double-bottom text-center background--light-primary">
+    className="soft-double-bottom text-center background--light-primary"
+  >
     <div
-      className="background--light-primary soft-double-sides@lap-wide-and-up">
+      className="background--light-primary soft-double-sides@lap-wide-and-up"
+    >
       <button
         className="btn push-top@lap-and-up btn--disabled"
-        disabled={true}>
-        Let\'s Go!
+        disabled={true}
+      >
+        Let's Go!
       </button>
     </div>
   </div>
   <div
-    className="soft-half soft-sides@palm-wide-and-up soft-double-ends soft-double@lap-wide-and-up text-center">
+    className="soft-half soft-sides@palm-wide-and-up soft-double-ends soft-double@lap-wide-and-up text-center"
+  >
     <h3
-      className="push-top">
-      You Can\'t Do Life Alone
+      className="push-top"
+    >
+      You Can't Do Life Alone
     </h3>
     <div
-      className="grid">
+      className="grid"
+    >
       <div
-        className="grid__item one-whole one-half@palm-wide-and-up">
+        className="grid__item one-whole one-half@palm-wide-and-up"
+        key="0"
+      >
         <Connect(Apollo(LikesWrapper))
-          item={Object {}} />
+          item={Object {}}
+        />
       </div>
       <div
-        className="grid__item one-whole one-half@palm-wide-and-up">
+        className="grid__item one-whole one-half@palm-wide-and-up"
+        key="1"
+      >
         <Connect(Apollo(LikesWrapper))
-          item={Object {}} />
+          item={Object {}}
+        />
       </div>
     </div>
   </div>
 </section>
 `;
 
-exports[`test renders loading if no tags 1`] = `
+exports[`renders loading if no tags 1`] = `
 <section
-  className="background--light-secondary hard">
+  className="background--light-secondary hard"
+>
   <Meta
-    description="Who are your people? We know it\'s important to be connected, but it\'s hard to build lasting friendships. What if taking one simple step changed everything? At NewSpring, we’re trying to make it easier for you to find people who share your interests. We know that when you get together with people and have fun, you’ll begin to grow into a strong community that serves and grows together. What if you are one step away from saying, “These are my people”?"
+    description="Who are your people? We know it's important to be connected, but it's hard to build lasting friendships. What if taking one simple step changed everything? At NewSpring, we’re trying to make it easier for you to find people who share your interests. We know that when you get together with people and have fun, you’ll begin to grow into a strong community that serves and grows together. What if you are one step away from saying, “These are my people”?"
     image="https://dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/groups/groups.2x1_2000_1000_90_a789ae07aae81961.jpg"
-    title="Group Finder" />
+    title="Group Finder"
+  />
   <Apollo(Component) />
   <div
     className="background--light-primary soft soft-double-top soft-double-top@lap-and-up text-center"
@@ -134,13 +162,15 @@ exports[`test renders loading if no tags 1`] = `
       Object {
         "overflow": "visible",
       }
-    }>
+    }
+  >
     <div>
       <h3>
         Find Your People
       </h3>
       <h6
-        className="soft-half-bottom@handheld soft-bottom">
+        className="soft-half-bottom@handheld soft-bottom"
+      >
         <em>
           Select your interests, campus, and location 
           <br />
@@ -158,33 +188,40 @@ exports[`test renders loading if no tags 1`] = `
             "display-inline-block",
             "push-bottom",
           ]
-        }>
+        }
+      >
         <Keywords
           onChange={[Function]}
           tagOnClick={[Function]}
-          tags={Array []} />
+          tags={Array []}
+        />
         <CampusSelect
           campuses={Array []}
-          onChange={[Function]} />
+          onChange={[Function]}
+        />
         <Location
           onChange={[Function]}
-          validation={[Function]} />
+          validation={[Function]}
+        />
         <div
-          className="text-left soft-half-sides">
+          className="text-left soft-half-sides"
+        >
           <a
             onClick={[Function]}
             style={
               Object {
                 "color": "#505050",
               }
-            }>
+            }
+          >
             <Svg
               classes="display-inline-block"
               fill="#505050"
               height="24px"
               name="locate"
               title="Locate Icon"
-              width="24px" />
+              width="24px"
+            />
             <h6
               className="display-inline-block push-half-left"
               style={
@@ -192,7 +229,8 @@ exports[`test renders loading if no tags 1`] = `
                   "fontWeight": "400",
                   "verticalAlign": "super",
                 }
-              }>
+              }
+            >
               Use my current location
             </h6>
           </a>
@@ -201,45 +239,59 @@ exports[`test renders loading if no tags 1`] = `
     </div>
   </div>
   <div
-    className="soft-double-bottom text-center background--light-primary">
+    className="soft-double-bottom text-center background--light-primary"
+  >
     <div
-      className="background--light-primary soft-double-sides@lap-wide-and-up">
+      className="background--light-primary soft-double-sides@lap-wide-and-up"
+    >
       <div
-        className="one-whole text-center">
+        className="one-whole text-center"
+      >
         <Loading />
       </div>
     </div>
   </div>
   <div
-    className="soft-half soft-sides@palm-wide-and-up soft-double-ends soft-double@lap-wide-and-up text-center">
+    className="soft-half soft-sides@palm-wide-and-up soft-double-ends soft-double@lap-wide-and-up text-center"
+  >
     <h3
-      className="push-top">
-      You Can\'t Do Life Alone
+      className="push-top"
+    >
+      You Can't Do Life Alone
     </h3>
     <div
-      className="grid">
+      className="grid"
+    >
       <div
-        className="grid__item one-whole one-half@palm-wide-and-up">
+        className="grid__item one-whole one-half@palm-wide-and-up"
+        key="0"
+      >
         <Connect(Apollo(LikesWrapper))
-          item={Object {}} />
+          item={Object {}}
+        />
       </div>
       <div
-        className="grid__item one-whole one-half@palm-wide-and-up">
+        className="grid__item one-whole one-half@palm-wide-and-up"
+        key="1"
+      >
         <Connect(Apollo(LikesWrapper))
-          item={Object {}} />
+          item={Object {}}
+        />
       </div>
     </div>
   </div>
 </section>
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <section
-  className="background--light-secondary hard">
+  className="background--light-secondary hard"
+>
   <Meta
-    description="Who are your people? We know it\'s important to be connected, but it\'s hard to build lasting friendships. What if taking one simple step changed everything? At NewSpring, we’re trying to make it easier for you to find people who share your interests. We know that when you get together with people and have fun, you’ll begin to grow into a strong community that serves and grows together. What if you are one step away from saying, “These are my people”?"
+    description="Who are your people? We know it's important to be connected, but it's hard to build lasting friendships. What if taking one simple step changed everything? At NewSpring, we’re trying to make it easier for you to find people who share your interests. We know that when you get together with people and have fun, you’ll begin to grow into a strong community that serves and grows together. What if you are one step away from saying, “These are my people”?"
     image="https://dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/groups/groups.2x1_2000_1000_90_a789ae07aae81961.jpg"
-    title="Group Finder" />
+    title="Group Finder"
+  />
   <Apollo(Component) />
   <div
     className="background--light-primary soft soft-double-top soft-double-top@lap-and-up text-center"
@@ -247,13 +299,15 @@ exports[`test renders with props 1`] = `
       Object {
         "overflow": "visible",
       }
-    }>
+    }
+  >
     <div>
       <h3>
         Find Your People
       </h3>
       <h6
-        className="soft-half-bottom@handheld soft-bottom">
+        className="soft-half-bottom@handheld soft-bottom"
+      >
         <em>
           Select your interests, campus, and location 
           <br />
@@ -271,7 +325,8 @@ exports[`test renders with props 1`] = `
             "display-inline-block",
             "push-bottom",
           ]
-        }>
+        }
+      >
         <Keywords
           onChange={[Function]}
           tagOnClick={[Function]}
@@ -284,28 +339,34 @@ exports[`test renders with props 1`] = `
                 "value": "test",
               },
             ]
-          } />
+          }
+        />
         <CampusSelect
-          onChange={[Function]} />
+          onChange={[Function]}
+        />
         <Location
           onChange={[Function]}
-          validation={[Function]} />
+          validation={[Function]}
+        />
         <div
-          className="text-left soft-half-sides">
+          className="text-left soft-half-sides"
+        >
           <a
             onClick={[Function]}
             style={
               Object {
                 "color": "#505050",
               }
-            }>
+            }
+          >
             <Svg
               classes="display-inline-block"
               fill="#505050"
               height="24px"
               name="locate"
               title="Locate Icon"
-              width="24px" />
+              width="24px"
+            />
             <h6
               className="display-inline-block push-half-left"
               style={
@@ -313,7 +374,8 @@ exports[`test renders with props 1`] = `
                   "fontWeight": "400",
                   "verticalAlign": "super",
                 }
-              }>
+              }
+            >
               Use my current location
             </h6>
           </a>
@@ -322,33 +384,45 @@ exports[`test renders with props 1`] = `
     </div>
   </div>
   <div
-    className="soft-double-bottom text-center background--light-primary">
+    className="soft-double-bottom text-center background--light-primary"
+  >
     <div
-      className="background--light-primary soft-double-sides@lap-wide-and-up">
+      className="background--light-primary soft-double-sides@lap-wide-and-up"
+    >
       <button
         className="btn push-top@lap-and-up btn--disabled"
-        disabled={true}>
-        Let\'s Go!
+        disabled={true}
+      >
+        Let's Go!
       </button>
     </div>
   </div>
   <div
-    className="soft-half soft-sides@palm-wide-and-up soft-double-ends soft-double@lap-wide-and-up text-center">
+    className="soft-half soft-sides@palm-wide-and-up soft-double-ends soft-double@lap-wide-and-up text-center"
+  >
     <h3
-      className="push-top">
-      You Can\'t Do Life Alone
+      className="push-top"
+    >
+      You Can't Do Life Alone
     </h3>
     <div
-      className="grid">
+      className="grid"
+    >
       <div
-        className="grid__item one-whole one-half@palm-wide-and-up">
+        className="grid__item one-whole one-half@palm-wide-and-up"
+        key="0"
+      >
         <Connect(Apollo(LikesWrapper))
-          item={Object {}} />
+          item={Object {}}
+        />
       </div>
       <div
-        className="grid__item one-whole one-half@palm-wide-and-up">
+        className="grid__item one-whole one-half@palm-wide-and-up"
+        key="1"
+      >
         <Connect(Apollo(LikesWrapper))
-          item={Object {}} />
+          item={Object {}}
+        />
       </div>
     </div>
   </div>

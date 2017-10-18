@@ -1,8 +1,12 @@
-exports[`test renders 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders 1`] = `
 <div
-  className="background--light-secondary">
+  className="background--light-secondary"
+>
   <Meta
-    title="Sections" />
+    title="Sections"
+  />
   <Connect(SectionsContainerWithoutData) />
 </div>
 `;

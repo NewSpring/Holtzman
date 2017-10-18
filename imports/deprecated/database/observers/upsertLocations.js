@@ -120,6 +120,5 @@ export function upsertLocations(PersonId, doc) { // eslint-disable-line
     };
 
     api.post.sync("GroupLocations", GroupLocation);
-    return;
   }
 }

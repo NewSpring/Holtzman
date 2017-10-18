@@ -35,12 +35,12 @@ addReducer({
 export default {
   reducer,
 
-  setLevel: (level) => ({ type: "NAV.SET_LEVEL", level }),
+  setLevel: level => ({ type: "NAV.SET_LEVEL", level }),
   reset: () => ({ type: "NAV.SET_LEVEL", level: "TOP" }),
 
   setColor: (bgColor, fgColor) => ({ type: "NAV.SET_COLOR", bgColor, fgColor }),
 
-  setLinks: (links) => ({ type: "NAV.SET_LINKS", links }),
+  setLinks: links => ({ type: "NAV.SET_LINKS", links }),
   setAction: (level, props) => ({ type: "NAV.SET_ACTION", level, props }),
 
   hide: () => ({ type: "NAV.SET_VISIBILITY", visible: false }),

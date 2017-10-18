@@ -22,7 +22,7 @@ describe("Join", () => {
       ...defaultProps,
       ...additionalProps,
     };
-    return <Join { ...newProps } />;
+    return <Join {...newProps} />;
   };
 
   it("renders with props", () => {
@@ -73,7 +73,7 @@ describe("Join", () => {
     jest.runAllTimers();
     expect(wrapper.state().state).toBe("default");
   });
-})
+});
 
 describe("ShowPhoneTextArea", () => {
   const defaultProps = {
@@ -87,7 +87,7 @@ describe("ShowPhoneTextArea", () => {
       ...defaultProps,
       ...additionalProps,
     };
-    return <ShowPhoneTextArea { ...newProps } />;
+    return <ShowPhoneTextArea {...newProps} />;
   };
 
   it("renders with props", () => {
@@ -98,17 +98,17 @@ describe("ShowPhoneTextArea", () => {
   it("shouldn't render if there is a phone number", () => {
     const additionalProps = {
       phones: ["(555) 555-5555"],
-    }
+    };
     const wrapper = shallow(generateComponent(additionalProps));
-    expect(shallowToJson(wrapper)).toBe(null);
+    expect(shallowToJson(wrapper)).toBe("");
   });
 
   it("returns null if still loading", () => {
     const additionalProps = {
       loading: true,
       phones: ["(555) 555-5555"],
-    }
+    };
     const wrapper = shallow(generateComponent(additionalProps));
-    expect(shallowToJson(wrapper)).toBe(null);
-  })
-})
+    expect(shallowToJson(wrapper)).toBe("");
+  });
+});

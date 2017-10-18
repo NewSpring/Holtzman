@@ -1,0 +1,33 @@
+
+$use-textarea: true!default;
+
+@if $use-textarea == true {
+  textarea {
+  @extend %h6;
+  @include placeholder {
+    /* color: map-get($colors, light-tertiary); */
+    color: #fff;
+  }
+  @include radius(0);
+
+  width: 100%;
+  padding: $half-spacing-unit * .5;
+
+  border-bottom: solid 2px map-get($colors, dark-tertiary);
+
+  -webkit-appearance: none;
+
+  &:focus {
+    @include placeholder {
+      color: #fff;
+    }
+
+    border-bottom-color: $brand-color;
+  }
+
+  &[data-value]:not([data-value=""]) {
+    border-bottom-color: $base-font-color;
+  }
+}
+
+}

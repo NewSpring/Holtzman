@@ -1,0 +1,58 @@
+$use-fixed-ratios: true !default;
+
+// @if $use-fixed-ratios == true {
+  @include namespace(ratio--none) {
+    .ratio__item {
+      @include relative(top auto left auto right auto bottom auto);
+    }
+  }
+  //
+  // @name %_ratio__item
+  // @description absolutly postions child to expand to fill parent container
+  //
+  // @private true
+  //
+  // @extend true
+  //
+  %_ratio__item {
+    @include absolute(top 0 bottom 0 left 0 right 0);
+  }
+
+  //
+  // @name Ratios
+  // @class .ratio--landscape
+  // @description Creates responsive fixed ratio containers using pseudo elements
+  //
+  // @block .ratio--landscape
+  // @element .ratio__item
+  //
+  // @complex-object true
+  //
+  // @variable ratios - object containing all default ratios for the framework
+  //
+  // @state :before - pseudo element to expand to ratio size
+  //
+  // @namespaced true
+  //
+  // @markup
+  // <div class="ratio--landscape">
+  //   <div class="ratio__item" style="background-color: #ddd;">
+  //
+  //   </div>
+  // </div>
+  //
+  @each $ratio, $_ratio in $ratios {
+    // Grab the alias and the values from their respective locations in
+    // the list.
+    $alias: "#{$ratio}";
+    $width: map-get($_ratio, "width");
+    $height: map-get($_ratio, "height");
+
+    @include namespace($alias) {
+      @include fixed-ratio($width, $height);
+    }
+  }
+  .ratio__item {
+    @extend %_ratio__item;
+  }
+// }
