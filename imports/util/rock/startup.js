@@ -12,7 +12,7 @@ export default function startup(api) {
       // eslint-disable-next-line camelcase
       const { ROOT_URL } = __meteor_runtime_config__;
       let current = api.get.sync(
-        `DefinedValues?$filter=Value eq '${ROOT_URL}' and DefinedTypeId eq 12`
+        `DefinedValues?$filter=Value eq '${ROOT_URL}' and DefinedTypeId eq 12`,
       );
 
       if (!current.length) {
@@ -25,9 +25,11 @@ export default function startup(api) {
           Guid: makeNewGuid(),
         };
         current = api.post.sync("DefinedValues", DefinedValue);
-        current = [{
-          Id: current,
-        }];
+        current = [
+          {
+            Id: current,
+          },
+        ];
       }
 
       api._.rockId = current[0].Id;
@@ -45,14 +47,15 @@ export default function startup(api) {
         };
 
         site = api.post.sync("Sites", Site);
-        site = [{
-          Id: site,
-        }];
+        site = [
+          {
+            Id: site,
+          },
+        ];
       }
 
       api._.siteId = site[0].Id;
     }
-
 
     if (typeof serverWatch !== "undefined") {
       // If Rock is being watched (aka old states), remove watching

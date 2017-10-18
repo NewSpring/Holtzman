@@ -1,0 +1,15 @@
+
+$use-shapes: true !default;
+
+@if $use-shapes == true {
+  //
+  // @name .round
+  // @class .round
+  // @description sets border-radius to 50%
+  //
+  // @helper true
+  //
+  .round {
+    @extend %_circle;
+  }
+}

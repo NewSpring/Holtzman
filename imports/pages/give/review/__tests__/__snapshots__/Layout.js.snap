@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`GiveReview renders a transaction review 1`] = `
 <div
   className="one-whole one-half@palm-wide-and-up soft-double-ends@palm-wide-and-up"
@@ -5,20 +7,25 @@ exports[`GiveReview renders a transaction review 1`] = `
     Object {
       "margin": "0 auto",
     }
-  }>
+  }
+>
   <div
-    className="push-double@lap-and-up push">
+    className="push-double@lap-and-up push"
+  >
     <h4
-      className="text-center">
+      className="text-center"
+    >
       Hi 
       Jeff
       ! Here are your contribution details.
     </h4>
   </div>
   <div
-    className="soft">
+    className="soft"
+  >
     <h5
-      className="text-dark-secodary text-left">
+      className="text-dark-secodary text-left"
+    >
       <small>
         <em>
           Web
@@ -27,25 +34,30 @@ exports[`GiveReview renders a transaction review 1`] = `
       </small>
     </h5>
     <div
-      className="outlined--light outlined--bottom one-whole push-bottom" />
+      className="outlined--light outlined--bottom one-whole push-bottom"
+    />
     <div
-      className="soft-half-ends hard-sides">
+      className="soft-half-ends hard-sides"
+    >
       <div
         className="grid"
         style={
           Object {
             "verticalAlign": "middle",
           }
-        }>
+        }
+      >
         <div
           className="grid__item two-thirds"
           style={
             Object {
               "verticalAlign": "middle",
             }
-          }>
+          }
+        >
           <h5
-            className="text-dark-secondary flush text-left">
+            className="text-dark-secondary flush text-left"
+          >
             General%20Fund
           </h5>
         </div>
@@ -55,32 +67,38 @@ exports[`GiveReview renders a transaction review 1`] = `
             Object {
               "verticalAlign": "middle",
             }
-          }>
+          }
+        >
           <h5
-            className="text-dark-secondary flush">
+            className="text-dark-secondary flush"
+          >
             $1
           </h5>
         </div>
       </div>
     </div>
     <div
-      className="soft-ends hard-sides">
+      className="soft-ends hard-sides"
+    >
       <div
         className="grid"
         style={
           Object {
             "verticalAlign": "middle",
           }
-        }>
+        }
+      >
         <div
           className="grid__item one-half"
           style={
             Object {
               "verticalAlign": "middle",
             }
-          }>
+          }
+        >
           <h5
-            className="text-dark-secondary flush text-left">
+            className="text-dark-secondary flush text-left"
+          >
             Total
           </h5>
         </div>
@@ -90,19 +108,23 @@ exports[`GiveReview renders a transaction review 1`] = `
             Object {
               "verticalAlign": "middle",
             }
-          }>
+          }
+        >
           <h3
-            className="text-primary flush">
+            className="text-primary flush"
+          >
             $1
           </h3>
         </div>
       </div>
     </div>
     <div
-      className="one-whole text-center">
+      className="one-whole text-center"
+    >
       <button
         className="btn soft-half-top"
-        onClick={[Function]}>
+        onClick={[Function]}
+      >
         Give Now
       </button>
     </div>

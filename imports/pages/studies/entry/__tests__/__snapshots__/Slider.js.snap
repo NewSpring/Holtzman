@@ -1,7 +1,10 @@
-exports[`test renders with props 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders with props 1`] = `
 <div>
   <div
-    className="one-whole" />
+    className="one-whole"
+  />
   <div
     onTouchEnd={[Function]}
     onTouchMove={[Function]}
@@ -11,7 +14,8 @@ exports[`test renders with props 1`] = `
       Object {
         "overflowX": "hidden",
       }
-    }>
+    }
+  >
     <div
       style={
         Object {
@@ -22,7 +26,8 @@ exports[`test renders with props 1`] = `
           "transform": "translate(0%, 0)",
           "willChange": "transform",
         }
-      }>
+      }
+    >
       <div
         aria-hidden={false}
         className={undefined}
@@ -34,9 +39,11 @@ exports[`test renders with props 1`] = `
             "overflowY": "hidden",
             "width": "100%",
           }
-        }>
+        }
+      >
         <div
-          className="one-whole" />
+          className="one-whole"
+        />
       </div>
       <div
         aria-hidden={true}
@@ -49,9 +56,11 @@ exports[`test renders with props 1`] = `
             "overflowY": "hidden",
             "width": "100%",
           }
-        }>
+        }
+      >
         <div
-          className="one-whole" />
+          className="one-whole"
+        />
       </div>
     </div>
   </div>

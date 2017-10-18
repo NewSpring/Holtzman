@@ -1,4 +1,5 @@
-import { Component, PropTypes } from "react";
+import PropTypes from "prop-types";
+import { Component } from "react";
 
 import Meta from "../../../../components/shared/meta";
 import Forms from "../../../../components/@primitives/UI/forms";
@@ -11,7 +12,7 @@ export default class Layout extends Component {
     update: PropTypes.func,
   }
 
-  submit = (e) => {
+  submit = e => {
     e.preventDefault();
 
     const data = {};

@@ -1,0 +1,173 @@
+
+$use-newspring-icon: true!default;
+
+// @if $use-newspring-icon == true {
+  @if $use-positions == true and $use-shapes == true and $use-vendor == true {
+    // ============================================================
+    //
+    //   $NEWSPRING-ICON-COLOR
+    //
+    //   Used to generate the NewSpring Mark Color Scheme
+    //
+    //   @param color         :  hex, rgb, rgba
+    //   @param with-n        :  Boolean
+    //   @param n-color       :  hex, rgb, rgba
+    //
+    // ============================================================
+
+    @mixin _newspring--icon-color ($_options: ()) {
+      $_options: extend((
+        size: 48px,
+        color: #6bac43,
+        add-on: "n",
+        add-on-color: #fff
+      ), $_options);
+      $add-on: map-get($_options, add-on);
+      $color: map-get($_options, color);
+      $add-on-color: map-get($_options, add-on-color);
+
+
+      // If you want the NewSpring n
+      @if $add-on == "n" {
+        // Set background color
+        background-color: $color;
+
+        &:before {
+          // Set color based on variable
+          background-color: $add-on-color;
+        }
+
+        &:after {
+          // Set color based on background variable
+          background-color: $color;
+        }
+      }
+
+
+      // If you want stripes
+      @elseif $add-on == "stripes" {
+        //set stripe size
+        @include vendor(background-size, 5%);
+        // Set background color
+
+        background-color: $add-on-color;
+        //create single stripe
+        background-image: -webkit-gradient(linear, 0 0, 0 100%, color-stop(.5, $color), color-stop(.5, transparent), to(transparent));
+        background-image: -moz-linear-gradient($color 50%, transparent 50%, transparent);
+        background-image:   -o-linear-gradient($color 50%, transparent 50%, transparent);
+        background-image:      linear-gradient($color 50%, transparent 50%, transparent);
+        background-repeat: repeat;
+        //anchor stripe to bottom edge
+        background-position: center;
+      }
+
+      // Default Coloring
+      @else {
+        // Set background color
+        background-color: $color;
+      }
+    }
+
+
+
+
+
+    // ============================================================
+    //
+    //   $NEWSPRING-ICON
+    //
+    //   Used to generate the NewSpring Mark
+    //
+    //   @param size          :  px, em
+    //   @param color         :  hex, rgb, rgba
+    //   @param style         :  String
+    //   @param n-color       :  hex, rgb, rgba
+    //
+    // ============================================================
+
+    %_newspring-icon {
+      // Curve them borders
+      @include radius(50% 47% 0 47%);
+      // Set position to relative to hold inernal pseudo elements
+
+      position: relative;
+      // Set to inline block to easily flow into content
+
+      display: inline-block;
+      // Make sure that no text ever shows up
+
+      text-indent: -99999;
+
+      font-size: 0;
+
+      // Create fluid version
+      &.fluid {
+        width: 100%;
+        height: auto;
+        padding-bottom: 100%;
+      }
+    }
+
+    %_newspring-icon-n {
+      // Build the outer part of the n
+      &:before {
+        @include absolute(top 50% left 50%);
+        // curve that n
+        @include radius(0 36% 0 0);
+        // Set size based on the size variable
+
+        width: 47.5%;
+        height: auto;
+        // position n outline
+        margin-top: -20.625%;
+        margin-left: -21.25%;
+        padding-bottom: 45.625%;
+        // create pseudo element and position in the middle
+
+        content: "";
+      }
+
+      // Build the inner part of the n
+      &:after {
+        @include absolute(top 50% left 50%);
+        // curve that n top
+        @include radius(50% 50% 0 0 / 25% 25% 0 0);
+        // Set size based on the size variable
+        // width: ($size * .25 * .5) * 1.2;
+
+        width: 15%;
+        height: 33.75%;
+        // position n insides
+        margin-top: -8.75%;
+        margin-left: -5%;
+        // create pseudo element and position in the middle
+
+        content: "";
+      }
+    }
+
+
+    @mixin newspring--icon ($_options: ()) {
+      $_options: extend((
+        size: 48px,
+        color: #6bac43,
+        add-on: "n",
+        add-on-color: #fff
+      ), $_options);
+
+      @include _newspring--icon-color($_options);
+      @extend %_newspring-icon;
+      // set base width and height from variable
+
+      width: map-get($_options, size);
+      height: map-get($_options, size);
+
+      // If you want the n in the mark
+      @if map-get($_options, add-on) == "n" {
+        @extend %_newspring-icon-n;
+      }
+    }
+  } @else {
+    @warn "@newspring-icon depends on @position, @vendor, and @shapes"
+  }
+// }

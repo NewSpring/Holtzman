@@ -1,19 +1,26 @@
-exports[`test renders 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders 1`] = `
 <div
-  className="soft-ends text-left soft-sides floating outlined--light outlined">
+  className="soft-ends text-left soft-sides floating outlined--light outlined"
+>
   <h6
-    className="text-dark-secondary three-quarters flush floating__item">
+    className="text-dark-secondary three-quarters flush floating__item"
+  >
     Save for offline listening
   </h6>
   <div
-    className="float-right toggle-wrap floating__item">
+    className="float-right toggle-wrap floating__item"
+  >
     <input
       className="toggle-switch"
       id="offline"
       name="toggle-switch"
-      type="checkbox" />
+      type="checkbox"
+    />
     <label
-      htmlFor="offline" />
+      htmlFor="offline"
+    />
   </div>
 </div>
 `;

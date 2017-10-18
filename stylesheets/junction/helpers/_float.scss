@@ -1,0 +1,69 @@
+
+$use-floats: true!default;
+
+@if $use-floats == true {
+  //
+  // @name .float-left
+  // @class .float-left
+  // @description float item to left
+  //
+  // @helper true
+  // @namespaced true
+  //
+  @include namespace("float-left") {
+    float: left;
+  }
+  //
+  // @name .float-right
+  // @class .float-right
+  // @description float item to right
+  //
+  // @helper true
+  // @namespaced true
+  //
+  @include namespace("float-right") {
+    float: right;
+  }
+  //
+  // @name .float-none
+  // @class .float-none
+  // @description remove float of item
+  //
+  // @helper true
+  // @namespaced true
+  //
+  @include namespace("float-none") {
+    float: none;
+  }
+  //
+  // @name .float-inherit
+  // @class .float-inherit
+  // @description inherit parent float
+  //
+  // @helper true
+  // @namespaced true
+  //
+  @include namespace("float-inherit") {
+    float: inherit;
+  }
+
+
+  //
+  // @name .clearfix
+  // @class .clearfix
+  // @description clearfix class to help clear after floated elements
+  //
+  // @helper true
+  //
+  .clearfix {
+    &:before,
+    &:after {
+      display: table;
+
+      content: "";
+    }
+    &:after {
+      clear: both;
+    }
+  }
+}

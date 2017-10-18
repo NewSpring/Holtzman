@@ -1,0 +1,19 @@
+
+$use-sections: true !default;
+
+@if $use-sections == true {
+  //
+  // @name sections
+  // @description set base styles for sections to contain children and center
+  //
+  // @base true
+  //
+  section {
+    overflow: hidden;
+
+    width: 100%;
+    margin: 0 auto;
+    // not sure how I feel about this
+    padding: $base-spacing-unit;
+  }
+}

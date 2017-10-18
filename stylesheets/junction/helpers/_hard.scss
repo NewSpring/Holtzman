@@ -1,0 +1,77 @@
+
+$use-spacing: true !default;
+
+@if $use-spacing == true {
+  //
+  // @name .hard
+  // @class .hard
+  // @description force padding to be 0
+  //
+  // @namespaced true
+  //
+  @include namespace(hard) {
+    padding: 0;
+  }
+  //
+  // @name .hard-top
+  // @class .hard-top
+  // @description force top padding to be 0
+  //
+  // @namespaced true
+  //
+  @include namespace(hard-top) {
+    padding-top: 0;
+  }
+  //
+  // @name .hard-right
+  // @class .hard-right
+  // @description force right padding to be 0
+  //
+  // @namespaced true
+  //
+  @include namespace(hard-right) {
+    padding-right: 0;
+  }
+  //
+  // @name .hard-bottom
+  // @class .hard-bottom
+  // @description force bottom padding to be 0
+  //
+  // @namespaced true
+  //
+  @include namespace(hard-bottom) {
+    padding-bottom: 0;
+  }
+  //
+  // @name .hard-left
+  // @class .hard-left
+  // @description force left padding to be 0
+  //
+  // @namespaced true
+  //
+  @include namespace(hard-left) {
+    padding-left: 0;
+  }
+  //
+  // @name .hard-ends
+  // @class .hard-ends
+  // @description force top and bottom padding to be 0
+  //
+  // @namespaced true
+  //
+  @include namespace(hard-ends) {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  //
+  // @name .hard-sides
+  // @class .hard-sides
+  // @description force left and right padding to be 0
+  //
+  // @namespaced true
+  //
+  @include namespace(hard-sides) {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}

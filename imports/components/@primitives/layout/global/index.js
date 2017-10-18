@@ -1,6 +1,7 @@
-import { Component, PropTypes } from "react";
+import { Component } from "react";
 import { Meteor } from "meteor/meteor";
 import moment from "moment";
+import PropTypes from "prop-types";
 import { flatten, pluck } from "ramda";
 import { connect } from "react-redux";
 import { css } from "aphrodite";
@@ -99,7 +100,7 @@ export const promptNotify = (client, dispatch) => () => {
         dispatch(
           modalActions.render(NotificationRequest, {
             promptModal: true,
-          })
+          }),
         );
       }, 3000);
     });
@@ -325,7 +326,6 @@ class GlobalWithoutData extends Component {
             this.go(`/${channel}/${data.parent}`);
         }
       });
-    return;
   };
 
   go = url => {

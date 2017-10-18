@@ -1,0 +1,223 @@
+
+$use-push: true !default;
+
+@if $use-push == true {
+  //
+  // @name .push
+  // @class .push
+  // @description force margin to be $base-spacing-unit
+  //
+  // @namespaced true
+  //
+  @include namespace(push) {
+    margin: $base-spacing-unit;
+  }
+  //
+  // @name .push-top
+  // @class .push-top
+  // @description force top margin to be $base-spacing-unit
+  //
+  // @namespaced true
+  //
+  @include namespace(push-top) {
+    margin-top: $base-spacing-unit;
+  }
+  //
+  // @name .push-right
+  // @class .push-right
+  // @description force right margin to be $base-spacing-unit
+  //
+  // @namespaced true
+  //
+  @include namespace(push-right) {
+    margin-right: $base-spacing-unit;
+  }
+  //
+  // @name .push-bottom
+  // @class .push-bottom
+  // @description force bottom margin to be $base-spacing-unit
+  //
+  // @namespaced true
+  //
+  @include namespace(push-bottom) {
+    margin-bottom: $base-spacing-unit;
+  }
+  //
+  // @name .push-left
+  // @class .push-left
+  // @description force left margin to be $base-spacing-unit
+  //
+  // @namespaced true
+  //
+  @include namespace(push-left) {
+    margin-left: $base-spacing-unit;
+  }
+  //
+  // @name .push-ends
+  // @class .push-ends
+  // @description force top and bottom margin to be $base-spacing-unit
+  //
+  // @namespaced true
+  //
+  @include namespace(push-ends) {
+    margin-top: $base-spacing-unit;
+    margin-bottom: $base-spacing-unit;
+  }
+  //
+  // @name .push-sides
+  // @class .push-sides
+  // @description force left and right margin to be $base-spacing-unit
+  //
+  // @namespaced true
+  //
+  @include namespace(push-sides) {
+    margin-right: $base-spacing-unit;
+    margin-left: $base-spacing-unit;
+  }
+  // Half size
+  //
+  // @name .push-half
+  // @class .push-half
+  // @description force margin to be $half-spacing-unit
+  //
+  // @namespaced true
+  //
+  @include namespace(push-half) {
+    margin: $half-spacing-unit;
+  }
+  //
+  // @name .push-half-top
+  // @class .push-half-top
+  // @description force top margin to be $half-spacing-unit
+  //
+  // @namespaced true
+  //
+  @include namespace(push-half-top) {
+    margin-top: $half-spacing-unit;
+  }
+  //
+  // @name .push-half-right
+  // @class .push-half-right
+  // @description force right margin to be $half-spacing-unit
+  //
+  // @namespaced true
+  //
+  @include namespace(push-half-right) {
+    margin-right: $half-spacing-unit;
+  }
+  //
+  // @name .push-bottom-bottom
+  // @class .push-bottom-bottom
+  // @description force bottom margin to be $half-spacing-unit
+  //
+  // @namespaced true
+  //
+  @include namespace(push-half-bottom) {
+    margin-bottom: $half-spacing-unit;
+  }
+  //
+  // @name .push-half-left
+  // @class .push-half-left
+  // @description force left margin to be $half-spacing-unit
+  //
+  // @namespaced true
+  //
+  @include namespace(push-half-left) {
+    margin-left: $half-spacing-unit;
+  }
+  //
+  // @name .push-half-ends
+  // @class .push-half-ends
+  // @description force top and bottom margin to be $half-spacing-unit
+  //
+  // @namespaced true
+  //
+  @include namespace(push-half-ends) {
+    margin-top: $half-spacing-unit;
+    margin-bottom: $half-spacing-unit;
+  }
+  //
+  // @name .push-half-sides
+  // @class .push-half-sides
+  // @description force left and right margin to be $half-spacing-unit
+  //
+  // @namespaced true
+  //
+  @include namespace(push-half-sides) {
+    margin-right: $half-spacing-unit;
+    margin-left: $half-spacing-unit;
+  }
+  // Double size
+  //
+  // @name .push-double
+  // @class .push-double
+  // @description force margin to be $base-spacing-unit * 2
+  //
+  // @namespaced true
+  //
+  @include namespace(push-double) {
+    margin: $base-spacing-unit * 2;
+  }
+  //
+  // @name .push-double-top
+  // @class .push-double-top
+  // @description force top margin to be $base-spacing-unit * 2
+  //
+  // @namespaced true
+  //
+  @include namespace(push-double-top) {
+    margin-top: $base-spacing-unit * 2;
+  }
+  //
+  // @name .push-double-right
+  // @class .push-double-right
+  // @description force right margin to be $base-spacing-unit * 2
+  //
+  // @namespaced true
+  //
+  @include namespace(push-double-right) {
+    margin-right: $base-spacing-unit * 2;
+  }
+  //
+  // @name .push-double-bottom
+  // @class .push-double-bottom
+  // @description force bottom margin to be $base-spacing-unit * 2
+  //
+  // @namespaced true
+  //
+  @include namespace(push-double-bottom) {
+    margin-bottom: $base-spacing-unit * 2;
+  }
+  //
+  // @name .push-double-left
+  // @class .push-double-left
+  // @description force left margin to be $base-spacing-unit * 2
+  //
+  // @namespaced true
+  //
+  @include namespace(push-double-left) {
+    margin-left: $base-spacing-unit * 2;
+  }
+  //
+  // @name .push-double-ends
+  // @class .push-double-ends
+  // @description force top and bottom margin to be $base-spacing-unit * 2
+  //
+  // @namespaced true
+  //
+  @include namespace(push-double-ends) {
+    margin-top: $base-spacing-unit * 2;
+    margin-bottom: $base-spacing-unit * 2;
+  }
+  //
+  // @name .push-double-sides
+  // @class .push-double-sides
+  // @description force left and right margin to be $base-spacing-unit * 2
+  //
+  // @namespaced true
+  //
+  @include namespace(push-double-sides) {
+    margin-right: $base-spacing-unit * 2;
+    margin-left: $base-spacing-unit * 2;
+  }
+}

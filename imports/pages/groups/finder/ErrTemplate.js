@@ -1,7 +1,7 @@
 import { Error } from "../../../components/@primitives/UI/icons";
 
 type IErrTemplate = {
-  errorCode: number
+  errorCode: number,
 };
 
 const ErrTemplate = ({ errorCode }: IErrTemplate) => (
@@ -32,8 +32,8 @@ const ErrTemplate = ({ errorCode }: IErrTemplate) => (
       {errorCode === 3 && (
         <p className="text-left">
           The location service timed out so we couldn&#39;t get your location. This could be due to
-          your connection or that your device doesn't support GPS. You can always type in your zip
-          code to find groups near you!
+          your connection or that your device doesn&#39;t support GPS. You can always type in your
+          zip code to find groups near you!
         </p>
       )}
     </div>

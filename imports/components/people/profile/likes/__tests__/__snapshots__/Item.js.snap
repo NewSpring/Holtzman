@@ -1,10 +1,12 @@
-exports[`test containerClasses returns native version 1`] = `"grid__item one-whole one-half@palm-wide-and-up"`;
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`test containerClasses returns non native version 1`] = `"grid__item one-whole"`;
+exports[`containerClasses returns native version 1`] = `"grid__item one-whole one-half@palm-wide-and-up"`;
 
-exports[`test iconClasses returns css class string 1`] = `"test-icon soft-half-right"`;
+exports[`containerClasses returns non native version 1`] = `"grid__item one-whole"`;
 
-exports[`test imageclasses returns array of css classes 1`] = `
+exports[`iconClasses returns css class string 1`] = `"test-icon soft-half-right"`;
+
+exports[`imageclasses returns array of css classes 1`] = `
 Array [
   "background--fill",
   "card__image",
@@ -12,48 +14,58 @@ Array [
 ]
 `;
 
-exports[`test preloader renders 1`] = `
+exports[`preloader renders 1`] = `
 <div
-  className="background--fill card__image ratio--landscape load-item_1vqkxyp" />
+  className="background--fill card__image ratio--landscape load-item_1vqkxyp"
+/>
 `;
 
-exports[`test renderElement renders 1`] = `
+exports[`renderElement renders 1`] = `
 <div
   className="background--fill card__image ratio--landscape"
   style={
     Object {
-      "backgroundImage": "url(\'http://test.com/1.jpg\')",
+      "backgroundImage": "url('http://test.com/1.jpg')",
     }
-  } />
+  }
+/>
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <div
-  className="grid__item one-whole">
+  className="grid__item one-whole"
+>
   <div
-    className="card">
+    className="card"
+  >
     <Link
       className="plain"
       onClick={[Function]}
       onlyActiveOnIndex={false}
       style={Object {}}
-      to="http://test.com/1">
+      to="http://test.com/1"
+    >
       <ImageLoader
         preloader={[Function]}
         renderElement={[Function]}
         src="http://test.com/1.jpg"
-        wrapper={[Function]} />
+        wrapper={[Function]}
+      />
       <div
-        className="card__item soft text-dark-tertiary">
+        className="card__item soft text-dark-tertiary"
+      >
         <h4
-          className="text-dark-primary capitalize" />
+          className="text-dark-primary capitalize"
+        />
         <i
-          className="test-icon soft-half-right" />
+          className="test-icon soft-half-right"
+        />
         <h7>
           test category
         </h7>
         <h7
-          className="text-right float-right">
+          className="text-right float-right"
+        >
           Dec 12, 2012
         </h7>
       </div>
