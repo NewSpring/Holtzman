@@ -5,7 +5,7 @@ Church](https://img.shields.io/badge/NEWSPRING_CHURCH-Holtzmann-6BAC43.svg?style
 [![Build Status](https://travis-ci.org/NewSpring/Holtzman.svg)](https://travis-ci.org/NewSpring/Holtzman)
 [![Coverage Status](https://coveralls.io/repos/github/NewSpring/Holtzman/badge.svg?branch=master)](https://coveralls.io/github/NewSpring/Holtzman?branch=master)
 
-Holtzmann is an application framework for building high speed, web + native, reactive applications. It is built using Reactjs, Redux, and Meteor. This repository contains the application framework and instructions for usage.
+Holtzman is an application framework for building high speed, web + native, reactive applications. It is built using Reactjs, Redux, and Meteor. This repository contains the application framework and instructions for usage.
 
 **Table of Contents**
 
@@ -43,8 +43,6 @@ Holtzmann is an application framework for building high speed, web + native, rea
 ```
 $ git clone git@github.com:NewSpring/Holtzman.git
 $ cd Holtzmann
-$ npm link
-$ apollos setup
 & yarn install
 $ cp ./.meteor/sample.settings.json ./.meteor/settings.json
 $ WEB=true meteor run --settings ./.meteor/settings.json
@@ -87,14 +85,8 @@ To install all dependencies, we use [Yarn](https://yarnpkg.com/). To get started
 1. Clone down the repo
 2. Make sure you have the Yarn CLI [installed](https://yarnpkg.com/en/docs/install)
 3. Run `yarn`.
-4. run `npm link`. This will bind `apollos` to your system to be used to run this app ([more info](https://docs.npmjs.com/cli/link)).
 
-`apollos setup`: This command will bootstrap the application. This may take some time. It installs several meteor specific packages which can be altered in the package.json file under the `apollos` heading.
-
-  - `-c || --clean`: Force rebuild of application
-  - `-l || --log <level>`: NOT IMPLEMENTED
-
-Use the `meteor run` command as its the most reliable. It may be helpful to
+Use the `meteor run` command. It may be helpful to
 alias the command in your command line for quick startups.
 
 Holtzman uses environment variables to control certain aspects of building.
