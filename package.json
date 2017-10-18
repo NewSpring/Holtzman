@@ -12,7 +12,7 @@
     "flow": "flow",
     "flow:stop": "flow stop",
     "storybook": "start-storybook -p 6006 -s ./public",
-    "build-storybook": "build-storybook -s public -o docs",
+    "build-storybook": "build-storybook -s public -o storybook",
     "lint-staged": "lint-staged",
     "danger": "danger run --verbose"
   },
