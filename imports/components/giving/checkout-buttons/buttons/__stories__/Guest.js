@@ -18,11 +18,11 @@ story.add(
   "Guest",
   withReadme(Readme, () => (
     <Guest
-      disabled={boolean("disabled", false)}
+      disabled={boolean("Disable Button?", false)}
       onClick={() => {
         alert("clicked");
       }}
-      text={text("text", "Give As Guest")}
+      text={text("Button Text", "Give As Guest")}
     />
   )),
 );

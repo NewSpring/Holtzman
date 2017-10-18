@@ -4,7 +4,7 @@ import withReadme from "storybook-readme/with-readme";
 import backgrounds from "@storybook/addon-backgrounds";
 import centered from "/.storybook/decorators/centered";
 import defaultColors from "/.storybook/defaults";
-import { withKnobs, select } from "@storybook/addon-knobs";
+import { withKnobs, select, text, boolean } from "@storybook/addon-knobs";
 
 import SmallButton from "../SmallButton";
 import Readme from "./small-button.md";
@@ -28,17 +28,43 @@ const story = storiesOf("Buttons", module)
 story
   .add(
     "Basic Small Button",
-    withReadme(Readme, () => (
-      <SmallButton text="See All" className={select("className", classes, "btn--dark-secondary")} />
-    )),
+    withReadme(Readme, () => {
+      const content = {
+        className: "btn--dark-secondary",
+        text: "See All",
+      };
+
+      // Change the className
+      content.className = select("Class Name", classes, "btn--dark-secondary");
+
+      // Disable the button
+      const disableButton = boolean("Disable Button?", false);
+      if (disableButton) {
+        content.disabled = true;
+      }
+
+      // Change the button text
+      content.text = text("Button Text", content.text);
+
+      return <SmallButton {...content} />;
+    }),
   )
   .add(
     "Small Button With onClick",
-    withReadme(Readme, () => (
-      <SmallButton
-        linkUrl="http://newspring.cc"
-        text="See All"
-        onClick={() => alert("button clicked!")}
-      />
-    )),
+    withReadme(Readme, () => {
+      const content = {
+        className: "btn--dark-secondary",
+        linkUrl: "http://newspring.cc",
+        onClick: () => alert("button clicked!"),
+        text: "See All",
+      };
+
+      // Change the className
+      content.className = select("Class Name", classes, "btn--dark-secondary");
+
+      // Change the button text
+      content.text = text("Button Text", content.text);
+
+      return <SmallButton {...content} />;
+    }),
   );

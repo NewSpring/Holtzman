@@ -18,7 +18,7 @@ story.add(
   "Secondary",
   withReadme(Readme, () => (
     <SecondaryButton
-      disabled={boolean("disabled", false)}
+      disabled={boolean("Disable Button?", false)}
       onClick={() => {
         alert("clicked");
       }}

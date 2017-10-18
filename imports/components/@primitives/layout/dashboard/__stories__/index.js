@@ -58,7 +58,11 @@ story.add(
     subNav[2].title = text("Menu Item 3", subNav[2].title);
 
     return (
-      <Dashboard title={title} subNav={subNav}>
+      <Dashboard
+        title={title}
+        subNav={subNav}
+        additionalClasses={"soft-half-sides push-half-right"}
+      >
         <div className="soft-double">
           <Activity
             status="success"

@@ -8,6 +8,7 @@ import defaultColors from "/.storybook/defaults";
 
 import Readme from "./mini-card.md";
 import MiniCard from "../MiniCard";
+import categories from "../../../../../util/categories";
 
 const story = storiesOf("Cards", module)
   .addDecorator(withKnobs)
@@ -27,47 +28,45 @@ story.add(
   withReadme(Readme, () => {
     // set channel name options
     const channelOptions = {
-      articles: "Articles",
-      devotionals: "Devotionals",
-      news: "News",
-      sermons: "Sermons",
-      stories: "Stories",
+      Articles: "Articles",
+      Devotionals: "Devotionals",
+      News: "News",
+      Sermons: "Sermons",
+      Stories: "Stories",
     };
 
     const content = {
-      channelName: "articles",
-      content: {
-        images: [
-          {
-            fileLabel: "2:1",
-            url: "http://www.adweek.com/files/blogs/jeff-goldblum-apartments-hed-2015.jpg",
-          },
-        ],
-      },
+      category: "Articles",
+      // description: "This is a description of the article with Jeff Goldblum",
+      icon: "icon-category-text",
+      image: "http://www.adweek.com/files/blogs/jeff-goldblum-apartments-hed-2015.jpg",
+      // link: "https://newspring.cc",
       title: "MiniCard Title",
     };
 
-    // Channel Name
-    content.channelName = select("type", channelOptions, "articles");
+    // Category
+    content.category = select("Type", channelOptions, "Articles");
+    content.channelName = content.category.toLowerCase();
+    content.icon = categories.icon(content);
 
     // Image
     const defaultImageURL =
       "http://www.adweek.com/files/blogs/jeff-goldblum-apartments-hed-2015.jpg";
-    content.content.images[0].url = text("image link", defaultImageURL);
+    content.image = text("Image Link", defaultImageURL);
 
     // Title
-    const title = text("title", content.title);
+    content.title = text("Title", content.title);
 
     // Turn Off Image
     const hideImage = boolean("Hide Image?", false);
     if (hideImage) {
-      content.content.images[0].url = "";
+      content.image = "";
     }
 
     return (
       <div className={"floating"}>
         <div className={"grid__item text-left"} style={{ maxWidth: "480px" }}>
-          <MiniCard title={title} content={content} />
+          <MiniCard {...content} />
         </div>
       </div>
     );

@@ -5,6 +5,7 @@ import withReadme from "storybook-readme/with-readme";
 import backgrounds from "@storybook/addon-backgrounds";
 import centered from "/.storybook/decorators/centered";
 import defaultColors from "/.storybook/defaults";
+import Provider, { ReduxProvider } from "/.storybook/mocks/Provider";
 
 import Readme from "./feed-item-card.md";
 import FeedItem from "../";
@@ -35,46 +36,61 @@ story.add(
     };
 
     const content = {
-      channelName: "articles",
-      content: {
-        colors: [{ description: "primary", id: null, value: "303030" }],
-        images: [
-          {
-            fileLabel: "2:1",
-            url: "http://i.huffpost.com/gen/1647376/images/o-JEFF-GOLDBLUM-facebook.jpg",
-          },
-        ],
+      // channelName: "articles",
+      // content: {
+      //   colors: [{ description: "primary", id: null, value: "303030" }],
+      //   images: [
+      //     {
+      //       fileLabel: "2:1",
+      //       url: "http://i.huffpost.com/gen/1647376/images/o-JEFF-GOLDBLUM-facebook.jpg",
+      //     },
+      //   ],
+      // },
+      // meta: {
+      //   date: "10/31/2016",
+      // },
+      item: {
+        channelName: "Articles",
+        content: {
+          colors: [{ description: "primary", id: null, value: "303030" }],
+          images: [
+            {
+              fileLabel: "2:1",
+              url: "http://i.huffpost.com/gen/1647376/images/o-JEFF-GOLDBLUM-facebook.jpg",
+            },
+          ],
+        },
+        entryId: "10458239056qaklpstjw40951281",
+        title: "FeedItem Title",
       },
-      meta: {
-        date: "10/31/2016",
-      },
-      title: "FeedItem Title",
     };
 
     // Title
-    content.title = text("Title", "FeedItem Title");
+    // content.title = text("Title", "FeedItem Title");
 
     // Channel Name
-    content.channelName = select("Type", channelOptions, "articles");
+    // content.channelName = select("Type", channelOptions, "articles");
 
     // Date
-    content.meta.date = text("Date", "10/31/2016");
+    // content.meta.date = text("Date", "10/31/2016");
 
     // Image
-    const defaultImageURL = "http://i.huffpost.com/gen/1647376/images/o-JEFF-GOLDBLUM-facebook.jpg";
-    content.content.images[0].url = text("image link", defaultImageURL);
+    // const defaultImageURL = "http://i.huffpost.com/gen/1647376/images/o-JEFF-GOLDBLUM-facebook.jpg";
+    // content.content.images[0].url = text("image link", defaultImageURL);
 
     // Background Color For Series
-    if (content.channelName === "series_newspring") {
-      const label = "Background Color";
-      const defaultValue = "#303030";
-      content.content.colors[0].value = color(label, defaultValue).replace("#", "");
-    }
+    // if (content.channelName === "series_newspring") {
+    //   const label = "Background Color";
+    //   const defaultValue = "#303030";
+    //   content.content.colors[0].value = color(label, defaultValue).replace("#", "");
+    // }
 
     return (
       <div className={"floating"}>
         <div className={"grid__item"} style={{ maxWidth: "480px" }}>
-          <FeedItem item={content} />
+          <Provider>
+            <FeedItem {...content} />
+          </Provider>
         </div>
       </div>
     );
