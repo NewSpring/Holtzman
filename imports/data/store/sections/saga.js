@@ -97,7 +97,7 @@ function* getSectionsData() {
 
   // go ahead and make the query on load (this will be cached on heighliner)
   const { data } = yield GraphQL.query({ query, variables });
-  const navigation = data.navigation;
+  const navigation = Object.assign({}, data.navigation);
   const filteredItems = {};
 
   // parse the results and only get a single usable image
@@ -109,22 +109,23 @@ function* getSectionsData() {
     }
   }
 
+
   function bindForeignImages(s) {
-    const sections = { ...s };
     // remap the images of the section panel
     // eslint-disable-next-line
-    for (const section in sections) { // eslint-disable-line
+    const sections = Object.assign({}, s);
+    for (const section in sections) {
       let name = sections[section].text.toLowerCase();
       if (name.includes("studies")) name = "studies";
       if (name.includes("devotionals")) name = "studies";
       if (filteredItems[name]) {
         // eslint-disable-next-line
-        sections[section] = Object.assign({}, { image: filteredItems[name] });
+        sections[section] = Object.assign({}, sections[section], { image: filteredItems[name]});
       }
 
       // ensure protocol relative
       // eslint-disable-next-line
-      sections[section] = Object.assign({}, { image: sections[section].image.replace(/^http:|^https:/i, "")});
+      sections[section] = Object.assign({}, sections[section], { image: sections[section].image.replace(/^http:|^https:/i, "")});
 
       // pre download images for super speed
       if (process.env.NATIVE && sections[section].image) {
@@ -136,10 +137,14 @@ function* getSectionsData() {
 
       bindForeignImages(sections[section].children);
     }
+
+    console.log(sections);
+
+    return sections;
   }
 
   function fixInternaLinks(s) {
-    const sections = { ...s };
+    const sections = Object.assign({}, s);
     // eslint-disable-next-line
     for (const section in sections) {
       let url = sections[section].link;
@@ -161,11 +166,13 @@ function* getSectionsData() {
     }
   }
 
-  bindForeignImages(navigation);
-  if (process.env.WEB) fixInternaLinks(navigation);
+
+  const newNav = bindForeignImages(navigation);
+  console.log("bind foreign images =", newNav);
+  if (process.env.WEB) fixInternaLinks(newNav);
 
   // update the content and end the saga (not a daemon)
-  yield put(set(navigation));
+  yield put(set(newNav));
 }
 
 addSaga(function* sectionsSaga() {
