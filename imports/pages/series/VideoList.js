@@ -68,6 +68,7 @@ class SeriesVideoListWithoutData extends Component {
 const SERMONS_QUERY = gql`
   query GetSermonsFromSeries($id: ID!) {
     content: node(id: $id) {
+      id
       ... on Content {
         sermons: children(channels: ["sermons"]) {
           id
@@ -76,6 +77,7 @@ const SERMONS_QUERY = gql`
           status
           channelName
           parent {
+            id
             entryId: id
           }
           meta {

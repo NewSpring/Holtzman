@@ -102,6 +102,7 @@ class StudyEntryWithoutData extends Component {
 const STUDY_ENTRY_QUERY = gql`
   query GetEntriesFromStudy($id: ID!) {
     content: node(id: $id) {
+      id
       ... on Content {
         studyEntries: children(channels: ["study_entries"], showFutureEntries: true) {
           id
@@ -110,6 +111,7 @@ const STUDY_ENTRY_QUERY = gql`
           status
           channelName
           parent {
+            id
             entryId: id
           }
           meta {
