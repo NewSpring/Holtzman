@@ -166,7 +166,6 @@ function* getSectionsData() {
 
 
   const newNav = bindForeignImages(navigation);
-  console.log("bind foreign images =", newNav);
   if (process.env.WEB) fixInternaLinks(newNav);
 
   // update the content and end the saga (not a daemon)
