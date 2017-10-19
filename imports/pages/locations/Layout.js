@@ -1,5 +1,6 @@
 
-import { Component, PropTypes } from "react";
+import PropTypes from "prop-types";
+import { Component } from "react";
 import gql from "graphql-tag";
 
 import { Link } from "react-router";
@@ -56,7 +57,7 @@ export default class Layout extends Component {
       const ratio = window.isTablet ? 0.4 : 0.8;
       let itemSize = (window.innerWidth - 40) * ratio; // four-fifths
       itemSize += 20; // account for margin
-      const items = campuses.filter((x) => x.location.street1).length;
+      const items = campuses.filter(x => x.location.street1).length;
       const width = (items * itemSize) + 40;
       return { width: `${width}px` };
     }
@@ -64,13 +65,13 @@ export default class Layout extends Component {
     return {};
   }
 
-  findByQuery = (e) => {
+  findByQuery = e => {
     if (e && e.preventDefault) e.preventDefault();
     document.getElementById("search").blur();
     const { value } = document.getElementById("search");
 
-    const campusList = this.props.data.campuses.filter((x) => x.location.street1);
-    const destinations = campusList.map((campus) => (
+    const campusList = this.props.data.campuses.filter(x => x.location.street1);
+    const destinations = campusList.map(campus => (
       `${campus.location.street1} ${campus.location.zip}`
     )).join("|");
 
@@ -87,8 +88,8 @@ export default class Layout extends Component {
           return campusList[i];
         });
       })
-      .then((list) => _.sortBy(list, ((x) => x.distance.value)))
-      .then((list) => this.setState({ list }))
+      .then(list => _.sortBy(list, (x => x.distance.value)))
+      .then(list => this.setState({ list }))
       .then(() => {
         const element = this.slider;
         element.children[0].scrollIntoView({ block: "end", behavior: "smooth" });
@@ -121,13 +122,13 @@ export default class Layout extends Component {
           <h3 className="push-half-ends">Find Your Closest Campus</h3>
           <Forms.Form
             classes={["hard", "display-inline-block", "one-whole"]}
-            submit={(e) => this.findByQuery(e)}
+            submit={e => this.findByQuery(e)}
           >
             <i className="icon-search locked-left soft-half-left" />
             {/* <span
               style={{zIndex: 1, paddingTop: "5px", "cursor": "pointer"}}
               className="h7 locked-right flush-bottom"
-            >Cancel</span>*/}
+            >Cancel</span> */}
             <Forms.Input
               hideLabel
               classes={["hard-bottom"]}
@@ -153,9 +154,9 @@ export default class Layout extends Component {
             <section
               className="soft-half"
               style={this.dynamicWidth()}
-              ref={(n) => { this.slider = n; }}
+              ref={n => { this.slider = n; }}
             >
-              {campuses && campuses.filter((x) => x.location.street1).map((campus, i) => {
+              {campuses && campuses.filter(x => x.location.street1).map((campus, i) => {
                 const style = this.dynamicItemWidth();
                 if (i === 0 && this.state.list) {
                   style.borderColor = "#6bac43";

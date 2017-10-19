@@ -1,7 +1,10 @@
-exports[`test can override header with prop 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`can override header with prop 1`] = `
 <div>
   <div
-    className="soft-double-ends soft-sides background--primary">
+    className="soft-double-ends soft-sides background--primary"
+  >
     <h1>
       override
     </h1>
@@ -14,7 +17,8 @@ exports[`test can override header with prop 1`] = `
       ]
     }
     state={1}
-    toggle={[Function]} />
+    toggle={[Function]}
+  />
   <Form
     classes={
       Array [
@@ -24,7 +28,8 @@ exports[`test can override header with prop 1`] = `
     }
     fieldsetTheme="flush soft-top"
     id="accounts"
-    submit={[Function]}>
+    submit={[Function]}
+  >
     <div>
       <Input
         errorText="Please enter a valid email"
@@ -32,7 +37,8 @@ exports[`test can override header with prop 1`] = `
         name="email"
         placeholder="user@email.com"
         type="email"
-        validation={[Function]} />
+        validation={[Function]}
+      />
     </div>
     <div>
       <Input
@@ -42,34 +48,40 @@ exports[`test can override header with prop 1`] = `
         name="password"
         placeholder="password"
         type="password"
-        validation={[Function]} />
+        validation={[Function]}
+      />
       <div>
         <Input
           errorText="Please enter your first name"
           label="First Name"
           name="firstName"
-          validation={[Function]} />
+          validation={[Function]}
+        />
         <Input
           errorText="Please enter your last name"
           label="Last Name"
           name="lastName"
-          validation={[Function]} />
+          validation={[Function]}
+        />
       </div>
       <Checkbox
         clicked={[Function]}
         defaultValue={true}
-        name="terms">
+        name="terms"
+      >
         By signing up you agree to our 
         <a
           href="//newspring.cc/terms"
           rel="noopener noreferrer"
-          target="_blank">
+          target="_blank"
+        >
           terms of use
         </a>
       </Checkbox>
       <button
         className="push-double-bottom btn--disabled"
-        type="submit">
+        type="submit"
+      >
         Enter
       </button>
     </div>
@@ -77,47 +89,56 @@ exports[`test can override header with prop 1`] = `
 </div>
 `;
 
-exports[`test header renders default header 1`] = `
+exports[`header renders default header 1`] = `
 <div
-  className="text-center">
+  className="text-center"
+>
   <h3
     className="uppercase text-light-primary flush-bottom push-half-bottom"
     style={
       Object {
         "fontWeight": "900",
       }
-    }>
+    }
+  >
     Welcome To NewSpring
   </h3>
   <p
-    className="flush-bottom">
+    className="flush-bottom"
+  >
     <em
-      className="text-light-primary small">
+      className="text-light-primary small"
+    >
       Sign In or Create your NewSpring Account
     </em>
   </p>
 </div>
 `;
 
-exports[`test renders account version 1`] = `
+exports[`renders account version 1`] = `
 <div>
   <div
-    className="soft-double-ends soft-sides background--primary">
+    className="soft-double-ends soft-sides background--primary"
+  >
     <div
-      className="text-center">
+      className="text-center"
+    >
       <h3
         className="uppercase text-light-primary flush-bottom push-half-bottom"
         style={
           Object {
             "fontWeight": "900",
           }
-        }>
+        }
+      >
         Welcome To NewSpring
       </h3>
       <p
-        className="flush-bottom">
+        className="flush-bottom"
+      >
         <em
-          className="text-light-primary small">
+          className="text-light-primary small"
+        >
           Sign In or Create your NewSpring Account
         </em>
       </p>
@@ -131,7 +152,8 @@ exports[`test renders account version 1`] = `
       ]
     }
     state={0}
-    toggle={[Function]} />
+    toggle={[Function]}
+  />
   <Form
     classes={
       Array [
@@ -141,7 +163,8 @@ exports[`test renders account version 1`] = `
     }
     fieldsetTheme="flush soft-top"
     id="accounts"
-    submit={[Function]}>
+    submit={[Function]}
+  >
     <div>
       <Input
         errorText="Please enter a valid email"
@@ -149,7 +172,8 @@ exports[`test renders account version 1`] = `
         name="email"
         placeholder="user@email.com"
         type="email"
-        validation={[Function]} />
+        validation={[Function]}
+      />
     </div>
     <div>
       <Input
@@ -159,15 +183,18 @@ exports[`test renders account version 1`] = `
         name="password"
         placeholder="password"
         type="password"
-        validation={[Function]} />
+        validation={[Function]}
+      />
       <div
-        className="push-bottom">
+        className="push-bottom"
+      >
         <h7>
           <small>
             <a
               className="text-primary"
               href="/profile/forgot-password"
-              onClick={[Function]}>
+              onClick={[Function]}
+            >
               Forgot Password?
             </a>
           </small>
@@ -175,7 +202,8 @@ exports[`test renders account version 1`] = `
       </div>
       <button
         className="push-double-bottom btn--disabled"
-        type="submit">
+        type="submit"
+      >
         Enter
       </button>
     </div>
@@ -183,25 +211,30 @@ exports[`test renders account version 1`] = `
 </div>
 `;
 
-exports[`test renders alternate account version 1`] = `
+exports[`renders alternate account version 1`] = `
 <div>
   <div
-    className="soft-double-ends soft-sides background--primary">
+    className="soft-double-ends soft-sides background--primary"
+  >
     <div
-      className="text-center">
+      className="text-center"
+    >
       <h3
         className="uppercase text-light-primary flush-bottom push-half-bottom"
         style={
           Object {
             "fontWeight": "900",
           }
-        }>
+        }
+      >
         Welcome To NewSpring
       </h3>
       <p
-        className="flush-bottom">
+        className="flush-bottom"
+      >
         <em
-          className="text-light-primary small">
+          className="text-light-primary small"
+        >
           Sign In or Create your NewSpring Account
         </em>
       </p>
@@ -215,7 +248,8 @@ exports[`test renders alternate account version 1`] = `
       ]
     }
     state={1}
-    toggle={[Function]} />
+    toggle={[Function]}
+  />
   <Form
     classes={
       Array [
@@ -225,7 +259,8 @@ exports[`test renders alternate account version 1`] = `
     }
     fieldsetTheme="flush soft-top"
     id="accounts"
-    submit={[Function]}>
+    submit={[Function]}
+  >
     <div>
       <Input
         errorText="Please enter a valid email"
@@ -233,13 +268,16 @@ exports[`test renders alternate account version 1`] = `
         name="email"
         placeholder="user@email.com"
         type="email"
-        validation={[Function]} />
+        validation={[Function]}
+      />
     </div>
     <div>
       <div
-        className="push-back-double-top soft-bottom one-whole text-left">
+        className="push-back-double-top soft-bottom one-whole text-left"
+      >
         <h6
-          className="flush-bottom text-dark-primary push-back-half-top">
+          className="flush-bottom text-dark-primary push-back-half-top"
+        >
           It looks like you may have a NewSpring account already!
           <span>
               Is this your email?
@@ -248,7 +286,8 @@ exports[`test renders alternate account version 1`] = `
             <a
               data-email="alternate@account.com"
               href=""
-              onClick={[Function]}>
+              onClick={[Function]}
+            >
               alternate@account.com
             </a>
             ?
@@ -259,12 +298,14 @@ exports[`test renders alternate account version 1`] = `
         </h6>
       </div>
       <div
-        className="push-half-top push-bottom soft-half-bottom one-whole text-center">
+        className="push-half-top push-bottom soft-half-bottom one-whole text-center"
+      >
         <button
           className="btn"
           data-email="alternate@account.com"
           onClick={[Function]}
-          type="submit">
+          type="submit"
+        >
           Sign In
         </button>
       </div>
@@ -273,25 +314,30 @@ exports[`test renders alternate account version 1`] = `
 </div>
 `;
 
-exports[`test renders enabled button if has email, password, and terms 1`] = `
+exports[`renders enabled button if has email, password, and terms 1`] = `
 <div>
   <div
-    className="soft-double-ends soft-sides background--primary">
+    className="soft-double-ends soft-sides background--primary"
+  >
     <div
-      className="text-center">
+      className="text-center"
+    >
       <h3
         className="uppercase text-light-primary flush-bottom push-half-bottom"
         style={
           Object {
             "fontWeight": "900",
           }
-        }>
+        }
+      >
         Welcome To NewSpring
       </h3>
       <p
-        className="flush-bottom">
+        className="flush-bottom"
+      >
         <em
-          className="text-light-primary small">
+          className="text-light-primary small"
+        >
           Sign In or Create your NewSpring Account
         </em>
       </p>
@@ -305,7 +351,8 @@ exports[`test renders enabled button if has email, password, and terms 1`] = `
       ]
     }
     state={0}
-    toggle={[Function]} />
+    toggle={[Function]}
+  />
   <Form
     classes={
       Array [
@@ -315,7 +362,8 @@ exports[`test renders enabled button if has email, password, and terms 1`] = `
     }
     fieldsetTheme="flush soft-top"
     id="accounts"
-    submit={[Function]}>
+    submit={[Function]}
+  >
     <div>
       <Input
         defaultValue="tim@bob.com"
@@ -324,7 +372,8 @@ exports[`test renders enabled button if has email, password, and terms 1`] = `
         name="email"
         placeholder="user@email.com"
         type="email"
-        validation={[Function]} />
+        validation={[Function]}
+      />
     </div>
     <div>
       <Input
@@ -334,15 +383,18 @@ exports[`test renders enabled button if has email, password, and terms 1`] = `
         name="password"
         placeholder="password"
         type="password"
-        validation={[Function]} />
+        validation={[Function]}
+      />
       <div
-        className="push-bottom">
+        className="push-bottom"
+      >
         <h7>
           <small>
             <a
               className="text-primary"
               href="/profile/forgot-password"
-              onClick={[Function]}>
+              onClick={[Function]}
+            >
               Forgot Password?
             </a>
           </small>
@@ -350,7 +402,8 @@ exports[`test renders enabled button if has email, password, and terms 1`] = `
       </div>
       <button
         className="push-double-bottom btn"
-        type="submit">
+        type="submit"
+      >
         Enter
       </button>
     </div>
@@ -358,25 +411,30 @@ exports[`test renders enabled button if has email, password, and terms 1`] = `
 </div>
 `;
 
-exports[`test renders people without accounts version 1`] = `
+exports[`renders people without accounts version 1`] = `
 <div>
   <div
-    className="soft-double-ends soft-sides background--primary">
+    className="soft-double-ends soft-sides background--primary"
+  >
     <div
-      className="text-center">
+      className="text-center"
+    >
       <h3
         className="uppercase text-light-primary flush-bottom push-half-bottom"
         style={
           Object {
             "fontWeight": "900",
           }
-        }>
+        }
+      >
         Welcome To NewSpring
       </h3>
       <p
-        className="flush-bottom">
+        className="flush-bottom"
+      >
         <em
-          className="text-light-primary small">
+          className="text-light-primary small"
+        >
           Sign In or Create your NewSpring Account
         </em>
       </p>
@@ -390,7 +448,8 @@ exports[`test renders people without accounts version 1`] = `
       ]
     }
     state={1}
-    toggle={[Function]} />
+    toggle={[Function]}
+  />
   <Form
     classes={
       Array [
@@ -400,7 +459,8 @@ exports[`test renders people without accounts version 1`] = `
     }
     fieldsetTheme="flush soft-top"
     id="accounts"
-    submit={[Function]}>
+    submit={[Function]}
+  >
     <div>
       <Input
         errorText="Please enter a valid email"
@@ -408,19 +468,25 @@ exports[`test renders people without accounts version 1`] = `
         name="email"
         placeholder="user@email.com"
         type="email"
-        validation={[Function]} />
+        validation={[Function]}
+      />
     </div>
     <div
-      className="one-whole text-left push-back-double-top">
+      className="one-whole text-left push-back-double-top"
+    >
       <h6
-        className="text-dark-primary soft-top flush-bottom soft-half-bottom push-back-double-top">
+        className="text-dark-primary soft-top flush-bottom soft-half-bottom push-back-double-top"
+      >
         It looks like you already have a NewSpring account started! To finish setting it up, select your person and click complete account.
       </h6>
       <div
         className="text-left soft-double-left push-top relative"
-        onClick={[Function]}>
+        key="0"
+        onClick={[Function]}
+      >
         <div
-          className="locked-left">
+          className="locked-left"
+        >
           <Checkbox
             classes={
               Array [
@@ -428,42 +494,50 @@ exports[`test renders people without accounts version 1`] = `
                 "hard-bottom",
               ]
             }
-            defaultValue={false} />
+            defaultValue={false}
+          />
         </div>
         <div
           className="round background--fill display-inline-block push-half-right"
           style={
             Object {
-              "backgroundImage": "url(\'undefined\')",
+              "backgroundImage": "url('undefined')",
               "height": "70px",
               "verticalAlign": "middle",
               "width": "70px",
             }
-          } />
+          }
+        />
         <div
           className="flush hard display-inline-block"
           style={
             Object {
               "verticalAlign": "middle",
             }
-          }>
+          }
+        >
           <h5
-            className="flush-bottom">
+            className="flush-bottom"
+          >
             jim
              
             bob
           </h5>
           <h7
-            className="flush-bottom em text-dark-tertiary">
+            className="flush-bottom em text-dark-tertiary"
+          >
             jim@bob.com
           </h7>
         </div>
       </div>
       <div
         className="text-left soft-double-left push-top relative"
-        onClick={[Function]}>
+        key="1"
+        onClick={[Function]}
+      >
         <div
-          className="locked-left">
+          className="locked-left"
+        >
           <Checkbox
             classes={
               Array [
@@ -471,48 +545,56 @@ exports[`test renders people without accounts version 1`] = `
                 "hard-bottom",
               ]
             }
-            defaultValue={false} />
+            defaultValue={false}
+          />
         </div>
         <div
           className="round background--fill display-inline-block push-half-right"
           style={
             Object {
-              "backgroundImage": "url(\'undefined\')",
+              "backgroundImage": "url('undefined')",
               "height": "70px",
               "verticalAlign": "middle",
               "width": "70px",
             }
-          } />
+          }
+        />
         <div
           className="flush hard display-inline-block"
           style={
             Object {
               "verticalAlign": "middle",
             }
-          }>
+          }
+        >
           <h5
-            className="flush-bottom">
+            className="flush-bottom"
+          >
             steve
              
             bob
           </h5>
           <h7
-            className="flush-bottom em text-dark-tertiary">
+            className="flush-bottom em text-dark-tertiary"
+          >
             steve@bob.com
           </h7>
         </div>
       </div>
       <div
-        className="one-whole text-center push-top">
+        className="one-whole text-center push-top"
+      >
         <button
           className="btn push-top push-bottom"
-          onClick={[Function]}>
+          onClick={[Function]}
+        >
           Complete Account
         </button>
         <a
           className="h7 soft-double-bottom text-dark-secondary display-block"
           href=""
-          onClick={[Function]}>
+          onClick={[Function]}
+        >
           Register new account
         </a>
       </div>
@@ -521,25 +603,30 @@ exports[`test renders people without accounts version 1`] = `
 </div>
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <div>
   <div
-    className="soft-double-ends soft-sides background--primary">
+    className="soft-double-ends soft-sides background--primary"
+  >
     <div
-      className="text-center">
+      className="text-center"
+    >
       <h3
         className="uppercase text-light-primary flush-bottom push-half-bottom"
         style={
           Object {
             "fontWeight": "900",
           }
-        }>
+        }
+      >
         Welcome To NewSpring
       </h3>
       <p
-        className="flush-bottom">
+        className="flush-bottom"
+      >
         <em
-          className="text-light-primary small">
+          className="text-light-primary small"
+        >
           Sign In or Create your NewSpring Account
         </em>
       </p>
@@ -553,7 +640,8 @@ exports[`test renders with props 1`] = `
       ]
     }
     state={1}
-    toggle={[Function]} />
+    toggle={[Function]}
+  />
   <Form
     classes={
       Array [
@@ -563,7 +651,8 @@ exports[`test renders with props 1`] = `
     }
     fieldsetTheme="flush soft-top"
     id="accounts"
-    submit={[Function]}>
+    submit={[Function]}
+  >
     <div>
       <Input
         errorText="Please enter a valid email"
@@ -571,7 +660,8 @@ exports[`test renders with props 1`] = `
         name="email"
         placeholder="user@email.com"
         type="email"
-        validation={[Function]} />
+        validation={[Function]}
+      />
     </div>
     <div>
       <Input
@@ -581,34 +671,40 @@ exports[`test renders with props 1`] = `
         name="password"
         placeholder="password"
         type="password"
-        validation={[Function]} />
+        validation={[Function]}
+      />
       <div>
         <Input
           errorText="Please enter your first name"
           label="First Name"
           name="firstName"
-          validation={[Function]} />
+          validation={[Function]}
+        />
         <Input
           errorText="Please enter your last name"
           label="Last Name"
           name="lastName"
-          validation={[Function]} />
+          validation={[Function]}
+        />
       </div>
       <Checkbox
         clicked={[Function]}
         defaultValue={true}
-        name="terms">
+        name="terms"
+      >
         By signing up you agree to our 
         <a
           href="//newspring.cc/terms"
           rel="noopener noreferrer"
-          target="_blank">
+          target="_blank"
+        >
           terms of use
         </a>
       </Checkbox>
       <button
         className="push-double-bottom btn--disabled"
-        type="submit">
+        type="submit"
+      >
         Enter
       </button>
     </div>

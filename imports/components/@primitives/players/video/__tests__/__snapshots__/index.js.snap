@@ -1,4 +1,6 @@
-exports[`test renders with props 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders with props 1`] = `
 <div
   className="ooyala-player"
   id="ooyala-player-2"
@@ -6,17 +8,18 @@ exports[`test renders with props 1`] = `
     Object {
       "color": "red",
     }
-  } />
+  }
+/>
 `;
 
-exports[`test styles has hidden styles 1`] = `
+exports[`styles has hidden styles 1`] = `
 Object {
   "color": "red",
   "display": "none",
 }
 `;
 
-exports[`test styles has non hidden styles 1`] = `
+exports[`styles has non hidden styles 1`] = `
 Object {
   "color": "red",
 }

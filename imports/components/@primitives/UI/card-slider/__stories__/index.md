@@ -3,7 +3,7 @@
 ### Usage
 
 ```js
-import List from "/imports/components/@primitives/UI/card-slider";
+import CardSlider from "/imports/components/@primitives/UI/card-slider";
 
 <CardSlider>
   {salvationList.map( ({ count, label }) => {
@@ -14,11 +14,11 @@ import List from "/imports/components/@primitives/UI/card-slider";
 
 ### Properties
 
-* **data.map** - iterate over your data and pass a component for each entry.
+- **data.map** - iterate over your data and pass a component for each entry.
 Some example data:
 
 ```js
-const someList = [
+const salvationList = [
   { count: "11,130", label: "Total Salvations" },
   { count: "3,982", label: "Student Salvations at Fuse and Gauntlet" },
 ];

@@ -1,11 +1,15 @@
-exports[`test appends classes 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`appends classes 1`] = `
 <div
   className="input append me"
-  style={Object {}}>
+  style={Object {}}
+>
   <Label
     disabed={false}
     labelFor="2"
-    labelName="Test Name" />
+    labelName="Test Name"
+  />
   <input
     autoFocus={false}
     className={null}
@@ -18,18 +22,21 @@ exports[`test appends classes 1`] = `
     onFocus={[Function]}
     placeholder="testholder"
     style={Object {}}
-    type="file" />
+    type="file"
+  />
 </div>
 `;
 
-exports[`test has error state 1`] = `
+exports[`has error state 1`] = `
 <div
   className="input input--alert"
-  style={Object {}}>
+  style={Object {}}
+>
   <Label
     disabed={false}
     labelFor="2"
-    labelName="Test Name" />
+    labelName="Test Name"
+  />
   <input
     autoFocus={false}
     className={null}
@@ -42,18 +49,21 @@ exports[`test has error state 1`] = `
     onFocus={[Function]}
     placeholder="testholder"
     style={Object {}}
-    type="file" />
+    type="file"
+  />
 </div>
 `;
 
-exports[`test has focused state 1`] = `
+exports[`has focused state 1`] = `
 <div
   className="input input--focused"
-  style={Object {}}>
+  style={Object {}}
+>
   <Label
     disabed={false}
     labelFor="2"
-    labelName="Test Name" />
+    labelName="Test Name"
+  />
   <input
     autoFocus={false}
     className={null}
@@ -66,14 +76,16 @@ exports[`test has focused state 1`] = `
     onFocus={[Function]}
     placeholder="testholder"
     style={Object {}}
-    type="file" />
+    type="file"
+  />
 </div>
 `;
 
-exports[`test hides the label 1`] = `
+exports[`hides the label 1`] = `
 <div
   className="input"
-  style={Object {}}>
+  style={Object {}}
+>
   <input
     autoFocus={false}
     className={null}
@@ -86,18 +98,21 @@ exports[`test hides the label 1`] = `
     onFocus={[Function]}
     placeholder="testholder"
     style={Object {}}
-    type="file" />
+    type="file"
+  />
 </div>
 `;
 
-exports[`test overrides with theme 1`] = `
+exports[`overrides with theme 1`] = `
 <div
   className="mytheme"
-  style={Object {}}>
+  style={Object {}}
+>
   <Label
     disabed={false}
     labelFor="2"
-    labelName="Test Name" />
+    labelName="Test Name"
+  />
   <input
     autoFocus={false}
     className={null}
@@ -110,32 +125,37 @@ exports[`test overrides with theme 1`] = `
     onFocus={[Function]}
     placeholder="testholder"
     style={Object {}}
-    type="file" />
+    type="file"
+  />
 </div>
 `;
 
-exports[`test renderHelpText renders if error and error text 1`] = `
+exports[`renderHelpText renders if error and error text 1`] = `
 <span
-  className="input__status">
+  className="input__status"
+>
   error
 </span>
 `;
 
-exports[`test renderHelpText renders if status 1`] = `
+exports[`renderHelpText renders if status 1`] = `
 <span
-  className="input__status">
+  className="input__status"
+>
   status message
 </span>
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <div
   className="input"
-  style={Object {}}>
+  style={Object {}}
+>
   <Label
     disabed={false}
     labelFor="2"
-    labelName="Test Name" />
+    labelName="Test Name"
+  />
   <input
     autoFocus={false}
     className={null}
@@ -148,6 +168,7 @@ exports[`test renders with props 1`] = `
     onFocus={[Function]}
     placeholder="testholder"
     style={Object {}}
-    type="file" />
+    type="file"
+  />
 </div>
 `;

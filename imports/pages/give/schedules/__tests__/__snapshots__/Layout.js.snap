@@ -1,4 +1,6 @@
-exports[`test doesn't render incompleted schedule as completed schedule 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`doesn't render incompleted schedule as completed schedule 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)
     classes={
@@ -6,13 +8,16 @@ exports[`test doesn't render incompleted schedule as completed schedule 1`] = `
         "background--light-primary",
       ]
     }
-    nav={true}>
+    nav={true}
+  >
     <Meta
       image="//s3.amazonaws.com/ns.assets/apollos/give_now-schedules1x2.jpg"
-      title="Schedule Your Giving" />
+      title="Schedule Your Giving"
+    />
     <Right
       background="//s3.amazonaws.com/ns.assets/apollos/give_now-schedules1x2.jpg"
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -20,82 +25,103 @@ exports[`test doesn't render incompleted schedule as completed schedule 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <div
-      className="background--primary soft-half soft-sides@portable soft-double-sides@anchored">
+      className="background--primary soft-half soft-sides@portable soft-double-sides@anchored"
+    >
       <div
-        className="soft-ends soft-double-ends@lap-and-up soft-side@lap-and-up">
+        className="soft-ends soft-double-ends@lap-and-up soft-side@lap-and-up"
+      >
         <h4
-          className="text-light-primary soft-half-sides soft-half-bottom">
+          className="text-light-primary soft-half-sides soft-half-bottom"
+        >
           Hey 
           jim
           !
         </h4>
         <h5
-          className="text-light-primary soft-half-sides soft-bottom">
+          className="text-light-primary soft-half-sides soft-bottom"
+        >
           We have found giving schedules from our previous system that need to be transferred! To transfer a schedule, click below.
         </h5>
         <Link
           className="btn--light"
           onlyActiveOnIndex={false}
           style={Object {}}
-          to="/give/schedules/transfer">
+          to="/give/schedules/transfer"
+        >
           Transfer Schedules
         </Link>
       </div>
     </div>
     <div
-      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
+      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary"
+    >
       <div
-        className="text-left soft-double-top@palm-wide-and-up hard-left@lap-and-up soft-half-bottom soft@anchored">
+        className="text-left soft-double-top@palm-wide-and-up hard-left@lap-and-up soft-half-bottom soft@anchored"
+      >
         <h2
-          className="flush soft-bottom@portable text-dark-primary soft-top@handheld soft-double-top">
+          className="flush soft-bottom@portable text-dark-primary soft-top@handheld soft-double-top"
+        >
           Schedule Your Giving
         </h2>
         <div
-          className="soft-double-ends@anchored">
+          className="soft-double-ends@anchored"
+        >
           <MeteorDataContainer
             accounts={
               Array [
                 Object {},
               ]
-            } />
+            }
+          />
         </div>
       </div>
     </div>
     <div
       className="soft-half soft-sides@portable soft-double-sides@anchored soft-double-bottom@anchored soft-bottom@portable"
-      id="active-schedules">
+      id="active-schedules"
+    >
       <h4
-        className="soft soft-double-ends text-center flush-bottom">
+        className="soft soft-double-ends text-center flush-bottom"
+      >
         My Active Schedules
       </h4>
       <div>
         <div
-          className="soft card">
+          className="soft card"
+          key="0"
+        >
           <Link
             onlyActiveOnIndex={false}
             style={Object {}}
-            to="/give/schedules/1">
+            to="/give/schedules/1"
+          >
             <div
               className="grid"
+              key="0"
               style={
                 Object {
                   "verticalAlign": "middle",
                 }
-              }>
+              }
+            >
               <div
                 className="grid__item one-half"
                 style={
                   Object {
                     "verticalAlign": "middle",
                   }
-                }>
+                }
+              >
                 <h6
-                  className="text-dark-tertiary push-half-bottom">
+                  className="text-dark-tertiary push-half-bottom"
+                >
                   Test
                   <span
-                    className="text-dark-secondary" />
+                    className="text-dark-secondary"
+                  />
                 </h6>
                 <h5
                   className="flush one-whole"
@@ -105,11 +131,13 @@ exports[`test doesn't render incompleted schedule as completed schedule 1`] = `
                       "textOverflow": "ellipsis",
                       "whiteSpace": "nowrap",
                     }
-                  }>
+                  }
+                >
                   test account
                 </h5>
                 <p
-                  className="flush soft-half-top text-dark-tertiary">
+                  className="flush soft-half-top text-dark-tertiary"
+                >
                   <small>
                     <em>
                       Dec 13, 2012
@@ -123,9 +151,11 @@ exports[`test doesn't render incompleted schedule as completed schedule 1`] = `
                   Object {
                     "verticalAlign": "middle",
                   }
-                }>
+                }
+              >
                 <div
-                  className="soft-half-right">
+                  className="soft-half-right"
+                >
                   <h4
                     className="text-dark-tertiary one-whole flush soft-right@handheld soft-double-right@lap-and-up"
                     style={
@@ -134,7 +164,8 @@ exports[`test doesn't render incompleted schedule as completed schedule 1`] = `
                         "textOverflow": "ellipsis",
                         "whiteSpace": "nowrap",
                       }
-                    }>
+                    }
+                  >
                     $2.00
                     <span
                       className="text-primary icon-arrow-next locked"
@@ -143,7 +174,8 @@ exports[`test doesn't render incompleted schedule as completed schedule 1`] = `
                           "right": "-5px",
                           "top": "1px",
                         }
-                      } />
+                      }
+                    />
                   </h4>
                 </div>
               </div>
@@ -151,7 +183,8 @@ exports[`test doesn't render incompleted schedule as completed schedule 1`] = `
           </Link>
         </div>
         <p
-          className="soft text-center">
+          className="soft text-center"
+        >
           <small>
             <em>
               Changes to schedules may take a few minutes to be reflected here.
@@ -161,36 +194,46 @@ exports[`test doesn't render incompleted schedule as completed schedule 1`] = `
       </div>
       <div>
         <hr
-          className="flush hard" />
+          className="flush hard"
+        />
         <h4
-          className="soft soft-double-ends text-center flush-bottom">
+          className="soft soft-double-ends text-center flush-bottom"
+        >
           My Completed Schedules
         </h4>
         <div
-          className="soft card">
+          className="soft card"
+          key="1"
+        >
           <Link
             onlyActiveOnIndex={false}
             style={Object {}}
-            to="/give/schedules/2">
+            to="/give/schedules/2"
+          >
             <div
               className="grid"
+              key="1"
               style={
                 Object {
                   "verticalAlign": "middle",
                 }
-              }>
+              }
+            >
               <div
                 className="grid__item one-half"
                 style={
                   Object {
                     "verticalAlign": "middle",
                   }
-                }>
+                }
+              >
                 <h6
-                  className="text-dark-tertiary push-half-bottom">
+                  className="text-dark-tertiary push-half-bottom"
+                >
                   Test
                   <span
-                    className="text-dark-secondary">
+                    className="text-dark-secondary"
+                  >
                      - Complete
                   </span>
                 </h6>
@@ -202,11 +245,13 @@ exports[`test doesn't render incompleted schedule as completed schedule 1`] = `
                       "textOverflow": "ellipsis",
                       "whiteSpace": "nowrap",
                     }
-                  }>
+                  }
+                >
                   test name
                 </h5>
                 <p
-                  className="flush soft-half-top text-dark-tertiary">
+                  className="flush soft-half-top text-dark-tertiary"
+                >
                   <small>
                     <em>
                       Dec 13, 1999
@@ -220,9 +265,11 @@ exports[`test doesn't render incompleted schedule as completed schedule 1`] = `
                   Object {
                     "verticalAlign": "middle",
                   }
-                }>
+                }
+              >
                 <div
-                  className="soft-half-right">
+                  className="soft-half-right"
+                >
                   <h4
                     className="text-dark-tertiary one-whole flush soft-right@handheld soft-double-right@lap-and-up"
                     style={
@@ -231,7 +278,8 @@ exports[`test doesn't render incompleted schedule as completed schedule 1`] = `
                         "textOverflow": "ellipsis",
                         "whiteSpace": "nowrap",
                       }
-                    }>
+                    }
+                  >
                     $2.00
                     <span
                       className="text-primary icon-arrow-next locked"
@@ -240,7 +288,8 @@ exports[`test doesn't render incompleted schedule as completed schedule 1`] = `
                           "right": "-5px",
                           "top": "1px",
                         }
-                      } />
+                      }
+                    />
                   </h4>
                 </div>
               </div>
@@ -253,7 +302,7 @@ exports[`test doesn't render incompleted schedule as completed schedule 1`] = `
 </div>
 `;
 
-exports[`test doesn't render one time completed schedule if no details 1`] = `
+exports[`doesn't render one time completed schedule if no details 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)
     classes={
@@ -261,13 +310,16 @@ exports[`test doesn't render one time completed schedule if no details 1`] = `
         "background--light-primary",
       ]
     }
-    nav={true}>
+    nav={true}
+  >
     <Meta
       image="//s3.amazonaws.com/ns.assets/apollos/give_now-schedules1x2.jpg"
-      title="Schedule Your Giving" />
+      title="Schedule Your Giving"
+    />
     <Right
       background="//s3.amazonaws.com/ns.assets/apollos/give_now-schedules1x2.jpg"
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -275,59 +327,73 @@ exports[`test doesn't render one time completed schedule if no details 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <div
-      className="background--primary soft-half soft-sides@portable soft-double-sides@anchored">
+      className="background--primary soft-half soft-sides@portable soft-double-sides@anchored"
+    >
       <div
-        className="soft-ends soft-double-ends@lap-and-up soft-side@lap-and-up">
+        className="soft-ends soft-double-ends@lap-and-up soft-side@lap-and-up"
+      >
         <h4
-          className="text-light-primary soft-half-sides soft-half-bottom">
+          className="text-light-primary soft-half-sides soft-half-bottom"
+        >
           Hey 
           jim
           !
         </h4>
         <h5
-          className="text-light-primary soft-half-sides soft-bottom">
+          className="text-light-primary soft-half-sides soft-bottom"
+        >
           We have found giving schedules from our previous system that need to be transferred! To transfer a schedule, click below.
         </h5>
         <Link
           className="btn--light"
           onlyActiveOnIndex={false}
           style={Object {}}
-          to="/give/schedules/transfer">
+          to="/give/schedules/transfer"
+        >
           Transfer Schedules
         </Link>
       </div>
     </div>
     <div
-      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
+      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary"
+    >
       <div
-        className="text-left soft-double-top@palm-wide-and-up hard-left@lap-and-up soft-half-bottom soft@anchored">
+        className="text-left soft-double-top@palm-wide-and-up hard-left@lap-and-up soft-half-bottom soft@anchored"
+      >
         <h2
-          className="flush soft-bottom@portable text-dark-primary soft-top@handheld soft-double-top">
+          className="flush soft-bottom@portable text-dark-primary soft-top@handheld soft-double-top"
+        >
           Schedule Your Giving
         </h2>
         <div
-          className="soft-double-ends@anchored">
+          className="soft-double-ends@anchored"
+        >
           <MeteorDataContainer
             accounts={
               Array [
                 Object {},
               ]
-            } />
+            }
+          />
         </div>
       </div>
     </div>
     <div
       className="soft-half soft-sides@portable soft-double-sides@anchored soft-double-bottom@anchored soft-bottom@portable"
-      id="active-schedules">
+      id="active-schedules"
+    >
       <h4
-        className="soft soft-double-ends text-center flush-bottom">
+        className="soft soft-double-ends text-center flush-bottom"
+      >
         My Active Schedules
       </h4>
       <div>
         <p
-          className="soft text-center">
+          className="soft text-center"
+        >
           <small>
             <em>
               Changes to schedules may take a few minutes to be reflected here.
@@ -337,36 +403,46 @@ exports[`test doesn't render one time completed schedule if no details 1`] = `
       </div>
       <div>
         <hr
-          className="flush hard" />
+          className="flush hard"
+        />
         <h4
-          className="soft soft-double-ends text-center flush-bottom">
+          className="soft soft-double-ends text-center flush-bottom"
+        >
           My Completed Schedules
         </h4>
         <div
-          className="soft card">
+          className="soft card"
+          key="0"
+        >
           <Link
             onlyActiveOnIndex={false}
             style={Object {}}
-            to="/give/schedules/1">
+            to="/give/schedules/1"
+          >
             <div
               className="grid"
+              key="0"
               style={
                 Object {
                   "verticalAlign": "middle",
                 }
-              }>
+              }
+            >
               <div
                 className="grid__item one-half"
                 style={
                   Object {
                     "verticalAlign": "middle",
                   }
-                }>
+                }
+              >
                 <h6
-                  className="text-dark-tertiary push-half-bottom">
+                  className="text-dark-tertiary push-half-bottom"
+                >
                   Test
                   <span
-                    className="text-dark-secondary">
+                    className="text-dark-secondary"
+                  >
                      - Complete
                   </span>
                 </h6>
@@ -378,11 +454,13 @@ exports[`test doesn't render one time completed schedule if no details 1`] = `
                       "textOverflow": "ellipsis",
                       "whiteSpace": "nowrap",
                     }
-                  }>
+                  }
+                >
                   test account
                 </h5>
                 <p
-                  className="flush soft-half-top text-dark-tertiary">
+                  className="flush soft-half-top text-dark-tertiary"
+                >
                   <small>
                     <em>
                       Dec 13, 1999
@@ -396,9 +474,11 @@ exports[`test doesn't render one time completed schedule if no details 1`] = `
                   Object {
                     "verticalAlign": "middle",
                   }
-                }>
+                }
+              >
                 <div
-                  className="soft-half-right">
+                  className="soft-half-right"
+                >
                   <h4
                     className="text-dark-tertiary one-whole flush soft-right@handheld soft-double-right@lap-and-up"
                     style={
@@ -407,7 +487,8 @@ exports[`test doesn't render one time completed schedule if no details 1`] = `
                         "textOverflow": "ellipsis",
                         "whiteSpace": "nowrap",
                       }
-                    }>
+                    }
+                  >
                     $2.00
                     <span
                       className="text-primary icon-arrow-next locked"
@@ -416,7 +497,8 @@ exports[`test doesn't render one time completed schedule if no details 1`] = `
                           "right": "-5px",
                           "top": "1px",
                         }
-                      } />
+                      }
+                    />
                   </h4>
                 </div>
               </div>
@@ -429,7 +511,7 @@ exports[`test doesn't render one time completed schedule if no details 1`] = `
 </div>
 `;
 
-exports[`test doesn't render one time completed schedule if no details account 1`] = `
+exports[`doesn't render one time completed schedule if no details account 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)
     classes={
@@ -437,13 +519,16 @@ exports[`test doesn't render one time completed schedule if no details account 1
         "background--light-primary",
       ]
     }
-    nav={true}>
+    nav={true}
+  >
     <Meta
       image="//s3.amazonaws.com/ns.assets/apollos/give_now-schedules1x2.jpg"
-      title="Schedule Your Giving" />
+      title="Schedule Your Giving"
+    />
     <Right
       background="//s3.amazonaws.com/ns.assets/apollos/give_now-schedules1x2.jpg"
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -451,59 +536,73 @@ exports[`test doesn't render one time completed schedule if no details account 1
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <div
-      className="background--primary soft-half soft-sides@portable soft-double-sides@anchored">
+      className="background--primary soft-half soft-sides@portable soft-double-sides@anchored"
+    >
       <div
-        className="soft-ends soft-double-ends@lap-and-up soft-side@lap-and-up">
+        className="soft-ends soft-double-ends@lap-and-up soft-side@lap-and-up"
+      >
         <h4
-          className="text-light-primary soft-half-sides soft-half-bottom">
+          className="text-light-primary soft-half-sides soft-half-bottom"
+        >
           Hey 
           jim
           !
         </h4>
         <h5
-          className="text-light-primary soft-half-sides soft-bottom">
+          className="text-light-primary soft-half-sides soft-bottom"
+        >
           We have found giving schedules from our previous system that need to be transferred! To transfer a schedule, click below.
         </h5>
         <Link
           className="btn--light"
           onlyActiveOnIndex={false}
           style={Object {}}
-          to="/give/schedules/transfer">
+          to="/give/schedules/transfer"
+        >
           Transfer Schedules
         </Link>
       </div>
     </div>
     <div
-      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
+      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary"
+    >
       <div
-        className="text-left soft-double-top@palm-wide-and-up hard-left@lap-and-up soft-half-bottom soft@anchored">
+        className="text-left soft-double-top@palm-wide-and-up hard-left@lap-and-up soft-half-bottom soft@anchored"
+      >
         <h2
-          className="flush soft-bottom@portable text-dark-primary soft-top@handheld soft-double-top">
+          className="flush soft-bottom@portable text-dark-primary soft-top@handheld soft-double-top"
+        >
           Schedule Your Giving
         </h2>
         <div
-          className="soft-double-ends@anchored">
+          className="soft-double-ends@anchored"
+        >
           <MeteorDataContainer
             accounts={
               Array [
                 Object {},
               ]
-            } />
+            }
+          />
         </div>
       </div>
     </div>
     <div
       className="soft-half soft-sides@portable soft-double-sides@anchored soft-double-bottom@anchored soft-bottom@portable"
-      id="active-schedules">
+      id="active-schedules"
+    >
       <h4
-        className="soft soft-double-ends text-center flush-bottom">
+        className="soft soft-double-ends text-center flush-bottom"
+      >
         My Active Schedules
       </h4>
       <div>
         <p
-          className="soft text-center">
+          className="soft text-center"
+        >
           <small>
             <em>
               Changes to schedules may take a few minutes to be reflected here.
@@ -513,36 +612,46 @@ exports[`test doesn't render one time completed schedule if no details account 1
       </div>
       <div>
         <hr
-          className="flush hard" />
+          className="flush hard"
+        />
         <h4
-          className="soft soft-double-ends text-center flush-bottom">
+          className="soft soft-double-ends text-center flush-bottom"
+        >
           My Completed Schedules
         </h4>
         <div
-          className="soft card">
+          className="soft card"
+          key="0"
+        >
           <Link
             onlyActiveOnIndex={false}
             style={Object {}}
-            to="/give/schedules/1">
+            to="/give/schedules/1"
+          >
             <div
               className="grid"
+              key="0"
               style={
                 Object {
                   "verticalAlign": "middle",
                 }
-              }>
+              }
+            >
               <div
                 className="grid__item one-half"
                 style={
                   Object {
                     "verticalAlign": "middle",
                   }
-                }>
+                }
+              >
                 <h6
-                  className="text-dark-tertiary push-half-bottom">
+                  className="text-dark-tertiary push-half-bottom"
+                >
                   Test
                   <span
-                    className="text-dark-secondary">
+                    className="text-dark-secondary"
+                  >
                      - Complete
                   </span>
                 </h6>
@@ -554,11 +663,13 @@ exports[`test doesn't render one time completed schedule if no details account 1
                       "textOverflow": "ellipsis",
                       "whiteSpace": "nowrap",
                     }
-                  }>
+                  }
+                >
                   test account
                 </h5>
                 <p
-                  className="flush soft-half-top text-dark-tertiary">
+                  className="flush soft-half-top text-dark-tertiary"
+                >
                   <small>
                     <em>
                       Dec 13, 1999
@@ -572,9 +683,11 @@ exports[`test doesn't render one time completed schedule if no details account 1
                   Object {
                     "verticalAlign": "middle",
                   }
-                }>
+                }
+              >
                 <div
-                  className="soft-half-right">
+                  className="soft-half-right"
+                >
                   <h4
                     className="text-dark-tertiary one-whole flush soft-right@handheld soft-double-right@lap-and-up"
                     style={
@@ -583,7 +696,8 @@ exports[`test doesn't render one time completed schedule if no details account 1
                         "textOverflow": "ellipsis",
                         "whiteSpace": "nowrap",
                       }
-                    }>
+                    }
+                  >
                     $2.00
                     <span
                       className="text-primary icon-arrow-next locked"
@@ -592,7 +706,8 @@ exports[`test doesn't render one time completed schedule if no details account 1
                           "right": "-5px",
                           "top": "1px",
                         }
-                      } />
+                      }
+                    />
                   </h4>
                 </div>
               </div>
@@ -605,7 +720,7 @@ exports[`test doesn't render one time completed schedule if no details account 1
 </div>
 `;
 
-exports[`test doesn't render schedule if no details 1`] = `
+exports[`doesn't render schedule if no details 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)
     classes={
@@ -613,13 +728,16 @@ exports[`test doesn't render schedule if no details 1`] = `
         "background--light-primary",
       ]
     }
-    nav={true}>
+    nav={true}
+  >
     <Meta
       image="//s3.amazonaws.com/ns.assets/apollos/give_now-schedules1x2.jpg"
-      title="Schedule Your Giving" />
+      title="Schedule Your Giving"
+    />
     <Right
       background="//s3.amazonaws.com/ns.assets/apollos/give_now-schedules1x2.jpg"
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -627,59 +745,73 @@ exports[`test doesn't render schedule if no details 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <div
-      className="background--primary soft-half soft-sides@portable soft-double-sides@anchored">
+      className="background--primary soft-half soft-sides@portable soft-double-sides@anchored"
+    >
       <div
-        className="soft-ends soft-double-ends@lap-and-up soft-side@lap-and-up">
+        className="soft-ends soft-double-ends@lap-and-up soft-side@lap-and-up"
+      >
         <h4
-          className="text-light-primary soft-half-sides soft-half-bottom">
+          className="text-light-primary soft-half-sides soft-half-bottom"
+        >
           Hey 
           jim
           !
         </h4>
         <h5
-          className="text-light-primary soft-half-sides soft-bottom">
+          className="text-light-primary soft-half-sides soft-bottom"
+        >
           We have found giving schedules from our previous system that need to be transferred! To transfer a schedule, click below.
         </h5>
         <Link
           className="btn--light"
           onlyActiveOnIndex={false}
           style={Object {}}
-          to="/give/schedules/transfer">
+          to="/give/schedules/transfer"
+        >
           Transfer Schedules
         </Link>
       </div>
     </div>
     <div
-      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
+      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary"
+    >
       <div
-        className="text-left soft-double-top@palm-wide-and-up hard-left@lap-and-up soft-half-bottom soft@anchored">
+        className="text-left soft-double-top@palm-wide-and-up hard-left@lap-and-up soft-half-bottom soft@anchored"
+      >
         <h2
-          className="flush soft-bottom@portable text-dark-primary soft-top@handheld soft-double-top">
+          className="flush soft-bottom@portable text-dark-primary soft-top@handheld soft-double-top"
+        >
           Schedule Your Giving
         </h2>
         <div
-          className="soft-double-ends@anchored">
+          className="soft-double-ends@anchored"
+        >
           <MeteorDataContainer
             accounts={
               Array [
                 Object {},
               ]
-            } />
+            }
+          />
         </div>
       </div>
     </div>
     <div
       className="soft-half soft-sides@portable soft-double-sides@anchored soft-double-bottom@anchored soft-bottom@portable"
-      id="active-schedules">
+      id="active-schedules"
+    >
       <h4
-        className="soft soft-double-ends text-center flush-bottom">
+        className="soft soft-double-ends text-center flush-bottom"
+      >
         My Active Schedules
       </h4>
       <div>
         <p
-          className="soft text-center">
+          className="soft text-center"
+        >
           <small>
             <em>
               Changes to schedules may take a few minutes to be reflected here.
@@ -692,7 +824,7 @@ exports[`test doesn't render schedule if no details 1`] = `
 </div>
 `;
 
-exports[`test doesn't render schedule if no details account 1`] = `
+exports[`doesn't render schedule if no details account 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)
     classes={
@@ -700,13 +832,16 @@ exports[`test doesn't render schedule if no details account 1`] = `
         "background--light-primary",
       ]
     }
-    nav={true}>
+    nav={true}
+  >
     <Meta
       image="//s3.amazonaws.com/ns.assets/apollos/give_now-schedules1x2.jpg"
-      title="Schedule Your Giving" />
+      title="Schedule Your Giving"
+    />
     <Right
       background="//s3.amazonaws.com/ns.assets/apollos/give_now-schedules1x2.jpg"
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -714,59 +849,73 @@ exports[`test doesn't render schedule if no details account 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <div
-      className="background--primary soft-half soft-sides@portable soft-double-sides@anchored">
+      className="background--primary soft-half soft-sides@portable soft-double-sides@anchored"
+    >
       <div
-        className="soft-ends soft-double-ends@lap-and-up soft-side@lap-and-up">
+        className="soft-ends soft-double-ends@lap-and-up soft-side@lap-and-up"
+      >
         <h4
-          className="text-light-primary soft-half-sides soft-half-bottom">
+          className="text-light-primary soft-half-sides soft-half-bottom"
+        >
           Hey 
           jim
           !
         </h4>
         <h5
-          className="text-light-primary soft-half-sides soft-bottom">
+          className="text-light-primary soft-half-sides soft-bottom"
+        >
           We have found giving schedules from our previous system that need to be transferred! To transfer a schedule, click below.
         </h5>
         <Link
           className="btn--light"
           onlyActiveOnIndex={false}
           style={Object {}}
-          to="/give/schedules/transfer">
+          to="/give/schedules/transfer"
+        >
           Transfer Schedules
         </Link>
       </div>
     </div>
     <div
-      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
+      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary"
+    >
       <div
-        className="text-left soft-double-top@palm-wide-and-up hard-left@lap-and-up soft-half-bottom soft@anchored">
+        className="text-left soft-double-top@palm-wide-and-up hard-left@lap-and-up soft-half-bottom soft@anchored"
+      >
         <h2
-          className="flush soft-bottom@portable text-dark-primary soft-top@handheld soft-double-top">
+          className="flush soft-bottom@portable text-dark-primary soft-top@handheld soft-double-top"
+        >
           Schedule Your Giving
         </h2>
         <div
-          className="soft-double-ends@anchored">
+          className="soft-double-ends@anchored"
+        >
           <MeteorDataContainer
             accounts={
               Array [
                 Object {},
               ]
-            } />
+            }
+          />
         </div>
       </div>
     </div>
     <div
       className="soft-half soft-sides@portable soft-double-sides@anchored soft-double-bottom@anchored soft-bottom@portable"
-      id="active-schedules">
+      id="active-schedules"
+    >
       <h4
-        className="soft soft-double-ends text-center flush-bottom">
+        className="soft soft-double-ends text-center flush-bottom"
+      >
         My Active Schedules
       </h4>
       <div>
         <p
-          className="soft text-center">
+          className="soft text-center"
+        >
           <small>
             <em>
               Changes to schedules may take a few minutes to be reflected here.
@@ -779,7 +928,7 @@ exports[`test doesn't render schedule if no details account 1`] = `
 </div>
 `;
 
-exports[`test renders loading if accounts not ready 1`] = `
+exports[`renders loading if accounts not ready 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)
     classes={
@@ -787,13 +936,16 @@ exports[`test renders loading if accounts not ready 1`] = `
         "background--light-primary",
       ]
     }
-    nav={true}>
+    nav={true}
+  >
     <Meta
       image="//s3.amazonaws.com/ns.assets/apollos/give_now-schedules1x2.jpg"
-      title="Schedule Your Giving" />
+      title="Schedule Your Giving"
+    />
     <Right
       background="//s3.amazonaws.com/ns.assets/apollos/give_now-schedules1x2.jpg"
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -801,86 +953,108 @@ exports[`test renders loading if accounts not ready 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <div
-      className="background--primary soft-half soft-sides@portable soft-double-sides@anchored">
+      className="background--primary soft-half soft-sides@portable soft-double-sides@anchored"
+    >
       <div
-        className="soft-ends soft-double-ends@lap-and-up soft-side@lap-and-up">
+        className="soft-ends soft-double-ends@lap-and-up soft-side@lap-and-up"
+      >
         <h4
-          className="text-light-primary soft-half-sides soft-half-bottom">
+          className="text-light-primary soft-half-sides soft-half-bottom"
+        >
           Hey 
           jim
           !
         </h4>
         <h5
-          className="text-light-primary soft-half-sides soft-bottom">
+          className="text-light-primary soft-half-sides soft-bottom"
+        >
           We have found giving schedules from our previous system that need to be transferred! To transfer a schedule, click below.
         </h5>
         <Link
           className="btn--light"
           onlyActiveOnIndex={false}
           style={Object {}}
-          to="/give/schedules/transfer">
+          to="/give/schedules/transfer"
+        >
           Transfer Schedules
         </Link>
       </div>
     </div>
     <div
-      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
+      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary"
+    >
       <div
-        className="text-left soft-double-top@palm-wide-and-up hard-left@lap-and-up soft-half-bottom soft@anchored">
+        className="text-left soft-double-top@palm-wide-and-up hard-left@lap-and-up soft-half-bottom soft@anchored"
+      >
         <h2
-          className="flush soft-bottom@portable text-dark-primary soft-top@handheld soft-double-top">
+          className="flush soft-bottom@portable text-dark-primary soft-top@handheld soft-double-top"
+        >
           Schedule Your Giving
         </h2>
         <div
-          className="soft-double-ends@anchored">
+          className="soft-double-ends@anchored"
+        >
           <div
-            className="text-center soft">
+            className="text-center soft"
+          >
             <Spinner
               styles={
                 Object {
                   "height": "40px",
                   "width": "40px",
                 }
-              } />
+              }
+            />
           </div>
         </div>
       </div>
     </div>
     <div
       className="soft-half soft-sides@portable soft-double-sides@anchored soft-double-bottom@anchored soft-bottom@portable"
-      id="active-schedules">
+      id="active-schedules"
+    >
       <h4
-        className="soft soft-double-ends text-center flush-bottom">
+        className="soft soft-double-ends text-center flush-bottom"
+      >
         My Active Schedules
       </h4>
       <div>
         <div
-          className="soft card">
+          className="soft card"
+          key="0"
+        >
           <Link
             onlyActiveOnIndex={false}
             style={Object {}}
-            to="/give/schedules/1">
+            to="/give/schedules/1"
+          >
             <div
               className="grid"
+              key="0"
               style={
                 Object {
                   "verticalAlign": "middle",
                 }
-              }>
+              }
+            >
               <div
                 className="grid__item one-half"
                 style={
                   Object {
                     "verticalAlign": "middle",
                   }
-                }>
+                }
+              >
                 <h6
-                  className="text-dark-tertiary push-half-bottom">
+                  className="text-dark-tertiary push-half-bottom"
+                >
                   Test
                   <span
-                    className="text-dark-secondary" />
+                    className="text-dark-secondary"
+                  />
                 </h6>
                 <h5
                   className="flush one-whole"
@@ -890,11 +1064,13 @@ exports[`test renders loading if accounts not ready 1`] = `
                       "textOverflow": "ellipsis",
                       "whiteSpace": "nowrap",
                     }
-                  }>
+                  }
+                >
                   test account
                 </h5>
                 <p
-                  className="flush soft-half-top text-dark-tertiary">
+                  className="flush soft-half-top text-dark-tertiary"
+                >
                   <small>
                     <em>
                       Dec 13, 2012
@@ -908,9 +1084,11 @@ exports[`test renders loading if accounts not ready 1`] = `
                   Object {
                     "verticalAlign": "middle",
                   }
-                }>
+                }
+              >
                 <div
-                  className="soft-half-right">
+                  className="soft-half-right"
+                >
                   <h4
                     className="text-dark-tertiary one-whole flush soft-right@handheld soft-double-right@lap-and-up"
                     style={
@@ -919,7 +1097,8 @@ exports[`test renders loading if accounts not ready 1`] = `
                         "textOverflow": "ellipsis",
                         "whiteSpace": "nowrap",
                       }
-                    }>
+                    }
+                  >
                     $2.00
                     <span
                       className="text-primary icon-arrow-next locked"
@@ -928,7 +1107,8 @@ exports[`test renders loading if accounts not ready 1`] = `
                           "right": "-5px",
                           "top": "1px",
                         }
-                      } />
+                      }
+                    />
                   </h4>
                 </div>
               </div>
@@ -936,7 +1116,8 @@ exports[`test renders loading if accounts not ready 1`] = `
           </Link>
         </div>
         <p
-          className="soft text-center">
+          className="soft text-center"
+        >
           <small>
             <em>
               Changes to schedules may take a few minutes to be reflected here.
@@ -949,7 +1130,7 @@ exports[`test renders loading if accounts not ready 1`] = `
 </div>
 `;
 
-exports[`test renders loading if no accounts 1`] = `
+exports[`renders loading if no accounts 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)
     classes={
@@ -957,13 +1138,16 @@ exports[`test renders loading if no accounts 1`] = `
         "background--light-primary",
       ]
     }
-    nav={true}>
+    nav={true}
+  >
     <Meta
       image="//s3.amazonaws.com/ns.assets/apollos/give_now-schedules1x2.jpg"
-      title="Schedule Your Giving" />
+      title="Schedule Your Giving"
+    />
     <Right
       background="//s3.amazonaws.com/ns.assets/apollos/give_now-schedules1x2.jpg"
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -971,86 +1155,108 @@ exports[`test renders loading if no accounts 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <div
-      className="background--primary soft-half soft-sides@portable soft-double-sides@anchored">
+      className="background--primary soft-half soft-sides@portable soft-double-sides@anchored"
+    >
       <div
-        className="soft-ends soft-double-ends@lap-and-up soft-side@lap-and-up">
+        className="soft-ends soft-double-ends@lap-and-up soft-side@lap-and-up"
+      >
         <h4
-          className="text-light-primary soft-half-sides soft-half-bottom">
+          className="text-light-primary soft-half-sides soft-half-bottom"
+        >
           Hey 
           jim
           !
         </h4>
         <h5
-          className="text-light-primary soft-half-sides soft-bottom">
+          className="text-light-primary soft-half-sides soft-bottom"
+        >
           We have found giving schedules from our previous system that need to be transferred! To transfer a schedule, click below.
         </h5>
         <Link
           className="btn--light"
           onlyActiveOnIndex={false}
           style={Object {}}
-          to="/give/schedules/transfer">
+          to="/give/schedules/transfer"
+        >
           Transfer Schedules
         </Link>
       </div>
     </div>
     <div
-      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
+      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary"
+    >
       <div
-        className="text-left soft-double-top@palm-wide-and-up hard-left@lap-and-up soft-half-bottom soft@anchored">
+        className="text-left soft-double-top@palm-wide-and-up hard-left@lap-and-up soft-half-bottom soft@anchored"
+      >
         <h2
-          className="flush soft-bottom@portable text-dark-primary soft-top@handheld soft-double-top">
+          className="flush soft-bottom@portable text-dark-primary soft-top@handheld soft-double-top"
+        >
           Schedule Your Giving
         </h2>
         <div
-          className="soft-double-ends@anchored">
+          className="soft-double-ends@anchored"
+        >
           <div
-            className="text-center soft">
+            className="text-center soft"
+          >
             <Spinner
               styles={
                 Object {
                   "height": "40px",
                   "width": "40px",
                 }
-              } />
+              }
+            />
           </div>
         </div>
       </div>
     </div>
     <div
       className="soft-half soft-sides@portable soft-double-sides@anchored soft-double-bottom@anchored soft-bottom@portable"
-      id="active-schedules">
+      id="active-schedules"
+    >
       <h4
-        className="soft soft-double-ends text-center flush-bottom">
+        className="soft soft-double-ends text-center flush-bottom"
+      >
         My Active Schedules
       </h4>
       <div>
         <div
-          className="soft card">
+          className="soft card"
+          key="0"
+        >
           <Link
             onlyActiveOnIndex={false}
             style={Object {}}
-            to="/give/schedules/1">
+            to="/give/schedules/1"
+          >
             <div
               className="grid"
+              key="0"
               style={
                 Object {
                   "verticalAlign": "middle",
                 }
-              }>
+              }
+            >
               <div
                 className="grid__item one-half"
                 style={
                   Object {
                     "verticalAlign": "middle",
                   }
-                }>
+                }
+              >
                 <h6
-                  className="text-dark-tertiary push-half-bottom">
+                  className="text-dark-tertiary push-half-bottom"
+                >
                   Test
                   <span
-                    className="text-dark-secondary" />
+                    className="text-dark-secondary"
+                  />
                 </h6>
                 <h5
                   className="flush one-whole"
@@ -1060,11 +1266,13 @@ exports[`test renders loading if no accounts 1`] = `
                       "textOverflow": "ellipsis",
                       "whiteSpace": "nowrap",
                     }
-                  }>
+                  }
+                >
                   test account
                 </h5>
                 <p
-                  className="flush soft-half-top text-dark-tertiary">
+                  className="flush soft-half-top text-dark-tertiary"
+                >
                   <small>
                     <em>
                       Dec 13, 2012
@@ -1078,9 +1286,11 @@ exports[`test renders loading if no accounts 1`] = `
                   Object {
                     "verticalAlign": "middle",
                   }
-                }>
+                }
+              >
                 <div
-                  className="soft-half-right">
+                  className="soft-half-right"
+                >
                   <h4
                     className="text-dark-tertiary one-whole flush soft-right@handheld soft-double-right@lap-and-up"
                     style={
@@ -1089,7 +1299,8 @@ exports[`test renders loading if no accounts 1`] = `
                         "textOverflow": "ellipsis",
                         "whiteSpace": "nowrap",
                       }
-                    }>
+                    }
+                  >
                     $2.00
                     <span
                       className="text-primary icon-arrow-next locked"
@@ -1098,7 +1309,8 @@ exports[`test renders loading if no accounts 1`] = `
                           "right": "-5px",
                           "top": "1px",
                         }
-                      } />
+                      }
+                    />
                   </h4>
                 </div>
               </div>
@@ -1106,7 +1318,8 @@ exports[`test renders loading if no accounts 1`] = `
           </Link>
         </div>
         <p
-          className="soft text-center">
+          className="soft text-center"
+        >
           <small>
             <em>
               Changes to schedules may take a few minutes to be reflected here.
@@ -1119,7 +1332,7 @@ exports[`test renders loading if no accounts 1`] = `
 </div>
 `;
 
-exports[`test renders loading if no accounts 2`] = `
+exports[`renders loading if no accounts 2`] = `
 <div>
   <Connect(SplitContainerWithoutData)
     classes={
@@ -1127,13 +1340,16 @@ exports[`test renders loading if no accounts 2`] = `
         "background--light-primary",
       ]
     }
-    nav={true}>
+    nav={true}
+  >
     <Meta
       image="//s3.amazonaws.com/ns.assets/apollos/give_now-schedules1x2.jpg"
-      title="Schedule Your Giving" />
+      title="Schedule Your Giving"
+    />
     <Right
       background="//s3.amazonaws.com/ns.assets/apollos/give_now-schedules1x2.jpg"
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -1141,86 +1357,109 @@ exports[`test renders loading if no accounts 2`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <div
-      className="background--primary soft-half soft-sides@portable soft-double-sides@anchored">
+      className="background--primary soft-half soft-sides@portable soft-double-sides@anchored"
+    >
       <div
-        className="soft-ends soft-double-ends@lap-and-up soft-side@lap-and-up">
+        className="soft-ends soft-double-ends@lap-and-up soft-side@lap-and-up"
+      >
         <h4
-          className="text-light-primary soft-half-sides soft-half-bottom">
+          className="text-light-primary soft-half-sides soft-half-bottom"
+        >
           Hey 
           jim
           !
         </h4>
         <h5
-          className="text-light-primary soft-half-sides soft-bottom">
+          className="text-light-primary soft-half-sides soft-bottom"
+        >
           We have found giving schedules from our previous system that need to be transferred! To transfer a schedule, click below.
         </h5>
         <Link
           className="btn--light"
           onlyActiveOnIndex={false}
           style={Object {}}
-          to="/give/schedules/transfer">
+          to="/give/schedules/transfer"
+        >
           Transfer Schedules
         </Link>
       </div>
     </div>
     <div
-      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
+      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary"
+    >
       <div
-        className="text-left soft-double-top@palm-wide-and-up hard-left@lap-and-up soft-half-bottom soft@anchored">
+        className="text-left soft-double-top@palm-wide-and-up hard-left@lap-and-up soft-half-bottom soft@anchored"
+      >
         <h2
-          className="flush soft-bottom@portable text-dark-primary soft-top@handheld soft-double-top">
+          className="flush soft-bottom@portable text-dark-primary soft-top@handheld soft-double-top"
+        >
           Schedule Your Giving
         </h2>
         <div
-          className="soft-double-ends@anchored">
+          className="soft-double-ends@anchored"
+        >
           <div
-            className="text-center soft">
+            className="text-center soft"
+          >
             <Spinner
               styles={
                 Object {
                   "height": "40px",
                   "width": "40px",
                 }
-              } />
+              }
+            />
           </div>
+          0
         </div>
       </div>
     </div>
     <div
       className="soft-half soft-sides@portable soft-double-sides@anchored soft-double-bottom@anchored soft-bottom@portable"
-      id="active-schedules">
+      id="active-schedules"
+    >
       <h4
-        className="soft soft-double-ends text-center flush-bottom">
+        className="soft soft-double-ends text-center flush-bottom"
+      >
         My Active Schedules
       </h4>
       <div>
         <div
-          className="soft card">
+          className="soft card"
+          key="0"
+        >
           <Link
             onlyActiveOnIndex={false}
             style={Object {}}
-            to="/give/schedules/1">
+            to="/give/schedules/1"
+          >
             <div
               className="grid"
+              key="0"
               style={
                 Object {
                   "verticalAlign": "middle",
                 }
-              }>
+              }
+            >
               <div
                 className="grid__item one-half"
                 style={
                   Object {
                     "verticalAlign": "middle",
                   }
-                }>
+                }
+              >
                 <h6
-                  className="text-dark-tertiary push-half-bottom">
+                  className="text-dark-tertiary push-half-bottom"
+                >
                   Test
                   <span
-                    className="text-dark-secondary" />
+                    className="text-dark-secondary"
+                  />
                 </h6>
                 <h5
                   className="flush one-whole"
@@ -1230,11 +1469,13 @@ exports[`test renders loading if no accounts 2`] = `
                       "textOverflow": "ellipsis",
                       "whiteSpace": "nowrap",
                     }
-                  }>
+                  }
+                >
                   test account
                 </h5>
                 <p
-                  className="flush soft-half-top text-dark-tertiary">
+                  className="flush soft-half-top text-dark-tertiary"
+                >
                   <small>
                     <em>
                       Dec 13, 2012
@@ -1248,9 +1489,11 @@ exports[`test renders loading if no accounts 2`] = `
                   Object {
                     "verticalAlign": "middle",
                   }
-                }>
+                }
+              >
                 <div
-                  className="soft-half-right">
+                  className="soft-half-right"
+                >
                   <h4
                     className="text-dark-tertiary one-whole flush soft-right@handheld soft-double-right@lap-and-up"
                     style={
@@ -1259,7 +1502,8 @@ exports[`test renders loading if no accounts 2`] = `
                         "textOverflow": "ellipsis",
                         "whiteSpace": "nowrap",
                       }
-                    }>
+                    }
+                  >
                     $2.00
                     <span
                       className="text-primary icon-arrow-next locked"
@@ -1268,7 +1512,8 @@ exports[`test renders loading if no accounts 2`] = `
                           "right": "-5px",
                           "top": "1px",
                         }
-                      } />
+                      }
+                    />
                   </h4>
                 </div>
               </div>
@@ -1276,7 +1521,8 @@ exports[`test renders loading if no accounts 2`] = `
           </Link>
         </div>
         <p
-          className="soft text-center">
+          className="soft text-center"
+        >
           <small>
             <em>
               Changes to schedules may take a few minutes to be reflected here.
@@ -1289,7 +1535,7 @@ exports[`test renders loading if no accounts 2`] = `
 </div>
 `;
 
-exports[`test renders loading if no schedules 1`] = `
+exports[`renders loading if no schedules 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)
     classes={
@@ -1297,13 +1543,16 @@ exports[`test renders loading if no schedules 1`] = `
         "background--light-primary",
       ]
     }
-    nav={true}>
+    nav={true}
+  >
     <Meta
       image="//s3.amazonaws.com/ns.assets/apollos/give_now-schedules1x2.jpg"
-      title="Schedule Your Giving" />
+      title="Schedule Your Giving"
+    />
     <Right
       background="//s3.amazonaws.com/ns.assets/apollos/give_now-schedules1x2.jpg"
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -1311,72 +1560,87 @@ exports[`test renders loading if no schedules 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <div
-      className="background--primary soft-half soft-sides@portable soft-double-sides@anchored">
+      className="background--primary soft-half soft-sides@portable soft-double-sides@anchored"
+    >
       <div
-        className="soft-ends soft-double-ends@lap-and-up soft-side@lap-and-up">
+        className="soft-ends soft-double-ends@lap-and-up soft-side@lap-and-up"
+      >
         <h4
-          className="text-light-primary soft-half-sides soft-half-bottom">
+          className="text-light-primary soft-half-sides soft-half-bottom"
+        >
           Hey 
           jim
           !
         </h4>
         <h5
-          className="text-light-primary soft-half-sides soft-bottom">
+          className="text-light-primary soft-half-sides soft-bottom"
+        >
           We have found giving schedules from our previous system that need to be transferred! To transfer a schedule, click below.
         </h5>
         <Link
           className="btn--light"
           onlyActiveOnIndex={false}
           style={Object {}}
-          to="/give/schedules/transfer">
+          to="/give/schedules/transfer"
+        >
           Transfer Schedules
         </Link>
       </div>
     </div>
     <div
-      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
+      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary"
+    >
       <div
-        className="text-left soft-double-top@palm-wide-and-up hard-left@lap-and-up soft-half-bottom soft@anchored">
+        className="text-left soft-double-top@palm-wide-and-up hard-left@lap-and-up soft-half-bottom soft@anchored"
+      >
         <h2
-          className="flush soft-bottom@portable text-dark-primary soft-top@handheld soft-double-top">
+          className="flush soft-bottom@portable text-dark-primary soft-top@handheld soft-double-top"
+        >
           Schedule Your Giving
         </h2>
         <div
-          className="soft-double-ends@anchored">
+          className="soft-double-ends@anchored"
+        >
           <MeteorDataContainer
             accounts={
               Array [
                 Object {},
               ]
-            } />
+            }
+          />
         </div>
       </div>
     </div>
     <div
       className="soft-half soft-sides@portable soft-double-sides@anchored soft-double-bottom@anchored soft-bottom@portable"
-      id="active-schedules">
+      id="active-schedules"
+    >
       <h4
-        className="soft soft-double-ends text-center flush-bottom">
+        className="soft soft-double-ends text-center flush-bottom"
+      >
         My Active Schedules
       </h4>
       <div
-        className="text-center soft">
+        className="text-center soft"
+      >
         <Spinner
           styles={
             Object {
               "height": "40px",
               "width": "40px",
             }
-          } />
+          }
+        />
       </div>
     </div>
   </Left>
 </div>
 `;
 
-exports[`test renders no schedules message 1`] = `
+exports[`renders no schedules message 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)
     classes={
@@ -1384,13 +1648,16 @@ exports[`test renders no schedules message 1`] = `
         "background--light-primary",
       ]
     }
-    nav={true}>
+    nav={true}
+  >
     <Meta
       image="//s3.amazonaws.com/ns.assets/apollos/give_now-schedules1x2.jpg"
-      title="Schedule Your Giving" />
+      title="Schedule Your Giving"
+    />
     <Right
       background="//s3.amazonaws.com/ns.assets/apollos/give_now-schedules1x2.jpg"
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -1398,61 +1665,75 @@ exports[`test renders no schedules message 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <div
-      className="background--primary soft-half soft-sides@portable soft-double-sides@anchored">
+      className="background--primary soft-half soft-sides@portable soft-double-sides@anchored"
+    >
       <div
-        className="soft-ends soft-double-ends@lap-and-up soft-side@lap-and-up">
+        className="soft-ends soft-double-ends@lap-and-up soft-side@lap-and-up"
+      >
         <h4
-          className="text-light-primary soft-half-sides soft-half-bottom">
+          className="text-light-primary soft-half-sides soft-half-bottom"
+        >
           Hey 
           jim
           !
         </h4>
         <h5
-          className="text-light-primary soft-half-sides soft-bottom">
+          className="text-light-primary soft-half-sides soft-bottom"
+        >
           We have found giving schedules from our previous system that need to be transferred! To transfer a schedule, click below.
         </h5>
         <Link
           className="btn--light"
           onlyActiveOnIndex={false}
           style={Object {}}
-          to="/give/schedules/transfer">
+          to="/give/schedules/transfer"
+        >
           Transfer Schedules
         </Link>
       </div>
     </div>
     <div
-      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
+      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary"
+    >
       <div
-        className="text-left soft-double-top@palm-wide-and-up hard-left@lap-and-up soft-half-bottom soft@anchored">
+        className="text-left soft-double-top@palm-wide-and-up hard-left@lap-and-up soft-half-bottom soft@anchored"
+      >
         <h2
-          className="flush soft-bottom@portable text-dark-primary soft-top@handheld soft-double-top">
+          className="flush soft-bottom@portable text-dark-primary soft-top@handheld soft-double-top"
+        >
           Schedule Your Giving
         </h2>
         <div
-          className="soft-double-ends@anchored">
+          className="soft-double-ends@anchored"
+        >
           <MeteorDataContainer
             accounts={
               Array [
                 Object {},
               ]
-            } />
+            }
+          />
         </div>
       </div>
     </div>
     <div
       className="soft-half soft-sides@portable soft-double-sides@anchored soft-double-bottom@anchored soft-bottom@portable"
-      id="active-schedules">
+      id="active-schedules"
+    >
       <h4
-        className="soft soft-double-ends text-center flush-bottom">
+        className="soft soft-double-ends text-center flush-bottom"
+      >
         My Active Schedules
       </h4>
       <div
-        className="text-center soft-sides">
+        className="text-center soft-sides"
+      >
         <p>
           <em>
-            You don\'t have any active scheduled contributions. If you created a new schedule, it may take a few minutes to be reflected here
+            You don't have any active scheduled contributions. If you created a new schedule, it may take a few minutes to be reflected here
           </em>
         </p>
       </div>
@@ -1461,7 +1742,7 @@ exports[`test renders no schedules message 1`] = `
 </div>
 `;
 
-exports[`test renders one time completed schedules 1`] = `
+exports[`renders one time completed schedules 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)
     classes={
@@ -1469,13 +1750,16 @@ exports[`test renders one time completed schedules 1`] = `
         "background--light-primary",
       ]
     }
-    nav={true}>
+    nav={true}
+  >
     <Meta
       image="//s3.amazonaws.com/ns.assets/apollos/give_now-schedules1x2.jpg"
-      title="Schedule Your Giving" />
+      title="Schedule Your Giving"
+    />
     <Right
       background="//s3.amazonaws.com/ns.assets/apollos/give_now-schedules1x2.jpg"
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -1483,59 +1767,73 @@ exports[`test renders one time completed schedules 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <div
-      className="background--primary soft-half soft-sides@portable soft-double-sides@anchored">
+      className="background--primary soft-half soft-sides@portable soft-double-sides@anchored"
+    >
       <div
-        className="soft-ends soft-double-ends@lap-and-up soft-side@lap-and-up">
+        className="soft-ends soft-double-ends@lap-and-up soft-side@lap-and-up"
+      >
         <h4
-          className="text-light-primary soft-half-sides soft-half-bottom">
+          className="text-light-primary soft-half-sides soft-half-bottom"
+        >
           Hey 
           jim
           !
         </h4>
         <h5
-          className="text-light-primary soft-half-sides soft-bottom">
+          className="text-light-primary soft-half-sides soft-bottom"
+        >
           We have found giving schedules from our previous system that need to be transferred! To transfer a schedule, click below.
         </h5>
         <Link
           className="btn--light"
           onlyActiveOnIndex={false}
           style={Object {}}
-          to="/give/schedules/transfer">
+          to="/give/schedules/transfer"
+        >
           Transfer Schedules
         </Link>
       </div>
     </div>
     <div
-      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
+      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary"
+    >
       <div
-        className="text-left soft-double-top@palm-wide-and-up hard-left@lap-and-up soft-half-bottom soft@anchored">
+        className="text-left soft-double-top@palm-wide-and-up hard-left@lap-and-up soft-half-bottom soft@anchored"
+      >
         <h2
-          className="flush soft-bottom@portable text-dark-primary soft-top@handheld soft-double-top">
+          className="flush soft-bottom@portable text-dark-primary soft-top@handheld soft-double-top"
+        >
           Schedule Your Giving
         </h2>
         <div
-          className="soft-double-ends@anchored">
+          className="soft-double-ends@anchored"
+        >
           <MeteorDataContainer
             accounts={
               Array [
                 Object {},
               ]
-            } />
+            }
+          />
         </div>
       </div>
     </div>
     <div
       className="soft-half soft-sides@portable soft-double-sides@anchored soft-double-bottom@anchored soft-bottom@portable"
-      id="active-schedules">
+      id="active-schedules"
+    >
       <h4
-        className="soft soft-double-ends text-center flush-bottom">
+        className="soft soft-double-ends text-center flush-bottom"
+      >
         My Active Schedules
       </h4>
       <div>
         <p
-          className="soft text-center">
+          className="soft text-center"
+        >
           <small>
             <em>
               Changes to schedules may take a few minutes to be reflected here.
@@ -1545,36 +1843,46 @@ exports[`test renders one time completed schedules 1`] = `
       </div>
       <div>
         <hr
-          className="flush hard" />
+          className="flush hard"
+        />
         <h4
-          className="soft soft-double-ends text-center flush-bottom">
+          className="soft soft-double-ends text-center flush-bottom"
+        >
           My Completed Schedules
         </h4>
         <div
-          className="soft card">
+          className="soft card"
+          key="0"
+        >
           <Link
             onlyActiveOnIndex={false}
             style={Object {}}
-            to="/give/schedules/1">
+            to="/give/schedules/1"
+          >
             <div
               className="grid"
+              key="0"
               style={
                 Object {
                   "verticalAlign": "middle",
                 }
-              }>
+              }
+            >
               <div
                 className="grid__item one-half"
                 style={
                   Object {
                     "verticalAlign": "middle",
                   }
-                }>
+                }
+              >
                 <h6
-                  className="text-dark-tertiary push-half-bottom">
+                  className="text-dark-tertiary push-half-bottom"
+                >
                   Test
                   <span
-                    className="text-dark-secondary">
+                    className="text-dark-secondary"
+                  >
                      - Complete
                   </span>
                 </h6>
@@ -1586,11 +1894,13 @@ exports[`test renders one time completed schedules 1`] = `
                       "textOverflow": "ellipsis",
                       "whiteSpace": "nowrap",
                     }
-                  }>
+                  }
+                >
                   test account
                 </h5>
                 <p
-                  className="flush soft-half-top text-dark-tertiary">
+                  className="flush soft-half-top text-dark-tertiary"
+                >
                   <small>
                     <em>
                       Dec 13, 1999
@@ -1604,9 +1914,11 @@ exports[`test renders one time completed schedules 1`] = `
                   Object {
                     "verticalAlign": "middle",
                   }
-                }>
+                }
+              >
                 <div
-                  className="soft-half-right">
+                  className="soft-half-right"
+                >
                   <h4
                     className="text-dark-tertiary one-whole flush soft-right@handheld soft-double-right@lap-and-up"
                     style={
@@ -1615,7 +1927,8 @@ exports[`test renders one time completed schedules 1`] = `
                         "textOverflow": "ellipsis",
                         "whiteSpace": "nowrap",
                       }
-                    }>
+                    }
+                  >
                     $2.00
                     <span
                       className="text-primary icon-arrow-next locked"
@@ -1624,7 +1937,8 @@ exports[`test renders one time completed schedules 1`] = `
                           "right": "-5px",
                           "top": "1px",
                         }
-                      } />
+                      }
+                    />
                   </h4>
                 </div>
               </div>
@@ -1637,7 +1951,7 @@ exports[`test renders one time completed schedules 1`] = `
 </div>
 `;
 
-exports[`test renders sign in message if no user 1`] = `
+exports[`renders sign in message if no user 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)
     classes={
@@ -1645,13 +1959,16 @@ exports[`test renders sign in message if no user 1`] = `
         "background--light-primary",
       ]
     }
-    nav={true}>
+    nav={true}
+  >
     <Meta
       image="//s3.amazonaws.com/ns.assets/apollos/give_now-schedules1x2.jpg"
-      title="Schedule Your Giving" />
+      title="Schedule Your Giving"
+    />
     <Right
       background="//s3.amazonaws.com/ns.assets/apollos/give_now-schedules1x2.jpg"
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -1659,58 +1976,72 @@ exports[`test renders sign in message if no user 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <div
-      className="background--primary soft-half soft-sides@portable soft-double-sides@anchored">
+      className="background--primary soft-half soft-sides@portable soft-double-sides@anchored"
+    >
       <div
-        className="soft-ends soft-double-ends@lap-and-up soft-side@lap-and-up">
+        className="soft-ends soft-double-ends@lap-and-up soft-side@lap-and-up"
+      >
         <h4
-          className="text-light-primary soft-half-sides soft-half-bottom">
+          className="text-light-primary soft-half-sides soft-half-bottom"
+        >
           Hey 
           jim
           !
         </h4>
         <h5
-          className="text-light-primary soft-half-sides soft-bottom">
+          className="text-light-primary soft-half-sides soft-bottom"
+        >
           We have found giving schedules from our previous system that need to be transferred! To transfer a schedule, click below.
         </h5>
         <Link
           className="btn--light"
           onlyActiveOnIndex={false}
           style={Object {}}
-          to="/give/schedules/transfer">
+          to="/give/schedules/transfer"
+        >
           Transfer Schedules
         </Link>
       </div>
     </div>
     <div
-      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
+      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary"
+    >
       <div
-        className="text-left soft-double-top@palm-wide-and-up hard-left@lap-and-up soft-half-bottom soft@anchored">
+        className="text-left soft-double-top@palm-wide-and-up hard-left@lap-and-up soft-half-bottom soft@anchored"
+      >
         <h2
-          className="flush soft-bottom@portable text-dark-primary soft-top@handheld soft-double-top">
+          className="flush soft-bottom@portable text-dark-primary soft-top@handheld soft-double-top"
+        >
           Schedule Your Giving
         </h2>
         <div
-          className="soft-double-ends@anchored">
+          className="soft-double-ends@anchored"
+        >
           <MeteorDataContainer
             accounts={
               Array [
                 Object {},
               ]
-            } />
+            }
+          />
         </div>
       </div>
     </div>
     <div
       className="soft-half soft-sides@portable soft-double-sides@anchored soft-double-bottom@anchored soft-bottom@portable"
-      id="active-schedules">
+      id="active-schedules"
+    >
       <h4
-        className="soft soft-double-ends text-center flush-bottom">
+        className="soft soft-double-ends text-center flush-bottom"
+      >
         My Active Schedules
       </h4>
       <div
-        className="text-center soft-sides">
+        className="text-center soft-sides"
+      >
         <p>
           <em>
             Please sign in or create an account to setup or view your scheduled contributions!
@@ -1722,7 +2053,7 @@ exports[`test renders sign in message if no user 1`] = `
 </div>
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)
     classes={
@@ -1730,13 +2061,16 @@ exports[`test renders with props 1`] = `
         "background--light-primary",
       ]
     }
-    nav={true}>
+    nav={true}
+  >
     <Meta
       image="//s3.amazonaws.com/ns.assets/apollos/give_now-schedules1x2.jpg"
-      title="Schedule Your Giving" />
+      title="Schedule Your Giving"
+    />
     <Right
       background="//s3.amazonaws.com/ns.assets/apollos/give_now-schedules1x2.jpg"
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -1744,82 +2078,103 @@ exports[`test renders with props 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <div
-      className="background--primary soft-half soft-sides@portable soft-double-sides@anchored">
+      className="background--primary soft-half soft-sides@portable soft-double-sides@anchored"
+    >
       <div
-        className="soft-ends soft-double-ends@lap-and-up soft-side@lap-and-up">
+        className="soft-ends soft-double-ends@lap-and-up soft-side@lap-and-up"
+      >
         <h4
-          className="text-light-primary soft-half-sides soft-half-bottom">
+          className="text-light-primary soft-half-sides soft-half-bottom"
+        >
           Hey 
           jim
           !
         </h4>
         <h5
-          className="text-light-primary soft-half-sides soft-bottom">
+          className="text-light-primary soft-half-sides soft-bottom"
+        >
           We have found giving schedules from our previous system that need to be transferred! To transfer a schedule, click below.
         </h5>
         <Link
           className="btn--light"
           onlyActiveOnIndex={false}
           style={Object {}}
-          to="/give/schedules/transfer">
+          to="/give/schedules/transfer"
+        >
           Transfer Schedules
         </Link>
       </div>
     </div>
     <div
-      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
+      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary"
+    >
       <div
-        className="text-left soft-double-top@palm-wide-and-up hard-left@lap-and-up soft-half-bottom soft@anchored">
+        className="text-left soft-double-top@palm-wide-and-up hard-left@lap-and-up soft-half-bottom soft@anchored"
+      >
         <h2
-          className="flush soft-bottom@portable text-dark-primary soft-top@handheld soft-double-top">
+          className="flush soft-bottom@portable text-dark-primary soft-top@handheld soft-double-top"
+        >
           Schedule Your Giving
         </h2>
         <div
-          className="soft-double-ends@anchored">
+          className="soft-double-ends@anchored"
+        >
           <MeteorDataContainer
             accounts={
               Array [
                 Object {},
               ]
-            } />
+            }
+          />
         </div>
       </div>
     </div>
     <div
       className="soft-half soft-sides@portable soft-double-sides@anchored soft-double-bottom@anchored soft-bottom@portable"
-      id="active-schedules">
+      id="active-schedules"
+    >
       <h4
-        className="soft soft-double-ends text-center flush-bottom">
+        className="soft soft-double-ends text-center flush-bottom"
+      >
         My Active Schedules
       </h4>
       <div>
         <div
-          className="soft card">
+          className="soft card"
+          key="0"
+        >
           <Link
             onlyActiveOnIndex={false}
             style={Object {}}
-            to="/give/schedules/1">
+            to="/give/schedules/1"
+          >
             <div
               className="grid"
+              key="0"
               style={
                 Object {
                   "verticalAlign": "middle",
                 }
-              }>
+              }
+            >
               <div
                 className="grid__item one-half"
                 style={
                   Object {
                     "verticalAlign": "middle",
                   }
-                }>
+                }
+              >
                 <h6
-                  className="text-dark-tertiary push-half-bottom">
+                  className="text-dark-tertiary push-half-bottom"
+                >
                   Test
                   <span
-                    className="text-dark-secondary" />
+                    className="text-dark-secondary"
+                  />
                 </h6>
                 <h5
                   className="flush one-whole"
@@ -1829,11 +2184,13 @@ exports[`test renders with props 1`] = `
                       "textOverflow": "ellipsis",
                       "whiteSpace": "nowrap",
                     }
-                  }>
+                  }
+                >
                   test account
                 </h5>
                 <p
-                  className="flush soft-half-top text-dark-tertiary">
+                  className="flush soft-half-top text-dark-tertiary"
+                >
                   <small>
                     <em>
                       Dec 13, 2012
@@ -1847,9 +2204,11 @@ exports[`test renders with props 1`] = `
                   Object {
                     "verticalAlign": "middle",
                   }
-                }>
+                }
+              >
                 <div
-                  className="soft-half-right">
+                  className="soft-half-right"
+                >
                   <h4
                     className="text-dark-tertiary one-whole flush soft-right@handheld soft-double-right@lap-and-up"
                     style={
@@ -1858,7 +2217,8 @@ exports[`test renders with props 1`] = `
                         "textOverflow": "ellipsis",
                         "whiteSpace": "nowrap",
                       }
-                    }>
+                    }
+                  >
                     $2.00
                     <span
                       className="text-primary icon-arrow-next locked"
@@ -1867,7 +2227,8 @@ exports[`test renders with props 1`] = `
                           "right": "-5px",
                           "top": "1px",
                         }
-                      } />
+                      }
+                    />
                   </h4>
                 </div>
               </div>
@@ -1875,7 +2236,8 @@ exports[`test renders with props 1`] = `
           </Link>
         </div>
         <p
-          className="soft text-center">
+          className="soft text-center"
+        >
           <small>
             <em>
               Changes to schedules may take a few minutes to be reflected here.
@@ -1888,7 +2250,7 @@ exports[`test renders with props 1`] = `
 </div>
 `;
 
-exports[`test renders without schedule details 1`] = `
+exports[`renders without schedule details 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)
     classes={
@@ -1896,13 +2258,16 @@ exports[`test renders without schedule details 1`] = `
         "background--light-primary",
       ]
     }
-    nav={true}>
+    nav={true}
+  >
     <Meta
       image="//s3.amazonaws.com/ns.assets/apollos/give_now-schedules1x2.jpg"
-      title="Schedule Your Giving" />
+      title="Schedule Your Giving"
+    />
     <Right
       background="//s3.amazonaws.com/ns.assets/apollos/give_now-schedules1x2.jpg"
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -1910,82 +2275,103 @@ exports[`test renders without schedule details 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <div
-      className="background--primary soft-half soft-sides@portable soft-double-sides@anchored">
+      className="background--primary soft-half soft-sides@portable soft-double-sides@anchored"
+    >
       <div
-        className="soft-ends soft-double-ends@lap-and-up soft-side@lap-and-up">
+        className="soft-ends soft-double-ends@lap-and-up soft-side@lap-and-up"
+      >
         <h4
-          className="text-light-primary soft-half-sides soft-half-bottom">
+          className="text-light-primary soft-half-sides soft-half-bottom"
+        >
           Hey 
           jim
           !
         </h4>
         <h5
-          className="text-light-primary soft-half-sides soft-bottom">
+          className="text-light-primary soft-half-sides soft-bottom"
+        >
           We have found giving schedules from our previous system that need to be transferred! To transfer a schedule, click below.
         </h5>
         <Link
           className="btn--light"
           onlyActiveOnIndex={false}
           style={Object {}}
-          to="/give/schedules/transfer">
+          to="/give/schedules/transfer"
+        >
           Transfer Schedules
         </Link>
       </div>
     </div>
     <div
-      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
+      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary"
+    >
       <div
-        className="text-left soft-double-top@palm-wide-and-up hard-left@lap-and-up soft-half-bottom soft@anchored">
+        className="text-left soft-double-top@palm-wide-and-up hard-left@lap-and-up soft-half-bottom soft@anchored"
+      >
         <h2
-          className="flush soft-bottom@portable text-dark-primary soft-top@handheld soft-double-top">
+          className="flush soft-bottom@portable text-dark-primary soft-top@handheld soft-double-top"
+        >
           Schedule Your Giving
         </h2>
         <div
-          className="soft-double-ends@anchored">
+          className="soft-double-ends@anchored"
+        >
           <MeteorDataContainer
             accounts={
               Array [
                 Object {},
               ]
-            } />
+            }
+          />
         </div>
       </div>
     </div>
     <div
       className="soft-half soft-sides@portable soft-double-sides@anchored soft-double-bottom@anchored soft-bottom@portable"
-      id="active-schedules">
+      id="active-schedules"
+    >
       <h4
-        className="soft soft-double-ends text-center flush-bottom">
+        className="soft soft-double-ends text-center flush-bottom"
+      >
         My Active Schedules
       </h4>
       <div>
         <div
-          className="soft card">
+          className="soft card"
+          key="0"
+        >
           <Link
             onlyActiveOnIndex={false}
             style={Object {}}
-            to="/give/schedules/1">
+            to="/give/schedules/1"
+          >
             <div
               className="grid"
+              key="0"
               style={
                 Object {
                   "verticalAlign": "middle",
                 }
-              }>
+              }
+            >
               <div
                 className="grid__item one-half"
                 style={
                   Object {
                     "verticalAlign": "middle",
                   }
-                }>
+                }
+              >
                 <h6
-                  className="text-dark-tertiary push-half-bottom">
+                  className="text-dark-tertiary push-half-bottom"
+                >
                   Test
                   <span
-                    className="text-dark-secondary" />
+                    className="text-dark-secondary"
+                  />
                 </h6>
                 <h5
                   className="flush one-whole"
@@ -1995,11 +2381,13 @@ exports[`test renders without schedule details 1`] = `
                       "textOverflow": "ellipsis",
                       "whiteSpace": "nowrap",
                     }
-                  }>
+                  }
+                >
                   test account
                 </h5>
                 <p
-                  className="flush soft-half-top text-dark-tertiary">
+                  className="flush soft-half-top text-dark-tertiary"
+                >
                   <small>
                     <em>
                       Dec 13, 2012
@@ -2013,9 +2401,11 @@ exports[`test renders without schedule details 1`] = `
                   Object {
                     "verticalAlign": "middle",
                   }
-                }>
+                }
+              >
                 <div
-                  className="soft-half-right">
+                  className="soft-half-right"
+                >
                   <h4
                     className="text-dark-tertiary one-whole flush soft-right@handheld soft-double-right@lap-and-up"
                     style={
@@ -2024,7 +2414,8 @@ exports[`test renders without schedule details 1`] = `
                         "textOverflow": "ellipsis",
                         "whiteSpace": "nowrap",
                       }
-                    }>
+                    }
+                  >
                     $2.00
                     <span
                       className="text-primary icon-arrow-next locked"
@@ -2033,7 +2424,8 @@ exports[`test renders without schedule details 1`] = `
                           "right": "-5px",
                           "top": "1px",
                         }
-                      } />
+                      }
+                    />
                   </h4>
                 </div>
               </div>
@@ -2041,7 +2433,8 @@ exports[`test renders without schedule details 1`] = `
           </Link>
         </div>
         <p
-          className="soft text-center">
+          className="soft text-center"
+        >
           <small>
             <em>
               Changes to schedules may take a few minutes to be reflected here.
@@ -2054,7 +2447,7 @@ exports[`test renders without schedule details 1`] = `
 </div>
 `;
 
-exports[`test renders without schedule details account 1`] = `
+exports[`renders without schedule details account 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)
     classes={
@@ -2062,13 +2455,16 @@ exports[`test renders without schedule details account 1`] = `
         "background--light-primary",
       ]
     }
-    nav={true}>
+    nav={true}
+  >
     <Meta
       image="//s3.amazonaws.com/ns.assets/apollos/give_now-schedules1x2.jpg"
-      title="Schedule Your Giving" />
+      title="Schedule Your Giving"
+    />
     <Right
       background="//s3.amazonaws.com/ns.assets/apollos/give_now-schedules1x2.jpg"
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -2076,82 +2472,103 @@ exports[`test renders without schedule details account 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <div
-      className="background--primary soft-half soft-sides@portable soft-double-sides@anchored">
+      className="background--primary soft-half soft-sides@portable soft-double-sides@anchored"
+    >
       <div
-        className="soft-ends soft-double-ends@lap-and-up soft-side@lap-and-up">
+        className="soft-ends soft-double-ends@lap-and-up soft-side@lap-and-up"
+      >
         <h4
-          className="text-light-primary soft-half-sides soft-half-bottom">
+          className="text-light-primary soft-half-sides soft-half-bottom"
+        >
           Hey 
           jim
           !
         </h4>
         <h5
-          className="text-light-primary soft-half-sides soft-bottom">
+          className="text-light-primary soft-half-sides soft-bottom"
+        >
           We have found giving schedules from our previous system that need to be transferred! To transfer a schedule, click below.
         </h5>
         <Link
           className="btn--light"
           onlyActiveOnIndex={false}
           style={Object {}}
-          to="/give/schedules/transfer">
+          to="/give/schedules/transfer"
+        >
           Transfer Schedules
         </Link>
       </div>
     </div>
     <div
-      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
+      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary"
+    >
       <div
-        className="text-left soft-double-top@palm-wide-and-up hard-left@lap-and-up soft-half-bottom soft@anchored">
+        className="text-left soft-double-top@palm-wide-and-up hard-left@lap-and-up soft-half-bottom soft@anchored"
+      >
         <h2
-          className="flush soft-bottom@portable text-dark-primary soft-top@handheld soft-double-top">
+          className="flush soft-bottom@portable text-dark-primary soft-top@handheld soft-double-top"
+        >
           Schedule Your Giving
         </h2>
         <div
-          className="soft-double-ends@anchored">
+          className="soft-double-ends@anchored"
+        >
           <MeteorDataContainer
             accounts={
               Array [
                 Object {},
               ]
-            } />
+            }
+          />
         </div>
       </div>
     </div>
     <div
       className="soft-half soft-sides@portable soft-double-sides@anchored soft-double-bottom@anchored soft-bottom@portable"
-      id="active-schedules">
+      id="active-schedules"
+    >
       <h4
-        className="soft soft-double-ends text-center flush-bottom">
+        className="soft soft-double-ends text-center flush-bottom"
+      >
         My Active Schedules
       </h4>
       <div>
         <div
-          className="soft card">
+          className="soft card"
+          key="0"
+        >
           <Link
             onlyActiveOnIndex={false}
             style={Object {}}
-            to="/give/schedules/1">
+            to="/give/schedules/1"
+          >
             <div
               className="grid"
+              key="0"
               style={
                 Object {
                   "verticalAlign": "middle",
                 }
-              }>
+              }
+            >
               <div
                 className="grid__item one-half"
                 style={
                   Object {
                     "verticalAlign": "middle",
                   }
-                }>
+                }
+              >
                 <h6
-                  className="text-dark-tertiary push-half-bottom">
+                  className="text-dark-tertiary push-half-bottom"
+                >
                   Test
                   <span
-                    className="text-dark-secondary" />
+                    className="text-dark-secondary"
+                  />
                 </h6>
                 <h5
                   className="flush one-whole"
@@ -2161,11 +2578,13 @@ exports[`test renders without schedule details account 1`] = `
                       "textOverflow": "ellipsis",
                       "whiteSpace": "nowrap",
                     }
-                  }>
+                  }
+                >
                   test account
                 </h5>
                 <p
-                  className="flush soft-half-top text-dark-tertiary">
+                  className="flush soft-half-top text-dark-tertiary"
+                >
                   <small>
                     <em>
                       Dec 13, 2012
@@ -2179,9 +2598,11 @@ exports[`test renders without schedule details account 1`] = `
                   Object {
                     "verticalAlign": "middle",
                   }
-                }>
+                }
+              >
                 <div
-                  className="soft-half-right">
+                  className="soft-half-right"
+                >
                   <h4
                     className="text-dark-tertiary one-whole flush soft-right@handheld soft-double-right@lap-and-up"
                     style={
@@ -2190,7 +2611,8 @@ exports[`test renders without schedule details account 1`] = `
                         "textOverflow": "ellipsis",
                         "whiteSpace": "nowrap",
                       }
-                    }>
+                    }
+                  >
                     $2.00
                     <span
                       className="text-primary icon-arrow-next locked"
@@ -2199,7 +2621,8 @@ exports[`test renders without schedule details account 1`] = `
                           "right": "-5px",
                           "top": "1px",
                         }
-                      } />
+                      }
+                    />
                   </h4>
                 </div>
               </div>
@@ -2207,7 +2630,8 @@ exports[`test renders without schedule details account 1`] = `
           </Link>
         </div>
         <p
-          className="soft text-center">
+          className="soft text-center"
+        >
           <small>
             <em>
               Changes to schedules may take a few minutes to be reflected here.
@@ -2220,7 +2644,7 @@ exports[`test renders without schedule details account 1`] = `
 </div>
 `;
 
-exports[`test works with nickName 1`] = `
+exports[`works with nickName 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)
     classes={
@@ -2228,13 +2652,16 @@ exports[`test works with nickName 1`] = `
         "background--light-primary",
       ]
     }
-    nav={true}>
+    nav={true}
+  >
     <Meta
       image="//s3.amazonaws.com/ns.assets/apollos/give_now-schedules1x2.jpg"
-      title="Schedule Your Giving" />
+      title="Schedule Your Giving"
+    />
     <Right
       background="//s3.amazonaws.com/ns.assets/apollos/give_now-schedules1x2.jpg"
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -2242,82 +2669,103 @@ exports[`test works with nickName 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <div
-      className="background--primary soft-half soft-sides@portable soft-double-sides@anchored">
+      className="background--primary soft-half soft-sides@portable soft-double-sides@anchored"
+    >
       <div
-        className="soft-ends soft-double-ends@lap-and-up soft-side@lap-and-up">
+        className="soft-ends soft-double-ends@lap-and-up soft-side@lap-and-up"
+      >
         <h4
-          className="text-light-primary soft-half-sides soft-half-bottom">
+          className="text-light-primary soft-half-sides soft-half-bottom"
+        >
           Hey 
           jimothy
           !
         </h4>
         <h5
-          className="text-light-primary soft-half-sides soft-bottom">
+          className="text-light-primary soft-half-sides soft-bottom"
+        >
           We have found giving schedules from our previous system that need to be transferred! To transfer a schedule, click below.
         </h5>
         <Link
           className="btn--light"
           onlyActiveOnIndex={false}
           style={Object {}}
-          to="/give/schedules/transfer">
+          to="/give/schedules/transfer"
+        >
           Transfer Schedules
         </Link>
       </div>
     </div>
     <div
-      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
+      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary"
+    >
       <div
-        className="text-left soft-double-top@palm-wide-and-up hard-left@lap-and-up soft-half-bottom soft@anchored">
+        className="text-left soft-double-top@palm-wide-and-up hard-left@lap-and-up soft-half-bottom soft@anchored"
+      >
         <h2
-          className="flush soft-bottom@portable text-dark-primary soft-top@handheld soft-double-top">
+          className="flush soft-bottom@portable text-dark-primary soft-top@handheld soft-double-top"
+        >
           Schedule Your Giving
         </h2>
         <div
-          className="soft-double-ends@anchored">
+          className="soft-double-ends@anchored"
+        >
           <MeteorDataContainer
             accounts={
               Array [
                 Object {},
               ]
-            } />
+            }
+          />
         </div>
       </div>
     </div>
     <div
       className="soft-half soft-sides@portable soft-double-sides@anchored soft-double-bottom@anchored soft-bottom@portable"
-      id="active-schedules">
+      id="active-schedules"
+    >
       <h4
-        className="soft soft-double-ends text-center flush-bottom">
+        className="soft soft-double-ends text-center flush-bottom"
+      >
         My Active Schedules
       </h4>
       <div>
         <div
-          className="soft card">
+          className="soft card"
+          key="0"
+        >
           <Link
             onlyActiveOnIndex={false}
             style={Object {}}
-            to="/give/schedules/1">
+            to="/give/schedules/1"
+          >
             <div
               className="grid"
+              key="0"
               style={
                 Object {
                   "verticalAlign": "middle",
                 }
-              }>
+              }
+            >
               <div
                 className="grid__item one-half"
                 style={
                   Object {
                     "verticalAlign": "middle",
                   }
-                }>
+                }
+              >
                 <h6
-                  className="text-dark-tertiary push-half-bottom">
+                  className="text-dark-tertiary push-half-bottom"
+                >
                   Test
                   <span
-                    className="text-dark-secondary" />
+                    className="text-dark-secondary"
+                  />
                 </h6>
                 <h5
                   className="flush one-whole"
@@ -2327,11 +2775,13 @@ exports[`test works with nickName 1`] = `
                       "textOverflow": "ellipsis",
                       "whiteSpace": "nowrap",
                     }
-                  }>
+                  }
+                >
                   test account
                 </h5>
                 <p
-                  className="flush soft-half-top text-dark-tertiary">
+                  className="flush soft-half-top text-dark-tertiary"
+                >
                   <small>
                     <em>
                       Dec 13, 2012
@@ -2345,9 +2795,11 @@ exports[`test works with nickName 1`] = `
                   Object {
                     "verticalAlign": "middle",
                   }
-                }>
+                }
+              >
                 <div
-                  className="soft-half-right">
+                  className="soft-half-right"
+                >
                   <h4
                     className="text-dark-tertiary one-whole flush soft-right@handheld soft-double-right@lap-and-up"
                     style={
@@ -2356,7 +2808,8 @@ exports[`test works with nickName 1`] = `
                         "textOverflow": "ellipsis",
                         "whiteSpace": "nowrap",
                       }
-                    }>
+                    }
+                  >
                     $2.00
                     <span
                       className="text-primary icon-arrow-next locked"
@@ -2365,7 +2818,8 @@ exports[`test works with nickName 1`] = `
                           "right": "-5px",
                           "top": "1px",
                         }
-                      } />
+                      }
+                    />
                   </h4>
                 </div>
               </div>
@@ -2373,7 +2827,8 @@ exports[`test works with nickName 1`] = `
           </Link>
         </div>
         <p
-          className="soft text-center">
+          className="soft text-center"
+        >
           <small>
             <em>
               Changes to schedules may take a few minutes to be reflected here.
@@ -2386,7 +2841,7 @@ exports[`test works with nickName 1`] = `
 </div>
 `;
 
-exports[`test works without recoverableSchedules 1`] = `
+exports[`works without recoverableSchedules 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)
     classes={
@@ -2394,13 +2849,16 @@ exports[`test works without recoverableSchedules 1`] = `
         "background--light-primary",
       ]
     }
-    nav={true}>
+    nav={true}
+  >
     <Meta
       image="//s3.amazonaws.com/ns.assets/apollos/give_now-schedules1x2.jpg"
-      title="Schedule Your Giving" />
+      title="Schedule Your Giving"
+    />
     <Right
       background="//s3.amazonaws.com/ns.assets/apollos/give_now-schedules1x2.jpg"
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -2408,59 +2866,76 @@ exports[`test works without recoverableSchedules 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
+    0
     <div
-      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
+      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary"
+    >
       <div
-        className="text-left soft-double-top@palm-wide-and-up hard-left@lap-and-up soft-half-bottom soft@anchored">
+        className="text-left soft-double-top@palm-wide-and-up hard-left@lap-and-up soft-half-bottom soft@anchored"
+      >
         <h2
-          className="flush soft-bottom@portable text-dark-primary soft-top@handheld soft-double-top">
+          className="flush soft-bottom@portable text-dark-primary soft-top@handheld soft-double-top"
+        >
           Schedule Your Giving
         </h2>
         <div
-          className="soft-double-ends@anchored">
+          className="soft-double-ends@anchored"
+        >
           <MeteorDataContainer
             accounts={
               Array [
                 Object {},
               ]
-            } />
+            }
+          />
         </div>
       </div>
     </div>
     <div
       className="soft-half soft-sides@portable soft-double-sides@anchored soft-double-bottom@anchored soft-bottom@portable"
-      id="active-schedules">
+      id="active-schedules"
+    >
       <h4
-        className="soft soft-double-ends text-center flush-bottom">
+        className="soft soft-double-ends text-center flush-bottom"
+      >
         My Active Schedules
       </h4>
       <div>
         <div
-          className="soft card">
+          className="soft card"
+          key="0"
+        >
           <Link
             onlyActiveOnIndex={false}
             style={Object {}}
-            to="/give/schedules/1">
+            to="/give/schedules/1"
+          >
             <div
               className="grid"
+              key="0"
               style={
                 Object {
                   "verticalAlign": "middle",
                 }
-              }>
+              }
+            >
               <div
                 className="grid__item one-half"
                 style={
                   Object {
                     "verticalAlign": "middle",
                   }
-                }>
+                }
+              >
                 <h6
-                  className="text-dark-tertiary push-half-bottom">
+                  className="text-dark-tertiary push-half-bottom"
+                >
                   Test
                   <span
-                    className="text-dark-secondary" />
+                    className="text-dark-secondary"
+                  />
                 </h6>
                 <h5
                   className="flush one-whole"
@@ -2470,11 +2945,13 @@ exports[`test works without recoverableSchedules 1`] = `
                       "textOverflow": "ellipsis",
                       "whiteSpace": "nowrap",
                     }
-                  }>
+                  }
+                >
                   test account
                 </h5>
                 <p
-                  className="flush soft-half-top text-dark-tertiary">
+                  className="flush soft-half-top text-dark-tertiary"
+                >
                   <small>
                     <em>
                       Dec 13, 2012
@@ -2488,9 +2965,11 @@ exports[`test works without recoverableSchedules 1`] = `
                   Object {
                     "verticalAlign": "middle",
                   }
-                }>
+                }
+              >
                 <div
-                  className="soft-half-right">
+                  className="soft-half-right"
+                >
                   <h4
                     className="text-dark-tertiary one-whole flush soft-right@handheld soft-double-right@lap-and-up"
                     style={
@@ -2499,7 +2978,8 @@ exports[`test works without recoverableSchedules 1`] = `
                         "textOverflow": "ellipsis",
                         "whiteSpace": "nowrap",
                       }
-                    }>
+                    }
+                  >
                     $2.00
                     <span
                       className="text-primary icon-arrow-next locked"
@@ -2508,7 +2988,8 @@ exports[`test works without recoverableSchedules 1`] = `
                           "right": "-5px",
                           "top": "1px",
                         }
-                      } />
+                      }
+                    />
                   </h4>
                 </div>
               </div>
@@ -2516,7 +2997,8 @@ exports[`test works without recoverableSchedules 1`] = `
           </Link>
         </div>
         <p
-          className="soft text-center">
+          className="soft text-center"
+        >
           <small>
             <em>
               Changes to schedules may take a few minutes to be reflected here.

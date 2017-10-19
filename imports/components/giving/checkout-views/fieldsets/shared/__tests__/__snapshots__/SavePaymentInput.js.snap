@@ -1,19 +1,23 @@
-exports[`test does not render if guest checkout 1`] = `null`;
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`test does not render if scheduling 1`] = `null`;
+exports[`does not render if guest checkout 1`] = `null`;
 
-exports[`test does not render if should not save state 1`] = `null`;
+exports[`does not render if scheduling 1`] = `null`;
 
-exports[`test does not render if using saved account 1`] = `null`;
+exports[`does not render if should not save state 1`] = `null`;
 
-exports[`test renders default \`Bank Account\` if ach 1`] = `
+exports[`does not render if using saved account 1`] = `null`;
+
+exports[`renders default \`Bank Account\` if ach 1`] = `
 <div
   className="input input--active soft-bottom flush-bttom"
   data-spec="input-wrapper"
-  style={Object {}}>
+  style={Object {}}
+>
   <label
     htmlFor="accountName"
-    style={Object {}}>
+    style={Object {}}
+  >
     Saved Account Name
   </label>
   <input
@@ -35,18 +39,21 @@ exports[`test renders default \`Bank Account\` if ach 1`] = `
     readOnly={undefined}
     spellCheck={undefined}
     style={Object {}}
-    type={undefined} />
+    type={undefined}
+  />
 </div>
 `;
 
-exports[`test renders default \`Credit Card\` if not ach 1`] = `
+exports[`renders default \`Credit Card\` if not ach 1`] = `
 <div
   className="input input--active soft-bottom flush-bttom"
   data-spec="input-wrapper"
-  style={Object {}}>
+  style={Object {}}
+>
   <label
     htmlFor="accountName"
-    style={Object {}}>
+    style={Object {}}
+  >
     Saved Account Name
   </label>
   <input
@@ -68,6 +75,7 @@ exports[`test renders default \`Credit Card\` if not ach 1`] = `
     readOnly={undefined}
     spellCheck={undefined}
     style={Object {}}
-    type={undefined} />
+    type={undefined}
+  />
 </div>
 `;
