@@ -1,13 +1,9 @@
 /* eslint-disable */
 import { Meteor } from "meteor/meteor";
-import { storiesOf } from '@storybook/react';
-import {
-  withKnobs,
-  number,
-  text,
-} from '@storybook/addon-knobs';
+import { storiesOf } from "@storybook/react";
+import { withKnobs, number, text } from "@storybook/addon-knobs";
 import withReadme from "storybook-readme/with-readme";
-import backgrounds from "react-storybook-addon-backgrounds";
+import backgrounds from "@storybook/addon-backgrounds";
 
 import centered from "/.storybook/decorators/centered";
 import defaultColors from "/.storybook/defaults";
@@ -18,11 +14,11 @@ import LineGraph from "../LineGraph";
 const story = storiesOf("Graphs", module)
   .addDecorator(withKnobs)
   .addDecorator(centered)
-  .addDecorator(backgrounds(defaultColors()))
-  ;
+  .addDecorator(backgrounds(defaultColors()));
 
-story
-  .add("Line Graph", withReadme(Readme, () => {
+story.add(
+  "Line Graph",
+  withReadme(Readme, () => {
     const data = [
       {
         month: "January",
@@ -131,4 +127,5 @@ story
         axisStyles={axisStyles}
       />
     );
-  }));
+  }),
+);

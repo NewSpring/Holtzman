@@ -1,12 +1,8 @@
 /* eslint-disable */
-import { storiesOf } from '@storybook/react';
-import {
-  withKnobs,
-  select,
-  text,
-} from '@storybook/addon-knobs';
+import { storiesOf } from "@storybook/react";
+import { withKnobs, select, text } from "@storybook/addon-knobs";
 import withReadme from "storybook-readme/with-readme";
-import backgrounds from "react-storybook-addon-backgrounds";
+import backgrounds from "@storybook/addon-backgrounds";
 import centered from "/.storybook/decorators/centered";
 import defaultColors from "/.storybook/defaults";
 
@@ -17,11 +13,11 @@ import Activity from "../ActivityCard";
 const story = storiesOf("Cards", module)
   .addDecorator(withKnobs)
   .addDecorator(centered)
-  .addDecorator(backgrounds(defaultColors("light-primary", "light-secondary")))
-  ;
+  .addDecorator(backgrounds(defaultColors("light-primary", "light-secondary")));
 
-story
-  .add("Activity", withReadme(Readme, () => {
+story.add(
+  "Activity",
+  withReadme(Readme, () => {
     // status
     const statusOptions = {
       failed: "Failed",
@@ -58,5 +54,7 @@ story
             linkUrl={linkUrl}
           />
         </div>
-      </div>);
-  }));
+      </div>
+    );
+  }),
+);
