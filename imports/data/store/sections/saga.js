@@ -138,8 +138,6 @@ function* getSectionsData() {
       bindForeignImages(sections[section].children);
     }
 
-    console.log(sections);
-
     return sections;
   }
 
