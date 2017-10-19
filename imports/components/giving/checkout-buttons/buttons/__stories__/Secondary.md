@@ -6,15 +6,15 @@
 import { SecondaryButton } from "/imports/components/giving/checkout-buttons/buttons";
 
 <SecondaryButton
-  disable={false}
+  disabled={false}
   onClick={() => { alert("clicked"); }}
 />
 ```
 
 ### Properties
 
-* **disabled**:boolean? - disables the button
-* **onClick**:Function! - function to be run on click of button
+- **disabled**:boolean? - Toggles the disabled state of the button (doesn't need a value)
+- **onClick**:Function! - The function to be run on click of the button
 
 ### Purpose
 
