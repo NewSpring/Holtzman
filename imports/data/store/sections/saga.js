@@ -112,8 +112,8 @@ function* getSectionsData() {
 
   function bindForeignImages(s) {
     // remap the images of the section panel
-    // eslint-disable-next-line
     const sections = Object.assign({}, s);
+    // eslint-disable-next-line
     for (const section in sections) {
       let name = sections[section].text.toLowerCase();
       if (name.includes("studies")) name = "studies";
