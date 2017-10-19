@@ -79,8 +79,8 @@ class TemplateWithoutData extends Component {
   }
 }
 
-const SERIES_QUERY = gql`
-  query getSeries($limit: Int!, $skip: Int!) {
+const STUDIES_QUERY = gql`
+  query getStudies($limit: Int!, $skip: Int!) {
     content(channel: "studies", limit: $limit, skip: $skip) {
       id
       entryId: id
@@ -102,7 +102,6 @@ const SERIES_QUERY = gql`
         }
         isLight
         colors {
-          id
           value
           description
         }
@@ -111,7 +110,7 @@ const SERIES_QUERY = gql`
   }
 `;
 
-const withSeries = graphql(SERIES_QUERY, {
+const withStudies = graphql(STUDIES_QUERY, {
   options: {
     variables: { limit: 20, skip: 0 },
   },
@@ -136,7 +135,7 @@ const withSeries = graphql(SERIES_QUERY, {
 const mapStateToProps = state => ({ paging: state.paging });
 
 const Template = connect(mapStateToProps)(
-  withSeries(
+  withStudies(
     infiniteScroll(x => x, { doneText: "End of Studies" })(
       ReactMixin.decorate(Headerable)(TemplateWithoutData),
     ),
@@ -156,4 +155,4 @@ export default {
   Routes,
 };
 
-export { TemplateWithoutData, SERIES_QUERY };
+export { TemplateWithoutData, STUDIES_QUERY };
