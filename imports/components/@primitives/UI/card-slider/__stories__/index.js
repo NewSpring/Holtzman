@@ -1,11 +1,8 @@
 /* eslint-disable */
-import { storiesOf } from '@storybook/react';
-import {
-  withKnobs,
-  text,
-} from '@storybook/addon-knobs';
+import { storiesOf } from "@storybook/react";
+import { withKnobs, text } from "@storybook/addon-knobs";
 import withReadme from "storybook-readme/with-readme";
-import backgrounds from "react-storybook-addon-backgrounds";
+import backgrounds from "@storybook/addon-backgrounds";
 import centered from "/.storybook/decorators/centered";
 import defaultColors from "/.storybook/defaults";
 import Provider, { ReduxProvider } from "/.storybook/mocks/Provider";
@@ -17,12 +14,11 @@ import MetricCard from "../../cards/MetricCard";
 const story = storiesOf("Card Slider", module)
   .addDecorator(withKnobs)
   .addDecorator(centered)
-  .addDecorator(backgrounds([{ name: "light-secondary", value: "#f7f7f7", default: true }]))
-  ;
+  .addDecorator(backgrounds([{ name: "light-secondary", value: "#f7f7f7", default: true }]));
 
-story
-  .add("Card Slider", withReadme(Readme, () => {
-
+story.add(
+  "Card Slider",
+  withReadme(Readme, () => {
     // Object
     const salvationList = [
       { count: "11,130", label: "Total Salvations" },
@@ -40,11 +36,13 @@ story
         <div className={"grid__item"} style={{ maxWidth: "480px" }}>
           <Provider>
             <CardSlider>
-              {salvationList.map( ({ count, label }, key) => {
-                return <MetricCard count={count} label={label} key={key} />
+              {salvationList.map(({ count, label }, key) => {
+                return <MetricCard count={count} label={label} key={key} />;
               })}
             </CardSlider>
           </Provider>
         </div>
-      </div>);
-  }));
+      </div>
+    );
+  }),
+);
