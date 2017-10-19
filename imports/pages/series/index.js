@@ -102,7 +102,6 @@ const SERIES_QUERY = gql`
         }
         isLight
         colors {
-          id
           value
           description
         }
