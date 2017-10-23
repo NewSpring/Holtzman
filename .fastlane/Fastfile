@@ -142,6 +142,7 @@ platform :ios do
       git_url: ENV['CERTIFICATES_REPO'],
       app_identifier: [ "cc.newspring.newspringapp", "com.subsplashstudio31.NewSpring-Church" ],
       username: ENV["APPLE_ID"],
+      force_for_new_devices: true,
     )
   end
 
