@@ -23,16 +23,17 @@ const createReduxStore = (initialState, history) => {
     },
   };
 
-  const sharedMiddlewares = [...middlewares, ...GraphQL.middleware()];
+  const sharedMiddlewares = [...middlewares, GraphQL.middleware()];
 
   const reduxRouterMiddleware = syncHistory(history);
 
   const sagaMiddleware = createSagaMiddleware();
+
   let sharedCompose = [
     applyMiddleware(
       ...sharedMiddlewares,
       sagaMiddleware,
-      reduxRouterMiddleware
+      reduxRouterMiddleware,
     ),
     reduxReset(),
   ];
@@ -41,15 +42,15 @@ const createReduxStore = (initialState, history) => {
     sharedCompose = [...sharedCompose, ...[
       typeof window === "object" && typeof window.devToolsExtension !== "undefined" ?
         window.devToolsExtension() :
-        (f) => f,
+        f => f,
     ]];
   }
 
   const store = compose(...sharedCompose)(createStore)(
-    combineReducers(joinedReducers), initialState
+    combineReducers(joinedReducers), initialState,
   );
 
-  sagas.forEach((saga) => sagaMiddleware.run(saga()));
+  sagas.forEach(saga => sagaMiddleware.run(saga()));
 
   return store;
 };

@@ -1,5 +1,6 @@
 
-import { Component, PropTypes } from "react";
+import PropTypes from "prop-types";
+import { Component } from "react";
 import { connect } from "react-redux";
 
 import { modal, audio as audioActions } from "../../data/store";
@@ -55,7 +56,7 @@ class AudioTrackWithoutData extends Component {
     return classes.join(" ");
   }
 
-  play = (e) => {
+  play = e => {
     e.preventDefault();
     const index = this.props.trackNumber;
 
@@ -75,7 +76,7 @@ class AudioTrackWithoutData extends Component {
     }));
 
     this.props.dispatch(audioActions.setPlaylist(
-      this.props.album.content.tracks
+      this.props.album.content.tracks,
     ));
   }
 

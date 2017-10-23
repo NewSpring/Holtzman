@@ -1,9 +1,9 @@
-## FeedItem component
+## FeedItem
 
 ### Usage
 
 ```js
-import FeedItem from "../../components/cards/cards.FeedItem";
+import FeedItem from "/imports/components/content/feed-item-card";
 
 <FeedItem
   item={item}

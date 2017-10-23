@@ -1,4 +1,5 @@
-import { Component, PropTypes } from "react";
+import PropTypes from "prop-types";
+import { Component } from "react";
 
 export default class Tabs extends Component {
 
@@ -30,7 +31,7 @@ export default class Tabs extends Component {
     }
   }
 
-  toggle = (event) => {
+  toggle = event => {
     const active = Number(event.target.dataset.toggle);
     if (active !== this.state.active) {
       if (typeof (this.props.toggle) === "function") {
@@ -41,7 +42,7 @@ export default class Tabs extends Component {
     }
   }
 
-  toggleClasses = (main) => {
+  toggleClasses = main => {
     const classes = [
       "transition",
       "text-center",

@@ -1,30 +1,37 @@
-exports[`test adjust style if modal visible 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`adjust style if modal visible 1`] = `
 <section
   className="hard background--light-primary"
   style={
     Object {
       "WebkitFilter": "blur(2px)",
     }
-  }>
+  }
+>
   <Meta
     description="Album by artist"
-    image="url(http://test.com/medium.blur.jpg)" />
+    image="url(http://test.com/medium.blur.jpg)"
+  />
   <div
     className="one-whole soft soft-double@palm-wide-and-up overlay floating background--dark-primary background--fill"
     style={
       Object {
         "backgroundImage": "url(http://test.com/xsmall.blur.jpg)",
       }
-    }>
+    }
+  >
     <div
       className="one-third floating__item display-inline overlay__item ratio--square background--fill"
       style={
         Object {
           "backgroundImage": "url(http://test.com/medium.blur.jpg)",
         }
-      } />
+      }
+    />
     <div
-      className="overlay__item soft-left text-left floating__item two-thirds text-light-primary">
+      className="overlay__item soft-left text-left floating__item two-thirds text-light-primary"
+    >
       <h5 />
       <h7>
         artist
@@ -32,9 +39,11 @@ exports[`test adjust style if modal visible 1`] = `
     </div>
   </div>
   <div
-    className="background--light-primary one-whole">
+    className="background--light-primary one-whole"
+  >
     <div
-      className="soft-sides soft-double-sides@palm-wide-and-up soft-ends@palm-wide-and-up soft-half-ends push-bottom">
+      className="soft-sides soft-double-sides@palm-wide-and-up soft-ends@palm-wide-and-up soft-half-ends push-bottom"
+    >
       <Connect(AudioTrackWithoutData)
         album={
           Object {
@@ -67,12 +76,14 @@ exports[`test adjust style if modal visible 1`] = `
             },
           }
         }
+        key="0"
         track={
           Object {
             "file": "http://test.com/test.mp3",
           }
         }
-        trackNumber={0} />
+        trackNumber={0}
+      />
       <Connect(AudioTrackWithoutData)
         album={
           Object {
@@ -105,12 +116,14 @@ exports[`test adjust style if modal visible 1`] = `
             },
           }
         }
+        key="1"
         track={
           Object {
             "file": "http://test.com/test.mp3",
           }
         }
-        trackNumber={1} />
+        trackNumber={1}
+      />
       <Connect(AudioTrackWithoutData)
         album={
           Object {
@@ -143,18 +156,20 @@ exports[`test adjust style if modal visible 1`] = `
             },
           }
         }
+        key="2"
         track={
           Object {
             "file": "http://test.com/test.mp3",
           }
         }
-        trackNumber={2} />
+        trackNumber={2}
+      />
     </div>
   </div>
 </section>
 `;
 
-exports[`test parses query correctly 1`] = `
+exports[`parses query correctly 1`] = `
 Object {
   "definitions": Array [
     Object {
@@ -599,7 +614,7 @@ Object {
             duration
             file: s3
           }
-          images(sizes: [\"large\", \"medium\", \"small\", \"xsmall\"]) {
+          images(sizes: [\\"large\\", \\"medium\\", \\"small\\", \\"xsmall\\"]) {
             fileName
             fileType
             fileLabel
@@ -623,39 +638,46 @@ Object {
 }
 `;
 
-exports[`test renders loading if not content 1`] = `
+exports[`renders loading if not content 1`] = `
 <div
-  className="locked-ends locked-sides floating">
+  className="locked-ends locked-sides floating"
+>
   <div
-    className="floating__item">
+    className="floating__item"
+  >
     <Loading />
   </div>
 </div>
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <section
   className="hard background--light-primary"
-  style={Object {}}>
+  style={Object {}}
+>
   <Meta
     description="Album by artist"
-    image="url(http://test.com/medium.blur.jpg)" />
+    image="url(http://test.com/medium.blur.jpg)"
+  />
   <div
     className="one-whole soft soft-double@palm-wide-and-up overlay floating background--dark-primary background--fill"
     style={
       Object {
         "backgroundImage": "url(http://test.com/xsmall.blur.jpg)",
       }
-    }>
+    }
+  >
     <div
       className="one-third floating__item display-inline overlay__item ratio--square background--fill"
       style={
         Object {
           "backgroundImage": "url(http://test.com/medium.blur.jpg)",
         }
-      } />
+      }
+    />
     <div
-      className="overlay__item soft-left text-left floating__item two-thirds text-light-primary">
+      className="overlay__item soft-left text-left floating__item two-thirds text-light-primary"
+    >
       <h5 />
       <h7>
         artist
@@ -663,9 +685,11 @@ exports[`test renders with props 1`] = `
     </div>
   </div>
   <div
-    className="background--light-primary one-whole">
+    className="background--light-primary one-whole"
+  >
     <div
-      className="soft-sides soft-double-sides@palm-wide-and-up soft-ends@palm-wide-and-up soft-half-ends push-bottom">
+      className="soft-sides soft-double-sides@palm-wide-and-up soft-ends@palm-wide-and-up soft-half-ends push-bottom"
+    >
       <Connect(AudioTrackWithoutData)
         album={
           Object {
@@ -698,12 +722,14 @@ exports[`test renders with props 1`] = `
             },
           }
         }
+        key="0"
         track={
           Object {
             "file": "http://test.com/test.mp3",
           }
         }
-        trackNumber={0} />
+        trackNumber={0}
+      />
       <Connect(AudioTrackWithoutData)
         album={
           Object {
@@ -736,12 +762,14 @@ exports[`test renders with props 1`] = `
             },
           }
         }
+        key="1"
         track={
           Object {
             "file": "http://test.com/test.mp3",
           }
         }
-        trackNumber={1} />
+        trackNumber={1}
+      />
       <Connect(AudioTrackWithoutData)
         album={
           Object {
@@ -774,40 +802,47 @@ exports[`test renders with props 1`] = `
             },
           }
         }
+        key="2"
         track={
           Object {
             "file": "http://test.com/test.mp3",
           }
         }
-        trackNumber={2} />
+        trackNumber={2}
+      />
     </div>
   </div>
 </section>
 `;
 
-exports[`test renders without album artist 1`] = `
+exports[`renders without album artist 1`] = `
 <section
   className="hard background--light-primary"
-  style={Object {}}>
+  style={Object {}}
+>
   <Meta
     description="Album by NewSpring"
-    image="url(http://test.com/medium.blur.jpg)" />
+    image="url(http://test.com/medium.blur.jpg)"
+  />
   <div
     className="one-whole soft soft-double@palm-wide-and-up overlay floating background--dark-primary background--fill"
     style={
       Object {
         "backgroundImage": "url(http://test.com/xsmall.blur.jpg)",
       }
-    }>
+    }
+  >
     <div
       className="one-third floating__item display-inline overlay__item ratio--square background--fill"
       style={
         Object {
           "backgroundImage": "url(http://test.com/medium.blur.jpg)",
         }
-      } />
+      }
+    />
     <div
-      className="overlay__item soft-left text-left floating__item two-thirds text-light-primary">
+      className="overlay__item soft-left text-left floating__item two-thirds text-light-primary"
+    >
       <h5 />
       <h7>
         NewSpring
@@ -815,9 +850,11 @@ exports[`test renders without album artist 1`] = `
     </div>
   </div>
   <div
-    className="background--light-primary one-whole">
+    className="background--light-primary one-whole"
+  >
     <div
-      className="soft-sides soft-double-sides@palm-wide-and-up soft-ends@palm-wide-and-up soft-half-ends push-bottom">
+      className="soft-sides soft-double-sides@palm-wide-and-up soft-ends@palm-wide-and-up soft-half-ends push-bottom"
+    >
       <Connect(AudioTrackWithoutData)
         album={
           Object {
@@ -850,12 +887,14 @@ exports[`test renders without album artist 1`] = `
             },
           }
         }
+        key="0"
         track={
           Object {
             "file": "http://test.com/test.mp3",
           }
         }
-        trackNumber={0} />
+        trackNumber={0}
+      />
       <Connect(AudioTrackWithoutData)
         album={
           Object {
@@ -888,12 +927,14 @@ exports[`test renders without album artist 1`] = `
             },
           }
         }
+        key="1"
         track={
           Object {
             "file": "http://test.com/test.mp3",
           }
         }
-        trackNumber={1} />
+        trackNumber={1}
+      />
       <Connect(AudioTrackWithoutData)
         album={
           Object {
@@ -926,12 +967,14 @@ exports[`test renders without album artist 1`] = `
             },
           }
         }
+        key="2"
         track={
           Object {
             "file": "http://test.com/test.mp3",
           }
         }
-        trackNumber={2} />
+        trackNumber={2}
+      />
     </div>
   </div>
 </section>

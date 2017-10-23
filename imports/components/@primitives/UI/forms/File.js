@@ -1,4 +1,5 @@
-import { Component, PropTypes } from "react";
+import PropTypes from "prop-types";
+import { Component } from "react";
 
 import Label from "./Label";
 
@@ -92,7 +93,7 @@ export default class File extends Component {
     });
   }
 
-  setValue = (value) => {
+  setValue = value => {
     const node = this.node;
     node.value = value;
     this.focus();
@@ -159,7 +160,7 @@ export default class File extends Component {
 
 
         <input
-          ref={(node) => (this.node = node)}
+          ref={node => (this.node = node)}
           id={this.props.id || this.props.name || this.props.label}
           type="file"
           placeholder={this.props.placeholder || this.props.label}

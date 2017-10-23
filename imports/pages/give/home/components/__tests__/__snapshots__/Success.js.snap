@@ -1,15 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`ContactLink renders 1`] = `
 <a
   href="//rock.newspring.cc/workflows/152?Topic=Stewardship"
   rel="noopener noreferrer"
-  target="_blank">
+  target="_blank"
+>
   contact us
 </a>
 `;
 
 exports[`ContactUs renders 1`] = `
 <p
-  className="test-dark-tertiary text-left">
+  className="test-dark-tertiary text-left"
+>
   <em>
     If you have any questions please call our Finance Team at 864-965-9990 or
      
@@ -22,15 +26,19 @@ exports[`ContactUs renders 1`] = `
 
 exports[`Success renders with a different type 1`] = `
 <div
-  className="soft soft-double-ends push-double-top@anchored one-whole text-center">
+  className="soft soft-double-ends push-double-top@anchored one-whole text-center"
+>
   <div
-    className="push-double-top">
+    className="push-double-top"
+  >
     <Success
       fill="#6BAC43"
       height="61px"
-      width="60px" />
+      width="60px"
+    />
     <h3
-      className="text-primary push-ends">
+      className="text-primary push-ends"
+    >
       Success!
     </h3>
     <p>
@@ -38,7 +46,8 @@ exports[`Success renders with a different type 1`] = `
     </p>
     <button
       className="btn one-whole push-bottom"
-      onClick={[Function]}>
+      onClick={[Function]}
+    >
       Back To Dashboard
     </button>
     <ContactUs />
@@ -48,15 +57,19 @@ exports[`Success renders with a different type 1`] = `
 
 exports[`Success renders with default props 1`] = `
 <div
-  className="soft soft-double-ends push-double-top@anchored one-whole text-center">
+  className="soft soft-double-ends push-double-top@anchored one-whole text-center"
+>
   <div
-    className="push-double-top">
+    className="push-double-top"
+  >
     <Success
       fill="#6BAC43"
       height="61px"
-      width="60px" />
+      width="60px"
+    />
     <h3
-      className="text-primary push-ends">
+      className="text-primary push-ends"
+    >
       Success!
     </h3>
     <p>
@@ -64,7 +77,8 @@ exports[`Success renders with default props 1`] = `
     </p>
     <button
       className="btn one-whole push-bottom"
-      onClick={[Function]}>
+      onClick={[Function]}
+    >
       Back To Dashboard
     </button>
     <ContactUs />

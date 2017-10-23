@@ -14,9 +14,6 @@ The on boarding block is used to handle the workflow of data for on-boarding a u
 When using the on board component, it is best to include the entire block. [The index file](./index.jsx) contains the state handling of the sub components as well as integration with redux. Usage:
 
 ```javascript
-import { Component, PropTypes} from "react"
-
-
 export default class AccountPage extends Component {
   render () {
     return (
@@ -24,7 +21,6 @@ export default class AccountPage extends Component {
     )
   }
 }
-
 ```
 
 #### Props

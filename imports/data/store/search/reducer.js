@@ -31,7 +31,7 @@ export default createReducer(initial, {
     }
   ),
 
-  "SEARCH.CLEAR": (state) => (
+  "SEARCH.CLEAR": state => (
     { ...state,
       items: [],
       page: 0,
@@ -40,13 +40,13 @@ export default createReducer(initial, {
     }
   ),
 
-  "SEARCH.INCREMENT_PAGE": (state) => (
+  "SEARCH.INCREMENT_PAGE": state => (
     { ...state,
       page: state.page + 1,
     }
   ),
 
-  "SEARCH.TOGGLE_LOADING": (state) => (
+  "SEARCH.TOGGLE_LOADING": state => (
     { ...state,
       loading: !state.loading,
     }

@@ -1,4 +1,6 @@
-exports[`test renders and checked false when savedAccount is not account 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders and checked false when savedAccount is not account 1`] = `
 <div
   id="1"
   onClick={[Function]}
@@ -7,41 +9,49 @@ exports[`test renders and checked false when savedAccount is not account 1`] = `
       "cursor": "pointer",
       "position": "relative",
     }
-  }>
+  }
+>
   <div
-    className="soft-ends push-double-left text-left hard-right outlined--light outlined--bottom relative">
+    className="soft-ends push-double-left text-left hard-right outlined--light outlined--bottom relative"
+  >
     <div
-      className="display-inline-block soft-half-ends one-whole">
+      className="display-inline-block soft-half-ends one-whole"
+    >
       <h6
-        className="flush-bottom float-left text-dark-tertiary">
+        className="flush-bottom float-left text-dark-tertiary"
+      >
         thing
       </h6>
     </div>
     <h5
-      className="hard one-whole flush-bottom text-dark-tertiary">
+      className="hard one-whole flush-bottom text-dark-tertiary"
+    >
       <span>
         ****
         6789
       </span>
       <span
-        className="float-right soft-half-left">
+        className="float-right soft-half-left"
+      >
         <div
           className="background--fill display-inline-block"
           style={
             Object {
-              "backgroundImage": "url(\'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAA8CAYAAADxJz2MAAAABGdBTUEAALGPC/xhBQAAAc9JREFUeAHt3DFOwzAUxnGcROoMEx04Q4/AoSraoXMWqp4DjgFH4AwgdWvnDlV4FoyOn+xPlVrlnwEJ+32h/eWlcqjkcGfHbrd7Op1Or8MwPNuv8zjGMSqwDyF8tG27Wq/XP+Ef78vw7kcjTKQEDl3XLRrrvC14KR937OF8Pm8bK4u3LUeFQPzIa+zHY0WWyJ/APHYghyDQjWU3m00Ym5vieN/3Q+p904EplYIxAAuwUqUAplQKxgAswEqVAphSKRgDsAArVQpgSqVgDMACrFQpgCmVgrHRJxHvHGMrcy93rfO1T150oHhFAQRQFBDjdCCAooAYpwMBFAXEePU6sHbdJL7eq4tzC4uXBEAARQExTgcCKAqIcToQQFFAjNOBAIoCYrz6SeTS/5G+lScdbmGxAwEEUBQQ43QggKKAGKcDARQFxHj1OvBW1mmijxvnFnaJ8gUA5n3cWQBdonwBgHkfdxZAlyhfAGDex50F0CXKFwCY93FnAXSJ8gUA5n3cWQBdonxBuPR3G/k/f/uzdKB4DSPgXjzHlOP7xjaR+ZyygPLeo11jO/C82EkOyommmDW842w2WzVx+6K4A48NvBkEt7PfDXHrp3fDWyyXy+9ftplH0FR79EYAAAAASUVORK5CYII=\')",
+              "backgroundImage": "url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAA8CAYAAADxJz2MAAAABGdBTUEAALGPC/xhBQAAAc9JREFUeAHt3DFOwzAUxnGcROoMEx04Q4/AoSraoXMWqp4DjgFH4AwgdWvnDlV4FoyOn+xPlVrlnwEJ+32h/eWlcqjkcGfHbrd7Op1Or8MwPNuv8zjGMSqwDyF8tG27Wq/XP+Ef78vw7kcjTKQEDl3XLRrrvC14KR937OF8Pm8bK4u3LUeFQPzIa+zHY0WWyJ/APHYghyDQjWU3m00Ym5vieN/3Q+p904EplYIxAAuwUqUAplQKxgAswEqVAphSKRgDsAArVQpgSqVgDMACrFQpgCmVgrHRJxHvHGMrcy93rfO1T150oHhFAQRQFBDjdCCAooAYpwMBFAXEePU6sHbdJL7eq4tzC4uXBEAARQExTgcCKAqIcToQQFFAjNOBAIoCYrz6SeTS/5G+lScdbmGxAwEEUBQQ43QggKKAGKcDARQFxHj1OvBW1mmijxvnFnaJ8gUA5n3cWQBdonwBgHkfdxZAlyhfAGDex50F0CXKFwCY93FnAXSJ8gUA5n3cWQBdonxBuPR3G/k/f/uzdKB4DSPgXjzHlOP7xjaR+ZyygPLeo11jO/C82EkOyommmDW842w2WzVx+6K4A48NvBkEt7PfDXHrp3fDWyyXy+9ftplH0FR79EYAAAAASUVORK5CYII=')",
               "borderRadius": "3px",
               "height": "25px",
               "position": "inherit",
               "top": "3px",
               "width": "40px",
             }
-          } />
+          }
+        />
       </span>
     </h5>
   </div>
   <div
-    className="locked-ends locked-sides">
+    className="locked-ends locked-sides"
+  >
     <input
       checked={false}
       id="label1"
@@ -55,7 +65,8 @@ exports[`test renders and checked false when savedAccount is not account 1`] = `
           "top": 0,
         }
       }
-      type="checkbox" />
+      type="checkbox"
+    />
     <label
       htmlFor="label1"
       style={
@@ -64,12 +75,13 @@ exports[`test renders and checked false when savedAccount is not account 1`] = `
           "position": "absolute",
           "top": "50%",
         }
-      } />
+      }
+    />
   </div>
 </div>
 `;
 
-exports[`test renders and checked true when savedAccount is account 1`] = `
+exports[`renders and checked true when savedAccount is account 1`] = `
 <div
   id="1"
   onClick={[Function]}
@@ -78,41 +90,49 @@ exports[`test renders and checked true when savedAccount is account 1`] = `
       "cursor": "pointer",
       "position": "relative",
     }
-  }>
+  }
+>
   <div
-    className="soft-ends push-double-left text-left hard-right outlined--light outlined--bottom relative">
+    className="soft-ends push-double-left text-left hard-right outlined--light outlined--bottom relative"
+  >
     <div
-      className="display-inline-block soft-half-ends one-whole">
+      className="display-inline-block soft-half-ends one-whole"
+    >
       <h6
-        className="flush-bottom float-left text-dark-tertiary">
+        className="flush-bottom float-left text-dark-tertiary"
+      >
         thing
       </h6>
     </div>
     <h5
-      className="hard one-whole flush-bottom text-dark-tertiary">
+      className="hard one-whole flush-bottom text-dark-tertiary"
+    >
       <span>
         ****
         6789
       </span>
       <span
-        className="float-right soft-half-left">
+        className="float-right soft-half-left"
+      >
         <div
           className="background--fill display-inline-block"
           style={
             Object {
-              "backgroundImage": "url(\'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAA8CAYAAADxJz2MAAAABGdBTUEAALGPC/xhBQAAAc9JREFUeAHt3DFOwzAUxnGcROoMEx04Q4/AoSraoXMWqp4DjgFH4AwgdWvnDlV4FoyOn+xPlVrlnwEJ+32h/eWlcqjkcGfHbrd7Op1Or8MwPNuv8zjGMSqwDyF8tG27Wq/XP+Ef78vw7kcjTKQEDl3XLRrrvC14KR937OF8Pm8bK4u3LUeFQPzIa+zHY0WWyJ/APHYghyDQjWU3m00Ym5vieN/3Q+p904EplYIxAAuwUqUAplQKxgAswEqVAphSKRgDsAArVQpgSqVgDMACrFQpgCmVgrHRJxHvHGMrcy93rfO1T150oHhFAQRQFBDjdCCAooAYpwMBFAXEePU6sHbdJL7eq4tzC4uXBEAARQExTgcCKAqIcToQQFFAjNOBAIoCYrz6SeTS/5G+lScdbmGxAwEEUBQQ43QggKKAGKcDARQFxHj1OvBW1mmijxvnFnaJ8gUA5n3cWQBdonwBgHkfdxZAlyhfAGDex50F0CXKFwCY93FnAXSJ8gUA5n3cWQBdonxBuPR3G/k/f/uzdKB4DSPgXjzHlOP7xjaR+ZyygPLeo11jO/C82EkOyommmDW842w2WzVx+6K4A48NvBkEt7PfDXHrp3fDWyyXy+9ftplH0FR79EYAAAAASUVORK5CYII=\')",
+              "backgroundImage": "url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAA8CAYAAADxJz2MAAAABGdBTUEAALGPC/xhBQAAAc9JREFUeAHt3DFOwzAUxnGcROoMEx04Q4/AoSraoXMWqp4DjgFH4AwgdWvnDlV4FoyOn+xPlVrlnwEJ+32h/eWlcqjkcGfHbrd7Op1Or8MwPNuv8zjGMSqwDyF8tG27Wq/XP+Ef78vw7kcjTKQEDl3XLRrrvC14KR937OF8Pm8bK4u3LUeFQPzIa+zHY0WWyJ/APHYghyDQjWU3m00Ym5vieN/3Q+p904EplYIxAAuwUqUAplQKxgAswEqVAphSKRgDsAArVQpgSqVgDMACrFQpgCmVgrHRJxHvHGMrcy93rfO1T150oHhFAQRQFBDjdCCAooAYpwMBFAXEePU6sHbdJL7eq4tzC4uXBEAARQExTgcCKAqIcToQQFFAjNOBAIoCYrz6SeTS/5G+lScdbmGxAwEEUBQQ43QggKKAGKcDARQFxHj1OvBW1mmijxvnFnaJ8gUA5n3cWQBdonwBgHkfdxZAlyhfAGDex50F0CXKFwCY93FnAXSJ8gUA5n3cWQBdonxBuPR3G/k/f/uzdKB4DSPgXjzHlOP7xjaR+ZyygPLeo11jO/C82EkOyommmDW842w2WzVx+6K4A48NvBkEt7PfDXHrp3fDWyyXy+9ftplH0FR79EYAAAAASUVORK5CYII=')",
               "borderRadius": "3px",
               "height": "25px",
               "position": "inherit",
               "top": "3px",
               "width": "40px",
             }
-          } />
+          }
+        />
       </span>
     </h5>
   </div>
   <div
-    className="locked-ends locked-sides">
+    className="locked-ends locked-sides"
+  >
     <input
       checked={true}
       id="label1"
@@ -126,7 +146,8 @@ exports[`test renders and checked true when savedAccount is account 1`] = `
           "top": 0,
         }
       }
-      type="checkbox" />
+      type="checkbox"
+    />
     <label
       htmlFor="label1"
       style={
@@ -135,7 +156,8 @@ exports[`test renders and checked true when savedAccount is account 1`] = `
           "position": "absolute",
           "top": "50%",
         }
-      } />
+      }
+    />
   </div>
 </div>
 `;

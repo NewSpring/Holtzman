@@ -1,5 +1,7 @@
 /* eslint-disable react/no-danger */
-import { Component, PropTypes } from "react";
+import PropTypes from "prop-types";
+
+import { Component } from "react";
 import moment from "moment";
 import { Link } from "react-router";
 
@@ -19,7 +21,7 @@ export default class Layout extends Component {
     transaction: PropTypes.object,
   }
 
-  formatDate = (date) => (
+  formatDate = date => (
     moment(new Date(date)).format("MMM D, YYYY")
   )
 

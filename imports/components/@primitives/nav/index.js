@@ -1,4 +1,5 @@
-import { Component, PropTypes } from "react";
+import PropTypes from "prop-types";
+import { Component } from "react";
 import { connect } from "react-redux";
 
 import {
@@ -17,7 +18,7 @@ class NavContainerWithoutData extends Component {
     path: PropTypes.string,
   }
 
-  handleAction = (action) => {
+  handleAction = action => {
     this.props.dispatch(action(this.props));
   }
 
@@ -47,7 +48,7 @@ class NavContainerWithoutData extends Component {
   }
 }
 
-const map = (state) => ({
+const map = state => ({
   state: state.nav,
   modal: state.modal,
   liked: state.liked,
