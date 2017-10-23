@@ -322,19 +322,19 @@ const withGroupFinder = graphql(GROUP_FINDER_QUERY, {
       data.fetchMore({
         variables: { offset: data.groups.results.length },
         updateQuery: (previousResult, { fetchMoreResult }) => {
-          if (!fetchMoreResult.data) {
+          if (!fetchMoreResult.groups) {
             return previousResult;
           }
-          if (fetchMoreResult.data.groups.results === 0) {
-            fetchMoreResult.data.groups.results.push(
-              fetchMoreResult.data.groups.results[fetchMoreResult.data.groups.results.length - 1],
+          if (fetchMoreResult.groups.results === 0) {
+            fetchMoreResult.groups.results.push(
+              fetchMoreResult.groups.results[fetchMoreResult.groups.results.length - 1],
             );
           }
           return {
             groups: {
-              count: fetchMoreResult.data.groups.count,
+              count: fetchMoreResult.groups.count,
               // Append the new feed results to the old one
-              results: [...previousResult.groups.results, ...fetchMoreResult.data.groups.results],
+              results: [...previousResult.groups.results, ...fetchMoreResult.groups.results],
             },
           };
         },

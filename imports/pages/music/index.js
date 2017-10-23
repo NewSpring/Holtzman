@@ -127,8 +127,8 @@ const withAlbums = graphql(ALBUMS_QUERY, {
       data.fetchMore({
         variables: { ...data.variables, skip: data.content.length },
         updateQuery: (previousResult, { fetchMoreResult }) => {
-          if (!fetchMoreResult.data) return previousResult;
-          return { content: [...previousResult.content, ...fetchMoreResult.data.content] };
+          if (!fetchMoreResult.content) return previousResult;
+          return { content: [...previousResult.content, ...fetchMoreResult.content] };
         },
       }),
   }),

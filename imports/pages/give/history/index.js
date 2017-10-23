@@ -144,7 +144,7 @@ const TRANSACTIONS_QUERY = gql`
       date
       status
       summary
-      person { firstName, lastName, photo }
+      person { id: entityId, firstName, lastName, photo }
       details {
         id
         amount
@@ -181,10 +181,10 @@ const withTransactions = graphql(TRANSACTIONS_QUERY, {
       data.fetchMore({
         variables: { ...data.variables, skip: data.transactions.length },
         updateQuery: (previousResult, { fetchMoreResult }) => {
-          if (!fetchMoreResult.data) return previousResult;
+          if (!fetchMoreResult.transactions) return previousResult;
           const transactions = [
             ...previousResult.transactions,
-            ...fetchMoreResult.data.transactions,
+            ...fetchMoreResult.transactions,
           ];
           return {
             transactions: transactions.filter(x => !!x.id),

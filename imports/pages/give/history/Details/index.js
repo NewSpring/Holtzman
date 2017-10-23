@@ -97,6 +97,7 @@ const TRANSACTIONS_QUERY = gql`
         summary
         status
         person {
+          id: entityId
           firstName
           nickName
           lastName
