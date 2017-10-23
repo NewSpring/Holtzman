@@ -29,7 +29,7 @@ export default (reducer = defaultReducer, options) => WrappedComponent => {
 
     bindPageOnScroll = () => {
       const scrollPosition = window.scrollY;
-      const deviceHeight = window.outerHeight;
+      const deviceHeight = window.screen.height;
       const contentHeight = document.body.clientHeight;
       const threshold = mergedOptions.percent * 0.01;
 
@@ -71,7 +71,7 @@ export default (reducer = defaultReducer, options) => WrappedComponent => {
           <Loading />
         </div>
       );
-    };
+    }
 
     render() {
       const mergedProps = { ...this.props, ...{ Loading: this.renderLoading } };

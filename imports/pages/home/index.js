@@ -147,10 +147,10 @@ const withFeedContent = graphql(CONTENT_FEED_QUERY, {
       data.fetchMore({
         variables: { ...data.variables, skip: data.feed.length },
         updateQuery: (previousResult, { fetchMoreResult }) => {
-          if (!fetchMoreResult.data) {
+          if (!fetchMoreResult.feed) {
             return previousResult;
           }
-          return { feed: [...previousResult.feed, ...fetchMoreResult.data.feed] };
+          return { feed: [...previousResult.feed, ...fetchMoreResult.feed] };
         },
       }),
   }),
