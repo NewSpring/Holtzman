@@ -280,7 +280,6 @@ const STUDY_QUERY = gql`
           }
           ooyalaId
           colors {
-            id
             value
             description
           }

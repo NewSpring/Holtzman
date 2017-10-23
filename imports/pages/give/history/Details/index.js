@@ -106,6 +106,7 @@ const TRANSACTIONS_QUERY = gql`
           id
           amount
           account {
+            id
             name
             description
             summary

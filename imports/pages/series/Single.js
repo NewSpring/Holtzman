@@ -139,7 +139,6 @@ const SERIES_SINGLE_QUERY = gql`
           }
           ooyalaId
           colors {
-            id
             value
             description
           }
