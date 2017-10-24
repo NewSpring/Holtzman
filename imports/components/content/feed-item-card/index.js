@@ -110,7 +110,6 @@ const wrapperClasses = (item: Object): string => {
 };
 
 const itemStyles = (item: Object): Object => {
-  console.log(item);
   if (!isCollectionItem(item)) return {};
 
   const { channelName } = item;
