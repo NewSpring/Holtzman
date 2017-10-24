@@ -1,15 +1,20 @@
-exports[`test doesn't render family members if there are none 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`doesn't render family members if there are none 1`] = `
 <div
   style={
     Object {
       "position": "relative",
     }
-  }>
+  }
+>
   <div
     className="one-whole background--light-primary soft-half-ends soft-sides soft-double-sides@lap-and-up"
-    onClick={[Function]}>
+    onClick={[Function]}
+  >
     <h7
-      className="text-dark-secondary flush-bottom push-half-left display-inline-block">
+      className="text-dark-secondary flush-bottom push-half-left display-inline-block"
+    >
       Filter Transactions
     </h7>
     <span
@@ -19,20 +24,26 @@ exports[`test doesn't render family members if there are none 1`] = `
           "cursor": "pointer",
           "marginTop": "0px",
         }
-      } />
+      }
+    />
   </div>
   <div
-    className="one-whole outlined--bottom outlined--light" />
+    className="one-whole outlined--bottom outlined--light"
+  />
   <div
-    className="one-whole outlined--light outlined--bottom background--light-primary soft-half-ends soft-sides soft-double-sides@lap-and-up push-half-left">
+    className="one-whole outlined--light outlined--bottom background--light-primary soft-half-ends soft-sides soft-double-sides@lap-and-up push-half-left"
+  >
     <h7
-      className="soft-half-top push-half-top text-dark-secondary display-inline-block">
+      className="soft-half-top push-half-top text-dark-secondary display-inline-block"
+    >
       Date Range
     </h7>
     <div
-      className="grid one-whole flush-left@palm">
+      className="grid one-whole flush-left@palm"
+    >
       <div
-        className="hard-left@palm grid__item one-whole">
+        className="hard-left@palm grid__item one-whole"
+      >
         <TagSelect
           currentActive=""
           items={
@@ -56,17 +67,21 @@ exports[`test doesn't render family members if there are none 1`] = `
             ]
           }
           onClick={[Function]}
-          overrideActive={false} />
+          overrideActive={false}
+        />
       </div>
     </div>
     <h7
-      className="soft-half-top push-half-top text-dark-secondary display-inline-block">
+      className="soft-half-top push-half-top text-dark-secondary display-inline-block"
+    >
       Custom Dates
     </h7>
     <div
-      className="grid one-whole flush-left@palm">
+      className="grid one-whole flush-left@palm"
+    >
       <div
-        className="hard-left@palm grid__item one-whole display-inline-block">
+        className="hard-left@palm grid__item one-whole display-inline-block"
+      >
         <withRouter(Connect(TagWithoutData))
           active={false}
           className={false}
@@ -79,11 +94,14 @@ exports[`test doesn't render family members if there are none 1`] = `
                   "position": "relative",
                   "top": "-2px",
                 }
-              } />
+              }
+            />
           }
+          key="1"
           label="Start Date"
           onClick={[Function]}
-          val="StartDate" />
+          val="StartDate"
+        />
         <withRouter(Connect(TagWithoutData))
           active={false}
           className={false}
@@ -96,18 +114,23 @@ exports[`test doesn't render family members if there are none 1`] = `
                   "position": "relative",
                   "top": "-2px",
                 }
-              } />
+              }
+            />
           }
+          key="2"
           label="End Date"
           onClick={[Function]}
-          val="EndDate" />
+          val="EndDate"
+        />
       </div>
     </div>
     <div
-      className="push-top">
+      className="push-top"
+    >
       <button
         className="btn one-whole@handheld"
-        onClick={[Function]}>
+        onClick={[Function]}
+      >
         Filter Results
       </button>
     </div>
@@ -115,18 +138,21 @@ exports[`test doesn't render family members if there are none 1`] = `
 </div>
 `;
 
-exports[`test renders family members when expanded is true 1`] = `
+exports[`renders family members when expanded is true 1`] = `
 <div
   style={
     Object {
       "position": "relative",
     }
-  }>
+  }
+>
   <div
     className="one-whole background--light-primary soft-half-ends soft-sides soft-double-sides@lap-and-up"
-    onClick={[Function]}>
+    onClick={[Function]}
+  >
     <h7
-      className="text-dark-secondary flush-bottom push-half-left display-inline-block">
+      className="text-dark-secondary flush-bottom push-half-left display-inline-block"
+    >
       Filter Transactions
     </h7>
     <span
@@ -136,29 +162,37 @@ exports[`test renders family members when expanded is true 1`] = `
           "cursor": "pointer",
           "marginTop": "0px",
         }
-      } />
+      }
+    />
   </div>
   <div
-    className="one-whole outlined--bottom outlined--light" />
+    className="one-whole outlined--bottom outlined--light"
+  />
   <div
-    className="one-whole outlined--light outlined--bottom background--light-primary soft-half-ends soft-sides soft-double-sides@lap-and-up push-half-left">
+    className="one-whole outlined--light outlined--bottom background--light-primary soft-half-ends soft-sides soft-double-sides@lap-and-up push-half-left"
+  >
     <div>
       <h7
-        className="push-top text-dark-secondary display-inline-block">
+        className="push-top text-dark-secondary display-inline-block"
+      >
         Family Members
       </h7>
       <div
         className=""
+        key="0"
         onClick={[Function]}
         style={
           Object {
             "cursor": "pointer",
           }
-        }>
+        }
+      >
         <div
-          className=" display-inline-block outlined checkbox" />
+          className=" display-inline-block outlined checkbox"
+        />
         <h6
-          className="soft-half-left display-inline-block">
+          className="soft-half-left display-inline-block"
+        >
           jim
            
           bob
@@ -166,16 +200,20 @@ exports[`test renders family members when expanded is true 1`] = `
       </div>
       <div
         className=""
+        key="1"
         onClick={[Function]}
         style={
           Object {
             "cursor": "pointer",
           }
-        }>
+        }
+      >
         <div
-          className=" display-inline-block outlined checkbox" />
+          className=" display-inline-block outlined checkbox"
+        />
         <h6
-          className="soft-half-left display-inline-block">
+          className="soft-half-left display-inline-block"
+        >
           sally
            
           bob
@@ -183,13 +221,16 @@ exports[`test renders family members when expanded is true 1`] = `
       </div>
     </div>
     <h7
-      className="soft-half-top push-half-top text-dark-secondary display-inline-block">
+      className="soft-half-top push-half-top text-dark-secondary display-inline-block"
+    >
       Date Range
     </h7>
     <div
-      className="grid one-whole flush-left@palm">
+      className="grid one-whole flush-left@palm"
+    >
       <div
-        className="hard-left@palm grid__item one-whole">
+        className="hard-left@palm grid__item one-whole"
+      >
         <TagSelect
           currentActive=""
           items={
@@ -213,17 +254,21 @@ exports[`test renders family members when expanded is true 1`] = `
             ]
           }
           onClick={[Function]}
-          overrideActive={false} />
+          overrideActive={false}
+        />
       </div>
     </div>
     <h7
-      className="soft-half-top push-half-top text-dark-secondary display-inline-block">
+      className="soft-half-top push-half-top text-dark-secondary display-inline-block"
+    >
       Custom Dates
     </h7>
     <div
-      className="grid one-whole flush-left@palm">
+      className="grid one-whole flush-left@palm"
+    >
       <div
-        className="hard-left@palm grid__item one-whole display-inline-block">
+        className="hard-left@palm grid__item one-whole display-inline-block"
+      >
         <withRouter(Connect(TagWithoutData))
           active={false}
           className={false}
@@ -236,11 +281,14 @@ exports[`test renders family members when expanded is true 1`] = `
                   "position": "relative",
                   "top": "-2px",
                 }
-              } />
+              }
+            />
           }
+          key="1"
           label="Start Date"
           onClick={[Function]}
-          val="StartDate" />
+          val="StartDate"
+        />
         <withRouter(Connect(TagWithoutData))
           active={false}
           className={false}
@@ -253,18 +301,23 @@ exports[`test renders family members when expanded is true 1`] = `
                   "position": "relative",
                   "top": "-2px",
                 }
-              } />
+              }
+            />
           }
+          key="2"
           label="End Date"
           onClick={[Function]}
-          val="EndDate" />
+          val="EndDate"
+        />
       </div>
     </div>
     <div
-      className="push-top">
+      className="push-top"
+    >
       <button
         className="btn one-whole@handheld"
-        onClick={[Function]}>
+        onClick={[Function]}
+      >
         Filter Results
       </button>
     </div>
@@ -272,18 +325,21 @@ exports[`test renders family members when expanded is true 1`] = `
 </div>
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <div
   style={
     Object {
       "position": "relative",
     }
-  }>
+  }
+>
   <div
     className="one-whole background--light-primary soft-half-ends soft-sides soft-double-sides@lap-and-up"
-    onClick={[Function]}>
+    onClick={[Function]}
+  >
     <h7
-      className="text-dark-secondary flush-bottom push-half-left display-inline-block">
+      className="text-dark-secondary flush-bottom push-half-left display-inline-block"
+    >
       Filter Transactions
     </h7>
     <span
@@ -293,25 +349,30 @@ exports[`test renders with props 1`] = `
           "cursor": "pointer",
           "marginTop": "0px",
         }
-      } />
+      }
+    />
   </div>
   <div
-    className="one-whole outlined--bottom outlined--light" />
+    className="one-whole outlined--bottom outlined--light"
+  />
 </div>
 `;
 
-exports[`test works with nickname 1`] = `
+exports[`works with nickname 1`] = `
 <div
   style={
     Object {
       "position": "relative",
     }
-  }>
+  }
+>
   <div
     className="one-whole background--light-primary soft-half-ends soft-sides soft-double-sides@lap-and-up"
-    onClick={[Function]}>
+    onClick={[Function]}
+  >
     <h7
-      className="text-dark-secondary flush-bottom push-half-left display-inline-block">
+      className="text-dark-secondary flush-bottom push-half-left display-inline-block"
+    >
       Filter Transactions
     </h7>
     <span
@@ -321,29 +382,37 @@ exports[`test works with nickname 1`] = `
           "cursor": "pointer",
           "marginTop": "0px",
         }
-      } />
+      }
+    />
   </div>
   <div
-    className="one-whole outlined--bottom outlined--light" />
+    className="one-whole outlined--bottom outlined--light"
+  />
   <div
-    className="one-whole outlined--light outlined--bottom background--light-primary soft-half-ends soft-sides soft-double-sides@lap-and-up push-half-left">
+    className="one-whole outlined--light outlined--bottom background--light-primary soft-half-ends soft-sides soft-double-sides@lap-and-up push-half-left"
+  >
     <div>
       <h7
-        className="push-top text-dark-secondary display-inline-block">
+        className="push-top text-dark-secondary display-inline-block"
+      >
         Family Members
       </h7>
       <div
         className=""
+        key="0"
         onClick={[Function]}
         style={
           Object {
             "cursor": "pointer",
           }
-        }>
+        }
+      >
         <div
-          className=" display-inline-block outlined checkbox" />
+          className=" display-inline-block outlined checkbox"
+        />
         <h6
-          className="soft-half-left display-inline-block">
+          className="soft-half-left display-inline-block"
+        >
           jimothy
            
           bob
@@ -351,16 +420,20 @@ exports[`test works with nickname 1`] = `
       </div>
       <div
         className=""
+        key="1"
         onClick={[Function]}
         style={
           Object {
             "cursor": "pointer",
           }
-        }>
+        }
+      >
         <div
-          className=" display-inline-block outlined checkbox" />
+          className=" display-inline-block outlined checkbox"
+        />
         <h6
-          className="soft-half-left display-inline-block">
+          className="soft-half-left display-inline-block"
+        >
           sally
            
           bob
@@ -368,13 +441,16 @@ exports[`test works with nickname 1`] = `
       </div>
     </div>
     <h7
-      className="soft-half-top push-half-top text-dark-secondary display-inline-block">
+      className="soft-half-top push-half-top text-dark-secondary display-inline-block"
+    >
       Date Range
     </h7>
     <div
-      className="grid one-whole flush-left@palm">
+      className="grid one-whole flush-left@palm"
+    >
       <div
-        className="hard-left@palm grid__item one-whole">
+        className="hard-left@palm grid__item one-whole"
+      >
         <TagSelect
           currentActive=""
           items={
@@ -398,17 +474,21 @@ exports[`test works with nickname 1`] = `
             ]
           }
           onClick={[Function]}
-          overrideActive={false} />
+          overrideActive={false}
+        />
       </div>
     </div>
     <h7
-      className="soft-half-top push-half-top text-dark-secondary display-inline-block">
+      className="soft-half-top push-half-top text-dark-secondary display-inline-block"
+    >
       Custom Dates
     </h7>
     <div
-      className="grid one-whole flush-left@palm">
+      className="grid one-whole flush-left@palm"
+    >
       <div
-        className="hard-left@palm grid__item one-whole display-inline-block">
+        className="hard-left@palm grid__item one-whole display-inline-block"
+      >
         <withRouter(Connect(TagWithoutData))
           active={false}
           className={false}
@@ -421,11 +501,14 @@ exports[`test works with nickname 1`] = `
                   "position": "relative",
                   "top": "-2px",
                 }
-              } />
+              }
+            />
           }
+          key="1"
           label="Start Date"
           onClick={[Function]}
-          val="StartDate" />
+          val="StartDate"
+        />
         <withRouter(Connect(TagWithoutData))
           active={false}
           className={false}
@@ -438,18 +521,23 @@ exports[`test works with nickname 1`] = `
                   "position": "relative",
                   "top": "-2px",
                 }
-              } />
+              }
+            />
           }
+          key="2"
           label="End Date"
           onClick={[Function]}
-          val="EndDate" />
+          val="EndDate"
+        />
       </div>
     </div>
     <div
-      className="push-top">
+      className="push-top"
+    >
       <button
         className="btn one-whole@handheld"
-        onClick={[Function]}>
+        onClick={[Function]}
+      >
         Filter Results
       </button>
     </div>

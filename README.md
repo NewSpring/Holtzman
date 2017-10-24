@@ -5,7 +5,7 @@ Church](https://img.shields.io/badge/NEWSPRING_CHURCH-Holtzmann-6BAC43.svg?style
 [![Build Status](https://travis-ci.org/NewSpring/Holtzman.svg)](https://travis-ci.org/NewSpring/Holtzman)
 [![Coverage Status](https://coveralls.io/repos/github/NewSpring/Holtzman/badge.svg?branch=master)](https://coveralls.io/github/NewSpring/Holtzman?branch=master)
 
-Holtzmann is a reactive application framework for building high speed, web + native, reactive applications. It is built using Reactjs, Redux, and Meteor. This repository contains the application framework and instructions for usage.
+Holtzman is an application framework for building high speed, web + native, reactive applications. It is built using Reactjs, Redux, and Meteor. This repository contains the application framework and instructions for usage.
 
 **Table of Contents**
 
@@ -26,18 +26,28 @@ Holtzmann is a reactive application framework for building high speed, web + nat
 
 ## Prerequisites
 
-- [Meteor](curl https://install.meteor.com/ | sh): `curl https://install.meteor.com/ | sh`;
-- [Node 6](https://nodejs.org/en/download/)
+- [Meteor](https://www.meteor.com/): `curl https://install.meteor.com/ | sh`;
+- [Install Node](https://github.com/creationix/nvm) via NVM. Latest stable: 8.4.0+
+- On Mac run `xcode-select --install` to install command line tools.
+- [Install Yarn](https://yarnpkg.com/en/docs/install) via your preferred method. We use [Homebrew](https://brew.sh/). Latest stable
+  version can be found [here](https://github.com/yarnpkg/yarn/releases/).
+- \*[Xcode](https://developer.apple.com/xcode/) for iOS.
+- \*[Cocoapods](https://cocoapods.org) for iOS.
+- \*[Android Dev Tools](https://guide.meteor.com/mobile.html) instructions for
+  Android.
+
+  \* optional unless you want to build natively
 
 ## Quick Start
 
 ```
-git clone git@github.com:NewSpring/Holtzmann.git
-cd Holtzmann
-npm link
-apollos setup
-apollos run
+$ git clone git@github.com:NewSpring/Holtzman.git
+$ cd Holtzmann
+& yarn install
+$ cp ./.meteor/sample.settings.json ./.meteor/settings.json
+$ WEB=true meteor run --settings ./.meteor/settings.json
 ```
+You may need some additional parameters for your meteor settings file.
 
 ## Structure
 
@@ -75,24 +85,34 @@ To install all dependencies, we use [Yarn](https://yarnpkg.com/). To get started
 1. Clone down the repo
 2. Make sure you have the Yarn CLI [installed](https://yarnpkg.com/en/docs/install)
 3. Run `yarn`.
-4. run `npm link`. This will bind `apollos` to your system to be used to run this app ([more info](https://docs.npmjs.com/cli/link)).
 
-`apollos setup`: This command will bootstrap the application. This may take some time.
+Use the `meteor run` command. It may be helpful to
+alias the command in your command line for quick startups.
 
-  - `-c || --clean`: Force rebuild of application
-  - `-l || --log <level>`: NOT IMPLEMENTED
+Holtzman uses environment variables to control certain aspects of building.
+Setting these variables will cause either the web version or the mobile version
+to build.
 
-`apollos run`: This will start a local server to serve the site and print its address in your console.
+`$ WEB=true`
+`$ NATIVE=true`
 
-  - `-p || --port`: NOT IMPLEMENTED
-  - `-v || --verbosity`: NOT IMPLEMENTED
-  - `-q || --quick`: Removes built files (`.meteor/local`)
-  - `-n || --native`: This will run the native version of the application but allow you to work on most of the code in your web browser
-  - `--ios`: Run the native app in the iOS simulator
-  - `--android`: Run the native app in the Android simulator
-  - `--device`: Run the native app on a device. Use in conjunction with `--ios` or `--android`
-  - `--production`: Run the application in production mode
-  - `--debug`: Run the application in debug mode
+you can leave these off instead of setting them to false. Its not recommended to
+set these using `export`. Instead you can add them to the command like this:
+
+- `WEB=true meteor run --settings ./.meteor/settings.json`
+- `NATIVE=true meteor run ios-device --settings ./.meteor/settings.json`
+
+*Building*
+
+The build done for production on web is this:
+
+`NODE_ENV="production" WEB=true meteor build .build --architecture os.linux.x86_64 --server https://my.newspring.cc --mobile-settings ./.meteor/settings.json`
+
+The build for native is this:
+
+`NODE_ENV="production" NATIVE=true meteor build .build --architecture os.linux.x86_64 --server https://native.newspring.cc --mobile-settings ./.meteor/settings.json`
+
+- all builds are done from the project root.
 
 ### Testing
 
@@ -102,15 +122,7 @@ To run tests, call `yarn test` or `yarn test -- --watch`. This will also run `es
 
 ### Linting
 
-This project includes linting using [ESLint](http://eslint.org/).  To enable linting in Visual Studio Code, you will need to install the [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).
-
-To install the extension you'll need to press `⌘+P`, paste the following command and press enter.
-
-```
-ext install vscode-eslint
-```
-
-To manually run eslint, use `yarn lint`.
+This project includes linting using [ESLint](http://eslint.org/). To manually run eslint, use `yarn lint`. There are tools available for many editors to show you errors while you work. Its recommended to use one of these tools and enable the option to use project based eslint which will use the eslint thats installed with yarn.
 
 ### Typing
 

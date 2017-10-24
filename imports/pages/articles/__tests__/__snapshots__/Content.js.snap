@@ -1,12 +1,17 @@
-exports[`test renders with authors 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders with authors 1`] = `
 <section
-  className="hard-sides hard-top">
+  className="hard-sides hard-top"
+>
   <h2
-    className="capitalize">
+    className="capitalize"
+  >
     test
   </h2>
   <h6
-    className="capitalize soft-double-bottom flush">
+    className="capitalize soft-double-bottom flush"
+  >
     By: 
     jim, bob
   </h6>
@@ -15,15 +20,18 @@ exports[`test renders with authors 1`] = `
       Object {
         "__html": "<h1>test</h1>",
       }
-    } />
+    }
+  />
 </section>
 `;
 
-exports[`test renders without authors 1`] = `
+exports[`renders without authors 1`] = `
 <section
-  className="hard-sides hard-top">
+  className="hard-sides hard-top"
+>
   <h2
-    className="capitalize">
+    className="capitalize"
+  >
     test
   </h2>
   <div
@@ -31,6 +39,7 @@ exports[`test renders without authors 1`] = `
       Object {
         "__html": "<h1>test</h1>",
       }
-    } />
+    }
+  />
 </section>
 `;

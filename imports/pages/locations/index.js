@@ -1,4 +1,5 @@
-import { Component, PropTypes } from "react";
+import PropTypes from "prop-types";
+import { Component } from "react";
 import { connect } from "react-redux";
 import { graphql, withApollo } from "react-apollo";
 import gql from "graphql-tag";
@@ -49,9 +50,9 @@ const withCampuses = graphql(CAMPUSES_QUERY);
 const LayoutWithData = connect()(
   withApollo(
     withCampuses(
-      LayoutWithoutData
-    )
-  )
+      LayoutWithoutData,
+    ),
+  ),
 );
 
 const Routes = [

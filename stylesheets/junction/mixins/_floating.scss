@@ -1,0 +1,74 @@
+
+$use-floating: true!default;
+
+// @if $use-floating == true {
+  //
+  // @name floating
+  // @mixin true
+  //
+  // @description Used to position an element horizontally and vertically
+  // regardless of internal content.
+  //
+  // @bugs overflow - if the element is too large for the container, the psuedo element can push the content to below theparent container.
+  //
+  //
+  // @parameter $vertical - top, middle, bottom
+  // @parameter $horizontal - left, center, right
+  // @parameter $child - String
+  // @default $child - "floating__item"
+  //
+  // @state :before - create an invisble guide to align off of
+  //
+  // @scss
+  // .container {
+  //  @include floating(middle, center, floated);
+  // }
+  //
+  // @css
+  // .container {
+  //   text-align: center;
+  // }
+  // .container:before {
+  //   display: inline-block;
+  //
+  //   height: 100%;
+  //   margin-right: -.25em;
+  //
+  //   content: "";
+  //   vertical-align: middle;
+  // }
+  // .container > .floated {
+  //   display: inline-block;
+  //
+  //   vertical-align: middle;
+  // }
+  //
+  // @markup
+  // <div class="container">
+  //     <div class="floated">
+  //         <!-- content goes here -->
+  //     </div>
+  // </div>
+  //
+  // @explanation
+  //  [1]: slight margin right to handle whitespace issues
+  //
+  @mixin floating($vertical, $horizontal, $child: "floating__item") {
+    text-align: $horizontal;
+    &:before {
+      display: inline-block;
+
+      height: 100%;
+      margin-right: -.25em; // [1]
+
+      content: "";
+      vertical-align: $vertical;
+    }
+
+    & > .#{$child} {
+      display: inline-block;
+
+      vertical-align: $vertical;
+    }
+  }
+// }

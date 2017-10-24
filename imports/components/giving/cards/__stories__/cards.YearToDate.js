@@ -1,12 +1,9 @@
 /* eslint-disable */
 import { Meteor } from "meteor/meteor";
-import { storiesOf } from "@kadira/storybook";
-import {
-  withKnobs,
-  text,
-} from "@kadira/storybook-addon-knobs";
+import { storiesOf } from "@storybook/react";
+import { withKnobs, text } from "@storybook/addon-knobs";
 import withReadme from "storybook-readme/with-readme";
-import backgrounds from "react-storybook-addon-backgrounds";
+import backgrounds from "@storybook/addon-backgrounds";
 
 import centered from "/.storybook/decorators/centered";
 import defaultColors from "/.storybook/defaults";
@@ -17,11 +14,11 @@ import YearToDate from "../YearToDateCard";
 const story = storiesOf("Cards", module)
   .addDecorator(withKnobs)
   .addDecorator(centered)
-  .addDecorator(backgrounds(defaultColors("light-primary", "light-secondary")))
-  ;
+  .addDecorator(backgrounds(defaultColors("light-primary", "light-secondary")));
 
-story
-  .add("Year To Date", withReadme(Readme, () => {
+story.add(
+  "Year To Date",
+  withReadme(Readme, () => {
     const graphData = {
       data: [
         {
@@ -105,12 +102,9 @@ story
     return (
       <div className={"floating"}>
         <div className={"grid__item"} style={{ maxWidth: "480px" }}>
-          <YearToDate
-            amount={amount}
-            graphData={graphData}
-            linkUrl="https://my.newspring.cc"
-          />
+          <YearToDate amount={amount} graphData={graphData} linkUrl="https://my.newspring.cc" />
         </div>
       </div>
     );
-  }));
+  }),
+);

@@ -32,7 +32,7 @@ export default createReducer(initial, {
     return newState;
   },
 
-  "HEADER.UNLOCK": (state) => {
+  "HEADER.UNLOCK": state => {
     if (!state.lockHolder) {
       return state;
     }

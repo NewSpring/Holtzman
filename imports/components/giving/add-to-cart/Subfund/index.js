@@ -31,8 +31,8 @@ class SubFund extends Component {
     if (this.props.amount) this.setState({ active: true });
   }
 
-  changeAmount = (amount) => this.props.changeAmount(amount, this.props.fundId)
-  changeFund = (fund) => {
+  changeAmount = amount => this.props.changeAmount(amount, this.props.fundId)
+  changeFund = fund => {
     this.setState({ active: !!fund });
     return this.props.changeFund(Number(fund), this.props.id);
   }

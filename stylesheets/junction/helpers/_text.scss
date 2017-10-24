@@ -1,0 +1,68 @@
+
+$use-text: true!default;
+
+@if $use-text == true {
+  //
+  // @name .text-right
+  // @class .text-right
+  // @description aligns text to right
+  //
+  // @helper true
+  // @namespaced true
+  //
+  @include namespace("text-right") {
+    text-align: right;
+  }
+  //
+  // @name .text-left
+  // @class .text-left
+  // @description aligns text to left
+  //
+  // @helper true
+  // @namespaced true
+  //
+  @include namespace("text-left") {
+    text-align: left;
+  }
+  //
+  // @name .text-center
+  // @class .text-center
+  // @description aligns text to center
+  //
+  // @helper true
+  // @namespaced true
+  //
+  @include namespace("text-center") {
+    text-align: center;
+  }
+
+
+  //
+  // @name .text-<color variation>
+  // @class .text-<color variation>
+  // @description sets font color of text to be <color variation> color
+  //
+  // @helper true
+  //
+  // Loop through the list of colors we’ve provided in our settings file.
+  @each $_color, $_value in $colors {
+    .text-#{$_color} {
+      color: $_value;
+      border-color: $_value;
+    }
+  }
+
+
+  //
+  // @name .text-brand
+  // @class .text-brand
+  // @description sets font color of text to be brand color
+  //
+  // @helper true
+  //
+  .text-brand {
+    color: $brand-color;
+  }
+
+
+}

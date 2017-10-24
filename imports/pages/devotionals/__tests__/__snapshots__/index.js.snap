@@ -1,4 +1,6 @@
-exports[`test renders loading if no content 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders loading if no content 1`] = `
 <DevotionsWithoutData
   Loading={[Function]}
   data={
@@ -8,10 +10,11 @@ exports[`test renders loading if no content 1`] = `
       "refetch": [Function],
     }
   }
-  dispatch={[Function]} />
+  dispatch={[Function]}
+/>
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <DevotionsWithoutData
   Loading={[Function]}
   data={
@@ -24,5 +27,6 @@ exports[`test renders with props 1`] = `
       "refetch": [Function],
     }
   }
-  dispatch={[Function]} />
+  dispatch={[Function]}
+/>
 `;

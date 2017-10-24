@@ -1,0 +1,92 @@
+
+// ------------------------------------
+//   $BORDER-BOX
+// ------------------------------------
+//
+// @name Border Box
+// @variable global-border-box - Do you want all elements to adopt `box-sizing:border-box;`?
+// @link http://paulirish.com/2012/box-sizing-border-box-ftw
+// @description border box is great for padding
+//
+$global-border-box: true!default;
+
+
+// -----------------------------------
+//    $FRAMEWORK VARIABLES
+// -----------------------------------
+//
+// @name Framework Variables
+// @variable base-font-color - base color for fonts to render
+// @variable base-font-family - default font family for body to render
+// @variable base-font-size - base font size for p tags
+// @variable base-line-height - base line height for p tags
+// @variable base-spacing-unit - base unit of measurement
+// @variable half-spacing-unit - shorthand of $base-spacing-unit/2
+// @variable line-height-ratio - ratio of base line height / base font size
+// @variable base-border-size - default border thickness
+// @variable base-border-radius - default border roundness
+//
+// fonts
+$base-font-color: #505050!default;
+$base-font-family: sans-serif!default;
+$base-font-size: 18px!default;
+$base-line-height: 20px!default;
+$line-height-ratio: $base-line-height/$base-font-size;
+
+// iconography
+$base-border-radius: 2px !default;
+$base-border-size: 3px !default;
+$base-icon-size: 50px!default;
+
+// units
+$base-spacing-unit: $base-line-height!default;
+$half-spacing-unit: $base-spacing-unit / 2!default;
+$base-page-width: 1280px!default;
+
+// -----------------------------------
+//    $LAYERS
+// -----------------------------------
+//
+// @name Z-index
+// @variable zindex - object containing all default zindexs for the framework
+//
+$zindex: (
+  base: 0,
+  modal: 100,
+  video: 1000
+) !default;
+
+
+
+
+// -----------------------------------
+//    $COLORS
+// -----------------------------------
+//
+// @name Colors
+// @variable colors - object containing all default colors for the framework
+// @variable font-colors - map containing default font colors
+// @variable brand-color - mapping of primary color from $colors variable
+//
+$colors: (
+  "primary": #6bac43,
+  "secondary": #1c683e,
+  "tertiary": #2a4930,
+
+  "dark-primary": #303030,
+  "dark-secondary": #505050,
+  "dark-tertiary": #858585,
+
+  "light-primary": #ffffff,
+  "light-secondary": #f7f7f7,
+  "light-tertiary": #dddddd,
+
+  "alert": #c64f55
+) !default;
+//
+//
+//
+//
+$brand-color: map-get($colors, primary);
+$dark-color: map-get($colors, dark-primary);
+$light-color: map-get($colors, light-primary);

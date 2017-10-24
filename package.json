@@ -12,15 +12,12 @@
     "flow": "flow",
     "flow:stop": "flow stop",
     "storybook": "start-storybook -p 6006 -s ./public",
-    "build-storybook": "node ./.bin/index.js setup && build-storybook -s public -o docs",
+    "build-storybook": "build-storybook -s public -o storybook",
     "lint-staged": "lint-staged",
     "danger": "danger run --verbose"
   },
   "lint-staged": {
-    "*.js": [
-      "eslint",
-      "jest --bail --findRelatedTests"
-    ]
+    "*.js": ["eslint", "jest --bail --findRelatedTests"]
   },
   "repository": {
     "type": "git",
@@ -30,9 +27,6 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/NewSpring/holzman/issues"
-  },
-  "bin": {
-    "apollos": "./.bin/index.js"
   },
   "homepage": "https://github.com/NewSpring/holzman",
   "jest": {
@@ -55,39 +49,15 @@
       "<rootDir>/imports/util/tests/beforeTest.js",
       "<rootDir>/imports/util/tests/jestPreprocessor.js"
     ],
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "/.meteor/"
-    ],
+    "testPathIgnorePatterns": ["/node_modules/", "/.meteor/"],
     "moduleNameMapper": {
       "meteor/bjwiley2:server-watch": "<rootDir>/.meteor/mocks/bjwiley2-server-watch.js",
       "^meteor/(.*)": "<rootDir>/.meteor/mocks/$1.js"
     },
-    "setupFiles": [
-      "<rootDir>/imports/util/tests/beforeTest.js"
-    ]
-  },
-  "apollos": {
-    "settings": "./.meteor/settings.json",
-    "resource": {
-      "./.remote": {
-        "junction": "NewSpring/junction-framework",
-        "fonts": "NewSpring/newspring-fonts"
-      },
-      "./packages": {
-        "meteor-scss": "https://github.com/NewSpring/meteor-scss.git#432a60bded46edd02561e87b6a947b88072e9c68",
-        "fetch": "https://github.com/NewSpring/meteor-fetch.git#c36567418edd59564d54de9747c1f59e0ed0bf7f",
-        "inject-data": "https://github.com/NewSpring/inject-data.git#ea2e078e4763f8fd3875c77fb1073e3794bf8e6a"
-      }
-    }
+    "setupFiles": ["<rootDir>/imports/util/tests/beforeTest.js"]
   },
   "babel": {
-    "presets": [
-      "meteor",
-      "es2015-loose",
-      "stage-0",
-      "react"
-    ],
+    "presets": ["meteor", "es2015", "stage-0", "react"],
     "plugins": [
       "babel-root-slash-import",
       "transform-react-router-optimize",
@@ -101,8 +71,9 @@
   },
   "dependencies": {
     "aphrodite": "https://github.com/NewSpring/aphrodite.git#release",
-    "apollo-client": "0.5.20",
+    "apollo-client": "1.9.3",
     "audio5": "^0.1.10",
+    "babel-jest": "^21.2.0",
     "babel-plugin-ramda": "^1.2.0",
     "babel-polyfill": "^6.23.0",
     "bcrypt": "^0.8.7",
@@ -110,6 +81,8 @@
     "cheerio": "^0.20.0",
     "compression": "^1.6.2",
     "cookie-parser": "^1.4.3",
+    "enzyme": "^3.1.0",
+    "enzyme-adapter-react-15": "^1.0.1",
     "fibers": "^1.0.15",
     "file-saver": "^1.3.3",
     "google-map-react": "^0.14.8",
@@ -119,14 +92,15 @@
     "liquid-node": "https://github.com/NewSpring/liquid-node.git",
     "meteor-node-stubs": "^0.2.3",
     "moment": "^2.14.1",
+    "prop-types": "^15.6.0",
     "ramda": "^0.23.0",
-    "react": "^15.0.0",
+    "react": "^15.6.0",
     "react-addons-pure-render-mixin": "^15.1.0",
-    "react-apollo": "0.7.1",
+    "react-apollo": "1.4.15",
     "react-async-script-loader": "^0.2.1",
     "react-controllables": "^0.6.0",
     "react-day-picker": "^2.3.3",
-    "react-dom": "^15.0.0",
+    "react-dom": "^15.6.2",
     "react-hammerjs": "^0.4.6",
     "react-helmet": "^3.1.0",
     "react-jw-player": "^1.1.2",
@@ -134,17 +108,18 @@
     "react-motion": "^0.4.4",
     "react-pull-to-refresh": "https://git@github.com/NewSpring/react-pull-to-refresh.git",
     "react-pure-render": "^1.0.2",
-    "react-redux": "^4.0.0",
+    "react-redux": "^5.0.6",
     "react-router": "^2.4.0",
     "react-router-scroll": "^0.2.1",
     "react-slick": "^0.13.1",
-    "react-swipe-views": "https://git@github.com/NewSpring/react-swipe-views.git#d531949ddccb84ec53e634f7964c1c5cfac2c9b5",
+    "react-swipe-views":
+      "https://git@github.com/NewSpring/react-swipe-views.git#d531949ddccb84ec53e634f7964c1c5cfac2c9b5",
     "react-swipeable-views": "^0.8.3",
     "react-tooltip": "^3.0.13",
     "react-transform-sentry": "^1.0.0",
-    "redux": "^3.0.4",
-    "redux-reset": "^0.2.0",
-    "redux-saga": "^0.11.0",
+    "redux": "^3.7.2",
+    "redux-reset": "^0.3.0",
+    "redux-saga": "^0.15.6",
     "regenerator-runtime": "^0.9.5",
     "striptags": "^2.1.1",
     "to-pascal-case": "^1.0.0",
@@ -157,13 +132,12 @@
     "xml2js": "^0.4.16"
   },
   "devDependencies": {
-    "@kadira/storybook": "^2.26.0",
-    "@kadira/storybook-addon-comments": "^1.9.0",
-    "@kadira/storybook-addon-knobs": "^1.3.3",
-    "@kadira/storybook-addon-options": "^1.0.1",
-    "@kadira/storybook-database-cloud": "^2.3.1",
-    "babel-eslint": "^7.1.0",
-    "babel-jest": "^17.0.2",
+    "@storybook/addon-backgrounds": "^3.0.0",
+    "@storybook/addon-comments": "3.2.12",
+    "@storybook/addon-knobs": "3.2.12",
+    "@storybook/addon-options": "3.2.12",
+    "@storybook/react": "3.2.12",
+    "babel-eslint": "^7.2.3",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-react-require": "^3.0.0",
     "babel-plugin-react-transform": "^2.0.2",
@@ -174,47 +148,45 @@
     "babel-plugin-transform-react-constant-elements": "^6.9.1",
     "babel-plugin-transform-react-remove-prop-types": "^0.2.10",
     "babel-plugin-transform-react-router-optimize": "^1.0.1",
-    "babel-preset-es2015-loose": "^8.0.0",
+    "babel-preset-es2015": "^6.24.1",
     "babel-preset-es2016": "^6.11.3",
     "babel-preset-meteor": "^6.11.0",
     "babel-preset-react": "^6.11.1",
-    "babel-preset-stage-0": "^6.5.0",
+    "babel-preset-stage-0": "^6.24.1",
     "babel-preset-stage-1": "^6.13.0",
     "babel-root-slash-import": "^1.1.0",
     "babel-traverse": "^6.11.4",
-    "css-loader": "^0.25.0",
+    "cordova-custom-config": "^4.0.2",
+    "css-loader": "^0.28.7",
     "danger": "^0.15.0",
-    "enzyme": "^2.5.1",
-    "enzyme-to-json": "^1.3.0",
+    "enzyme-to-json": "^3.1.0",
     "es6-promise": "^3.2.1",
-    "eslint": "^3.6.0",
-    "eslint-config-airbnb": "12.0.0",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "15.0.0",
     "eslint-config-airbnb-base": "9.0.0",
     "eslint-plugin-compat": "^0.1.3",
-    "eslint-plugin-import": "^1.16.0",
-    "eslint-plugin-jsx-a11y": "^2.2.2",
-    "eslint-plugin-react": "^6.4.1",
-    "flow-bin": "^0.34.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.4.0",
+    "flow-bin": "^0.52.0",
     "gagarin": "^0.4.12",
     "github-download": "^0.5.0",
-    "jest": "^19.0.0",
-    "jest-cli": "^17.0.3",
+    "jest": "^21.2.1",
+    "jest-cli": "^21.2.1",
     "json-loader": "^0.5.4",
     "lint-staged": "^3.3.1",
     "mkdirp": "^0.5.1",
     "mockdate": "^2.0.0",
-    "node-sass": "3.4.2",
+    "node-sass": "4.5.3",
     "raw-loader": "^0.5.1",
     "react-addons-test-utils": "^15.3.2",
-    "react-storybook-addon-backgrounds": "0.0.7",
-    "react-test-renderer": "^15.3.1",
+    "react-test-renderer": "^15.6.2",
     "redux-saga-testing": "^0.1.1",
     "rimraf": "^2.5.2",
-    "sass-loader": "^4.0.2",
-    "storybook-readme": "^1.2.0",
-    "style-loader": "^0.13.1",
+    "sass-loader": "6.0.6",
+    "storybook-readme": "^3.0.6",
+    "style-loader": "^0.19.0",
     "symlink-or-copy": "^1.1.3",
-    "vorpal": "^1.11.2",
     "write-json-file": "^2.0.0"
   }
 }
