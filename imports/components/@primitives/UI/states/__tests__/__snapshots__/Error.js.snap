@@ -1,4 +1,6 @@
-exports[`test renders default message if no error message 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders default message if no error message 1`] = `
 <Loading
   classes={
     Array [
@@ -9,17 +11,22 @@ exports[`test renders default message if no error message 1`] = `
     Object {
       "color": "red",
     }
-  }>
+  }
+>
   <div
-    className="locked-top locked-bottom one-whole floating">
+    className="locked-top locked-bottom one-whole floating"
+  >
     <div
-      className="floating__item">
+      className="floating__item"
+    >
       <h4
-        className="text-light-primary">
+        className="text-light-primary"
+      >
         test msg
       </h4>
       <p
-        className="text-light-primary hard">
+        className="text-light-primary hard"
+      >
         An unexpected error occured
       </p>
     </div>
@@ -27,7 +34,7 @@ exports[`test renders default message if no error message 1`] = `
 </Loading>
 `;
 
-exports[`test renders with error.error 1`] = `
+exports[`renders with error.error 1`] = `
 <Loading
   classes={
     Array [
@@ -38,17 +45,22 @@ exports[`test renders with error.error 1`] = `
     Object {
       "color": "red",
     }
-  }>
+  }
+>
   <div
-    className="locked-top locked-bottom one-whole floating">
+    className="locked-top locked-bottom one-whole floating"
+  >
     <div
-      className="floating__item">
+      className="floating__item"
+    >
       <h4
-        className="text-light-primary">
+        className="text-light-primary"
+      >
         test msg
       </h4>
       <p
-        className="text-light-primary hard">
+        className="text-light-primary hard"
+      >
         error message
       </p>
     </div>
@@ -56,7 +68,7 @@ exports[`test renders with error.error 1`] = `
 </Loading>
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <Loading
   classes={
     Array [
@@ -67,17 +79,22 @@ exports[`test renders with props 1`] = `
     Object {
       "color": "red",
     }
-  }>
+  }
+>
   <div
-    className="locked-top locked-bottom one-whole floating">
+    className="locked-top locked-bottom one-whole floating"
+  >
     <div
-      className="floating__item">
+      className="floating__item"
+    >
       <h4
-        className="text-light-primary">
+        className="text-light-primary"
+      >
         test msg
       </h4>
       <p
-        className="text-light-primary hard">
+        className="text-light-primary hard"
+      >
         another message
       </p>
     </div>

@@ -31,10 +31,10 @@ export default {
 
   render: (content, props) => ({ type: "MODAL.SET_CONTENT", content, visible: true, props }),
 
-  update: (props) => ({ type: "MODAL.SET_PROPS", props }),
+  update: props => ({ type: "MODAL.SET_PROPS", props }),
 
-  changeTo: (state) => ({ type: "MODAL.SET_TYPE", state }),
+  changeTo: state => ({ type: "MODAL.SET_TYPE", state }),
 
-  setRetrigger: (retrigger) => ({ type: "MODAL.SET_RETRIGGER", retrigger }),
+  setRetrigger: retrigger => ({ type: "MODAL.SET_RETRIGGER", retrigger }),
 
 };

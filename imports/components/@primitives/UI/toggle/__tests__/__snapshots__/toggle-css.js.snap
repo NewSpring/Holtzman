@@ -1,4 +1,6 @@
-exports[`test is a json rep of css styles 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`is a json rep of css styles 1`] = `
 Object {
   "checked-label": Object {
     "_definition": Object {

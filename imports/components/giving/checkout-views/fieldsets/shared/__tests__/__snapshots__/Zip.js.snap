@@ -1,13 +1,18 @@
-exports[`test renders one-half if country is \`CA\` 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders one-half if country is \`CA\` 1`] = `
 <div
-  className="grid__item one-half">
+  className="grid__item one-half"
+>
   <div
     className="input input--active"
     data-spec="input-wrapper"
-    style={Object {}}>
+    style={Object {}}
+  >
     <label
       htmlFor="zip"
-      style={Object {}}>
+      style={Object {}}
+    >
       Zip/Postal
     </label>
     <input
@@ -29,21 +34,25 @@ exports[`test renders one-half if country is \`CA\` 1`] = `
       readOnly={undefined}
       spellCheck={undefined}
       style={Object {}}
-      type={undefined} />
+      type={undefined}
+    />
   </div>
 </div>
 `;
 
-exports[`test renders one-half if country is \`US\` 1`] = `
+exports[`renders one-half if country is \`US\` 1`] = `
 <div
-  className="grid__item one-half">
+  className="grid__item one-half"
+>
   <div
     className="input input--active"
     data-spec="input-wrapper"
-    style={Object {}}>
+    style={Object {}}
+  >
     <label
       htmlFor="zip"
-      style={Object {}}>
+      style={Object {}}
+    >
       Zip/Postal
     </label>
     <input
@@ -65,21 +74,25 @@ exports[`test renders one-half if country is \`US\` 1`] = `
       readOnly={undefined}
       spellCheck={undefined}
       style={Object {}}
-      type={undefined} />
+      type={undefined}
+    />
   </div>
 </div>
 `;
 
-exports[`test renders one-half if no country 1`] = `
+exports[`renders one-half if no country 1`] = `
 <div
-  className="grid__item one-half">
+  className="grid__item one-half"
+>
   <div
     className="input"
     data-spec="input-wrapper"
-    style={Object {}}>
+    style={Object {}}
+  >
     <label
       htmlFor="zip"
-      style={Object {}}>
+      style={Object {}}
+    >
       Zip/Postal
     </label>
     <input
@@ -101,21 +114,25 @@ exports[`test renders one-half if no country 1`] = `
       readOnly={undefined}
       spellCheck={undefined}
       style={Object {}}
-      type={undefined} />
+      type={undefined}
+    />
   </div>
 </div>
 `;
 
-exports[`test renders one-whole for countries with no states 1`] = `
+exports[`renders one-whole for countries with no states 1`] = `
 <div
-  className="grid__item one-whole">
+  className="grid__item one-whole"
+>
   <div
     className="input"
     data-spec="input-wrapper"
-    style={Object {}}>
+    style={Object {}}
+  >
     <label
       htmlFor="zip"
-      style={Object {}}>
+      style={Object {}}
+    >
       Zip/Postal
     </label>
     <input
@@ -137,7 +154,8 @@ exports[`test renders one-whole for countries with no states 1`] = `
       readOnly={undefined}
       spellCheck={undefined}
       style={Object {}}
-      type={undefined} />
+      type={undefined}
+    />
   </div>
 </div>
 `;

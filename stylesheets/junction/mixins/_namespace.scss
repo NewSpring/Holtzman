@@ -1,0 +1,77 @@
+$use-namespace: true!default;
+$use-old-namespace: true!default; // removeable after official launch
+$use-new-namespace: false!default; // removeable after official launch
+// @if $use-namespace == true {
+  // @if $use-breakpoints == true {
+    //
+    // @name namespace
+    // @mixin true
+    //
+    // @description Used to wrap scss code in breakpoints with added classes for adjusting declarations on the flly
+    //
+    // @parameter $name - name of class to add breakpoints too (supports lists)
+    // @parameter $breakpoints - map containing list of breakpoints
+    // @default $breakpoints - $breakpoints variable
+    //
+    // @scss
+    //   @include namespace("visuallyhidden") {
+    //     position: absolute !important;
+    //
+    //     overflow: hidden !important;
+    //     clip: rect(0 0 0 0) !important;
+    //
+    //     width: 1px !important;
+    //     height: 1px !important;
+    //     margin: -1px !important;
+    //     padding: 0 !important;
+    //
+    //     border: 0 !important;
+    //   }
+    //
+    // @note warning! - this mixin generates a ton of code by default, use with extreme care!
+    //
+    @mixin namespace($name, $_breakpoints: $breakpoints) {
+      // generate random number to prevent sharing of extends
+      $_placeholder-name: unique-id();
+
+      %_temp-#{$_placeholder-name} {
+        @content;
+      };
+
+      @each $class in $name {
+        .#{$class} {
+          @extend %_temp-#{$_placeholder-name};
+        };
+      }
+
+      // breakpoint it up
+      @each $alias, $breakpoint in $_breakpoints {
+        //Map to all known breakpoints
+        @include media-query(#{$alias}) {
+          %_#{$alias}-temp-#{$_placeholder-name} {
+            @content;
+          };
+          @each $class in $name {
+            @if $use-old-namespace == true {
+              // old depreciated naming convention
+              .#{$alias}-#{$class} {
+                @extend %_#{$alias}-temp-#{$_placeholder-name};
+              };
+            }
+
+
+            @if $use-new-namespace == true {
+              // new suffix based name
+              .#{$class}\@#{$alias} {
+                @extend %_#{$alias}-temp-#{$_placeholder-name};
+              };
+            }
+
+          }
+        }
+      }
+    }
+  // } @else {
+  //   @warn "@namespace depends on @breakpoints";
+  // }
+// }

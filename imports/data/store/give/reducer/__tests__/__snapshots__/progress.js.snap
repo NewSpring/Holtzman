@@ -1,4 +1,6 @@
-exports[`test allows setting the step 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`allows setting the step 1`] = `
 Object {
   "accounts": Object {},
   "attempts": 0,
@@ -54,7 +56,7 @@ Object {
 }
 `;
 
-exports[`test does not change the step if less than 1 1`] = `
+exports[`does not change the step if less than 1 1`] = `
 Object {
   "accounts": Object {},
   "attempts": 0,
@@ -110,7 +112,7 @@ Object {
 }
 `;
 
-exports[`test doesn't change if not a valid action 1`] = `
+exports[`doesn't change if not a valid action 1`] = `
 Object {
   "accounts": Object {},
   "attempts": 0,
@@ -166,7 +168,7 @@ Object {
 }
 `;
 
-exports[`test doesn't increment if not a number 1`] = `
+exports[`doesn't increment if not a number 1`] = `
 Object {
   "accounts": Object {},
   "attempts": 0,
@@ -222,7 +224,7 @@ Object {
 }
 `;
 
-exports[`test increments the step 1`] = `
+exports[`increments the step 1`] = `
 Object {
   "accounts": Object {},
   "attempts": 0,

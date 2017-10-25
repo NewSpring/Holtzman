@@ -24,7 +24,7 @@ type ILayout = {
   loadingEntries: boolean,
 }
 
-const capitalizeFirstLetter = (string) => (
+const capitalizeFirstLetter = string => (
   string.charAt(0).toUpperCase() + string.slice(1)
 );
 

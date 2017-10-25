@@ -1,6 +1,9 @@
-exports[`test renders with props 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders with props 1`] = `
 <div
-  className="one-whole text-center push-double-top soft-double-top@lap-and-up">
+  className="one-whole text-center push-double-top soft-double-top@lap-and-up"
+>
   <h4>
     test message
   </h4>

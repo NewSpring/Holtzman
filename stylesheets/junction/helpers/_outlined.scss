@@ -1,0 +1,84 @@
+
+$use-outlined: true !default;
+
+@if $use-outlined == true {
+  //
+  // @name .outlined
+  // @class .outlined
+  // @description adds border and border-radius based on defaults to any element
+  //
+  // @helper true
+  //
+  %_outlined {
+    border-width: $base-border-size;
+    border-style: solid;
+    border-color: $brand-color;
+
+    // if $brand-round is 0 there is no reason to output radius mixin
+    @if $base-border-radius > 0 {
+      @include radius($base-border-radius);
+    }
+  }
+
+  .outlined {
+    @extend %_outlined;
+  }
+
+
+  .outlined--light {
+    @extend %_outlined;
+
+    border-width: ($base-border-size - 1px);
+    border-style: solid;
+    border-color: map-get($colors, light-tertiary);
+  }
+
+  .outlined--dotted {
+    @extend %_outlined;
+    // we only do dotted on the bottom
+    // this may be removed per creative
+
+    border-width: $base-border-size;
+    border-style: dotted;
+    border-top: 0;
+    border-right: 0;
+    border-left: 0;
+  }
+
+  .outlined--top {
+    @extend %_outlined;
+
+    border-right: 0;
+    border-bottom: 0;
+    border-left: 0;
+  }
+
+  .outlined--left {
+    @extend %_outlined;
+
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 0;
+  }
+
+  .outlined--right {
+    @extend %_outlined;
+
+    border-top: 0;
+    border-bottom: 0;
+    border-left: 0;
+  }
+
+  .outlined--bottom {
+    @extend %_outlined;
+
+    border-top: 0;
+    border-right: 0;
+    border-left: 0;
+  }
+
+  .outlined--none {
+    border: 0;
+  }
+
+}

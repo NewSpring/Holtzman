@@ -1,13 +1,17 @@
-exports[`test has a loading state 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`has a loading state 1`] = `
 <div
-  className="text-center soft-ends">
+  className="text-center soft-ends"
+>
   <div
     className="loader_9h6gj"
-    style={Object {}} />
+    style={Object {}}
+  />
 </div>
 `;
 
-exports[`test overflow contains css object 1`] = `
+exports[`overflow contains css object 1`] = `
 Object {
   "WebkitOverflowScrolling": "touch",
   "overflowX": "scroll",
@@ -16,7 +20,7 @@ Object {
 }
 `;
 
-exports[`test parses study entry query 1`] = `
+exports[`parses study entry query 1`] = `
 Object {
   "definitions": Array [
     Object {
@@ -60,6 +64,17 @@ Object {
             "selectionSet": Object {
               "kind": "SelectionSet",
               "selections": Array [
+                Object {
+                  "alias": null,
+                  "arguments": Array [],
+                  "directives": Array [],
+                  "kind": "Field",
+                  "name": Object {
+                    "kind": "Name",
+                    "value": "id",
+                  },
+                  "selectionSet": null,
+                },
                 Object {
                   "directives": Array [],
                   "kind": "InlineFragment",
@@ -179,6 +194,17 @@ Object {
                               "selectionSet": Object {
                                 "kind": "SelectionSet",
                                 "selections": Array [
+                                  Object {
+                                    "alias": null,
+                                    "arguments": Array [],
+                                    "directives": Array [],
+                                    "kind": "Field",
+                                    "name": Object {
+                                      "kind": "Name",
+                                      "value": "id",
+                                    },
+                                    "selectionSet": null,
+                                  },
                                   Object {
                                     "alias": Object {
                                       "kind": "Name",
@@ -326,19 +352,21 @@ Object {
   ],
   "kind": "Document",
   "loc": Object {
-    "end": 513,
+    "end": 537,
     "source": Source {
       "body": "
   query GetEntriesFromStudy($id: ID!) {
     content: node(id: $id) {
+      id
       ... on Content {
-        studyEntries: children(channels: [\"study_entries\"], showFutureEntries: true) {
+        studyEntries: children(channels: [\\"study_entries\\"], showFutureEntries: true) {
           id
           entryId: id
           title
           status
           channelName
           parent {
+            id
             entryId: id
           }
           meta {
@@ -362,7 +390,7 @@ Object {
 }
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <div
   style={
     Object {
@@ -371,19 +399,21 @@ exports[`test renders with props 1`] = `
       "overflowY": "hidden",
       "paddingLeft": "20px",
     }
-  }>
+  }
+>
   <section
     className="soft-half-top"
     style={
       Object {
         "width": "847.2px",
       }
-    }>
+    }
+  >
     <a
       className="
-              text-dark-secondary floating ratio--square display-inline-block
-              rounded background--light-primary push-right
-            "
+          text-dark-secondary floating ratio--square display-inline-block
+          rounded background--light-primary push-right
+        "
       onClick={[Function]}
       style={
         Object {
@@ -391,9 +421,11 @@ exports[`test renders with props 1`] = `
           "height": 787.2,
           "width": 787.2,
         }
-      }>
+      }
+    >
       <div
-        className="one-whole soft-sides text-left floating__item">
+        className="one-whole soft-sides text-left floating__item"
+      >
         <div
           className="background--light-primary floating locked-left locked-top"
           style={
@@ -404,9 +436,11 @@ exports[`test renders with props 1`] = `
               "height": "40px",
               "width": "40px",
             }
-          }>
+          }
+        >
           <h5
-            className="floating__item flush">
+            className="floating__item flush"
+          >
             1
           </h5>
         </div>
@@ -419,4 +453,4 @@ exports[`test renders with props 1`] = `
 </div>
 `;
 
-exports[`test returns null if there is no studyEntries 1`] = `null`;
+exports[`returns null if there is no studyEntries 1`] = `null`;

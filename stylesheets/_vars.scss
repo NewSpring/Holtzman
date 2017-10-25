@@ -139,8 +139,8 @@ $typography: (
 
 // this doesn't work
 // something to do with @importing a @font-face declaration
-@import "/.remote/fonts/colfax-hinted/light";
-@import "/.remote/fonts/colfax-hinted/regular";
-@import "/.remote/fonts/colfax-hinted/medium";
-@import "/.remote/fonts/colfax-hinted/bold";
-@import "/.remote/fonts/colfax-hinted/black";
+@import "./fonts/colfax-hinted/light";
+@import "./fonts/colfax-hinted/regular";
+@import "./fonts/colfax-hinted/medium";
+@import "./fonts/colfax-hinted/bold";
+@import "./fonts/colfax-hinted/black";

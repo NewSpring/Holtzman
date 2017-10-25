@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Layout renders with props 1`] = `
 <div
   className="background--light-primary"
@@ -221,11 +223,14 @@ exports[`Layout works without featured item 1`] = `
 
 exports[`RenderRecentLikes should render likes if not loading 1`] = `
 <section
-  className="soft-half background--light-secondary">
+  className="soft-half background--light-secondary"
+>
   <div
-    className="one-whole text-center">
+    className="one-whole text-center"
+  >
     <h5
-      className="flush soft-bottom">
+      className="flush soft-bottom"
+    >
       Recently Liked By Others
     </h5>
   </div>
@@ -235,7 +240,8 @@ exports[`RenderRecentLikes should render likes if not loading 1`] = `
         "yo",
         "dawg",
       ]
-    } />
+    }
+  />
 </section>
 `;
 

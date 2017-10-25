@@ -1,0 +1,92 @@
+/* Just click to select the code */
+ 
+@charset "UTF-8";
+ 
+@font-face {
+  font-family: "newspring";
+  src:url("//d3n6tjerleuu41.cloudfront.net/fonts/staff-icons/newspring-webfont.eot");
+  src:url("//d3n6tjerleuu41.cloudfront.net/fonts/staff-icons/newspring-webfont.eot?#iefix") format("embedded-opentype"),
+  url("//d3n6tjerleuu41.cloudfront.net/fonts/staff-icons/newspring-webfont.woff") format("woff"),
+    url("//d3n6tjerleuu41.cloudfront.net/fonts/staff-icons/newspring-webfont.ttf") format("truetype"),
+    url("//d3n6tjerleuu41.cloudfront.net/fonts/staff-icons/newspring-webfont.svg#newspring") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+ 
+[class^="ns-icon-"]:before,
+[class*=" ns-icon-"]:before {
+  font-family: "newspring" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+
+  speak: none;
+  // line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+} 
+ 
+.ns-icon-campus:before {
+   content: "a"; 
+} 
+ 
+.ns-icon-directory:before {
+   content: "b"; 
+} 
+ 
+.ns-icon-home:before {
+   content: "c"; 
+} 
+ 
+.ns-icon-human-resources:before {
+   content: "d"; 
+} 
+ 
+.ns-icon-login:before {
+   content: "e"; 
+} 
+ 
+.ns-icon-menu:before {
+   content: "f"; 
+} 
+ 
+.ns-icon-requests:before {
+   content: "g"; 
+} 
+ 
+.ns-icon-resources:before {
+   content: "h"; 
+} 
+ 
+.ns-icon-settings:before {
+   content: "i"; 
+} 
+ 
+.ns-icon-sign-out:before {
+   content: "j"; 
+} 
+ 
+.ns-icon-staff-changes:before {
+   content: "k"; 
+} 
+ 
+.ns-icon-staff-events:before {
+   content: "l"; 
+} 
+ 
+.ns-icon-staff-messages:before {
+   content: "m"; 
+} 
+ 
+.ns-icon-starred:before {
+   content: "n"; 
+}
+
+.ns-icon-ideas:before {
+  content: "p";
+}
+
+.ns-icon-question-mark:before {
+  content: "o";
+}
