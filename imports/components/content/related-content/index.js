@@ -18,6 +18,7 @@ export const RELATED_CONTENT_QUERY = gql`
       channel: channelName
       channelName
       parent {
+        id
         entryId: id
         content {
           images(sizes: ["medium"]) {

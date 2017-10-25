@@ -36,12 +36,14 @@ export default class ImageLoader extends Component {
   }
 
   componentDidMount() {
+    this._mounted = true;
+
     if (this.state.status === Status.LOADING) {
       this.createLoader();
     }
 
     // eslint-disable-next-line
-    this.setState({ mounted: true });
+    // this.setState({ mounted: true });
     // need this for the rare case that createLoader gets called in update but
     // the component hasn't mounted yet.
   }
@@ -55,12 +57,15 @@ export default class ImageLoader extends Component {
   }
 
   componentDidUpdate() {
-    if (this.state.status === Status.LOADING && !this.img && this.state.mounted) {
-      this.createLoader();
+    if (this._mounted === true) {
+      if (this.state.status === Status.LOADING && !this.img) {
+        this.createLoader();
+      }
     }
   }
 
   componentWillUnmount() {
+    this._mounted = false;
     this.destroyLoader();
   }
 
@@ -144,14 +149,18 @@ export default class ImageLoader extends Component {
 
   handleLoad(event) {
     this.destroyLoader();
-    this.setState({ status: Status.LOADED });
+    if (this._mounted === true) {
+      this.setState({ status: Status.LOADED });
+    }
 
     if (this.props.onLoad) this.props.onLoad(event);
   }
 
   handleError(error) {
     this.destroyLoader();
-    this.setState({ status: Status.FAILED });
+    if (this._mounted === true) {
+      this.setState({ status: Status.FAILED });
+    }
 
     if (this.props.onError) this.props.onError(error);
   }

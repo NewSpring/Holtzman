@@ -107,6 +107,7 @@ exports[`Related content query should match query shape 1`] = `
     channel: channelName
     channelName
     parent {
+      id
       entryId: id
       content {
         images(sizes: [\\"medium\\"]) {
