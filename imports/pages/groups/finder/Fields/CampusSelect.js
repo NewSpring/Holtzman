@@ -10,7 +10,7 @@ type ICampusSelect = {
 };
 
 const CampusSelect = ({ campuses, selectedCampus, onChange }: ICampusSelect) =>
-  <div className={"soft-double-top soft-top@handheld text-left soft-half-sides one-whole"}>
+  (<div className={"soft-double-top soft-top@handheld text-left soft-half-sides one-whole"}>
     <style>
       {
         ".input--active select { color: #303030 }; .input--focused label { color: #858585 }"
@@ -29,6 +29,6 @@ const CampusSelect = ({ campuses, selectedCampus, onChange }: ICampusSelect) =>
       selected={selectedCampus}
       includeEmpty
     />
-  </div>;
+  </div>);
 
 export default CampusSelect;

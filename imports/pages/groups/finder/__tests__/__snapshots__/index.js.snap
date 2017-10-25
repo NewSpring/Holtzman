@@ -1,4 +1,6 @@
-exports[`test renders if content loading 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders if content loading 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)>
     <Right
@@ -8,7 +10,8 @@ exports[`test renders if content loading 1`] = `
           "background--left",
         ]
       }
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -16,7 +19,8 @@ exports[`test renders if content loading 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <Layout
       campuses={Array []}
       canSubmit={false}
@@ -36,12 +40,13 @@ exports[`test renders if content loading 1`] = `
         ]
       }
       zip=""
-      zipDisabled={false} />
+      zipDisabled={false}
+    />
   </Left>
 </div>
 `;
 
-exports[`test renders result if campuses 1`] = `
+exports[`renders result if campuses 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)>
     <Right
@@ -51,7 +56,8 @@ exports[`test renders result if campuses 1`] = `
           "background--left",
         ]
       }
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -59,7 +65,8 @@ exports[`test renders result if campuses 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <Layout
       campuses={Array []}
       canSubmit={false}
@@ -84,12 +91,13 @@ exports[`test renders result if campuses 1`] = `
         ]
       }
       zip=""
-      zipDisabled={false} />
+      zipDisabled={false}
+    />
   </Left>
 </div>
 `;
 
-exports[`test renders result if q 1`] = `
+exports[`renders result if q 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)>
     <Right
@@ -99,7 +107,8 @@ exports[`test renders result if q 1`] = `
           "background--left",
         ]
       }
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -107,7 +116,8 @@ exports[`test renders result if q 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <Layout
       campuses={Array []}
       canSubmit={false}
@@ -132,12 +142,13 @@ exports[`test renders result if q 1`] = `
         ]
       }
       zip=""
-      zipDisabled={false} />
+      zipDisabled={false}
+    />
   </Left>
 </div>
 `;
 
-exports[`test renders result if schedules 1`] = `
+exports[`renders result if schedules 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)>
     <Right
@@ -147,7 +158,8 @@ exports[`test renders result if schedules 1`] = `
           "background--left",
         ]
       }
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -155,7 +167,8 @@ exports[`test renders result if schedules 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <Layout
       campuses={Array []}
       canSubmit={false}
@@ -180,12 +193,13 @@ exports[`test renders result if schedules 1`] = `
         ]
       }
       zip=""
-      zipDisabled={false} />
+      zipDisabled={false}
+    />
   </Left>
 </div>
 `;
 
-exports[`test renders result if tags 1`] = `
+exports[`renders result if tags 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)>
     <Right
@@ -195,7 +209,8 @@ exports[`test renders result if tags 1`] = `
           "background--left",
         ]
       }
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -203,7 +218,8 @@ exports[`test renders result if tags 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <Layout
       campuses={Array []}
       canSubmit={false}
@@ -228,12 +244,13 @@ exports[`test renders result if tags 1`] = `
         ]
       }
       zip=""
-      zipDisabled={false} />
+      zipDisabled={false}
+    />
   </Left>
 </div>
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)>
     <Right
@@ -243,7 +260,8 @@ exports[`test renders with props 1`] = `
           "background--left",
         ]
       }
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -251,7 +269,8 @@ exports[`test renders with props 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <Layout
       campuses={Array []}
       canSubmit={false}
@@ -276,12 +295,13 @@ exports[`test renders with props 1`] = `
         ]
       }
       zip=""
-      zipDisabled={false} />
+      zipDisabled={false}
+    />
   </Left>
 </div>
 `;
 
-exports[`test renders without attributes 1`] = `
+exports[`renders without attributes 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)>
     <Right
@@ -291,7 +311,8 @@ exports[`test renders without attributes 1`] = `
           "background--left",
         ]
       }
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -299,7 +320,8 @@ exports[`test renders without attributes 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <Layout
       campuses={Array []}
       canSubmit={false}
@@ -319,7 +341,8 @@ exports[`test renders without attributes 1`] = `
       tagOnClick={[Function]}
       tags={Array []}
       zip=""
-      zipDisabled={false} />
+      zipDisabled={false}
+    />
   </Left>
 </div>
 `;

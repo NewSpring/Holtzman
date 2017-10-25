@@ -1,128 +1,153 @@
-exports[`test renders with an image and no video 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders with an image and no video 1`] = `
 <section
   className="hard background--light-primary"
   style={
     Object {
       "transition": "0.7s margin",
     }
-  }>
+  }
+>
   <div
     className="one-whole ratio--landscape background--fill"
     style={
       Object {
-        "backgroundImage": "url(\'//drhztd8q3iayu.cloudfront.net/newspring/collection/studies/Galatiansstudy2x1.large.png\')",
+        "backgroundImage": "url('//drhztd8q3iayu.cloudfront.net/newspring/collection/studies/Galatiansstudy2x1.large.png')",
       }
-    } />
+    }
+  />
   <div
-    className="soft soft-double@palm-wide-and-up push-top">
+    className="soft soft-double@palm-wide-and-up push-top"
+  >
     <h2
-      className="capitalize" />
+      className="capitalize"
+    />
     <div
       dangerouslySetInnerHTML={
         Object {
           "__html": undefined,
         }
-      } />
+      }
+    />
   </div>
 </section>
 `;
 
-exports[`test renders with an ooyala video 1`] = `
+exports[`renders with an ooyala video 1`] = `
 <section
   className="hard background--light-primary"
   style={
     Object {
       "transition": "0.7s margin",
     }
-  }>
+  }
+>
   <div
-    className="soft soft-double@palm-wide-and-up push-top">
+    className="soft soft-double@palm-wide-and-up push-top"
+  >
     <h2
-      className="capitalize" />
+      className="capitalize"
+    />
     <div
       dangerouslySetInnerHTML={
         Object {
           "__html": undefined,
         }
-      } />
+      }
+    />
   </div>
 </section>
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <section
   className="hard background--light-primary"
   style={
     Object {
       "transition": "0.7s margin",
     }
-  }>
+  }
+>
   <div
-    className="soft soft-double@palm-wide-and-up push-top">
+    className="soft soft-double@palm-wide-and-up push-top"
+  >
     <h2
-      className="capitalize" />
+      className="capitalize"
+    />
     <div
       dangerouslySetInnerHTML={
         Object {
           "__html": "<h2>study body</h2>",
         }
-      } />
+      }
+    />
   </div>
 </section>
 `;
 
-exports[`test renders with related content 1`] = `
+exports[`renders with related content 1`] = `
 <section
   className="hard background--light-primary"
   style={
     Object {
       "transition": "0.7s margin",
     }
-  }>
+  }
+>
   <div
     className="one-whole ratio--landscape background--fill"
     style={
       Object {
-        "backgroundImage": "url(\'//drhztd8q3iayu.cloudfront.net/newspring/collection/studies/Galatiansstudy2x1.large.png\')",
+        "backgroundImage": "url('//drhztd8q3iayu.cloudfront.net/newspring/collection/studies/Galatiansstudy2x1.large.png')",
       }
-    } />
+    }
+  />
   <div
-    className="soft soft-double@palm-wide-and-up push-top">
+    className="soft soft-double@palm-wide-and-up push-top"
+  >
     <h2
-      className="capitalize" />
+      className="capitalize"
+    />
     <div
       dangerouslySetInnerHTML={
         Object {
           "__html": undefined,
         }
-      } />
+      }
+    />
   </div>
 </section>
 `;
 
-exports[`test renders with scripture 1`] = `
+exports[`renders with scripture 1`] = `
 <section
   className="hard background--light-primary"
   style={
     Object {
       "transition": "0.7s margin",
     }
-  }>
+  }
+>
   <div
     className="one-whole ratio--landscape background--fill"
     style={
       Object {
-        "backgroundImage": "url(\'//drhztd8q3iayu.cloudfront.net/newspring/collection/studies/Galatiansstudy2x1.large.png\')",
+        "backgroundImage": "url('//drhztd8q3iayu.cloudfront.net/newspring/collection/studies/Galatiansstudy2x1.large.png')",
       }
-    } />
+    }
+  />
   <div
-    className="soft soft-double@palm-wide-and-up push-top">
+    className="soft soft-double@palm-wide-and-up push-top"
+  >
     <h2
-      className="capitalize" />
+      className="capitalize"
+    />
     <a
       className="h4 soft-bottom display-block text-center"
       href=""
-      onClick={[Function]}>
+      onClick={[Function]}
+    >
       Galatians 2:11-21
     </a>
     <div
@@ -130,7 +155,8 @@ exports[`test renders with scripture 1`] = `
         Object {
           "__html": undefined,
         }
-      } />
+      }
+    />
   </div>
 </section>
 `;

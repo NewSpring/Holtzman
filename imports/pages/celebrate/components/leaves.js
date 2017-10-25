@@ -1,4 +1,4 @@
-import { PropTypes } from "react";
+import PropTypes from "prop-types";
 
 const Leaf = ({ size, color, type, style, className }) => {
   const computedStyles = { ...{ width: size, height: size }, ...style };
@@ -23,19 +23,19 @@ Leaf.propTypes = {
   className: PropTypes.string,
 };
 
-const OutlinedLeaf = (props) => (
+const OutlinedLeaf = props => (
   <Leaf type="leaf-outline" {...props} />
 );
 
-const SolidLeaf = (props) => (
+const SolidLeaf = props => (
   <Leaf type="leaf-solid" {...props} />
 );
 
-const StripedLeaf = (props) => (
+const StripedLeaf = props => (
   <Leaf type="leaf-striped" {...props} />
 );
 
-const Logo = (props) => (
+const Logo = props => (
   <Leaf type="logo" {...props} />
 );
 

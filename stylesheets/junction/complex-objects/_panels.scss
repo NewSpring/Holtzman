@@ -1,0 +1,92 @@
+
+$use-panels: true !default;
+
+@if $use-panels == true {
+  //
+  // @name %_panel
+  // @description base selector to be extended for panel containers
+  //
+  // @extend true
+  //
+  // @note handheld - paneling is turned off for handheld
+  //
+  %_panel {
+    @include media-query(lap-and-up) {
+      @include absolute(top 0 bottom 0 right 0 left 0);
+
+      z-index: 0;
+    }
+
+    -webkit-overflow-scrolling: touch;
+  }
+
+  //
+  // @name %_panel__item
+  // @description base selector to be extended for panel elements
+  //
+  // @extend true
+  //
+  // @note handheld - paneling is turned off for handheld
+  //
+  %_panel__item {
+    // don't split on mobile
+    @include media-query(lap-and-up) {
+      @include absolute(top 0 bottom 0);
+
+      height: 100%;
+    }
+  }
+
+  //
+  // @name Panel
+  // @class .panel
+  // @description The container for side by side panels
+  //
+  // @complex-object true
+  //
+  // @block .panel
+  // @element .panel__item
+  //
+  // @markup
+  // <div class="panel">
+  //   <div class="panel__item--left one-whole lap-and-up-one-third">
+  //
+  //     <h1>Pizza?</h1>
+  //     <p>lots of pizza is always better</p>
+  //
+  //   </div>
+  //   <div class="panel__item--right one-whole lap-and-up-two-thirds">
+  //
+  //     <h1>Hamburgers?</h1>
+  //     <p>
+  //       Donec ullamcorper nulla non metus auctor fringilla. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed posuere consectetur est at lobortis. Nulla vitae elit libero, a pharetra augue.
+  //     </p>
+  //     <p>
+  //       Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean lacinia bibendum nulla sed consectetur. Sed posuere consectetur est at lobortis. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur blandit tempus porttitor. Nulla vitae elit libero, a pharetra augue.
+  //     <p>
+  //     <p>
+  //       Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec ullamcorper nulla non metus auctor fringilla. Donec sed odio dui. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.
+  //     </p>
+  //
+  //   </div>
+  // </div>
+  .panel {
+    @extend %_panel;
+  }
+
+  .panel__item {
+    @extend %_panel__item;
+  }
+
+  .panel__item--left {
+    @extend %_panel__item;
+
+    left: 0;
+  }
+
+  .panel__item--right {
+    @extend %_panel__item;
+
+    right: 0;
+  }
+}

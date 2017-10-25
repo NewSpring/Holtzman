@@ -1,0 +1,64 @@
+
+
+$use-fixed: true!default;
+
+@if $use-fixed == true {
+
+  @include namespace(fixed) {
+    position: fixed;
+  }
+
+  @include namespace(fixed-left) {
+    position: fixed;
+
+    left: 0;
+  }
+
+  @include namespace(fixed-right) {
+    position: fixed;
+
+    right: 0;
+  }
+
+  @include namespace(fixed-top) {
+    position: fixed;
+
+    top: 0;
+  }
+
+  @include namespace(fixed-middle) {
+    position: fixed;
+
+    top: 50%;
+  }
+
+  @include namespace(fixed-center) {
+    position: fixed;
+
+    left: 50%;
+  }
+
+
+
+  @include namespace(fixed-bottom) {
+    position: fixed;
+
+    bottom: 0;
+  }
+
+  @include namespace(fixed-ends) {
+    position: fixed;
+
+    top: 0;
+    bottom: 0;
+  }
+
+  @include namespace(fixed-sides) {
+    position: fixed;
+
+    right: 0;
+    left: 0;
+  }
+
+
+}

@@ -1,0 +1,130 @@
+
+$use-buttons-social: true!default;
+$brand-colors: (
+apple: (
+color: #b4b5b9,
+icon: "\f179"
+),
+android: (
+color: #a4c639,
+icon: "\f17b"
+),
+dribbble: (
+color: #c32361,
+icon: "\f17d"
+),
+dropbox: (
+color: #007ee5,
+icon: "\f16b"
+),
+facebook: (
+color: #3b5998,
+icon: "\f09a"
+),
+foursquare: (
+color: #0072b1,
+icon: "\f180"
+),
+github: (
+color: #4183c4,
+icon: "\f09b"
+),
+google: (
+color: #dd4b39,
+icon: "\f0d5"
+),
+instagram: (
+color: #3f729b,
+icon: "\f16d"
+),
+pinterest: (
+color: #cc2127,
+icon: "\f231"
+),
+tumblr: (
+color: #35465c,
+icon: "\f173"
+),
+twitter: (
+color: #55acee,
+icon: "\f099"
+),
+windows: (
+color: #00bcf2,
+icon: "\f17a"
+),
+youtube: (
+color: #b31217,
+icon: "\f16a"
+)
+)!default;
+// -----------------------------------
+//    $BRANDS
+// -----------------------------------
+$brands: "facebook", "google", "twitter"!default;
+
+
+
+@if $use-buttons-social == true {
+  //
+  // @name %btn--icon
+  // @description base selector to be extended for buttons with icons
+  //
+  // @variable $brand-colors - map of brands, their colors, and icons
+  // @variable $brands - list of brands to include
+  //
+  // @extend true
+  //
+  // @state :after - set font to light for filled in buttons and set font family to FontAwesome
+  // @state :hover - adjust colors on hover to slight fade
+  //
+  %btn--social {
+    @extend %btn--icon;
+
+    text-transform: none;
+
+    &:after {
+      color: $light-color;
+
+      font-family: FontAwesome;
+    }
+  }
+
+  //
+  // @name brand buttons
+  // @class .btn-facebook
+  // @description For every brand that is set in $brands, a class and button style is generated
+  //
+  // @extends %btn--icon - extends base icon button object
+  //
+  // @state :after - brand icon!
+  //
+  // @object true
+  //
+  // @block .btn
+  // @modifier .btn-facebook - For every brand that is set in $brands, a class and button style is generated
+  //
+  //
+  // @markup
+  // <a href="#" class="btn--facebook">Facebook</a>
+  //
+
+  // Loop through the list of brands selected to make buttons
+  @each $brand in $brands {
+    $_brand: map-fetch($brand-colors, $brand);
+
+    .btn--#{$brand} {
+      @extend %btn--social;
+
+      color: $light-color;
+      border-color: map-get($_brand, "color");
+      background-color: map-get($_brand, "color");
+      &:after {
+        content: map-get($_brand, "icon");
+      }
+      &:hover {
+        background-color: darken(map-get($_brand, "color"), 5);
+      }
+    }
+  }
+}

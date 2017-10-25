@@ -58,7 +58,7 @@ class Template extends Component {
   updateActive = (props: Object) => {
     const { pathname } = props.location;
 
-    this.setState((state) => state.subNav.map((x) => {
+    this.setState(state => state.subNav.map(x => {
       const nav = x;
       nav.isActive = false;
       if (nav.linkUrl === pathname) {
