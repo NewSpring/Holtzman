@@ -40,7 +40,10 @@ export default class ImageLoader extends Component {
       this.createLoader();
     }
 
+    // eslint-disable-next-line
     this.setState({ mounted: true });
+    // need this for the rare case that createLoader gets called in update but
+    // the component hasn't mounted yet.
   }
 
   componentWillReceiveProps(nextProps) {
