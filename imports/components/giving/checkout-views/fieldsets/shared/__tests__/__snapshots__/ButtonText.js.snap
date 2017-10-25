@@ -1,52 +1,54 @@
-exports[`test should say \`Give With 4321\` if cardNumber 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should say \`Give With 4321\` if cardNumber 1`] = `
 <span>
   Give With 4321
 </span>
 `;
 
-exports[`test should say \`Give With 6789\` if accountNumber 1`] = `
+exports[`should say \`Give With 6789\` if accountNumber 1`] = `
 <span>
   Give With 6789
 </span>
 `;
 
-exports[`test should say \`Give\` with minimal props 1`] = `
+exports[`should say \`Give\` with minimal props 1`] = `
 <span>
   Give
 </span>
 `;
 
-exports[`test should say \`Schedule With 4321\` if schedule and cardNumber 1`] = `
+exports[`should say \`Schedule With 4321\` if schedule and cardNumber 1`] = `
 <span>
   Schedule With 4321
 </span>
 `;
 
-exports[`test should say \`Schedule With 6789\` if schedule and accountNumber 1`] = `
+exports[`should say \`Schedule With 6789\` if schedule and accountNumber 1`] = `
 <span>
   Schedule With 6789
 </span>
 `;
 
-exports[`test should say \`Schedule\` if schedule present 1`] = `
+exports[`should say \`Schedule\` if schedule present 1`] = `
 <span>
   Schedule
 </span>
 `;
 
-exports[`test should say \`Transfer With 4321\` if schedule and cardNumber 1`] = `
+exports[`should say \`Transfer With 4321\` if schedule and cardNumber 1`] = `
 <span>
   Transfer With 4321
 </span>
 `;
 
-exports[`test should say \`Transfer With 6789\` if recoverable schedule and accountNumber 1`] = `
+exports[`should say \`Transfer With 6789\` if recoverable schedule and accountNumber 1`] = `
 <span>
   Transfer With 6789
 </span>
 `;
 
-exports[`test should say \`Transfer\` if recoverable schedule 1`] = `
+exports[`should say \`Transfer\` if recoverable schedule 1`] = `
 <span>
   Transfer
 </span>

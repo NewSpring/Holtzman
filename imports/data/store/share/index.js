@@ -14,7 +14,7 @@ addReducer({
 });
 
 export default {
-  set: (content) => ({ type: "SHARE.SET", content }),
+  set: content => ({ type: "SHARE.SET", content }),
 
   share: () => ({ type: "SHARE.SHARE" }),
 };

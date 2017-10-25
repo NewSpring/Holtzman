@@ -1,4 +1,6 @@
-exports[`test allows for adding a single transaction 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`allows for adding a single transaction 1`] = `
 Object {
   "accounts": Object {},
   "attempts": 0,
@@ -58,7 +60,7 @@ Object {
 }
 `;
 
-exports[`test allows for adding multiple transaction 1`] = `
+exports[`allows for adding multiple transaction 1`] = `
 Object {
   "accounts": Object {},
   "attempts": 0,
@@ -121,7 +123,7 @@ Object {
 }
 `;
 
-exports[`test allows for clearing a single transaction 1`] = `
+exports[`allows for clearing a single transaction 1`] = `
 Object {
   "accounts": Object {},
   "attempts": 0,
@@ -177,7 +179,7 @@ Object {
 }
 `;
 
-exports[`test allows reseting the transactions 1`] = `
+exports[`allows reseting the transactions 1`] = `
 Object {
   "accounts": Object {},
   "attempts": 0,
@@ -233,7 +235,7 @@ Object {
 }
 `;
 
-exports[`test correctly updates the total after clearing a transaction 1`] = `
+exports[`correctly updates the total after clearing a transaction 1`] = `
 Object {
   "accounts": Object {},
   "attempts": 0,
@@ -293,7 +295,7 @@ Object {
 }
 `;
 
-exports[`test doesn't change if id isn't found in the store 1`] = `
+exports[`doesn't change if id isn't found in the store 1`] = `
 Object {
   "accounts": Object {},
   "attempts": 0,
@@ -353,7 +355,7 @@ Object {
 }
 `;
 
-exports[`test removes transactions without correct values 1`] = `
+exports[`removes transactions without correct values 1`] = `
 Object {
   "accounts": Object {},
   "attempts": 0,

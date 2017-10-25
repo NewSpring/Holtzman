@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`GiveReviewTemplate returns <Error /> component based on state 1`] = `
 <div
   className="one-whole one-half@palm-wide-and-up"
@@ -5,10 +7,12 @@ exports[`GiveReviewTemplate returns <Error /> component based on state 1`] = `
     Object {
       "margin": "0 auto",
     }
-  }>
+  }
+>
   <Err
-    additionalMessage="Please click \'Done\' in the top left of your screen to get back to the app"
-    msg="must go faster!" />
+    additionalMessage="Please click 'Done' in the top left of your screen to get back to the app"
+    msg="must go faster!"
+  />
 </div>
 `;
 
@@ -52,14 +56,17 @@ exports[`GiveReviewTemplate returns <Layout /> component based on state 1`] = `
     }
   }
   url={false}
-  userId="jY4RT2WK55yKYtj4y" />
+  userId="jY4RT2WK55yKYtj4y"
+/>
 `;
 
 exports[`GiveReviewTemplate returns <Loading /> component based on state 1`] = `
 <div
-  className="fixed-ends fixed-sides">
+  className="fixed-ends fixed-sides"
+>
   <Loading
-    msg="We\'re Processing Your Contribution" />
+    msg="We're Processing Your Contribution"
+  />
   ;
 </div>
 `;
@@ -71,9 +78,10 @@ exports[`GiveReviewTemplate returns <Success /> component based on state 1`] = `
     Object {
       "margin": "0 auto",
     }
-  }>
+  }
+>
   <Success
-    additionalMessage="Please click \'Done\' in the top left of your screen to get back to the app"
+    additionalMessage="Please click 'Done' in the top left of your screen to get back to the app"
     email="web@newspring.cc"
     guest={false}
     onClick={[Function]}
@@ -83,6 +91,7 @@ exports[`GiveReviewTemplate returns <Success /> component based on state 1`] = `
         "start": null,
       }
     }
-    total="$1.00" />
+    total="$1.00"
+  />
 </div>
 `;

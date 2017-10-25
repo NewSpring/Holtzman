@@ -1,4 +1,6 @@
-exports[`test allows for deleting recoverable schedules by 1 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`allows for deleting recoverable schedules by 1 1`] = `
 Object {
   "accounts": Object {},
   "attempts": 0,
@@ -56,7 +58,7 @@ Object {
 }
 `;
 
-exports[`test allows for removing all recovered schedule 1`] = `
+exports[`allows for removing all recovered schedule 1`] = `
 Object {
   "accounts": Object {},
   "attempts": 0,
@@ -112,7 +114,7 @@ Object {
 }
 `;
 
-exports[`test allows for setting a recovered schedule 1`] = `
+exports[`allows for setting a recovered schedule 1`] = `
 Object {
   "accounts": Object {},
   "attempts": 0,
@@ -170,7 +172,7 @@ Object {
 }
 `;
 
-exports[`test allows for setting multiple recoverable schedules 1`] = `
+exports[`allows for setting multiple recoverable schedules 1`] = `
 Object {
   "accounts": Object {},
   "attempts": 0,
@@ -229,7 +231,7 @@ Object {
 }
 `;
 
-exports[`test doesn't delete anything if no id is found 1`] = `
+exports[`doesn't delete anything if no id is found 1`] = `
 Object {
   "accounts": Object {},
   "attempts": 0,

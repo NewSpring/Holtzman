@@ -11,7 +11,6 @@ import { CreditCardForm } from "./paymentForm";
 import formatPersonDetails from "./formatPersonDetails";
 import CREATE_ORDER_MUTATION from "./createOrderMutation";
 
-
 export default function* submitPersonDetails(give, autoSubmit) {
   // personal info is ready to be submitted
   const formattedData = formatPersonDetails(give);
@@ -38,7 +37,9 @@ export default function* submitPersonDetails(give, autoSubmit) {
     });
     // if (response.error) error = response.error;
     url = response.url;
-  } catch (e) { /* eslint-disable-line */ }
+  } catch (e) {
+    /* eslint-disable-line */
+  }
 
   if (autoSubmit) {
     /*
@@ -67,17 +68,16 @@ export default function* submitPersonDetails(give, autoSubmit) {
     // add fieldset to non rendered form
     ReactDOM.render(FieldSet, form);
 
+    // eslint-disable-next-line
     yield fetch(url, {
       method: "POST",
       body: new FormData(form),
       mode: "no-cors",
-    })
-      .catch(() => {
-        // console.log("error dark", error);
-      });
+    }).catch(() => {
+      // console.log("error dark", error);
+    });
   }
 
   // update the store with the url
   yield put(actions.setDetails(url));
-  return;
 }

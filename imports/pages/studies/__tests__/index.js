@@ -5,7 +5,7 @@ import { reset, startBuffering } from "aphrodite/lib/inject";
 
 import {
   TemplateWithoutData as Studies,
-  SERIES_QUERY,
+  STUDIES_QUERY,
 } from "../index";
 
 import {
@@ -71,8 +71,8 @@ const generateComponent = (additionalProps = {}) => {
   return <Studies { ...newProps } />;
 };
 
-it("parses series query", () => {
-  expect(SERIES_QUERY).toMatchSnapshot();
+it("parses studies query", () => {
+  expect(STUDIES_QUERY).toMatchSnapshot();
 });
 
 it("renders with props", () => {

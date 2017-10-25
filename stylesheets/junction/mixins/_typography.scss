@@ -1,0 +1,135 @@
+$use-typography: true!default;
+
+$fonts: (
+  breakpoints: (
+    handheld: $base-font-size,
+    portable: $base-font-size * 1.125,
+    anchored: $base-font-size * 1.25
+  ),
+  base: (
+    h1: (
+      font-size: 3.25em,
+      line-height: 1.05,
+      margin-bottom: $base-spacing-unit
+    ),
+    h2: (
+      font-size: 2.625em,
+      line-height: 1.25,
+      margin-bottom: $base-spacing-unit
+    ),
+    h3: (
+      font-size: 2em,
+      line-height: 1.25,
+      margin-bottom: $base-spacing-unit
+    ),
+    h4: (
+      font-size: 1.5625em,
+      line-height: 1.2222222,
+      margin-bottom: $half-spacing-unit
+    ),
+    h5: (
+      font-size: 1.25em,
+      line-height: 1.25,
+      margin-bottom: $half-spacing-unit
+    ),
+    h6: (
+      font-size: 1em,
+      line-height: 1.125,
+      margin-bottom: $half-spacing-unit
+    ),
+    h7: (
+      font-size: .875em,
+      line-height: 1.125,
+      margin-bottom: $half-spacing-unit
+    ),
+    p: (
+      font-size: $base-font-size/16px * 1em ,
+      line-height: $line-height-ratio,
+      margin-bottom: $base-spacing-unit
+    )
+  )
+)!default;
+
+// type sets
+$typography: (
+  h1: "base",
+  h2: "base",
+  h3: "base",
+  h4: "base",
+  h5: "base",
+  h6: "base",
+  h7: "base",
+  p: "base"
+)!default;
+
+
+// @if $use-typography == true {
+
+  //
+  // @name typography
+  // @description Dynamically generates a set of base type styles from a source map. Combining a source map with the name $fonts and a selector map named $typography, this mixin will create base styling for your stylesheets typography. It makes updating and setting base type as easy as updating a map or two.
+  //
+  // @mixin true
+  //
+  // @variable fonts - styles (including media-queries) for given font families
+  // @variable typography - list of fonts to use and for what elements
+  //
+
+
+  @mixin typography {
+    // Make sure to only run if typography and fonts variable exist
+    // Also verify that they are maps and not strings or other things
+    @if global-variable-exists(typography) and variable-exists(fonts) and
+    type-of($typography) == "map" and type-of($fonts) == "map" {
+
+      @if map-has-key($fonts, breakpoints) == true {
+        @each $_breakpoint, $_size in map-get($fonts, breakpoints) {
+          @include media-query($_breakpoint) {
+            body {
+              font-size: "#{(($_size/16px) * 100)}%";
+            }
+          }
+        }
+      }
+
+      // loop through each element in defined typography set
+      @each $_element, $_type in $typography {
+
+        // grab the acutal styles of each element in the font object
+        $_styles: map-fetch($fonts, $_type, $_element);
+
+        // create element for styling
+        %#{$_element},
+        #{$_element},
+        .#{$_element} {
+          // loop through all styles
+          @each $_property, $_value in $_styles {
+            // ignore media-queries
+            @if $_property != "media-query" {
+              // print out all other properties
+              #{$_property}: $_value;
+            }
+          }
+          // if the given font has a media query for this element
+          @if map-has-key($_styles, "media-query") {
+
+            // loop through media query styles
+            @each $_query, $_query-styles in map-get($_styles, "media-query") {
+
+              @include media-query($_query) {
+                @each $_property, $_value in $_query-styles {
+                  #{$_property}: $_value;
+                }
+              }
+            }
+          }
+        }
+
+
+      }
+    }
+  }
+
+
+
+// }

@@ -1,4 +1,5 @@
-import { Component, PropTypes } from "react";
+import PropTypes from "prop-types";
+import { Component } from "react";
 import { graphql } from "react-apollo";
 import { connect } from "react-redux";
 import gql from "graphql-tag";
@@ -44,9 +45,9 @@ class HomeAddressWithoutData extends Component {
     this.props.dispatch(nav.setLevel("TOP"));
   }
 
-  updateAddress = (data) => {
+  updateAddress = data => {
     this.setState({ state: "loading" });
-    updateHome(data, (err) => {
+    updateHome(data, err => {
       if (err) {
         this.setState({ state: "error", err });
         setTimeout(() => {
@@ -107,14 +108,14 @@ const PERSON_HOME_QUERY = gql`
 const withPersonHome = graphql(PERSON_HOME_QUERY, {
   options: {
     variables: { cache: true },
-    forceFetch: true,
+    fetchPolicy: "network-only",
   },
 });
 
 export default connect()(
   withPersonHome(
-    HomeAddressWithoutData
-  )
+    HomeAddressWithoutData,
+  ),
 );
 
 export {

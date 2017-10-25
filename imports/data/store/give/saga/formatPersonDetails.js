@@ -1,6 +1,6 @@
 import moment from "moment";
 
-const formatPersonDetails = (give) => {
+const formatPersonDetails = give => {
   const { data, transactions, total, schedule, savedAccount } = give;
 
   // here we format data for the NMI processing
@@ -72,7 +72,7 @@ const formatPersonDetails = (give) => {
     // in order to line up the amounts with the funds, we store the amounts
     // in a matching comma sep string
     joinedData["merchant-defined-field-4"] = Object.keys(transactions)
-      .map((key) => transactions[key].value)
+      .map(key => transactions[key].value)
       .join(",");
   } else if (transactions && Object.keys(transactions).length) {
     joinedData.product = [];

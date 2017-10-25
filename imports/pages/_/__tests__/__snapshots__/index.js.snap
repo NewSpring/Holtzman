@@ -1,4 +1,6 @@
-exports[`test parses query 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`parses query 1`] = `
 "query CashTag($tag: String!) {
   account: accountFromCashTag(cashTag: $tag) {
     name
@@ -7,7 +9,7 @@ exports[`test parses query 1`] = `
 "
 `;
 
-exports[`test renders with children 1`] = `
+exports[`renders with children 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)
     classes={
@@ -15,7 +17,8 @@ exports[`test renders with children 1`] = `
         "background--light-primary",
       ]
     }
-    nav={true}>
+    nav={true}
+  >
     <Right
       background="https://s3.amazonaws.com/ns.assets/apollos/leaves.png"
       backgroundFill={false}
@@ -25,7 +28,8 @@ exports[`test renders with children 1`] = `
           "background--bottom",
         ]
       }
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -33,7 +37,8 @@ exports[`test renders with children 1`] = `
         "background--light-primary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <h1>
       test
     </h1>
