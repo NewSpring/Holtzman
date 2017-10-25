@@ -49,11 +49,11 @@ export default class ImageLoader extends Component {
     }
   }
 
-  componentDidUpdate() {
-    if (this.state.status === Status.LOADING && !this.img) {
-      this.createLoader();
-    }
-  }
+  // componentDidUpdate() {
+  //   if (this.state.status === Status.LOADING && !this.img) {
+  //     this.createLoader();
+  //   }
+  // }
 
   componentWillUnmount() {
     this.destroyLoader();
