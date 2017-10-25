@@ -39,6 +39,8 @@ export default class ImageLoader extends Component {
     if (this.state.status === Status.LOADING) {
       this.createLoader();
     }
+
+    this.setState({ mounted: true });
   }
 
   componentWillReceiveProps(nextProps) {
@@ -49,11 +51,11 @@ export default class ImageLoader extends Component {
     }
   }
 
-  // componentDidUpdate() {
-  //   if (this.state.status === Status.LOADING && !this.img) {
-  //     this.createLoader();
-  //   }
-  // }
+  componentDidUpdate() {
+    if (this.state.status === Status.LOADING && !this.img && this.state.mounted) {
+      this.createLoader();
+    }
+  }
 
   componentWillUnmount() {
     this.destroyLoader();

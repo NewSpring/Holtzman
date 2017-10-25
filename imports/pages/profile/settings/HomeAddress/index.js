@@ -93,6 +93,7 @@ class HomeAddressWithoutData extends Component {
 const PERSON_HOME_QUERY = gql`
   query GetPersonsHome($cache: Boolean) {
     person: currentPerson {
+      id
       home(cache: $cache) {
         street1
         street2
