@@ -15,7 +15,7 @@ type ITemplate = {
   give: Object,
 };
 
-const mapStateToProps = (state) => ({ give: state.give });
+const mapStateToProps = state => ({ give: state.give });
 
 export class Template extends Component {
 

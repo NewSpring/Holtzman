@@ -1,0 +1,75 @@
+
+$use-typography: true !default;
+
+@if $use-typography == true {
+  //
+  // @name .capitalize
+  // @class .capitalize
+  // @description set item to be in caps
+  //
+  //
+  .capitalize {
+    text-transform: capitalize;
+  }
+  //
+  // @name .lowercase
+  // @class .lowercase
+  // @description set item to be lowercase
+  //
+  //
+  .lowercase {
+    text-transform: lowercase;
+  }
+  //
+  // @name .uppercase
+  // @class .uppercase
+  // @description set item to be uppercase
+  //
+  //
+  .uppercase {
+    text-transform: uppercase;
+  }
+  //
+  // @name .italic
+  // @class .italic
+  // @description set item to be italic
+  //
+  //
+  .italic {
+    font-style: italic;
+  }
+  //
+  // @name .ellipsis
+  // @class .ellipsis
+  // @description set item to be ellipsis
+  //
+  //
+  .ellipsis {
+    overflow: hidden;
+
+    vertical-align: middle;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  //
+  // @name .truncate
+  // @class .truncate
+  // @description helper class to truncate text
+  //
+  //
+  .truncate {
+    overflow: hidden;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  //
+  // @name .underline
+  // @class .underline
+  // @description helper class to underline text
+  //
+  //
+  .underline {
+    border-bottom: $base-border-size solid $base-font-color;
+  }
+}

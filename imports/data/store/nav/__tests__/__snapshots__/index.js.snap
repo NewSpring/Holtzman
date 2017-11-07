@@ -1,18 +1,20 @@
-exports[`test hide 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`hide 1`] = `
 Object {
   "type": "NAV.SET_VISIBILITY",
   "visible": false,
 }
 `;
 
-exports[`test reset 1`] = `
+exports[`reset 1`] = `
 Object {
   "level": "TOP",
   "type": "NAV.SET_LEVEL",
 }
 `;
 
-exports[`test setAction 1`] = `
+exports[`setAction 1`] = `
 Object {
   "level": Object {
     "level": "CONTENT",
@@ -26,7 +28,7 @@ Object {
 }
 `;
 
-exports[`test setColor 1`] = `
+exports[`setColor 1`] = `
 Object {
   "bgColor": Object {
     "bgColor": "red",
@@ -37,7 +39,7 @@ Object {
 }
 `;
 
-exports[`test setLevel 1`] = `
+exports[`setLevel 1`] = `
 Object {
   "level": Object {
     "level": "CONTENT",
@@ -46,7 +48,7 @@ Object {
 }
 `;
 
-exports[`test setLinks 1`] = `
+exports[`setLinks 1`] = `
 Object {
   "links": Object {
     "links": Array [
@@ -68,7 +70,7 @@ Object {
 }
 `;
 
-exports[`test show 1`] = `
+exports[`show 1`] = `
 Object {
   "type": "NAV.SET_VISIBILITY",
   "visible": true,

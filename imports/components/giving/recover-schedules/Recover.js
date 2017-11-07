@@ -54,7 +54,7 @@ const Recover = ({ schedules, onClick, hide }: IRecover) => (
       Our records show that you have active giving schedules in our previous system. To access your schedule within our new system, simply review your schedule and re-enter your payment details. If you&#39;re not ready to do this, your schedule will continue in our previous system until you transfer it.
     </p>
 
-    {schedules.map((schedule) => (
+    {schedules.map(schedule => (
       <RecoverableSchedule
         amount={schedule.details[0].amount}
         frequency={schedule.schedule.value}

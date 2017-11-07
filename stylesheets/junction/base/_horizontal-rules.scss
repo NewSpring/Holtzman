@@ -1,0 +1,20 @@
+
+$use-horizontal-rules: true !default;
+
+@if $use-horizontal-rules == true {
+  //
+  // @name hr
+  // @description declerations to be applied to hr tags to set baseline for section breaks
+  //
+  // @base true
+  //
+  //
+  hr {
+    display: block;
+
+    width: 100%;
+    margin-top: $base-spacing-unit;
+    margin-bottom: $base-spacing-unit;
+    padding: 0;
+  }
+}

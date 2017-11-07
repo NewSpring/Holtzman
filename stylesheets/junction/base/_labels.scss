@@ -1,0 +1,12 @@
+
+$use-labels: true !default;
+
+@if $use-labels == true {
+  label {
+    display: block;
+
+    text-align: left;
+
+    color: map-get($colors, dark-tertiary);
+  }
+}

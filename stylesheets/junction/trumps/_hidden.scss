@@ -1,0 +1,26 @@
+
+$use-hidden: true !default;
+
+@if $use-hidden == true {
+  //
+  // @name .visuallyhidden
+  // @class .visuallyhidden
+  // @description hide item without setting display to none
+  //
+  // @trump true
+  // @namespaced true
+  //
+  @include namespace("visuallyhidden") {
+    position: absolute !important;
+
+    overflow: hidden !important;
+    clip: rect(0 0 0 0) !important;
+
+    width: 1px !important;
+    height: 1px !important;
+    margin: -1px !important;
+    padding: 0 !important;
+
+    border: 0 !important;
+  }
+}
