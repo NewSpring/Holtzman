@@ -1,0 +1,39 @@
+
+$use-vendor: true!default;
+
+// @if $use-vendor == true {
+  //
+  // @name vendor
+  //
+  // @description The vendor mixin prefixes a value with vendor prefixes of the four majorb browser types. If you are using Norma or any form of auto-prefixer, This should be unncessary.
+  //
+  // @mixin true
+  //
+  // @parameter $property - the property to prefix
+  // @parameter $value - the value(s) to assign
+  //
+  // @scss
+  // .foo {
+  //   @include vendor(rotate, 30deg);
+  // }
+  //
+  // @css
+  // .foo {
+  //   -webkit-rotate: 30deg;
+  //   -moz-rotate: 30deg;
+  //   -ms-rotate: 30deg;
+  //   -o-rotate: 30deg;
+  //   rotate: 30deg;
+  // }
+  //
+
+  @mixin vendor($property, $value...) {
+    -webkit-#{$property}: $value;
+    -moz-#{$property}: $value;
+    -ms-#{$property}: $value;
+    -o-#{$property}: $value;
+    #{$property}: $value;
+  }
+
+
+// }

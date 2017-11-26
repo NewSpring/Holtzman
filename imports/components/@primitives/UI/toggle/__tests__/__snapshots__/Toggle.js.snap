@@ -1,11 +1,14 @@
-exports[`test appends with classes 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`appends with classes 1`] = `
 <div
   className="test-container"
   style={
     Object {
       "color": "red",
     }
-  }>
+  }
+>
   <input
     checked={true}
     className="toggle-switch one two"
@@ -13,21 +16,24 @@ exports[`test appends with classes 1`] = `
     name="switch-1"
     onChange={[Function]}
     styles={Object {}}
-    type="checkbox" />
+    type="checkbox"
+  />
   <label
     className="float-right"
-    htmlFor="switch-1" />
+    htmlFor="switch-1"
+  />
 </div>
 `;
 
-exports[`test overrides with name 1`] = `
+exports[`overrides with name 1`] = `
 <div
   className="test-container"
   style={
     Object {
       "color": "red",
     }
-  }>
+  }
+>
   <input
     checked={true}
     className="toggle-switch"
@@ -35,21 +41,24 @@ exports[`test overrides with name 1`] = `
     name="my name"
     onChange={[Function]}
     styles={Object {}}
-    type="checkbox" />
+    type="checkbox"
+  />
   <label
     className="float-right"
-    htmlFor="switch-1" />
+    htmlFor="switch-1"
+  />
 </div>
 `;
 
-exports[`test overrides with theme 1`] = `
+exports[`overrides with theme 1`] = `
 <div
   className="test-container"
   style={
     Object {
       "color": "red",
     }
-  }>
+  }
+>
   <input
     checked={true}
     className="my theme"
@@ -57,21 +66,24 @@ exports[`test overrides with theme 1`] = `
     name="switch-1"
     onChange={[Function]}
     styles={Object {}}
-    type="checkbox" />
+    type="checkbox"
+  />
   <label
     className="float-right"
-    htmlFor="switch-1" />
+    htmlFor="switch-1"
+  />
 </div>
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <div
   className="test-container"
   style={
     Object {
       "color": "red",
     }
-  }>
+  }
+>
   <input
     checked={true}
     className="toggle-switch"
@@ -79,21 +91,24 @@ exports[`test renders with props 1`] = `
     name="switch-1"
     onChange={[Function]}
     styles={Object {}}
-    type="checkbox" />
+    type="checkbox"
+  />
   <label
     className="float-right"
-    htmlFor="switch-1" />
+    htmlFor="switch-1"
+  />
 </div>
 `;
 
-exports[`test renders with styles 1`] = `
+exports[`renders with styles 1`] = `
 <div
   className="test-container"
   style={
     Object {
       "color": "red",
     }
-  }>
+  }
+>
   <input
     checked={true}
     className="toggle-switch"
@@ -105,9 +120,11 @@ exports[`test renders with styles 1`] = `
         "color": "red",
       }
     }
-    type="checkbox" />
+    type="checkbox"
+  />
   <label
     className="float-right"
-    htmlFor="switch-1" />
+    htmlFor="switch-1"
+  />
 </div>
 `;

@@ -32,7 +32,7 @@ function getPhoto(per = {}) {
 }
 
 Meteor.methods({
-  "rock/accounts/available": (mail) => {
+  "rock/accounts/available": mail => {
     let email = mail;
     check(email, String);
 
@@ -68,7 +68,7 @@ Meteor.methods({
         // showing more than 5 possible people in this case
         // would be confusing to a user so lets limit our lookup
         const realisticReturnAmounts = 5;
-        const ids = SecondaryEmailPeople.map((x) => (
+        const ids = SecondaryEmailPeople.map(x => (
           `(Id eq ${x.EntityId})`
         )).slice(0, realisticReturnAmounts).join(" and ");
 
@@ -97,7 +97,7 @@ Meteor.methods({
 
           if (person.Users) {
             alternateAccounts = alternateAccounts
-              .concat(person.Users.map((x) => (x.UserName)))
+              .concat(person.Users.map(x => (x.UserName)))
               .filter(Validate.isEmail);
           } else {
             peopleToCheck.push(person.Id);

@@ -1,4 +1,6 @@
-exports[`test CAMPUS_QUERY is parsed correctly 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CAMPUS_QUERY is parsed correctly 1`] = `
 Object {
   "definitions": Array [
     Object {
@@ -186,7 +188,7 @@ Object {
 }
 `;
 
-exports[`test Routes is parsed correctly 1`] = `
+exports[`Routes is parsed correctly 1`] = `
 Object {
   "Routes": Array [
     Object {
@@ -197,7 +199,8 @@ Object {
 }
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <Layout
-  dispatch={[Function]} />
+  dispatch={[Function]}
+/>
 `;

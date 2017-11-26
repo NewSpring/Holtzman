@@ -113,7 +113,7 @@ it("getSearch calls apollo client with search query", () => {
       after: defaultProps.search.page * defaultProps.search.pageSize,
       site: "https://newspring.cc",
     },
-    forceFetch: true,
+    fetchPolicy: "network-only",
   });
   return mockPromise.then(() => {
     expect(searchActions.toggleLoading).toHaveBeenCalledTimes(1);

@@ -1,6 +1,9 @@
-exports[`test should render with minimal props 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render with minimal props 1`] = `
 <div
-  className="push-top@handheld soft-half-top@lap-and-up">
+  className="push-top@handheld soft-half-top@lap-and-up"
+>
   <Form
     classes={
       Array [
@@ -9,17 +12,22 @@ exports[`test should render with minimal props 1`] = `
       ]
     }
     id="add-to-cart"
-    submit={[Function]}>
+    submit={[Function]}
+  >
     <div
-      className="display-inline-block">
+      className="display-inline-block"
+    >
       <mockConstructor
         accounts={Array []}
         changeAmount={[Function]}
         changeFund={[Function]}
         id={1}
-        preFill={[Function]} />
+        key="1"
+        preFill={[Function]}
+      />
       <div
-        className="display-block one-whole soft-bottom" />
+        className="display-block one-whole soft-bottom"
+      />
       <Connect(Schedule) />
       <h3
         className="display-inline-block text-dark-primary push-half-bottom push-half-right"
@@ -27,7 +35,8 @@ exports[`test should render with minimal props 1`] = `
           Object {
             "verticalAlign": "middle",
           }
-        }>
+        }
+      >
         my total is
       </h3>
       <span
@@ -36,25 +45,30 @@ exports[`test should render with minimal props 1`] = `
           Object {
             "verticalAlign": "middle",
           }
-        }>
+        }
+      >
         <Currency
           amount="$0.00"
           baseHeadingSize="1"
-          className="text-left" />
+          className="text-left"
+        />
       </span>
     </div>
     <div
-      className="push-top">
+      className="push-top"
+    >
       <mockConstructor
-        disabled={true} />
+        disabled={true}
+      />
     </div>
   </Form>
 </div>
 `;
 
-exports[`test should render without subfunds  1`] = `
+exports[`should render without subfunds  1`] = `
 <div
-  className="push-top@handheld soft-half-top@lap-and-up">
+  className="push-top@handheld soft-half-top@lap-and-up"
+>
   <Form
     classes={
       Array [
@@ -63,11 +77,14 @@ exports[`test should render without subfunds  1`] = `
       ]
     }
     id="add-to-cart"
-    submit={[Function]}>
+    submit={[Function]}
+  >
     <div
-      className="display-inline-block">
+      className="display-inline-block"
+    >
       <div
-        className="display-block one-whole soft-bottom" />
+        className="display-block one-whole soft-bottom"
+      />
       <Connect(Schedule) />
       <h3
         className="display-inline-block text-dark-primary push-half-bottom push-half-right"
@@ -75,7 +92,8 @@ exports[`test should render without subfunds  1`] = `
           Object {
             "verticalAlign": "middle",
           }
-        }>
+        }
+      >
         my total is
       </h3>
       <span
@@ -84,17 +102,21 @@ exports[`test should render without subfunds  1`] = `
           Object {
             "verticalAlign": "middle",
           }
-        }>
+        }
+      >
         <Currency
           amount="$0.00"
           baseHeadingSize="1"
-          className="text-left" />
+          className="text-left"
+        />
       </span>
     </div>
     <div
-      className="push-top">
+      className="push-top"
+    >
       <mockConstructor
-        disabled={true} />
+        disabled={true}
+      />
     </div>
   </Form>
 </div>

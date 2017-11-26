@@ -1,4 +1,5 @@
-import { Component, PropTypes } from "react";
+import PropTypes from "prop-types";
+import { Component } from "react";
 import { connect } from "react-redux";
 import { css } from "aphrodite";
 import ReactJWPlayer from "react-jw-player";
@@ -20,7 +21,7 @@ class TemplateWithoutData extends Component {
     this.props.dispatch(
       headerActions.set({
         title: "Live",
-      })
+      }),
     );
   }
 
@@ -30,7 +31,7 @@ class TemplateWithoutData extends Component {
     return (
       <div
         className={`locked-ends locked-sides background--dark-primary floating ${css(
-          styles.offset
+          styles.offset,
         )}`}
       >
         <Meta title="Watch Live Services" />

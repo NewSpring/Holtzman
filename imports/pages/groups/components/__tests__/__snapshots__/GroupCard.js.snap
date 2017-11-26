@@ -1,9 +1,12 @@
-exports[`test doesn't render campus tag if no campus 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`doesn't render campus tag if no campus 1`] = `
 <button
   className="relative one-whole push-bottom@lap-and-up plain"
   id="1"
   onClick={[Function]}
-  onMouseOver={[Function]}>
+  onMouseOver={[Function]}
+>
   <Card
     defaultImage="http://test.com/test.jpg"
     left={
@@ -17,45 +20,59 @@ exports[`test doesn't render campus tag if no campus 1`] = `
         "one-whole",
         "one-third@lap-and-up",
       ]
-    }>
+    }
+  >
     <h4
-      className="plain text-dark-primary push-half-top push-top@anchored">
+      className="plain text-dark-primary push-half-top push-top@anchored"
+    >
       test group
     </h4>
     <h6
-      className="plain text-dark-tertiary">
+      className="plain text-dark-tertiary"
+    >
       test description
     </h6>
     <h6
-      className="em text-dark-tertiary push-half-bottom">
+      className="em text-dark-tertiary push-half-bottom"
+    >
       2.00
        miles away
     </h6>
     <p
-      className="plain text-dark-primary" />
+      className="plain text-dark-primary"
+    />
     <div
-      className="soft-half-top">
+      className="soft-half-top"
+    >
       <withRouter(Connect(TagWithoutData))
-        val="one" />
+        key="0"
+        val="one"
+      />
       <withRouter(Connect(TagWithoutData))
-        val="two" />
+        key="1"
+        val="two"
+      />
       <withRouter(Connect(TagWithoutData))
-        val="test type" />
+        val="test type"
+      />
       <withRouter(Connect(TagWithoutData))
-        val="kid friendly" />
+        val="kid friendly"
+      />
       <withRouter(Connect(TagWithoutData))
-        val="test demographic" />
+        val="test demographic"
+      />
     </div>
   </Card>
 </button>
 `;
 
-exports[`test doesn't render campus tag if no campus name 1`] = `
+exports[`doesn't render campus tag if no campus name 1`] = `
 <button
   className="relative one-whole push-bottom@lap-and-up plain"
   id="1"
   onClick={[Function]}
-  onMouseOver={[Function]}>
+  onMouseOver={[Function]}
+>
   <Card
     defaultImage="http://test.com/test.jpg"
     left={
@@ -69,45 +86,59 @@ exports[`test doesn't render campus tag if no campus name 1`] = `
         "one-whole",
         "one-third@lap-and-up",
       ]
-    }>
+    }
+  >
     <h4
-      className="plain text-dark-primary push-half-top push-top@anchored">
+      className="plain text-dark-primary push-half-top push-top@anchored"
+    >
       test group
     </h4>
     <h6
-      className="plain text-dark-tertiary">
+      className="plain text-dark-tertiary"
+    >
       test description
     </h6>
     <h6
-      className="em text-dark-tertiary push-half-bottom">
+      className="em text-dark-tertiary push-half-bottom"
+    >
       2.00
        miles away
     </h6>
     <p
-      className="plain text-dark-primary" />
+      className="plain text-dark-primary"
+    />
     <div
-      className="soft-half-top">
+      className="soft-half-top"
+    >
       <withRouter(Connect(TagWithoutData))
-        val="one" />
+        key="0"
+        val="one"
+      />
       <withRouter(Connect(TagWithoutData))
-        val="two" />
+        key="1"
+        val="two"
+      />
       <withRouter(Connect(TagWithoutData))
-        val="test type" />
+        val="test type"
+      />
       <withRouter(Connect(TagWithoutData))
-        val="kid friendly" />
+        val="kid friendly"
+      />
       <withRouter(Connect(TagWithoutData))
-        val="test demographic" />
+        val="test demographic"
+      />
     </div>
   </Card>
 </button>
 `;
 
-exports[`test doesn't render demographic tag if no 1`] = `
+exports[`doesn't render demographic tag if no 1`] = `
 <button
   className="relative one-whole push-bottom@lap-and-up plain"
   id="1"
   onClick={[Function]}
-  onMouseOver={[Function]}>
+  onMouseOver={[Function]}
+>
   <Card
     defaultImage="http://test.com/test.jpg"
     left={
@@ -121,46 +152,60 @@ exports[`test doesn't render demographic tag if no 1`] = `
         "one-whole",
         "one-third@lap-and-up",
       ]
-    }>
+    }
+  >
     <h4
-      className="plain text-dark-primary push-half-top push-top@anchored">
+      className="plain text-dark-primary push-half-top push-top@anchored"
+    >
       test group
     </h4>
     <h6
-      className="plain text-dark-tertiary">
+      className="plain text-dark-tertiary"
+    >
       test description
     </h6>
     <h6
-      className="em text-dark-tertiary push-half-bottom">
+      className="em text-dark-tertiary push-half-bottom"
+    >
       2.00
        miles away
     </h6>
     <p
-      className="plain text-dark-primary" />
+      className="plain text-dark-primary"
+    />
     <div
-      className="soft-half-top">
+      className="soft-half-top"
+    >
       <withRouter(Connect(TagWithoutData))
-        val="one" />
+        key="0"
+        val="one"
+      />
       <withRouter(Connect(TagWithoutData))
-        val="two" />
+        key="1"
+        val="two"
+      />
       <withRouter(Connect(TagWithoutData))
-        val="test type" />
+        val="test type"
+      />
       <withRouter(Connect(TagWithoutData))
-        val="kid friendly" />
+        val="kid friendly"
+      />
       <withRouter(Connect(TagWithoutData))
         urlKey="campus"
-        val="Anderson" />
+        val="Anderson"
+      />
     </div>
   </Card>
 </button>
 `;
 
-exports[`test doesn't render kid friendly tag if no 1`] = `
+exports[`doesn't render kid friendly tag if no 1`] = `
 <button
   className="relative one-whole push-bottom@lap-and-up plain"
   id="1"
   onClick={[Function]}
-  onMouseOver={[Function]}>
+  onMouseOver={[Function]}
+>
   <Card
     defaultImage="http://test.com/test.jpg"
     left={
@@ -174,46 +219,60 @@ exports[`test doesn't render kid friendly tag if no 1`] = `
         "one-whole",
         "one-third@lap-and-up",
       ]
-    }>
+    }
+  >
     <h4
-      className="plain text-dark-primary push-half-top push-top@anchored">
+      className="plain text-dark-primary push-half-top push-top@anchored"
+    >
       test group
     </h4>
     <h6
-      className="plain text-dark-tertiary">
+      className="plain text-dark-tertiary"
+    >
       test description
     </h6>
     <h6
-      className="em text-dark-tertiary push-half-bottom">
+      className="em text-dark-tertiary push-half-bottom"
+    >
       2.00
        miles away
     </h6>
     <p
-      className="plain text-dark-primary" />
+      className="plain text-dark-primary"
+    />
     <div
-      className="soft-half-top">
+      className="soft-half-top"
+    >
       <withRouter(Connect(TagWithoutData))
-        val="one" />
+        key="0"
+        val="one"
+      />
       <withRouter(Connect(TagWithoutData))
-        val="two" />
+        key="1"
+        val="two"
+      />
       <withRouter(Connect(TagWithoutData))
-        val="test type" />
+        val="test type"
+      />
       <withRouter(Connect(TagWithoutData))
-        val="test demographic" />
+        val="test demographic"
+      />
       <withRouter(Connect(TagWithoutData))
         urlKey="campus"
-        val="Anderson" />
+        val="Anderson"
+      />
     </div>
   </Card>
 </button>
 `;
 
-exports[`test doesn't render tag for type \`Interests\` 1`] = `
+exports[`doesn't render tag for type \`Interests\` 1`] = `
 <button
   className="relative one-whole push-bottom@lap-and-up plain"
   id="1"
   onClick={[Function]}
-  onMouseOver={[Function]}>
+  onMouseOver={[Function]}
+>
   <Card
     defaultImage="http://test.com/test.jpg"
     left={
@@ -227,46 +286,60 @@ exports[`test doesn't render tag for type \`Interests\` 1`] = `
         "one-whole",
         "one-third@lap-and-up",
       ]
-    }>
+    }
+  >
     <h4
-      className="plain text-dark-primary push-half-top push-top@anchored">
+      className="plain text-dark-primary push-half-top push-top@anchored"
+    >
       test group
     </h4>
     <h6
-      className="plain text-dark-tertiary">
+      className="plain text-dark-tertiary"
+    >
       test description
     </h6>
     <h6
-      className="em text-dark-tertiary push-half-bottom">
+      className="em text-dark-tertiary push-half-bottom"
+    >
       2.00
        miles away
     </h6>
     <p
-      className="plain text-dark-primary" />
+      className="plain text-dark-primary"
+    />
     <div
-      className="soft-half-top">
+      className="soft-half-top"
+    >
       <withRouter(Connect(TagWithoutData))
-        val="one" />
+        key="0"
+        val="one"
+      />
       <withRouter(Connect(TagWithoutData))
-        val="two" />
+        key="1"
+        val="two"
+      />
       <withRouter(Connect(TagWithoutData))
-        val="kid friendly" />
+        val="kid friendly"
+      />
       <withRouter(Connect(TagWithoutData))
-        val="test demographic" />
+        val="test demographic"
+      />
       <withRouter(Connect(TagWithoutData))
         urlKey="campus"
-        val="Anderson" />
+        val="Anderson"
+      />
     </div>
   </Card>
 </button>
 `;
 
-exports[`test renders default photo 1`] = `
+exports[`renders default photo 1`] = `
 <button
   className="relative one-whole push-bottom@lap-and-up plain"
   id="1"
   onClick={[Function]}
-  onMouseOver={[Function]}>
+  onMouseOver={[Function]}
+>
   <Card
     defaultImage="//s3.amazonaws.com/ns.assets/apollos/group-profile-placeholder.png"
     left={
@@ -280,48 +353,63 @@ exports[`test renders default photo 1`] = `
         "one-whole",
         "one-third@lap-and-up",
       ]
-    }>
+    }
+  >
     <h4
-      className="plain text-dark-primary push-half-top push-top@anchored">
+      className="plain text-dark-primary push-half-top push-top@anchored"
+    >
       test group
     </h4>
     <h6
-      className="plain text-dark-tertiary">
+      className="plain text-dark-tertiary"
+    >
       test description
     </h6>
     <h6
-      className="em text-dark-tertiary push-half-bottom">
+      className="em text-dark-tertiary push-half-bottom"
+    >
       2.00
        miles away
     </h6>
     <p
-      className="plain text-dark-primary" />
+      className="plain text-dark-primary"
+    />
     <div
-      className="soft-half-top">
+      className="soft-half-top"
+    >
       <withRouter(Connect(TagWithoutData))
-        val="one" />
+        key="0"
+        val="one"
+      />
       <withRouter(Connect(TagWithoutData))
-        val="two" />
+        key="1"
+        val="two"
+      />
       <withRouter(Connect(TagWithoutData))
-        val="test type" />
+        val="test type"
+      />
       <withRouter(Connect(TagWithoutData))
-        val="kid friendly" />
+        val="kid friendly"
+      />
       <withRouter(Connect(TagWithoutData))
-        val="test demographic" />
+        val="test demographic"
+      />
       <withRouter(Connect(TagWithoutData))
         urlKey="campus"
-        val="Anderson" />
+        val="Anderson"
+      />
     </div>
   </Card>
 </button>
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <button
   className="relative one-whole push-bottom@lap-and-up plain"
   id="1"
   onClick={[Function]}
-  onMouseOver={[Function]}>
+  onMouseOver={[Function]}
+>
   <Card
     defaultImage="http://test.com/test.jpg"
     left={
@@ -335,48 +423,63 @@ exports[`test renders with props 1`] = `
         "one-whole",
         "one-third@lap-and-up",
       ]
-    }>
+    }
+  >
     <h4
-      className="plain text-dark-primary push-half-top push-top@anchored">
+      className="plain text-dark-primary push-half-top push-top@anchored"
+    >
       test group
     </h4>
     <h6
-      className="plain text-dark-tertiary">
+      className="plain text-dark-tertiary"
+    >
       test description
     </h6>
     <h6
-      className="em text-dark-tertiary push-half-bottom">
+      className="em text-dark-tertiary push-half-bottom"
+    >
       2.00
        miles away
     </h6>
     <p
-      className="plain text-dark-primary" />
+      className="plain text-dark-primary"
+    />
     <div
-      className="soft-half-top">
+      className="soft-half-top"
+    >
       <withRouter(Connect(TagWithoutData))
-        val="one" />
+        key="0"
+        val="one"
+      />
       <withRouter(Connect(TagWithoutData))
-        val="two" />
+        key="1"
+        val="two"
+      />
       <withRouter(Connect(TagWithoutData))
-        val="test type" />
+        val="test type"
+      />
       <withRouter(Connect(TagWithoutData))
-        val="kid friendly" />
+        val="kid friendly"
+      />
       <withRouter(Connect(TagWithoutData))
-        val="test demographic" />
+        val="test demographic"
+      />
       <withRouter(Connect(TagWithoutData))
         urlKey="campus"
-        val="Anderson" />
+        val="Anderson"
+      />
     </div>
   </Card>
 </button>
 `;
 
-exports[`test renders without distance 1`] = `
+exports[`renders without distance 1`] = `
 <button
   className="relative one-whole push-bottom@lap-and-up plain"
   id="1"
   onClick={[Function]}
-  onMouseOver={[Function]}>
+  onMouseOver={[Function]}
+>
   <Card
     defaultImage="http://test.com/test.jpg"
     left={
@@ -390,43 +493,57 @@ exports[`test renders without distance 1`] = `
         "one-whole",
         "one-third@lap-and-up",
       ]
-    }>
+    }
+  >
     <h4
-      className="plain text-dark-primary push-half-top push-top@anchored">
+      className="plain text-dark-primary push-half-top push-top@anchored"
+    >
       test group
     </h4>
     <h6
-      className="plain text-dark-tertiary">
+      className="plain text-dark-tertiary"
+    >
       test description
     </h6>
     <p
-      className="plain text-dark-primary" />
+      className="plain text-dark-primary"
+    />
     <div
-      className="soft-half-top">
+      className="soft-half-top"
+    >
       <withRouter(Connect(TagWithoutData))
-        val="one" />
+        key="0"
+        val="one"
+      />
       <withRouter(Connect(TagWithoutData))
-        val="two" />
+        key="1"
+        val="two"
+      />
       <withRouter(Connect(TagWithoutData))
-        val="test type" />
+        val="test type"
+      />
       <withRouter(Connect(TagWithoutData))
-        val="kid friendly" />
+        val="kid friendly"
+      />
       <withRouter(Connect(TagWithoutData))
-        val="test demographic" />
+        val="test demographic"
+      />
       <withRouter(Connect(TagWithoutData))
         urlKey="campus"
-        val="Anderson" />
+        val="Anderson"
+      />
     </div>
   </Card>
 </button>
 `;
 
-exports[`test renders without schedule 1`] = `
+exports[`renders without schedule 1`] = `
 <button
   className="relative one-whole push-bottom@lap-and-up plain"
   id="1"
   onClick={[Function]}
-  onMouseOver={[Function]}>
+  onMouseOver={[Function]}
+>
   <Card
     defaultImage="http://test.com/test.jpg"
     left={
@@ -440,44 +557,58 @@ exports[`test renders without schedule 1`] = `
         "one-whole",
         "one-third@lap-and-up",
       ]
-    }>
+    }
+  >
     <h4
-      className="plain text-dark-primary push-half-top push-top@anchored">
+      className="plain text-dark-primary push-half-top push-top@anchored"
+    >
       test group
     </h4>
     <h6
-      className="em text-dark-tertiary push-half-bottom">
+      className="em text-dark-tertiary push-half-bottom"
+    >
       2.00
        miles away
     </h6>
     <p
-      className="plain text-dark-primary" />
+      className="plain text-dark-primary"
+    />
     <div
-      className="soft-half-top">
+      className="soft-half-top"
+    >
       <withRouter(Connect(TagWithoutData))
-        val="one" />
+        key="0"
+        val="one"
+      />
       <withRouter(Connect(TagWithoutData))
-        val="two" />
+        key="1"
+        val="two"
+      />
       <withRouter(Connect(TagWithoutData))
-        val="test type" />
+        val="test type"
+      />
       <withRouter(Connect(TagWithoutData))
-        val="kid friendly" />
+        val="kid friendly"
+      />
       <withRouter(Connect(TagWithoutData))
-        val="test demographic" />
+        val="test demographic"
+      />
       <withRouter(Connect(TagWithoutData))
         urlKey="campus"
-        val="Anderson" />
+        val="Anderson"
+      />
     </div>
   </Card>
 </button>
 `;
 
-exports[`test renders without schedule description 1`] = `
+exports[`renders without schedule description 1`] = `
 <button
   className="relative one-whole push-bottom@lap-and-up plain"
   id="1"
   onClick={[Function]}
-  onMouseOver={[Function]}>
+  onMouseOver={[Function]}
+>
   <Card
     defaultImage="http://test.com/test.jpg"
     left={
@@ -491,33 +622,46 @@ exports[`test renders without schedule description 1`] = `
         "one-whole",
         "one-third@lap-and-up",
       ]
-    }>
+    }
+  >
     <h4
-      className="plain text-dark-primary push-half-top push-top@anchored">
+      className="plain text-dark-primary push-half-top push-top@anchored"
+    >
       test group
     </h4>
     <h6
-      className="em text-dark-tertiary push-half-bottom">
+      className="em text-dark-tertiary push-half-bottom"
+    >
       2.00
        miles away
     </h6>
     <p
-      className="plain text-dark-primary" />
+      className="plain text-dark-primary"
+    />
     <div
-      className="soft-half-top">
+      className="soft-half-top"
+    >
       <withRouter(Connect(TagWithoutData))
-        val="one" />
+        key="0"
+        val="one"
+      />
       <withRouter(Connect(TagWithoutData))
-        val="two" />
+        key="1"
+        val="two"
+      />
       <withRouter(Connect(TagWithoutData))
-        val="test type" />
+        val="test type"
+      />
       <withRouter(Connect(TagWithoutData))
-        val="kid friendly" />
+        val="kid friendly"
+      />
       <withRouter(Connect(TagWithoutData))
-        val="test demographic" />
+        val="test demographic"
+      />
       <withRouter(Connect(TagWithoutData))
         urlKey="campus"
-        val="Anderson" />
+        val="Anderson"
+      />
     </div>
   </Card>
 </button>

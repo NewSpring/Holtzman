@@ -1,4 +1,6 @@
-exports[`test parses query 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`parses query 1`] = `
 Object {
   "definitions": Array [
     Object {
@@ -153,7 +155,7 @@ Object {
 }
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <Layout
   mobile={false}
   onUpload={[Function]}
@@ -161,14 +163,15 @@ exports[`test renders with props 1`] = `
     Object {
       "photo": "http://test.com/test.jpg",
     }
-  }>
+  }
+>
   <h1>
     test
   </h1>
 </Layout>
 `;
 
-exports[`test renders without photo 1`] = `
+exports[`renders without photo 1`] = `
 <Layout
   mobile={false}
   onUpload={[Function]}
@@ -176,7 +179,8 @@ exports[`test renders without photo 1`] = `
     Object {
       "photo": "http://test.com/test.jpg",
     }
-  }>
+  }
+>
   <h1>
     test
   </h1>

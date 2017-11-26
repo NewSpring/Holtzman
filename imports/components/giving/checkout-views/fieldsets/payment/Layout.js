@@ -52,7 +52,7 @@ const NextButton = ({
   } else {
     btnClasses.push("btn--disabled");
     disabled = true;
-    submit = (e) => (e.preventDefault());
+    submit = e => (e.preventDefault());
   }
 
   return (

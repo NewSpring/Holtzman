@@ -13,8 +13,8 @@ export const FundBreakdown = ({ data }: IFundBreakdown) => {
       <h3 className="text-light-primary soft-half-bottom push-double-bottom" style={{ borderBottom: "1px solid" }}>
         Fund Breakdown
       </h3>
-      {Object.keys(data.accounts).filter((x) => data.accounts[x] > 0).map((title, i) =>
-        <div className="push-bottom" key={i}>
+      {Object.keys(data.accounts).filter(x => data.accounts[x] > 0).map((title, i) =>
+        (<div className="push-bottom" key={i}>
           <ProgressBar
             theme={""}
             title={title}
@@ -22,7 +22,7 @@ export const FundBreakdown = ({ data }: IFundBreakdown) => {
             percentDone={100 * (data.accounts[title] / data.total)}
             style={{}}
           />
-        </div>
+        </div>),
       )}
     </div>
   );
