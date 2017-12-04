@@ -1,8 +1,10 @@
-exports[`test getClasses appends other classes provided 1`] = `"hard background--light-primary test test2"`;
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`test getClasses returns default classes 1`] = `"hard background--light-primary"`;
+exports[`getClasses appends other classes provided 1`] = `"hard background--light-primary test test2"`;
 
-exports[`test renders with an image 1`] = `
+exports[`getClasses returns default classes 1`] = `"hard background--light-primary"`;
+
+exports[`renders with an image 1`] = `
 <section
   className="hard background--light-primary"
   data-status-scroll-item={true}
@@ -10,24 +12,29 @@ exports[`test renders with an image 1`] = `
     Object {
       "transition": "0.7s margin",
     }
-  }>
+  }
+>
   <div
     className="one-whole ratio--square ratio--landscape@palm-wide background--fill"
     style={
       Object {
-        "backgroundImage": "url(\'http://test.com/1x1.jpg\')",
+        "backgroundImage": "url('http://test.com/1x1.jpg')",
       }
-    } />
+    }
+  />
   <div
-    className="soft soft-double@palm-wide-and-up push-top">
+    className="soft soft-double@palm-wide-and-up push-top"
+  >
     <h2
-      className="capitalize" />
+      className="capitalize"
+    />
     <div
       dangerouslySetInnerHTML={
         Object {
           "__html": "<h1>devotion</h1>",
         }
-      } />
+      }
+    />
   </div>
   <Apollo(Connect(Template))
     excludedIds={
@@ -35,11 +42,12 @@ exports[`test renders with an image 1`] = `
         undefined,
       ]
     }
-    tags={Array []} />
+    tags={Array []}
+  />
 </section>
 `;
 
-exports[`test renders with scripture 1`] = `
+exports[`renders with scripture 1`] = `
 <section
   className="hard background--light-primary"
   data-status-scroll-item={true}
@@ -47,24 +55,29 @@ exports[`test renders with scripture 1`] = `
     Object {
       "transition": "0.7s margin",
     }
-  }>
+  }
+>
   <div
     className="one-whole ratio--square ratio--landscape@palm-wide background--fill"
     style={
       Object {
-        "backgroundImage": "url(\'http://test.com/1x1.jpg\')",
+        "backgroundImage": "url('http://test.com/1x1.jpg')",
       }
-    } />
+    }
+  />
   <div
-    className="soft soft-double@palm-wide-and-up push-top">
+    className="soft soft-double@palm-wide-and-up push-top"
+  >
     <h2
-      className="capitalize" />
+      className="capitalize"
+    />
     <div
       dangerouslySetInnerHTML={
         Object {
           "__html": "<h1>devotion</h1>",
         }
-      } />
+      }
+    />
   </div>
   <Apollo(Connect(Template))
     excludedIds={
@@ -72,11 +85,12 @@ exports[`test renders with scripture 1`] = `
         undefined,
       ]
     }
-    tags={Array []} />
+    tags={Array []}
+  />
 </section>
 `;
 
-exports[`test renders without images or scripture 1`] = `
+exports[`renders without images or scripture 1`] = `
 <section
   className="hard background--light-primary"
   data-status-scroll-item={true}
@@ -84,17 +98,21 @@ exports[`test renders without images or scripture 1`] = `
     Object {
       "transition": "0.7s margin",
     }
-  }>
+  }
+>
   <div
-    className="soft soft-double@palm-wide-and-up push-top">
+    className="soft soft-double@palm-wide-and-up push-top"
+  >
     <h2
-      className="capitalize" />
+      className="capitalize"
+    />
     <div
       dangerouslySetInnerHTML={
         Object {
           "__html": "<h1>devotion</h1>",
         }
-      } />
+      }
+    />
   </div>
   <Apollo(Connect(Template))
     excludedIds={
@@ -102,6 +120,7 @@ exports[`test renders without images or scripture 1`] = `
         undefined,
       ]
     }
-    tags={Array []} />
+    tags={Array []}
+  />
 </section>
 `;

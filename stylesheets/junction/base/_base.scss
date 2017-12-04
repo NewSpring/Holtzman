@@ -1,0 +1,31 @@
+
+$use-base: true !default;
+
+@if $use-base == true {
+  //
+  // @name base
+  // @description declerations to be applied to html and body tags to set baseline for scrolling and fonts
+  //
+  // @base true
+  //
+  html {
+    overflow-y: scroll;
+
+    min-height: 100%;
+
+    -webkit-font-smoothing: antialiased;
+
+  }
+
+  body {
+    overflow-x: hidden;
+    font-size: "#{(($base-font-size/16px) * 100)}%";
+    line-height: "#{$base-line-height}";
+    color: $base-font-color;
+    font-family: $base-font-family;
+    margin: 0;
+    padding: 0;
+  }
+
+
+}

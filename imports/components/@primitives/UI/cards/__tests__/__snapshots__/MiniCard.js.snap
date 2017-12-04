@@ -1,33 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`MiniCard should render with no props 1`] = `
 <MiniCard>
   <Link
     className="plain"
     onlyActiveOnIndex={false}
-    style={Object {}}>
+    style={Object {}}
+    to={undefined}
+  >
     <a
       className="plain"
       onClick={[Function]}
-      style={Object {}}>
+      style={Object {}}
+    >
       <div
-        className="card">
+        className="card"
+      >
         <div
           className="card__item soft push-half-ends one-whole"
           style={
             Object {
               "verticalAlign": "middle",
             }
-          }>
+          }
+        >
           <h6
-            className="text-dark-primary capitalize push-half-top" />
+            className="text-dark-primary capitalize push-half-top"
+          />
         </div>
         <div
           className="locked-ends locked-right card__image one-third background--fill"
           style={
             Object {
-              "backgroundImage": "url(\'undefined\')",
+              "backgroundImage": "url('undefined')",
               "verticalAlign": "middle",
             }
-          } />
+          }
+        />
       </div>
     </a>
   </Link>

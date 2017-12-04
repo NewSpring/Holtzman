@@ -1,4 +1,5 @@
-import { Component, PropTypes } from "react";
+import PropTypes from "prop-types";
+import { Component } from "react";
 import ReactMixin from "react-mixin";
 import { connect } from "react-redux";
 import { graphql } from "react-apollo";
@@ -16,18 +17,14 @@ import ApollosPullToRefresh from "../../components/@enhancers/pull-to-refresh";
 
 import Single from "./Single";
 
-import FeedItem from "../../components/content/feed-item-card";
+import ArticleFeedItem from "../../components/content/feed-item-card";
 
 class ArticlesWithoutData extends Component {
-
   static propTypes = {
-    dispatch: PropTypes.oneOfType([
-      PropTypes.object,
-      PropTypes.func,
-    ]).isRequired,
+    dispatch: PropTypes.oneOfType([PropTypes.object, PropTypes.func]).isRequired,
     data: PropTypes.object.isRequired,
     Loading: PropTypes.func,
-  }
+  };
 
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("TOP"));
@@ -37,40 +34,37 @@ class ArticlesWithoutData extends Component {
   }
 
   handleRefresh = (resolve, reject) => {
-    this.props.data.refetch({ cache: false })
+    this.props.data
+      .refetch({ cache: false })
       .then(resolve)
       .catch(reject);
-  }
+  };
 
   renderItems = () => {
     const { content } = this.props.data;
     let articles = [1, 2, 3, 4, 5];
     if (content) articles = content;
-    return (
-      articles.map((article, i) => (
-        <div
-          className={
-            "grid__item one-half@palm-wide one-third@portable one-quarter@anchored " +
-            "flush-bottom@handheld push-bottom@portable push-bottom@anchored"
-          }
-          key={i}
-        >
-          {(() => {
-            if (typeof article === "number") return <FeedItemSkeleton />;
-            return <FeedItem item={article} />;
-          })()}
-        </div>
-      ))
-    );
-  }
+    return articles.map((article, i) => (
+      <div
+        className={
+          "grid__item one-half@palm-wide one-third@portable one-quarter@anchored " +
+          "flush-bottom@handheld push-bottom@portable push-bottom@anchored"
+        }
+        key={i}
+      >
+        {(() => {
+          if (typeof article === "number") return <FeedItemSkeleton />;
+          return <ArticleFeedItem item={article} />;
+        })()}
+      </div>
+    ));
+  };
 
   render() {
     const { Loading } = this.props;
     return (
       <ApollosPullToRefresh handleRefresh={this.handleRefresh}>
-        <Meta
-          title="Articles"
-        />
+        <Meta title="Articles" />
         <div className="soft@portable soft-double@lap-and-up background--light-secondary">
           <section className="soft-half">
             <div className="grid">
@@ -84,7 +78,6 @@ class ArticlesWithoutData extends Component {
       </ApollosPullToRefresh>
     );
   }
-
 }
 
 const ARTICLES_QUERY = gql`
@@ -124,31 +117,29 @@ const withArticles = graphql(ARTICLES_QUERY, {
   props: ({ data }) => ({
     data,
     loading: data.loading,
-    done: (
+    done:
       data.content &&
       !data.loading &&
-      data.content.length < data.variables.limit + data.variables.skip
-    ),
-    fetchMore: () => data.fetchMore({
-      variables: { ...data.variables, skip: data.content.length },
-      updateQuery: (previousResult, { fetchMoreResult }) => {
-        if (!fetchMoreResult.data) return previousResult;
-        return { content: [...previousResult.content, ...fetchMoreResult.data.content] };
-      },
-    }),
+      data.content.length < data.variables.limit + data.variables.skip,
+    fetchMore: () =>
+      data.fetchMore({
+        variables: { ...data.variables, skip: data.content.length },
+        updateQuery: (previousResult, { fetchMoreResult }) => {
+          if (!fetchMoreResult.content) return previousResult;
+          return { content: [...previousResult.content, ...fetchMoreResult.content] };
+        },
+      }),
   }),
 });
 
-const mapStateToProps = (state) => ({ paging: state.paging });
+const mapStateToProps = state => ({ paging: state.paging });
 
 const Template = connect(mapStateToProps)(
   withArticles(
-    infiniteScroll((x) => x, { doneText: "End of Articles" })(
-      ReactMixin.decorate(Headerable)(
-        ArticlesWithoutData
-      )
-    )
-  )
+    infiniteScroll(x => x, { doneText: "End of Articles" })(
+      ReactMixin.decorate(Headerable)(ArticlesWithoutData),
+    ),
+  ),
 );
 
 const Routes = [
@@ -161,6 +152,4 @@ export default {
   Routes,
 };
 
-export {
-  ArticlesWithoutData,
-};
+export { ArticlesWithoutData };

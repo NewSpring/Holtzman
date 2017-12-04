@@ -1,11 +1,12 @@
 /* eslint-disable */
+import Audio5 from "audio5";
+
 import "velocity-animate";
 import "velocity-animate/velocity.ui";
 import "/imports/util/regex";
 
 if (process.env.NATIVE) {
   // this breaks is found on server
-  import Audio5 from "audio5";
 
   window.Audio5 = Audio5;
 

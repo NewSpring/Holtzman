@@ -1,4 +1,4 @@
-import { PropTypes } from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router";
 
 const Success = ({ person, onExit }) => (

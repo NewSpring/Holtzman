@@ -1,5 +1,5 @@
 /* eslint-disable react/no-danger */
-import { PropTypes } from "react";
+import PropTypes from "prop-types";
 
 import RelatedContent from "../../components/content/related-content";
 import SingleVideoPlayer from "../../components/@primitives/players/video/Player";
@@ -21,7 +21,7 @@ StoryImage.propTypes = {
   story: PropTypes.object.isRequired,
 };
 
-const StoriesContent = (props) => {
+const StoriesContent = props => {
   const { story } = props;
   return (
     <div>

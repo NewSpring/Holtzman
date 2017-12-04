@@ -1,0 +1,16 @@
+
+$use-scrollable: true !default;
+
+@if $use-scrollable == true {
+  //
+  // @name .scrollable
+  // @class .scrollable
+  // @description allows a container to be scrolled in the y axis
+  //
+  // @helper true
+  //
+  .scrollable {
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
+}

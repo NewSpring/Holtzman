@@ -20,7 +20,7 @@ const MiniCard = ({
   link,
   image,
 }: IMiniCard) =>
-  <Link to={link} className="plain">
+  (<Link to={link} className="plain">
     <div className="card">
       <div className={`card__item soft push-half-ends ${image ? "two-thirds" : "one-whole"}`} style={{ verticalAlign: "middle" }}>
         <h6 className={`text-dark-primary capitalize${!description ? " push-half-top" : ""}`}>{ title }</h6>
@@ -40,7 +40,7 @@ const MiniCard = ({
         style={{ verticalAlign: "middle", backgroundImage: `url('${image}')` }}
       />
     </div>
-  </Link>
+  </Link>)
 ;
 
 export default MiniCard;

@@ -1,0 +1,80 @@
+
+$use-icons-social: true!default;
+
+
+@if $use-icons-social == true {
+  @if $use-buttons-social == true {
+    //
+    // @name %btn--icon
+    // @description base selector to be extended for buttons with icons
+    //
+    // @variable $brand-colors - map of brands, their colors, and icons
+    // @variable $brands - list of brands to include
+    //
+    // @extend true
+    //
+    // @state :after - set font to light for filled in buttons and set font family to FontAwesome
+    // @state :hover - adjust colors on hover to slight fade
+    //
+    %icon--social {
+      @extend %icon;
+
+      margin-bottom: 0;
+
+      text-align: center;
+
+      font-family: FontAwesome;
+      line-height: ($base-icon-size + ($base-border-size*2));
+    }
+
+    //
+    // @name brand icons
+    // @class .icon--facebook
+    // @description For every brand that is set in $brands, an icon style is generated
+    //
+    // @extends %icon - extends base icon object
+    //
+    // @state :after - brand icon!
+    // @state :hover - slightly darken on hover
+    //
+    // @object true
+    //
+    // @block .icon
+    // @modifier .icon--brand-name - For every brand that is set in $brands, an icon style is generated
+    // @modifier .icon--filled - extends filled icon state to include brand colors
+    //
+    //
+    // @markup
+    // <a href="#" class="icon--facebook"></div>
+    // <a href="#" class="icon--twitter icon--filled"></div>
+    //
+
+    // Loop through the list of brands selected to make buttons
+    @each $brand in $brands {
+      $_brand: map-fetch($brand-colors, $brand);
+
+      .icon--#{$brand} {
+        @extend %icon--social;
+
+        color: map-get($_brand, color);
+        // &:hover {
+        //   color: darken(map-get($_brand, color), 5);
+        // }
+
+
+        &:after {
+          content: map-get($_brand, icon);
+        }
+
+        &.icon--filled {
+          color: $light-color;
+          border-color: map-get($_brand, color);
+          background-color: map-get($_brand, color);
+          // &:hover {
+          //   background-color: darken(map-get($_brand, color), 5);
+          // }
+        }
+      }
+    }
+  }
+}
