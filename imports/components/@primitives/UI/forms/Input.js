@@ -282,6 +282,7 @@ export default class Input extends Component {
       label,
       labelStyles,
       type,
+      pattern,
       placeholder,
       inputClasses,
       defaultValue,
@@ -314,6 +315,7 @@ export default class Input extends Component {
           ref={node => (this.node = node)}
           id={id || name || label}
           type={type}
+          pattern={pattern}
           placeholder={placeholder || label}
           name={name || label}
           className={inputClasses}
