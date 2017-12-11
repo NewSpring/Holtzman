@@ -41,6 +41,7 @@ const Layout = ({
       placeholder="$0.00"
       style={{ maxWidth: "150px" }}
       type={Meteor.isCordova ? "text" : "tel"}
+      pattern={"[0-9]*"}
       value={inputVal}
     />
 
