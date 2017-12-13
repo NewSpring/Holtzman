@@ -1,14 +1,18 @@
-exports[`test renders loading with no devotion 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders loading with no devotion 1`] = `
 <div
-  className="locked-ends locked-sides floating">
+  className="locked-ends locked-sides floating"
+>
   <div
-    className="floating__item">
+    className="floating__item"
+  >
     <Loading />
   </div>
 </div>
 `;
 
-exports[`test renders with image 1`] = `
+exports[`renders with image 1`] = `
 <div>
   <Meta
     image="http://test.com/1x1.jpg"
@@ -19,9 +23,11 @@ exports[`test renders with image 1`] = `
           "property": "og:type",
         },
       ]
-    } />
+    }
+  />
   <div
-    title="Devotional">
+    title="Devotional"
+  >
     <DevotionsSingleContent
       classes={Array []}
       devotion={
@@ -37,12 +43,13 @@ exports[`test renders with image 1`] = `
           },
         }
       }
-      onClickLink={[Function]} />
+      onClickLink={[Function]}
+    />
   </div>
 </div>
 `;
 
-exports[`test renders with scripture 1`] = `
+exports[`renders with scripture 1`] = `
 <div>
   <Meta
     image="http://test.com/1x1.jpg"
@@ -53,9 +60,11 @@ exports[`test renders with scripture 1`] = `
           "property": "og:type",
         },
       ]
-    } />
+    }
+  />
   <div
-    title="Devotional">
+    title="Devotional"
+  >
     <DevotionsSingleContent
       classes={Array []}
       devotion={
@@ -77,12 +86,13 @@ exports[`test renders with scripture 1`] = `
           ],
         }
       }
-      onClickLink={[Function]} />
+      onClickLink={[Function]}
+    />
   </div>
 </div>
 `;
 
-exports[`test renders without scripture or image 1`] = `
+exports[`renders without scripture or image 1`] = `
 <div>
   <Meta
     id="1"
@@ -94,9 +104,11 @@ exports[`test renders without scripture or image 1`] = `
           "property": "og:type",
         },
       ]
-    } />
+    }
+  />
   <div
-    title="Devotional">
+    title="Devotional"
+  >
     <DevotionsSingleContent
       classes={Array []}
       devotion={
@@ -108,7 +120,8 @@ exports[`test renders without scripture or image 1`] = `
           "id": "1",
         }
       }
-      onClickLink={[Function]} />
+      onClickLink={[Function]}
+    />
   </div>
 </div>
 `;

@@ -1,8 +1,12 @@
-exports[`test renders with props 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders with props 1`] = `
 <div
-  className="background--light-primary one-whole text-center push-top push-double-top@lap-and-up push-double-bottom background--light-primary">
+  className="background--light-primary one-whole text-center push-top push-double-top@lap-and-up push-double-bottom background--light-primary"
+>
   <Meta
-    title="Change your address" />
+    title="Change your address"
+  />
   <Back />
   <Form
     classes={
@@ -16,11 +20,14 @@ exports[`test renders with props 1`] = `
       ]
     }
     id="reset-password"
-    submit={[Function]}>
+    submit={[Function]}
+  >
     <div
-      className="push-double">
+      className="push-double"
+    >
       <h4
-        className="text-center">
+        className="text-center"
+      >
         My Home Address
       </h4>
     </div>
@@ -28,44 +35,56 @@ exports[`test renders with props 1`] = `
       defaultValue="test street"
       label="Street"
       name="Street1"
-      type="text" />
+      type="text"
+    />
     <Input
       defaultValue="apt. 1"
       label="Street 2 (Optional)"
       name="Street2"
-      type="text" />
+      type="text"
+    />
     <div
-      className="grid">
+      className="grid"
+    >
       <div
-        className="grid__item two-fifths">
+        className="grid__item two-fifths"
+      >
         <Input
           defaultValue="anderson"
           label="City"
-          name="City" />
+          name="City"
+        />
       </div>
       <div
-        className="grid__item three-fifths">
+        className="grid__item three-fifths"
+      >
         <div
-          className="grid">
+          className="grid"
+        >
           <div
-            className="grid__item one-half">
+            className="grid__item one-half"
+          >
             <Input
               defaultValue="SC"
               label="State"
-              name="State" />
+              name="State"
+            />
           </div>
           <div
-            className="grid__item one-half">
+            className="grid__item one-half"
+          >
             <Input
               defaultValue="22222"
               label="Zip"
-              name="PostalCode" />
+              name="PostalCode"
+            />
           </div>
         </div>
       </div>
     </div>
     <button
-      className="btn">
+      className="btn"
+    >
       Update
     </button>
   </Form>

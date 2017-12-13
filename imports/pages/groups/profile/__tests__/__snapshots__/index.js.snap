@@ -1,4 +1,6 @@
-exports[`test renders loading 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders loading 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)>
     <Right
@@ -7,7 +9,8 @@ exports[`test renders loading 1`] = `
           "background--left",
         ]
       }
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -15,16 +18,18 @@ exports[`test renders loading 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <div
-      className="soft-double text-center">
+      className="soft-double text-center"
+    >
       <Loading />
     </div>
   </Left>
 </div>
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)>
     <Right
@@ -33,7 +38,8 @@ exports[`test renders with props 1`] = `
           "background--left",
         ]
       }
-      mobile={false}>
+      mobile={false}
+    >
       <ControllableWrapper
         autoCenter={true}
         markers={
@@ -43,7 +49,8 @@ exports[`test renders with props 1`] = `
               "longitude": 2,
             },
           ]
-        } />
+        }
+      />
     </Right>
   </Connect(SplitContainerWithoutData)>
   <Left
@@ -52,7 +59,8 @@ exports[`test renders with props 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <Layout
       group={
         Object {
@@ -93,12 +101,13 @@ exports[`test renders with props 1`] = `
             "role": "leader",
           },
         ]
-      } />
+      }
+    />
   </Left>
 </div>
 `;
 
-exports[`test renders without map on mobile 1`] = `
+exports[`renders without map on mobile 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)>
     <Right
@@ -107,7 +116,8 @@ exports[`test renders without map on mobile 1`] = `
           "background--left",
         ]
       }
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -115,7 +125,8 @@ exports[`test renders without map on mobile 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <Layout
       group={
         Object {
@@ -156,12 +167,13 @@ exports[`test renders without map on mobile 1`] = `
             "role": "leader",
           },
         ]
-      } />
+      }
+    />
   </Left>
 </div>
 `;
 
-exports[`test renders without map on server 1`] = `
+exports[`renders without map on server 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)>
     <Right
@@ -170,7 +182,8 @@ exports[`test renders without map on server 1`] = `
           "background--left",
         ]
       }
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -178,7 +191,8 @@ exports[`test renders without map on server 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <Layout
       group={
         Object {
@@ -219,12 +233,13 @@ exports[`test renders without map on server 1`] = `
             "role": "leader",
           },
         ]
-      } />
+      }
+    />
   </Left>
 </div>
 `;
 
-exports[`test should contain a group mutation 1`] = `
+exports[`should contain a group mutation 1`] = `
 "mutation AddToGroup($groupId: ID!, $message: String!, $communicationPreference: String!) {
   requestGroupInfo(groupId: $groupId, message: $message, communicationPreference: $communicationPreference) {
     error
@@ -235,7 +250,7 @@ exports[`test should contain a group mutation 1`] = `
 "
 `;
 
-exports[`test should contain a phone number mutation 1`] = `
+exports[`should contain a phone number mutation 1`] = `
 "mutation SetPhoneNumber($phoneNumber: String!) {
   setPhoneNumber(phoneNumber: $phoneNumber) {
     error
@@ -246,7 +261,7 @@ exports[`test should contain a phone number mutation 1`] = `
 "
 `;
 
-exports[`test should render contact if member is a leader 1`] = `
+exports[`should render contact if member is a leader 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)>
     <Right
@@ -255,7 +270,8 @@ exports[`test should render contact if member is a leader 1`] = `
           "background--left",
         ]
       }
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -263,7 +279,8 @@ exports[`test should render contact if member is a leader 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <Layout
       group={
         Object {
@@ -295,12 +312,13 @@ exports[`test should render contact if member is a leader 1`] = `
           },
         ]
       }
-      loginParam="" />
+      loginParam=""
+    />
   </Left>
 </div>
 `;
 
-exports[`test should render manage if member is a leader 1`] = `
+exports[`should render manage if member is a leader 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)>
     <Right
@@ -309,7 +327,8 @@ exports[`test should render manage if member is a leader 1`] = `
           "background--left",
         ]
       }
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -317,7 +336,8 @@ exports[`test should render manage if member is a leader 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <Layout
       group={
         Object {
@@ -358,7 +378,8 @@ exports[`test should render manage if member is a leader 1`] = `
             "role": "leader",
           },
         ]
-      } />
+      }
+    />
   </Left>
 </div>
 `;

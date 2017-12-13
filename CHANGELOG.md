@@ -4,10 +4,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [5.3.0] UNRELEASED
+## [5.3.1] UNRELEASED
+### Added
+- Turned linting back on in Travis.
+### Fixed
+- All the linting errors.
+### Updated
+
+## [5.3.0] 2017.09.26
 ### Added
 - new group finder
 - Added a new utility to validate zip code.
+- Added /news routes to open in the app.
 ### Fixed
 ### Updated
 
