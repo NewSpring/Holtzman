@@ -15,29 +15,33 @@ exports[`renders one-half if country is \`CA\` 1`] = `
     >
       Zip/Postal
     </label>
-    <input
-      autoCapitalize="on"
-      autoComplete="on"
-      autoCorrect="on"
-      className={undefined}
-      data-lpignore={undefined}
-      data-spec="input"
-      defaultValue="23456"
-      disabled={undefined}
-      id="zip"
-      maxLength=""
-      name="zip"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onFocus={[Function]}
-      pattern={undefined}
-      placeholder="Zip/Postal"
-      readOnly={undefined}
-      spellCheck={undefined}
-      step={undefined}
-      style={Object {}}
-      type={undefined}
-    />
+    <span
+      className=""
+    >
+      <input
+        autoCapitalize="on"
+        autoComplete="on"
+        autoCorrect="on"
+        className={undefined}
+        data-lpignore={undefined}
+        data-spec="input"
+        defaultValue="23456"
+        disabled={undefined}
+        id="zip"
+        maxLength=""
+        name="zip"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        pattern={undefined}
+        placeholder="Zip/Postal"
+        readOnly={undefined}
+        spellCheck={undefined}
+        step={undefined}
+        style={Object {}}
+        type={undefined}
+      />
+    </span>
   </div>
 </div>
 `;
@@ -57,29 +61,33 @@ exports[`renders one-half if country is \`US\` 1`] = `
     >
       Zip/Postal
     </label>
-    <input
-      autoCapitalize="on"
-      autoComplete="on"
-      autoCorrect="on"
-      className={undefined}
-      data-lpignore={undefined}
-      data-spec="input"
-      defaultValue="12345"
-      disabled={undefined}
-      id="zip"
-      maxLength=""
-      name="zip"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onFocus={[Function]}
-      pattern={undefined}
-      placeholder="Zip/Postal"
-      readOnly={undefined}
-      spellCheck={undefined}
-      step={undefined}
-      style={Object {}}
-      type={undefined}
-    />
+    <span
+      className=""
+    >
+      <input
+        autoCapitalize="on"
+        autoComplete="on"
+        autoCorrect="on"
+        className={undefined}
+        data-lpignore={undefined}
+        data-spec="input"
+        defaultValue="12345"
+        disabled={undefined}
+        id="zip"
+        maxLength=""
+        name="zip"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        pattern={undefined}
+        placeholder="Zip/Postal"
+        readOnly={undefined}
+        spellCheck={undefined}
+        step={undefined}
+        style={Object {}}
+        type={undefined}
+      />
+    </span>
   </div>
 </div>
 `;
@@ -99,29 +107,33 @@ exports[`renders one-half if no country 1`] = `
     >
       Zip/Postal
     </label>
-    <input
-      autoCapitalize="on"
-      autoComplete="on"
-      autoCorrect="on"
-      className={undefined}
-      data-lpignore={undefined}
-      data-spec="input"
-      defaultValue={undefined}
-      disabled={undefined}
-      id="zip"
-      maxLength=""
-      name="zip"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onFocus={[Function]}
-      pattern={undefined}
-      placeholder="Zip/Postal"
-      readOnly={undefined}
-      spellCheck={undefined}
-      step={undefined}
-      style={Object {}}
-      type={undefined}
-    />
+    <span
+      className=""
+    >
+      <input
+        autoCapitalize="on"
+        autoComplete="on"
+        autoCorrect="on"
+        className={undefined}
+        data-lpignore={undefined}
+        data-spec="input"
+        defaultValue={undefined}
+        disabled={undefined}
+        id="zip"
+        maxLength=""
+        name="zip"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        pattern={undefined}
+        placeholder="Zip/Postal"
+        readOnly={undefined}
+        spellCheck={undefined}
+        step={undefined}
+        style={Object {}}
+        type={undefined}
+      />
+    </span>
   </div>
 </div>
 `;
@@ -141,29 +153,33 @@ exports[`renders one-whole for countries with no states 1`] = `
     >
       Zip/Postal
     </label>
-    <input
-      autoCapitalize="on"
-      autoComplete="on"
-      autoCorrect="on"
-      className={undefined}
-      data-lpignore={undefined}
-      data-spec="input"
-      defaultValue={undefined}
-      disabled={undefined}
-      id="zip"
-      maxLength=""
-      name="zip"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onFocus={[Function]}
-      pattern={undefined}
-      placeholder="Zip/Postal"
-      readOnly={undefined}
-      spellCheck={undefined}
-      step={undefined}
-      style={Object {}}
-      type={undefined}
-    />
+    <span
+      className=""
+    >
+      <input
+        autoCapitalize="on"
+        autoComplete="on"
+        autoCorrect="on"
+        className={undefined}
+        data-lpignore={undefined}
+        data-spec="input"
+        defaultValue={undefined}
+        disabled={undefined}
+        id="zip"
+        maxLength=""
+        name="zip"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        pattern={undefined}
+        placeholder="Zip/Postal"
+        readOnly={undefined}
+        spellCheck={undefined}
+        step={undefined}
+        style={Object {}}
+        type={undefined}
+      />
+    </span>
   </div>
 </div>
 `;

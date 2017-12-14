@@ -38,11 +38,12 @@ exports[`should accept an active prop to show the input 1`] = `
       hideLabel={true}
       inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
       pattern="[0-9]*"
-      placeholder="$0.00"
+      placeholder="0.00"
       step="0.01"
       style={
         Object {
           "maxWidth": "150px",
+          "paddingLeft": ".8em",
         }
       }
       type="tel"
@@ -54,6 +55,7 @@ exports[`should accept an active prop to show the input 1`] = `
         style={
           Object {
             "maxWidth": "150px",
+            "paddingLeft": ".8em",
           }
         }
       >
@@ -65,33 +67,42 @@ exports[`should accept an active prop to show the input 1`] = `
           name={undefined}
           style={undefined}
         />
-        <input
-          autoCapitalize="on"
-          autoComplete="on"
-          autoCorrect="on"
-          className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
-          data-lpignore={undefined}
-          data-spec="input"
-          defaultValue={undefined}
-          disabled={undefined}
-          id={undefined}
-          maxLength=""
-          name={undefined}
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          pattern="[0-9]*"
-          placeholder="$0.00"
-          readOnly={undefined}
-          spellCheck={undefined}
-          step="0.01"
-          style={
-            Object {
-              "maxWidth": "150px",
+        <span
+          className="
+        dollar--icon
+        hard-top
+        flush-bottom
+        text-brand"
+        >
+          <input
+            autoCapitalize="on"
+            autoComplete="on"
+            autoCorrect="on"
+            className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
+            data-lpignore={undefined}
+            data-spec="input"
+            defaultValue={undefined}
+            disabled={undefined}
+            id={undefined}
+            maxLength=""
+            name={undefined}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            pattern="[0-9]*"
+            placeholder="0.00"
+            readOnly={undefined}
+            spellCheck={undefined}
+            step="0.01"
+            style={
+              Object {
+                "maxWidth": "150px",
+                "paddingLeft": ".8em",
+              }
             }
-          }
-          type="tel"
-        />
+            type="tel"
+          />
+        </span>
       </div>
     </Input>
     <div
@@ -201,11 +212,12 @@ exports[`should accept custom classes thru classes prop 1`] = `
       hideLabel={true}
       inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
       pattern="[0-9]*"
-      placeholder="$0.00"
+      placeholder="0.00"
       step="0.01"
       style={
         Object {
           "maxWidth": "150px",
+          "paddingLeft": ".8em",
         }
       }
       type="tel"
@@ -217,6 +229,7 @@ exports[`should accept custom classes thru classes prop 1`] = `
         style={
           Object {
             "maxWidth": "150px",
+            "paddingLeft": ".8em",
           }
         }
       >
@@ -228,33 +241,42 @@ exports[`should accept custom classes thru classes prop 1`] = `
           name={undefined}
           style={undefined}
         />
-        <input
-          autoCapitalize="on"
-          autoComplete="on"
-          autoCorrect="on"
-          className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
-          data-lpignore={undefined}
-          data-spec="input"
-          defaultValue={undefined}
-          disabled={undefined}
-          id={undefined}
-          maxLength=""
-          name={undefined}
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          pattern="[0-9]*"
-          placeholder="$0.00"
-          readOnly={undefined}
-          spellCheck={undefined}
-          step="0.01"
-          style={
-            Object {
-              "maxWidth": "150px",
+        <span
+          className="
+        dollar--icon
+        hard-top
+        flush-bottom
+        text-brand"
+        >
+          <input
+            autoCapitalize="on"
+            autoComplete="on"
+            autoCorrect="on"
+            className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
+            data-lpignore={undefined}
+            data-spec="input"
+            defaultValue={undefined}
+            disabled={undefined}
+            id={undefined}
+            maxLength=""
+            name={undefined}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            pattern="[0-9]*"
+            placeholder="0.00"
+            readOnly={undefined}
+            spellCheck={undefined}
+            step="0.01"
+            style={
+              Object {
+                "maxWidth": "150px",
+                "paddingLeft": ".8em",
+              }
             }
-          }
-          type="tel"
-        />
+            type="tel"
+          />
+        </span>
       </div>
     </Input>
     <div
@@ -366,11 +388,12 @@ exports[`should accept multiple accounts through accounts prop 1`] = `
       hideLabel={true}
       inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
       pattern="[0-9]*"
-      placeholder="$0.00"
+      placeholder="0.00"
       step="0.01"
       style={
         Object {
           "maxWidth": "150px",
+          "paddingLeft": ".8em",
         }
       }
       type="tel"
@@ -382,6 +405,7 @@ exports[`should accept multiple accounts through accounts prop 1`] = `
         style={
           Object {
             "maxWidth": "150px",
+            "paddingLeft": ".8em",
           }
         }
       >
@@ -393,33 +417,42 @@ exports[`should accept multiple accounts through accounts prop 1`] = `
           name={undefined}
           style={undefined}
         />
-        <input
-          autoCapitalize="on"
-          autoComplete="on"
-          autoCorrect="on"
-          className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
-          data-lpignore={undefined}
-          data-spec="input"
-          defaultValue={undefined}
-          disabled={undefined}
-          id={undefined}
-          maxLength=""
-          name={undefined}
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          pattern="[0-9]*"
-          placeholder="$0.00"
-          readOnly={undefined}
-          spellCheck={undefined}
-          step="0.01"
-          style={
-            Object {
-              "maxWidth": "150px",
+        <span
+          className="
+        dollar--icon
+        hard-top
+        flush-bottom
+        text-brand"
+        >
+          <input
+            autoCapitalize="on"
+            autoComplete="on"
+            autoCorrect="on"
+            className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
+            data-lpignore={undefined}
+            data-spec="input"
+            defaultValue={undefined}
+            disabled={undefined}
+            id={undefined}
+            maxLength=""
+            name={undefined}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            pattern="[0-9]*"
+            placeholder="0.00"
+            readOnly={undefined}
+            spellCheck={undefined}
+            step="0.01"
+            style={
+              Object {
+                "maxWidth": "150px",
+                "paddingLeft": ".8em",
+              }
             }
-          }
-          type="tel"
-        />
+            type="tel"
+          />
+        </span>
       </div>
     </Input>
     <div
@@ -538,11 +571,12 @@ exports[`should render with minimal props 1`] = `
       hideLabel={true}
       inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
       pattern="[0-9]*"
-      placeholder="$0.00"
+      placeholder="0.00"
       step="0.01"
       style={
         Object {
           "maxWidth": "150px",
+          "paddingLeft": ".8em",
         }
       }
       type="tel"
@@ -554,6 +588,7 @@ exports[`should render with minimal props 1`] = `
         style={
           Object {
             "maxWidth": "150px",
+            "paddingLeft": ".8em",
           }
         }
       >
@@ -565,33 +600,42 @@ exports[`should render with minimal props 1`] = `
           name={undefined}
           style={undefined}
         />
-        <input
-          autoCapitalize="on"
-          autoComplete="on"
-          autoCorrect="on"
-          className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
-          data-lpignore={undefined}
-          data-spec="input"
-          defaultValue={undefined}
-          disabled={undefined}
-          id={undefined}
-          maxLength=""
-          name={undefined}
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          pattern="[0-9]*"
-          placeholder="$0.00"
-          readOnly={undefined}
-          spellCheck={undefined}
-          step="0.01"
-          style={
-            Object {
-              "maxWidth": "150px",
+        <span
+          className="
+        dollar--icon
+        hard-top
+        flush-bottom
+        text-brand"
+        >
+          <input
+            autoCapitalize="on"
+            autoComplete="on"
+            autoCorrect="on"
+            className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
+            data-lpignore={undefined}
+            data-spec="input"
+            defaultValue={undefined}
+            disabled={undefined}
+            id={undefined}
+            maxLength=""
+            name={undefined}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            pattern="[0-9]*"
+            placeholder="0.00"
+            readOnly={undefined}
+            spellCheck={undefined}
+            step="0.01"
+            style={
+              Object {
+                "maxWidth": "150px",
+                "paddingLeft": ".8em",
+              }
             }
-          }
-          type="tel"
-        />
+            type="tel"
+          />
+        </span>
       </div>
     </Input>
     <div

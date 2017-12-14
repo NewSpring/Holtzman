@@ -40,29 +40,33 @@ exports[`Layout renders US by default 1`] = `
       >
         Street Address
       </label>
-      <input
-        autoCapitalize="on"
-        autoComplete="on"
-        autoCorrect="on"
-        className={undefined}
-        data-lpignore={undefined}
-        data-spec="input"
-        defaultValue="123 Some St."
-        disabled={undefined}
-        id="streetAddress"
-        maxLength=""
-        name="streetAddress"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        pattern={undefined}
-        placeholder="Street Address"
-        readOnly={undefined}
-        spellCheck={undefined}
-        step={undefined}
-        style={Object {}}
-        type={undefined}
-      />
+      <span
+        className=""
+      >
+        <input
+          autoCapitalize="on"
+          autoComplete="on"
+          autoCorrect="on"
+          className={undefined}
+          data-lpignore={undefined}
+          data-spec="input"
+          defaultValue="123 Some St."
+          disabled={undefined}
+          id="streetAddress"
+          maxLength=""
+          name="streetAddress"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          pattern={undefined}
+          placeholder="Street Address"
+          readOnly={undefined}
+          spellCheck={undefined}
+          step={undefined}
+          style={Object {}}
+          type={undefined}
+        />
+      </span>
     </div>
     <div
       className="input input--active"
@@ -75,29 +79,33 @@ exports[`Layout renders US by default 1`] = `
       >
         Street Address (optional)
       </label>
-      <input
-        autoCapitalize="on"
-        autoComplete="on"
-        autoCorrect="on"
-        className={undefined}
-        data-lpignore={undefined}
-        data-spec="input"
-        defaultValue="Apt. 1"
-        disabled={undefined}
-        id="streetAddress2"
-        maxLength=""
-        name="streetAddress2"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        pattern={undefined}
-        placeholder="Street Address (optional)"
-        readOnly={undefined}
-        spellCheck={undefined}
-        step={undefined}
-        style={Object {}}
-        type={undefined}
-      />
+      <span
+        className=""
+      >
+        <input
+          autoCapitalize="on"
+          autoComplete="on"
+          autoCorrect="on"
+          className={undefined}
+          data-lpignore={undefined}
+          data-spec="input"
+          defaultValue="Apt. 1"
+          disabled={undefined}
+          id="streetAddress2"
+          maxLength=""
+          name="streetAddress2"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          pattern={undefined}
+          placeholder="Street Address (optional)"
+          readOnly={undefined}
+          spellCheck={undefined}
+          step={undefined}
+          style={Object {}}
+          type={undefined}
+        />
+      </span>
     </div>
     <div
       className="input input--active select_e8htpf"
@@ -150,29 +158,33 @@ exports[`Layout renders US by default 1`] = `
       >
         City
       </label>
-      <input
-        autoCapitalize="on"
-        autoComplete="on"
-        autoCorrect="on"
-        className={undefined}
-        data-lpignore={undefined}
-        data-spec="input"
-        defaultValue="Someville"
-        disabled={undefined}
-        id="city"
-        maxLength=""
-        name="city"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        pattern={undefined}
-        placeholder="City"
-        readOnly={undefined}
-        spellCheck={undefined}
-        step={undefined}
-        style={Object {}}
-        type={undefined}
-      />
+      <span
+        className=""
+      >
+        <input
+          autoCapitalize="on"
+          autoComplete="on"
+          autoCorrect="on"
+          className={undefined}
+          data-lpignore={undefined}
+          data-spec="input"
+          defaultValue="Someville"
+          disabled={undefined}
+          id="city"
+          maxLength=""
+          name="city"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          pattern={undefined}
+          placeholder="City"
+          readOnly={undefined}
+          spellCheck={undefined}
+          step={undefined}
+          style={Object {}}
+          type={undefined}
+        />
+      </span>
     </div>
     <div
       className="grid"
@@ -235,29 +247,33 @@ exports[`Layout renders US by default 1`] = `
           >
             Zip/Postal
           </label>
-          <input
-            autoCapitalize="on"
-            autoComplete="on"
-            autoCorrect="on"
-            className={undefined}
-            data-lpignore={undefined}
-            data-spec="input"
-            defaultValue={undefined}
-            disabled={undefined}
-            id="zip"
-            maxLength=""
-            name="zip"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            pattern={undefined}
-            placeholder="Zip/Postal"
-            readOnly={undefined}
-            spellCheck={undefined}
-            step={undefined}
-            style={Object {}}
-            type={undefined}
-          />
+          <span
+            className=""
+          >
+            <input
+              autoCapitalize="on"
+              autoComplete="on"
+              autoCorrect="on"
+              className={undefined}
+              data-lpignore={undefined}
+              data-spec="input"
+              defaultValue={undefined}
+              disabled={undefined}
+              id="zip"
+              maxLength=""
+              name="zip"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              pattern={undefined}
+              placeholder="Zip/Postal"
+              readOnly={undefined}
+              spellCheck={undefined}
+              step={undefined}
+              style={Object {}}
+              type={undefined}
+            />
+          </span>
         </div>
       </div>
     </div>
@@ -309,29 +325,33 @@ exports[`Layout renders your country instead 1`] = `
       >
         Street Address
       </label>
-      <input
-        autoCapitalize="on"
-        autoComplete="on"
-        autoCorrect="on"
-        className={undefined}
-        data-lpignore={undefined}
-        data-spec="input"
-        defaultValue="123 Some St."
-        disabled={undefined}
-        id="streetAddress"
-        maxLength=""
-        name="streetAddress"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        pattern={undefined}
-        placeholder="Street Address"
-        readOnly={undefined}
-        spellCheck={undefined}
-        step={undefined}
-        style={Object {}}
-        type={undefined}
-      />
+      <span
+        className=""
+      >
+        <input
+          autoCapitalize="on"
+          autoComplete="on"
+          autoCorrect="on"
+          className={undefined}
+          data-lpignore={undefined}
+          data-spec="input"
+          defaultValue="123 Some St."
+          disabled={undefined}
+          id="streetAddress"
+          maxLength=""
+          name="streetAddress"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          pattern={undefined}
+          placeholder="Street Address"
+          readOnly={undefined}
+          spellCheck={undefined}
+          step={undefined}
+          style={Object {}}
+          type={undefined}
+        />
+      </span>
     </div>
     <div
       className="input input--active"
@@ -344,29 +364,33 @@ exports[`Layout renders your country instead 1`] = `
       >
         Street Address (optional)
       </label>
-      <input
-        autoCapitalize="on"
-        autoComplete="on"
-        autoCorrect="on"
-        className={undefined}
-        data-lpignore={undefined}
-        data-spec="input"
-        defaultValue="Apt. 1"
-        disabled={undefined}
-        id="streetAddress2"
-        maxLength=""
-        name="streetAddress2"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        pattern={undefined}
-        placeholder="Street Address (optional)"
-        readOnly={undefined}
-        spellCheck={undefined}
-        step={undefined}
-        style={Object {}}
-        type={undefined}
-      />
+      <span
+        className=""
+      >
+        <input
+          autoCapitalize="on"
+          autoComplete="on"
+          autoCorrect="on"
+          className={undefined}
+          data-lpignore={undefined}
+          data-spec="input"
+          defaultValue="Apt. 1"
+          disabled={undefined}
+          id="streetAddress2"
+          maxLength=""
+          name="streetAddress2"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          pattern={undefined}
+          placeholder="Street Address (optional)"
+          readOnly={undefined}
+          spellCheck={undefined}
+          step={undefined}
+          style={Object {}}
+          type={undefined}
+        />
+      </span>
     </div>
     <div
       className="input input--active select_e8htpf"
@@ -419,29 +443,33 @@ exports[`Layout renders your country instead 1`] = `
       >
         City
       </label>
-      <input
-        autoCapitalize="on"
-        autoComplete="on"
-        autoCorrect="on"
-        className={undefined}
-        data-lpignore={undefined}
-        data-spec="input"
-        defaultValue="Someville"
-        disabled={undefined}
-        id="city"
-        maxLength=""
-        name="city"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        pattern={undefined}
-        placeholder="City"
-        readOnly={undefined}
-        spellCheck={undefined}
-        step={undefined}
-        style={Object {}}
-        type={undefined}
-      />
+      <span
+        className=""
+      >
+        <input
+          autoCapitalize="on"
+          autoComplete="on"
+          autoCorrect="on"
+          className={undefined}
+          data-lpignore={undefined}
+          data-spec="input"
+          defaultValue="Someville"
+          disabled={undefined}
+          id="city"
+          maxLength=""
+          name="city"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          pattern={undefined}
+          placeholder="City"
+          readOnly={undefined}
+          spellCheck={undefined}
+          step={undefined}
+          style={Object {}}
+          type={undefined}
+        />
+      </span>
     </div>
     <div
       className="grid"
@@ -504,29 +532,33 @@ exports[`Layout renders your country instead 1`] = `
           >
             Zip/Postal
           </label>
-          <input
-            autoCapitalize="on"
-            autoComplete="on"
-            autoCorrect="on"
-            className={undefined}
-            data-lpignore={undefined}
-            data-spec="input"
-            defaultValue={undefined}
-            disabled={undefined}
-            id="zip"
-            maxLength=""
-            name="zip"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            pattern={undefined}
-            placeholder="Zip/Postal"
-            readOnly={undefined}
-            spellCheck={undefined}
-            step={undefined}
-            style={Object {}}
-            type={undefined}
-          />
+          <span
+            className=""
+          >
+            <input
+              autoCapitalize="on"
+              autoComplete="on"
+              autoCorrect="on"
+              className={undefined}
+              data-lpignore={undefined}
+              data-spec="input"
+              defaultValue={undefined}
+              disabled={undefined}
+              id="zip"
+              maxLength=""
+              name="zip"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              pattern={undefined}
+              placeholder="Zip/Postal"
+              readOnly={undefined}
+              spellCheck={undefined}
+              step={undefined}
+              style={Object {}}
+              type={undefined}
+            />
+          </span>
         </div>
       </div>
     </div>
