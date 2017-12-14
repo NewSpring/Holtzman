@@ -42,9 +42,11 @@ exports[`should render with no props 1`] = `
       onBlur={[Function]}
       onChange={[Function]}
       onFocus={[Function]}
+      pattern={undefined}
       placeholder={undefined}
       readOnly={undefined}
       spellCheck={undefined}
+      step={undefined}
       style={Object {}}
       type={undefined}
     />
