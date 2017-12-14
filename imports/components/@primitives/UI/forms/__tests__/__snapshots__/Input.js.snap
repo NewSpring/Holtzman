@@ -27,29 +27,33 @@ exports[`should render with no props 1`] = `
         />
       </Label>
     </RenderLabel>
-    <input
-      autoCapitalize="on"
-      autoComplete="on"
-      autoCorrect="on"
-      className={undefined}
-      data-lpignore={undefined}
-      data-spec="input"
-      defaultValue={undefined}
-      disabled={undefined}
-      id={undefined}
-      maxLength=""
-      name={undefined}
-      onBlur={[Function]}
-      onChange={[Function]}
-      onFocus={[Function]}
-      pattern={undefined}
-      placeholder={undefined}
-      readOnly={undefined}
-      spellCheck={undefined}
-      step={undefined}
-      style={Object {}}
-      type={undefined}
-    />
+    <span
+      className=""
+    >
+      <input
+        autoCapitalize="on"
+        autoComplete="on"
+        autoCorrect="on"
+        className={undefined}
+        data-lpignore={undefined}
+        data-spec="input"
+        defaultValue={undefined}
+        disabled={undefined}
+        id={undefined}
+        maxLength=""
+        name={undefined}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        pattern={undefined}
+        placeholder={undefined}
+        readOnly={undefined}
+        spellCheck={undefined}
+        step={undefined}
+        style={Object {}}
+        type={undefined}
+      />
+    </span>
   </div>
 </Input>
 `;
