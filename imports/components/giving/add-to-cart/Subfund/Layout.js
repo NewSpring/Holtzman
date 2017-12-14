@@ -38,8 +38,8 @@ const Layout = ({
       format={changeAmount}
       hideLabel
       inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom text-brand ${css(Styles["show-placeholder"])}`}
-      placeholder="$0.00"
-      style={{ maxWidth: "150px" }}
+      placeholder="0.00"
+      style={{ maxWidth: "150px", paddingLeft: ".8em" }}
       type={Meteor.isCordova ? "number" : "tel"}
       pattern={"[0-9]*"}
       step={"0.01"}

@@ -274,6 +274,17 @@ export default class Input extends Component {
     return inputclasses.join(" ");
   };
 
+  dollarIconClass = () => {
+    if (this.props.pattern) {
+      return `
+        dollar--icon
+        hard-top
+        flush-bottom
+        text-brand`
+    }
+    return ""
+  }
+
   render() {
     const {
       style,
@@ -312,39 +323,41 @@ export default class Input extends Component {
           disabled={this.disabled()}
           style={labelStyles}
         />
+        <span className={this.dollarIconClass()}>
+          <input
+            ref={node => (this.node = node)}
+            id={id || name || label}
+            type={type}
+            pattern={pattern}
+            step={step}
+            placeholder={placeholder || label}
+            name={name || label}
+            className={inputClasses}
+            disabled={this.disabled()}
+            onBlur={this.validate}
+            onFocus={this.focus}
+            onChange={this.format}
+            readOnly={readOnly}
+            defaultValue={defaultValue}
+            style={this.style()}
+            maxLength={maxLength || ""}
+            autoComplete={
+              autoComplete === true || autoComplete === undefined ? "on" : "off"
+            }
+            autoCorrect={
+              autoCorrect === true || autoCorrect === undefined ? "on" : "off"
+            }
+            autoCapitalize={
+              autoCapitalize === true || autoCapitalize === undefined
+                ? "on"
+                : "off"
+            }
+            spellCheck={spellCheck}
+            data-spec="input"
+            data-lpignore={ignoreLastPass}
+          />
+        </span>
 
-        <input
-          ref={node => (this.node = node)}
-          id={id || name || label}
-          type={type}
-          pattern={pattern}
-          step={step}
-          placeholder={placeholder || label}
-          name={name || label}
-          className={inputClasses}
-          disabled={this.disabled()}
-          onBlur={this.validate}
-          onFocus={this.focus}
-          onChange={this.format}
-          readOnly={readOnly}
-          defaultValue={defaultValue}
-          style={this.style()}
-          maxLength={maxLength || ""}
-          autoComplete={
-            autoComplete === true || autoComplete === undefined ? "on" : "off"
-          }
-          autoCorrect={
-            autoCorrect === true || autoCorrect === undefined ? "on" : "off"
-          }
-          autoCapitalize={
-            autoCapitalize === true || autoCapitalize === undefined
-              ? "on"
-              : "off"
-          }
-          spellCheck={spellCheck}
-          data-spec="input"
-          data-lpignore={ignoreLastPass}
-        />
 
         {children}
 
