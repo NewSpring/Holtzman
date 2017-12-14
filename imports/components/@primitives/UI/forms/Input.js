@@ -51,6 +51,7 @@ type IInputProps = {
   autoCorrect?: boolean,
   spellCheck?: boolean,
   pattern: string,
+  step: string,
   readOnly: string,
   ignoreLastPass: boolean,
   format: Function,
@@ -283,6 +284,7 @@ export default class Input extends Component {
       labelStyles,
       type,
       pattern,
+      step,
       placeholder,
       inputClasses,
       defaultValue,
@@ -316,6 +318,7 @@ export default class Input extends Component {
           id={id || name || label}
           type={type}
           pattern={pattern}
+          step={step}
           placeholder={placeholder || label}
           name={name || label}
           className={inputClasses}

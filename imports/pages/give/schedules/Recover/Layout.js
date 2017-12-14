@@ -60,7 +60,7 @@ export default class Layout extends Component {
     let strVal = typeof value === "number" ? `${value}` : value;
 
     if (!strVal.length) {
-      return "$0.00";
+      return "0.00";
     }
 
     strVal = strVal.replace(/[^\d.-]/g, "");
@@ -72,7 +72,7 @@ export default class Layout extends Component {
     }
 
     strVal = strVal.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    return `$${strVal}`;
+    return `${strVal}`;
   }
 
   capitalizeFirstLetter = string => (
