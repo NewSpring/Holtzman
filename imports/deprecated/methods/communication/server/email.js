@@ -166,7 +166,7 @@ Meteor.methods({
         const ids = [];
         for (const id of PersonAliasId) {
           const CommunicationRecipient = {
-            MediumEntityTypeId: 37, //Mandrill
+            MediumEntityTypeId: 37, // Mandrill
             PersonAliasId: id,
             CommunicationId,
             Status: 0, // Pending
