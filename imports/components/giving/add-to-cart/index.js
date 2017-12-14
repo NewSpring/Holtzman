@@ -159,7 +159,7 @@ class CartContainer extends Component {
     }
 
     const value = Number(`${makeArr.join("")}`.replace(/[^0-9\.]+/g, ""));
-    if (isNaN(value)) return 0.00;
+    if (isNaN(value)) 0.00;
     // this will rerender the component and rebuild
     // the subfunds as needed
     this.setState(({ subfunds }) => {
@@ -232,7 +232,7 @@ class CartContainer extends Component {
       if (fund && currentFund[0].amount) {
         this.props.addTransactions({
           [id]: {
-            value: Number(`${currentFund[0].amount}`.replace(/[^0-9\.]+/g, "")).tofixed(2),
+            value: `${currentFund[0].amount}`.replace(/[^0-9\.]+/g, ""),
             label: fund.name,
           },
         });

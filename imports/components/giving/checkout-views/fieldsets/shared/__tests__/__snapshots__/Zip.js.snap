@@ -30,9 +30,11 @@ exports[`renders one-half if country is \`CA\` 1`] = `
       onBlur={[Function]}
       onChange={[Function]}
       onFocus={[Function]}
+      pattern={undefined}
       placeholder="Zip/Postal"
       readOnly={undefined}
       spellCheck={undefined}
+      step={undefined}
       style={Object {}}
       type={undefined}
     />
@@ -70,9 +72,11 @@ exports[`renders one-half if country is \`US\` 1`] = `
       onBlur={[Function]}
       onChange={[Function]}
       onFocus={[Function]}
+      pattern={undefined}
       placeholder="Zip/Postal"
       readOnly={undefined}
       spellCheck={undefined}
+      step={undefined}
       style={Object {}}
       type={undefined}
     />
@@ -110,9 +114,11 @@ exports[`renders one-half if no country 1`] = `
       onBlur={[Function]}
       onChange={[Function]}
       onFocus={[Function]}
+      pattern={undefined}
       placeholder="Zip/Postal"
       readOnly={undefined}
       spellCheck={undefined}
+      step={undefined}
       style={Object {}}
       type={undefined}
     />
@@ -150,9 +156,11 @@ exports[`renders one-whole for countries with no states 1`] = `
       onBlur={[Function]}
       onChange={[Function]}
       onFocus={[Function]}
+      pattern={undefined}
       placeholder="Zip/Postal"
       readOnly={undefined}
       spellCheck={undefined}
+      step={undefined}
       style={Object {}}
       type={undefined}
     />
