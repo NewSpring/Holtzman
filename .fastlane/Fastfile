@@ -131,6 +131,7 @@ platform :ios do
         git_url: ENV['CERTIFICATES_REPO'],
         app_identifier: [ "cc.newspring.newspringapp", "com.subsplashstudio31.NewSpring-Church" ],
         username: ENV["APPLE_ID"],
+        force_for_new_devices: true,
       )
     end
   end
@@ -146,6 +147,18 @@ platform :ios do
     )
   end
 
+  desc "Add new devices"
+  lane :new_device do
+    device_name = prompt(text: "Enter the device name: ")
+    device_udid = prompt(text: "Enter the device UDID: ")
+    device_hash = {}
+    device_hash[device_name] = device_udid
+    register_devices(
+      devices: device_hash
+    )
+    certs
+  end
+
   desc "Submit a new Beta Build to Apple TestFlight"
   desc "This will also make sure the profile is up to date"
   lane :beta do
@@ -159,6 +172,7 @@ platform :ios do
     )
   end
 
+  desc "DEPRECATED: NEW BUILDS ARE ALWAYS BETA"
   desc "Deploy a new version to the App Store"
   lane :production do
     build_app_production
