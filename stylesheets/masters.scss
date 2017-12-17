@@ -24,6 +24,20 @@
 //   background: #303030;
 // }
 
+.dollar--icon {
+  position: relative;
+  &:before {
+    position: absolute;
+    content: "$";
+    left: .18em;
+    font-family: "colfax-web";
+    font-size: 1.8em;
+    line-height: 1.25;
+    font-weight: 700;
+
+  }
+}
+
 .card {
   background-color: #fff;
   border-width: 1px;
