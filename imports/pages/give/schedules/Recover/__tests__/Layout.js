@@ -138,49 +138,49 @@ it("returns `$12.34` if number 12.34", () => {
   const wrapper = shallow(generateComponent());
   const value = 12.34;
   const result = wrapper.instance().monentize(value);
-  expect(result).toBe(`$${value}`);
+  expect(result).toBe(`${value}`);
 });
 
 it("returns `$12.34` if string `12.34`", () => {
   const wrapper = shallow(generateComponent());
   const value = "12.34";
   const result = wrapper.instance().monentize(value);
-  expect(result).toBe(`$${value}`);
+  expect(result).toBe(`${value}`);
 });
 
 it("removes everything except numbers, dots, and dashes", () => {
   const wrapper = shallow(generateComponent());
   const value = "!@#$%^&*()12abcdefg.`~`~{}[]34";
   const result = wrapper.instance().monentize(value);
-  expect(result).toBe("$12.34");
+  expect(result).toBe("12.34");
 });
 
 it("has no decimals by default", () => {
   const wrapper = shallow(generateComponent());
   const value = 24;
   const result = wrapper.instance().monentize(value);
-  expect(result).toBe("$24");
+  expect(result).toBe("24");
 });
 
 it("fixes to two decimals if greater than two", () => {
   const wrapper = shallow(generateComponent());
   const value = 24.2456788;
   const result = wrapper.instance().monentize(value);
-  expect(result).toBe("$24.25");
+  expect(result).toBe("24.25");
 });
 
 it("fixes to two decimals if fixed is true", () => {
   const wrapper = shallow(generateComponent());
   const value = 12;
   const result = wrapper.instance().monentize(value, true);
-  expect(result).toBe(`$${value}.00`);
+  expect(result).toBe(`${value}.00`);
 });
 
 it("adds commas for large values", () => {
   const wrapper = shallow(generateComponent());
   const value = 123456789;
   const result = wrapper.instance().monentize(value);
-  expect(result).toBe("$123,456,789");
+  expect(result).toBe("123,456,789");
 });
 
 it("capitalizeFirstLetter does that", () => {

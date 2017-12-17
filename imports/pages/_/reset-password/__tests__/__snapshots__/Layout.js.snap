@@ -41,27 +41,33 @@ exports[`render with enabled button if newP and newPDup 1`] = `
         >
           New Password
         </label>
-        <input
-          autoCapitalize="on"
-          autoComplete="on"
-          autoCorrect="on"
-          className={undefined}
-          data-lpignore={undefined}
-          data-spec="input"
-          defaultValue={undefined}
-          disabled={undefined}
-          id="newP"
-          maxLength=""
-          name="newP"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          placeholder="New Password"
-          readOnly={undefined}
-          spellCheck={undefined}
-          style={Object {}}
-          type="password"
-        />
+        <span
+          className=""
+        >
+          <input
+            autoCapitalize="on"
+            autoComplete="on"
+            autoCorrect="on"
+            className={undefined}
+            data-lpignore={undefined}
+            data-spec="input"
+            defaultValue={undefined}
+            disabled={undefined}
+            id="newP"
+            maxLength=""
+            name="newP"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            pattern={undefined}
+            placeholder="New Password"
+            readOnly={undefined}
+            spellCheck={undefined}
+            step={undefined}
+            style={Object {}}
+            type="password"
+          />
+        </span>
       </div>
       <div
         className="input"
@@ -74,27 +80,33 @@ exports[`render with enabled button if newP and newPDup 1`] = `
         >
           Repeat New Password
         </label>
-        <input
-          autoCapitalize="on"
-          autoComplete="on"
-          autoCorrect="on"
-          className={undefined}
-          data-lpignore={undefined}
-          data-spec="input"
-          defaultValue={undefined}
-          disabled={undefined}
-          id="newPDup"
-          maxLength=""
-          name="newPDup"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          placeholder="Repeat New Password"
-          readOnly={undefined}
-          spellCheck={undefined}
-          style={Object {}}
-          type="password"
-        />
+        <span
+          className=""
+        >
+          <input
+            autoCapitalize="on"
+            autoComplete="on"
+            autoCorrect="on"
+            className={undefined}
+            data-lpignore={undefined}
+            data-spec="input"
+            defaultValue={undefined}
+            disabled={undefined}
+            id="newPDup"
+            maxLength=""
+            name="newPDup"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            pattern={undefined}
+            placeholder="Repeat New Password"
+            readOnly={undefined}
+            spellCheck={undefined}
+            step={undefined}
+            style={Object {}}
+            type="password"
+          />
+        </span>
       </div>
       <a
         className="btn--small btn--dark-tertiary display-inline-block"
@@ -155,27 +167,33 @@ exports[`renders with disabled button without newP 1`] = `
         >
           New Password
         </label>
-        <input
-          autoCapitalize="on"
-          autoComplete="on"
-          autoCorrect="on"
-          className={undefined}
-          data-lpignore={undefined}
-          data-spec="input"
-          defaultValue={undefined}
-          disabled={undefined}
-          id="newP"
-          maxLength=""
-          name="newP"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          placeholder="New Password"
-          readOnly={undefined}
-          spellCheck={undefined}
-          style={Object {}}
-          type="password"
-        />
+        <span
+          className=""
+        >
+          <input
+            autoCapitalize="on"
+            autoComplete="on"
+            autoCorrect="on"
+            className={undefined}
+            data-lpignore={undefined}
+            data-spec="input"
+            defaultValue={undefined}
+            disabled={undefined}
+            id="newP"
+            maxLength=""
+            name="newP"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            pattern={undefined}
+            placeholder="New Password"
+            readOnly={undefined}
+            spellCheck={undefined}
+            step={undefined}
+            style={Object {}}
+            type="password"
+          />
+        </span>
       </div>
       <div
         className="input"
@@ -188,27 +206,33 @@ exports[`renders with disabled button without newP 1`] = `
         >
           Repeat New Password
         </label>
-        <input
-          autoCapitalize="on"
-          autoComplete="on"
-          autoCorrect="on"
-          className={undefined}
-          data-lpignore={undefined}
-          data-spec="input"
-          defaultValue={undefined}
-          disabled={undefined}
-          id="newPDup"
-          maxLength=""
-          name="newPDup"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          placeholder="Repeat New Password"
-          readOnly={undefined}
-          spellCheck={undefined}
-          style={Object {}}
-          type="password"
-        />
+        <span
+          className=""
+        >
+          <input
+            autoCapitalize="on"
+            autoComplete="on"
+            autoCorrect="on"
+            className={undefined}
+            data-lpignore={undefined}
+            data-spec="input"
+            defaultValue={undefined}
+            disabled={undefined}
+            id="newPDup"
+            maxLength=""
+            name="newPDup"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            pattern={undefined}
+            placeholder="Repeat New Password"
+            readOnly={undefined}
+            spellCheck={undefined}
+            step={undefined}
+            style={Object {}}
+            type="password"
+          />
+        </span>
       </div>
       <a
         className="btn--small btn--dark-tertiary display-inline-block"
@@ -269,27 +293,33 @@ exports[`renders with disabled button without newPDup 1`] = `
         >
           New Password
         </label>
-        <input
-          autoCapitalize="on"
-          autoComplete="on"
-          autoCorrect="on"
-          className={undefined}
-          data-lpignore={undefined}
-          data-spec="input"
-          defaultValue={undefined}
-          disabled={undefined}
-          id="newP"
-          maxLength=""
-          name="newP"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          placeholder="New Password"
-          readOnly={undefined}
-          spellCheck={undefined}
-          style={Object {}}
-          type="password"
-        />
+        <span
+          className=""
+        >
+          <input
+            autoCapitalize="on"
+            autoComplete="on"
+            autoCorrect="on"
+            className={undefined}
+            data-lpignore={undefined}
+            data-spec="input"
+            defaultValue={undefined}
+            disabled={undefined}
+            id="newP"
+            maxLength=""
+            name="newP"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            pattern={undefined}
+            placeholder="New Password"
+            readOnly={undefined}
+            spellCheck={undefined}
+            step={undefined}
+            style={Object {}}
+            type="password"
+          />
+        </span>
       </div>
       <div
         className="input"
@@ -302,27 +332,33 @@ exports[`renders with disabled button without newPDup 1`] = `
         >
           Repeat New Password
         </label>
-        <input
-          autoCapitalize="on"
-          autoComplete="on"
-          autoCorrect="on"
-          className={undefined}
-          data-lpignore={undefined}
-          data-spec="input"
-          defaultValue={undefined}
-          disabled={undefined}
-          id="newPDup"
-          maxLength=""
-          name="newPDup"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          placeholder="Repeat New Password"
-          readOnly={undefined}
-          spellCheck={undefined}
-          style={Object {}}
-          type="password"
-        />
+        <span
+          className=""
+        >
+          <input
+            autoCapitalize="on"
+            autoComplete="on"
+            autoCorrect="on"
+            className={undefined}
+            data-lpignore={undefined}
+            data-spec="input"
+            defaultValue={undefined}
+            disabled={undefined}
+            id="newPDup"
+            maxLength=""
+            name="newPDup"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            pattern={undefined}
+            placeholder="Repeat New Password"
+            readOnly={undefined}
+            spellCheck={undefined}
+            step={undefined}
+            style={Object {}}
+            type="password"
+          />
+        </span>
       </div>
       <a
         className="btn--small btn--dark-tertiary display-inline-block"

@@ -51,6 +51,7 @@ type IInputProps = {
   autoCorrect?: boolean,
   spellCheck?: boolean,
   pattern: string,
+  step: string,
   readOnly: string,
   ignoreLastPass: boolean,
   format: Function,
@@ -104,12 +105,7 @@ export default class Input extends Component {
         return;
       }
 
-      if (
-        !this._previousValue &&
-        target.value &&
-        !this.state.focused &&
-        !this.state.value
-      ) {
+      if (!this._previousValue && target.value && !this.state.focused && !this.state.value) {
         // eslint-disable-line
         this.setValue(target.value);
       }
@@ -273,6 +269,17 @@ export default class Input extends Component {
     return inputclasses.join(" ");
   };
 
+  dollarIconClass = () => {
+    if (this.props.pattern) {
+      return `
+        dollar--icon
+        hard-top
+        flush-bottom
+        text-brand`;
+    }
+    return "";
+  };
+
   render() {
     const {
       style,
@@ -282,6 +289,8 @@ export default class Input extends Component {
       label,
       labelStyles,
       type,
+      pattern,
+      step,
       placeholder,
       inputClasses,
       defaultValue,
@@ -296,11 +305,7 @@ export default class Input extends Component {
     } = this.props;
 
     return (
-      <div
-        className={this.classes()}
-        style={style || {}}
-        data-spec="input-wrapper"
-      >
+      <div className={this.classes()} style={style || {}} data-spec="input-wrapper">
         <RenderLabel
           hideLabel={hideLabel}
           id={id}
@@ -309,37 +314,32 @@ export default class Input extends Component {
           disabled={this.disabled()}
           style={labelStyles}
         />
-
-        <input
-          ref={node => (this.node = node)}
-          id={id || name || label}
-          type={type}
-          placeholder={placeholder || label}
-          name={name || label}
-          className={inputClasses}
-          disabled={this.disabled()}
-          onBlur={this.validate}
-          onFocus={this.focus}
-          onChange={this.format}
-          readOnly={readOnly}
-          defaultValue={defaultValue}
-          style={this.style()}
-          maxLength={maxLength || ""}
-          autoComplete={
-            autoComplete === true || autoComplete === undefined ? "on" : "off"
-          }
-          autoCorrect={
-            autoCorrect === true || autoCorrect === undefined ? "on" : "off"
-          }
-          autoCapitalize={
-            autoCapitalize === true || autoCapitalize === undefined
-              ? "on"
-              : "off"
-          }
-          spellCheck={spellCheck}
-          data-spec="input"
-          data-lpignore={ignoreLastPass}
-        />
+        <span className={this.dollarIconClass()}>
+          <input
+            ref={node => (this.node = node)}
+            id={id || name || label}
+            type={type}
+            pattern={pattern}
+            step={step}
+            placeholder={placeholder || label}
+            name={name || label}
+            className={inputClasses}
+            disabled={this.disabled()}
+            onBlur={this.validate}
+            onFocus={this.focus}
+            onChange={this.format}
+            readOnly={readOnly}
+            defaultValue={defaultValue}
+            style={this.style()}
+            maxLength={maxLength || ""}
+            autoComplete={autoComplete === true || autoComplete === undefined ? "on" : "off"}
+            autoCorrect={autoCorrect === true || autoCorrect === undefined ? "on" : "off"}
+            autoCapitalize={autoCapitalize === true || autoCapitalize === undefined ? "on" : "off"}
+            spellCheck={spellCheck}
+            data-spec="input"
+            data-lpignore={ignoreLastPass}
+          />
+        </span>
 
         {children}
 

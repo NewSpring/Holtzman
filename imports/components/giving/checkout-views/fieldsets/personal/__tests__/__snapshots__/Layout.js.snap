@@ -46,27 +46,33 @@ exports[`Layout renders with props 1`] = `
           >
             First Name
           </label>
-          <input
-            autoCapitalize="on"
-            autoComplete="on"
-            autoCorrect="on"
-            className={undefined}
-            data-lpignore={undefined}
-            data-spec="input"
-            defaultValue="Jim"
-            disabled={undefined}
-            id="firstName"
-            maxLength=""
-            name="firstName"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            placeholder="First Name"
-            readOnly={undefined}
-            spellCheck={undefined}
-            style={Object {}}
-            type={undefined}
-          />
+          <span
+            className=""
+          >
+            <input
+              autoCapitalize="on"
+              autoComplete="on"
+              autoCorrect="on"
+              className={undefined}
+              data-lpignore={undefined}
+              data-spec="input"
+              defaultValue="Jim"
+              disabled={undefined}
+              id="firstName"
+              maxLength=""
+              name="firstName"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              pattern={undefined}
+              placeholder="First Name"
+              readOnly={undefined}
+              spellCheck={undefined}
+              step={undefined}
+              style={Object {}}
+              type={undefined}
+            />
+          </span>
         </div>
       </div>
       <div
@@ -83,27 +89,33 @@ exports[`Layout renders with props 1`] = `
           >
             Last Name
           </label>
-          <input
-            autoCapitalize="on"
-            autoComplete="on"
-            autoCorrect="on"
-            className={undefined}
-            data-lpignore={undefined}
-            data-spec="input"
-            defaultValue={undefined}
-            disabled={undefined}
-            id="lastName"
-            maxLength=""
-            name="lastName"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            placeholder="Last Name"
-            readOnly={undefined}
-            spellCheck={undefined}
-            style={Object {}}
-            type={undefined}
-          />
+          <span
+            className=""
+          >
+            <input
+              autoCapitalize="on"
+              autoComplete="on"
+              autoCorrect="on"
+              className={undefined}
+              data-lpignore={undefined}
+              data-spec="input"
+              defaultValue={undefined}
+              disabled={undefined}
+              id="lastName"
+              maxLength=""
+              name="lastName"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              pattern={undefined}
+              placeholder="Last Name"
+              readOnly={undefined}
+              spellCheck={undefined}
+              step={undefined}
+              style={Object {}}
+              type={undefined}
+            />
+          </span>
         </div>
       </div>
     </div>
@@ -118,27 +130,33 @@ exports[`Layout renders with props 1`] = `
       >
         Email
       </label>
-      <input
-        autoCapitalize="on"
-        autoComplete="on"
-        autoCorrect="on"
-        className={undefined}
-        data-lpignore={undefined}
-        data-spec="input"
-        defaultValue="test@test.com"
-        disabled={undefined}
-        id="email"
-        maxLength=""
-        name="email"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        placeholder="user@email.com"
-        readOnly={undefined}
-        spellCheck={undefined}
-        style={Object {}}
-        type="email"
-      />
+      <span
+        className=""
+      >
+        <input
+          autoCapitalize="on"
+          autoComplete="on"
+          autoCorrect="on"
+          className={undefined}
+          data-lpignore={undefined}
+          data-spec="input"
+          defaultValue="test@test.com"
+          disabled={undefined}
+          id="email"
+          maxLength=""
+          name="email"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          pattern={undefined}
+          placeholder="user@email.com"
+          readOnly={undefined}
+          spellCheck={undefined}
+          step={undefined}
+          style={Object {}}
+          type="email"
+        />
+      </span>
     </div>
     <style>
       .input--active select { color: #303030 }; .input--focused label { color: #858585 }

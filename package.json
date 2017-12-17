@@ -17,7 +17,10 @@
     "danger": "danger run --verbose"
   },
   "lint-staged": {
-    "*.js": ["eslint", "jest --bail --findRelatedTests"]
+    "*.js": [
+      "eslint",
+      "jest --bail --findRelatedTests"
+    ]
   },
   "repository": {
     "type": "git",
@@ -49,15 +52,25 @@
       "<rootDir>/imports/util/tests/beforeTest.js",
       "<rootDir>/imports/util/tests/jestPreprocessor.js"
     ],
-    "testPathIgnorePatterns": ["/node_modules/", "/.meteor/"],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/.meteor/"
+    ],
     "moduleNameMapper": {
       "meteor/bjwiley2:server-watch": "<rootDir>/.meteor/mocks/bjwiley2-server-watch.js",
       "^meteor/(.*)": "<rootDir>/.meteor/mocks/$1.js"
     },
-    "setupFiles": ["<rootDir>/imports/util/tests/beforeTest.js"]
+    "setupFiles": [
+      "<rootDir>/imports/util/tests/beforeTest.js"
+    ]
   },
   "babel": {
-    "presets": ["meteor", "es2015", "stage-0", "react"],
+    "presets": [
+      "meteor",
+      "es2015",
+      "stage-0",
+      "react"
+    ],
     "plugins": [
       "babel-root-slash-import",
       "transform-react-router-optimize",
@@ -70,7 +83,7 @@
     ]
   },
   "dependencies": {
-    "aphrodite": "https://github.com/NewSpring/aphrodite.git#release",
+    "aphrodite": "git+https://github.com/NewSpring/aphrodite.git#release",
     "apollo-client": "1.9.3",
     "audio5": "^0.1.10",
     "babel-jest": "^21.2.0",
@@ -106,14 +119,13 @@
     "react-jw-player": "^1.1.2",
     "react-mixin": "^3.0.5",
     "react-motion": "^0.4.4",
-    "react-pull-to-refresh": "https://git@github.com/NewSpring/react-pull-to-refresh.git",
+    "react-pull-to-refresh": "git+https://git@github.com/NewSpring/react-pull-to-refresh.git",
     "react-pure-render": "^1.0.2",
     "react-redux": "^5.0.6",
     "react-router": "^2.4.0",
     "react-router-scroll": "^0.2.1",
     "react-slick": "^0.13.1",
-    "react-swipe-views":
-      "https://git@github.com/NewSpring/react-swipe-views.git#d531949ddccb84ec53e634f7964c1c5cfac2c9b5",
+    "react-swipe-views": "https://git@github.com/NewSpring/react-swipe-views.git#d531949ddccb84ec53e634f7964c1c5cfac2c9b5",
     "react-swipeable-views": "^0.8.3",
     "react-tooltip": "^3.0.13",
     "react-transform-sentry": "^1.0.0",

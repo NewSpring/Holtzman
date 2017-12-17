@@ -9,7 +9,7 @@ import Layout from "./Layout";
 type IStore = {
   routing: Object,
   give: Object,
-  accounts: Object
+  accounts: Object,
 };
 
 // We only care about the give state
@@ -30,12 +30,12 @@ type ICartContainer = {
   query: Object,
   status: string,
   authorized: boolean,
-  total: number
+  total: number,
 };
 
 type ISelectOptions = {
   label: string | number,
-  value: string | number
+  value: string | number,
 };
 
 type ISubFund = {
@@ -43,12 +43,12 @@ type ISubFund = {
   primary: boolean,
   id: number,
   fundId: ?number,
-  amount: ?number | string
+  amount: ?number | string,
 };
 
 type ICartContainerState = {
   subfunds: ISubFund[],
-  canCheckout: boolean
+  canCheckout: boolean,
 };
 
 class CartContainer extends Component {
@@ -145,25 +145,21 @@ class CartContainer extends Component {
   getFund = (id: number) => this.props.accounts.filter(x => x.id === id)[0];
 
   changeAmount = (amount: number, id: number) => {
-    let newAmount = `${amount}`;
+    const newAmount = `${amount}`.replace(/[^0-9\.]+/g, "");
+    const removedDecimals = newAmount.split(".");
+    const joinedArr = removedDecimals.join("");
+    const makeArr = joinedArr.split("");
 
-    // starting with a decimal
-    if (newAmount === "." || newAmount === "$0.") return "$0.";
-    else if (newAmount === "0") return "$0";
-
-    let decimals = newAmount.split(".")[1];
-
-    // make sure the amount isn't longer than 2 decimals after the inline replacement
-    decimals = newAmount.split(".")[1];
-    if (decimals && `${decimals}`.length > 2) {
-      const newDecimals = `${decimals}`.split(""); // turn into an array
-      newAmount = `${newAmount.split(".")[0]}.${newDecimals[0]}${newDecimals[1]}`;
+    if (makeArr.length < 2) {
+      makeArr.splice(makeArr.length - 2, 0, "0.0");
+    } else if (makeArr.length < 3) {
+      makeArr.splice(makeArr.length - 2, 0, "0.");
+    } else {
+      makeArr.splice(makeArr.length - 2, 0, ".");
     }
 
-    const value = Number(`${newAmount}`.replace(/[^0-9\.]+/g, ""));
-
-    if (isNaN(value)) return 0;
-
+    const value = Number(`${makeArr.join("")}`.replace(/[^0-9\.]+/g, ""));
+    if (isNaN(value)) return 0.0;
     // this will rerender the component and rebuild
     // the subfunds as needed
     this.setState(({ subfunds }) => {
@@ -184,7 +180,7 @@ class CartContainer extends Component {
       this.props.addTransactions({ [id]: { label: fund.name, value } });
     }
 
-    return `$${newAmount.replace(/[^0-9\.]+/g, "")}`;
+    return value.toFixed(2);
   };
 
   changeFund = (id: number, subfundId: number) => {
@@ -236,7 +232,7 @@ class CartContainer extends Component {
       if (fund && currentFund[0].amount) {
         this.props.addTransactions({
           [id]: {
-            value: Number(`${currentFund[0].amount}`.replace(/[^0-9\.]+/g, "")),
+            value: `${currentFund[0].amount}`.replace(/[^0-9\.]+/g, ""),
             label: fund.name,
           },
         });
@@ -248,7 +244,11 @@ class CartContainer extends Component {
   preFillValue = (id: string) => {
     if (!this.state.subfunds.length) return null;
     const fund = this.state.subfunds.filter(({ fundId }) => fundId === id);
-    return fund[0] && fund[0].amount && `$${String(fund[0].amount).replace(/[^0-9\.]+/g, "")}`;
+    return (
+      fund[0] &&
+      fund[0].amount &&
+      Number(`${String(fund[0].amount).replace(/[^0-9\.]+/g, "")}`).toFixed(2)
+    );
   };
 
   toggleSecondFund = () => {
