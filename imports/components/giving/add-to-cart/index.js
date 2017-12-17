@@ -9,7 +9,7 @@ import Layout from "./Layout";
 type IStore = {
   routing: Object,
   give: Object,
-  accounts: Object
+  accounts: Object,
 };
 
 // We only care about the give state
@@ -30,12 +30,12 @@ type ICartContainer = {
   query: Object,
   status: string,
   authorized: boolean,
-  total: number
+  total: number,
 };
 
 type ISelectOptions = {
   label: string | number,
-  value: string | number
+  value: string | number,
 };
 
 type ISubFund = {
@@ -43,12 +43,12 @@ type ISubFund = {
   primary: boolean,
   id: number,
   fundId: ?number,
-  amount: ?number | string
+  amount: ?number | string,
 };
 
 type ICartContainerState = {
   subfunds: ISubFund[],
-  canCheckout: boolean
+  canCheckout: boolean,
 };
 
 class CartContainer extends Component {
@@ -145,21 +145,21 @@ class CartContainer extends Component {
   getFund = (id: number) => this.props.accounts.filter(x => x.id === id)[0];
 
   changeAmount = (amount: number, id: number) => {
-    let newAmount = `${amount}`.replace(/[^0-9\.]+/g, "")
-    let removedDecimals = newAmount.split(".");
-    let joinedArr = removedDecimals.join("");
-    let makeArr = joinedArr.split("");
+    const newAmount = `${amount}`.replace(/[^0-9\.]+/g, "");
+    const removedDecimals = newAmount.split(".");
+    const joinedArr = removedDecimals.join("");
+    const makeArr = joinedArr.split("");
 
     if (makeArr.length < 2) {
-      makeArr.splice(makeArr.length - 2, 0, "0.0")
+      makeArr.splice(makeArr.length - 2, 0, "0.0");
     } else if (makeArr.length < 3) {
-      makeArr.splice(makeArr.length - 2, 0, "0.")
+      makeArr.splice(makeArr.length - 2, 0, "0.");
     } else {
-      makeArr.splice(makeArr.length - 2, 0, ".")
+      makeArr.splice(makeArr.length - 2, 0, ".");
     }
 
     const value = Number(`${makeArr.join("")}`.replace(/[^0-9\.]+/g, ""));
-    if (isNaN(value)) 0.00;
+    if (isNaN(value)) return 0.0;
     // this will rerender the component and rebuild
     // the subfunds as needed
     this.setState(({ subfunds }) => {
@@ -244,7 +244,11 @@ class CartContainer extends Component {
   preFillValue = (id: string) => {
     if (!this.state.subfunds.length) return null;
     const fund = this.state.subfunds.filter(({ fundId }) => fundId === id);
-    return fund[0] && fund[0].amount && Number(`${String(fund[0].amount).replace(/[^0-9\.]+/g, "")}`).toFixed(2);
+    return (
+      fund[0] &&
+      fund[0].amount &&
+      Number(`${String(fund[0].amount).replace(/[^0-9\.]+/g, "")}`).toFixed(2)
+    );
   };
 
   toggleSecondFund = () => {
