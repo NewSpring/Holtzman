@@ -131,15 +131,14 @@ Meteor.methods({
     ])
       .then(([subject, body]) => {
         const Communication = {
+          CommunicationType: 1,
           SenderPersonAliasId: null,
           Status: 3,
           IsBulkCommunication: false,
           // FutureSendDateTime: moment().add(30, "minutes").toISOString(),
           Guid: makeNewGuid(),
           Subject: subject,
-          MediumData: {
-            HtmlMessage: body,
-          },
+          Message: body,
         };
 
         return api.post("Communications", Communication);
@@ -151,9 +150,9 @@ Meteor.methods({
 
         // this is a bug in core right now. We can't set Mandrill on the initial
         // post because it locks everything up, we can however, patch it
-        api.patch.sync(`Communications/${CommunicationId}`, {
-          MediumEntityTypeId: 37, // Mandrill
-        });
+        // api.patch.sync(`Communications/${CommunicationId}`, {
+        //   MediumEntityTypeId: 37, // Mandrill
+        // });
 
         if (typeof PersonAliasId === "number") {
           PersonAliasId = [PersonAliasId]; // eslint-disable-line
@@ -162,6 +161,7 @@ Meteor.methods({
         const ids = [];
         for (const id of PersonAliasId) {
           const CommunicationRecipient = {
+            MediumEntityTypeId: 37, // Mandrill
             PersonAliasId: id,
             CommunicationId,
             Status: 0, // Pending
