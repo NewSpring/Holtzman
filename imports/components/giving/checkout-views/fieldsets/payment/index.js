@@ -52,7 +52,7 @@ export default class Payment extends Component {
     if ((id === "cardNumber" || id === "routingNumber") && !value) return true;
 
     let isValid = false;
-    const notEmpty = (inputVal) => inputVal.length > 0;
+    const notEmpty = inputVal => inputVal.length > 0;
     const validationMap = {
       accountNumber: notEmpty,
       routingNumber: notEmpty,
@@ -80,7 +80,7 @@ export default class Payment extends Component {
 
   // XXX move to layout, but changes to input are needed
   formatExp = (s: string, target: HTMLInputElement): string => {
-    const save = (adjusted) => {
+    const save = adjusted => {
       this.saveData(adjusted, target);
       return adjusted;
     };

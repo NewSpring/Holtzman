@@ -1,4 +1,6 @@
-exports[`test renders with mini player 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders with mini player 1`] = `
 <div>
   <Connect(MiniPlayerWithoutData)
     audio={
@@ -22,12 +24,13 @@ exports[`test renders with mini player 1`] = `
         "retrigger": false,
         "visible": false,
       }
-    } />
+    }
+  />
   <Connect(AudioPlayerUtilityWithoutData) />
 </div>
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <div>
   <Connect(AudioPlayerUtilityWithoutData) />
 </div>

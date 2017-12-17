@@ -1,4 +1,6 @@
-exports[`test parses query correctly 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`parses query correctly 1`] = `
 Object {
   "definitions": Array [
     Object {
@@ -352,7 +354,7 @@ Object {
           body
           ooyalaId
           tags
-          images(sizes: [\"large\"]) {
+          images(sizes: [\\"large\\"]) {
             fileName
             fileType
             fileLabel
@@ -370,17 +372,20 @@ Object {
 }
 `;
 
-exports[`test renders loading if no content 1`] = `
+exports[`renders loading if no content 1`] = `
 <div
-  className="locked-ends locked-sides floating">
+  className="locked-ends locked-sides floating"
+>
   <div
-    className="floating__item">
+    className="floating__item"
+  >
     <Loading />
   </div>
 </div>
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <StoriesContent
-  story={Object {}} />
+  story={Object {}}
+/>
 `;

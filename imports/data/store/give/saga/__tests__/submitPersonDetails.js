@@ -1,7 +1,5 @@
-
 import sagaHelper from "redux-saga-testing";
-import { takeLatest } from "redux-saga";
-import { put, select, call, cps, take } from "redux-saga/effects";
+import { takeLatest, put, select, call, cps, take } from "redux-saga/effects";
 
 import { Meteor } from "meteor/meteor";
 

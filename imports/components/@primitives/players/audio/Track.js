@@ -1,4 +1,5 @@
-import { Component, PropTypes } from "react";
+import PropTypes from "prop-types";
+import { Component } from "react";
 
 export default class AudioTrack extends Component {
 
@@ -32,7 +33,7 @@ export default class AudioTrack extends Component {
     return classes.join(" ");
   }
 
-  play = (e) => {
+  play = e => {
     e.preventDefault();
     if (!this.props.track.file) return;
 

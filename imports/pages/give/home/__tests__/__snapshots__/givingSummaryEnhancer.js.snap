@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`data format should return an object with correct keys 1`] = `
 Object {
   "accounts": Object {

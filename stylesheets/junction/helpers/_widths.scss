@@ -1,0 +1,153 @@
+
+$use-widths: true !default;
+
+
+
+@if $use-widths == true {
+  //
+  // @name widths
+  // @description creates human readable names for changing with of item base on media queries.
+  //
+  //
+  // @helper true
+  // @namespaced true
+  //
+  // One-half
+  $_one-half: one-half,
+  two-quarters,
+  three-sixths,
+  four-eighths,
+  five-tenths,
+  six-twelfths;
+  // Thirds
+  $_one-third: one-third,
+  two-sixths,
+  three-ninths,
+  four-twelfths;
+  // Two thirds
+  $_two-thirds: two-thirds,
+  four-sixths,
+  six-ninths,
+  eight-twelfths;
+  // Quarters
+  $_one-quarter: one-quarter,
+  two-eighths,
+  three-twelfths;
+  // three quarters
+  $_three-quarters: three-quarters,
+  six-eighths,
+  nine-twelfths;
+  // Fifths
+  $_one-fifth: one-fifth,
+  two-tenths;
+  // two fifths
+  $_two-fifths: two-fifths,
+  four-tenths;
+  // 3/5
+  $_three-fifths: three-fifths,
+  six-tenths;
+  //4/5
+  $_four-fifths: four-fifths,
+  eight-tenths;
+  // Sixths
+  $_one-sixth: one-sixth,
+  two-twelfths;
+  // 5/6
+  $_five-sixths: five-sixths,
+  ten-twelfths;
+
+  @include namespace(one-whole) {
+    width: 100%;
+  }
+  @include namespace($_one-half) {
+    width: 50%;
+  }
+  @include namespace($_one-third) {
+    width: 33.3333333%;
+  }
+  @include namespace($_two-thirds) {
+    width: 66.6666666%;
+  }
+  @include namespace($_one-quarter) {
+    width: 25%;
+  }
+  @include namespace($_three-quarters) {
+    width: 75%;
+  }
+  @include namespace($_one-fifth) {
+    width: 20%;
+  }
+  @include namespace($_two-fifths) {
+    width: 40%;
+  }
+  @include namespace($_three-fifths) {
+    width: 60%;
+  }
+  @include namespace($_four-fifths) {
+    width: 80%;
+  }
+  @include namespace($_one-sixth) {
+    width: 16.6666666%;
+  }
+  @include namespace($_five-sixths) {
+    width: 83.3333333%;
+  }
+  // Eighths
+  @include namespace(one-eighth) {
+    width: 12.5%;
+  }
+  @include namespace(three-eighths) {
+    width: 37.5%;
+  }
+  @include namespace(five-eighths) {
+    width: 62.5%;
+  }
+  @include namespace(seven-eighths) {
+    width: 87.5%;
+  }
+  // Ninths
+  @include namespace(one-ninth) {
+    width: 11.1111111%;
+  }
+  @include namespace(two-ninths) {
+    width: 22.2222222%;
+  }
+  @include namespace(four-ninths) {
+    width: 44.4444444%;
+  }
+  @include namespace(five-ninths) {
+    width: 55.5555555%;
+  }
+  @include namespace(seven-ninths) {
+    width: 77.7777777%;
+  }
+  @include namespace(eight-ninths) {
+    width: 88.8888888%;
+  }
+  // Tenths
+  @include namespace(one-tenth) {
+    width: 10%;
+  }
+  @include namespace(three-tenths) {
+    width: 30%;
+  }
+  @include namespace(seven-tenths) {
+    width: 70%;
+  }
+  @include namespace(nine-tenths) {
+    width: 90%;
+  }
+  // Twelfths
+  @include namespace(one-twelfth) {
+    width: 8.3333333%;
+  }
+  @include namespace(five-twelfths) {
+    width: 41.6666666%;
+  }
+  @include namespace(seven-twelfths) {
+    width: 58.3333333%;
+  }
+  @include namespace(eleven-twelfths) {
+    width: 91.6666666%;
+  }
+}

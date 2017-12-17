@@ -1,13 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Currency correctly returns a negative value. 1`] = `
 <div
-  className="floating text-dark-primary text-left">
+  className="floating text-dark-primary text-left"
+>
   <h4
     className="floating__item flush"
     style={
       Object {
         "paddingRight": "5px",
       }
-    }>
+    }
+  >
     $
   </h4>
   <h4
@@ -16,16 +20,19 @@ exports[`Currency correctly returns a negative value. 1`] = `
       Object {
         "paddingRight": "3px",
       }
-    }>
+    }
+  >
     -
   </h4>
   <h2
     className="floating__item flush"
-    style={undefined}>
+    style={undefined}
+  >
     420
   </h2>
   <h4
-    className="floating__item flush">
+    className="floating__item flush"
+  >
     .
     00
   </h4>
@@ -34,23 +41,27 @@ exports[`Currency correctly returns a negative value. 1`] = `
 
 exports[`Currency correctly returns when a heading size is provided. 1`] = `
 <div
-  className="floating text-dark-primary text-left">
+  className="floating text-dark-primary text-left"
+>
   <h4
     className="floating__item flush"
     style={
       Object {
         "paddingRight": "5px",
       }
-    }>
+    }
+  >
     $
   </h4>
   <h2
     className="floating__item flush"
-    style={undefined}>
+    style={undefined}
+  >
     420
   </h2>
   <h4
-    className="floating__item flush">
+    className="floating__item flush"
+  >
     .
     00
   </h4>
@@ -59,23 +70,27 @@ exports[`Currency correctly returns when a heading size is provided. 1`] = `
 
 exports[`Currency correctly returns when no amount is provided. 1`] = `
 <div
-  className="floating text-dark-primary text-left">
+  className="floating text-dark-primary text-left"
+>
   <h4
     className="floating__item flush"
     style={
       Object {
         "paddingRight": "5px",
       }
-    }>
+    }
+  >
     $
   </h4>
   <h2
     className="floating__item flush"
-    style={undefined}>
+    style={undefined}
+  >
     00
   </h2>
   <h4
-    className="floating__item flush">
+    className="floating__item flush"
+  >
     .
     00
   </h4>
@@ -84,23 +99,27 @@ exports[`Currency correctly returns when no amount is provided. 1`] = `
 
 exports[`Currency correctly returns when no cents are provided. 1`] = `
 <div
-  className="floating text-dark-primary text-left">
+  className="floating text-dark-primary text-left"
+>
   <h4
     className="floating__item flush"
     style={
       Object {
         "paddingRight": "5px",
       }
-    }>
+    }
+  >
     $
   </h4>
   <h2
     className="floating__item flush"
-    style={undefined}>
+    style={undefined}
+  >
     420
   </h2>
   <h4
-    className="floating__item flush">
+    className="floating__item flush"
+  >
     .
     00
   </h4>
@@ -109,23 +128,27 @@ exports[`Currency correctly returns when no cents are provided. 1`] = `
 
 exports[`Currency correctly returns when no currency symbol is provided. 1`] = `
 <div
-  className="floating text-dark-primary text-left">
+  className="floating text-dark-primary text-left"
+>
   <h4
     className="floating__item flush"
     style={
       Object {
         "paddingRight": "5px",
       }
-    }>
+    }
+  >
     $
   </h4>
   <h2
     className="floating__item flush"
-    style={undefined}>
+    style={undefined}
+  >
     420
   </h2>
   <h4
-    className="floating__item flush">
+    className="floating__item flush"
+  >
     .
     00
   </h4>
@@ -134,23 +157,27 @@ exports[`Currency correctly returns when no currency symbol is provided. 1`] = `
 
 exports[`Currency correctly returns when no heading is provided. 1`] = `
 <div
-  className="floating text-dark-primary text-left">
+  className="floating text-dark-primary text-left"
+>
   <h4
     className="floating__item flush"
     style={
       Object {
         "paddingRight": "5px",
       }
-    }>
+    }
+  >
     $
   </h4>
   <h2
     className="floating__item flush"
-    style={undefined}>
+    style={undefined}
+  >
     00
   </h2>
   <h4
-    className="floating__item flush">
+    className="floating__item flush"
+  >
     .
     00
   </h4>
@@ -159,23 +186,27 @@ exports[`Currency correctly returns when no heading is provided. 1`] = `
 
 exports[`Currency properly returns a positive number 1`] = `
 <div
-  className="floating text-dark-primary text-left">
+  className="floating text-dark-primary text-left"
+>
   <h4
     className="floating__item flush"
     style={
       Object {
         "paddingRight": "5px",
       }
-    }>
+    }
+  >
     $
   </h4>
   <h2
     className="floating__item flush"
-    style={undefined}>
+    style={undefined}
+  >
     420
   </h2>
   <h4
-    className="floating__item flush">
+    className="floating__item flush"
+  >
     .
     00
   </h4>

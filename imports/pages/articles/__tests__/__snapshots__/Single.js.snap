@@ -1,14 +1,18 @@
-exports[`test renders loading if no content 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders loading if no content 1`] = `
 <div
-  className="locked-ends locked-sides floating">
+  className="locked-ends locked-sides floating"
+>
   <div
-    className="floating__item">
+    className="floating__item"
+  >
     <Loading />
   </div>
 </div>
 `;
 
-exports[`test renders video if ooyalaId 1`] = `
+exports[`renders video if ooyalaId 1`] = `
 <div>
   <Meta
     id="1"
@@ -20,23 +24,29 @@ exports[`test renders video if ooyalaId 1`] = `
           "property": "og:type",
         },
       ]
-    } />
+    }
+  />
   <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
       ]
     }
-    nav={true}>
+    nav={true}
+  >
     <SingleVideoPlayer
-      ooyalaId="id" />
+      ooyalaId="id"
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
-    scroll={true}>
+    scroll={true}
+  >
     <div
-      className="one-whole">
+      className="one-whole"
+    >
       <section
-        className="soft@palm soft-double-sides@palm-wide-and-up soft@lap soft-double@lap-wide-and-up push-top push-double-top@lap-and-up">
+        className="soft@palm soft-double-sides@palm-wide-and-up soft@lap soft-double@lap-wide-and-up push-top push-double-top@lap-and-up"
+      >
         <ArticlesContent
           article={
             Object {
@@ -47,7 +57,8 @@ exports[`test renders video if ooyalaId 1`] = `
               },
               "id": "1",
             }
-          } />
+          }
+        />
       </section>
       <Apollo(Connect(Template))
         excludedIds={
@@ -55,13 +66,14 @@ exports[`test renders video if ooyalaId 1`] = `
             "1",
           ]
         }
-        tags={Array []} />
+        tags={Array []}
+      />
     </div>
   </Left>
 </div>
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <div>
   <Meta
     id="1"
@@ -73,14 +85,16 @@ exports[`test renders with props 1`] = `
           "property": "og:type",
         },
       ]
-    } />
+    }
+  />
   <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
       ]
     }
-    nav={true}>
+    nav={true}
+  >
     <Right
       aspect="square"
       background=""
@@ -98,14 +112,18 @@ exports[`test renders with props 1`] = `
           "one-whole",
           "soft@lap-and-up",
         ]
-      } />
+      }
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
-    scroll={true}>
+    scroll={true}
+  >
     <div
-      className="one-whole">
+      className="one-whole"
+    >
       <section
-        className="soft@palm soft-double-sides@palm-wide-and-up soft@lap soft-double@lap-wide-and-up push-top push-double-top@lap-and-up">
+        className="soft@palm soft-double-sides@palm-wide-and-up soft@lap soft-double@lap-wide-and-up push-top push-double-top@lap-and-up"
+      >
         <ArticlesContent
           article={
             Object {
@@ -116,7 +134,8 @@ exports[`test renders with props 1`] = `
               },
               "id": "1",
             }
-          } />
+          }
+        />
       </section>
       <Apollo(Connect(Template))
         excludedIds={
@@ -124,7 +143,8 @@ exports[`test renders with props 1`] = `
             "1",
           ]
         }
-        tags={Array []} />
+        tags={Array []}
+      />
     </div>
   </Left>
 </div>

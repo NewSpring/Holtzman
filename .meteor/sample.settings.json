@@ -1,16 +1,27 @@
 {
-  "public": {
-    "lookback": "",
-    "typekit": "",
-    "ga": "",
-    "hockey": "",
-    "sentry": false,
-    "heighliner": "https://api.newspring.cc/graphql",
-    "esv": false
-  },
   "rock": {
-    "baseURL": "https://rock.newspring.cc/",
-    "token": false,
-    "tokenName": "Authorization-Token"
+      "baseURL": "https://rock.newspring.cc/",
+      "token": false,
+      "tokenName": "Authorization-Token"
+    },
+  "slack": "",
+  "public": {
+    "cdnPrefix": "",
+    "chartbeat": "",
+    "currentVersion": "5.4.0",
+    "esv": "",
+    "heighliner": "https://api.newspring.cc/graphql",
+    "hotjar": "",
+    "typekit": "",
+    "giveUrl": "",
+    "rock": {
+      "baseURL": "https://rock.newspring.cc/",
+      "token": false,
+      "tokenName": "Authorization-Token"
+    },
+    "ga": {
+      "web": "",
+      "mobile": ""
+    }
   }
 }

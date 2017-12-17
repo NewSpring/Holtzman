@@ -18,7 +18,7 @@ export const getSpecWrappers = (componentWrapper, specName, typeFilter) => {
   if (!typeFilter) {
     specWrappers = componentWrapper.find(`[${DATA_SPEC_ATTRIBUTE_NAME}="${specName}"]`);
   } else {
-    specWrappers = componentWrapper.findWhere((wrapper) => (
+    specWrappers = componentWrapper.findWhere(wrapper => (
       wrapper.prop(DATA_SPEC_ATTRIBUTE_NAME) === specName && wrapper.type() === typeFilter
     ));
   }
