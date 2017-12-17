@@ -25,7 +25,7 @@ export default createReducer(initial, {
     }
   ),
 
-  "LIVE.RESET": (state) => (
+  "LIVE.RESET": state => (
     {
       ...state,
       ...{
@@ -35,7 +35,7 @@ export default createReducer(initial, {
     }
   ),
 
-  "LIVE.SHOW": (state) => (
+  "LIVE.SHOW": state => (
     {
       ...state,
       ...{
@@ -44,7 +44,7 @@ export default createReducer(initial, {
     }
   ),
 
-  "LIVE.HIDE": (state) => (
+  "LIVE.HIDE": state => (
     {
       ...state,
       ...{
@@ -53,7 +53,7 @@ export default createReducer(initial, {
     }
   ),
 
-  "LIVE.FLOAT": (state) => (
+  "LIVE.FLOAT": state => (
     {
       ...state,
       ...{
@@ -62,7 +62,7 @@ export default createReducer(initial, {
     }
   ),
 
-  "LIVE.FLOAT_DOUBLE": (state) => (
+  "LIVE.FLOAT_DOUBLE": state => (
     {
       ...state,
       ...{
@@ -71,7 +71,7 @@ export default createReducer(initial, {
     }
   ),
 
-  "LIVE.UNFLOAT": (state) => (
+  "LIVE.UNFLOAT": state => (
     {
       ...state,
       ...{

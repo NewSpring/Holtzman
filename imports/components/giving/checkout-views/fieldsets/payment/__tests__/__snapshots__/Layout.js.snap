@@ -1,6 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Header renders default if no override 1`] = `
 <h4
-  className="text-center">
+  className="text-center"
+>
   Payment Details
 </h4>
 `;
@@ -14,7 +17,8 @@ exports[`Header renders override if override 1`] = `
 exports[`Layout renders custom toggles if passed 1`] = `
 <div>
   <div
-    className="push-double@lap-and-up push">
+    className="push-double@lap-and-up push"
+  >
     <span>
       header
     </span>
@@ -28,7 +32,8 @@ exports[`Layout renders custom toggles if passed 1`] = `
       Object {
         "backgroundColor": "#fff",
       }
-    }>
+    }
+  >
     <div
       className="transition text-center toggle__item"
       data-toggle={0}
@@ -37,7 +42,8 @@ exports[`Layout renders custom toggles if passed 1`] = `
         Object {
           "width": "50%",
         }
-      }>
+      }
+    >
       Meow
     </div>
     <div
@@ -48,133 +54,169 @@ exports[`Layout renders custom toggles if passed 1`] = `
         Object {
           "width": "50%",
         }
-      }>
+      }
+    >
       Woof
     </div>
     <div
-      className="grid text-left toggle-arrow soft-sides">
+      className="grid text-left toggle-arrow soft-sides"
+    >
       <div
         className="transition grid__item hard one-half toggle-arrow__item "
         style={
           Object {
             "marginLeft": "0%",
           }
-        } />
+        }
+      />
     </div>
   </div>
   <div
-    className="soft">
+    className="soft"
+  >
     <div>
       <div
         className="input"
         data-spec="input-wrapper"
-        style={Object {}}>
+        style={Object {}}
+      >
         <label
           htmlFor="cardNumber"
-          style={Object {}}>
+          style={Object {}}
+        >
           Card Number
         </label>
-        <input
-          autoCapitalize="on"
-          autoComplete="on"
-          autoCorrect="on"
-          className={undefined}
-          data-lpignore={undefined}
-          data-spec="input"
-          defaultValue={undefined}
-          disabled={undefined}
-          id="cardNumber"
-          maxLength=""
-          name="billing-cc-number"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          placeholder="Card Number"
-          readOnly={undefined}
-          spellCheck={undefined}
-          style={Object {}}
-          type="tel" />
+        <span
+          className=""
+        >
+          <input
+            autoCapitalize="on"
+            autoComplete="on"
+            autoCorrect="on"
+            className={undefined}
+            data-lpignore={undefined}
+            data-spec="input"
+            defaultValue={undefined}
+            disabled={undefined}
+            id="cardNumber"
+            maxLength=""
+            name="billing-cc-number"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            pattern={undefined}
+            placeholder="Card Number"
+            readOnly={undefined}
+            spellCheck={undefined}
+            step={undefined}
+            style={Object {}}
+            type="tel"
+          />
+        </span>
         <div
           className="locked locked-right soft-double-right locked-top"
           style={
             Object {
               "top": "-3px",
             }
-          } />
+          }
+        />
       </div>
       <div
-        className="grid">
+        className="grid"
+      >
         <div
-          className="grid__item one-half">
+          className="grid__item one-half"
+        >
           <div
             className="input"
             data-spec="input-wrapper"
-            style={Object {}}>
+            style={Object {}}
+          >
             <label
               htmlFor="expiration"
-              style={Object {}}>
+              style={Object {}}
+            >
               Exp (MM/YY)
             </label>
-            <input
-              autoCapitalize="on"
-              autoComplete="on"
-              autoCorrect="on"
-              className={undefined}
-              data-lpignore={undefined}
-              data-spec="input"
-              defaultValue={undefined}
-              disabled={undefined}
-              id="expiration"
-              maxLength=""
-              name="billing-cc-exp"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              placeholder="Exp (MM/YY)"
-              readOnly={undefined}
-              spellCheck={undefined}
-              style={Object {}}
-              type="tel" />
+            <span
+              className=""
+            >
+              <input
+                autoCapitalize="on"
+                autoComplete="on"
+                autoCorrect="on"
+                className={undefined}
+                data-lpignore={undefined}
+                data-spec="input"
+                defaultValue={undefined}
+                disabled={undefined}
+                id="expiration"
+                maxLength=""
+                name="billing-cc-exp"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                pattern={undefined}
+                placeholder="Exp (MM/YY)"
+                readOnly={undefined}
+                spellCheck={undefined}
+                step={undefined}
+                style={Object {}}
+                type="tel"
+              />
+            </span>
           </div>
         </div>
         <div
-          className="grid__item one-half">
+          className="grid__item one-half"
+        >
           <div
             className="input"
             data-spec="input-wrapper"
-            style={Object {}}>
+            style={Object {}}
+          >
             <label
               htmlFor="ccv"
-              style={Object {}}>
+              style={Object {}}
+            >
               CCV
             </label>
-            <input
-              autoCapitalize="on"
-              autoComplete="on"
-              autoCorrect="on"
-              className={undefined}
-              data-lpignore={undefined}
-              data-spec="input"
-              defaultValue={undefined}
-              disabled={undefined}
-              id="ccv"
-              maxLength=""
-              name="billing-cvv"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              placeholder="CCV"
-              readOnly={undefined}
-              spellCheck={undefined}
-              style={Object {}}
-              type="tel" />
+            <span
+              className=""
+            >
+              <input
+                autoCapitalize="on"
+                autoComplete="on"
+                autoCorrect="on"
+                className={undefined}
+                data-lpignore={undefined}
+                data-spec="input"
+                defaultValue={undefined}
+                disabled={undefined}
+                id="ccv"
+                maxLength=""
+                name="billing-cvv"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                pattern={undefined}
+                placeholder="CCV"
+                readOnly={undefined}
+                spellCheck={undefined}
+                step={undefined}
+                style={Object {}}
+                type="tel"
+              />
+            </span>
           </div>
         </div>
       </div>
     </div>
     <div
       className="input checkbox"
-      data-spec="input-wrapper">
+      data-spec="input-wrapper"
+    >
       <label
         className="h6 soft-half-left push-half-left flush-bottom text-left float-left locked-top"
         htmlFor="savePayment"
@@ -186,10 +228,12 @@ exports[`Layout renders custom toggles if passed 1`] = `
             "marginTop": "-1px",
             "whiteSpace": "nowrap",
           }
-        }>
+        }
+      >
         <small
           data-spec="input-label"
-          style={Object {}}>
+          style={Object {}}
+        >
           Save this payment for future contributions
         </small>
       </label>
@@ -207,10 +251,12 @@ exports[`Layout renders custom toggles if passed 1`] = `
             "width": 0,
           }
         }
-        type="checkbox" />
+        type="checkbox"
+      />
       <label
         htmlFor="savePayment"
-        style={undefined} />
+        style={undefined}
+      />
     </div>
   </div>
   <div>
@@ -218,14 +264,16 @@ exports[`Layout renders custom toggles if passed 1`] = `
       className="btn--small btn--dark-tertiary display-inline-block"
       href=""
       onClick={[Function]}
-      tabIndex={-1}>
+      tabIndex={-1}
+    >
       Back
     </a>
     <button
       className="push-left btn--disabled"
       disabled={true}
       onClick={[Function]}
-      type="submit">
+      type="submit"
+    >
       Next
     </button>
   </div>
@@ -235,7 +283,8 @@ exports[`Layout renders custom toggles if passed 1`] = `
 exports[`Layout renders default toggles by default 1`] = `
 <div>
   <div
-    className="push-double@lap-and-up push">
+    className="push-double@lap-and-up push"
+  >
     <span>
       header
     </span>
@@ -249,7 +298,8 @@ exports[`Layout renders default toggles by default 1`] = `
       Object {
         "backgroundColor": "#fff",
       }
-    }>
+    }
+  >
     <div
       className="transition text-center toggle__item"
       data-toggle={0}
@@ -258,7 +308,8 @@ exports[`Layout renders default toggles by default 1`] = `
         Object {
           "width": "50%",
         }
-      }>
+      }
+    >
       Credit Card
     </div>
     <div
@@ -269,133 +320,169 @@ exports[`Layout renders default toggles by default 1`] = `
         Object {
           "width": "50%",
         }
-      }>
+      }
+    >
       Bank Account
     </div>
     <div
-      className="grid text-left toggle-arrow soft-sides">
+      className="grid text-left toggle-arrow soft-sides"
+    >
       <div
         className="transition grid__item hard one-half toggle-arrow__item "
         style={
           Object {
             "marginLeft": "0%",
           }
-        } />
+        }
+      />
     </div>
   </div>
   <div
-    className="soft">
+    className="soft"
+  >
     <div>
       <div
         className="input"
         data-spec="input-wrapper"
-        style={Object {}}>
+        style={Object {}}
+      >
         <label
           htmlFor="cardNumber"
-          style={Object {}}>
+          style={Object {}}
+        >
           Card Number
         </label>
-        <input
-          autoCapitalize="on"
-          autoComplete="on"
-          autoCorrect="on"
-          className={undefined}
-          data-lpignore={undefined}
-          data-spec="input"
-          defaultValue={undefined}
-          disabled={undefined}
-          id="cardNumber"
-          maxLength=""
-          name="billing-cc-number"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          placeholder="Card Number"
-          readOnly={undefined}
-          spellCheck={undefined}
-          style={Object {}}
-          type="tel" />
+        <span
+          className=""
+        >
+          <input
+            autoCapitalize="on"
+            autoComplete="on"
+            autoCorrect="on"
+            className={undefined}
+            data-lpignore={undefined}
+            data-spec="input"
+            defaultValue={undefined}
+            disabled={undefined}
+            id="cardNumber"
+            maxLength=""
+            name="billing-cc-number"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            pattern={undefined}
+            placeholder="Card Number"
+            readOnly={undefined}
+            spellCheck={undefined}
+            step={undefined}
+            style={Object {}}
+            type="tel"
+          />
+        </span>
         <div
           className="locked locked-right soft-double-right locked-top"
           style={
             Object {
               "top": "-3px",
             }
-          } />
+          }
+        />
       </div>
       <div
-        className="grid">
+        className="grid"
+      >
         <div
-          className="grid__item one-half">
+          className="grid__item one-half"
+        >
           <div
             className="input"
             data-spec="input-wrapper"
-            style={Object {}}>
+            style={Object {}}
+          >
             <label
               htmlFor="expiration"
-              style={Object {}}>
+              style={Object {}}
+            >
               Exp (MM/YY)
             </label>
-            <input
-              autoCapitalize="on"
-              autoComplete="on"
-              autoCorrect="on"
-              className={undefined}
-              data-lpignore={undefined}
-              data-spec="input"
-              defaultValue={undefined}
-              disabled={undefined}
-              id="expiration"
-              maxLength=""
-              name="billing-cc-exp"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              placeholder="Exp (MM/YY)"
-              readOnly={undefined}
-              spellCheck={undefined}
-              style={Object {}}
-              type="tel" />
+            <span
+              className=""
+            >
+              <input
+                autoCapitalize="on"
+                autoComplete="on"
+                autoCorrect="on"
+                className={undefined}
+                data-lpignore={undefined}
+                data-spec="input"
+                defaultValue={undefined}
+                disabled={undefined}
+                id="expiration"
+                maxLength=""
+                name="billing-cc-exp"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                pattern={undefined}
+                placeholder="Exp (MM/YY)"
+                readOnly={undefined}
+                spellCheck={undefined}
+                step={undefined}
+                style={Object {}}
+                type="tel"
+              />
+            </span>
           </div>
         </div>
         <div
-          className="grid__item one-half">
+          className="grid__item one-half"
+        >
           <div
             className="input"
             data-spec="input-wrapper"
-            style={Object {}}>
+            style={Object {}}
+          >
             <label
               htmlFor="ccv"
-              style={Object {}}>
+              style={Object {}}
+            >
               CCV
             </label>
-            <input
-              autoCapitalize="on"
-              autoComplete="on"
-              autoCorrect="on"
-              className={undefined}
-              data-lpignore={undefined}
-              data-spec="input"
-              defaultValue={undefined}
-              disabled={undefined}
-              id="ccv"
-              maxLength=""
-              name="billing-cvv"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              placeholder="CCV"
-              readOnly={undefined}
-              spellCheck={undefined}
-              style={Object {}}
-              type="tel" />
+            <span
+              className=""
+            >
+              <input
+                autoCapitalize="on"
+                autoComplete="on"
+                autoCorrect="on"
+                className={undefined}
+                data-lpignore={undefined}
+                data-spec="input"
+                defaultValue={undefined}
+                disabled={undefined}
+                id="ccv"
+                maxLength=""
+                name="billing-cvv"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                pattern={undefined}
+                placeholder="CCV"
+                readOnly={undefined}
+                spellCheck={undefined}
+                step={undefined}
+                style={Object {}}
+                type="tel"
+              />
+            </span>
           </div>
         </div>
       </div>
     </div>
     <div
       className="input checkbox"
-      data-spec="input-wrapper">
+      data-spec="input-wrapper"
+    >
       <label
         className="h6 soft-half-left push-half-left flush-bottom text-left float-left locked-top"
         htmlFor="savePayment"
@@ -407,10 +494,12 @@ exports[`Layout renders default toggles by default 1`] = `
             "marginTop": "-1px",
             "whiteSpace": "nowrap",
           }
-        }>
+        }
+      >
         <small
           data-spec="input-label"
-          style={Object {}}>
+          style={Object {}}
+        >
           Save this payment for future contributions
         </small>
       </label>
@@ -428,10 +517,12 @@ exports[`Layout renders default toggles by default 1`] = `
             "width": 0,
           }
         }
-        type="checkbox" />
+        type="checkbox"
+      />
       <label
         htmlFor="savePayment"
-        style={undefined} />
+        style={undefined}
+      />
     </div>
   </div>
   <div>
@@ -439,14 +530,16 @@ exports[`Layout renders default toggles by default 1`] = `
       className="btn--small btn--dark-tertiary display-inline-block"
       href=""
       onClick={[Function]}
-      tabIndex={-1}>
+      tabIndex={-1}
+    >
       Back
     </a>
     <button
       className="push-left btn--disabled"
       disabled={true}
       onClick={[Function]}
-      type="submit">
+      type="submit"
+    >
       Next
     </button>
   </div>
@@ -458,7 +551,8 @@ exports[`NextButton renders disabled styles if no ach or cc 1`] = `
   className="push-left btn--disabled"
   disabled={true}
   onClick={[Function]}
-  type="submit">
+  type="submit"
+>
   Next
 </button>
 `;
@@ -468,7 +562,8 @@ exports[`NextButton renders enabled styles if ach 1`] = `
   className="push-left btn"
   disabled={false}
   onClick={[Function]}
-  type="submit">
+  type="submit"
+>
   Next
 </button>
 `;
@@ -478,7 +573,8 @@ exports[`NextButton renders enabled styles if cc 1`] = `
   className="push-left btn"
   disabled={false}
   onClick={[Function]}
-  type="submit">
+  type="submit"
+>
   Next
 </button>
 `;

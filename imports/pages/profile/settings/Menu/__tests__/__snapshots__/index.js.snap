@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Menu dividerClasses return web classes 1`] = `"push-double-ends@lap-and-up push-half-ends"`;
 
 exports[`Menu parses query 1`] = `
@@ -77,11 +79,14 @@ Object {
 
 exports[`Menu renders with props 1`] = `
 <div
-  className="background--light-secondary soft-double-bottom soft-double-sides@lap-and-up">
+  className="background--light-secondary soft-double-bottom soft-double-sides@lap-and-up"
+>
   <section
-    className="">
+    className=""
+  >
     <div
-      className="push-double-ends@lap-and-up push-half-ends">
+      className="push-double-ends@lap-and-up push-half-ends"
+    >
       <div
         className=""
         style={
@@ -89,22 +94,27 @@ exports[`Menu renders with props 1`] = `
             "borderLeft": 0,
             "borderRight": 0,
           }
-        }>
+        }
+      >
         <Link
           className="plain text-dark-secondary"
           onlyActiveOnIndex={false}
           style={Object {}}
-          to="/profile/settings/personal-details">
+          to="/profile/settings/personal-details"
+        >
           <RenderCell
-            name="Personal Details" />
+            name="Personal Details"
+          />
         </Link>
         <Link
           className="plain text-dark-secondary"
           onlyActiveOnIndex={false}
           style={Object {}}
-          to="/profile/settings/home-address">
+          to="/profile/settings/home-address"
+        >
           <RenderCell
-            name="My Address" />
+            name="My Address"
+          />
         </Link>
         <button
           className="plain text-dark-secondary display-inline-block one-whole"
@@ -112,10 +122,12 @@ exports[`Menu renders with props 1`] = `
             Object {
               "position": "relative",
             }
-          }>
+          }
+        >
           <RenderCell
             iconFunc={[Function]}
-            name="Upload Profile Photo">
+            name="Upload Profile Photo"
+          >
             <input
               className="locked-ends locked-sides"
               onChange={[Function]}
@@ -125,22 +137,26 @@ exports[`Menu renders with props 1`] = `
                   "zIndex": 1,
                 }
               }
-              type="file" />
+              type="file"
+            />
           </RenderCell>
         </button>
         <Link
           className="plain text-dark-secondary"
           onlyActiveOnIndex={false}
           style={Object {}}
-          to="/profile/settings/change-password">
+          to="/profile/settings/change-password"
+        >
           <RenderCell
             last={true}
-            name="Change Password" />
+            name="Change Password"
+          />
         </Link>
       </div>
     </div>
     <div
-      className="push-double-ends@lap-and-up push-half-ends">
+      className="push-double-ends@lap-and-up push-half-ends"
+    >
       <div
         className=""
         style={
@@ -148,18 +164,22 @@ exports[`Menu renders with props 1`] = `
             "borderLeft": 0,
             "borderRight": 0,
           }
-        }>
+        }
+      >
         <a
           className="plain text-dark-secondary"
-          href="mailto:web.helpdesk@newspring.cc">
+          href="mailto:web.helpdesk@newspring.cc"
+        >
           <RenderCell
             last={true}
-            name="Give Feedback" />
+            name="Give Feedback"
+          />
         </a>
       </div>
     </div>
     <div
-      className="push-double-ends@lap-and-up push-half-ends">
+      className="push-double-ends@lap-and-up push-half-ends"
+    >
       <div
         className=""
         style={
@@ -167,36 +187,44 @@ exports[`Menu renders with props 1`] = `
             "borderLeft": 0,
             "borderRight": 0,
           }
-        }>
+        }
+      >
         <Link
           className="plain text-dark-secondary"
           onlyActiveOnIndex={false}
           style={Object {}}
-          to="/give/home#saved-payments">
+          to="/give/home#saved-payments"
+        >
           <RenderCell
-            name="Saved Accounts" />
+            name="Saved Accounts"
+          />
         </Link>
         <Link
           className="plain text-dark-secondary"
           onlyActiveOnIndex={false}
           style={Object {}}
-          to="/give/schedules">
+          to="/give/schedules"
+        >
           <RenderCell
-            name="Scheduled Contributions" />
+            name="Scheduled Contributions"
+          />
         </Link>
         <Link
           className="plain text-dark-secondary"
           onlyActiveOnIndex={false}
           style={Object {}}
-          to="/give/history">
+          to="/give/history"
+        >
           <RenderCell
             last={true}
-            name="Giving History" />
+            name="Giving History"
+          />
         </Link>
       </div>
     </div>
     <div
-      className="push-double-ends@lap-and-up push-half-ends">
+      className="push-double-ends@lap-and-up push-half-ends"
+    >
       <div
         className=""
         style={
@@ -204,33 +232,40 @@ exports[`Menu renders with props 1`] = `
             "borderLeft": 0,
             "borderRight": 0,
           }
-        }>
+        }
+      >
         <a
           className="plain text-dark-secondary"
           href="//newspring.cc/privacy"
           onClick={[Function]}
           rel="noopener noreferrer"
-          target="_blank">
+          target="_blank"
+        >
           <RenderCell
-            name="Privacy Policy" />
+            name="Privacy Policy"
+          />
         </a>
         <a
           className="plain text-dark-secondary"
           href="//newspring.cc/terms"
           onClick={[Function]}
           rel="noopener noreferrer"
-          target="_blank">
+          target="_blank"
+        >
           <RenderCell
             last={true}
-            name="Terms of Use" />
+            name="Terms of Use"
+          />
         </a>
       </div>
     </div>
     <div
-      className="one-whole text-center push-double-bottom">
+      className="one-whole text-center push-double-bottom"
+    >
       <button
         className="btn--dark-tertiary push-top soft-half-ends"
-        onClick={[Function]}>
+        onClick={[Function]}
+      >
         Sign Out
       </button>
     </div>
@@ -240,13 +275,16 @@ exports[`Menu renders with props 1`] = `
 
 exports[`RenderCell renders default icon 1`] = `
 <div
-  className="card soft-ends soft-right text-left outlined--light">
+  className="card soft-ends soft-right text-left outlined--light"
+>
   <h6
-    className="soft-left flush display-inline-block">
+    className="soft-left flush display-inline-block"
+  >
     test
   </h6>
   <i
-    className="float-right icon-arrow-next" />
+    className="float-right icon-arrow-next"
+  />
   <h1>
     test
   </h1>
@@ -255,13 +293,16 @@ exports[`RenderCell renders default icon 1`] = `
 
 exports[`RenderCell renders with props 1`] = `
 <div
-  className="card soft-ends soft-right text-left outlined--light">
+  className="card soft-ends soft-right text-left outlined--light"
+>
   <h6
-    className="soft-left flush display-inline-block">
+    className="soft-left flush display-inline-block"
+  >
     test
   </h6>
   <i
-    className="float-right my-cool-icon" />
+    className="float-right my-cool-icon"
+  />
   <h1>
     test
   </h1>

@@ -1,4 +1,6 @@
-exports[`test renders active version 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders active version 1`] = `
 <span
   className="tag push-half-right tag--clickable tag--active test class"
   onClick={[Function]}
@@ -8,7 +10,8 @@ exports[`test renders active version 1`] = `
       "paddingRight": "10px",
       "paddingTop": "6px",
     }
-  }>
+  }
+>
   testLabel
   <span
     className="push-half-left icon-close"
@@ -17,11 +20,12 @@ exports[`test renders active version 1`] = `
       Object {
         "fontSize": "10px",
       }
-    } />
+    }
+  />
 </span>
 `;
 
-exports[`test renders cordova active version 1`] = `
+exports[`renders cordova active version 1`] = `
 <span
   className="tag push-half-right tag--clickable tag--nohover--active test class"
   onClick={[Function]}
@@ -31,7 +35,8 @@ exports[`test renders cordova active version 1`] = `
       "paddingRight": "10px",
       "paddingTop": "6px",
     }
-  }>
+  }
+>
   testLabel
   <span
     className="push-half-left icon-close"
@@ -40,11 +45,12 @@ exports[`test renders cordova active version 1`] = `
       Object {
         "fontSize": "10px",
       }
-    } />
+    }
+  />
 </span>
 `;
 
-exports[`test renders unclickable version 1`] = `
+exports[`renders unclickable version 1`] = `
 <span
   className="tag push-half-right tag--active test class"
   onClick={[Function]}
@@ -54,7 +60,8 @@ exports[`test renders unclickable version 1`] = `
       "paddingRight": "10px",
       "paddingTop": "6px",
     }
-  }>
+  }
+>
   testLabel
   <span
     className="push-half-left icon-close"
@@ -63,11 +70,12 @@ exports[`test renders unclickable version 1`] = `
       Object {
         "fontSize": "10px",
       }
-    } />
+    }
+  />
 </span>
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <span
   className="tag push-half-right tag--clickable tag--active test class"
   onClick={[Function]}
@@ -77,7 +85,8 @@ exports[`test renders with props 1`] = `
       "paddingRight": "10px",
       "paddingTop": "6px",
     }
-  }>
+  }
+>
   testLabel
   <span
     className="push-half-left icon-close"
@@ -86,11 +95,12 @@ exports[`test renders with props 1`] = `
       Object {
         "fontSize": "10px",
       }
-    } />
+    }
+  />
 </span>
 `;
 
-exports[`test should not show the icon span if icon shouldn't show 1`] = `
+exports[`should not show the icon span if icon shouldn't show 1`] = `
 <span
   className="tag push-half-right tag--clickable test class"
   onClick={[Function]}
@@ -99,12 +109,13 @@ exports[`test should not show the icon span if icon shouldn't show 1`] = `
       "color": "red",
       "paddingTop": "6px",
     }
-  }>
+  }
+>
   testLabel
 </span>
 `;
 
-exports[`test should show the X icon if active and clickable 1`] = `
+exports[`should show the X icon if active and clickable 1`] = `
 <span
   className="tag push-half-right tag--clickable tag--active test class"
   onClick={[Function]}
@@ -114,7 +125,8 @@ exports[`test should show the X icon if active and clickable 1`] = `
       "paddingRight": "10px",
       "paddingTop": "6px",
     }
-  }>
+  }
+>
   testLabel
   <span
     className="push-half-left icon-close"
@@ -123,11 +135,12 @@ exports[`test should show the X icon if active and clickable 1`] = `
       Object {
         "fontSize": "10px",
       }
-    } />
+    }
+  />
 </span>
 `;
 
-exports[`test should show the icon span if iconClass is used 1`] = `
+exports[`should show the icon span if iconClass is used 1`] = `
 <span
   className="tag push-half-right tag--clickable test class"
   onClick={[Function]}
@@ -137,7 +150,8 @@ exports[`test should show the icon span if iconClass is used 1`] = `
       "paddingRight": "10px",
       "paddingTop": "6px",
     }
-  }>
+  }
+>
   testLabel
   <span
     className="push-half-left icon-arrow-up"
@@ -146,11 +160,12 @@ exports[`test should show the icon span if iconClass is used 1`] = `
       Object {
         "fontSize": "10px",
       }
-    } />
+    }
+  />
 </span>
 `;
 
-exports[`test works with val 1`] = `
+exports[`works with val 1`] = `
 <span
   className="tag push-half-right tag--clickable tag--active test class"
   onClick={[Function]}
@@ -160,7 +175,8 @@ exports[`test works with val 1`] = `
       "paddingRight": "10px",
       "paddingTop": "6px",
     }
-  }>
+  }
+>
   testVal
   <span
     className="push-half-left icon-close"
@@ -169,6 +185,7 @@ exports[`test works with val 1`] = `
       Object {
         "fontSize": "10px",
       }
-    } />
+    }
+  />
 </span>
 `;

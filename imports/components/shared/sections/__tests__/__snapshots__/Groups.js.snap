@@ -1,11 +1,18 @@
-exports[`test renders with props 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders with props 1`] = `
 <section
-  className="hard-sides soft-half-ends">
+  className="hard-sides soft-half-ends"
+>
   <SectionItem
     hide={[Function]}
-    sections={Object {}} />
+    key="0"
+    sections={Object {}}
+  />
   <SectionItem
     hide={[Function]}
-    sections={Object {}} />
+    key="1"
+    sections={Object {}}
+  />
 </section>
 `;

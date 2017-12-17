@@ -1,76 +1,100 @@
-exports[`test should not render if not ach type 1`] = `null`;
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`test should render with props 1`] = `
+exports[`should not render if not ach type 1`] = `null`;
+
+exports[`should render with props 1`] = `
 <div>
   <div
     className="input input--active"
     data-spec="input-wrapper"
-    style={Object {}}>
+    style={Object {}}
+  >
     <label
       htmlFor="routingNumber"
-      style={Object {}}>
+      style={Object {}}
+    >
       Routing Number
     </label>
-    <input
-      autoCapitalize="on"
-      autoComplete="on"
-      autoCorrect="on"
-      className={undefined}
-      data-lpignore={undefined}
-      data-spec="input"
-      defaultValue="123456789"
-      disabled={undefined}
-      id="routingNumber"
-      maxLength=""
-      name="billing-routing-number"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onFocus={[Function]}
-      placeholder="Routing Number"
-      readOnly={undefined}
-      spellCheck={undefined}
-      style={Object {}}
-      type="tel" />
+    <span
+      className=""
+    >
+      <input
+        autoCapitalize="on"
+        autoComplete="on"
+        autoCorrect="on"
+        className={undefined}
+        data-lpignore={undefined}
+        data-spec="input"
+        defaultValue="123456789"
+        disabled={undefined}
+        id="routingNumber"
+        maxLength=""
+        name="billing-routing-number"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        pattern={undefined}
+        placeholder="Routing Number"
+        readOnly={undefined}
+        spellCheck={undefined}
+        step={undefined}
+        style={Object {}}
+        type="tel"
+      />
+    </span>
   </div>
   <div
     className="input input--active"
     data-spec="input-wrapper"
-    style={Object {}}>
+    style={Object {}}
+  >
     <label
       htmlFor="accountNumber"
-      style={Object {}}>
+      style={Object {}}
+    >
       Account Number
     </label>
-    <input
-      autoCapitalize="on"
-      autoComplete="on"
-      autoCorrect="on"
-      className={undefined}
-      data-lpignore={undefined}
-      data-spec="input"
-      defaultValue="987654321"
-      disabled={undefined}
-      id="accountNumber"
-      maxLength=""
-      name="billing-account-number"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onFocus={[Function]}
-      placeholder="Account Number"
-      readOnly={undefined}
-      spellCheck={undefined}
-      style={Object {}}
-      type="tel" />
+    <span
+      className=""
+    >
+      <input
+        autoCapitalize="on"
+        autoComplete="on"
+        autoCorrect="on"
+        className={undefined}
+        data-lpignore={undefined}
+        data-spec="input"
+        defaultValue="987654321"
+        disabled={undefined}
+        id="accountNumber"
+        maxLength=""
+        name="billing-account-number"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        pattern={undefined}
+        placeholder="Account Number"
+        readOnly={undefined}
+        spellCheck={undefined}
+        step={undefined}
+        style={Object {}}
+        type="tel"
+      />
+    </span>
   </div>
   <div
-    className="grid">
+    className="grid"
+  >
     <div
-      className="grid__item one-whole">
+      className="grid__item one-whole"
+    >
       <div
-        className="input input--active select_e8htpf">
+        className="input input--active select_e8htpf"
+      >
         <label
           htmlFor="accountType"
-          style={undefined}>
+          style={undefined}
+        >
           Account Type
         </label>
         <select
@@ -83,23 +107,27 @@ exports[`test should render with props 1`] = `
           onChange={[Function]}
           onFocus={[Function]}
           placeholder="Account Type"
-          style={undefined}>
+          style={undefined}
+        >
           <option
             style={
               Object {
                 "display": "none",
               }
-            }>
+            }
+          >
             
           </option>
           <option
             className={undefined}
-            value="checking">
+            value="checking"
+          >
             Checking
           </option>
           <option
             className={undefined}
-            value="savings">
+            value="savings"
+          >
             Savings
           </option>
         </select>

@@ -1,4 +1,6 @@
-exports[`test renders Layout by default 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Layout by default 1`] = `
 <Layout
   save={[Function]}
   state={
@@ -8,30 +10,37 @@ exports[`test renders Layout by default 1`] = `
       "state": "default",
     }
   }
-  submit={[Function]} />
+  submit={[Function]}
+/>
 `;
 
-exports[`test renders error when error 1`] = `
+exports[`renders error when error 1`] = `
 <div
-  className="fixed-ends fixed-sides">
+  className="fixed-ends fixed-sides"
+>
   <Err
     error="test error"
-    msg="Looks like there was a problem" />
+    msg="Looks like there was a problem"
+  />
 </div>
 `;
 
-exports[`test renders loading when loading 1`] = `
+exports[`renders loading when loading 1`] = `
 <div
-  className="fixed-ends fixed-sides">
+  className="fixed-ends fixed-sides"
+>
   <Loading
-    msg="Updating your password..." />
+    msg="Updating your password..."
+  />
 </div>
 `;
 
-exports[`test renders success when success 1`] = `
+exports[`renders success when success 1`] = `
 <div
-  className="fixed-ends fixed-sides">
+  className="fixed-ends fixed-sides"
+>
   <Success
-    msg="Your password has been updated!" />
+    msg="Your password has been updated!"
+  />
 </div>
 `;

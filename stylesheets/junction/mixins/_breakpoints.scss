@@ -1,0 +1,118 @@
+
+$use-breakpoints: true!default;
+$breakpoints: (
+  "palm": (
+    max: 480px
+  ),
+  "palm-wide": (
+    min: 481px,
+    max: 768px
+  ),
+  "palm-wide-and-up": (
+    min: 481px
+  ),
+  "handheld": (
+    max: 768px
+  ),
+  "lap": (
+    min: 769px,
+    max: 1024px
+  ),
+  "lap-and-up": (
+    min: 769px
+  ),
+  "lap-wide": (
+    min: 1025px,
+    max: 1280px
+  ),
+  "lap-wide-and-up": (
+    min: 1025px
+  ),
+  "portable": (
+    min: 769px,
+    max: 1280px
+  ),
+  "desk": (
+    min: 1281px,
+    max: 1680px
+  ),
+  "desk-and-up": (
+    min: 1281px
+  ),
+  "desk-wide": (
+    min: 1681px
+  ),
+  "anchored": (
+    min: 1281px
+  )
+) !default;
+
+
+
+// @if $use-breakpoints  == true {
+  //
+  // @name media-query
+  // @description shorthand to easily create media queries
+  //
+  // @mixin true
+  //
+  // @parameter $mq - media query to wrap content in
+  //
+  // @variable breakpoints - base set of breakpoints available, can be extended using the extend function
+  //
+  // @scss
+  // .foobar {
+  //   @include media-query(palm) {
+  //     display: none;
+  //   }
+  //
+  // }
+  //
+  // @css
+  // @media screen and (max-width: 480px) {
+  //   .foobar {
+  //     display: none;
+  //   }
+  // }
+  //
+  // Mixin for creating breakpoints on the fly from a standard list
+  @mixin media-query($mq...) {
+    $breakpoint-found: false;
+
+    // Loop through the list of breakpoints we’ve provided in our settings file.
+    @each $alias, $condition in $breakpoints {
+      @for $i from 1 through length($mq) {
+        $_mq: nth($mq, $i);
+        // If the media query we’ve specified has an alias and a condition...
+        @if $_mq == $alias {
+          // ...tell the mixin that we’ve found it...
+          $breakpoint-found: true;
+          // start building media query
+          $statement: "screen ";
+
+          // set min if it exists
+          @if map-has-key($condition, min) == true {
+            $_min: map-get($condition, min);
+            $statement: "#{$statement} and (min-width: #{$_min}) ";
+          }
+
+          // set max if it exists
+          @if map-has-key($condition, max) == true {
+            $_max: map-get($condition, max);
+            $statement: "#{$statement} and (max-width: #{$_max}) ";
+          }
+
+          // ...and spit it out here.
+          @media #{$statement} {
+            @content;
+          }
+        }
+      }
+    }
+
+    // If the user specifies a non-exitent alias, send them a warning.
+    @if $breakpoint-found == false {
+      @warn "Oops! Breakpoint ‘#{$mq}’ does not exist."
+    }
+  }
+// }

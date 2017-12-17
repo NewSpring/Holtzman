@@ -1,73 +1,93 @@
-exports[`test does not render if guest checkout 1`] = `null`;
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`test does not render if scheduling 1`] = `null`;
+exports[`does not render if guest checkout 1`] = `null`;
 
-exports[`test does not render if should not save state 1`] = `null`;
+exports[`does not render if scheduling 1`] = `null`;
 
-exports[`test does not render if using saved account 1`] = `null`;
+exports[`does not render if should not save state 1`] = `null`;
 
-exports[`test renders default \`Bank Account\` if ach 1`] = `
+exports[`does not render if using saved account 1`] = `null`;
+
+exports[`renders default \`Bank Account\` if ach 1`] = `
 <div
   className="input input--active soft-bottom flush-bttom"
   data-spec="input-wrapper"
-  style={Object {}}>
+  style={Object {}}
+>
   <label
     htmlFor="accountName"
-    style={Object {}}>
+    style={Object {}}
+  >
     Saved Account Name
   </label>
-  <input
-    autoCapitalize="on"
-    autoComplete="on"
-    autoCorrect="on"
-    className={undefined}
-    data-lpignore={undefined}
-    data-spec="input"
-    defaultValue="Bank Account"
-    disabled={undefined}
-    id="accountName"
-    maxLength=""
-    name="accountName"
-    onBlur={[Function]}
-    onChange={[Function]}
-    onFocus={[Function]}
-    placeholder="Saved Account Name"
-    readOnly={undefined}
-    spellCheck={undefined}
-    style={Object {}}
-    type={undefined} />
+  <span
+    className=""
+  >
+    <input
+      autoCapitalize="on"
+      autoComplete="on"
+      autoCorrect="on"
+      className={undefined}
+      data-lpignore={undefined}
+      data-spec="input"
+      defaultValue="Bank Account"
+      disabled={undefined}
+      id="accountName"
+      maxLength=""
+      name="accountName"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      pattern={undefined}
+      placeholder="Saved Account Name"
+      readOnly={undefined}
+      spellCheck={undefined}
+      step={undefined}
+      style={Object {}}
+      type={undefined}
+    />
+  </span>
 </div>
 `;
 
-exports[`test renders default \`Credit Card\` if not ach 1`] = `
+exports[`renders default \`Credit Card\` if not ach 1`] = `
 <div
   className="input input--active soft-bottom flush-bttom"
   data-spec="input-wrapper"
-  style={Object {}}>
+  style={Object {}}
+>
   <label
     htmlFor="accountName"
-    style={Object {}}>
+    style={Object {}}
+  >
     Saved Account Name
   </label>
-  <input
-    autoCapitalize="on"
-    autoComplete="on"
-    autoCorrect="on"
-    className={undefined}
-    data-lpignore={undefined}
-    data-spec="input"
-    defaultValue="Credit Card"
-    disabled={undefined}
-    id="accountName"
-    maxLength=""
-    name="accountName"
-    onBlur={[Function]}
-    onChange={[Function]}
-    onFocus={[Function]}
-    placeholder="Saved Account Name"
-    readOnly={undefined}
-    spellCheck={undefined}
-    style={Object {}}
-    type={undefined} />
+  <span
+    className=""
+  >
+    <input
+      autoCapitalize="on"
+      autoComplete="on"
+      autoCorrect="on"
+      className={undefined}
+      data-lpignore={undefined}
+      data-spec="input"
+      defaultValue="Credit Card"
+      disabled={undefined}
+      id="accountName"
+      maxLength=""
+      name="accountName"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      pattern={undefined}
+      placeholder="Saved Account Name"
+      readOnly={undefined}
+      spellCheck={undefined}
+      step={undefined}
+      style={Object {}}
+      type={undefined}
+    />
+  </span>
 </div>
 `;
