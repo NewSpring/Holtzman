@@ -86,27 +86,33 @@ exports[`Layout renders custom toggles if passed 1`] = `
         >
           Card Number
         </label>
-        <input
-          autoCapitalize="on"
-          autoComplete="on"
-          autoCorrect="on"
-          className={undefined}
-          data-lpignore={undefined}
-          data-spec="input"
-          defaultValue={undefined}
-          disabled={undefined}
-          id="cardNumber"
-          maxLength=""
-          name="billing-cc-number"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          placeholder="Card Number"
-          readOnly={undefined}
-          spellCheck={undefined}
-          style={Object {}}
-          type="tel"
-        />
+        <span
+          className=""
+        >
+          <input
+            autoCapitalize="on"
+            autoComplete="on"
+            autoCorrect="on"
+            className={undefined}
+            data-lpignore={undefined}
+            data-spec="input"
+            defaultValue={undefined}
+            disabled={undefined}
+            id="cardNumber"
+            maxLength=""
+            name="billing-cc-number"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            pattern={undefined}
+            placeholder="Card Number"
+            readOnly={undefined}
+            spellCheck={undefined}
+            step={undefined}
+            style={Object {}}
+            type="tel"
+          />
+        </span>
         <div
           className="locked locked-right soft-double-right locked-top"
           style={
@@ -133,27 +139,33 @@ exports[`Layout renders custom toggles if passed 1`] = `
             >
               Exp (MM/YY)
             </label>
-            <input
-              autoCapitalize="on"
-              autoComplete="on"
-              autoCorrect="on"
-              className={undefined}
-              data-lpignore={undefined}
-              data-spec="input"
-              defaultValue={undefined}
-              disabled={undefined}
-              id="expiration"
-              maxLength=""
-              name="billing-cc-exp"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              placeholder="Exp (MM/YY)"
-              readOnly={undefined}
-              spellCheck={undefined}
-              style={Object {}}
-              type="tel"
-            />
+            <span
+              className=""
+            >
+              <input
+                autoCapitalize="on"
+                autoComplete="on"
+                autoCorrect="on"
+                className={undefined}
+                data-lpignore={undefined}
+                data-spec="input"
+                defaultValue={undefined}
+                disabled={undefined}
+                id="expiration"
+                maxLength=""
+                name="billing-cc-exp"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                pattern={undefined}
+                placeholder="Exp (MM/YY)"
+                readOnly={undefined}
+                spellCheck={undefined}
+                step={undefined}
+                style={Object {}}
+                type="tel"
+              />
+            </span>
           </div>
         </div>
         <div
@@ -170,27 +182,33 @@ exports[`Layout renders custom toggles if passed 1`] = `
             >
               CCV
             </label>
-            <input
-              autoCapitalize="on"
-              autoComplete="on"
-              autoCorrect="on"
-              className={undefined}
-              data-lpignore={undefined}
-              data-spec="input"
-              defaultValue={undefined}
-              disabled={undefined}
-              id="ccv"
-              maxLength=""
-              name="billing-cvv"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              placeholder="CCV"
-              readOnly={undefined}
-              spellCheck={undefined}
-              style={Object {}}
-              type="tel"
-            />
+            <span
+              className=""
+            >
+              <input
+                autoCapitalize="on"
+                autoComplete="on"
+                autoCorrect="on"
+                className={undefined}
+                data-lpignore={undefined}
+                data-spec="input"
+                defaultValue={undefined}
+                disabled={undefined}
+                id="ccv"
+                maxLength=""
+                name="billing-cvv"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                pattern={undefined}
+                placeholder="CCV"
+                readOnly={undefined}
+                spellCheck={undefined}
+                step={undefined}
+                style={Object {}}
+                type="tel"
+              />
+            </span>
           </div>
         </div>
       </div>
@@ -334,27 +352,33 @@ exports[`Layout renders default toggles by default 1`] = `
         >
           Card Number
         </label>
-        <input
-          autoCapitalize="on"
-          autoComplete="on"
-          autoCorrect="on"
-          className={undefined}
-          data-lpignore={undefined}
-          data-spec="input"
-          defaultValue={undefined}
-          disabled={undefined}
-          id="cardNumber"
-          maxLength=""
-          name="billing-cc-number"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          placeholder="Card Number"
-          readOnly={undefined}
-          spellCheck={undefined}
-          style={Object {}}
-          type="tel"
-        />
+        <span
+          className=""
+        >
+          <input
+            autoCapitalize="on"
+            autoComplete="on"
+            autoCorrect="on"
+            className={undefined}
+            data-lpignore={undefined}
+            data-spec="input"
+            defaultValue={undefined}
+            disabled={undefined}
+            id="cardNumber"
+            maxLength=""
+            name="billing-cc-number"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            pattern={undefined}
+            placeholder="Card Number"
+            readOnly={undefined}
+            spellCheck={undefined}
+            step={undefined}
+            style={Object {}}
+            type="tel"
+          />
+        </span>
         <div
           className="locked locked-right soft-double-right locked-top"
           style={
@@ -381,27 +405,33 @@ exports[`Layout renders default toggles by default 1`] = `
             >
               Exp (MM/YY)
             </label>
-            <input
-              autoCapitalize="on"
-              autoComplete="on"
-              autoCorrect="on"
-              className={undefined}
-              data-lpignore={undefined}
-              data-spec="input"
-              defaultValue={undefined}
-              disabled={undefined}
-              id="expiration"
-              maxLength=""
-              name="billing-cc-exp"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              placeholder="Exp (MM/YY)"
-              readOnly={undefined}
-              spellCheck={undefined}
-              style={Object {}}
-              type="tel"
-            />
+            <span
+              className=""
+            >
+              <input
+                autoCapitalize="on"
+                autoComplete="on"
+                autoCorrect="on"
+                className={undefined}
+                data-lpignore={undefined}
+                data-spec="input"
+                defaultValue={undefined}
+                disabled={undefined}
+                id="expiration"
+                maxLength=""
+                name="billing-cc-exp"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                pattern={undefined}
+                placeholder="Exp (MM/YY)"
+                readOnly={undefined}
+                spellCheck={undefined}
+                step={undefined}
+                style={Object {}}
+                type="tel"
+              />
+            </span>
           </div>
         </div>
         <div
@@ -418,27 +448,33 @@ exports[`Layout renders default toggles by default 1`] = `
             >
               CCV
             </label>
-            <input
-              autoCapitalize="on"
-              autoComplete="on"
-              autoCorrect="on"
-              className={undefined}
-              data-lpignore={undefined}
-              data-spec="input"
-              defaultValue={undefined}
-              disabled={undefined}
-              id="ccv"
-              maxLength=""
-              name="billing-cvv"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              placeholder="CCV"
-              readOnly={undefined}
-              spellCheck={undefined}
-              style={Object {}}
-              type="tel"
-            />
+            <span
+              className=""
+            >
+              <input
+                autoCapitalize="on"
+                autoComplete="on"
+                autoCorrect="on"
+                className={undefined}
+                data-lpignore={undefined}
+                data-spec="input"
+                defaultValue={undefined}
+                disabled={undefined}
+                id="ccv"
+                maxLength=""
+                name="billing-cvv"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                pattern={undefined}
+                placeholder="CCV"
+                readOnly={undefined}
+                spellCheck={undefined}
+                step={undefined}
+                style={Object {}}
+                type="tel"
+              />
+            </span>
           </div>
         </div>
       </div>

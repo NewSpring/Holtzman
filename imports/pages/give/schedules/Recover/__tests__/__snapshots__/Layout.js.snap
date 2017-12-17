@@ -440,7 +440,7 @@ exports[`expands the schedule if it matches state 1`] = `
                       }
                     }
                   >
-                    $2
+                    2
                     <span
                       className="text-dark-tertiary icon-arrow-up locked"
                       style={
@@ -678,7 +678,7 @@ exports[`renders with props 1`] = `
                       }
                     }
                   >
-                    $2
+                    2
                     <span
                       className="text-dark-tertiary icon-arrow-up locked"
                       style={
@@ -1002,7 +1002,7 @@ exports[`works with nickName 1`] = `
                       }
                     }
                   >
-                    $2
+                    2
                     <span
                       className="text-dark-tertiary icon-arrow-up locked"
                       style={
