@@ -42,7 +42,7 @@ exports[`should accept an active prop to show the input 1`] = `
       step="0.01"
       style={
         Object {
-          "maxWidth": "150px",
+          "maxWidth": "165px",
           "paddingLeft": ".8em",
         }
       }
@@ -54,7 +54,7 @@ exports[`should accept an active prop to show the input 1`] = `
         data-spec="input-wrapper"
         style={
           Object {
-            "maxWidth": "150px",
+            "maxWidth": "165px",
             "paddingLeft": ".8em",
           }
         }
@@ -96,7 +96,7 @@ exports[`should accept an active prop to show the input 1`] = `
             step="0.01"
             style={
               Object {
-                "maxWidth": "150px",
+                "maxWidth": "165px",
                 "paddingLeft": ".8em",
               }
             }
@@ -216,7 +216,7 @@ exports[`should accept custom classes thru classes prop 1`] = `
       step="0.01"
       style={
         Object {
-          "maxWidth": "150px",
+          "maxWidth": "165px",
           "paddingLeft": ".8em",
         }
       }
@@ -228,7 +228,7 @@ exports[`should accept custom classes thru classes prop 1`] = `
         data-spec="input-wrapper"
         style={
           Object {
-            "maxWidth": "150px",
+            "maxWidth": "165px",
             "paddingLeft": ".8em",
           }
         }
@@ -270,7 +270,7 @@ exports[`should accept custom classes thru classes prop 1`] = `
             step="0.01"
             style={
               Object {
-                "maxWidth": "150px",
+                "maxWidth": "165px",
                 "paddingLeft": ".8em",
               }
             }
@@ -392,7 +392,7 @@ exports[`should accept multiple accounts through accounts prop 1`] = `
       step="0.01"
       style={
         Object {
-          "maxWidth": "150px",
+          "maxWidth": "165px",
           "paddingLeft": ".8em",
         }
       }
@@ -404,7 +404,7 @@ exports[`should accept multiple accounts through accounts prop 1`] = `
         data-spec="input-wrapper"
         style={
           Object {
-            "maxWidth": "150px",
+            "maxWidth": "165px",
             "paddingLeft": ".8em",
           }
         }
@@ -446,7 +446,7 @@ exports[`should accept multiple accounts through accounts prop 1`] = `
             step="0.01"
             style={
               Object {
-                "maxWidth": "150px",
+                "maxWidth": "165px",
                 "paddingLeft": ".8em",
               }
             }
@@ -575,7 +575,7 @@ exports[`should render with minimal props 1`] = `
       step="0.01"
       style={
         Object {
-          "maxWidth": "150px",
+          "maxWidth": "165px",
           "paddingLeft": ".8em",
         }
       }
@@ -587,7 +587,7 @@ exports[`should render with minimal props 1`] = `
         data-spec="input-wrapper"
         style={
           Object {
-            "maxWidth": "150px",
+            "maxWidth": "165px",
             "paddingLeft": ".8em",
           }
         }
@@ -629,7 +629,7 @@ exports[`should render with minimal props 1`] = `
             step="0.01"
             style={
               Object {
-                "maxWidth": "150px",
+                "maxWidth": "165px",
                 "paddingLeft": ".8em",
               }
             }
