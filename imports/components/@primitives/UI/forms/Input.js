@@ -245,6 +245,15 @@ export default class Input extends Component {
       };
     }
 
+    if (this.props.pattern) {
+      style = {
+        ...style,
+        ...{
+          paddingLeft: ".8em",
+        },
+      };
+    }
+
     return style;
   };
 
