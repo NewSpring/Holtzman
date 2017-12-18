@@ -1,7 +1,6 @@
 
 import sagaHelper from "redux-saga-testing";
-import { takeLatest } from "redux-saga";
-import { put, select, call, cps, take } from "redux-saga/effects";
+import { takeLatest, put, select, call, cps, take } from "redux-saga/effects";
 
 import { Meteor } from "meteor/meteor";
 
@@ -284,7 +283,7 @@ describe("ignoring validation for iOS giving (one time)", () => {
   const it = sagaHelper(chargeTransaction({ state: "submit" }));
   const initalState = {
     routing: {
-      location: { 
+      location: {
         pathname: "/give/review?foo=bar"
       }
     },

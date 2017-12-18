@@ -1,4 +1,5 @@
-import { Component, PropTypes } from "react";
+import PropTypes from "prop-types";
+import { Component } from "react";
 import { connect } from "react-redux";
 import ReactMixin from "react-mixin";
 
@@ -29,7 +30,9 @@ class SectionsContainerWithoutData extends Component {
       }));
     }
 
+    // XXX What are these for? Its breaking tests?
     this.lockHeader("SectionsContainer");
+
     this.headerAction({
       title: "Sections",
     }, "SectionsContainer");
@@ -65,7 +68,7 @@ class SectionsContainerWithoutData extends Component {
   }
 }
 
-const map = (state) => ({ sections: state.sections });
+const map = state => ({ sections: state.sections });
 const withRedux = connect(map);
 const withHeader = ReactMixin.decorate(Headerable);
 export default withRedux(withHeader(SectionsContainerWithoutData));

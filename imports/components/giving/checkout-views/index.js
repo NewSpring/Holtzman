@@ -197,17 +197,17 @@ const withCheckout = graphql(CHECKOUT_QUERY, {
     data: {
       ...data,
       campuses: campuses ?
-        campuses.map((x) => ({ label: x.name, value: x.id })) : defaultArray,
+        campuses.map(x => ({ label: x.name, value: x.id })) : defaultArray,
       countries: countries ?
-        countries.map((x) => ({ label: x.name, value: x.value })) : defaultArray,
+        countries.map(x => ({ label: x.name, value: x.value })) : defaultArray,
       states: states ?
-        states.map((x) => ({ label: x.name, value: x.value })) : defaultArray,
+        states.map(x => ({ label: x.name, value: x.value })) : defaultArray,
     },
   }),
 });
 
 // We only care about the give state
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   give: state.give,
 });
 

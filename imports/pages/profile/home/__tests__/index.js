@@ -36,7 +36,7 @@ const generateComponent = (additionalProps = {}) => {
     ...defaultProps,
     ...additionalProps,
   };
-  return <Home { ...newProps } />;
+  return <Home {...newProps} />;
 };
 
 it("renders with props", () => {
@@ -71,8 +71,8 @@ it("updates nav on mount", () => {
     dispatch: mockDispatch,
   }));
   wrapper.instance().componentDidMount();
-  expect(mockDispatch).toHaveBeenCalledTimes(1);
-  expect(navActions.setLevel).toHaveBeenCalledTimes(1);
+  expect(mockDispatch).toHaveBeenCalled();
+  expect(navActions.setLevel).toHaveBeenCalled();
   expect(navActions.setLevel).toHaveBeenCalledWith("TOP");
 });
 

@@ -1,5 +1,6 @@
 
-import { Component, PropTypes } from "react";
+import PropTypes from "prop-types";
+import { Component } from "react";
 import { graphql } from "react-apollo";
 import { connect } from "react-redux";
 import gql from "graphql-tag";
@@ -96,6 +97,7 @@ const TRANSACTIONS_QUERY = gql`
         summary
         status
         person {
+          id: entityId
           firstName
           nickName
           lastName
@@ -104,6 +106,7 @@ const TRANSACTIONS_QUERY = gql`
           id
           amount
           account {
+            id
             name
             description
             summary
@@ -122,7 +125,7 @@ const TRANSACTIONS_QUERY = gql`
 `;
 
 const withTransactions = graphql(TRANSACTIONS_QUERY, {
-  options: (ownProps) => ({
+  options: ownProps => ({
     variables: {
       transactionId: ownProps.params.id,
     },
@@ -132,9 +135,9 @@ const withTransactions = graphql(TRANSACTIONS_QUERY, {
 const Details = connect()(
   withEntries(
     withTransactions(
-      DetailsWithoutData
-    )
-  )
+      DetailsWithoutData,
+    ),
+  ),
 );
 
 const Routes = [

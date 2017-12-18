@@ -1,0 +1,182 @@
+$use-positions: true!default;
+
+// @if $use-positions == true {
+  //
+  // @name _position
+  // @description Used to generate shorthand position properties
+  //
+  // @mixin true
+  // @private true
+  //
+  // @parameter $position - String (fixed, absolute, relative)
+  // @parameter $args - Mixture of px, em, and strings
+  //
+  // @note
+  //    Should not be used in projects. This mixin is used by
+  //    the position mixins absolute, fixed, and relative
+  //
+
+  @mixin _position($position, $args) {
+    // List of offsets to check for in $args
+    $offsets: top right bottom left;
+
+    position: $position;
+
+    // We loop through $offsets to deal with them one by one
+    @each $o in $offsets {
+      // If current offset found in $args
+      // assigns its index to $i
+      // Or `false` if not found
+      $i: index($args, $o);
+
+
+      // Now we do the verifications
+      // 1. Is the offset listed in $args? (not false)
+      // 2. Is the offset value within the list range?
+      // 3. Is the offset value valid?
+
+      @if $i
+      and $i + 1 <= length($args)
+      and type-of(nth($args, $i + 1)) == number {
+        // If everything is okay
+        // We assign the according value to the current offset
+        #{$o}: nth($args, $i + 1);
+      }
+    }
+  }
+
+  //
+  // @name absolute
+  // @description Used to generate shorthand absolute position properties
+  //
+  // @mixin true
+  //
+  // @parameter $args - Mixture of px, em, %, and strings
+  //
+  // @scss
+  // .className {
+  //   @include absolute(top 10px);
+  // }
+  //
+  // .class-name {
+  //   @include absolute(left 10px bottom 50%);
+  // }
+  //
+  // .class_name {
+  //   @include absolute(top 0 bottom 0 left 0 right 0);
+  // }
+  //
+  // @css
+  // .className {
+  //   position: absolute;
+  //   top: 10px;
+  // }
+  //
+  // .class-name {
+  //   position: absolute;
+  //   left: 10px;
+  //   bottom: 50%;
+  // }
+  //
+  // .class_name {
+  //   position: absolute;
+  //   top: 0;
+  //   bottom: 0;
+  //   left: 0;
+  //   right: 0;
+  // }
+  //
+  @mixin absolute($args) {
+    @include _position(absolute, $args);
+  }
+
+  //
+  // @name fixed
+  // @description Used to generate shorthand fixed position properties
+  //
+  // @mixin true
+  //
+  // @parameter $args - Mixture of px, em, %, and strings
+  //
+  // @scss
+  // .className {
+  //   @include fixed(top 10px);
+  // }
+  //
+  // .class-name {
+  //   @include fixed(left 10px bottom 50%);
+  // }
+  //
+  // .class_name {
+  //   @include fixed(top 0 bottom 0 left 0 right 0);
+  // }
+  //
+  // @css
+  // .className {
+  //   position: fixed;
+  //   top: 10px;
+  // }
+  //
+  // .class-name {
+  //   position: fixed;
+  //   left: 10px;
+  //   bottom: 50%;
+  // }
+  //
+  // .class_name {
+  //   position: fixed;
+  //   top: 0;
+  //   bottom: 0;
+  //   left: 0;
+  //   right: 0;
+  // }
+  //
+  @mixin fixed($args) {
+    @include _position(fixed, $args);
+  }
+
+  //
+  // @name relative
+  // @description Used to generate shorthand relative position properties
+  //
+  // @mixin true
+  //
+  // @parameter $args - Mixture of px, em, %, and strings
+  //
+  // @scss
+  // .className {
+  //   @include relative(top 10px);
+  // }
+  //
+  // .class-name {
+  //   @include relative(left 10px bottom 50%);
+  // }
+  //
+  // .class_name {
+  //   @include relative(top 0 bottom 0 left 0 right 0);
+  // }
+  //
+  // @css
+  // .className {
+  //   position: relative;
+  //   top: 10px;
+  // }
+  //
+  // .class-name {
+  //   position: relative;
+  //   left: 10px;
+  //   bottom: 50%;
+  // }
+  //
+  // .class_name {
+  //   position: relative;
+  //   top: 0;
+  //   bottom: 0;
+  //   left: 0;
+  //   right: 0;
+  // }
+  //
+  @mixin relative($args) {
+    @include _position(relative, $args);
+  }
+// }

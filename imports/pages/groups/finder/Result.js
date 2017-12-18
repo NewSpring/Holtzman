@@ -1,5 +1,7 @@
 /* eslint-disable max-len */
-import { Component, PropTypes } from "react";
+import PropTypes from "prop-types";
+
+import { Component } from "react";
 import { connect } from "react-redux";
 import { graphql } from "react-apollo";
 import { withRouter } from "react-router";
@@ -12,10 +14,7 @@ import { nav as navActions } from "../../../data/store";
 // import ReactTooltip from "react-tooltip";
 // import Truncate from "truncate";
 
-import Split, {
-  Left,
-  Right,
-} from "../../../components/@primitives/layout/split";
+import Split, { Left, Right } from "../../../components/@primitives/layout/split";
 import GoogleMap from "../../../components/@primitives/map";
 import Layout from "./ResultLayout";
 
@@ -70,9 +69,7 @@ class TemplateWithoutData extends Component {
     return _.uniq(
       markers.concat(
         groups
-          .filter(
-            x => x.locations && x.locations.length && x.locations[0].location,
-          )
+          .filter(x => x.locations && x.locations.length && x.locations[0].location)
           .map(x => ({
             latitude: x.locations[0].location.latitude,
             longitude: x.locations[0].location.longitude,
@@ -109,7 +106,6 @@ class TemplateWithoutData extends Component {
       done,
       Loading,
       loading,
-      zip,
       latitude,
       longitude,
     } = this.props;
@@ -138,8 +134,7 @@ class TemplateWithoutData extends Component {
                   markers={markers}
                   onMarkerHover={this.onMarkerHover}
                   hover={this.state.hover}
-                  onChildClick={({ id }) =>
-                    this.props.router.push(`/groups/${id}`)}
+                  onChildClick={({ id }) => this.props.router.push(`/groups/${id}`)}
                 />
               );
             })()}
@@ -174,38 +169,19 @@ class TemplateWithoutData extends Component {
 }
 
 const mapStateToProps = ({ routing: { location } }) => {
-  const tags =
-    Object.keys(location.query).length && location.query.tags
-      ? location.query.tags
-      : "";
-  const q =
-    Object.keys(location.query).length && location.query.q
-      ? location.query.q
-      : null;
+  const tags = Object.keys(location.query).length && location.query.tags ? location.query.tags : "";
+  const q = Object.keys(location.query).length && location.query.q ? location.query.q : null;
   const campus =
-    Object.keys(location.query).length && location.query.campus
-      ? location.query.campus
-      : "";
+    Object.keys(location.query).length && location.query.campus ? location.query.campus : "";
   const campuses =
-    Object.keys(location.query).length && location.query.campuses
-      ? location.query.campuses
-      : "";
+    Object.keys(location.query).length && location.query.campuses ? location.query.campuses : "";
   const longitude =
-    Object.keys(location.query).length && location.query.longitude
-      ? location.query.longitude
-      : "";
+    Object.keys(location.query).length && location.query.longitude ? location.query.longitude : "";
   const latitude =
-    Object.keys(location.query).length && location.query.latitude
-      ? location.query.latitude
-      : "";
-  const zip =
-    Object.keys(location.query).length && location.query.zip
-      ? location.query.zip
-      : "";
+    Object.keys(location.query).length && location.query.latitude ? location.query.latitude : "";
+  const zip = Object.keys(location.query).length && location.query.zip ? location.query.zip : "";
   const schedules =
-    Object.keys(location.query).length && location.query.schedules
-      ? location.query.schedules
-      : "";
+    Object.keys(location.query).length && location.query.schedules ? location.query.schedules : "";
   return {
     tags,
     q,
@@ -331,7 +307,10 @@ const withGroupFinder = graphql(GROUP_FINDER_QUERY, {
           : [],
       schedules:
         ownProps.schedules && ownProps.schedules.length
-          ? ownProps.schedules.split(",").filter(x => x).map(x => getDay(x))
+          ? ownProps.schedules
+              .split(",")
+              .filter(x => x)
+              .map(x => getDay(x))
           : [],
     },
   }),
@@ -343,24 +322,19 @@ const withGroupFinder = graphql(GROUP_FINDER_QUERY, {
       data.fetchMore({
         variables: { offset: data.groups.results.length },
         updateQuery: (previousResult, { fetchMoreResult }) => {
-          if (!fetchMoreResult.data) {
+          if (!fetchMoreResult.groups) {
             return previousResult;
           }
-          if (fetchMoreResult.data.groups.results === 0) {
-            fetchMoreResult.data.groups.results.push(
-              fetchMoreResult.data.groups.results[
-                fetchMoreResult.data.groups.results.length - 1
-              ],
+          if (fetchMoreResult.groups.results === 0) {
+            fetchMoreResult.groups.results.push(
+              fetchMoreResult.groups.results[fetchMoreResult.groups.results.length - 1],
             );
           }
           return {
             groups: {
-              count: fetchMoreResult.data.groups.count,
+              count: fetchMoreResult.groups.count,
               // Append the new feed results to the old one
-              results: [
-                ...previousResult.groups.results,
-                ...fetchMoreResult.data.groups.results,
-              ],
+              results: [...previousResult.groups.results, ...fetchMoreResult.groups.results],
             },
           };
         },
@@ -371,11 +345,7 @@ const withGroupFinder = graphql(GROUP_FINDER_QUERY, {
 export default withRouter(
   withCampusLocations(
     connect(mapStateToProps)(
-      withGroupFinder(
-        infiniteScroll(x => x, { doneText: "No more groups" })(
-          TemplateWithoutData,
-        ),
-      ),
+      withGroupFinder(infiniteScroll(x => x, { doneText: "No more groups" })(TemplateWithoutData)),
     ),
   ),
 );

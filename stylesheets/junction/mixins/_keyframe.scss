@@ -1,0 +1,73 @@
+
+$use-keyframes: true!default;
+
+// @if $use-keyframes == true {
+  //
+  // @name keyframe
+  // @link twitter.com/integralist/status/260484115315437569
+  // @description Create CSS keyframe animations for all vendors in one go
+  //
+  // @mixin true
+  //
+  // @parameter $animation-name - name of the animation to create in vendor prefixes
+  //
+  // @scss
+  //   @include keyframe(shrink) {
+  //     from {
+  //        font-size:5em;
+  //     }
+  //   };
+  //
+  // @css
+  //   @-webkit-keyframes shrink {
+  //     from {
+  //        font-size:5em;
+  //     }
+  //   }
+  //
+  //   @-moz-keyframes shrink {
+  //     from {
+  //        font-size:5em;
+  //     }
+  //   }
+  //
+  //   @-ms-keyframes shrink {
+  //     from {
+  //        font-size:5em;
+  //     }
+  //   }
+  //
+  //   @-o-keyframes shrink {
+  //     from {
+  //        font-size:5em;
+  //     }
+  //   }
+  //
+  //   @keyframes shrink {
+  //     from {
+  //        font-size:5em;
+  //     }
+  //   }
+  //
+  @mixin keyframe($animation-name) {
+    @-webkit-keyframes #{$animation-name} {
+      @content;
+    }
+
+    @-moz-keyframes #{$animation-name} {
+      @content;
+    }
+
+    @-ms-keyframes #{$animation-name} {
+      @content;
+    }
+
+    @-o-keyframes #{$animation-name} {
+      @content;
+    }
+
+    @keyframes #{$animation-name} {
+      @content;
+    }
+  }
+// }

@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`likes list should properly skip any likes with a __typename that's null 1`] = `
 <Component
   likes={
@@ -24,17 +26,22 @@ exports[`likes list should properly skip any likes with a __typename that's null
         "title": "harambe",
       },
     ]
-  }>
+  }
+>
   <div>
-    <MiniCard>
+    <MiniCard
+      key="0"
+    >
       <div />
     </MiniCard>
     <MiniCard
       category="Devotionals"
       icon="icon-category-text"
       image="harambe"
+      key="1"
       link="/studies/null/entry/12345"
-      title="harambe">
+      title="harambe"
+    >
       <div />
     </MiniCard>
   </div>
@@ -86,30 +93,37 @@ exports[`likes list should render likes 1`] = `
         "title": "Able",
       },
     ]
-  }>
+  }
+>
   <div>
     <MiniCard
       category="Groups"
       icon="icon-groups"
       image="zookeeper"
+      key="0"
       link="/groups/12345"
-      title="hello">
+      title="hello"
+    >
       <div />
     </MiniCard>
     <MiniCard
       category="Devotionals"
       icon="icon-category-text"
       image="harambe"
+      key="1"
       link="/studies/null/entry/12345"
-      title="harambe">
+      title="harambe"
+    >
       <div />
     </MiniCard>
     <MiniCard
       category="Albums"
       icon="icon-category-audio"
       image="harambe-tribute-one"
+      key="2"
       link="/music/3776"
-      title="Able">
+      title="Able"
+    >
       <div />
     </MiniCard>
   </div>

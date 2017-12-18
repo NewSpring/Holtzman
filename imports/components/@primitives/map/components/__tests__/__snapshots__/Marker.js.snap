@@ -1,4 +1,6 @@
-exports[`test renders $hover version 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders $hover version 1`] = `
 <div
   className="relative"
   style={
@@ -19,10 +21,11 @@ exports[`test renders $hover version 1`] = `
       "top": -15,
       "width": 22,
     }
-  } />
+  }
+/>
 `;
 
-exports[`test renders active version 1`] = `
+exports[`renders active version 1`] = `
 <div
   className="relative"
   style={
@@ -43,10 +46,11 @@ exports[`test renders active version 1`] = `
       "top": -15,
       "width": 22,
     }
-  } />
+  }
+/>
 `;
 
-exports[`test renders hover version 1`] = `
+exports[`renders hover version 1`] = `
 <div
   className="relative"
   style={
@@ -67,10 +71,11 @@ exports[`test renders hover version 1`] = `
       "top": -15,
       "width": 22,
     }
-  } />
+  }
+/>
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <div
   className="relative"
   style={
@@ -91,5 +96,6 @@ exports[`test renders with props 1`] = `
       "top": -15,
       "width": 22,
     }
-  } />
+  }
+/>
 `;

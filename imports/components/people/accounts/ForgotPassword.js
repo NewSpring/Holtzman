@@ -50,13 +50,13 @@ class ForgotPassword extends React.Component {
 
     Accounts.forgotPassword({
       email: this.props.email,
-    }, (err) => {
+    }, err => {
       if (err) {
         if (err.error === 403) {
           // this user may exist in Rock but not in Apollos
           // we fire a server side check with Rock then on the server
           // we create a user (if they exist in Rock) and email them the reciept
-          forceReset(this.props.email, (error) => {
+          forceReset(this.props.email, error => {
             if (error) {
               this.setState({ state: "error", err: error.message });
               setTimeout(() => {
