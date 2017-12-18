@@ -92,7 +92,7 @@ class Layout extends Component {
       <div className="push-top@handheld soft-half-top@lap-and-up">
         <Forms.Form
           classes={["text-left", "hard"]}
-          submit={(e) => { e.preventDefault(); }}
+          submit={e => { e.preventDefault(); }}
           id="add-to-cart"
         >
           <TertiaryPhrase

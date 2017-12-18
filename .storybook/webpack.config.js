@@ -6,7 +6,7 @@ module.exports = function(base, configType) {
   // Make whatever fine-grained changes you need
   base.module.loaders = base.module.loaders.concat([
     { test: /\.md$/, loader: "raw" },
-    {  test: /\.json$/, loader: "json" },
+    { test: /\.json$/, loader: "json" },
     { test: /\.scss$/, loaders: ["style", "css", "sass"], include: path.resolve(__dirname, "../") },
     { test: /\.css$/, loader: "style!css" },
   ]);

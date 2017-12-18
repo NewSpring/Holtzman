@@ -1,4 +1,5 @@
-import { Component, PropTypes } from "react";
+import PropTypes from "prop-types";
+import { Component } from "react";
 
 export default class ProgressStep extends Component {
 
@@ -7,7 +8,7 @@ export default class ProgressStep extends Component {
     active: PropTypes.number.isRequired,
   }
 
-  getLayer = (count) =>
+  getLayer = count =>
     ((this.props.steps + 2) - count);
 
   steps = () => {
@@ -19,7 +20,7 @@ export default class ProgressStep extends Component {
     }
 
     return stepsArray.map((value, count) =>
-      ({ count })
+      ({ count }),
     );
   }
 

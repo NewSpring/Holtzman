@@ -1,4 +1,6 @@
-exports[`test renders when complete 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders when complete 1`] = `
 <Component
   active={true}
   complete={true}
@@ -17,10 +19,11 @@ exports[`test renders when complete 1`] = `
       "removed": null,
     }
   }
-  stop={[Function]} />
+  stop={[Function]}
+/>
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <Component
   active={true}
   complete={false}
@@ -41,10 +44,11 @@ exports[`test renders with props 1`] = `
       "removed": null,
     }
   }
-  stop={[Function]} />
+  stop={[Function]}
+/>
 `;
 
-exports[`test renders without transaction 1`] = `
+exports[`renders without transaction 1`] = `
 <Component
   active={true}
   complete={false}
@@ -56,5 +60,6 @@ exports[`test renders without transaction 1`] = `
       "removed": null,
     }
   }
-  stop={[Function]} />
+  stop={[Function]}
+/>
 `;

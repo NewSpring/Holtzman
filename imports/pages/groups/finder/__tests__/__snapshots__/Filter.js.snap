@@ -1,71 +1,105 @@
-exports[`test hides search when false 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`hides search when false 1`] = `
 <div>
   <div>
     <div
-      className="soft-half-sides soft-top soft-double-top@anchored text-center background--light-primary">
+      className="soft-half-sides soft-top soft-double-top@anchored text-center background--light-primary"
+    >
       <h4
-        className="soft-half-bottom flush-bottom">
+        className="soft-half-bottom flush-bottom"
+      >
         Featured Tags
       </h4>
       <div
-        className="two-thirds@anchored display-inline-block soft-ends@anchored">
-        <withRouter(Connect(TagWithoutData)) />
-        <withRouter(Connect(TagWithoutData)) />
+        className="two-thirds@anchored display-inline-block soft-ends@anchored"
+      >
+        <withRouter(Connect(TagWithoutData))
+          key="0"
+        />
+        <withRouter(Connect(TagWithoutData))
+          key="1"
+        />
       </div>
     </div>
     <div
-      className="soft-half-sides soft-ends text-center background--light-primary">
+      className="soft-half-sides soft-ends text-center background--light-primary"
+    >
       <h4
-        className="soft-half-bottom flush-bottom">
+        className="soft-half-bottom flush-bottom"
+      >
         Day of Week
       </h4>
       <div
-        className="two-thirds@anchored display-inline-block soft-ends@anchored">
+        className="two-thirds@anchored display-inline-block soft-ends@anchored"
+      >
         <withRouter(Connect(TagWithoutData))
+          key="0"
           urlKey="schedules"
-          val="Sunday" />
+          val="Sunday"
+        />
         <withRouter(Connect(TagWithoutData))
+          key="1"
           urlKey="schedules"
-          val="Monday" />
+          val="Monday"
+        />
         <withRouter(Connect(TagWithoutData))
+          key="2"
           urlKey="schedules"
-          val="Tuesday" />
+          val="Tuesday"
+        />
         <withRouter(Connect(TagWithoutData))
+          key="3"
           urlKey="schedules"
-          val="Wednesday" />
+          val="Wednesday"
+        />
         <withRouter(Connect(TagWithoutData))
+          key="4"
           urlKey="schedules"
-          val="Thursday" />
+          val="Thursday"
+        />
         <withRouter(Connect(TagWithoutData))
+          key="5"
           urlKey="schedules"
-          val="Friday" />
+          val="Friday"
+        />
         <withRouter(Connect(TagWithoutData))
+          key="6"
           urlKey="schedules"
-          val="Saturday" />
+          val="Saturday"
+        />
       </div>
     </div>
     <div
-      className="outlined--light outlined--bottom soft-half-sides soft-ends soft-double-bottom@anchored text-center background--light-primary">
+      className="outlined--light outlined--bottom soft-half-sides soft-ends soft-double-bottom@anchored text-center background--light-primary"
+    >
       <h4
-        className="soft-half-bottom flush-bottom">
+        className="soft-half-bottom flush-bottom"
+      >
         Campuses
       </h4>
       <div
-        className="two-thirds@anchored display-inline-block soft-ends@anchored">
+        className="two-thirds@anchored display-inline-block soft-ends@anchored"
+      >
         <withRouter(Connect(TagWithoutData))
-          urlKey="campuses" />
+          key="0"
+          urlKey="campuses"
+        />
         <withRouter(Connect(TagWithoutData))
-          urlKey="campuses" />
+          key="1"
+          urlKey="campuses"
+        />
       </div>
     </div>
   </div>
 </div>
 `;
 
-exports[`test hides tags when false 1`] = `
+exports[`hides tags when false 1`] = `
 <div>
   <div
-    className="outlined--light outlined--bottom soft-half-sides@handheld soft soft-double@anchored text-left background--light-primary">
+    className="outlined--light outlined--bottom soft-half-sides@handheld soft soft-double@anchored text-left background--light-primary"
+  >
     <Form
       action={true}
       classes={
@@ -75,9 +109,11 @@ exports[`test hides tags when false 1`] = `
           "one-whole",
         ]
       }
-      submit={[Function]}>
+      submit={[Function]}
+    >
       <i
-        className="icon-search locked-left soft-half-left" />
+        className="icon-search locked-left soft-half-left"
+      />
       <span
         className="h7 locked-right flush-bottom"
         onClick={[Function]}
@@ -88,7 +124,8 @@ exports[`test hides tags when false 1`] = `
             "padding": "20px 0px",
             "zIndex": 1,
           }
-        }>
+        }
+      >
         Cancel
       </span>
       <Input
@@ -107,9 +144,11 @@ exports[`test hides tags when false 1`] = `
         name="search"
         onChange={[Function]}
         placeholder="Type your search here..."
-        type="text" />
+        type="text"
+      />
       <div
-        className="one-whole text-left">
+        className="one-whole text-left"
+      >
         <h6>
           <em>
             Find a group by zipcode, name, campus, or description
@@ -121,69 +160,101 @@ exports[`test hides tags when false 1`] = `
 </div>
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <div>
   <div>
     <div
-      className="soft-half-sides soft-top soft-double-top@anchored text-center background--light-primary">
+      className="soft-half-sides soft-top soft-double-top@anchored text-center background--light-primary"
+    >
       <h4
-        className="soft-half-bottom flush-bottom">
+        className="soft-half-bottom flush-bottom"
+      >
         Featured Tags
       </h4>
       <div
-        className="two-thirds@anchored display-inline-block soft-ends@anchored">
-        <withRouter(Connect(TagWithoutData)) />
-        <withRouter(Connect(TagWithoutData)) />
+        className="two-thirds@anchored display-inline-block soft-ends@anchored"
+      >
+        <withRouter(Connect(TagWithoutData))
+          key="0"
+        />
+        <withRouter(Connect(TagWithoutData))
+          key="1"
+        />
       </div>
     </div>
     <div
-      className="soft-half-sides soft-ends text-center background--light-primary">
+      className="soft-half-sides soft-ends text-center background--light-primary"
+    >
       <h4
-        className="soft-half-bottom flush-bottom">
+        className="soft-half-bottom flush-bottom"
+      >
         Day of Week
       </h4>
       <div
-        className="two-thirds@anchored display-inline-block soft-ends@anchored">
+        className="two-thirds@anchored display-inline-block soft-ends@anchored"
+      >
         <withRouter(Connect(TagWithoutData))
+          key="0"
           urlKey="schedules"
-          val="Sunday" />
+          val="Sunday"
+        />
         <withRouter(Connect(TagWithoutData))
+          key="1"
           urlKey="schedules"
-          val="Monday" />
+          val="Monday"
+        />
         <withRouter(Connect(TagWithoutData))
+          key="2"
           urlKey="schedules"
-          val="Tuesday" />
+          val="Tuesday"
+        />
         <withRouter(Connect(TagWithoutData))
+          key="3"
           urlKey="schedules"
-          val="Wednesday" />
+          val="Wednesday"
+        />
         <withRouter(Connect(TagWithoutData))
+          key="4"
           urlKey="schedules"
-          val="Thursday" />
+          val="Thursday"
+        />
         <withRouter(Connect(TagWithoutData))
+          key="5"
           urlKey="schedules"
-          val="Friday" />
+          val="Friday"
+        />
         <withRouter(Connect(TagWithoutData))
+          key="6"
           urlKey="schedules"
-          val="Saturday" />
+          val="Saturday"
+        />
       </div>
     </div>
     <div
-      className="outlined--light outlined--bottom soft-half-sides soft-ends soft-double-bottom@anchored text-center background--light-primary">
+      className="outlined--light outlined--bottom soft-half-sides soft-ends soft-double-bottom@anchored text-center background--light-primary"
+    >
       <h4
-        className="soft-half-bottom flush-bottom">
+        className="soft-half-bottom flush-bottom"
+      >
         Campuses
       </h4>
       <div
-        className="two-thirds@anchored display-inline-block soft-ends@anchored">
+        className="two-thirds@anchored display-inline-block soft-ends@anchored"
+      >
         <withRouter(Connect(TagWithoutData))
-          urlKey="campuses" />
+          key="0"
+          urlKey="campuses"
+        />
         <withRouter(Connect(TagWithoutData))
-          urlKey="campuses" />
+          key="1"
+          urlKey="campuses"
+        />
       </div>
     </div>
   </div>
   <div
-    className="outlined--light outlined--bottom soft-half-sides@handheld soft soft-double@anchored text-left background--light-primary">
+    className="outlined--light outlined--bottom soft-half-sides@handheld soft soft-double@anchored text-left background--light-primary"
+  >
     <Form
       action={true}
       classes={
@@ -193,9 +264,11 @@ exports[`test renders with props 1`] = `
           "one-whole",
         ]
       }
-      submit={[Function]}>
+      submit={[Function]}
+    >
       <i
-        className="icon-search locked-left soft-half-left" />
+        className="icon-search locked-left soft-half-left"
+      />
       <span
         className="h7 locked-right flush-bottom"
         onClick={[Function]}
@@ -206,7 +279,8 @@ exports[`test renders with props 1`] = `
             "padding": "20px 0px",
             "zIndex": 1,
           }
-        }>
+        }
+      >
         Cancel
       </span>
       <Input
@@ -225,9 +299,11 @@ exports[`test renders with props 1`] = `
         name="search"
         onChange={[Function]}
         placeholder="Type your search here..."
-        type="text" />
+        type="text"
+      />
       <div
-        className="one-whole text-left">
+        className="one-whole text-left"
+      >
         <h6>
           <em>
             Find a group by zipcode, name, campus, or description
@@ -239,64 +315,92 @@ exports[`test renders with props 1`] = `
 </div>
 `;
 
-exports[`test renders without campuses 1`] = `
+exports[`renders without campuses 1`] = `
 <div>
   <div>
     <div
-      className="soft-half-sides soft-top soft-double-top@anchored text-center background--light-primary">
+      className="soft-half-sides soft-top soft-double-top@anchored text-center background--light-primary"
+    >
       <h4
-        className="soft-half-bottom flush-bottom">
+        className="soft-half-bottom flush-bottom"
+      >
         Featured Tags
       </h4>
       <div
-        className="two-thirds@anchored display-inline-block soft-ends@anchored">
-        <withRouter(Connect(TagWithoutData)) />
-        <withRouter(Connect(TagWithoutData)) />
+        className="two-thirds@anchored display-inline-block soft-ends@anchored"
+      >
+        <withRouter(Connect(TagWithoutData))
+          key="0"
+        />
+        <withRouter(Connect(TagWithoutData))
+          key="1"
+        />
       </div>
     </div>
     <div
-      className="soft-half-sides soft-ends text-center background--light-primary">
+      className="soft-half-sides soft-ends text-center background--light-primary"
+    >
       <h4
-        className="soft-half-bottom flush-bottom">
+        className="soft-half-bottom flush-bottom"
+      >
         Day of Week
       </h4>
       <div
-        className="two-thirds@anchored display-inline-block soft-ends@anchored">
+        className="two-thirds@anchored display-inline-block soft-ends@anchored"
+      >
         <withRouter(Connect(TagWithoutData))
+          key="0"
           urlKey="schedules"
-          val="Sunday" />
+          val="Sunday"
+        />
         <withRouter(Connect(TagWithoutData))
+          key="1"
           urlKey="schedules"
-          val="Monday" />
+          val="Monday"
+        />
         <withRouter(Connect(TagWithoutData))
+          key="2"
           urlKey="schedules"
-          val="Tuesday" />
+          val="Tuesday"
+        />
         <withRouter(Connect(TagWithoutData))
+          key="3"
           urlKey="schedules"
-          val="Wednesday" />
+          val="Wednesday"
+        />
         <withRouter(Connect(TagWithoutData))
+          key="4"
           urlKey="schedules"
-          val="Thursday" />
+          val="Thursday"
+        />
         <withRouter(Connect(TagWithoutData))
+          key="5"
           urlKey="schedules"
-          val="Friday" />
+          val="Friday"
+        />
         <withRouter(Connect(TagWithoutData))
+          key="6"
           urlKey="schedules"
-          val="Saturday" />
+          val="Saturday"
+        />
       </div>
     </div>
     <div
-      className="outlined--light outlined--bottom soft-half-sides soft-ends soft-double-bottom@anchored text-center background--light-primary">
+      className="outlined--light outlined--bottom soft-half-sides soft-ends soft-double-bottom@anchored text-center background--light-primary"
+    >
       <h4
-        className="soft-half-bottom flush-bottom">
+        className="soft-half-bottom flush-bottom"
+      >
         Campuses
       </h4>
       <div
-        className="two-thirds@anchored display-inline-block soft-ends@anchored" />
+        className="two-thirds@anchored display-inline-block soft-ends@anchored"
+      />
     </div>
   </div>
   <div
-    className="outlined--light outlined--bottom soft-half-sides@handheld soft soft-double@anchored text-left background--light-primary">
+    className="outlined--light outlined--bottom soft-half-sides@handheld soft soft-double@anchored text-left background--light-primary"
+  >
     <Form
       action={true}
       classes={
@@ -306,9 +410,11 @@ exports[`test renders without campuses 1`] = `
           "one-whole",
         ]
       }
-      submit={[Function]}>
+      submit={[Function]}
+    >
       <i
-        className="icon-search locked-left soft-half-left" />
+        className="icon-search locked-left soft-half-left"
+      />
       <span
         className="h7 locked-right flush-bottom"
         onClick={[Function]}
@@ -319,7 +425,8 @@ exports[`test renders without campuses 1`] = `
             "padding": "20px 0px",
             "zIndex": 1,
           }
-        }>
+        }
+      >
         Cancel
       </span>
       <Input
@@ -338,9 +445,11 @@ exports[`test renders without campuses 1`] = `
         name="search"
         onChange={[Function]}
         placeholder="Type your search here..."
-        type="text" />
+        type="text"
+      />
       <div
-        className="one-whole text-left">
+        className="one-whole text-left"
+      >
         <h6>
           <em>
             Find a group by zipcode, name, campus, or description
@@ -352,10 +461,11 @@ exports[`test renders without campuses 1`] = `
 </div>
 `;
 
-exports[`test renders without tags 1`] = `
+exports[`renders without tags 1`] = `
 <div>
   <div
-    className="outlined--light outlined--bottom soft-half-sides@handheld soft soft-double@anchored text-left background--light-primary">
+    className="outlined--light outlined--bottom soft-half-sides@handheld soft soft-double@anchored text-left background--light-primary"
+  >
     <Form
       action={true}
       classes={
@@ -365,9 +475,11 @@ exports[`test renders without tags 1`] = `
           "one-whole",
         ]
       }
-      submit={[Function]}>
+      submit={[Function]}
+    >
       <i
-        className="icon-search locked-left soft-half-left" />
+        className="icon-search locked-left soft-half-left"
+      />
       <span
         className="h7 locked-right flush-bottom"
         onClick={[Function]}
@@ -378,7 +490,8 @@ exports[`test renders without tags 1`] = `
             "padding": "20px 0px",
             "zIndex": 1,
           }
-        }>
+        }
+      >
         Cancel
       </span>
       <Input
@@ -397,9 +510,11 @@ exports[`test renders without tags 1`] = `
         name="search"
         onChange={[Function]}
         placeholder="Type your search here..."
-        type="text" />
+        type="text"
+      />
       <div
-        className="one-whole text-left">
+        className="one-whole text-left"
+      >
         <h6>
           <em>
             Find a group by zipcode, name, campus, or description

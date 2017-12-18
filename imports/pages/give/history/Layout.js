@@ -19,7 +19,7 @@ export const TransactionList = ({ transactions }: ITransactionList) => {
         const { details, person } = transaction;
         return (
           <div key={key}>
-            {details.filter((x) => (x.amount && Number(x.amount) !== 0)).map((detail, i) => {
+            {details.filter(x => (x.amount && Number(x.amount) !== 0)).map((detail, i) => {
               const year = moment(transaction.date).year();
               if (year !== lastYear) {
                 lastYear = year;

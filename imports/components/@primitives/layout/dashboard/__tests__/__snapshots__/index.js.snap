@@ -1,54 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Dashboard should render with the children 1`] = `
 <div>
   <div
     className="
-              push-top
-              soft-left@handheld
-              soft-top@handheld soft-double-top
-              soft-double-left
-              background--light-primary
-            ">
+            push-top
+            soft-left@handheld
+            soft-top@handheld soft-double-top
+            soft-double-left
+            background--light-primary
+          "
+  >
     <h1
-      className="soft-half-bottom@handheld soft-bottom">
+      className="soft-half-bottom@handheld soft-bottom"
+    >
       Your Giving
     </h1>
     <div
-      className="floating text-left">
+      className="floating text-left"
+    >
       <Link
         className="floating__item text-center plain outlined--bottom"
+        key="0"
         onlyActiveOnIndex={false}
         style={
           Object {
             "borderBottom": "",
           }
         }
-        to="https://my.newspring.cc/give">
+        to="https://my.newspring.cc/give"
+      >
         <h6>
           Home
         </h6>
       </Link>
       <Link
         className="floating__item text-center plain text-dark-primary"
+        key="1"
         onlyActiveOnIndex={false}
         style={
           Object {
             "borderBottom": "3px solid #FFFFFF",
           }
         }
-        to="https://my.newspring.cc/give/now">
+        to="https://my.newspring.cc/give/now"
+      >
         <h6>
           Give Now
         </h6>
       </Link>
       <Link
         className="floating__item text-center plain text-dark-primary"
+        key="2"
         onlyActiveOnIndex={false}
         style={
           Object {
             "borderBottom": "3px solid #FFFFFF",
           }
         }
-        to="https://my.newspring.cc/give/history">
+        to="https://my.newspring.cc/give/history"
+      >
         <h6>
           History
         </h6>
@@ -61,14 +72,16 @@ exports[`Dashboard should render with the children 1`] = `
       Object {
         "borderWidth": "1px",
       }
-    }>
+    }
+  >
     <div>
       <ActivityCard
         date="2016-12-25"
         linkText="You KNOW You Want To Click This"
         linkUrl="https://my.newspring.cc"
         message="Yay! This is so great for you!"
-        status="success" />
+        status="success"
+      />
     </div>
   </div>
 </div>
@@ -78,53 +91,62 @@ exports[`Dashboard should render with the default set of props 1`] = `
 <div>
   <div
     className="
-              push-top
-              soft-left@handheld
-              soft-top@handheld soft-double-top
-              soft-double-left
-              background--light-primary
-            ">
+            push-top
+            soft-left@handheld
+            soft-top@handheld soft-double-top
+            soft-double-left
+            background--light-primary
+          "
+  >
     <h1
-      className="soft-half-bottom@handheld soft-bottom">
+      className="soft-half-bottom@handheld soft-bottom"
+    >
       Your Giving
     </h1>
     <div
-      className="floating text-left">
+      className="floating text-left"
+    >
       <Link
         className="floating__item text-center plain outlined--bottom"
+        key="0"
         onlyActiveOnIndex={false}
         style={
           Object {
             "borderBottom": "",
           }
         }
-        to="https://my.newspring.cc/give">
+        to="https://my.newspring.cc/give"
+      >
         <h6>
           Home
         </h6>
       </Link>
       <Link
         className="floating__item text-center plain text-dark-primary"
+        key="1"
         onlyActiveOnIndex={false}
         style={
           Object {
             "borderBottom": "3px solid #FFFFFF",
           }
         }
-        to="https://my.newspring.cc/give/now">
+        to="https://my.newspring.cc/give/now"
+      >
         <h6>
           Give Now
         </h6>
       </Link>
       <Link
         className="floating__item text-center plain text-dark-primary"
+        key="2"
         onlyActiveOnIndex={false}
         style={
           Object {
             "borderBottom": "3px solid #FFFFFF",
           }
         }
-        to="https://my.newspring.cc/give/history">
+        to="https://my.newspring.cc/give/history"
+      >
         <h6>
           History
         </h6>
@@ -137,7 +159,8 @@ exports[`Dashboard should render with the default set of props 1`] = `
       Object {
         "borderWidth": "1px",
       }
-    }>
+    }
+  >
     <div />
   </div>
 </div>

@@ -28,7 +28,7 @@ type INextButton = {
 const NextButton = ({
   billing,
   next,
-  className = ""
+  className = "",
 }: INextButton) => {
   const btnClasses = [className].concat(["push-left"]);
   let disabled = false;
@@ -82,7 +82,7 @@ const Layout = ({
   streetAddress,
   streetAddress2,
   zip,
-  transactionType
+  transactionType,
 }: ILayout) => (
   <div>
     <div className="push-double@lap-and-up push">
