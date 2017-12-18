@@ -30,7 +30,6 @@ before_install:
   - npm install -g coveralls
 script:
   - yarn
-  - yarn danger
   - yarn test --ci
   - yarn lint
 after_success:
