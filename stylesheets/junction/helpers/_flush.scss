@@ -1,0 +1,77 @@
+
+$use-flush: true !default;
+
+@if $use-flush == true {
+  //
+  // @name .flush
+  // @class .flush
+  // @description force margin to be 0
+  //
+  // @namespaced true
+  //
+  @include namespace(flush) {
+    margin: 0;
+  }
+  //
+  // @name .flush-top
+  // @class .flush-top
+  // @description force top margin to be 0
+  //
+  // @namespaced true
+  //
+  @include namespace(flush-top) {
+    margin-top: 0;
+  }
+  //
+  // @name .flush-right
+  // @class .flush-right
+  // @description force right margin to be 0
+  //
+  // @namespaced true
+  //
+  @include namespace(flush-right) {
+    margin-right: 0;
+  }
+  //
+  // @name .flush-bottom
+  // @class .flush-bottom
+  // @description force bottom margin to be 0
+  //
+  // @namespaced true
+  //
+  @include namespace(flush-bottom) {
+    margin-bottom: 0;
+  }
+  //
+  // @name .flush-left
+  // @class .flush-left
+  // @description force left margin to be 0
+  //
+  // @namespaced true
+  //
+  @include namespace(flush-left) {
+    margin-left: 0;
+  }
+  //
+  // @name .flush-ends
+  // @class .flush-ends
+  // @description force top and bottom margin to be 0
+  //
+  // @namespaced true
+  //
+  @include namespace(flush-ends) {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  //
+  // @name .flush-sides
+  // @class .flush-sides
+  // @description force left and right margin to be 0
+  //
+  // @namespaced true
+  //
+  @include namespace(flush-sides) {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}

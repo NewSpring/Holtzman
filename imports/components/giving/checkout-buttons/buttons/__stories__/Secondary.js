@@ -1,9 +1,9 @@
 /* eslint-disable */
-import { storiesOf } from "@kadira/storybook";
+import { storiesOf } from '@storybook/react';
 import {
   withKnobs,
   boolean,
-} from "@kadira/storybook-addon-knobs";
+} from '@storybook/addon-knobs';
 import withReadme from "storybook-readme/with-readme";
 import backgrounds from "react-storybook-addon-backgrounds";
 import centered from "/.storybook/decorators/centered";

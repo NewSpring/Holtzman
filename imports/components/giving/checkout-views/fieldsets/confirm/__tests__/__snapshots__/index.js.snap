@@ -1,13 +1,16 @@
-exports[`test renders PaymentOptionsLayout when state is true 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders PaymentOptionsLayout when state is true 1`] = `
 <PaymentOptionsLayout
   changeAccounts={[Function]}
   choose={[Function]}
   goToStepOne={[Function]}
   savedAccount={Object {}}
-  savedAccounts={Array []} />
+  savedAccounts={Array []}
+/>
 `;
 
-exports[`test renders ScheduleLayout if schedules 1`] = `
+exports[`renders ScheduleLayout if schedules 1`] = `
 <TransactionLayout
   back={[Function]}
   changeAccounts={[Function]}
@@ -32,10 +35,11 @@ exports[`test renders ScheduleLayout if schedules 1`] = `
     Array [
       "1",
     ]
-  } />
+  }
+/>
 `;
 
-exports[`test renders TransactionLayout by default 1`] = `
+exports[`renders TransactionLayout by default 1`] = `
 <TransactionLayout
   back={[Function]}
   changeAccounts={[Function]}
@@ -60,5 +64,6 @@ exports[`test renders TransactionLayout by default 1`] = `
     Array [
       "1",
     ]
-  } />
+  }
+/>
 `;

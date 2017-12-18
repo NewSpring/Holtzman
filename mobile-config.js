@@ -30,6 +30,20 @@ App.icons({
   android_xxxhdpi: "assets/icons/android/icon-192x192-xxxhpdi.png",
 });
 
+// Modifying the XCBuildConfiguration in the Xcode Project
+App.appendToConfig(`
+  <platform name="ios">
+    <icon height="1024" width="1024" src="../../../assets/icons/ios/icon-1024x1024.png" />
+    <preference name="ios-XCBuildConfiguration-SWIFT_VERSION" value="3.0" quote="value" />
+    <config-file platform="ios" target="*-Info.plist" parent="UIBackgroundModes" mode="merge" >
+      <array>
+        <string>audio</string>
+        <string>remote-notification</string>
+      </array>
+    </config-file>
+  </platform>
+`);
+
 App.launchScreens({
   // iOS
   iphone_2x: "assets/splash/ios/splash-320x480@2x.png",
@@ -58,11 +72,9 @@ App.accessRule("*");
 App.setPreference("EnableBitcode", false);
 App.setPreference("ShowSplashScreenSpinner", false);
 App.setPreference("SplashMaintainAspectRatio", true);
-
 App.setPreference("StatusBarBackgroundColor", "#6bac43");
 App.setPreference("StatusBarStyle", "lightcontent");
 App.setPreference("StatusBarOverlaysWebView", false);
-
 App.setPreference("Orientation", "portrait");
 
 App.configurePlugin("cordova-fabric-plugin", {
@@ -78,6 +90,7 @@ App.configurePlugin("cordova-plugin-geolocation", {
   GEOLOCATION_USAGE_DESCRIPTION: "Searching for Groups",
 });
 
+// Universal Links
 App.appendToConfig(`
     <universal-links>
       <ios-team-id value="7TM8C6252Z" />
@@ -125,3 +138,4 @@ App.appendToConfig(`
       <host name="rm2y5.app.goo.gl" scheme="https" event="universalLinkRoute" />
     </universal-links>
 `);
+

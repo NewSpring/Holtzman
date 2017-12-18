@@ -1,0 +1,64 @@
+
+
+$use-locked: true!default;
+
+@if $use-locked == true {
+
+  @include namespace(locked) {
+    position: absolute;
+  }
+
+  @include namespace(locked-left) {
+    position: absolute;
+
+    left: 0;
+  }
+
+  @include namespace(locked-right) {
+    position: absolute;
+
+    right: 0;
+  }
+
+  @include namespace(locked-top) {
+    position: absolute;
+
+    top: 0;
+  }
+
+  @include namespace(locked-middle) {
+    position: absolute;
+
+    top: 50%;
+  }
+
+  @include namespace(locked-center) {
+    position: absolute;
+
+    left: 50%;
+  }
+
+
+
+  @include namespace(locked-bottom) {
+    position: absolute;
+
+    bottom: 0;
+  }
+
+  @include namespace(locked-ends) {
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+  }
+
+  @include namespace(locked-sides) {
+    position: absolute;
+
+    right: 0;
+    left: 0;
+  }
+
+
+}

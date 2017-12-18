@@ -53,7 +53,7 @@ export default class Join extends Component {
   onClick = (e: Event) => {
     this.setState({ state: "loading" });
 
-    this.props.onClick(e, (err) => {
+    this.props.onClick(e, err => {
       if (err) {
         this.setState({ state: "error", err: err.message });
         return setTimeout(() => {
@@ -76,8 +76,8 @@ export default class Join extends Component {
 
   render() {
     const { group, onExit } = this.props;
-    const leaders = group.members.filter((x) => (x.role.toLowerCase() === "leader"));
-    const firstNames = leaders.map((x) => (x.person.nickName || x.person.firstName)).join(", ");
+    const leaders = group.members.filter(x => (x.role.toLowerCase() === "leader"));
+    const firstNames = leaders.map(x => (x.person.nickName || x.person.firstName)).join(", ");
     const communicationPreferences = [
       { label: "No Preference", value: "No Preference" },
       { label: "Email", value: "Email" },

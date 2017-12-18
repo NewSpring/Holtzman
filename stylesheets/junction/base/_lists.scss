@@ -1,0 +1,15 @@
+
+$use-lists: true !default;
+
+@if $use-lists == true {
+  //
+  // @name
+  // @description Remove vertical spacing from nested lists.
+  //
+  // @base true
+  //
+  li > ul,
+  li > ol {
+    margin-bottom: 0;
+  }
+}

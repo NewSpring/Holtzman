@@ -18,10 +18,9 @@ type ILineGraph = {
 };
 
 const getTickFormat = (data: Object[]) => {
-  const ticks = data.map((x) => (x.tick));
+  const ticks = data.map(x => (x.tick));
   return ticks;
 };
-
 
 type IGradientGroup = {
   style?: Object,
@@ -52,7 +51,12 @@ class LineGraph extends Component {
   graphContainer: Element;
 
   componentDidMount() {
-    const renderedChart = this.graphContainer.querySelectorAll("[aria-labelledby='title desc']");
+    let renderedChart;
+
+    if (this.graphContainer) {
+      renderedChart = this.graphContainer.querySelectorAll("[aria-labelledby='title desc']");
+    }
+
     if (renderedChart && renderedChart.length) renderedChart[0].removeAttribute("height");
   }
 
@@ -68,7 +72,7 @@ class LineGraph extends Component {
     return (
       <div
         className=""
-        ref={(el) => (this.graphContainer = el)}
+        ref={el => (this.graphContainer = el)}
       >
         <VictoryChart
           height={160}

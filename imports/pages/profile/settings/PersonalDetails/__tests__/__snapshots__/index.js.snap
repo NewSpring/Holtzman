@@ -1,4 +1,6 @@
-exports[`test getDays returns an array of days in the month 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getDays returns an array of days in the month 1`] = `
 Array [
   Object {
     "label": 1,
@@ -127,7 +129,7 @@ Array [
 ]
 `;
 
-exports[`test getDays returns an array of days in the month based on state 1`] = `
+exports[`getDays returns an array of days in the month based on state 1`] = `
 Array [
   Object {
     "label": 1,
@@ -252,7 +254,7 @@ Array [
 ]
 `;
 
-exports[`test getMonths returns array of short month names 1`] = `
+exports[`getMonths returns array of short month names 1`] = `
 Array [
   Object {
     "label": "Jan",
@@ -305,7 +307,7 @@ Array [
 ]
 `;
 
-exports[`test getYears returns array of 150 years 1`] = `
+exports[`getYears returns array of 150 years 1`] = `
 Array [
   Object {
     "label": 2000,
@@ -910,7 +912,7 @@ Array [
 ]
 `;
 
-exports[`test parses campuses query 1`] = `
+exports[`parses campuses query 1`] = `
 Object {
   "definitions": Array [
     Object {
@@ -1012,7 +1014,7 @@ Object {
 }
 `;
 
-exports[`test parses person query 1`] = `
+exports[`parses person query 1`] = `
 Object {
   "definitions": Array [
     Object {
@@ -1229,7 +1231,7 @@ Object {
 }
 `;
 
-exports[`test renders error version 1`] = `
+exports[`renders error version 1`] = `
 <div
   style={
     Object {
@@ -1238,15 +1240,17 @@ exports[`test renders error version 1`] = `
       "top": 0,
       "width": "100%",
     }
-  }>
+  }
+>
   <Err
     error={[Function]}
-    msg="Looks like there was a problem" />
+    msg="Looks like there was a problem"
+  />
   ;
 </div>
 `;
 
-exports[`test renders loading version 1`] = `
+exports[`renders loading version 1`] = `
 <div
   style={
     Object {
@@ -1255,19 +1259,22 @@ exports[`test renders loading version 1`] = `
       "top": 0,
       "width": "100%",
     }
-  }>
+  }
+>
   <Loading
-    msg="Updating your information..." />
+    msg="Updating your information..."
+  />
   ;
 </div>
 `;
 
-exports[`test renders success version 1`] = `
+exports[`renders success version 1`] = `
 <Success
-  msg="Your information has been updated!" />
+  msg="Your information has been updated!"
+/>
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <Layout
   campuses={
     Array [
@@ -2067,5 +2074,6 @@ exports[`test renders with props 1`] = `
         "value": 1851,
       },
     ]
-  } />
+  }
+/>
 `;

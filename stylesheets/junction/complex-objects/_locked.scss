@@ -1,0 +1,53 @@
+
+$use-locked-scroll: true!default;
+
+@if $use-locked-scroll == true {
+  //
+  // @name Lock
+  // @class .locked-scroll
+  // @description Prevent a child container from being scrollable
+  //
+  // @complex-object true
+  //
+  // @block .locked-scroll
+  // @element .locked-scroll__item
+  //
+  // @note document - this can be used on html and body tags respectivly to arrest scrolling when using an overlay or modal
+  //
+  // @markup
+  // <div class="locked-scroll">
+  //   <div class="locked-scroll__item">
+  //   </div>
+  // </div>
+  //
+  .locked-scroll {
+    overflow: hidden;
+  }
+
+  //
+  // @name .locked-scroll__item
+  // @class .locked-scroll__item
+  // @description Prevent a child container from being scrollable
+  //
+  // @complex-object true
+  //
+  // @block .locked-scroll
+  // @element .locked-scroll__item
+  //
+  // @note document - this can be used on html and body tags respectivly to arrest scrolling when using an overlay or modal
+  //
+  // @markup
+  // <div class="locked-scroll">
+  //   <div class="locked-scroll__item">
+  //   </div>
+  // </div>
+  //
+  .locked-scroll__item {
+    overflow: hidden;
+
+    height: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+}

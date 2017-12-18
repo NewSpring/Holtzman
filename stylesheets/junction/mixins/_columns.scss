@@ -1,0 +1,37 @@
+
+$use-columns: true!default;
+
+// @if $use-columns == true {
+  //
+  // @name columns
+  // @description Used to generate columns in text
+  //
+  // @mixin true
+  //
+  // @parameter $count - number of columns desired
+  // @parameter $gap - width of gap
+  //
+  // @scss
+  // .className {
+  //   @include columns(2, 10px);
+  // }
+  //
+  // @css
+  // .className {
+  //   -webkit-column-count: 2;
+  //      -moz-column-count: 2;
+  //           column-count: 2;
+  //   -webkit-column-gap: 10px;
+  //      -moz-column-gap: 10px;
+  //           column-gap: 10px;
+  // }
+  //
+  @mixin columns($count, $gap) {
+    -webkit-column-count: $count;
+       -moz-column-count: $count;
+            column-count: $count;
+    -webkit-column-gap: $gap;
+       -moz-column-gap: $gap;
+            column-gap: $gap;
+  }
+// }

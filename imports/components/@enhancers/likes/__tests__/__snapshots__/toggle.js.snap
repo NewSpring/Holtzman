@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Likes Wrapper should contain mutation 1`] = `
 "mutation ToggleLike($nodeId: String!) {
   toggleLike(nodeId: $nodeId) {
@@ -17,7 +19,7 @@ fragment ContentCard on Content {
     channelName
     id
     content {
-      images(sizes: ["medium"]) {
+      images(sizes: [\\"medium\\"]) {
         url
         label
         fileLabel
@@ -26,7 +28,7 @@ fragment ContentCard on Content {
     }
   }
   content {
-    images(sizes: ["medium"]) {
+    images(sizes: [\\"medium\\"]) {
       url
       label
       fileLabel
@@ -57,7 +59,8 @@ exports[`Likes Wrapper should render the child component 1`] = `
     Object {
       "visible": false,
     }
-  }>
+  }
+>
   <TestComponent
     dispatch={[Function]}
     isLiked={false}
@@ -72,9 +75,11 @@ exports[`Likes Wrapper should render the child component 1`] = `
         "visible": false,
       }
     }
-    toggleLike={[Function]}>
+    toggleLike={[Function]}
+  >
     <div
-      id="tester">
+      id="tester"
+    >
       Test
     </div>
   </TestComponent>
