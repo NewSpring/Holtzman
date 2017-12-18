@@ -1,4 +1,3 @@
-
 // @flow
 
 // $FlowMeteor
@@ -15,7 +14,7 @@ type IPrimary = {
   preFill: Function,
   changeFund: Function,
   changeAmount: Function,
-}
+};
 
 const Primary = ({ active, fundId, accounts, preFill, changeFund, changeAmount }: IPrimary) => (
   <div>
@@ -29,11 +28,13 @@ const Primary = ({ active, fundId, accounts, preFill, changeFund, changeAmount }
       pattern={"[0-9]*"}
       step={"0.01"}
       classes={["soft-bottom", "input--active", "display-inline-block"]}
-      inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom text-brand ${css(Styles["show-placeholder"])}`}
+      inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom text-brand ${css(
+        Styles["show-placeholder"],
+      )}`}
       placeholder="0.00"
       format={changeAmount}
       defaultValue={preFill(fundId)}
-      style={{ maxWidth: "150px", paddingLeft: ".8em" }}
+      style={{ maxWidth: "165px" }}
     />
 
     <h3 className={"text-dark-primary display-inline-block push-half-bottom push-half-right"}>
@@ -46,7 +47,9 @@ const Primary = ({ active, fundId, accounts, preFill, changeFund, changeAmount }
       name="select-account"
       hideLabel
       classes={["soft-bottom", "display-inline-block", css(Styles.select)]}
-      inputClasses={`${active ? "text-primary" : "text-dark-tertiary"} outlined--dotted outlined--light h3 hard-top flush-bottom`}
+      inputClasses={`${
+        active ? "text-primary" : "text-dark-tertiary"
+      } outlined--dotted outlined--light h3 hard-top flush-bottom`}
       placeholder="select fund"
       onChange={changeFund}
       selected={fundId}
