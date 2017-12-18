@@ -1,4 +1,5 @@
-import { Component, PropTypes } from "react";
+import PropTypes from "prop-types";
+import { Component } from "react";
 import { connect } from "react-redux";
 import { css } from "aphrodite";
 
@@ -57,7 +58,7 @@ class SplitContainerWithoutData extends Component {
   }
 }
 
-const map = (state) => ({ navigation: state.nav });
+const map = state => ({ navigation: state.nav });
 const withRedux = connect(map);
 export default withRedux(SplitContainerWithoutData);
 

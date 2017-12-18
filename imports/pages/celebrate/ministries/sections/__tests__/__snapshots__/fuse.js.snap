@@ -1,41 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Fuse renders a layout 1`] = `
 <div>
   <div
-    className="background--light-secondary soft-double-ends@lap-and-up soft-ends text-center">
+    className="background--light-secondary soft-double-ends@lap-and-up soft-ends text-center"
+  >
     <div
-      className="constrain-page soft-double-top soft-sides@lap soft-sides@handheld">
+      className="constrain-page soft-double-top soft-sides@lap soft-sides@handheld"
+    >
       <div
-        className="one-whole">
+        className="one-whole"
+      >
         <div
-          className="constrain-copy">
+          className="constrain-copy"
+        >
           <h1
             className="uppercase push-bottom"
             style={
               Object {
                 "color": "#4F92A9",
               }
-            }>
+            }
+          >
             Fuse
           </h1>
           <p
-            className="text-left">
-            Fuse is NewSpring\'s student ministry. Fuse is a place where middle and high school students can have fun while connecting to Jesus and to each other.
+            className="text-left"
+          >
+            Fuse is NewSpring's student ministry. Fuse is a place where middle and high school students can have fun while connecting to Jesus and to each other.
           </p>
         </div>
         <div
-          className="one-whole soft-double-top@lap-and-up soft-top soft-bottom@lap-and-up">
+          className="one-whole soft-double-top@lap-and-up soft-top soft-bottom@lap-and-up"
+        >
           <h3
             className="push-double-bottom@lap-and-up push-bottom"
             style={
               Object {
                 "color": "#4F92A9",
               }
-            }>
+            }
+          >
             Average Weekly Attendance
           </h3>
           <Connect(FitTextWithoutData)
             compressor={0.4}
-            maxFontSize="100">
+            maxFontSize="100"
+          >
             <h1
               style={
                 Object {
@@ -43,7 +54,8 @@ exports[`Fuse renders a layout 1`] = `
                   "fontWeight": 900,
                   "marginBottom": 0,
                 }
-              }>
+              }
+            >
               4,060
             </h1>
           </Connect(FitTextWithoutData)>
@@ -53,71 +65,107 @@ exports[`Fuse renders a layout 1`] = `
     <Connect(CardSlider)>
       <MetricCard
         count="59"
-        label="Aiken" />
+        key="0"
+        label="Aiken"
+      />
       <MetricCard
         count="883"
-        label="Anderson" />
+        key="1"
+        label="Anderson"
+      />
       <MetricCard
         count="189"
-        label="Boiling Springs" />
+        key="2"
+        label="Boiling Springs"
+      />
       <MetricCard
         count="361"
-        label="Charleston" />
+        key="3"
+        label="Charleston"
+      />
       <MetricCard
         count="213"
-        label="Clemson" />
+        key="4"
+        label="Clemson"
+      />
       <MetricCard
         count="485"
-        label="Columbia" />
+        key="5"
+        label="Columbia"
+      />
       <MetricCard
         count="243"
-        label="Florence" />
+        key="6"
+        label="Florence"
+      />
       <MetricCard
         count="529"
-        label="Greenville" />
+        key="7"
+        label="Greenville"
+      />
       <MetricCard
         count="173"
-        label="Greenwood" />
+        key="8"
+        label="Greenwood"
+      />
       <MetricCard
         count="18"
-        label="Hilton Head" />
+        key="9"
+        label="Hilton Head"
+      />
       <MetricCard
         count="201"
-        label="Lexington" />
+        key="10"
+        label="Lexington"
+      />
       <MetricCard
         count="305"
-        label="Myrtle Beach" />
+        key="11"
+        label="Myrtle Beach"
+      />
       <MetricCard
         count="202"
-        label="Powdersville" />
+        key="12"
+        label="Powdersville"
+      />
       <MetricCard
         count="28"
-        label="Rock Hill" />
+        key="13"
+        label="Rock Hill"
+      />
       <MetricCard
         count="313"
-        label="Spartanburg" />
+        key="14"
+        label="Spartanburg"
+      />
       <MetricCard
         count="80"
-        label="Sumter" />
+        key="15"
+        label="Sumter"
+      />
     </Connect(CardSlider)>
     <div
-      className="constrain-page soft-sides@handheld">
+      className="constrain-page soft-sides@handheld"
+    >
       <div
-        className="soft-double-top@lap-and-up soft-bottom@lap-and-up">
+        className="soft-double-top@lap-and-up soft-bottom@lap-and-up"
+      >
         <h3
           className="italic"
           style={
             Object {
               "color": "#4F92A9",
             }
-          }>
+          }
+        >
           <strong>
             Every number has a name.
           </strong>
         </h3>
         <div
           className="soft-sides@lap"
-          id="fuse">
+          id="fuse"
+        >
           <Connect(TagGalleryWithoutData)
             buttonColor="#6BA4B8"
             id="fuse"
@@ -157,38 +205,45 @@ exports[`Fuse renders a layout 1`] = `
                   "value": "StudentVolunteers",
                 },
               ]
-            } />
+            }
+          />
         </div>
       </div>
     </div>
   </div>
   <div
-    className="background--light-primary text-center soft-double-ends">
+    className="background--light-primary text-center soft-double-ends"
+  >
     <div
-      className="constrain-copy soft-double-ends soft-sides@handheld push-double-ends">
+      className="constrain-copy soft-double-ends soft-sides@handheld push-double-ends"
+    >
       <div
-        className="one-whole">
+        className="one-whole"
+      >
         <h3
           className="italic push-half-bottom"
           style={
             Object {
               "color": "#4F92A9",
             }
-          }>
+          }
+        >
           <strong>
             This year we saw
           </strong>
         </h3>
         <Connect(FitTextWithoutData)
           compressor={0.4}
-          maxFontSize="100">
+          maxFontSize="100"
+        >
           <h1
             style={
               Object {
                 "color": "#4F92A9",
                 "fontWeight": 900,
               }
-            }>
+            }
+          >
             3,880
           </h1>
         </Connect(FitTextWithoutData)>
@@ -198,7 +253,8 @@ exports[`Fuse renders a layout 1`] = `
             Object {
               "color": "#4F92A9",
             }
-          }>
+          }
+        >
           students meet Jesus at Fuse.
         </h3>
       </div>
@@ -210,23 +266,29 @@ exports[`Fuse renders a layout 1`] = `
       Object {
         "backgroundColor": "#4F92A9",
       }
-    }>
+    }
+  >
     <div
-      className="constrain-copy push-top push-top@lap-and-up soft-sides@handheld">
+      className="constrain-copy push-top push-top@lap-and-up soft-sides@handheld"
+    >
       <div
-        className="one-whole">
+        className="one-whole"
+      >
         <h3
-          className="italic flush">
+          className="italic flush"
+        >
           <strong>
             This year at
           </strong>
         </h3>
         <h2
-          className="flush">
+          className="flush"
+        >
           Gauntlet
         </h2>
         <h3
-          className="italic">
+          className="italic"
+        >
           <strong>
             we saw
           </strong>
@@ -239,20 +301,29 @@ exports[`Fuse renders a layout 1`] = `
         Object {
           "color": "#4F92A9",
         }
-      }>
+      }
+    >
       <Connect(CardSlider)>
         <MetricCard
           count="671"
-          label="Salvations" />
+          key="0"
+          label="Salvations"
+        />
         <MetricCard
           count="1,407"
-          label="Baptisms" />
+          key="1"
+          label="Baptisms"
+        />
         <MetricCard
           count="5,182"
-          label="Students" />
+          key="2"
+          label="Students"
+        />
         <MetricCard
           count="1,368"
-          label="Volunteers" />
+          key="3"
+          label="Volunteers"
+        />
       </Connect(CardSlider)>
     </div>
   </div>

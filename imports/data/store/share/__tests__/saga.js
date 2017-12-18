@@ -1,6 +1,4 @@
-
-import { takeLatest } from "redux-saga";
-import { put, select, call } from "redux-saga/effects";
+import { takeLatest, put, select, call } from "redux-saga/effects";
 import shareSaga, { shareAction } from "../saga";
 
 it("listens to SHARE.SHARE", () => {

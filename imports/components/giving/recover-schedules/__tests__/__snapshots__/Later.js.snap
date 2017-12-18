@@ -1,12 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Later should show the date that is passed in as a prop 1`] = `
 <div
-  className="soft soft-double-ends one-whole text-center">
+  className="soft soft-double-ends one-whole text-center"
+>
   <h4
-    className="text-center push-ends">
+    className="text-center push-ends"
+  >
     Sounds Great!
   </h4>
   <p
-    className="text-left">
+    className="text-left"
+  >
     We will remind you about your contributions on 
     <strong>
       Tuesday, January 1st
@@ -15,12 +20,14 @@ exports[`Later should show the date that is passed in as a prop 1`] = `
     <a
       href="//rock.newspring.cc/workflows/152?Topic=Stewardship"
       rel="noopener noreferrer"
-      target="_blank">
+      target="_blank"
+    >
       contact us 
     </a>
   </p>
   <button
-    className="one-whole btn push-ends">
+    className="one-whole btn push-ends"
+  >
     Close
   </button>
 </div>

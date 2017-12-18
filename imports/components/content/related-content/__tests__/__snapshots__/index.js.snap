@@ -1,10 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Related content component renders related content 1`] = `
 <section
-  className="soft-half-sides@palm soft-double@palm-wide soft-top soft-half-bottom background--light-secondary">
+  className="soft-half-sides@palm soft-double@palm-wide soft-top soft-half-bottom background--light-secondary"
+>
   <div
-    className="one-whole text-center">
+    className="one-whole text-center"
+  >
     <h5
-      className="flush soft-bottom">
+      className="flush soft-bottom"
+    >
       This is Related Content
     </h5>
   </div>
@@ -16,30 +21,38 @@ exports[`Related content component renders related content 1`] = `
           "margin": "0 auto",
           "maxWidth": "480px",
         }
-      }>
+      }
+    >
       <a
         className="plain"
         onClick={[Function]}
-        style={Object {}}>
+        style={Object {}}
+      >
         <div
-          className="card">
+          className="card"
+        >
           <div
             className="card__item soft push-half-ends two-thirds"
             style={
               Object {
                 "verticalAlign": "middle",
               }
-            }>
+            }
+          >
             <h6
-              className="text-dark-primary capitalize push-half-top">
-              The worst thing about America isn\'t what you think
+              className="text-dark-primary capitalize push-half-top"
+            >
+              The worst thing about America isn't what you think
             </h6>
             <div
-              className="display-inline-block">
+              className="display-inline-block"
+            >
               <span
-                className="icon-category-text text-dark-tertiary" />
+                className="icon-category-text text-dark-tertiary"
+              />
               <h7
-                className="text-dark-tertiary soft-half-left">
+                className="text-dark-tertiary soft-half-left"
+              >
                 Articles
               </h7>
             </div>
@@ -48,10 +61,11 @@ exports[`Related content component renders related content 1`] = `
             className="locked-ends locked-right card__image one-third background--fill"
             style={
               Object {
-                "backgroundImage": "url(\'//drhztd8q3iayu.cloudfront.net/newspring/editorial/newspring.blog.hero.gingergirl.medium.jpg\')",
+                "backgroundImage": "url('//drhztd8q3iayu.cloudfront.net/newspring/editorial/newspring.blog.hero.gingergirl.medium.jpg')",
                 "verticalAlign": "middle",
               }
-            } />
+            }
+          />
         </div>
       </a>
     </div>
@@ -61,19 +75,24 @@ exports[`Related content component renders related content 1`] = `
 
 exports[`Related content loading graph data renders completely without crashing 1`] = `
 <section
-  className="soft-half-sides@palm soft-double@palm-wide soft-top soft-half-bottom background--light-secondary">
+  className="soft-half-sides@palm soft-double@palm-wide soft-top soft-half-bottom background--light-secondary"
+>
   <div
-    className="one-whole text-center">
+    className="one-whole text-center"
+  >
     <h5
-      className="flush soft-bottom">
+      className="flush soft-bottom"
+    >
       More Like This
     </h5>
   </div>
   <div
-    className="one-whole text-center soft">
+    className="one-whole text-center soft"
+  >
     <div
       className="loader_9h6gj"
-      style={Object {}} />
+      style={Object {}}
+    />
   </div>
   <div />
 </section>
@@ -88,9 +107,10 @@ exports[`Related content query should match query shape 1`] = `
     channel: channelName
     channelName
     parent {
+      id
       entryId: id
       content {
-        images(sizes: [\"medium\"]) {
+        images(sizes: [\\"medium\\"]) {
           url
           label
           fileLabel
@@ -99,7 +119,7 @@ exports[`Related content query should match query shape 1`] = `
       }
     }
     content {
-      images(sizes: [\"medium\"]) {
+      images(sizes: [\\"medium\\"]) {
         url
         label
         fileLabel

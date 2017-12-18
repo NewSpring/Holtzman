@@ -1,6 +1,4 @@
-
 // @flow
-
 import React, { Component } from "react";
 import { Link } from "react-router";
 
@@ -13,11 +11,11 @@ import LoadingActivityCard from "../../../components/@primitives/UI/loading/Acti
 import SummaryChart from "./GivingSummary";
 
 const ActivityButton = () =>
-  <SmallButton
+  (<SmallButton
     text="See All"
     linkUrl="/give/history"
     className="btn--dark-tertiary flush"
-  />;
+  />);
 
 type IGivingActivity = {
   feed: Object,
@@ -26,11 +24,11 @@ type IGivingActivity = {
 export class GivingActivity extends Component {
   props: IGivingActivity;
 
-  filterActivity = (data: [Object]): [any] => {
+  filterActivity = (data: [Object]): Array<any> => {
     if (!Array.isArray(data)) return [];
 
     const transactions = [];
-    // const accounts = [];
+    // const accounts = [{}];
     const activityToShow = [];
 
     // separate feed by transactions and accoutns
@@ -51,8 +49,7 @@ export class GivingActivity extends Component {
     //   }
     //   return null;
     // });
-
-    transactions.map((transaction) => {
+    transactions.map(transaction => {
       if (transaction.details[0].amount !== 0) {
         if (activityToShow.length < 3) {
           activityToShow.push(transaction);
@@ -140,17 +137,17 @@ export class GivingActivity extends Component {
   };
 
   renderExpiringAccount = (account: Object): any =>
-    <ActivityCard
+    (<ActivityCard
       key={account.id}
       status=""
       message={`Your saved payment ${account.name} is expiring soon.`}
       linkText={"Update it Now"}
       linkUrl={"/"}
       date={"2016-12-01"}
-    />
+    />)
   ;
 
-  renderActivity = (feedItems: ?[Object]): ?[any] => {
+  renderActivity = (feedItems: ?Array<Object>): any => {
     if (Array.isArray(feedItems) && feedItems.length > 0) {
       return feedItems.map((feedItem: Object) => {
         if (feedItem.__typename === "Transaction") { //eslint-disable-line

@@ -153,7 +153,7 @@ describe ("CartContainer > Class Methods", () => {
       const component = mount(generateComponent({ accounts: additionalAccounts }));
       const changeAmount = component.instance().changeAmount;
       changeAmount(10, 1);
-      expect(component.state().subfunds[0].amount).toBe(10);
+      expect(component.state().subfunds[0].amount).toBe(.10);
     });
 
     it("updates the store", () => {
@@ -164,28 +164,28 @@ describe ("CartContainer > Class Methods", () => {
       }));
       const changeAmount = component.instance().changeAmount;
       changeAmount(10, 1);
-      expect(addTransactions).toBeCalledWith({ 1: { label: "TEST 1", value: 10 }});
+      expect(addTransactions).toBeCalledWith({ 1: { label: "TEST 1", value: 0.10 }});
     });
 
     it("returns a formated version of the amount", () => {
       const component = mount(generateComponent({ accounts: additionalAccounts }));
       const changeAmount = component.instance().changeAmount;
       const amount = changeAmount(10, 1);
-      expect(amount).toBe("$10");
+      expect(amount).toBe("0.10");
     });
 
     it("handles cents as the only amount", () => {
       const component = mount(generateComponent({ accounts: additionalAccounts }));
       const changeAmount = component.instance().changeAmount;
-      const amount = changeAmount(.0, 1);
-      expect(amount).toBe("$0");
+      const amount = changeAmount(0, 1);
+      expect(amount).toBe("0.00");
     });
 
     it("handles cents as the only amount with added amounts", () => {
       const component = mount(generateComponent({ accounts: additionalAccounts }));
       const changeAmount = component.instance().changeAmount;
-      const amount = changeAmount(.05, 1);
-      expect(amount).toBe("$0.05");
+      const amount = changeAmount(5, 1);
+      expect(amount).toBe("0.05");
     });
 
     // it("replaces typeahead currency formatting", () => {
@@ -242,7 +242,7 @@ describe ("CartContainer > Class Methods", () => {
       const changeAmount = component.instance().changeAmount;
       const amount = changeAmount(10, 1);
       changeFund(1, 2);
-      expect(addTransactions).toBeCalledWith({ 1: { label: "TEST 1", value: 10 }});
+      expect(addTransactions).toBeCalledWith({ 1: { label: "TEST 1", value: 0.10 }});
     });
   });
 
@@ -258,7 +258,7 @@ describe ("CartContainer > Class Methods", () => {
       const component = mount(generateComponent({ query: { "test": 5 }}));
       const preFillValue = component.instance().preFillValue;
       const amount = preFillValue("1");
-      expect(amount).toBe("$5");
+      expect(amount).toBe("5.00");
     });
   });
 

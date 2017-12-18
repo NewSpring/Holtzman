@@ -1,4 +1,6 @@
-exports[`test renders with props 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders with props 1`] = `
 <Connect(Authorized)>
   <Component
     Loading={[Function]}
@@ -10,6 +12,7 @@ exports[`test renders with props 1`] = `
     printLoading={false}
     ready={true}
     reloading={false}
-    transactions={Array []} />
+    transactions={Array []}
+  />
 </Connect(Authorized)>
 `;

@@ -65,18 +65,18 @@ Vorpal
         }
       }
     }
-    var npmPromises = [];
-    npmPromises.push(
-      new Promise(function(p, f){
-        console.log("installing npm deps");
-        var child = Spawn("npm", ["install"], {
-          cwd: app, stdio: "inherit"
-        });
-        child.on("error", f);
-      })
-    );
+    // var npmPromises = [];
+    // npmPromises.push(
+    //   new Promise(function(p, f){
+    //     console.log("installing npm deps");
+    //     var child = Spawn("npm", ["install"], {
+    //       cwd: app, stdio: "inherit"
+    //     });
+    //     child.on("error", f);
+    //   })
+    // );
 
-    return Promise.all(npmPromises.concat(depPromises))
+    return Promise.all(depPromises)
       .then(function(){
         console.log("Holtzmann should be ready to go!");
         // console.log("you will need to clone it down manually");

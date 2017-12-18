@@ -1,4 +1,6 @@
-exports[`test should accept an active prop to show the input 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should accept an active prop to show the input 1`] = `
 <Layout
   accounts={
     Array [
@@ -15,10 +17,12 @@ exports[`test should accept an active prop to show the input 1`] = `
       "fund": "main",
       "id": "test",
     }
-  }>
+  }
+>
   <div>
     <div
-      className="display-inline-block push-half-bottom h3 push-half-right text-dark-primary">
+      className="display-inline-block push-half-bottom h3 push-half-right text-dark-primary"
+    >
       and give
     </div>
     <Input
@@ -29,49 +33,84 @@ exports[`test should accept an active prop to show the input 1`] = `
           "display-inline-block",
         ]
       }
+      defaultValue={undefined}
+      format={undefined}
       hideLabel={true}
       inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
-      placeholder="$0.00"
+      pattern="[0-9]*"
+      placeholder="0.00"
+      step="0.01"
       style={
         Object {
           "maxWidth": "150px",
+          "paddingLeft": ".8em",
         }
       }
       type="tel"
-      value="5.00">
+      value="5.00"
+    >
       <div
         className="input input--active soft-bottom input--active display-inline-block"
         data-spec="input-wrapper"
         style={
           Object {
             "maxWidth": "150px",
+            "paddingLeft": ".8em",
           }
-        }>
+        }
+      >
         <RenderLabel
-          hideLabel={true} />
-        <input
-          autoCapitalize="on"
-          autoComplete="on"
-          autoCorrect="on"
-          className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
-          data-spec="input"
-          maxLength=""
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          placeholder="$0.00"
-          style={
-            Object {
-              "maxWidth": "150px",
+          disabled={undefined}
+          hideLabel={true}
+          id={undefined}
+          label={undefined}
+          name={undefined}
+          style={undefined}
+        />
+        <span
+          className="
+        dollar--icon
+        hard-top
+        flush-bottom
+        text-brand"
+        >
+          <input
+            autoCapitalize="on"
+            autoComplete="on"
+            autoCorrect="on"
+            className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
+            data-lpignore={undefined}
+            data-spec="input"
+            defaultValue={undefined}
+            disabled={undefined}
+            id={undefined}
+            maxLength=""
+            name={undefined}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            pattern="[0-9]*"
+            placeholder="0.00"
+            readOnly={undefined}
+            spellCheck={undefined}
+            step="0.01"
+            style={
+              Object {
+                "maxWidth": "150px",
+                "paddingLeft": ".8em",
+              }
             }
-          }
-          type="tel" />
+            type="tel"
+          />
+        </span>
       </div>
     </Input>
     <div
-      className="display-block">
+      className="display-block"
+    >
       <h3
-        className="text-dark-primary push-half-bottom push-half-right display-inline-block">
+        className="text-dark-primary push-half-bottom push-half-right display-inline-block"
+      >
         to
       </h3>
       <Select
@@ -93,26 +132,39 @@ exports[`test should accept an active prop to show the input 1`] = `
             },
           ]
         }
-        placeholder="select fund">
+        onChange={undefined}
+        placeholder="select fund"
+        selected={undefined}
+      >
         <div
-          className="input input--active soft-bottom display-inline-block select_1rryh47 select_e8htpf">
+          className="input input--active soft-bottom display-inline-block select_1rryh47 select_e8htpf"
+        >
           <select
             className="text-brand outlined--dotted outlined--light h3 hard-top flush-bottom"
             defaultValue="main fund"
+            disabled={undefined}
+            id={undefined}
+            name={undefined}
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
-            placeholder="select fund">
+            placeholder="select fund"
+            style={undefined}
+          >
             <option
               style={
                 Object {
                   "display": "none",
                 }
-              }>
+              }
+            >
               select fund
             </option>
             <option
-              value="main fund">
+              className={undefined}
+              key="0"
+              value="main fund"
+            >
               main fund
             </option>
           </select>
@@ -123,7 +175,7 @@ exports[`test should accept an active prop to show the input 1`] = `
 </Layout>
 `;
 
-exports[`test should accept custom classes thru classes prop 1`] = `
+exports[`should accept custom classes thru classes prop 1`] = `
 <Layout
   accounts={
     Array [
@@ -139,10 +191,12 @@ exports[`test should accept custom classes thru classes prop 1`] = `
       "fund": "main",
       "id": "test",
     }
-  }>
+  }
+>
   <div>
     <div
-      className="display-inline-block push-half-bottom h3 push-half-right text-dark-primary">
+      className="display-inline-block push-half-bottom h3 push-half-right text-dark-primary"
+    >
       and give
     </div>
     <Input
@@ -153,48 +207,84 @@ exports[`test should accept custom classes thru classes prop 1`] = `
           "display-inline-block",
         ]
       }
+      defaultValue={undefined}
+      format={undefined}
       hideLabel={true}
       inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
-      placeholder="$0.00"
+      pattern="[0-9]*"
+      placeholder="0.00"
+      step="0.01"
       style={
         Object {
           "maxWidth": "150px",
+          "paddingLeft": ".8em",
         }
       }
-      type="tel">
+      type="tel"
+      value={undefined}
+    >
       <div
         className="input soft-bottom input--active display-inline-block"
         data-spec="input-wrapper"
         style={
           Object {
             "maxWidth": "150px",
+            "paddingLeft": ".8em",
           }
-        }>
+        }
+      >
         <RenderLabel
-          hideLabel={true} />
-        <input
-          autoCapitalize="on"
-          autoComplete="on"
-          autoCorrect="on"
-          className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
-          data-spec="input"
-          maxLength=""
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          placeholder="$0.00"
-          style={
-            Object {
-              "maxWidth": "150px",
+          disabled={undefined}
+          hideLabel={true}
+          id={undefined}
+          label={undefined}
+          name={undefined}
+          style={undefined}
+        />
+        <span
+          className="
+        dollar--icon
+        hard-top
+        flush-bottom
+        text-brand"
+        >
+          <input
+            autoCapitalize="on"
+            autoComplete="on"
+            autoCorrect="on"
+            className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
+            data-lpignore={undefined}
+            data-spec="input"
+            defaultValue={undefined}
+            disabled={undefined}
+            id={undefined}
+            maxLength=""
+            name={undefined}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            pattern="[0-9]*"
+            placeholder="0.00"
+            readOnly={undefined}
+            spellCheck={undefined}
+            step="0.01"
+            style={
+              Object {
+                "maxWidth": "150px",
+                "paddingLeft": ".8em",
+              }
             }
-          }
-          type="tel" />
+            type="tel"
+          />
+        </span>
       </div>
     </Input>
     <div
-      className="display-block">
+      className="display-block"
+    >
       <h3
-        className="text-dark-primary push-half-bottom push-half-right display-inline-block">
+        className="text-dark-primary push-half-bottom push-half-right display-inline-block"
+      >
         to
       </h3>
       <Select
@@ -216,26 +306,39 @@ exports[`test should accept custom classes thru classes prop 1`] = `
             },
           ]
         }
-        placeholder="select fund">
+        onChange={undefined}
+        placeholder="select fund"
+        selected={undefined}
+      >
         <div
-          className="input input--active soft-bottom display-inline-block select_1rryh47 select_e8htpf">
+          className="input input--active soft-bottom display-inline-block select_1rryh47 select_e8htpf"
+        >
           <select
             className="text-dark-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
             defaultValue="main fund"
+            disabled={undefined}
+            id={undefined}
+            name={undefined}
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
-            placeholder="select fund">
+            placeholder="select fund"
+            style={undefined}
+          >
             <option
               style={
                 Object {
                   "display": "none",
                 }
-              }>
+              }
+            >
               select fund
             </option>
             <option
-              value="main fund">
+              className={undefined}
+              key="0"
+              value="main fund"
+            >
               main fund
             </option>
           </select>
@@ -246,7 +349,7 @@ exports[`test should accept custom classes thru classes prop 1`] = `
 </Layout>
 `;
 
-exports[`test should accept multiple accounts through accounts prop 1`] = `
+exports[`should accept multiple accounts through accounts prop 1`] = `
 <Layout
   accounts={
     Array [
@@ -264,10 +367,12 @@ exports[`test should accept multiple accounts through accounts prop 1`] = `
       "fund": "main",
       "id": "test",
     }
-  }>
+  }
+>
   <div>
     <div
-      className="display-inline-block push-half-bottom h3 push-half-right text-dark-primary">
+      className="display-inline-block push-half-bottom h3 push-half-right text-dark-primary"
+    >
       and give
     </div>
     <Input
@@ -278,48 +383,84 @@ exports[`test should accept multiple accounts through accounts prop 1`] = `
           "display-inline-block",
         ]
       }
+      defaultValue={undefined}
+      format={undefined}
       hideLabel={true}
       inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
-      placeholder="$0.00"
+      pattern="[0-9]*"
+      placeholder="0.00"
+      step="0.01"
       style={
         Object {
           "maxWidth": "150px",
+          "paddingLeft": ".8em",
         }
       }
-      type="tel">
+      type="tel"
+      value={undefined}
+    >
       <div
         className="input soft-bottom input--active display-inline-block"
         data-spec="input-wrapper"
         style={
           Object {
             "maxWidth": "150px",
+            "paddingLeft": ".8em",
           }
-        }>
+        }
+      >
         <RenderLabel
-          hideLabel={true} />
-        <input
-          autoCapitalize="on"
-          autoComplete="on"
-          autoCorrect="on"
-          className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
-          data-spec="input"
-          maxLength=""
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          placeholder="$0.00"
-          style={
-            Object {
-              "maxWidth": "150px",
+          disabled={undefined}
+          hideLabel={true}
+          id={undefined}
+          label={undefined}
+          name={undefined}
+          style={undefined}
+        />
+        <span
+          className="
+        dollar--icon
+        hard-top
+        flush-bottom
+        text-brand"
+        >
+          <input
+            autoCapitalize="on"
+            autoComplete="on"
+            autoCorrect="on"
+            className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
+            data-lpignore={undefined}
+            data-spec="input"
+            defaultValue={undefined}
+            disabled={undefined}
+            id={undefined}
+            maxLength=""
+            name={undefined}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            pattern="[0-9]*"
+            placeholder="0.00"
+            readOnly={undefined}
+            spellCheck={undefined}
+            step="0.01"
+            style={
+              Object {
+                "maxWidth": "150px",
+                "paddingLeft": ".8em",
+              }
             }
-          }
-          type="tel" />
+            type="tel"
+          />
+        </span>
       </div>
     </Input>
     <div
-      className="display-block">
+      className="display-block"
+    >
       <h3
-        className="text-dark-primary push-half-bottom push-half-right display-inline-block">
+        className="text-dark-primary push-half-bottom push-half-right display-inline-block"
+      >
         to
       </h3>
       <Select
@@ -344,30 +485,46 @@ exports[`test should accept multiple accounts through accounts prop 1`] = `
             },
           ]
         }
-        placeholder="select fund">
+        onChange={undefined}
+        placeholder="select fund"
+        selected={undefined}
+      >
         <div
-          className="input input--active soft-bottom display-inline-block select_1rryh47 select_e8htpf">
+          className="input input--active soft-bottom display-inline-block select_1rryh47 select_e8htpf"
+        >
           <select
             className="text-dark-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
             defaultValue="hello"
+            disabled={undefined}
+            id={undefined}
+            name={undefined}
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
-            placeholder="select fund">
+            placeholder="select fund"
+            style={undefined}
+          >
             <option
               style={
                 Object {
                   "display": "none",
                 }
-              }>
+              }
+            >
               select fund
             </option>
             <option
-              value="hello">
+              className={undefined}
+              key="0"
+              value="hello"
+            >
               hello
             </option>
             <option
-              value="world">
+              className={undefined}
+              key="1"
+              value="world"
+            >
               world
             </option>
           </select>
@@ -378,7 +535,7 @@ exports[`test should accept multiple accounts through accounts prop 1`] = `
 </Layout>
 `;
 
-exports[`test should render with minimal props 1`] = `
+exports[`should render with minimal props 1`] = `
 <Layout
   accounts={
     Array [
@@ -393,10 +550,12 @@ exports[`test should render with minimal props 1`] = `
       "fund": "main",
       "id": "test",
     }
-  }>
+  }
+>
   <div>
     <div
-      className="display-inline-block push-half-bottom h3 push-half-right text-dark-primary">
+      className="display-inline-block push-half-bottom h3 push-half-right text-dark-primary"
+    >
       and give
     </div>
     <Input
@@ -407,48 +566,84 @@ exports[`test should render with minimal props 1`] = `
           "display-inline-block",
         ]
       }
+      defaultValue={undefined}
+      format={undefined}
       hideLabel={true}
       inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
-      placeholder="$0.00"
+      pattern="[0-9]*"
+      placeholder="0.00"
+      step="0.01"
       style={
         Object {
           "maxWidth": "150px",
+          "paddingLeft": ".8em",
         }
       }
-      type="tel">
+      type="tel"
+      value={undefined}
+    >
       <div
         className="input soft-bottom input--active display-inline-block"
         data-spec="input-wrapper"
         style={
           Object {
             "maxWidth": "150px",
+            "paddingLeft": ".8em",
           }
-        }>
+        }
+      >
         <RenderLabel
-          hideLabel={true} />
-        <input
-          autoCapitalize="on"
-          autoComplete="on"
-          autoCorrect="on"
-          className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
-          data-spec="input"
-          maxLength=""
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          placeholder="$0.00"
-          style={
-            Object {
-              "maxWidth": "150px",
+          disabled={undefined}
+          hideLabel={true}
+          id={undefined}
+          label={undefined}
+          name={undefined}
+          style={undefined}
+        />
+        <span
+          className="
+        dollar--icon
+        hard-top
+        flush-bottom
+        text-brand"
+        >
+          <input
+            autoCapitalize="on"
+            autoComplete="on"
+            autoCorrect="on"
+            className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
+            data-lpignore={undefined}
+            data-spec="input"
+            defaultValue={undefined}
+            disabled={undefined}
+            id={undefined}
+            maxLength=""
+            name={undefined}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            pattern="[0-9]*"
+            placeholder="0.00"
+            readOnly={undefined}
+            spellCheck={undefined}
+            step="0.01"
+            style={
+              Object {
+                "maxWidth": "150px",
+                "paddingLeft": ".8em",
+              }
             }
-          }
-          type="tel" />
+            type="tel"
+          />
+        </span>
       </div>
     </Input>
     <div
-      className="display-block">
+      className="display-block"
+    >
       <h3
-        className="text-dark-primary push-half-bottom push-half-right display-inline-block">
+        className="text-dark-primary push-half-bottom push-half-right display-inline-block"
+      >
         to
       </h3>
       <Select
@@ -470,26 +665,39 @@ exports[`test should render with minimal props 1`] = `
             },
           ]
         }
-        placeholder="select fund">
+        onChange={undefined}
+        placeholder="select fund"
+        selected={undefined}
+      >
         <div
-          className="input input--active soft-bottom display-inline-block select_1rryh47 select_e8htpf">
+          className="input input--active soft-bottom display-inline-block select_1rryh47 select_e8htpf"
+        >
           <select
             className="text-dark-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
             defaultValue="main fund"
+            disabled={undefined}
+            id={undefined}
+            name={undefined}
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
-            placeholder="select fund">
+            placeholder="select fund"
+            style={undefined}
+          >
             <option
               style={
                 Object {
                   "display": "none",
                 }
-              }>
+              }
+            >
               select fund
             </option>
             <option
-              value="main fund">
+              className={undefined}
+              key="0"
+              value="main fund"
+            >
               main fund
             </option>
           </select>

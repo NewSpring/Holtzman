@@ -10,18 +10,18 @@ import { map, Schedule, withGiveActions } from "../";
 jest.useFakeTimers();
 
 jest.mock("react-redux", () => ({
-  connect: jest.fn(() => (component) => <component />),
+  connect: jest.fn(() => component => <component />),
 }));
 
-jest.mock("moment", () => (date) => ({
-  endOf: (time) => ({
+jest.mock("moment", () => date => ({
+  endOf: time => ({
     add: (amount, time) => ({
-      format: (style) => `${date || "now"}.endOf(${time}).add(${amount}, ${time}).format(${style})`,
+      format: style => `${date || "now"}.endOf(${time}).add(${amount}, ${time}).format(${style})`,
       toISOString: () => `${date || "now"}.endOf(${time}).add(${amount}, ${time}).toISOString()`,
     }),
   }),
   add: (amount, time) => ({
-    toISOString: (style) => `${date || "now"}.endOf(${time}).add(${amount}, ${time}).toISOString()`,
+    toISOString: style => `${date || "now"}.endOf(${time}).add(${amount}, ${time}).toISOString()`,
   }),
   isValid: date => date !== "custom",
   isSame: date => false,
@@ -52,7 +52,7 @@ it("should render with minimal props", () => {
 
 it("should render nothing if not authorized", () => {
   const component = shallow(generateComponent({ authorized: false }));
-  expect(shallowToJson(component)).toEqual(null);
+  expect(shallowToJson(component)).toEqual("");
 });
 
 
@@ -273,7 +273,7 @@ describe("Class", () => {
         start: "9000-01-01",
         frequency: "one-time",
         activeStartTag: "Custom",
-        checked: true
+        checked: true,
       };
       wrapper.setState(s => initialState);
       startClick("custom");
@@ -319,5 +319,4 @@ describe("Class", () => {
       });
     });
   });
-
 });

@@ -1,14 +1,9 @@
+@import "fonts";
 
-// @import "./base/_select";
-
-// import default vars
-@import "/.remote/junction/lib/mixins";
-
-// make changes specific to this app
+@import "./junction/_mixins";
 @import "./vars";
-
 // import full library
-@import "/.remote/junction/lib/framework";
+@import "./junction/framework";
 
 // hacks
 @import "./hacks";
@@ -28,6 +23,20 @@
 // html, body, #react-app {
 //   background: #303030;
 // }
+
+.dollar--icon {
+  position: relative;
+  &:before {
+    position: absolute;
+    content: "$";
+    left: .18em;
+    font-family: "colfax-web";
+    font-size: 1.8em;
+    line-height: 1.25;
+    font-weight: 700;
+
+  }
+}
 
 .card {
   background-color: #fff;
