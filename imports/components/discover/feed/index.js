@@ -17,10 +17,10 @@ const DiscoverWithoutData = ({
   recentLikes,
 }: IDiscoverWithoutData) => {
   const featured = discover.items && discover.items
-    .filter((x) => (x.status.toLowerCase() === "featured"));
+    .filter(x => (x.status.toLowerCase() === "featured"));
 
   const open = discover.items && discover.items
-    .filter((x) => (x.status.toLowerCase() === "open"));
+    .filter(x => (x.status.toLowerCase() === "open"));
 
   return (
     <Layout

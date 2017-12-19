@@ -1,18 +1,25 @@
-exports[`test renders with props 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders with props 1`] = `
 <div
-  className="soft soft-double-ends push-double-top@anchored one-whole text-center">
+  className="soft soft-double-ends push-double-top@anchored one-whole text-center"
+>
   <div
-    className="push-double-top">
+    className="push-double-top"
+  >
     <Error
       fill="#C64F55"
       height="61px"
-      width="60px" />
+      width="60px"
+    />
     <h3
-      className="text-alert push-ends">
+      className="text-alert push-ends"
+    >
       Location Error
     </h3>
     <p
-      className="text-left">
+      className="text-left"
+    >
       We were unable to find your current location. Check your connection to the network and try again. Or you can type in your zip code to find groups near you!
     </p>
   </div>

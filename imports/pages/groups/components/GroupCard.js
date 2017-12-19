@@ -1,4 +1,4 @@
-import { PropTypes } from "react";
+import PropTypes from "prop-types";
 import truncate from "truncate";
 import { withRouter } from "react-router";
 
@@ -50,7 +50,7 @@ export const GroupCardWithoutData = ({ group, router, onHover }) => {
 
         {/* Tags */}
         <div className="soft-half-top">
-          {theGroup.tags && theGroup.tags.filter((x) => x).map((tag, i) => (
+          {theGroup.tags && theGroup.tags.filter(x => x).map((tag, i) => (
             <Tag val={tag.value} key={i} />
           ))}
 

@@ -1,0 +1,37 @@
+
+$use-extend: true!default;
+
+// @if $use-extend == true {
+  //
+  // @name extend
+  // @link http://hugogiraudel.com/2014/05/05/bringing-configuration-objects-to-sass/
+  // @description Function for replicating javascript extend method of defaluts
+  //
+  // @function true
+  //
+  // @scss
+  //  $conf : (
+  //    size: 50%,
+  //    theme: dark,
+  //    duration: 250ms,
+  //    name: 'component',
+  //    border: true
+  //  );
+  //
+  //  $conf: extend($conf, (
+  //   size: 100%
+  //  ));
+  //
+  //  // config would now equal:
+  //  $conf : (
+  //    size: 100%,
+  //    theme: dark,
+  //    duration: 250ms,
+  //    name: 'component',
+  //    border: true
+  //  )
+  //
+  @function extend($obj, $ext-obj) {
+    @return map-merge($obj, $ext-obj);
+  }
+// }

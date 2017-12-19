@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`StudiesEntryListItem takes a single study as a prop 1`] = `
 <a
   className="
@@ -11,9 +13,11 @@ exports[`StudiesEntryListItem takes a single study as a prop 1`] = `
       "height": 787.2,
       "width": 787.2,
     }
-  }>
+  }
+>
   <div
-    className="one-whole soft-sides text-left floating__item">
+    className="one-whole soft-sides text-left floating__item"
+  >
     <div
       className="background--light-primary floating locked-left locked-top"
       style={
@@ -24,9 +28,11 @@ exports[`StudiesEntryListItem takes a single study as a prop 1`] = `
           "height": "40px",
           "width": "40px",
         }
-      }>
+      }
+    >
       <h5
-        className="floating__item flush">
+        className="floating__item flush"
+      >
         2
       </h5>
     </div>

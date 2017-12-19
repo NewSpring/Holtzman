@@ -1,4 +1,6 @@
-exports[`test doesn't render account type if none 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`doesn't render account type if none 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)
     classes={
@@ -6,12 +8,15 @@ exports[`test doesn't render account type if none 1`] = `
         "background--light-primary",
       ]
     }
-    nav={true}>
+    nav={true}
+  >
     <Meta
-      title="Giving History" />
+      title="Giving History"
+    />
     <Right
       background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg"
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -19,58 +24,74 @@ exports[`test doesn't render account type if none 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <div
-      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
+      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary"
+    >
       <div
-        className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored">
+        className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored"
+      >
         <div
-          className="soft-double-ends@anchored">
+          className="soft-double-ends@anchored"
+        >
           <div
-            className="text-center">
+            className="text-center"
+          >
             <p
-              className="push-half-bottom">
+              className="push-half-bottom"
+            >
               <em>
                 Invalid date
               </em>
             </p>
             <h3
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               test
             </h3>
             <Currency
               amount="2.00"
               baseHeadingSize="1"
-              className="display-inline-block text-center soft-bottom" />
+              className="display-inline-block text-center soft-bottom"
+            />
             <h6
-              className="push-bottom text-dark-tertiary">
+              className="push-bottom text-dark-tertiary"
+            >
               jim
                
               bob
             </h6>
             <h4
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               1
                
             </h4>
             <p
-              className="text-center soft-ends soft-double@anchored flush-bottom soft-ends soft-sides@portable">
-              Thank you for your contribution to NewSpring Church. Because you are obedient in giving, we\'ll be able to connect more people to Jesus and each other.
+              className="text-center soft-ends soft-double@anchored flush-bottom soft-ends soft-sides@portable"
+            >
+              Thank you for your contribution to NewSpring Church. Because you are obedient in giving, we'll be able to connect more people to Jesus and each other.
             </p>
           </div>
         </div>
       </div>
     </div>
     <div
-      className="soft-half soft-sides@portable soft-double-sides@anchored">
+      className="soft-half soft-sides@portable soft-double-sides@anchored"
+    >
       <h4
-        className="soft soft-double-ends text-center@lap-and-up flush-bottom">
+        className="soft soft-double-ends text-center@lap-and-up flush-bottom"
+      >
         Recent Articles About Giving
       </h4>
       <div
-        className="grid">
+        className="grid"
+      >
         <div
-          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom">
+          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+          key="0"
+        >
           <Card
             classes={
               Array [
@@ -84,9 +105,11 @@ exports[`test doesn't render account type if none 1`] = `
                   "url": "http://test.com/test.jpg",
                 },
               ]
-            }>
+            }
+          >
             <h4
-              className="push-half-top@portable push-top@anchored">
+              className="push-half-top@portable push-top@anchored"
+            >
               test
             </h4>
             <p>
@@ -95,12 +118,15 @@ exports[`test doesn't render account type if none 1`] = `
                   Object {
                     "__html": "test",
                   }
-                } />
+                }
+              />
             </p>
           </Card>
         </div>
         <div
-          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom">
+          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+          key="1"
+        >
           <Card
             classes={
               Array [
@@ -114,9 +140,11 @@ exports[`test doesn't render account type if none 1`] = `
                   "url": "http://test.com/test.jpg",
                 },
               ]
-            }>
+            }
+          >
             <h4
-              className="push-half-top@portable push-top@anchored">
+              className="push-half-top@portable push-top@anchored"
+            >
               test
             </h4>
             <p>
@@ -125,7 +153,8 @@ exports[`test doesn't render account type if none 1`] = `
                   Object {
                     "__html": "test",
                   }
-                } />
+                }
+              />
             </p>
           </Card>
         </div>
@@ -135,7 +164,7 @@ exports[`test doesn't render account type if none 1`] = `
 </div>
 `;
 
-exports[`test doesn't render entries if there are none 1`] = `
+exports[`doesn't render entries if there are none 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)
     classes={
@@ -143,12 +172,15 @@ exports[`test doesn't render entries if there are none 1`] = `
         "background--light-primary",
       ]
     }
-    nav={true}>
+    nav={true}
+  >
     <Meta
-      title="Giving History" />
+      title="Giving History"
+    />
     <Right
       background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg"
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -156,272 +188,331 @@ exports[`test doesn't render entries if there are none 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <div
-      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
+      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary"
+    >
       <div
-        className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored">
+        className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored"
+      >
         <div
-          className="soft-double-ends@anchored">
+          className="soft-double-ends@anchored"
+        >
           <div
-            className="text-center">
+            className="text-center"
+          >
             <p
-              className="push-half-bottom">
+              className="push-half-bottom"
+            >
               <em>
                 Invalid date
               </em>
             </p>
             <h3
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               test
             </h3>
             <Currency
               amount="2.00"
               baseHeadingSize="1"
-              className="display-inline-block text-center soft-bottom" />
+              className="display-inline-block text-center soft-bottom"
+            />
             <h6
-              className="push-bottom text-dark-tertiary">
+              className="push-bottom text-dark-tertiary"
+            >
               jim
                
               bob
             </h6>
             <h4
-              className="text-dark-secondary">
-              1
-               
-              <AccountType
-                height="20px"
-                type="Bank"
-                width="30px" />
-            </h4>
-            <p
-              className="text-center soft-ends soft-double@anchored flush-bottom soft-ends soft-sides@portable">
-              Thank you for your contribution to NewSpring Church. Because you are obedient in giving, we\'ll be able to connect more people to Jesus and each other.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      className="soft-half soft-sides@portable soft-double-sides@anchored">
-      <h4
-        className="soft soft-double-ends text-center@lap-and-up flush-bottom">
-        Recent Articles About Giving
-      </h4>
-      <div
-        className="grid" />
-    </div>
-  </Left>
-</div>
-`;
-
-exports[`test doesn't render payment account at all if none 1`] = `
-<div>
-  <Connect(SplitContainerWithoutData)
-    classes={
-      Array [
-        "background--light-primary",
-      ]
-    }
-    nav={true}>
-    <Meta
-      title="Giving History" />
-    <Right
-      background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg"
-      mobile={false} />
-  </Connect(SplitContainerWithoutData)>
-  <Left
-    classes={
-      Array [
-        "background--light-secondary",
-      ]
-    }
-    scroll={true}>
-    <div
-      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
-      <div
-        className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored">
-        <div
-          className="soft-double-ends@anchored">
-          <div
-            className="text-center">
-            <p
-              className="push-half-bottom">
-              <em>
-                Invalid date
-              </em>
-            </p>
-            <h3
-              className="text-dark-secondary">
-              test
-            </h3>
-            <Currency
-              amount="2.00"
-              baseHeadingSize="1"
-              className="display-inline-block text-center soft-bottom" />
-            <h6
-              className="push-bottom text-dark-tertiary">
-              jim
-               
-              bob
-            </h6>
-            <p
-              className="text-center soft-ends soft-double@anchored flush-bottom soft-ends soft-sides@portable">
-              Thank you for your contribution to NewSpring Church. Because you are obedient in giving, we\'ll be able to connect more people to Jesus and each other.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      className="soft-half soft-sides@portable soft-double-sides@anchored">
-      <h4
-        className="soft soft-double-ends text-center@lap-and-up flush-bottom">
-        Recent Articles About Giving
-      </h4>
-      <div
-        className="grid">
-        <div
-          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom">
-          <Card
-            classes={
-              Array [
-                "push-bottom@lap-and-up",
-              ]
-            }
-            defaultImage="http://test.com/test.jpg"
-            images={
-              Array [
-                Object {
-                  "url": "http://test.com/test.jpg",
-                },
-              ]
-            }>
-            <h4
-              className="push-half-top@portable push-top@anchored">
-              test
-            </h4>
-            <p>
-              <small
-                dangerouslySetInnerHTML={
-                  Object {
-                    "__html": "test",
-                  }
-                } />
-            </p>
-          </Card>
-        </div>
-        <div
-          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom">
-          <Card
-            classes={
-              Array [
-                "push-bottom@lap-and-up",
-              ]
-            }
-            defaultImage="http://test.com/test.jpg"
-            images={
-              Array [
-                Object {
-                  "url": "http://test.com/test.jpg",
-                },
-              ]
-            }>
-            <h4
-              className="push-half-top@portable push-top@anchored">
-              test
-            </h4>
-            <p>
-              <small
-                dangerouslySetInnerHTML={
-                  Object {
-                    "__html": "test",
-                  }
-                } />
-            </p>
-          </Card>
-        </div>
-      </div>
-    </div>
-  </Left>
-</div>
-`;
-
-exports[`test renders loading if loadingEntries 1`] = `
-<div>
-  <Connect(SplitContainerWithoutData)
-    classes={
-      Array [
-        "background--light-primary",
-      ]
-    }
-    nav={true}>
-    <Meta
-      title="Giving History" />
-    <Right
-      background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg"
-      mobile={false} />
-  </Connect(SplitContainerWithoutData)>
-  <Left
-    classes={
-      Array [
-        "background--light-secondary",
-      ]
-    }
-    scroll={true}>
-    <div
-      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
-      <div
-        className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored">
-        <div
-          className="soft-double-ends@anchored">
-          <div
-            className="text-center">
-            <p
-              className="push-half-bottom">
-              <em>
-                Invalid date
-              </em>
-            </p>
-            <h3
-              className="text-dark-secondary">
-              test
-            </h3>
-            <Currency
-              amount="2.00"
-              baseHeadingSize="1"
-              className="display-inline-block text-center soft-bottom" />
-            <h6
-              className="push-bottom text-dark-tertiary">
-              jim
-               
-              bob
-            </h6>
-            <h4
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               1
                
               <AccountType
                 height="20px"
                 type="Bank"
-                width="30px" />
+                width="30px"
+              />
             </h4>
             <p
-              className="text-center soft-ends soft-double@anchored flush-bottom soft-ends soft-sides@portable">
-              Thank you for your contribution to NewSpring Church. Because you are obedient in giving, we\'ll be able to connect more people to Jesus and each other.
+              className="text-center soft-ends soft-double@anchored flush-bottom soft-ends soft-sides@portable"
+            >
+              Thank you for your contribution to NewSpring Church. Because you are obedient in giving, we'll be able to connect more people to Jesus and each other.
             </p>
           </div>
         </div>
       </div>
     </div>
     <div
-      className="soft-half soft-sides@portable soft-double-sides@anchored">
+      className="soft-half soft-sides@portable soft-double-sides@anchored"
+    >
       <h4
-        className="soft soft-double-ends text-center@lap-and-up flush-bottom">
+        className="soft soft-double-ends text-center@lap-and-up flush-bottom"
+      >
         Recent Articles About Giving
       </h4>
       <div
-        className="one-whole soft text-center">
+        className="grid"
+      />
+    </div>
+  </Left>
+</div>
+`;
+
+exports[`doesn't render payment account at all if none 1`] = `
+<div>
+  <Connect(SplitContainerWithoutData)
+    classes={
+      Array [
+        "background--light-primary",
+      ]
+    }
+    nav={true}
+  >
+    <Meta
+      title="Giving History"
+    />
+    <Right
+      background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg"
+      mobile={false}
+    />
+  </Connect(SplitContainerWithoutData)>
+  <Left
+    classes={
+      Array [
+        "background--light-secondary",
+      ]
+    }
+    scroll={true}
+  >
+    <div
+      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary"
+    >
+      <div
+        className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored"
+      >
+        <div
+          className="soft-double-ends@anchored"
+        >
+          <div
+            className="text-center"
+          >
+            <p
+              className="push-half-bottom"
+            >
+              <em>
+                Invalid date
+              </em>
+            </p>
+            <h3
+              className="text-dark-secondary"
+            >
+              test
+            </h3>
+            <Currency
+              amount="2.00"
+              baseHeadingSize="1"
+              className="display-inline-block text-center soft-bottom"
+            />
+            <h6
+              className="push-bottom text-dark-tertiary"
+            >
+              jim
+               
+              bob
+            </h6>
+            <p
+              className="text-center soft-ends soft-double@anchored flush-bottom soft-ends soft-sides@portable"
+            >
+              Thank you for your contribution to NewSpring Church. Because you are obedient in giving, we'll be able to connect more people to Jesus and each other.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="soft-half soft-sides@portable soft-double-sides@anchored"
+    >
+      <h4
+        className="soft soft-double-ends text-center@lap-and-up flush-bottom"
+      >
+        Recent Articles About Giving
+      </h4>
+      <div
+        className="grid"
+      >
+        <div
+          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+          key="0"
+        >
+          <Card
+            classes={
+              Array [
+                "push-bottom@lap-and-up",
+              ]
+            }
+            defaultImage="http://test.com/test.jpg"
+            images={
+              Array [
+                Object {
+                  "url": "http://test.com/test.jpg",
+                },
+              ]
+            }
+          >
+            <h4
+              className="push-half-top@portable push-top@anchored"
+            >
+              test
+            </h4>
+            <p>
+              <small
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "test",
+                  }
+                }
+              />
+            </p>
+          </Card>
+        </div>
+        <div
+          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+          key="1"
+        >
+          <Card
+            classes={
+              Array [
+                "push-bottom@lap-and-up",
+              ]
+            }
+            defaultImage="http://test.com/test.jpg"
+            images={
+              Array [
+                Object {
+                  "url": "http://test.com/test.jpg",
+                },
+              ]
+            }
+          >
+            <h4
+              className="push-half-top@portable push-top@anchored"
+            >
+              test
+            </h4>
+            <p>
+              <small
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "test",
+                  }
+                }
+              />
+            </p>
+          </Card>
+        </div>
+      </div>
+    </div>
+  </Left>
+</div>
+`;
+
+exports[`renders loading if loadingEntries 1`] = `
+<div>
+  <Connect(SplitContainerWithoutData)
+    classes={
+      Array [
+        "background--light-primary",
+      ]
+    }
+    nav={true}
+  >
+    <Meta
+      title="Giving History"
+    />
+    <Right
+      background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg"
+      mobile={false}
+    />
+  </Connect(SplitContainerWithoutData)>
+  <Left
+    classes={
+      Array [
+        "background--light-secondary",
+      ]
+    }
+    scroll={true}
+  >
+    <div
+      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary"
+    >
+      <div
+        className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored"
+      >
+        <div
+          className="soft-double-ends@anchored"
+        >
+          <div
+            className="text-center"
+          >
+            <p
+              className="push-half-bottom"
+            >
+              <em>
+                Invalid date
+              </em>
+            </p>
+            <h3
+              className="text-dark-secondary"
+            >
+              test
+            </h3>
+            <Currency
+              amount="2.00"
+              baseHeadingSize="1"
+              className="display-inline-block text-center soft-bottom"
+            />
+            <h6
+              className="push-bottom text-dark-tertiary"
+            >
+              jim
+               
+              bob
+            </h6>
+            <h4
+              className="text-dark-secondary"
+            >
+              1
+               
+              <AccountType
+                height="20px"
+                type="Bank"
+                width="30px"
+              />
+            </h4>
+            <p
+              className="text-center soft-ends soft-double@anchored flush-bottom soft-ends soft-sides@portable"
+            >
+              Thank you for your contribution to NewSpring Church. Because you are obedient in giving, we'll be able to connect more people to Jesus and each other.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="soft-half soft-sides@portable soft-double-sides@anchored"
+    >
+      <h4
+        className="soft soft-double-ends text-center@lap-and-up flush-bottom"
+      >
+        Recent Articles About Giving
+      </h4>
+      <div
+        className="one-whole soft text-center"
+      >
         <Spinner />
       </div>
     </div>
@@ -429,7 +520,7 @@ exports[`test renders loading if loadingEntries 1`] = `
 </div>
 `;
 
-exports[`test renders loading if no transaction 1`] = `
+exports[`renders loading if no transaction 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)
     classes={
@@ -437,12 +528,15 @@ exports[`test renders loading if no transaction 1`] = `
         "background--light-primary",
       ]
     }
-    nav={true}>
+    nav={true}
+  >
     <Meta
-      title="Giving History" />
+      title="Giving History"
+    />
     <Right
       background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg"
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -450,36 +544,47 @@ exports[`test renders loading if no transaction 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <div
-      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
+      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary"
+    >
       <div
-        className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored">
+        className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored"
+      >
         <div
-          className="soft-double-ends@anchored">
+          className="soft-double-ends@anchored"
+        >
           <div
-            className="text-center soft">
+            className="text-center soft"
+          >
             <Spinner
               styles={
                 Object {
                   "height": "40px",
                   "width": "40px",
                 }
-              } />
+              }
+            />
           </div>
         </div>
       </div>
     </div>
     <div
-      className="soft-half soft-sides@portable soft-double-sides@anchored">
+      className="soft-half soft-sides@portable soft-double-sides@anchored"
+    >
       <h4
-        className="soft soft-double-ends text-center@lap-and-up flush-bottom">
+        className="soft soft-double-ends text-center@lap-and-up flush-bottom"
+      >
         Recent Articles About Giving
       </h4>
       <div
-        className="grid">
+        className="grid"
+      >
         <div
-          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom">
+          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+          key="0"
+        >
           <Card
             classes={
               Array [
@@ -493,9 +598,11 @@ exports[`test renders loading if no transaction 1`] = `
                   "url": "http://test.com/test.jpg",
                 },
               ]
-            }>
+            }
+          >
             <h4
-              className="push-half-top@portable push-top@anchored">
+              className="push-half-top@portable push-top@anchored"
+            >
               test
             </h4>
             <p>
@@ -504,12 +611,15 @@ exports[`test renders loading if no transaction 1`] = `
                   Object {
                     "__html": "test",
                   }
-                } />
+                }
+              />
             </p>
           </Card>
         </div>
         <div
-          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom">
+          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+          key="1"
+        >
           <Card
             classes={
               Array [
@@ -523,9 +633,11 @@ exports[`test renders loading if no transaction 1`] = `
                   "url": "http://test.com/test.jpg",
                 },
               ]
-            }>
+            }
+          >
             <h4
-              className="push-half-top@portable push-top@anchored">
+              className="push-half-top@portable push-top@anchored"
+            >
               test
             </h4>
             <p>
@@ -534,7 +646,8 @@ exports[`test renders loading if no transaction 1`] = `
                   Object {
                     "__html": "test",
                   }
-                } />
+                }
+              />
             </p>
           </Card>
         </div>
@@ -544,7 +657,7 @@ exports[`test renders loading if no transaction 1`] = `
 </div>
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)
     classes={
@@ -552,12 +665,15 @@ exports[`test renders with props 1`] = `
         "background--light-primary",
       ]
     }
-    nav={true}>
+    nav={true}
+  >
     <Meta
-      title="Giving History" />
+      title="Giving History"
+    />
     <Right
       background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg"
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -565,62 +681,79 @@ exports[`test renders with props 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <div
-      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
+      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary"
+    >
       <div
-        className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored">
+        className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored"
+      >
         <div
-          className="soft-double-ends@anchored">
+          className="soft-double-ends@anchored"
+        >
           <div
-            className="text-center">
+            className="text-center"
+          >
             <p
-              className="push-half-bottom">
+              className="push-half-bottom"
+            >
               <em>
                 Invalid date
               </em>
             </p>
             <h3
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               test
             </h3>
             <Currency
               amount="2.00"
               baseHeadingSize="1"
-              className="display-inline-block text-center soft-bottom" />
+              className="display-inline-block text-center soft-bottom"
+            />
             <h6
-              className="push-bottom text-dark-tertiary">
+              className="push-bottom text-dark-tertiary"
+            >
               jim
                
               bob
             </h6>
             <h4
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               1
                
               <AccountType
                 height="20px"
                 type="Bank"
-                width="30px" />
+                width="30px"
+              />
             </h4>
             <p
-              className="text-center soft-ends soft-double@anchored flush-bottom soft-ends soft-sides@portable">
-              Thank you for your contribution to NewSpring Church. Because you are obedient in giving, we\'ll be able to connect more people to Jesus and each other.
+              className="text-center soft-ends soft-double@anchored flush-bottom soft-ends soft-sides@portable"
+            >
+              Thank you for your contribution to NewSpring Church. Because you are obedient in giving, we'll be able to connect more people to Jesus and each other.
             </p>
           </div>
         </div>
       </div>
     </div>
     <div
-      className="soft-half soft-sides@portable soft-double-sides@anchored">
+      className="soft-half soft-sides@portable soft-double-sides@anchored"
+    >
       <h4
-        className="soft soft-double-ends text-center@lap-and-up flush-bottom">
+        className="soft soft-double-ends text-center@lap-and-up flush-bottom"
+      >
         Recent Articles About Giving
       </h4>
       <div
-        className="grid">
+        className="grid"
+      >
         <div
-          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom">
+          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+          key="0"
+        >
           <Card
             classes={
               Array [
@@ -634,9 +767,11 @@ exports[`test renders with props 1`] = `
                   "url": "http://test.com/test.jpg",
                 },
               ]
-            }>
+            }
+          >
             <h4
-              className="push-half-top@portable push-top@anchored">
+              className="push-half-top@portable push-top@anchored"
+            >
               test
             </h4>
             <p>
@@ -645,12 +780,15 @@ exports[`test renders with props 1`] = `
                   Object {
                     "__html": "test",
                   }
-                } />
+                }
+              />
             </p>
           </Card>
         </div>
         <div
-          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom">
+          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+          key="1"
+        >
           <Card
             classes={
               Array [
@@ -664,9 +802,11 @@ exports[`test renders with props 1`] = `
                   "url": "http://test.com/test.jpg",
                 },
               ]
-            }>
+            }
+          >
             <h4
-              className="push-half-top@portable push-top@anchored">
+              className="push-half-top@portable push-top@anchored"
+            >
               test
             </h4>
             <p>
@@ -675,7 +815,8 @@ exports[`test renders with props 1`] = `
                   Object {
                     "__html": "test",
                   }
-                } />
+                }
+              />
             </p>
           </Card>
         </div>
@@ -685,7 +826,7 @@ exports[`test renders with props 1`] = `
 </div>
 `;
 
-exports[`test works with credit card 1`] = `
+exports[`works with credit card 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)
     classes={
@@ -693,12 +834,15 @@ exports[`test works with credit card 1`] = `
         "background--light-primary",
       ]
     }
-    nav={true}>
+    nav={true}
+  >
     <Meta
-      title="Giving History" />
+      title="Giving History"
+    />
     <Right
       background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg"
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -706,62 +850,79 @@ exports[`test works with credit card 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <div
-      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
+      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary"
+    >
       <div
-        className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored">
+        className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored"
+      >
         <div
-          className="soft-double-ends@anchored">
+          className="soft-double-ends@anchored"
+        >
           <div
-            className="text-center">
+            className="text-center"
+          >
             <p
-              className="push-half-bottom">
+              className="push-half-bottom"
+            >
               <em>
                 Invalid date
               </em>
             </p>
             <h3
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               test
             </h3>
             <Currency
               amount="2.00"
               baseHeadingSize="1"
-              className="display-inline-block text-center soft-bottom" />
+              className="display-inline-block text-center soft-bottom"
+            />
             <h6
-              className="push-bottom text-dark-tertiary">
+              className="push-bottom text-dark-tertiary"
+            >
               jim
                
               bob
             </h6>
             <h4
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               1
                
               <AccountType
                 height="20px"
                 type="Visa"
-                width="30px" />
+                width="30px"
+              />
             </h4>
             <p
-              className="text-center soft-ends soft-double@anchored flush-bottom soft-ends soft-sides@portable">
-              Thank you for your contribution to NewSpring Church. Because you are obedient in giving, we\'ll be able to connect more people to Jesus and each other.
+              className="text-center soft-ends soft-double@anchored flush-bottom soft-ends soft-sides@portable"
+            >
+              Thank you for your contribution to NewSpring Church. Because you are obedient in giving, we'll be able to connect more people to Jesus and each other.
             </p>
           </div>
         </div>
       </div>
     </div>
     <div
-      className="soft-half soft-sides@portable soft-double-sides@anchored">
+      className="soft-half soft-sides@portable soft-double-sides@anchored"
+    >
       <h4
-        className="soft soft-double-ends text-center@lap-and-up flush-bottom">
+        className="soft soft-double-ends text-center@lap-and-up flush-bottom"
+      >
         Recent Articles About Giving
       </h4>
       <div
-        className="grid">
+        className="grid"
+      >
         <div
-          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom">
+          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+          key="0"
+        >
           <Card
             classes={
               Array [
@@ -775,9 +936,11 @@ exports[`test works with credit card 1`] = `
                   "url": "http://test.com/test.jpg",
                 },
               ]
-            }>
+            }
+          >
             <h4
-              className="push-half-top@portable push-top@anchored">
+              className="push-half-top@portable push-top@anchored"
+            >
               test
             </h4>
             <p>
@@ -786,12 +949,15 @@ exports[`test works with credit card 1`] = `
                   Object {
                     "__html": "test",
                   }
-                } />
+                }
+              />
             </p>
           </Card>
         </div>
         <div
-          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom">
+          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+          key="1"
+        >
           <Card
             classes={
               Array [
@@ -805,9 +971,11 @@ exports[`test works with credit card 1`] = `
                   "url": "http://test.com/test.jpg",
                 },
               ]
-            }>
+            }
+          >
             <h4
-              className="push-half-top@portable push-top@anchored">
+              className="push-half-top@portable push-top@anchored"
+            >
               test
             </h4>
             <p>
@@ -816,7 +984,8 @@ exports[`test works with credit card 1`] = `
                   Object {
                     "__html": "test",
                   }
-                } />
+                }
+              />
             </p>
           </Card>
         </div>
@@ -826,7 +995,7 @@ exports[`test works with credit card 1`] = `
 </div>
 `;
 
-exports[`test works with nickname 1`] = `
+exports[`works with nickname 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)
     classes={
@@ -834,12 +1003,15 @@ exports[`test works with nickname 1`] = `
         "background--light-primary",
       ]
     }
-    nav={true}>
+    nav={true}
+  >
     <Meta
-      title="Giving History" />
+      title="Giving History"
+    />
     <Right
       background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg"
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -847,62 +1019,79 @@ exports[`test works with nickname 1`] = `
         "background--light-secondary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <div
-      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
+      className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary"
+    >
       <div
-        className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored">
+        className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored"
+      >
         <div
-          className="soft-double-ends@anchored">
+          className="soft-double-ends@anchored"
+        >
           <div
-            className="text-center">
+            className="text-center"
+          >
             <p
-              className="push-half-bottom">
+              className="push-half-bottom"
+            >
               <em>
                 Invalid date
               </em>
             </p>
             <h3
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               test
             </h3>
             <Currency
               amount="2.00"
               baseHeadingSize="1"
-              className="display-inline-block text-center soft-bottom" />
+              className="display-inline-block text-center soft-bottom"
+            />
             <h6
-              className="push-bottom text-dark-tertiary">
+              className="push-bottom text-dark-tertiary"
+            >
               jimothy
                
               bob
             </h6>
             <h4
-              className="text-dark-secondary">
+              className="text-dark-secondary"
+            >
               1
                
               <AccountType
                 height="20px"
                 type="Bank"
-                width="30px" />
+                width="30px"
+              />
             </h4>
             <p
-              className="text-center soft-ends soft-double@anchored flush-bottom soft-ends soft-sides@portable">
-              Thank you for your contribution to NewSpring Church. Because you are obedient in giving, we\'ll be able to connect more people to Jesus and each other.
+              className="text-center soft-ends soft-double@anchored flush-bottom soft-ends soft-sides@portable"
+            >
+              Thank you for your contribution to NewSpring Church. Because you are obedient in giving, we'll be able to connect more people to Jesus and each other.
             </p>
           </div>
         </div>
       </div>
     </div>
     <div
-      className="soft-half soft-sides@portable soft-double-sides@anchored">
+      className="soft-half soft-sides@portable soft-double-sides@anchored"
+    >
       <h4
-        className="soft soft-double-ends text-center@lap-and-up flush-bottom">
+        className="soft soft-double-ends text-center@lap-and-up flush-bottom"
+      >
         Recent Articles About Giving
       </h4>
       <div
-        className="grid">
+        className="grid"
+      >
         <div
-          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom">
+          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+          key="0"
+        >
           <Card
             classes={
               Array [
@@ -916,9 +1105,11 @@ exports[`test works with nickname 1`] = `
                   "url": "http://test.com/test.jpg",
                 },
               ]
-            }>
+            }
+          >
             <h4
-              className="push-half-top@portable push-top@anchored">
+              className="push-half-top@portable push-top@anchored"
+            >
               test
             </h4>
             <p>
@@ -927,12 +1118,15 @@ exports[`test works with nickname 1`] = `
                   Object {
                     "__html": "test",
                   }
-                } />
+                }
+              />
             </p>
           </Card>
         </div>
         <div
-          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom">
+          className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+          key="1"
+        >
           <Card
             classes={
               Array [
@@ -946,9 +1140,11 @@ exports[`test works with nickname 1`] = `
                   "url": "http://test.com/test.jpg",
                 },
               ]
-            }>
+            }
+          >
             <h4
-              className="push-half-top@portable push-top@anchored">
+              className="push-half-top@portable push-top@anchored"
+            >
               test
             </h4>
             <p>
@@ -957,7 +1153,8 @@ exports[`test works with nickname 1`] = `
                   Object {
                     "__html": "test",
                   }
-                } />
+                }
+              />
             </p>
           </Card>
         </div>

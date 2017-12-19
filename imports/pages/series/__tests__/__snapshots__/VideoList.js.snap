@@ -1,4 +1,6 @@
-exports[`test overflow contains css object 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`overflow contains css object 1`] = `
 Object {
   "WebkitOverflowScrolling": "touch",
   "overflowX": "scroll",
@@ -7,14 +9,15 @@ Object {
 }
 `;
 
-exports[`test renders loading 1`] = `
+exports[`renders loading 1`] = `
 <div
-  className="text-center soft-ends">
+  className="text-center soft-ends"
+>
   <Spinner />
 </div>
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <div
   style={
     Object {
@@ -23,20 +26,26 @@ exports[`test renders with props 1`] = `
       "overflowY": "hidden",
       "paddingLeft": "20px",
     }
-  }>
+  }
+>
   <section
     className="soft-half-top"
     style={
       Object {
         "width": "1654.4px",
       }
-    }>
+    }
+  >
     <SeriesVideoListItem
+      key="0"
       order={0}
-      sermon={Object {}} />
+      sermon={Object {}}
+    />
     <SeriesVideoListItem
+      key="1"
       order={1}
-      sermon={Object {}} />
+      sermon={Object {}}
+    />
   </section>
 </div>
 `;
