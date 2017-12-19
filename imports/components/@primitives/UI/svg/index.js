@@ -375,9 +375,9 @@ const getIcon = (fill, height, name, title, width) => {
 };
 
 const Svg = ({ classes, fill, height, name, title, width }: ISvg) =>
-  <div className={classes}>
+  (<div className={classes}>
     {getIcon(fill, height, name, title, width)}
-  </div>;
+  </div>);
 
 Svg.defaultProps = {
   width: "24px",

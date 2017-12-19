@@ -1,7 +1,10 @@
-exports[`test renders with props 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders with props 1`] = `
 <div>
   <div
-    className="ptr-fake-background" />
+    className="ptr-fake-background"
+  />
   <ReactPullToRefresh
     className="relative"
     hammerOptions={
@@ -18,7 +21,8 @@ exports[`test renders with props 1`] = `
             "marginTop": "-8px",
             "transformOrigin": "17px 21px",
           }
-        } />
+        }
+      />
     }
     loading={
       <i
@@ -29,9 +33,11 @@ exports[`test renders with props 1`] = `
             "marginTop": "-8px",
             "transformOrigin": "17px 21px",
           }
-        } />
+        }
+      />
     }
-    onRefresh={[Function]}>
+    onRefresh={[Function]}
+  >
     <h1>
       test
     </h1>

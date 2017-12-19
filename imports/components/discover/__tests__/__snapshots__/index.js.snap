@@ -1,4 +1,6 @@
-exports[`test parses query 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`parses query 1`] = `
 "query Search($term: String!, $first: Int, $after: Int, $site: String) {
   search(query: $term, first: $first, after: $after, site: $site) {
     total
@@ -19,7 +21,7 @@ exports[`test parses query 1`] = `
 "
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <SearchLayout
   hide={[Function]}
   loadMore={[Function]}
@@ -29,5 +31,6 @@ exports[`test renders with props 1`] = `
       "pageSize": 10,
       "term": "hey",
     }
-  } />
+  }
+/>
 `;

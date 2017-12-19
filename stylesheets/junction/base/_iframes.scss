@@ -1,0 +1,20 @@
+
+$use-iframes: true !default;
+
+@if $use-iframes == true {
+  //
+  // @name iframes
+  // @description set base styles for responsive embeds
+  //
+  // @base true
+  //
+  iframe,
+  object,
+  embed {
+    position: relative;
+
+    overflow: hidden;
+
+    max-width: 100%;
+  }
+}

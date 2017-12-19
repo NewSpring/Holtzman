@@ -33,10 +33,10 @@ export default ({
   canCheckout,
   setCanCheckout,
 }: ILayout) =>
-  <div className="push-top@handheld soft-half-top@lap-and-up">
+  (<div className="push-top@handheld soft-half-top@lap-and-up">
     <Forms.Form
       classes={["text-left", "hard"]}
-      submit={(e) => {
+      submit={e => {
         e.preventDefault();
       }}
       id="add-to-cart"
@@ -44,14 +44,14 @@ export default ({
       <div className="display-inline-block">
         {/* Subund Layout */}
         {subfunds &&
-          subfunds.map((subfund) =>
-            <SubFund
+          subfunds.map(subfund =>
+            (<SubFund
               preFill={preFill}
               key={subfund.id}
               changeAmount={changeAmount}
               changeFund={changeFund}
               {...subfund}
-            />
+            />),
           )}
 
         <div className="display-block one-whole soft-bottom">
@@ -94,4 +94,4 @@ export default ({
         <CheckoutButtons disabled={!canCheckout} />
       </div>
     </Forms.Form>
-  </div>;
+  </div>);

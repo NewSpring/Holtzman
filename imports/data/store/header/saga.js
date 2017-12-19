@@ -1,6 +1,5 @@
 import "regenerator-runtime/runtime";
-import { takeLatest } from "redux-saga";
-import { fork, select } from "redux-saga/effects";
+import { takeLatest, fork, select } from "redux-saga/effects";
 import { addSaga } from "../utilities";
 
 const canRun = () => (

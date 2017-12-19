@@ -1,30 +1,37 @@
-exports[`test renders 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders 1`] = `
 <div>
   <Meta
-    title="Sign up" />
+    title="Sign up"
+  />
   <Apollo(Connect(Accounts)) />
 </div>
 `;
 
-exports[`test renders lap-and-up version 1`] = `
+exports[`renders lap-and-up version 1`] = `
 <div
   className="scrollable background--fill background--light-secondary locked-sides@palm-wide-and-up locked-ends@palm-wide-and-up floating soft-double-ends push-double-left@lap-and-up soft-double-left@lap-and-up"
   style={
     Object {
-      "backgroundImage": "url(\'https://dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/homepage/event.auditorium.2x1_1700_850_c1.png\')",
+      "backgroundImage": "url('https://dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/homepage/event.auditorium.2x1_1700_850_c1.png')",
     }
-  }>
+  }
+>
   <Meta
-    title="Sign up" />
+    title="Sign up"
+  />
   <div
     className="floating__item"
     style={
       Object {
         "maxWidth": "460px",
       }
-    }>
+    }
+  >
     <div
-      className="card flush-bottom">
+      className="card flush-bottom"
+    >
       <div
         className="card__item"
         style={
@@ -32,7 +39,8 @@ exports[`test renders lap-and-up version 1`] = `
             "minHeight": "500px",
             "minWidth": "420px",
           }
-        }>
+        }
+      >
         <Apollo(Connect(Accounts)) />
       </div>
     </div>
@@ -40,25 +48,29 @@ exports[`test renders lap-and-up version 1`] = `
 </div>
 `;
 
-exports[`test renders server version 1`] = `
+exports[`renders server version 1`] = `
 <div
   className="scrollable background--fill background--light-secondary locked-sides@palm-wide-and-up locked-ends@palm-wide-and-up floating soft-double-ends push-double-left@lap-and-up soft-double-left@lap-and-up"
   style={
     Object {
-      "backgroundImage": "url(\'https://dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/homepage/event.auditorium.2x1_1700_850_c1.png\')",
+      "backgroundImage": "url('https://dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/homepage/event.auditorium.2x1_1700_850_c1.png')",
     }
-  }>
+  }
+>
   <Meta
-    title="Sign up" />
+    title="Sign up"
+  />
   <div
     className="floating__item"
     style={
       Object {
         "maxWidth": "460px",
       }
-    }>
+    }
+  >
     <div
-      className="card flush-bottom">
+      className="card flush-bottom"
+    >
       <div
         className="card__item"
         style={
@@ -66,9 +78,11 @@ exports[`test renders server version 1`] = `
             "minHeight": "500px",
             "minWidth": "420px",
           }
-        }>
+        }
+      >
         <div
-          className="soft-double">
+          className="soft-double"
+        >
           <Loading />
         </div>
       </div>
