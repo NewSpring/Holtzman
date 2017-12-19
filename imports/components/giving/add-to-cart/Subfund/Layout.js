@@ -1,4 +1,3 @@
-
 // @flow
 
 // $FlowMeteor
@@ -16,7 +15,7 @@ type ILayout = {
   fundId: number,
   inputVal: string,
   preFill: Function,
-}
+};
 
 const Layout = ({
   accounts,
@@ -37,9 +36,11 @@ const Layout = ({
       defaultValue={preFill(fundId)}
       format={changeAmount}
       hideLabel
-      inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom text-brand ${css(Styles["show-placeholder"])}`}
+      inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom text-brand ${css(
+        Styles["show-placeholder"],
+      )}`}
       placeholder="0.00"
-      style={{ maxWidth: "150px", paddingLeft: ".8em" }}
+      style={{ maxWidth: "165px", paddingLeft: ".8em" }}
       type={Meteor.isCordova ? "number" : "tel"}
       pattern={"[0-9]*"}
       step={"0.01"}
@@ -52,7 +53,9 @@ const Layout = ({
       </h3>
       <Forms.Select
         classes={["soft-bottom", "display-inline-block", `${css(Styles.select)}`]}
-        inputClasses={`${active ? "text-brand" : "text-dark-tertiary"} outlined--dotted outlined--light h3 hard-top flush-bottom`}
+        inputClasses={`${
+          active ? "text-brand" : "text-dark-tertiary"
+        } outlined--dotted outlined--light h3 hard-top flush-bottom`}
         items={accounts}
         defaultValue={accounts[0].value}
         onChange={changeFund}
