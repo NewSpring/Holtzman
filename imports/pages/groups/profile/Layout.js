@@ -201,22 +201,24 @@ const Layout = ({ group, leaders, isLeader, loginParam }) => (
             <div className="soft-double-bottom@lap-wide-and-up soft-bottom">
               <h7 className="text-dark-secondary">Members</h7>
               <div className="soft-half-top flush-bottom">
-                {group.members.filter(x => x.person && x.person.photo).map((member, i) => (
-                  <div
-                    className={
-                      "ratio--square round display-inline-block " +
-                      "push-half-right background--fill"
-                    }
-                    key={i}
-                    style={{
-                      backgroundImage: `url('${member.person.photo}')`,
-                      width: "40px",
-                      height: "40px",
-                    }}
-                  >
-                    <div className="ratio__item" />
-                  </div>
-                ))}
+                {group.members
+                  .filter(x => x.status === 1 && x.person && x.person.photo)
+                  .map((member, i) => (
+                    <div
+                      className={
+                        "ratio--square round display-inline-block " +
+                        "push-half-right background--fill"
+                      }
+                      key={i}
+                      style={{
+                        backgroundImage: `url('${member.person.photo}')`,
+                        width: "40px",
+                        height: "40px",
+                      }}
+                    >
+                      <div className="ratio__item" />
+                    </div>
+                  ))}
               </div>
             </div>
 
