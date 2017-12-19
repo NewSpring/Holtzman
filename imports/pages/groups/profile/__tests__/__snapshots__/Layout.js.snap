@@ -254,21 +254,6 @@ exports[`doesn't render Interest type tag 1`] = `
                   className="ratio__item"
                 />
               </div>
-              <div
-                className="ratio--square round display-inline-block push-half-right background--fill"
-                key="1"
-                style={
-                  Object {
-                    "backgroundImage": "url('http://test.com/person.jpg')",
-                    "height": "40px",
-                    "width": "40px",
-                  }
-                }
-              >
-                <div
-                  className="ratio__item"
-                />
-              </div>
             </div>
           </div>
           <div>
@@ -579,21 +564,6 @@ exports[`doesn't render demographic tag if none 1`] = `
               <div
                 className="ratio--square round display-inline-block push-half-right background--fill"
                 key="0"
-                style={
-                  Object {
-                    "backgroundImage": "url('http://test.com/person.jpg')",
-                    "height": "40px",
-                    "width": "40px",
-                  }
-                }
-              >
-                <div
-                  className="ratio__item"
-                />
-              </div>
-              <div
-                className="ratio--square round display-inline-block push-half-right background--fill"
-                key="1"
                 style={
                   Object {
                     "backgroundImage": "url('http://test.com/person.jpg')",
@@ -928,21 +898,6 @@ exports[`renders adult only version 1`] = `
                   className="ratio__item"
                 />
               </div>
-              <div
-                className="ratio--square round display-inline-block push-half-right background--fill"
-                key="1"
-                style={
-                  Object {
-                    "backgroundImage": "url('http://test.com/person.jpg')",
-                    "height": "40px",
-                    "width": "40px",
-                  }
-                }
-              >
-                <div
-                  className="ratio__item"
-                />
-              </div>
             </div>
           </div>
           <div>
@@ -1253,21 +1208,6 @@ exports[`renders leader version 1`] = `
               <div
                 className="ratio--square round display-inline-block push-half-right background--fill"
                 key="0"
-                style={
-                  Object {
-                    "backgroundImage": "url('http://test.com/person.jpg')",
-                    "height": "40px",
-                    "width": "40px",
-                  }
-                }
-              >
-                <div
-                  className="ratio__item"
-                />
-              </div>
-              <div
-                className="ratio--square round display-inline-block push-half-right background--fill"
-                key="1"
                 style={
                   Object {
                     "backgroundImage": "url('http://test.com/person.jpg')",
@@ -1602,21 +1542,6 @@ exports[`renders with props 1`] = `
                   className="ratio__item"
                 />
               </div>
-              <div
-                className="ratio--square round display-inline-block push-half-right background--fill"
-                key="1"
-                style={
-                  Object {
-                    "backgroundImage": "url('http://test.com/person.jpg')",
-                    "height": "40px",
-                    "width": "40px",
-                  }
-                }
-              >
-                <div
-                  className="ratio__item"
-                />
-              </div>
             </div>
           </div>
           <div>
@@ -1927,21 +1852,6 @@ exports[`renders without campus 1`] = `
               <div
                 className="ratio--square round display-inline-block push-half-right background--fill"
                 key="0"
-                style={
-                  Object {
-                    "backgroundImage": "url('http://test.com/person.jpg')",
-                    "height": "40px",
-                    "width": "40px",
-                  }
-                }
-              >
-                <div
-                  className="ratio__item"
-                />
-              </div>
-              <div
-                className="ratio--square round display-inline-block push-half-right background--fill"
-                key="1"
                 style={
                   Object {
                     "backgroundImage": "url('http://test.com/person.jpg')",
@@ -2276,21 +2186,6 @@ exports[`renders without group locations 1`] = `
                   className="ratio__item"
                 />
               </div>
-              <div
-                className="ratio--square round display-inline-block push-half-right background--fill"
-                key="1"
-                style={
-                  Object {
-                    "backgroundImage": "url('http://test.com/person.jpg')",
-                    "height": "40px",
-                    "width": "40px",
-                  }
-                }
-              >
-                <div
-                  className="ratio__item"
-                />
-              </div>
             </div>
           </div>
           <div>
@@ -2613,21 +2508,6 @@ exports[`renders without schedule 1`] = `
                   className="ratio__item"
                 />
               </div>
-              <div
-                className="ratio--square round display-inline-block push-half-right background--fill"
-                key="1"
-                style={
-                  Object {
-                    "backgroundImage": "url('http://test.com/person.jpg')",
-                    "height": "40px",
-                    "width": "40px",
-                  }
-                }
-              >
-                <div
-                  className="ratio__item"
-                />
-              </div>
             </div>
           </div>
           <div>
@@ -2938,21 +2818,6 @@ exports[`renders without schedule description 1`] = `
               <div
                 className="ratio--square round display-inline-block push-half-right background--fill"
                 key="0"
-                style={
-                  Object {
-                    "backgroundImage": "url('http://test.com/person.jpg')",
-                    "height": "40px",
-                    "width": "40px",
-                  }
-                }
-              >
-                <div
-                  className="ratio__item"
-                />
-              </div>
-              <div
-                className="ratio--square round display-inline-block push-half-right background--fill"
-                key="1"
                 style={
                   Object {
                     "backgroundImage": "url('http://test.com/person.jpg')",
