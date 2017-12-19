@@ -1,51 +1,58 @@
-exports[`test adds appends additional classes 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`adds appends additional classes 1`] = `
 <section
   className="relative hard flush seven-twelfths@lap-and-up one two"
-  style={Object {}}>
+  style={Object {}}
+>
   <h1>
     test
   </h1>
 </section>
 `;
 
-exports[`test adds background class and image 1`] = `
+exports[`adds background class and image 1`] = `
 <section
   className="relative hard flush seven-twelfths@lap-and-up background--fill"
   style={
     Object {
-      "backgroundImage": "url(\'https://test.com/test.jpg\')",
+      "backgroundImage": "url('https://test.com/test.jpg')",
     }
-  }>
+  }
+>
   <h1>
     test
   </h1>
 </section>
 `;
 
-exports[`test adds scrollable class 1`] = `
+exports[`adds scrollable class 1`] = `
 <section
   className="relative hard flush scrollable seven-twelfths@lap-and-up"
-  style={Object {}}>
+  style={Object {}}
+>
   <h1>
     test
   </h1>
 </section>
 `;
 
-exports[`test adds width class 1`] = `
+exports[`adds width class 1`] = `
 <section
   className="relative hard flush my-width-class"
-  style={Object {}}>
+  style={Object {}}
+>
   <h1>
     test
   </h1>
 </section>
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <section
   className="relative hard flush seven-twelfths@lap-and-up"
-  style={Object {}}>
+  style={Object {}}
+>
   <h1>
     test
   </h1>

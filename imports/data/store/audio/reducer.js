@@ -166,7 +166,7 @@ export default createReducer(initial, {
   },
 
   [types.SET_PLAYLIST](state, action) {
-    const playlist = action.playlist.map((x) => {
+    const playlist = action.playlist.map(x => {
       const { title, duration, file } = x;
       return { title, duration, file };
     });

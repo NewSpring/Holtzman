@@ -1,27 +1,59 @@
-exports[`test should render with no props 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render with no props 1`] = `
 <Input>
   <div
     className="input"
     data-spec="input-wrapper"
-    style={Object {}}>
-    <RenderLabel>
+    style={Object {}}
+  >
+    <RenderLabel
+      disabled={undefined}
+      hideLabel={undefined}
+      id={undefined}
+      label={undefined}
+      name={undefined}
+      style={undefined}
+    >
       <Label
         disabed={false}
-        labelStyles={Object {}}>
+        labelFor={undefined}
+        labelName={undefined}
+        labelStyles={Object {}}
+      >
         <label
-          style={Object {}} />
+          htmlFor={undefined}
+          style={Object {}}
+        />
       </Label>
     </RenderLabel>
-    <input
-      autoCapitalize="on"
-      autoComplete="on"
-      autoCorrect="on"
-      data-spec="input"
-      maxLength=""
-      onBlur={[Function]}
-      onChange={[Function]}
-      onFocus={[Function]}
-      style={Object {}} />
+    <span
+      className=""
+    >
+      <input
+        autoCapitalize="on"
+        autoComplete="on"
+        autoCorrect="on"
+        className={undefined}
+        data-lpignore={undefined}
+        data-spec="input"
+        defaultValue={undefined}
+        disabled={undefined}
+        id={undefined}
+        maxLength=""
+        name={undefined}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        pattern={undefined}
+        placeholder={undefined}
+        readOnly={undefined}
+        spellCheck={undefined}
+        step={undefined}
+        style={Object {}}
+        type={undefined}
+      />
+    </span>
   </div>
 </Input>
 `;

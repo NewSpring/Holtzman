@@ -1,15 +1,19 @@
 /* eslint-disable import/imports-first */
 
-import { Component, PropTypes } from "react";
+import PropTypes from "prop-types";
+
+import { Component } from "react";
 import { css } from "aphrodite";
 
+let velocity = () => {};
 if (Meteor.isClient) {
-  // eslint-disable-next-line no-unused-vars
-  import velocity from "velocity-animate";
+  velocity = require("velocity-animate"); // eslint-disable-line
 }
 
+/* eslint-disable */
 import { routeActions } from "../../../data/store/routing";
 import styles from "./nav-css";
+/* eslint-enable */
 
 export default class NavLink extends Component {
 
@@ -56,7 +60,7 @@ export default class NavLink extends Component {
     return classes.join(" ");
   }
 
-  handleAction = (e) => {
+  handleAction = e => {
     e.preventDefault();
     const { navItem } = this.props;
 

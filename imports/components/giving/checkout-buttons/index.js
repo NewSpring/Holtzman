@@ -40,7 +40,7 @@ export const withSavedPayments = graphql(SAVED_ACCTS_QUERY, {
     },
     // XXX make redux `accounts.authorized` work mo betta
     // skip: !ownProps.authorized,
-    forceFetch: true,
+    fetchPolicy: "network-only",
   }),
 });
 
