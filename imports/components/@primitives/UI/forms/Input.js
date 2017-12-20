@@ -323,7 +323,10 @@ export default class Input extends Component {
           disabled={this.disabled()}
           style={labelStyles}
         />
-        <span className={this.dollarIconClass()}>
+        <span
+          className={this.dollarIconClass()}
+          style={this.state.focused || this.state.active ? {} : { color: "#858585" }}
+        >
           <input
             ref={node => (this.node = node)}
             id={id || name || label}
