@@ -17,6 +17,7 @@ exports[`CardFields should render with props 1`] = `
     </label>
     <span
       className=""
+      style={Object {}}
     >
       <input
         autoCapitalize="on"
@@ -84,6 +85,7 @@ exports[`CardFields should render with props 1`] = `
         </label>
         <span
           className=""
+          style={Object {}}
         >
           <input
             autoCapitalize="on"
@@ -127,6 +129,7 @@ exports[`CardFields should render with props 1`] = `
         </label>
         <span
           className=""
+          style={Object {}}
         >
           <input
             autoCapitalize="on"

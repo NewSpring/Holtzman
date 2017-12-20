@@ -17,6 +17,7 @@ exports[`renders one-half if country is \`CA\` 1`] = `
     </label>
     <span
       className=""
+      style={Object {}}
     >
       <input
         autoCapitalize="on"
@@ -63,6 +64,7 @@ exports[`renders one-half if country is \`US\` 1`] = `
     </label>
     <span
       className=""
+      style={Object {}}
     >
       <input
         autoCapitalize="on"
@@ -109,6 +111,11 @@ exports[`renders one-half if no country 1`] = `
     </label>
     <span
       className=""
+      style={
+        Object {
+          "color": "#858585",
+        }
+      }
     >
       <input
         autoCapitalize="on"
@@ -155,6 +162,11 @@ exports[`renders one-whole for countries with no states 1`] = `
     </label>
     <span
       className=""
+      style={
+        Object {
+          "color": "#858585",
+        }
+      }
     >
       <input
         autoCapitalize="on"
