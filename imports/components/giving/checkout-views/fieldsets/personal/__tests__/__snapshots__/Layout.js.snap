@@ -48,6 +48,7 @@ exports[`Layout renders with props 1`] = `
           </label>
           <span
             className=""
+            style={Object {}}
           >
             <input
               autoCapitalize="on"
@@ -91,6 +92,11 @@ exports[`Layout renders with props 1`] = `
           </label>
           <span
             className=""
+            style={
+              Object {
+                "color": "#858585",
+              }
+            }
           >
             <input
               autoCapitalize="on"
@@ -132,6 +138,7 @@ exports[`Layout renders with props 1`] = `
       </label>
       <span
         className=""
+        style={Object {}}
       >
         <input
           autoCapitalize="on"

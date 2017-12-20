@@ -29,6 +29,11 @@ exports[`should render with no props 1`] = `
     </RenderLabel>
     <span
       className=""
+      style={
+        Object {
+          "color": "#858585",
+        }
+      }
     >
       <input
         autoCapitalize="on"

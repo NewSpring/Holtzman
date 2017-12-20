@@ -88,6 +88,11 @@ exports[`Layout renders custom toggles if passed 1`] = `
         </label>
         <span
           className=""
+          style={
+            Object {
+              "color": "#858585",
+            }
+          }
         >
           <input
             autoCapitalize="on"
@@ -141,6 +146,11 @@ exports[`Layout renders custom toggles if passed 1`] = `
             </label>
             <span
               className=""
+              style={
+                Object {
+                  "color": "#858585",
+                }
+              }
             >
               <input
                 autoCapitalize="on"
@@ -184,6 +194,11 @@ exports[`Layout renders custom toggles if passed 1`] = `
             </label>
             <span
               className=""
+              style={
+                Object {
+                  "color": "#858585",
+                }
+              }
             >
               <input
                 autoCapitalize="on"
@@ -354,6 +369,11 @@ exports[`Layout renders default toggles by default 1`] = `
         </label>
         <span
           className=""
+          style={
+            Object {
+              "color": "#858585",
+            }
+          }
         >
           <input
             autoCapitalize="on"
@@ -407,6 +427,11 @@ exports[`Layout renders default toggles by default 1`] = `
             </label>
             <span
               className=""
+              style={
+                Object {
+                  "color": "#858585",
+                }
+              }
             >
               <input
                 autoCapitalize="on"
@@ -450,6 +475,11 @@ exports[`Layout renders default toggles by default 1`] = `
             </label>
             <span
               className=""
+              style={
+                Object {
+                  "color": "#858585",
+                }
+              }
             >
               <input
                 autoCapitalize="on"

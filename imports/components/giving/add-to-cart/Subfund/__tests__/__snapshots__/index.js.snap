@@ -83,6 +83,11 @@ exports[`SubFund sets the state to active if it has an amount 1`] = `
         hard-top
         flush-bottom
         text-brand"
+            style={
+              Object {
+                "color": "#858585",
+              }
+            }
           >
             <input
               autoCapitalize="on"
@@ -266,6 +271,11 @@ exports[`SubFund should render a primary fund 1`] = `
         hard-top
         flush-bottom
         text-brand"
+            style={
+              Object {
+                "color": "#858585",
+              }
+            }
           >
             <input
               autoCapitalize="on"
@@ -448,6 +458,11 @@ exports[`SubFund should render with minimal props 1`] = `
         hard-top
         flush-bottom
         text-brand"
+            style={
+              Object {
+                "color": "#858585",
+              }
+            }
           >
             <input
               autoCapitalize="on"
