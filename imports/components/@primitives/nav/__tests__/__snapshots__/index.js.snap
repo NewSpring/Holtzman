@@ -1,10 +1,14 @@
-exports[`test does not render if not visible 1`] = `null`;
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`test renders with props 1`] = `
+exports[`does not render if not visible 1`] = `""`;
+
+exports[`renders with props 1`] = `
 <NavLayout
   handleAction={[Function]}
+  key="navigation"
   liked={Object {}}
   modal={Object {}}
   path="path"
-  reset={[Function]} />
+  reset={[Function]}
+/>
 `;

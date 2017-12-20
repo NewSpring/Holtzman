@@ -1,22 +1,28 @@
-exports[`test should render with props 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render with props 1`] = `
 <div
-  className="soft-half-ends hard-sides">
+  className="soft-half-ends hard-sides"
+>
   <div
     className="grid"
     style={
       Object {
         "verticalAlign": "middle",
       }
-    }>
+    }
+  >
     <div
       className="grid__item one-half"
       style={
         Object {
           "verticalAlign": "middle",
         }
-      }>
+      }
+    >
       <h5
-        className="text-dark-primary flush text-left">
+        className="text-dark-primary flush text-left"
+      >
         label
       </h5>
     </div>
@@ -26,25 +32,30 @@ exports[`test should render with props 1`] = `
         Object {
           "verticalAlign": "middle",
         }
-      }>
+      }
+    >
       <div
-        className="floating text-dark-primary text-left display-inline-block">
+        className="floating text-dark-primary text-left display-inline-block"
+      >
         <h6
           className="floating__item flush"
           style={
             Object {
               "paddingRight": "5px",
             }
-          }>
+          }
+        >
           $
         </h6>
         <h4
           className="floating__item flush"
-          style={undefined}>
+          style={undefined}
+        >
           24
         </h4>
         <h6
-          className="floating__item flush">
+          className="floating__item flush"
+        >
           .
           00
         </h6>

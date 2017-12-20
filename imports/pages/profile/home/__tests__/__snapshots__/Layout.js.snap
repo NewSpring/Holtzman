@@ -1,4 +1,6 @@
-exports[`test renders cordova version 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders cordova version 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)
     classes={
@@ -6,9 +8,11 @@ exports[`test renders cordova version 1`] = `
         "background--light-primary",
       ]
     }
-    nav={true}>
+    nav={true}
+  >
     <Meta
-      title="jim bob" />
+      title="jim bob"
+    />
     <Right
       background="http://test.com/photo.jpg"
       blur={true}
@@ -26,18 +30,21 @@ exports[`test renders cordova version 1`] = `
           "one-whole",
           "text-center",
         ]
-      }>
+      }
+    >
       <div
-        className="soft one-whole">
+        className="soft one-whole"
+      >
         <label
           className="background--fill ratio--square round two-fifths display-inline-block"
           htmlFor="file"
           style={
             Object {
-              "backgroundImage": "url(\'http://test.com/photo.jpg\')",
+              "backgroundImage": "url('http://test.com/photo.jpg')",
               "position": "relative",
             }
-          }>
+          }
+        >
           <div
             className="locked-ends locked-sides"
             onClick={[Function]}
@@ -45,16 +52,19 @@ exports[`test renders cordova version 1`] = `
               Object {
                 "opacity": 0,
               }
-            } />
+            }
+          />
         </label>
         <h4
-          className="text-light-primary soft-half-top flush-bottom">
+          className="text-light-primary soft-half-top flush-bottom"
+        >
           jim
            
           bob
         </h4>
         <p
-          className="text-light-primary flush">
+          className="text-light-primary flush"
+        >
           <em>
             anderson
           </em>
@@ -63,7 +73,8 @@ exports[`test renders cordova version 1`] = `
     </Right>
   </Connect(SplitContainerWithoutData)>
   <Left
-    scroll={true}>
+    scroll={true}
+  >
     <Tabs
       items={
         Array [
@@ -71,7 +82,8 @@ exports[`test renders cordova version 1`] = `
           "Following",
         ]
       }
-      toggle={[Function]} />
+      toggle={[Function]}
+    />
     <div>
       <h1>
         test
@@ -81,7 +93,7 @@ exports[`test renders cordova version 1`] = `
 </div>
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)
     classes={
@@ -89,9 +101,11 @@ exports[`test renders with props 1`] = `
         "background--light-primary",
       ]
     }
-    nav={true}>
+    nav={true}
+  >
     <Meta
-      title="jim bob" />
+      title="jim bob"
+    />
     <Right
       background="http://test.com/photo.jpg"
       blur={true}
@@ -109,18 +123,21 @@ exports[`test renders with props 1`] = `
           "one-whole",
           "text-center",
         ]
-      }>
+      }
+    >
       <div
-        className="soft one-whole">
+        className="soft one-whole"
+      >
         <label
           className="background--fill ratio--square round two-fifths display-inline-block"
           htmlFor="file"
           style={
             Object {
-              "backgroundImage": "url(\'http://test.com/photo.jpg\')",
+              "backgroundImage": "url('http://test.com/photo.jpg')",
               "position": "relative",
             }
-          }>
+          }
+        >
           <input
             className="locked-ends locked-sides"
             onChange={[Function]}
@@ -129,16 +146,19 @@ exports[`test renders with props 1`] = `
                 "opacity": 0,
               }
             }
-            type="file" />
+            type="file"
+          />
         </label>
         <h4
-          className="text-light-primary soft-half-top flush-bottom">
+          className="text-light-primary soft-half-top flush-bottom"
+        >
           jim
            
           bob
         </h4>
         <p
-          className="text-light-primary flush">
+          className="text-light-primary flush"
+        >
           <em>
             anderson
           </em>
@@ -147,7 +167,8 @@ exports[`test renders with props 1`] = `
     </Right>
   </Connect(SplitContainerWithoutData)>
   <Left
-    scroll={true}>
+    scroll={true}
+  >
     <Tabs
       items={
         Array [
@@ -155,7 +176,8 @@ exports[`test renders with props 1`] = `
           "Following",
         ]
       }
-      toggle={[Function]} />
+      toggle={[Function]}
+    />
     <div>
       <h1>
         test
@@ -165,7 +187,7 @@ exports[`test renders with props 1`] = `
 </div>
 `;
 
-exports[`test works without city 1`] = `
+exports[`works without city 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)
     classes={
@@ -173,9 +195,11 @@ exports[`test works without city 1`] = `
         "background--light-primary",
       ]
     }
-    nav={true}>
+    nav={true}
+  >
     <Meta
-      title="jim bob" />
+      title="jim bob"
+    />
     <Right
       background="http://test.com/photo.jpg"
       blur={true}
@@ -193,18 +217,21 @@ exports[`test works without city 1`] = `
           "one-whole",
           "text-center",
         ]
-      }>
+      }
+    >
       <div
-        className="soft one-whole">
+        className="soft one-whole"
+      >
         <label
           className="background--fill ratio--square round two-fifths display-inline-block"
           htmlFor="file"
           style={
             Object {
-              "backgroundImage": "url(\'http://test.com/photo.jpg\')",
+              "backgroundImage": "url('http://test.com/photo.jpg')",
               "position": "relative",
             }
-          }>
+          }
+        >
           <div
             className="locked-ends locked-sides"
             onClick={[Function]}
@@ -212,10 +239,12 @@ exports[`test works without city 1`] = `
               Object {
                 "opacity": 0,
               }
-            } />
+            }
+          />
         </label>
         <h4
-          className="text-light-primary soft-half-top flush-bottom">
+          className="text-light-primary soft-half-top flush-bottom"
+        >
           jim
            
           bob
@@ -224,7 +253,8 @@ exports[`test works without city 1`] = `
     </Right>
   </Connect(SplitContainerWithoutData)>
   <Left
-    scroll={true}>
+    scroll={true}
+  >
     <Tabs
       items={
         Array [
@@ -232,7 +262,8 @@ exports[`test works without city 1`] = `
           "Following",
         ]
       }
-      toggle={[Function]} />
+      toggle={[Function]}
+    />
     <div>
       <h1>
         test

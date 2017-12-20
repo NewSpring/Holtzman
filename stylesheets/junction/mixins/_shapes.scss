@@ -1,0 +1,224 @@
+
+$use-shapes: true!default;
+
+// @if $use-shapes == true {
+  //
+  // @name radius
+  // @description creates radius based off of size value or percentage
+  //
+  // @mixin true
+  //
+  // @parameter $radius - border-radius to set
+  //
+  //
+  // @scss
+  // .className {
+  //   @include radius(7px);
+  // }
+  //
+  // @css
+  // .className {
+  //   border-radius: 7px
+  // }
+  //
+  @mixin radius($radius) {
+    border-radius: $radius;
+  }
+
+
+
+  //
+  // @circle
+  // @description creates a circle
+  //
+  // @parameter $size - size of the circle to create
+  //
+  // @extends %_circle - base rounded circle
+  //
+  // @scss
+  // .className {
+  //   @include circle(10px);
+  // }
+  //
+  // @css
+  // .className {
+  //   content: "";
+  //   width: 10px;
+  //   height: 10px;
+  //   border-radius: 50%;
+  // }
+  //
+  %_circle {
+    @include radius(50%);
+
+    content: "";
+  }
+
+  @mixin circle($size) {
+    @extend %_circle;
+
+    width: $size;
+    height: $size;
+  }
+
+
+
+
+
+  //
+  // @name triangle
+  // @description creates a triangle from border elements
+  //
+  // @parameter $width - width of triangle
+  // @parameter $height - height of triangle
+  // @parameter $direction - up, down, left, right
+  // @parameter $color - color of triangle
+  //
+  // @extends $_triangle - base triangle classes
+  //
+  // @scss
+  // .className {
+  //   @include triangle(10px, 8px, right, aliceblue);
+  // }
+  //
+  // @css
+  // .className {
+  //   content: "";
+  //   display: block;
+  //   width: 0;
+  //   height: 0;
+  //   border-top: 8px solid transparent;
+  //   border-bottom: 8px solid transparent;
+  //   border-left: 10px solid aliceblue;
+  //
+  // }
+  //
+  %_triangle {
+    display: block;
+
+    width: 0;
+    height: 0;
+    // Add a block-level blank space
+
+    content: "";
+  }
+
+  @mixin triangle($width, $height, $direction, $color) {
+    @extend %_triangle;
+
+    // Right
+    @if $direction == right {
+      border-top: $height solid transparent;
+      border-bottom: $height solid transparent;
+      border-left: $width solid $color;
+    }
+    // Left
+
+    @if $direction == left {
+      border-top: $height solid transparent;
+      border-right: $width solid $color;
+      border-bottom: $height solid transparent;
+    }
+
+    // Up
+    @if $direction == up {
+      border-right: $width solid transparent;
+      border-bottom: $height solid $color;
+      border-left: $width solid transparent;
+    }
+
+    // Down
+    @if $direction == down {
+      border-top: $height solid $color;
+      border-right: $width solid transparent;
+      border-left: $width solid transparent;
+    }
+  }
+
+
+
+
+
+  //
+  // @name arrow
+  //
+  // @description creates a border arrow
+  //
+  // @parameter $direction - up, down, left, right
+  // @parameter $size - size of arrow
+  // @parameter $color - hex, rgb, rgba
+  // @parameter $thickness - thickness of arrow border
+  //
+  // @extends %_arrow - base object for arrow
+  //
+  // @scss
+  // .className {
+  //   @include arrow(right, 10px, aliceblue, 2px);
+  // }
+  //
+  // @css
+  // .className {
+  //   content: "";
+  //   display: block;
+  //   width: 10px;
+  //   height: 10px;
+  //   border: solid aliceblue;
+  //   border-width: 2px 0 0 2px;
+  //   -webkit-transform: rotate(135deg);
+  //   -ms-transform: rotate(135deg);
+  //   -o-transform: rotate(135deg);
+  //   transform: rotate(135deg);
+  //   margin-left: -5px;
+  // }
+  //
+  %_arrow {
+    display: block;
+
+    content: "";
+  }
+
+
+  @mixin arrow($direction, $size, $color, $thickness) {
+    @extend %_arrow;
+
+    width: $size;
+    height: $size;
+    // set border color
+
+    border: solid $color;
+    // Add a border on the top and right
+    border-width: $thickness 0 0 $thickness;
+
+    @if $direction == up {
+      // Rotate the L 45 degrees to turn it into a top arrow
+      @include rotate(45deg);
+      // Position in the middle
+
+      margin-top: $size * .5;
+    }
+
+    @if $direction == down {
+      // Rotate the L 225 degrees to turn it into a down arrow
+      @include rotate(225deg);
+      // Position in the middle
+
+      margin-top: -$size * .5;
+    }
+
+    @if $direction == right {
+      // Rotate the L 135 degrees to turn it into a right arrow
+      @include rotate(135deg);
+      // Position in the middle
+
+      margin-left: -$size * .5;
+    }
+
+    @if $direction == left {
+      // Rotate the L -45 degrees to turn it into a left arrow
+      @include rotate(-45deg);
+      // Position in the middle
+
+      margin-left: $size * .5;
+    }
+  }
+// }

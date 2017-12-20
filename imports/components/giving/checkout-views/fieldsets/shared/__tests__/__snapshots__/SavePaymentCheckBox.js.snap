@@ -1,6 +1,8 @@
-exports[`test does not render if guest checkout 1`] = `null`;
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`test does not render if scheduling 1`] = `
+exports[`does not render if guest checkout 1`] = `null`;
+
+exports[`does not render if scheduling 1`] = `
 <div>
   <p>
     <small>
@@ -12,12 +14,13 @@ exports[`test does not render if scheduling 1`] = `
 </div>
 `;
 
-exports[`test does not render if using saved account 1`] = `null`;
+exports[`does not render if using saved account 1`] = `null`;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <div
   className="input checkbox"
-  data-spec="input-wrapper">
+  data-spec="input-wrapper"
+>
   <label
     className="h6 soft-half-left push-half-left flush-bottom text-left float-left locked-top"
     htmlFor="savePayment"
@@ -29,10 +32,12 @@ exports[`test renders with props 1`] = `
         "marginTop": "-1px",
         "whiteSpace": "nowrap",
       }
-    }>
+    }
+  >
     <small
       data-spec="input-label"
-      style={Object {}}>
+      style={Object {}}
+    >
       Save this payment for future contributions
     </small>
   </label>
@@ -50,9 +55,11 @@ exports[`test renders with props 1`] = `
         "width": 0,
       }
     }
-    type="checkbox" />
+    type="checkbox"
+  />
   <label
     htmlFor="savePayment"
-    style={undefined} />
+    style={undefined}
+  />
 </div>
 `;

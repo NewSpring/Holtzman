@@ -1,8 +1,12 @@
-exports[`test renders spinner when loading is true 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders spinner when loading is true 1`] = `
 <section
-  className="background--light-secondary hard">
+  className="background--light-secondary hard"
+>
   <Meta
-    title="Group Finder" />
+    title="Group Finder"
+  />
   <div
     className="background--light-primary soft soft-double-left@anchored outlined--light outlined--bottom"
     style={
@@ -12,35 +16,42 @@ exports[`test renders spinner when loading is true 1`] = `
         "overflowY": "hidden",
         "whiteSpace": "nowrap",
       }
-    }>
+    }
+  >
     <withRouter(Connect(TagWithoutData))
       canBeActive={true}
       className="flush-bottom"
+      key="0"
       style={
         Object {
           "verticalAlign": "bottom",
         }
       }
-      val="test" />
+      val="test"
+    />
     <withRouter(Connect(TagWithoutData))
       canBeActive={true}
       className="flush-bottom"
+      key="1"
       style={
         Object {
           "verticalAlign": "bottom",
         }
       }
-      val="test" />
+      val="test"
+    />
     <withRouter(Connect(TagWithoutData))
       canBeActive={true}
       className="flush-bottom"
+      key="0"
       style={
         Object {
           "verticalAlign": "bottom",
         }
       }
       urlKey="schedules"
-      val={1} />
+      val={1}
+    />
     <withRouter(Connect(TagWithoutData))
       canBeActive={false}
       className="flush-bottom"
@@ -52,53 +63,68 @@ exports[`test renders spinner when loading is true 1`] = `
           "verticalAlign": "bottom",
         }
       }
-      val="filter" />
+      val="filter"
+    />
   </div>
   <withRouter(Apollo(Apollo(Connect(FilterWithoutData))))
     q="test"
     showSearch={true}
     showTags={true}
     toggleSearch={true}
-    toggleTags={true} />
+    toggleTags={true}
+  />
   <div
-    className="soft-half soft@portable soft-double-sides@anchored soft-ends@lap-and-up">
+    className="soft-half soft@portable soft-double-sides@anchored soft-ends@lap-and-up"
+  >
     <div
-      className="text-center soft">
+      className="text-center soft"
+    >
       <Spinner
         styles={
           Object {
             "height": "40px",
             "width": "40px",
           }
-        } />
+        }
+      />
     </div>
     <div
-      className="text-center soft-half-top push-top push-double-top@lap-and-up soft-half-bottom soft-half-sides">
+      className="text-center soft-half-top push-top push-double-top@lap-and-up soft-half-bottom soft-half-sides"
+    >
       <h6
-        className="em text-dark-secondary flush">
+        className="em text-dark-secondary flush"
+      >
+        0
          results of 
         12
       </h6>
     </div>
     <div
-      className="one-whole text-center push-bottom" />
+      className="one-whole text-center push-bottom"
+    />
     <button
-      className="relative one-whole push-double-top@lap-and-up push-double-top push-bottom@lap-and-up">
+      className="relative one-whole push-double-top@lap-and-up push-double-top push-bottom@lap-and-up"
+    >
       <div
-        className="card soft soft-double-sides@lap-and-up">
+        className="card soft soft-double-sides@lap-and-up"
+      >
         <div
-          className="card__item soft-double-sides@lap-and-up">
+          className="card__item soft-double-sides@lap-and-up"
+        >
           <div
-            className="one-whole text-center@handheld">
+            className="one-whole text-center@handheld"
+          >
             <h4
-              className="soft-half-top push-top@anchored capitalize">
-              Can\'t find what you\'re looking for, or want to start your own group?
+              className="soft-half-top push-top@anchored capitalize"
+            >
+              Can't find what you're looking for, or want to start your own group?
             </h4>
             <Link
               className="btn push-half-top"
               href="https://rock.newspring.cc/workflows/81"
               onlyActiveOnIndex={false}
-              style={Object {}}>
+              style={Object {}}
+            >
               Contact Us
             </Link>
           </div>
@@ -109,11 +135,13 @@ exports[`test renders spinner when loading is true 1`] = `
 </section>
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <section
-  className="background--light-secondary hard">
+  className="background--light-secondary hard"
+>
   <Meta
-    title="Group Finder" />
+    title="Group Finder"
+  />
   <div
     className="background--light-primary soft soft-double-left@anchored outlined--light outlined--bottom"
     style={
@@ -123,35 +151,42 @@ exports[`test renders with props 1`] = `
         "overflowY": "hidden",
         "whiteSpace": "nowrap",
       }
-    }>
+    }
+  >
     <withRouter(Connect(TagWithoutData))
       canBeActive={true}
       className="flush-bottom"
+      key="0"
       style={
         Object {
           "verticalAlign": "bottom",
         }
       }
-      val="test" />
+      val="test"
+    />
     <withRouter(Connect(TagWithoutData))
       canBeActive={true}
       className="flush-bottom"
+      key="1"
       style={
         Object {
           "verticalAlign": "bottom",
         }
       }
-      val="test" />
+      val="test"
+    />
     <withRouter(Connect(TagWithoutData))
       canBeActive={true}
       className="flush-bottom"
+      key="0"
       style={
         Object {
           "verticalAlign": "bottom",
         }
       }
       urlKey="schedules"
-      val={1} />
+      val={1}
+    />
     <withRouter(Connect(TagWithoutData))
       canBeActive={false}
       className="flush-bottom"
@@ -163,30 +198,35 @@ exports[`test renders with props 1`] = `
           "verticalAlign": "bottom",
         }
       }
-      val="filter" />
+      val="filter"
+    />
   </div>
   <withRouter(Apollo(Apollo(Connect(FilterWithoutData))))
     q="test"
     showSearch={true}
     showTags={true}
     toggleSearch={true}
-    toggleTags={true} />
+    toggleTags={true}
+  />
   <div
-    className="soft-half soft@portable soft-double-sides@anchored soft-ends@lap-and-up">
+    className="soft-half soft@portable soft-double-sides@anchored soft-ends@lap-and-up"
+  >
     <div
       className="push-bottom push-double-bottom@lap-and-up soft-half-ends soft-half-sides"
       style={
         Object {
           "verticalAlign": "middle",
         }
-      }>
+      }
+    >
       <h6
         className="em float-left flush-bottom text-dark-tertiary"
         style={
           Object {
             "verticalAlign": "middle",
           }
-        }>
+        }
+      >
         12
          Results
       </h6>
@@ -197,31 +237,39 @@ exports[`test renders with props 1`] = `
           Object {
             "marginTop": "-4px",
           }
-        } />
+        }
+      />
     </div>
     <div
-      className="text-center soft-half-top push-top push-double-top@lap-and-up soft-half-bottom soft-half-sides">
+      className="text-center soft-half-top push-top push-double-top@lap-and-up soft-half-bottom soft-half-sides"
+    >
       <h6
-        className="em text-dark-secondary flush">
+        className="em text-dark-secondary flush"
+      >
+        0
          results of 
         12
       </h6>
     </div>
     <LoadingComponent />
     <div
-      className="one-whole text-center push-bottom">
+      className="one-whole text-center push-bottom"
+    >
       <div
-        className="card push-top">
+        className="card push-top"
+      >
         <div
-          className="card__item soft-ends soft-half-sides soft-double@palm-wide-and-up">
+          className="card__item soft-ends soft-half-sides soft-double@palm-wide-and-up"
+        >
           <p
-            className="flush hard">
+            className="flush hard"
+          >
             <em>
               <small>
-                Unfortunately, we didn\'t find any groups matching your search. You can start a group
-                 
+                Unfortunately, we didn't find any groups matching your search. You can start a group 
                 <a
-                  href="https://rock.newspring.cc/workflows/81">
+                  href="https://rock.newspring.cc/workflows/81"
+                >
                   here!
                 </a>
               </small>
@@ -231,22 +279,28 @@ exports[`test renders with props 1`] = `
       </div>
     </div>
     <button
-      className="relative one-whole push-double-top@lap-and-up push-double-top push-bottom@lap-and-up">
+      className="relative one-whole push-double-top@lap-and-up push-double-top push-bottom@lap-and-up"
+    >
       <div
-        className="card soft soft-double-sides@lap-and-up">
+        className="card soft soft-double-sides@lap-and-up"
+      >
         <div
-          className="card__item soft-double-sides@lap-and-up">
+          className="card__item soft-double-sides@lap-and-up"
+        >
           <div
-            className="one-whole text-center@handheld">
+            className="one-whole text-center@handheld"
+          >
             <h4
-              className="soft-half-top push-top@anchored capitalize">
-              Can\'t find what you\'re looking for, or want to start your own group?
+              className="soft-half-top push-top@anchored capitalize"
+            >
+              Can't find what you're looking for, or want to start your own group?
             </h4>
             <Link
               className="btn push-half-top"
               href="https://rock.newspring.cc/workflows/81"
               onlyActiveOnIndex={false}
-              style={Object {}}>
+              style={Object {}}
+            >
               Contact Us
             </Link>
           </div>
@@ -257,11 +311,13 @@ exports[`test renders with props 1`] = `
 </section>
 `;
 
-exports[`test shows down arrow on filter tag when tag drawer is closed 1`] = `
+exports[`shows down arrow on filter tag when tag drawer is closed 1`] = `
 <section
-  className="background--light-secondary hard">
+  className="background--light-secondary hard"
+>
   <Meta
-    title="Group Finder" />
+    title="Group Finder"
+  />
   <div
     className="background--light-primary soft soft-double-left@anchored outlined--light outlined--bottom"
     style={
@@ -271,35 +327,42 @@ exports[`test shows down arrow on filter tag when tag drawer is closed 1`] = `
         "overflowY": "hidden",
         "whiteSpace": "nowrap",
       }
-    }>
+    }
+  >
     <withRouter(Connect(TagWithoutData))
       canBeActive={true}
       className="flush-bottom"
+      key="0"
       style={
         Object {
           "verticalAlign": "bottom",
         }
       }
-      val="test" />
+      val="test"
+    />
     <withRouter(Connect(TagWithoutData))
       canBeActive={true}
       className="flush-bottom"
+      key="1"
       style={
         Object {
           "verticalAlign": "bottom",
         }
       }
-      val="test" />
+      val="test"
+    />
     <withRouter(Connect(TagWithoutData))
       canBeActive={true}
       className="flush-bottom"
+      key="0"
       style={
         Object {
           "verticalAlign": "bottom",
         }
       }
       urlKey="schedules"
-      val={1} />
+      val={1}
+    />
     <withRouter(Connect(TagWithoutData))
       canBeActive={false}
       className="flush-bottom"
@@ -311,30 +374,35 @@ exports[`test shows down arrow on filter tag when tag drawer is closed 1`] = `
           "verticalAlign": "bottom",
         }
       }
-      val="filter" />
+      val="filter"
+    />
   </div>
   <withRouter(Apollo(Apollo(Connect(FilterWithoutData))))
     q="test"
     showSearch={true}
     showTags={false}
     toggleSearch={true}
-    toggleTags={true} />
+    toggleTags={true}
+  />
   <div
-    className="soft-half soft@portable soft-double-sides@anchored soft-ends@lap-and-up">
+    className="soft-half soft@portable soft-double-sides@anchored soft-ends@lap-and-up"
+  >
     <div
       className="push-bottom push-double-bottom@lap-and-up soft-half-ends soft-half-sides"
       style={
         Object {
           "verticalAlign": "middle",
         }
-      }>
+      }
+    >
       <h6
         className="em float-left flush-bottom text-dark-tertiary"
         style={
           Object {
             "verticalAlign": "middle",
           }
-        }>
+        }
+      >
         12
          Results
       </h6>
@@ -345,31 +413,39 @@ exports[`test shows down arrow on filter tag when tag drawer is closed 1`] = `
           Object {
             "marginTop": "-4px",
           }
-        } />
+        }
+      />
     </div>
     <div
-      className="text-center soft-half-top push-top push-double-top@lap-and-up soft-half-bottom soft-half-sides">
+      className="text-center soft-half-top push-top push-double-top@lap-and-up soft-half-bottom soft-half-sides"
+    >
       <h6
-        className="em text-dark-secondary flush">
+        className="em text-dark-secondary flush"
+      >
+        0
          results of 
         12
       </h6>
     </div>
     <LoadingComponent />
     <div
-      className="one-whole text-center push-bottom">
+      className="one-whole text-center push-bottom"
+    >
       <div
-        className="card push-top">
+        className="card push-top"
+      >
         <div
-          className="card__item soft-ends soft-half-sides soft-double@palm-wide-and-up">
+          className="card__item soft-ends soft-half-sides soft-double@palm-wide-and-up"
+        >
           <p
-            className="flush hard">
+            className="flush hard"
+          >
             <em>
               <small>
-                Unfortunately, we didn\'t find any groups matching your search. You can start a group
-                 
+                Unfortunately, we didn't find any groups matching your search. You can start a group 
                 <a
-                  href="https://rock.newspring.cc/workflows/81">
+                  href="https://rock.newspring.cc/workflows/81"
+                >
                   here!
                 </a>
               </small>
@@ -379,22 +455,28 @@ exports[`test shows down arrow on filter tag when tag drawer is closed 1`] = `
       </div>
     </div>
     <button
-      className="relative one-whole push-double-top@lap-and-up push-double-top push-bottom@lap-and-up">
+      className="relative one-whole push-double-top@lap-and-up push-double-top push-bottom@lap-and-up"
+    >
       <div
-        className="card soft soft-double-sides@lap-and-up">
+        className="card soft soft-double-sides@lap-and-up"
+      >
         <div
-          className="card__item soft-double-sides@lap-and-up">
+          className="card__item soft-double-sides@lap-and-up"
+        >
           <div
-            className="one-whole text-center@handheld">
+            className="one-whole text-center@handheld"
+          >
             <h4
-              className="soft-half-top push-top@anchored capitalize">
-              Can\'t find what you\'re looking for, or want to start your own group?
+              className="soft-half-top push-top@anchored capitalize"
+            >
+              Can't find what you're looking for, or want to start your own group?
             </h4>
             <Link
               className="btn push-half-top"
               href="https://rock.newspring.cc/workflows/81"
               onlyActiveOnIndex={false}
-              style={Object {}}>
+              style={Object {}}
+            >
               Contact Us
             </Link>
           </div>
@@ -405,11 +487,13 @@ exports[`test shows down arrow on filter tag when tag drawer is closed 1`] = `
 </section>
 `;
 
-exports[`test shows up arrow on filter tag when tags are shown 1`] = `
+exports[`shows up arrow on filter tag when tags are shown 1`] = `
 <section
-  className="background--light-secondary hard">
+  className="background--light-secondary hard"
+>
   <Meta
-    title="Group Finder" />
+    title="Group Finder"
+  />
   <div
     className="background--light-primary soft soft-double-left@anchored outlined--light outlined--bottom"
     style={
@@ -419,35 +503,42 @@ exports[`test shows up arrow on filter tag when tags are shown 1`] = `
         "overflowY": "hidden",
         "whiteSpace": "nowrap",
       }
-    }>
+    }
+  >
     <withRouter(Connect(TagWithoutData))
       canBeActive={true}
       className="flush-bottom"
+      key="0"
       style={
         Object {
           "verticalAlign": "bottom",
         }
       }
-      val="test" />
+      val="test"
+    />
     <withRouter(Connect(TagWithoutData))
       canBeActive={true}
       className="flush-bottom"
+      key="1"
       style={
         Object {
           "verticalAlign": "bottom",
         }
       }
-      val="test" />
+      val="test"
+    />
     <withRouter(Connect(TagWithoutData))
       canBeActive={true}
       className="flush-bottom"
+      key="0"
       style={
         Object {
           "verticalAlign": "bottom",
         }
       }
       urlKey="schedules"
-      val={1} />
+      val={1}
+    />
     <withRouter(Connect(TagWithoutData))
       canBeActive={false}
       className="flush-bottom"
@@ -459,30 +550,35 @@ exports[`test shows up arrow on filter tag when tags are shown 1`] = `
           "verticalAlign": "bottom",
         }
       }
-      val="filter" />
+      val="filter"
+    />
   </div>
   <withRouter(Apollo(Apollo(Connect(FilterWithoutData))))
     q="test"
     showSearch={true}
     showTags={true}
     toggleSearch={true}
-    toggleTags={true} />
+    toggleTags={true}
+  />
   <div
-    className="soft-half soft@portable soft-double-sides@anchored soft-ends@lap-and-up">
+    className="soft-half soft@portable soft-double-sides@anchored soft-ends@lap-and-up"
+  >
     <div
       className="push-bottom push-double-bottom@lap-and-up soft-half-ends soft-half-sides"
       style={
         Object {
           "verticalAlign": "middle",
         }
-      }>
+      }
+    >
       <h6
         className="em float-left flush-bottom text-dark-tertiary"
         style={
           Object {
             "verticalAlign": "middle",
           }
-        }>
+        }
+      >
         12
          Results
       </h6>
@@ -493,31 +589,39 @@ exports[`test shows up arrow on filter tag when tags are shown 1`] = `
           Object {
             "marginTop": "-4px",
           }
-        } />
+        }
+      />
     </div>
     <div
-      className="text-center soft-half-top push-top push-double-top@lap-and-up soft-half-bottom soft-half-sides">
+      className="text-center soft-half-top push-top push-double-top@lap-and-up soft-half-bottom soft-half-sides"
+    >
       <h6
-        className="em text-dark-secondary flush">
+        className="em text-dark-secondary flush"
+      >
+        0
          results of 
         12
       </h6>
     </div>
     <LoadingComponent />
     <div
-      className="one-whole text-center push-bottom">
+      className="one-whole text-center push-bottom"
+    >
       <div
-        className="card push-top">
+        className="card push-top"
+      >
         <div
-          className="card__item soft-ends soft-half-sides soft-double@palm-wide-and-up">
+          className="card__item soft-ends soft-half-sides soft-double@palm-wide-and-up"
+        >
           <p
-            className="flush hard">
+            className="flush hard"
+          >
             <em>
               <small>
-                Unfortunately, we didn\'t find any groups matching your search. You can start a group
-                 
+                Unfortunately, we didn't find any groups matching your search. You can start a group 
                 <a
-                  href="https://rock.newspring.cc/workflows/81">
+                  href="https://rock.newspring.cc/workflows/81"
+                >
                   here!
                 </a>
               </small>
@@ -527,22 +631,28 @@ exports[`test shows up arrow on filter tag when tags are shown 1`] = `
       </div>
     </div>
     <button
-      className="relative one-whole push-double-top@lap-and-up push-double-top push-bottom@lap-and-up">
+      className="relative one-whole push-double-top@lap-and-up push-double-top push-bottom@lap-and-up"
+    >
       <div
-        className="card soft soft-double-sides@lap-and-up">
+        className="card soft soft-double-sides@lap-and-up"
+      >
         <div
-          className="card__item soft-double-sides@lap-and-up">
+          className="card__item soft-double-sides@lap-and-up"
+        >
           <div
-            className="one-whole text-center@handheld">
+            className="one-whole text-center@handheld"
+          >
             <h4
-              className="soft-half-top push-top@anchored capitalize">
-              Can\'t find what you\'re looking for, or want to start your own group?
+              className="soft-half-top push-top@anchored capitalize"
+            >
+              Can't find what you're looking for, or want to start your own group?
             </h4>
             <Link
               className="btn push-half-top"
               href="https://rock.newspring.cc/workflows/81"
               onlyActiveOnIndex={false}
-              style={Object {}}>
+              style={Object {}}
+            >
               Contact Us
             </Link>
           </div>

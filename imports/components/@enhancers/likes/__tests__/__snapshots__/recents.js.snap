@@ -1,4 +1,6 @@
-exports[`test should contain recent likes query 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should contain recent likes query 1`] = `
 "query RecentlyLiked {
   recentlyLiked(limit: 10, skip: 0) {
     ...ContentCard
@@ -15,7 +17,7 @@ fragment ContentCard on Content {
     channelName
     id
     content {
-      images(sizes: [\"medium\"]) {
+      images(sizes: [\\"medium\\"]) {
         url
         label
         fileLabel
@@ -24,7 +26,7 @@ fragment ContentCard on Content {
     }
   }
   content {
-    images(sizes: [\"medium\"]) {
+    images(sizes: [\\"medium\\"]) {
       url
       label
       fileLabel

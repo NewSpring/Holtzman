@@ -10,7 +10,7 @@ if (process.env.NATIVE) {
 const redirectToWelcome = (replace, cb) => {
   if (typeof NativeStorage === "undefined") return cb();
   return NativeStorage.getItem("welcomed",
-    (welcomed) => {
+    welcomed => {
       if (welcomed) return cb();
       replace({ pathname: "/welcome" });
       return cb();

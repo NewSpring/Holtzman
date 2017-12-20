@@ -1,4 +1,6 @@
-exports[`test renders with props 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders with props 1`] = `
 <Layout
   accounts={
     Array [
@@ -14,10 +16,11 @@ exports[`test renders with props 1`] = `
       Object {},
       Object {},
     ]
-  } />
+  }
+/>
 `;
 
-exports[`test renders without accounts 1`] = `
+exports[`renders without accounts 1`] = `
 <Layout
   accounts={Array []}
   cancelSchedule={[Function]}
@@ -29,10 +32,11 @@ exports[`test renders without accounts 1`] = `
       Object {},
       Object {},
     ]
-  } />
+  }
+/>
 `;
 
-exports[`test renders without person 1`] = `
+exports[`renders without person 1`] = `
 <Layout
   accounts={
     Array [
@@ -48,10 +52,11 @@ exports[`test renders without person 1`] = `
       Object {},
       Object {},
     ]
-  } />
+  }
+/>
 `;
 
-exports[`test renders without transactions 1`] = `
+exports[`renders without transactions 1`] = `
 <Layout
   accounts={
     Array [
@@ -62,5 +67,6 @@ exports[`test renders without transactions 1`] = `
   confirm={[Function]}
   person={Object {}}
   ready={true}
-  recoverableSchedules={Array []} />
+  recoverableSchedules={Array []}
+/>
 `;

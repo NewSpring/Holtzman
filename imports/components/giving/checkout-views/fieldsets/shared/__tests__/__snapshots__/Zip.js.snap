@@ -1,143 +1,197 @@
-exports[`test renders one-half if country is \`CA\` 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders one-half if country is \`CA\` 1`] = `
 <div
-  className="grid__item one-half">
+  className="grid__item one-half"
+>
   <div
     className="input input--active"
     data-spec="input-wrapper"
-    style={Object {}}>
+    style={Object {}}
+  >
     <label
       htmlFor="zip"
-      style={Object {}}>
+      style={Object {}}
+    >
       Zip/Postal
     </label>
-    <input
-      autoCapitalize="on"
-      autoComplete="on"
-      autoCorrect="on"
-      className={undefined}
-      data-lpignore={undefined}
-      data-spec="input"
-      defaultValue="23456"
-      disabled={undefined}
-      id="zip"
-      maxLength=""
-      name="zip"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onFocus={[Function]}
-      placeholder="Zip/Postal"
-      readOnly={undefined}
-      spellCheck={undefined}
+    <span
+      className=""
       style={Object {}}
-      type={undefined} />
+    >
+      <input
+        autoCapitalize="on"
+        autoComplete="on"
+        autoCorrect="on"
+        className={undefined}
+        data-lpignore={undefined}
+        data-spec="input"
+        defaultValue="23456"
+        disabled={undefined}
+        id="zip"
+        maxLength=""
+        name="zip"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        pattern={undefined}
+        placeholder="Zip/Postal"
+        readOnly={undefined}
+        spellCheck={undefined}
+        step={undefined}
+        style={Object {}}
+        type={undefined}
+      />
+    </span>
   </div>
 </div>
 `;
 
-exports[`test renders one-half if country is \`US\` 1`] = `
+exports[`renders one-half if country is \`US\` 1`] = `
 <div
-  className="grid__item one-half">
+  className="grid__item one-half"
+>
   <div
     className="input input--active"
     data-spec="input-wrapper"
-    style={Object {}}>
+    style={Object {}}
+  >
     <label
       htmlFor="zip"
-      style={Object {}}>
+      style={Object {}}
+    >
       Zip/Postal
     </label>
-    <input
-      autoCapitalize="on"
-      autoComplete="on"
-      autoCorrect="on"
-      className={undefined}
-      data-lpignore={undefined}
-      data-spec="input"
-      defaultValue="12345"
-      disabled={undefined}
-      id="zip"
-      maxLength=""
-      name="zip"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onFocus={[Function]}
-      placeholder="Zip/Postal"
-      readOnly={undefined}
-      spellCheck={undefined}
+    <span
+      className=""
       style={Object {}}
-      type={undefined} />
+    >
+      <input
+        autoCapitalize="on"
+        autoComplete="on"
+        autoCorrect="on"
+        className={undefined}
+        data-lpignore={undefined}
+        data-spec="input"
+        defaultValue="12345"
+        disabled={undefined}
+        id="zip"
+        maxLength=""
+        name="zip"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        pattern={undefined}
+        placeholder="Zip/Postal"
+        readOnly={undefined}
+        spellCheck={undefined}
+        step={undefined}
+        style={Object {}}
+        type={undefined}
+      />
+    </span>
   </div>
 </div>
 `;
 
-exports[`test renders one-half if no country 1`] = `
+exports[`renders one-half if no country 1`] = `
 <div
-  className="grid__item one-half">
+  className="grid__item one-half"
+>
   <div
     className="input"
     data-spec="input-wrapper"
-    style={Object {}}>
+    style={Object {}}
+  >
     <label
       htmlFor="zip"
-      style={Object {}}>
+      style={Object {}}
+    >
       Zip/Postal
     </label>
-    <input
-      autoCapitalize="on"
-      autoComplete="on"
-      autoCorrect="on"
-      className={undefined}
-      data-lpignore={undefined}
-      data-spec="input"
-      defaultValue={undefined}
-      disabled={undefined}
-      id="zip"
-      maxLength=""
-      name="zip"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onFocus={[Function]}
-      placeholder="Zip/Postal"
-      readOnly={undefined}
-      spellCheck={undefined}
-      style={Object {}}
-      type={undefined} />
+    <span
+      className=""
+      style={
+        Object {
+          "color": "#858585",
+        }
+      }
+    >
+      <input
+        autoCapitalize="on"
+        autoComplete="on"
+        autoCorrect="on"
+        className={undefined}
+        data-lpignore={undefined}
+        data-spec="input"
+        defaultValue={undefined}
+        disabled={undefined}
+        id="zip"
+        maxLength=""
+        name="zip"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        pattern={undefined}
+        placeholder="Zip/Postal"
+        readOnly={undefined}
+        spellCheck={undefined}
+        step={undefined}
+        style={Object {}}
+        type={undefined}
+      />
+    </span>
   </div>
 </div>
 `;
 
-exports[`test renders one-whole for countries with no states 1`] = `
+exports[`renders one-whole for countries with no states 1`] = `
 <div
-  className="grid__item one-whole">
+  className="grid__item one-whole"
+>
   <div
     className="input"
     data-spec="input-wrapper"
-    style={Object {}}>
+    style={Object {}}
+  >
     <label
       htmlFor="zip"
-      style={Object {}}>
+      style={Object {}}
+    >
       Zip/Postal
     </label>
-    <input
-      autoCapitalize="on"
-      autoComplete="on"
-      autoCorrect="on"
-      className={undefined}
-      data-lpignore={undefined}
-      data-spec="input"
-      defaultValue={undefined}
-      disabled={undefined}
-      id="zip"
-      maxLength=""
-      name="zip"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onFocus={[Function]}
-      placeholder="Zip/Postal"
-      readOnly={undefined}
-      spellCheck={undefined}
-      style={Object {}}
-      type={undefined} />
+    <span
+      className=""
+      style={
+        Object {
+          "color": "#858585",
+        }
+      }
+    >
+      <input
+        autoCapitalize="on"
+        autoComplete="on"
+        autoCorrect="on"
+        className={undefined}
+        data-lpignore={undefined}
+        data-spec="input"
+        defaultValue={undefined}
+        disabled={undefined}
+        id="zip"
+        maxLength=""
+        name="zip"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        pattern={undefined}
+        placeholder="Zip/Postal"
+        readOnly={undefined}
+        spellCheck={undefined}
+        step={undefined}
+        style={Object {}}
+        type={undefined}
+      />
+    </span>
   </div>
 </div>
 `;

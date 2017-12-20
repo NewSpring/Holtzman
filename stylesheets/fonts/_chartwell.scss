@@ -1,0 +1,14 @@
+/* ----------------------------------------------------------------------------
+	FONT: Chartwell
+---------------------------------------------------------------------------- */
+/* first for Internet Explorer < 9 */
+@font-face {
+font-family: ChartwellTextWebPro;
+src: url("//d2cv5sdpfu57sc.cloudfront.net/fonts/chartwell/ChartwellTextWebPro.eot");
+}
+
+/* then for WOFF-capable browsers */
+@font-face {
+font-family: ChartwellTextWebPro;
+src: url("//d2cv5sdpfu57sc.cloudfront.net/fonts/chartwell/ChartwellTextWebPro.woff") format("woff");
+}
