@@ -67,6 +67,11 @@ exports[`should accept custom classes thru classes prop 1`] = `
         hard-top
         flush-bottom
         text-brand"
+          style={
+            Object {
+              "color": "#858585",
+            }
+          }
         >
           <input
             autoCapitalize="on"
@@ -236,6 +241,11 @@ exports[`should accept multiple accounts through accounts prop 1`] = `
         hard-top
         flush-bottom
         text-brand"
+          style={
+            Object {
+              "color": "#858585",
+            }
+          }
         >
           <input
             autoCapitalize="on"
@@ -412,6 +422,11 @@ exports[`should change classes based on active state 1`] = `
         hard-top
         flush-bottom
         text-brand"
+          style={
+            Object {
+              "color": "#858585",
+            }
+          }
         >
           <input
             autoCapitalize="on"
@@ -578,6 +593,11 @@ exports[`should render with minimal props 1`] = `
         hard-top
         flush-bottom
         text-brand"
+          style={
+            Object {
+              "color": "#858585",
+            }
+          }
         >
           <input
             autoCapitalize="on"
