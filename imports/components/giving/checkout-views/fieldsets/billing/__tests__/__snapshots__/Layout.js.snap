@@ -42,6 +42,7 @@ exports[`Layout renders US by default 1`] = `
       </label>
       <span
         className=""
+        style={Object {}}
       >
         <input
           autoCapitalize="on"
@@ -81,6 +82,7 @@ exports[`Layout renders US by default 1`] = `
       </label>
       <span
         className=""
+        style={Object {}}
       >
         <input
           autoCapitalize="on"
@@ -160,6 +162,7 @@ exports[`Layout renders US by default 1`] = `
       </label>
       <span
         className=""
+        style={Object {}}
       >
         <input
           autoCapitalize="on"
@@ -249,6 +252,11 @@ exports[`Layout renders US by default 1`] = `
           </label>
           <span
             className=""
+            style={
+              Object {
+                "color": "#858585",
+              }
+            }
           >
             <input
               autoCapitalize="on"
@@ -327,6 +335,7 @@ exports[`Layout renders your country instead 1`] = `
       </label>
       <span
         className=""
+        style={Object {}}
       >
         <input
           autoCapitalize="on"
@@ -366,6 +375,7 @@ exports[`Layout renders your country instead 1`] = `
       </label>
       <span
         className=""
+        style={Object {}}
       >
         <input
           autoCapitalize="on"
@@ -445,6 +455,7 @@ exports[`Layout renders your country instead 1`] = `
       </label>
       <span
         className=""
+        style={Object {}}
       >
         <input
           autoCapitalize="on"
@@ -534,6 +545,11 @@ exports[`Layout renders your country instead 1`] = `
           </label>
           <span
             className=""
+            style={
+              Object {
+                "color": "#858585",
+              }
+            }
           >
             <input
               autoCapitalize="on"

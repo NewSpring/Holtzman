@@ -43,6 +43,11 @@ exports[`render with enabled button if newP and newPDup 1`] = `
         </label>
         <span
           className=""
+          style={
+            Object {
+              "color": "#858585",
+            }
+          }
         >
           <input
             autoCapitalize="on"
@@ -82,6 +87,11 @@ exports[`render with enabled button if newP and newPDup 1`] = `
         </label>
         <span
           className=""
+          style={
+            Object {
+              "color": "#858585",
+            }
+          }
         >
           <input
             autoCapitalize="on"
@@ -169,6 +179,11 @@ exports[`renders with disabled button without newP 1`] = `
         </label>
         <span
           className=""
+          style={
+            Object {
+              "color": "#858585",
+            }
+          }
         >
           <input
             autoCapitalize="on"
@@ -208,6 +223,11 @@ exports[`renders with disabled button without newP 1`] = `
         </label>
         <span
           className=""
+          style={
+            Object {
+              "color": "#858585",
+            }
+          }
         >
           <input
             autoCapitalize="on"
@@ -295,6 +315,11 @@ exports[`renders with disabled button without newPDup 1`] = `
         </label>
         <span
           className=""
+          style={
+            Object {
+              "color": "#858585",
+            }
+          }
         >
           <input
             autoCapitalize="on"
@@ -334,6 +359,11 @@ exports[`renders with disabled button without newPDup 1`] = `
         </label>
         <span
           className=""
+          style={
+            Object {
+              "color": "#858585",
+            }
+          }
         >
           <input
             autoCapitalize="on"

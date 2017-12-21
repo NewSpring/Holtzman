@@ -31,5 +31,5 @@ crosswalk@1.7.1
 shell-server@0.3.0
 dispatch:reload-on-resume
 dynamic-import@0.2.0
-staringatlights:fast-render
+staringatlights:fast-render@2.16.4
 seba:minifiers-autoprefixer

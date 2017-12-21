@@ -73,6 +73,7 @@ exports[`should accept an active prop to show the input 1`] = `
         hard-top
         flush-bottom
         text-brand"
+          style={Object {}}
         >
           <input
             autoCapitalize="on"
@@ -247,6 +248,11 @@ exports[`should accept custom classes thru classes prop 1`] = `
         hard-top
         flush-bottom
         text-brand"
+          style={
+            Object {
+              "color": "#858585",
+            }
+          }
         >
           <input
             autoCapitalize="on"
@@ -423,6 +429,11 @@ exports[`should accept multiple accounts through accounts prop 1`] = `
         hard-top
         flush-bottom
         text-brand"
+          style={
+            Object {
+              "color": "#858585",
+            }
+          }
         >
           <input
             autoCapitalize="on"
@@ -606,6 +617,11 @@ exports[`should render with minimal props 1`] = `
         hard-top
         flush-bottom
         text-brand"
+          style={
+            Object {
+              "color": "#858585",
+            }
+          }
         >
           <input
             autoCapitalize="on"
