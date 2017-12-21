@@ -1,4 +1,6 @@
-exports[`test renders disabled if missing prop 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders disabled if missing prop 1`] = `
 <div
   className="background--light-primary one-whole text-center push-top push-double-top@lap-and-up push-double-bottom"
   style={
@@ -6,10 +8,12 @@ exports[`test renders disabled if missing prop 1`] = `
       "overflow": "visible",
       "zIndex": 1,
     }
-  }>
+  }
+>
   <Back />
   <Meta
-    title="Change your password" />
+    title="Change your password"
+  />
   <Form
     classes={
       Array [
@@ -22,11 +26,14 @@ exports[`test renders disabled if missing prop 1`] = `
       ]
     }
     id="reset-password"
-    submit={[Function]}>
+    submit={[Function]}
+  >
     <div
-      className="push-double">
+      className="push-double"
+    >
       <h4
-        className="text-center">
+        className="text-center"
+      >
         Change Password
       </h4>
     </div>
@@ -34,29 +41,33 @@ exports[`test renders disabled if missing prop 1`] = `
       label="Current Password"
       name="current"
       type="password"
-      validation={[Function]} />
+      validation={[Function]}
+    />
     <Input
       errorText="New password does not match"
       label="New Password"
       name="newP"
       type="password"
-      validation={[Function]} />
+      validation={[Function]}
+    />
     <Input
       errorText="New password does not match"
       label="Repeat New Password"
       name="newPDup"
       type="password"
-      validation={[Function]} />
+      validation={[Function]}
+    />
     <button
       className="btn--disabled"
-      disabled={true}>
+      disabled={true}
+    >
       Enter
     </button>
   </Form>
 </div>
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <div
   className="background--light-primary one-whole text-center push-top push-double-top@lap-and-up push-double-bottom"
   style={
@@ -64,10 +75,12 @@ exports[`test renders with props 1`] = `
       "overflow": "visible",
       "zIndex": 1,
     }
-  }>
+  }
+>
   <Back />
   <Meta
-    title="Change your password" />
+    title="Change your password"
+  />
   <Form
     classes={
       Array [
@@ -80,11 +93,14 @@ exports[`test renders with props 1`] = `
       ]
     }
     id="reset-password"
-    submit={[Function]}>
+    submit={[Function]}
+  >
     <div
-      className="push-double">
+      className="push-double"
+    >
       <h4
-        className="text-center">
+        className="text-center"
+      >
         Change Password
       </h4>
     </div>
@@ -92,22 +108,26 @@ exports[`test renders with props 1`] = `
       label="Current Password"
       name="current"
       type="password"
-      validation={[Function]} />
+      validation={[Function]}
+    />
     <Input
       errorText="New password does not match"
       label="New Password"
       name="newP"
       type="password"
-      validation={[Function]} />
+      validation={[Function]}
+    />
     <Input
       errorText="New password does not match"
       label="Repeat New Password"
       name="newPDup"
       type="password"
-      validation={[Function]} />
+      validation={[Function]}
+    />
     <button
       className="btn"
-      disabled={false}>
+      disabled={false}
+    >
       Enter
     </button>
   </Form>

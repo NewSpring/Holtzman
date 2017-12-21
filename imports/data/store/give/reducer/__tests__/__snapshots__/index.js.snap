@@ -1,4 +1,6 @@
-exports[`test allows clearing all data 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`allows clearing all data 1`] = `
 Object {
   "accounts": Object {},
   "attempts": 0,
@@ -55,7 +57,7 @@ Object {
 }
 `;
 
-exports[`test allows clearing individual data fields 1`] = `
+exports[`allows clearing individual data fields 1`] = `
 Object {
   "accounts": Object {},
   "attempts": 0,
@@ -113,7 +115,7 @@ Object {
 }
 `;
 
-exports[`test allows saving data 1`] = `
+exports[`allows saving data 1`] = `
 Object {
   "accounts": Object {},
   "attempts": 0,
@@ -171,7 +173,7 @@ Object {
 }
 `;
 
-exports[`test doesn't change state when removing if missing info 1`] = `
+exports[`doesn't change state when removing if missing info 1`] = `
 Object {
   "accounts": Object {},
   "attempts": 0,
@@ -229,7 +231,7 @@ Object {
 }
 `;
 
-exports[`test has a known initial state 1`] = `
+exports[`has a known initial state 1`] = `
 Object {
   "accounts": Object {},
   "attempts": 0,

@@ -1,44 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Next Steps renders a layout 1`] = `
 <div>
   <Meta
-    title="Next Steps" />
+    title="Next Steps"
+  />
   <div
-    className="background--light-secondary soft-double-ends soft-sides">
+    className="background--light-secondary soft-double-ends soft-sides"
+  >
     <div
-      className="push-ends">
+      className="push-ends"
+    >
       <h3
-        className="text-center">
+        className="text-center"
+      >
         Celebrating Next Steps
       </h3>
       <p
-        className="constrain-copy">
-        Salvation is a starting point, not a destination. NewSpring exists to connect people to Jesus and each other. We will always be a church that celebrates next steps as well as salvations. Here\'s a look at how we\'ve seen people take their 
+        className="constrain-copy"
+      >
+        Salvation is a starting point, not a destination. NewSpring exists to connect people to Jesus and each other. We will always be a church that celebrates next steps as well as salvations. Here's a look at how we've seen people take their
+         
         <a
           alt="link to next steps"
-          href="https://newspring.cc/nextsteps">
+          href="https://newspring.cc/nextsteps"
+        >
           next steps
         </a>
-         in 2016.
+         
+        in 2016.
       </p>
     </div>
   </div>
   <div
-    className="background--light-primary floating">
+    className="background--light-primary floating"
+  >
     <div
-      className="soft-double soft-sides@handheld push-double-top text-center three-quarters@lap-wide-and-up nine-tenths@lap floating__item">
+      className="soft-double soft-sides@handheld push-double-top text-center three-quarters@lap-wide-and-up nine-tenths@lap floating__item"
+    >
       <h3>
         Salvations
       </h3>
       <Connect(FitTextWithoutData)
         compressor={0.4}
-        maxFontSize={80}>
+        maxFontSize={80}
+      >
         <h1
           className="uppercase soft-double-bottom@lap-and-up"
           style={
             Object {
               "fontWeight": "900",
             }
-          }>
+          }
+        >
           9,560
         </h1>
       </Connect(FitTextWithoutData)>
@@ -48,7 +62,8 @@ exports[`Next Steps renders a layout 1`] = `
           Object {
             "borderTop": "1px solid #dddddd",
           }
-        } />
+        }
+      />
       <Story
         content="<p>The community Brett Chamberlain found through a fishing interest group at NewSpring Rock Hill helped him recognize that he needed to ask Jesus into his life and take the step of baptism with his teenage son in June 2016.</p>"
         heading="Every number has a name, like"
@@ -57,28 +72,35 @@ exports[`Next Steps renders a layout 1`] = `
         linkText="Read the Full Story"
         linkUrl="https://newspring.cc/stories/brett-chamberlain"
         location="Rock Hill"
-        name="Brett" />
+        name="Brett"
+      />
     </div>
   </div>
   <div
-    className="background--light-seconday soft-double-top text-center one-whole soft-top">
+    className="background--light-seconday soft-double-top text-center one-whole soft-top"
+  >
     <h3
       className="one-whole push-top"
       style={
         Object {
           "color": "#0073AF",
         }
-      }>
+      }
+    >
       We saw
     </h3>
     <div
-      className="waves_hfu71k">
+      className="waves_hfu71k"
+    >
       <div
-        className="wave_1uy1h8u-o_O-wave_1_1jotbmb" />
+        className="wave_1uy1h8u-o_O-wave_1_1jotbmb"
+      />
       <div
-        className="wave_1uy1h8u-o_O-wave_2_5lbvkc" />
+        className="wave_1uy1h8u-o_O-wave_2_5lbvkc"
+      />
       <div
-        className="wave_1uy1h8u-o_O-wave_3_aoe6qf" />
+        className="wave_1uy1h8u-o_O-wave_3_aoe6qf"
+      />
     </div>
     <div
       className="soft-double text-light-primary"
@@ -86,67 +108,80 @@ exports[`Next Steps renders a layout 1`] = `
         Object {
           "backgroundColor": "#0073AF",
         }
-      }>
+      }
+    >
       <Connect(FitTextWithoutData)
         compressor={0.4}
-        maxFontSize={72}>
+        maxFontSize={72}
+      >
         <h1
           className="uppercase flush-bottom soft-half-bottom"
           style={
             Object {
               "fontWeight": "900",
             }
-          }>
+          }
+        >
           5,557
         </h1>
       </Connect(FitTextWithoutData)>
       <h5
-        className="text-light-primary push-top">
+        className="text-light-primary push-top"
+      >
         people go public for Jesus through
       </h5>
       <h1
-        className="text-light-primary push-top push-bottom soft-bottom soft-double-bottom@lap-and-up">
+        className="text-light-primary push-top push-bottom soft-bottom soft-double-bottom@lap-and-up"
+      >
         baptism.
       </h1>
     </div>
   </div>
   <div
-    className="background--light-primary soft-double@lap-and-up soft-double-top@handheld soft-half-bottom@handheld">
+    className="background--light-primary soft-double@lap-and-up soft-double-top@handheld soft-half-bottom@handheld"
+  >
     <div
-      className="grid one-whole push-top@handheld">
+      className="grid one-whole push-top@handheld"
+    >
       <div
         className="grid__item push-half-left@handheld floating one-half@lap-and-up text-center display-inline-block"
         style={
           Object {
             "verticalAlign": "middle",
           }
-        }>
+        }
+      >
         <div
-          className="floating__item three-quarters@lap-wide-and-up">
+          className="floating__item three-quarters@lap-wide-and-up"
+        >
           <h3
             className="italic"
             style={
               Object {
                 "fontFamily": "ff-meta-serif-web-pro, serif",
               }
-            }>
+            }
+          >
             We had
           </h3>
           <Connect(FitTextWithoutData)
             compressor={0.4}
-            maxFontSize={80}>
+            maxFontSize={80}
+          >
             <h1
               className="uppercase flush-bottom soft-half-bottom"
               style={
                 Object {
                   "fontWeight": "900",
                 }
-              }>
+              }
+            >
               47,137
             </h1>
           </Connect(FitTextWithoutData)>
           <h3
-            className="push-top">
+            className="push-top"
+          >
             first time visitors come to NewSpring.
           </h3>
         </div>
@@ -157,59 +192,27 @@ exports[`Next Steps renders a layout 1`] = `
           Object {
             "verticalAlign": "middle",
           }
-        }>
+        }
+      >
         <div
           className="floating__item three-quarters@lap-wide-and-up one-whole display-inline-block"
           style={
             Object {
               "verticalAlign": "middle",
             }
-          }>
-          <undefined
-            colorScale={
-              Array [
-                "#6BAC43",
-                "#1C683E",
-                "#2A4930",
-              ]
-            }
-            data={
-              Array [
-                Object {
-                  "color": "#6BAC43",
-                  "count": "21,635",
-                  "ministry": "VIP Room",
-                },
-                Object {
-                  "color": "#1C683E",
-                  "count": "11,559",
-                  "ministry": "KidSpring",
-                },
-                Object {
-                  "color": "#2A4930",
-                  "count": "13,943",
-                  "ministry": "Fuse",
-                },
-              ]
-            }
-            labelRadius={100}
-            style={
-              Object {
-                "labels": Object {
-                  "display": "none",
-                },
-              }
-            }
-            x="ministry"
-            y="count" />
-        </div>
+          }
+        />
       </div>
       <div
-        className="floating push-double-left@handheld soft-top@lap-and-up">
+        className="floating push-double-left@handheld soft-top@lap-and-up"
+      >
         <div
-          className="floating__item text-left">
+          className="floating__item text-left"
+        >
           <div
-            className="push-half display-inline-block@lap-and-up">
+            className="push-half display-inline-block@lap-and-up"
+            key="0"
+          >
             <div
               className="display-inline-block"
               style={
@@ -221,22 +224,27 @@ exports[`Next Steps renders a layout 1`] = `
                   "verticalAlign": "middle",
                   "width": "1%",
                 }
-              } />
+              }
+            />
             <h6
               className="display-inline-block push-half-left"
+              key="0"
               style={
                 Object {
                   "marginBottom": "0",
                   "verticalAlign": "middle",
                 }
-              }>
+              }
+            >
               VIP Room
               : 
               21,635
             </h6>
           </div>
           <div
-            className="push-half display-inline-block@lap-and-up">
+            className="push-half display-inline-block@lap-and-up"
+            key="1"
+          >
             <div
               className="display-inline-block"
               style={
@@ -248,22 +256,27 @@ exports[`Next Steps renders a layout 1`] = `
                   "verticalAlign": "middle",
                   "width": "1%",
                 }
-              } />
+              }
+            />
             <h6
               className="display-inline-block push-half-left"
+              key="1"
               style={
                 Object {
                   "marginBottom": "0",
                   "verticalAlign": "middle",
                 }
-              }>
+              }
+            >
               KidSpring
               : 
               11,559
             </h6>
           </div>
           <div
-            className="push-half display-inline-block@lap-and-up">
+            className="push-half display-inline-block@lap-and-up"
+            key="2"
+          >
             <div
               className="display-inline-block"
               style={
@@ -275,15 +288,18 @@ exports[`Next Steps renders a layout 1`] = `
                   "verticalAlign": "middle",
                   "width": "1%",
                 }
-              } />
+              }
+            />
             <h6
               className="display-inline-block push-half-left"
+              key="2"
               style={
                 Object {
                   "marginBottom": "0",
                   "verticalAlign": "middle",
                 }
-              }>
+              }
+            >
               Fuse
               : 
               13,943
@@ -294,58 +310,70 @@ exports[`Next Steps renders a layout 1`] = `
     </div>
   </div>
   <div
-    className="floating background--light-primary">
+    className="floating background--light-primary"
+  >
     <div
-      className="soft-double-ends@lap-and-up soft-top soft-sides text-center three-quarters@lap-wide-and-up nine-tenths@lap floating__item">
+      className="soft-double-ends@lap-and-up soft-top soft-sides text-center three-quarters@lap-wide-and-up nine-tenths@lap floating__item"
+    >
       <hr
         className="visuallyhidden@handheld push-ends"
         style={
           Object {
             "borderTop": "1px solid #dddddd",
           }
-        } />
+        }
+      />
       <div
-        className="text-center">
+        className="text-center"
+      >
         <Story
           content="<p>&#34;On my first visit to NewSpring, the VIP Room made a huge impression on me. My host, Cathy, was so warm and friendly. She helped get my daughter checked in to KidSpring, answered my questions, and connected me to some next steps.&#34;</p>"
           heading="The VIP Room made a difference for"
           image="//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/stories/story-img3.png"
           location="Charleston"
-          name="Angel Hill" />
+          name="Angel Hill"
+        />
       </div>
     </div>
   </div>
   <div
-    className="background--light-secondary soft-double-top soft-double-bottom text-center">
+    className="background--light-secondary soft-double-top soft-double-bottom text-center"
+  >
     <div
-      className="push-double-top">
+      className="push-double-top"
+    >
       <h3
         className="italic push-top"
         style={
           Object {
             "fontFamily": "ff-meta-serif-web-pro, serif",
           }
-        }>
+        }
+      >
         This year
       </h3>
     </div>
     <Connect(FitTextWithoutData)
       compressor={0.4}
-      maxFontSize={80}>
+      maxFontSize={80}
+    >
       <h1
         className="uppercase flush-bottom soft-half-bottom"
         style={
           Object {
             "fontWeight": "900",
           }
-        }>
+        }
+      >
         9,447
       </h1>
     </Connect(FitTextWithoutData)>
     <div
-      className="floating">
+      className="floating"
+    >
       <h3
-        className="push-top push-left push-right floating__item one-half@lap-and-up">
+        className="push-top push-left push-right floating__item one-half@lap-and-up"
+      >
         people served at NewSpring Church
       </h3>
     </div>
@@ -355,17 +383,20 @@ exports[`Next Steps renders a layout 1`] = `
         Object {
           "fontFamily": "ff-meta-serif-web-pro, serif",
         }
-      }>
+      }
+    >
       and
     </h3>
     <div
-      className="push-top">
+      className="push-top"
+    >
       <h1
         style={
           Object {
             "fontWeight": "900",
           }
-        }>
+        }
+      >
         2,313
       </h1>
       <h3>
@@ -375,76 +406,114 @@ exports[`Next Steps renders a layout 1`] = `
     <Connect(CardSlider)>
       <MetricCard
         count="178"
-        label="Aiken" />
+        key="0"
+        label="Aiken"
+      />
       <MetricCard
         count="2,165"
-        label="Anderson" />
+        key="1"
+        label="Anderson"
+      />
       <MetricCard
         count="359"
-        label="Boiling Springs" />
+        key="2"
+        label="Boiling Springs"
+      />
       <MetricCard
         count="689"
-        label="Charleston" />
+        key="3"
+        label="Charleston"
+      />
       <MetricCard
         count="375"
-        label="Clemson" />
+        key="4"
+        label="Clemson"
+      />
       <MetricCard
         count="1,187"
-        label="Columbia" />
+        key="5"
+        label="Columbia"
+      />
       <MetricCard
         count="576"
-        label="Florence" />
+        key="6"
+        label="Florence"
+      />
       <MetricCard
         count="1,208"
-        label="Greenville" />
+        key="7"
+        label="Greenville"
+      />
       <MetricCard
         count="440"
-        label="Greenwood" />
+        key="8"
+        label="Greenwood"
+      />
       <MetricCard
         count="75"
-        label="Hilton Head" />
+        key="9"
+        label="Hilton Head"
+      />
       <MetricCard
         count="478"
-        label="Myrtle Beach" />
+        key="10"
+        label="Myrtle Beach"
+      />
       <MetricCard
         count="161"
-        label="Northeast Columbia" />
+        key="11"
+        label="Northeast Columbia"
+      />
       <MetricCard
         count="585"
-        label="Powdersville" />
+        key="12"
+        label="Powdersville"
+      />
       <MetricCard
         count="136"
-        label="Rock Hill" />
+        key="13"
+        label="Rock Hill"
+      />
       <MetricCard
         count="726"
-        label="Spartanburg" />
+        key="14"
+        label="Spartanburg"
+      />
       <MetricCard
         count="109"
-        label="Sumter" />
+        key="15"
+        label="Sumter"
+      />
     </Connect(CardSlider)>
   </div>
   <div
-    className="background--dark-primary floating">
+    className="background--dark-primary floating"
+  >
     <div
-      className="soft-double-ends push-double-ends text-center text-light-primary soft-sides@palm soft-double-sides@handheld two-thirds@lap-wide-and-up floating__item">
+      className="soft-double-ends push-double-ends text-center text-light-primary soft-sides@palm soft-double-sides@handheld two-thirds@lap-wide-and-up floating__item"
+    >
       <Connect(FitTextWithoutData)
         compressor={0.4}
         maxFontSize={80}
-        minFontSize={52}>
+        minFontSize={52}
+      >
         <h1
           className="uppercase flush-bottom soft-half-bottom soft-double-top"
           style={
             Object {
               "fontWeight": "900",
             }
-          }>
+          }
+        >
           8,897
         </h1>
       </Connect(FitTextWithoutData)>
       <div
-        className="one-whole floating">
+        className="one-whole floating"
+      >
         <h3
-          className="two-thirds@lap-and-up floating__item">
+          className="two-thirds@lap-and-up floating__item"
+        >
           people visited the Care room.
         </h3>
       </div>
@@ -452,81 +521,100 @@ exports[`Next Steps renders a layout 1`] = `
         Do you need help?
       </em>
       <div
-        className="push-double-top">
+        className="push-double-top"
+      >
         <a
           className="btn btn--light btn--small@next"
           href="https://rock.newspring.cc/Workflows/83"
-          target="_blank">
+          target="_blank"
+        >
           Talk To Someone
         </a>
       </div>
     </div>
   </div>
   <div
-    className="background--light-primary soft-double@lap-and-up soft@handheld">
+    className="background--light-primary soft-double@lap-and-up soft@handheld"
+  >
     <div
-      className="one-whole push-double-top push-double-bottom@handheld push-bottom@lap-and-up">
+      className="one-whole push-double-top push-double-bottom@handheld push-bottom@lap-and-up"
+    >
       <h3
-        className="text-center">
+        className="text-center"
+      >
         Connect
       </h3>
       <p
-        className="constrain-copy">
-        We all need friends we can be ourselves with, people who make us laugh till it hurts and who will be there when we need prayer. 
+        className="constrain-copy"
+      >
+        We all need friends we can be ourselves with, people who make us laugh till it hurts and who will be there when we need prayer.
+         
         <a
           alt="link to connect"
-          href="https://newspring.cc/connect">
+          href="https://newspring.cc/connect"
+        >
           Connect
         </a>
-         launched in 2016 as a way to help people connect to Jesus and to each other. This event is for anyone who wants to learn more about NewSpring and to get to know people in the church.
+         
+        launched in 2016 as a way to help people connect to Jesus and to each other. This event is for anyone who wants to learn more about NewSpring and to get to know people in the church.
       </p>
       <div
-        className="floating">
+        className="floating"
+      >
         <div
-          className="soft-double@lap-and-up hard-sides@handheld text-center three-quarters@lap-wide-and-up nine-tenths@lap floating__item">
+          className="soft-double@lap-and-up hard-sides@handheld text-center three-quarters@lap-wide-and-up nine-tenths@lap floating__item"
+        >
           <hr
             className="visuallyhidden@handheld push-ends"
             style={
               Object {
                 "borderTop": "1px solid #dddddd",
               }
-            } />
+            }
+          />
           <Story
             content="<p>&#34;To grow in our relationship with Jesus, we knew our next step was to start serving. We walked into Connect very nervous about what it would take to get plugged in. Our host put us at ease and guided us on the start of a new journey.&#34;</p>"
             heading="Get connected like"
             image="//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/stories/story-img4.png"
             location="Florence"
-            name="Brian and Ashley Davison" />
+            name="Brian and Ashley Davison"
+          />
         </div>
       </div>
       <div
-        className="text-center">
+        className="text-center"
+      >
         <h3
           className="italic"
           style={
             Object {
               "fontFamily": "ff-meta-serif-web-pro, serif",
             }
-          }>
+          }
+        >
           This year
         </h3>
         <Connect(FitTextWithoutData)
           compressor={0.4}
-          maxFontSize={80}>
+          maxFontSize={80}
+        >
           <h1
             className="uppercase flush-bottom soft-half-bottom"
             style={
               Object {
                 "fontWeight": "900",
               }
-            }>
+            }
+          >
             10,946
           </h1>
         </Connect(FitTextWithoutData)>
         <div
-          className="floating">
+          className="floating"
+        >
           <h3
-            className="push-top floating__item two-thirds@lap-and-up">
+            className="push-top floating__item two-thirds@lap-and-up"
+          >
             people attended a group
           </h3>
         </div>
@@ -536,17 +624,20 @@ exports[`Next Steps renders a layout 1`] = `
             Object {
               "fontFamily": "ff-meta-serif-web-pro, serif",
             }
-          }>
+          }
+        >
           and
         </h3>
         <div
-          className="push-top">
+          className="push-top"
+        >
           <h1
             style={
               Object {
                 "fontWeight": "900",
               }
-            }>
+            }
+          >
             7,352
           </h1>
           <h3>
@@ -557,30 +648,36 @@ exports[`Next Steps renders a layout 1`] = `
     </div>
   </div>
   <div
-    className="background--primary soft-double@lap-and-up soft@handheld">
+    className="background--primary soft-double@lap-and-up soft@handheld"
+  >
     <div
-      className="grid one-whole push-double-top push-double-bottom@lap-and-up">
+      className="grid one-whole push-double-top push-double-bottom@lap-and-up"
+    >
       <div
         className="grid__item push-half-left@handheld one-half@lap-and-up text-light-primary display-inline-block"
         style={
           Object {
             "verticalAlign": "middle",
           }
-        }>
+        }
+      >
         <h3
           className="italic text-center@handheld"
           style={
             Object {
               "fontFamily": "ff-meta-serif-web-pro, serif",
             }
-          }>
+          }
+        >
           We spent
         </h3>
         <div
-          className="text-center@handheld">
+          className="text-center@handheld"
+        >
           <Connect(FitTextWithoutData)
             compressor={1.4}
-            maxFontSize={18}>
+            maxFontSize={18}
+          >
             <Currency
               amount="1246884.72"
               baseHeadingSize="1"
@@ -591,22 +688,27 @@ exports[`Next Steps renders a layout 1`] = `
                   "fontWeight": "900",
                 }
               }
-              theme="light" />
+              theme="light"
+            />
           </Connect(FitTextWithoutData)>
         </div>
         <h3
-          className="text-center@handheld">
+          className="text-center@handheld"
+        >
           on local missions.
         </h3>
         <div
-          className="floating__item two-thirds@lap-and-up visuallyhidden@lap-and-up push-double-bottom push-double-top">
+          className="floating__item two-thirds@lap-and-up visuallyhidden@lap-and-up push-double-bottom push-double-top"
+        >
           <img
             alt="map of south carolina"
-            src="//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/maps/map-sc.png" />
+            src="//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/maps/map-sc.png"
+          />
         </div>
         <p
-          className="constrain-copy@lap-and-up push-double-bottom@handheld">
-          God has called our church to make a difference in South Carolina. From rebuilding homes and hosting community service days to giving supplies to low-income schools, the money we budget for local missions creates opportunities to share Jesus\' love with our neighbors across the state.
+          className="constrain-copy@lap-and-up push-double-bottom@handheld"
+        >
+          God has called our church to make a difference in South Carolina. From rebuilding homes and hosting community service days to giving supplies to low-income schools, the money we budget for local missions creates opportunities to share Jesus' love with our neighbors across the state.
         </p>
       </div>
       <div
@@ -615,30 +717,37 @@ exports[`Next Steps renders a layout 1`] = `
           Object {
             "verticalAlign": "middle",
           }
-        }>
+        }
+      >
         <div
-          className="floating__item one-whole@lap-and-up two-thirds@handheld">
+          className="floating__item one-whole@lap-and-up two-thirds@handheld"
+        >
           <img
             alt="map of south carolina"
-            src="//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/maps/map-sc.png" />
+            src="//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/maps/map-sc.png"
+          />
         </div>
       </div>
     </div>
   </div>
   <div
-    className="background--tertiary soft-double@lap-and-up soft-sides@handheld soft-top@handheld">
+    className="background--tertiary soft-double@lap-and-up soft-sides@handheld soft-top@handheld"
+  >
     <div
-      className="grid one-whole push-double-top push-double-bottom@lap-and-up">
+      className="grid one-whole push-double-top push-double-bottom@lap-and-up"
+    >
       <div
         className="grid__item one-half@lap-and-up display-inline-block visuallyhidden@handheld"
         style={
           Object {
             "verticalAlign": "middle",
           }
-        }>
+        }
+      >
         <img
           alt="map of the world"
-          src="//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/maps/map-world.png" />
+          src="//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/maps/map-world.png"
+        />
       </div>
       <div
         className="grid__item push-half-left@handheld one-half@lap-and-up soft-double-left@lap-and-up soft-right@lap-and-up text-light-primary display-inline-block"
@@ -646,21 +755,25 @@ exports[`Next Steps renders a layout 1`] = `
           Object {
             "verticalAlign": "middle",
           }
-        }>
+        }
+      >
         <h3
           className="italic text-center@handheld"
           style={
             Object {
               "fontFamily": "ff-meta-serif-web-pro, serif",
             }
-          }>
+          }
+        >
           We spent
         </h3>
         <div
-          className="text-center@handheld">
+          className="text-center@handheld"
+        >
           <Connect(FitTextWithoutData)
             compressor={1.2}
-            maxFontSize={18}>
+            maxFontSize={18}
+          >
             <Currency
               amount="493845.39"
               baseHeadingSize="1"
@@ -671,11 +784,13 @@ exports[`Next Steps renders a layout 1`] = `
                   "fontWeight": "900",
                 }
               }
-              theme="light" />
+              theme="light"
+            />
           </Connect(FitTextWithoutData)>
         </div>
         <h3
-          className="text-center@handheld soft-bottom@handheld">
+          className="text-center@handheld soft-bottom@handheld"
+        >
           on foreign missions.
         </h3>
         <div
@@ -684,36 +799,44 @@ exports[`Next Steps renders a layout 1`] = `
             Object {
               "verticalAlign": "middle",
             }
-          }>
+          }
+        >
           <img
             alt="map of the world"
-            src="//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/maps/map-world.png" />
+            src="//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/maps/map-world.png"
+          />
         </div>
         <p
-          className="constrain-copy@lap-and-up">
-          We partner with Freedom Church to share Jesus\' love with people around the world. By partnering with local churches, we\'re able to participate in ministry that continues long after our team comes home. The local church is the hope of the world. When we work together, we begin to see the Great Commission happening before our eyes.
+          className="constrain-copy@lap-and-up"
+        >
+          We partner with Freedom Church to share Jesus' love with people around the world. By partnering with local churches, we're able to participate in ministry that continues long after our team comes home. The local church is the hope of the world. When we work together, we begin to see the Great Commission happening before our eyes.
         </p>
       </div>
     </div>
     <div
-      className="text-center text-light-primary soft-double-top soft">
+      className="text-center text-light-primary soft-double-top soft"
+    >
       <Connect(FitTextWithoutData)
         compressor={0.4}
-        maxFontSize={80}>
+        maxFontSize={80}
+      >
         <h1
           className="uppercase flush-bottom soft-half-bottom"
           style={
             Object {
               "fontWeight": "900",
             }
-          }>
+          }
+        >
           63
         </h1>
       </Connect(FitTextWithoutData)>
       <div
-        className="floating">
+        className="floating"
+      >
         <h3
-          className="push-top floating__item two-thirds@lap-and-up">
+          className="push-top floating__item two-thirds@lap-and-up"
+        >
           people went on a mission trip
         </h3>
       </div>
@@ -723,53 +846,64 @@ exports[`Next Steps renders a layout 1`] = `
           Object {
             "fontFamily": "ff-meta-serif-web-pro, serif",
           }
-        }>
+        }
+      >
         to
       </h3>
       <Connect(FitTextWithoutData)
         compressor={0.4}
-        maxFontSize={80}>
+        maxFontSize={80}
+      >
         <h1
           className="uppercase flush-bottom soft-half-bottom"
           style={
             Object {
               "fontWeight": "900",
             }
-          }>
-          7
+          }
+        >
+          3
         </h1>
       </Connect(FitTextWithoutData)>
       <div
-        className="floating">
+        className="floating"
+      >
         <h3
-          className="push-top floating__item two-thirds@lap-and-up">
+          className="push-top floating__item two-thirds@lap-and-up"
+        >
           different nations.
         </h3>
       </div>
     </div>
     <div
-      className="floating">
+      className="floating"
+    >
       <div
-        className="text-center three-quarters@lap-wide-and-up nine-tenths@lap floating__item">
+        className="text-center three-quarters@lap-wide-and-up nine-tenths@lap floating__item"
+      >
         <hr
           className="visuallyhidden@handheld push-ends"
           style={
             Object {
               "borderTop": "1px solid #dddddd",
             }
-          } />
+          }
+        />
         <Story
           content="<p>&#34;I traveled to Uganda with NewSpring Missions in July. The trip was inspirational, heartbreaking, and heartwarming. The highlights were worshipping with, and serving, the young boys living on the streets of Kampala. We also helped make improvements to the Freedom Church Heroes boys home.&#34;</p>"
           contentClass="text-light-primary"
           image="//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/stories/story-img5.png"
-          overriddenHeader="<strong style=\'font-family: colfax, sans-serif;\'>Chat Davis</strong> from <strong style=\'font-family: colfax, sans-serif;\'>Greenwood</strong> went to Kampala." />
+          overriddenHeader="<strong style='font-family: colfax, sans-serif;'>Chat Davis</strong> from <strong style='font-family: colfax, sans-serif;'>Greenwood</strong> went to Kampala."
+        />
       </div>
     </div>
   </div>
   <div
-    className="background--primary text-center text-light-primary soft">
+    className="background--primary text-center text-light-primary soft"
+  >
     <h3
-      className="soft-double-top">
+      className="soft-double-top"
+    >
       Keep Reading
     </h3>
     <p>
@@ -779,7 +913,8 @@ exports[`Next Steps renders a layout 1`] = `
       className="btn--light push-double-bottom"
       onlyActiveOnIndex={false}
       style={Object {}}
-      to="/annualreport/ministries">
+      to="/annualreport/ministries"
+    >
       Go To Ministries Report
     </Link>
   </div>

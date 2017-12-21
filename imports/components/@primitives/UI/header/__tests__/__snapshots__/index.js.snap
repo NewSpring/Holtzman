@@ -1,11 +1,14 @@
-exports[`test renders NewSpring text version 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders NewSpring text version 1`] = `
 <div
   style={
     Object {
       "position": "relative",
       "zIndex": 100,
     }
-  }>
+  }
+>
   <div
     className="text-center"
     style={
@@ -15,7 +18,8 @@ exports[`test renders NewSpring text version 1`] = `
         "paddingBottom": "15px",
         "paddingTop": "15px",
       }
-    }>
+    }
+  >
     <h6
       className="flush hard text-dark-primary uppercase one-whole"
       style={
@@ -23,7 +27,8 @@ exports[`test renders NewSpring text version 1`] = `
           "fontWeight": 900,
           "letterSpacing": "1px",
         }
-      }>
+      }
+    >
       NewSpring Church
     </h6>
   </div>
@@ -31,14 +36,15 @@ exports[`test renders NewSpring text version 1`] = `
 </div>
 `;
 
-exports[`test renders default text version 1`] = `
+exports[`renders default text version 1`] = `
 <div
   style={
     Object {
       "position": "relative",
       "zIndex": 100,
     }
-  }>
+  }
+>
   <div
     className="text-center"
     style={
@@ -48,7 +54,8 @@ exports[`test renders default text version 1`] = `
         "paddingBottom": "15px",
         "paddingTop": "15px",
       }
-    }>
+    }
+  >
     <h6
       className="flush hard text-dark-primary uppercase one-whole"
       style={
@@ -56,7 +63,8 @@ exports[`test renders default text version 1`] = `
           "fontWeight": 900,
           "letterSpacing": "1px",
         }
-      }>
+      }
+    >
       NewSpring Church
     </h6>
   </div>
@@ -64,14 +72,15 @@ exports[`test renders default text version 1`] = `
 </div>
 `;
 
-exports[`test renders isSearch version 1`] = `
+exports[`renders isSearch version 1`] = `
 <div
   style={
     Object {
       "position": "relative",
       "zIndex": 100,
     }
-  }>
+  }
+>
   <div
     className="text-center"
     style={
@@ -81,15 +90,19 @@ exports[`test renders isSearch version 1`] = `
         "paddingBottom": "0px",
         "paddingTop": "0px",
       }
-    }>
+    }
+  >
     <form
       action={true}
       className="hard-ends soft-sides"
-      onSubmit={[Function]}>
+      onSubmit={[Function]}
+    >
       <div
-        className="input hard-bottom">
+        className="input hard-bottom"
+      >
         <i
-          className="icon-search locked-left push-half-top text-light-primary" />
+          className="icon-search locked-left push-half-top text-light-primary"
+        />
         <input
           autoComplete="off"
           className="h5 text-light-primary"
@@ -103,7 +116,8 @@ exports[`test renders isSearch version 1`] = `
               "paddingLeft": "30px",
             }
           }
-          type="text" />
+          type="text"
+        />
       </div>
     </form>
   </div>
@@ -111,14 +125,15 @@ exports[`test renders isSearch version 1`] = `
 </div>
 `;
 
-exports[`test renders light version 1`] = `
+exports[`renders light version 1`] = `
 <div
   style={
     Object {
       "position": "relative",
       "zIndex": 100,
     }
-  }>
+  }
+>
   <div
     className="text-center"
     style={
@@ -128,7 +143,8 @@ exports[`test renders light version 1`] = `
         "paddingBottom": "15px",
         "paddingTop": "15px",
       }
-    }>
+    }
+  >
     <h6
       className="flush-bottom soft-sides text-light-primary"
       style={
@@ -138,7 +154,8 @@ exports[`test renders light version 1`] = `
           "textOverflow": "ellipsis",
           "whiteSpace": "nowrap",
         }
-      }>
+      }
+    >
       test
     </h6>
   </div>
@@ -146,16 +163,17 @@ exports[`test renders light version 1`] = `
 </div>
 `;
 
-exports[`test renders live version 1`] = `<Connect(Apollo(Apollo(LiveWithoutData))) />`;
+exports[`renders live version 1`] = `<Connect(Apollo(Apollo(LiveWithoutData))) />`;
 
-exports[`test renders searching version 1`] = `
+exports[`renders searching version 1`] = `
 <div
   style={
     Object {
       "position": "relative",
       "zIndex": 100,
     }
-  }>
+  }
+>
   <div
     className="text-center"
     style={
@@ -165,7 +183,8 @@ exports[`test renders searching version 1`] = `
         "paddingBottom": "15px",
         "paddingTop": "15px",
       }
-    }>
+    }
+  >
     <button
       className="locked-right push-right text-light-secondary"
       onClick={[Function]}
@@ -174,7 +193,8 @@ exports[`test renders searching version 1`] = `
           "marginTop": "13px",
           "zIndex": 1,
         }
-      }>
+      }
+    >
       <small>
         Cancel
       </small>
@@ -188,7 +208,8 @@ exports[`test renders searching version 1`] = `
           "textOverflow": "ellipsis",
           "whiteSpace": "nowrap",
         }
-      }>
+      }
+    >
       test
     </h6>
   </div>
@@ -196,14 +217,15 @@ exports[`test renders searching version 1`] = `
 </div>
 `;
 
-exports[`test renders subtext if present 1`] = `
+exports[`renders subtext if present 1`] = `
 <div
   style={
     Object {
       "position": "relative",
       "zIndex": 100,
     }
-  }>
+  }
+>
   <div
     className="text-center"
     style={
@@ -213,7 +235,8 @@ exports[`test renders subtext if present 1`] = `
         "paddingBottom": "15px",
         "paddingTop": "15px",
       }
-    }>
+    }
+  >
     <h6
       className="flush-bottom soft-sides text-dark-primary"
       style={
@@ -223,7 +246,8 @@ exports[`test renders subtext if present 1`] = `
           "textOverflow": "ellipsis",
           "whiteSpace": "nowrap",
         }
-      }>
+      }
+    >
       test
     </h6>
   </div>
@@ -237,7 +261,8 @@ exports[`test renders subtext if present 1`] = `
         "position": "relative",
         "zIndex": 100,
       }
-    }>
+    }
+  >
     <h6
       className="flush-bottom soft-sides text-dark-primary"
       style={
@@ -247,7 +272,8 @@ exports[`test renders subtext if present 1`] = `
           "textOverflow": "ellipsis",
           "whiteSpace": "nowrap",
         }
-      }>
+      }
+    >
       some subtext
     </h6>
   </div>
@@ -255,14 +281,15 @@ exports[`test renders subtext if present 1`] = `
 </div>
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <div
   style={
     Object {
       "position": "relative",
       "zIndex": 100,
     }
-  }>
+  }
+>
   <div
     className="text-center"
     style={
@@ -272,7 +299,8 @@ exports[`test renders with props 1`] = `
         "paddingBottom": "15px",
         "paddingTop": "15px",
       }
-    }>
+    }
+  >
     <h6
       className="flush-bottom soft-sides text-dark-primary"
       style={
@@ -282,7 +310,8 @@ exports[`test renders with props 1`] = `
           "textOverflow": "ellipsis",
           "whiteSpace": "nowrap",
         }
-      }>
+      }
+    >
       test
     </h6>
   </div>
@@ -290,13 +319,15 @@ exports[`test renders with props 1`] = `
 </div>
 `;
 
-exports[`test showSettings returns if showSettings 1`] = `
+exports[`showSettings returns if showSettings 1`] = `
 <Link
   className="text-light-primary plain soft-half-top soft-half-right overlay__item locked-top locked-right"
   onlyActiveOnIndex={false}
   style={Object {}}
-  to="/profile/settings">
+  to="/profile/settings"
+>
   <i
-    className="icon-settings h4" />
+    className="icon-settings h4"
+  />
 </Link>
 `;

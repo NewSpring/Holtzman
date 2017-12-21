@@ -91,7 +91,6 @@ const generateComponent = (additionalProps = {}) => {
 };
 
 describe("Line Graph", () => {
-
   it("renders correctly with default props", () => {
     const component = shallow(generateComponent());
     expect(shallowToJson(component)).toMatchSnapshot();
