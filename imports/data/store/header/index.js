@@ -22,17 +22,17 @@ export default {
   }),
 
   set: (content, requestee) => ({ type: "HEADER.SET", content, requestee }),
-  color: (color) => ({ type: "HEADER.SET", content: { color } }),
-  title: (title) => ({ type: "HEADER.SET", content: { title } }),
-  light: (light) => ({ type: "HEADER.SET", content: { light } }),
+  color: color => ({ type: "HEADER.SET", content: { color } }),
+  title: title => ({ type: "HEADER.SET", content: { title } }),
+  light: light => ({ type: "HEADER.SET", content: { light } }),
   isSearch: (isSearch, searchSubmit) => ({
     type: "HEADER.SET",
     content: { isSearch, searchSubmit },
   }),
 
-  lock: (requestee) => ({ type: "HEADER.LOCK", requestee }),
+  lock: requestee => ({ type: "HEADER.LOCK", requestee }),
   unlock: () => ({ type: "HEADER.UNLOCK" }),
 
   // XXX this currently doesn't affect the store
-  statusBarColor: (color) => ({ type: "STATUSBAR.SET", color }),
+  statusBarColor: color => ({ type: "STATUSBAR.SET", color }),
 };

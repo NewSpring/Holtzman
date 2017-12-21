@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`SubFund sets the state to active if it has an amount 1`] = `
 <SubFund
   accounts={
@@ -10,7 +12,8 @@ exports[`SubFund sets the state to active if it has an amount 1`] = `
   amount={10}
   changeAmount={[Function]}
   changeFund={[Function]}
-  preFill={[Function]}>
+  preFill={[Function]}
+>
   <Layout
     accounts={
       Array [
@@ -22,10 +25,14 @@ exports[`SubFund sets the state to active if it has an amount 1`] = `
     active={true}
     changeAmount={[Function]}
     changeFund={[Function]}
-    preFill={[Function]}>
+    fundId={undefined}
+    preFill={[Function]}
+    selectVal={undefined}
+  >
     <div>
       <div
-        className="display-inline-block push-half-bottom h3 push-half-right text-dark-primary">
+        className="display-inline-block push-half-bottom h3 push-half-right text-dark-primary"
+      >
         and give
       </div>
       <Input
@@ -36,49 +43,89 @@ exports[`SubFund sets the state to active if it has an amount 1`] = `
             "display-inline-block",
           ]
         }
+        defaultValue={undefined}
         format={[Function]}
         hideLabel={true}
         inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
-        placeholder="$0.00"
+        pattern="[0-9]*"
+        placeholder="0.00"
+        step="0.01"
         style={
           Object {
-            "maxWidth": "150px",
+            "maxWidth": "165px",
+            "paddingLeft": ".8em",
           }
         }
-        type="tel">
+        type="tel"
+        value={undefined}
+      >
         <div
           className="input soft-bottom input--active display-inline-block"
           data-spec="input-wrapper"
           style={
             Object {
-              "maxWidth": "150px",
+              "maxWidth": "165px",
+              "paddingLeft": ".8em",
             }
-          }>
+          }
+        >
           <RenderLabel
-            hideLabel={true} />
-          <input
-            autoCapitalize="on"
-            autoComplete="on"
-            autoCorrect="on"
-            className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
-            data-spec="input"
-            maxLength=""
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            placeholder="$0.00"
+            disabled={undefined}
+            hideLabel={true}
+            id={undefined}
+            label={undefined}
+            name={undefined}
+            style={undefined}
+          />
+          <span
+            className="
+        dollar--icon
+        hard-top
+        flush-bottom
+        text-brand"
             style={
               Object {
-                "maxWidth": "150px",
+                "color": "#858585",
               }
             }
-            type="tel" />
+          >
+            <input
+              autoCapitalize="on"
+              autoComplete="on"
+              autoCorrect="on"
+              className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
+              data-lpignore={undefined}
+              data-spec="input"
+              defaultValue={undefined}
+              disabled={undefined}
+              id={undefined}
+              maxLength=""
+              name={undefined}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              pattern="[0-9]*"
+              placeholder="0.00"
+              readOnly={undefined}
+              spellCheck={undefined}
+              step="0.01"
+              style={
+                Object {
+                  "maxWidth": "165px",
+                  "paddingLeft": ".8em",
+                }
+              }
+              type="tel"
+            />
+          </span>
         </div>
       </Input>
       <div
-        className="display-block">
+        className="display-block"
+      >
         <h3
-          className="text-dark-primary push-half-bottom push-half-right display-inline-block">
+          className="text-dark-primary push-half-bottom push-half-right display-inline-block"
+        >
           to
         </h3>
         <Select
@@ -101,26 +148,38 @@ exports[`SubFund sets the state to active if it has an amount 1`] = `
             ]
           }
           onChange={[Function]}
-          placeholder="select fund">
+          placeholder="select fund"
+          selected={undefined}
+        >
           <div
-            className="input input--active soft-bottom display-inline-block select_1rryh47 select_e8htpf">
+            className="input input--active soft-bottom display-inline-block select_1rryh47 select_e8htpf"
+          >
             <select
               className="text-brand outlined--dotted outlined--light h3 hard-top flush-bottom"
               defaultValue="main fund"
+              disabled={undefined}
+              id={undefined}
+              name={undefined}
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
-              placeholder="select fund">
+              placeholder="select fund"
+              style={undefined}
+            >
               <option
                 style={
                   Object {
                     "display": "none",
                   }
-                }>
+                }
+              >
                 select fund
               </option>
               <option
-                value="main fund">
+                className={undefined}
+                key="0"
+                value="main fund"
+              >
                 main fund
               </option>
             </select>
@@ -144,7 +203,8 @@ exports[`SubFund should render a primary fund 1`] = `
   changeAmount={[Function]}
   changeFund={[Function]}
   preFill={[Function]}
-  primary={true}>
+  primary={true}
+>
   <Primary
     accounts={
       Array [
@@ -156,11 +216,15 @@ exports[`SubFund should render a primary fund 1`] = `
     active={false}
     changeAmount={[Function]}
     changeFund={[Function]}
-    preFill={[Function]}>
+    fundId={undefined}
+    preFill={[Function]}
+    selectVal={undefined}
+  >
     <div>
       <h3
-        className="text-dark-primary display-inline-block push-half-bottom push-half-right">
-        I\'d like to give
+        className="text-dark-primary display-inline-block push-half-bottom push-half-right"
+      >
+        I'd like to give
       </h3>
       <Input
         classes={
@@ -170,47 +234,83 @@ exports[`SubFund should render a primary fund 1`] = `
             "display-inline-block",
           ]
         }
+        defaultValue={undefined}
         format={[Function]}
         hideLabel={true}
         inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
-        placeholder="$0.00"
+        pattern="[0-9]*"
+        placeholder="0.00"
+        step="0.01"
         style={
           Object {
-            "maxWidth": "150px",
+            "maxWidth": "165px",
           }
         }
-        type="tel">
+        type="tel"
+      >
         <div
           className="input soft-bottom input--active display-inline-block"
           data-spec="input-wrapper"
           style={
             Object {
-              "maxWidth": "150px",
+              "maxWidth": "165px",
             }
-          }>
+          }
+        >
           <RenderLabel
-            hideLabel={true} />
-          <input
-            autoCapitalize="on"
-            autoComplete="on"
-            autoCorrect="on"
-            className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
-            data-spec="input"
-            maxLength=""
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            placeholder="$0.00"
+            disabled={undefined}
+            hideLabel={true}
+            id={undefined}
+            label={undefined}
+            name={undefined}
+            style={undefined}
+          />
+          <span
+            className="
+        dollar--icon
+        hard-top
+        flush-bottom
+        text-brand"
             style={
               Object {
-                "maxWidth": "150px",
+                "color": "#858585",
               }
             }
-            type="tel" />
+          >
+            <input
+              autoCapitalize="on"
+              autoComplete="on"
+              autoCorrect="on"
+              className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
+              data-lpignore={undefined}
+              data-spec="input"
+              defaultValue={undefined}
+              disabled={undefined}
+              id={undefined}
+              maxLength=""
+              name={undefined}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              pattern="[0-9]*"
+              placeholder="0.00"
+              readOnly={undefined}
+              spellCheck={undefined}
+              step="0.01"
+              style={
+                Object {
+                  "maxWidth": "165px",
+                  "paddingLeft": ".8em",
+                }
+              }
+              type="tel"
+            />
+          </span>
         </div>
       </Input>
       <h3
-        className="text-dark-primary display-inline-block push-half-bottom push-half-right">
+        className="text-dark-primary display-inline-block push-half-bottom push-half-right"
+      >
         to
       </h3>
       <style>
@@ -235,27 +335,37 @@ exports[`SubFund should render a primary fund 1`] = `
         }
         name="select-account"
         onChange={[Function]}
-        placeholder="select fund">
+        placeholder="select fund"
+        selected={undefined}
+      >
         <div
-          className="input soft-bottom display-inline-block select_1rryh47 select_e8htpf">
+          className="input soft-bottom display-inline-block select_1rryh47 select_e8htpf"
+        >
           <select
             className="text-dark-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
+            disabled={undefined}
             id="select-account"
             name="select-account"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
-            placeholder="select fund">
+            placeholder="select fund"
+            style={undefined}
+          >
             <option
               style={
                 Object {
                   "display": "none",
                 }
-              }>
+              }
+            >
               select fund
             </option>
             <option
-              value="main fund">
+              className={undefined}
+              key="0"
+              value="main fund"
+            >
               main fund
             </option>
           </select>
@@ -277,7 +387,8 @@ exports[`SubFund should render with minimal props 1`] = `
   }
   changeAmount={[Function]}
   changeFund={[Function]}
-  preFill={[Function]}>
+  preFill={[Function]}
+>
   <Layout
     accounts={
       Array [
@@ -289,10 +400,14 @@ exports[`SubFund should render with minimal props 1`] = `
     active={true}
     changeAmount={[Function]}
     changeFund={[Function]}
-    preFill={[Function]}>
+    fundId={undefined}
+    preFill={[Function]}
+    selectVal={undefined}
+  >
     <div>
       <div
-        className="display-inline-block push-half-bottom h3 push-half-right text-dark-primary">
+        className="display-inline-block push-half-bottom h3 push-half-right text-dark-primary"
+      >
         and give
       </div>
       <Input
@@ -303,49 +418,89 @@ exports[`SubFund should render with minimal props 1`] = `
             "display-inline-block",
           ]
         }
+        defaultValue={undefined}
         format={[Function]}
         hideLabel={true}
         inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
-        placeholder="$0.00"
+        pattern="[0-9]*"
+        placeholder="0.00"
+        step="0.01"
         style={
           Object {
-            "maxWidth": "150px",
+            "maxWidth": "165px",
+            "paddingLeft": ".8em",
           }
         }
-        type="tel">
+        type="tel"
+        value={undefined}
+      >
         <div
           className="input soft-bottom input--active display-inline-block"
           data-spec="input-wrapper"
           style={
             Object {
-              "maxWidth": "150px",
+              "maxWidth": "165px",
+              "paddingLeft": ".8em",
             }
-          }>
+          }
+        >
           <RenderLabel
-            hideLabel={true} />
-          <input
-            autoCapitalize="on"
-            autoComplete="on"
-            autoCorrect="on"
-            className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
-            data-spec="input"
-            maxLength=""
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            placeholder="$0.00"
+            disabled={undefined}
+            hideLabel={true}
+            id={undefined}
+            label={undefined}
+            name={undefined}
+            style={undefined}
+          />
+          <span
+            className="
+        dollar--icon
+        hard-top
+        flush-bottom
+        text-brand"
             style={
               Object {
-                "maxWidth": "150px",
+                "color": "#858585",
               }
             }
-            type="tel" />
+          >
+            <input
+              autoCapitalize="on"
+              autoComplete="on"
+              autoCorrect="on"
+              className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
+              data-lpignore={undefined}
+              data-spec="input"
+              defaultValue={undefined}
+              disabled={undefined}
+              id={undefined}
+              maxLength=""
+              name={undefined}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              pattern="[0-9]*"
+              placeholder="0.00"
+              readOnly={undefined}
+              spellCheck={undefined}
+              step="0.01"
+              style={
+                Object {
+                  "maxWidth": "165px",
+                  "paddingLeft": ".8em",
+                }
+              }
+              type="tel"
+            />
+          </span>
         </div>
       </Input>
       <div
-        className="display-block">
+        className="display-block"
+      >
         <h3
-          className="text-dark-primary push-half-bottom push-half-right display-inline-block">
+          className="text-dark-primary push-half-bottom push-half-right display-inline-block"
+        >
           to
         </h3>
         <Select
@@ -368,26 +523,38 @@ exports[`SubFund should render with minimal props 1`] = `
             ]
           }
           onChange={[Function]}
-          placeholder="select fund">
+          placeholder="select fund"
+          selected={undefined}
+        >
           <div
-            className="input input--active soft-bottom display-inline-block select_1rryh47 select_e8htpf">
+            className="input input--active soft-bottom display-inline-block select_1rryh47 select_e8htpf"
+          >
             <select
               className="text-brand outlined--dotted outlined--light h3 hard-top flush-bottom"
               defaultValue="main fund"
+              disabled={undefined}
+              id={undefined}
+              name={undefined}
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
-              placeholder="select fund">
+              placeholder="select fund"
+              style={undefined}
+            >
               <option
                 style={
                   Object {
                     "display": "none",
                   }
-                }>
+                }
+              >
                 select fund
               </option>
               <option
-                value="main fund">
+                className={undefined}
+                key="0"
+                value="main fund"
+              >
                 main fund
               </option>
             </select>

@@ -1,9 +1,9 @@
-## Side By Side Card Component
+## Side By Side Card
 
 ### Usage
 
 ```js
-import SideBySide from "../../components/cards/cards.SideBySide";
+import SideBySide from "/imports/components/@primitives/UI/cards/SideBySideCard";
 
 <SideBySide
   images={images}

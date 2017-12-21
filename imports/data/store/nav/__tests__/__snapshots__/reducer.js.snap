@@ -1,4 +1,6 @@
-exports[`test NAV.ANYTHING_ELSE 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NAV.ANYTHING_ELSE 1`] = `
 Object {
   "bgColor": "#202020",
   "fgColor": "dark",
@@ -44,7 +46,7 @@ Object {
 }
 `;
 
-exports[`test NAV.RESET_COLOR 1`] = `
+exports[`NAV.RESET_COLOR 1`] = `
 Object {
   "bgColor": "#202020",
   "fgColor": "dark",
@@ -90,7 +92,7 @@ Object {
 }
 `;
 
-exports[`test NAV.SET_ACTION 1`] = `
+exports[`NAV.SET_ACTION 1`] = `
 Object {
   "bgColor": "#202020",
   "fgColor": "dark",
@@ -137,7 +139,7 @@ Object {
 }
 `;
 
-exports[`test NAV.SET_COLOR 1`] = `
+exports[`NAV.SET_COLOR 1`] = `
 Object {
   "bgColor": "orange",
   "fgColor": "purple",
@@ -183,7 +185,7 @@ Object {
 }
 `;
 
-exports[`test NAV.SET_LEVEL 1`] = `
+exports[`NAV.SET_LEVEL 1`] = `
 Object {
   "bgColor": "red",
   "fgColor": "blue",
@@ -211,7 +213,7 @@ Object {
 }
 `;
 
-exports[`test NAV.SET_LINKS 1`] = `
+exports[`NAV.SET_LINKS 1`] = `
 Object {
   "bgColor": "#202020",
   "fgColor": "dark",
@@ -259,7 +261,7 @@ Object {
 }
 `;
 
-exports[`test NAV.SET_VISIBILITY 1`] = `
+exports[`NAV.SET_VISIBILITY 1`] = `
 Object {
   "bgColor": "#202020",
   "fgColor": "dark",

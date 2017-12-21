@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Template accepts account object with complete data 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)
@@ -6,9 +8,10 @@ exports[`Template accepts account object with complete data 1`] = `
         "background--light-primary",
       ]
     }
-    nav={true}>
+    nav={true}
+  >
     <Meta
-      description="Tesla, because they\'re awesome!"
+      description="Tesla, because they're awesome!"
       image="https://cl.ly/i26e/Image%202016-11-07%20at%202.38.14%20PM.png"
       meta={
         Array [
@@ -18,13 +21,16 @@ exports[`Template accepts account object with complete data 1`] = `
           },
         ]
       }
-      title="Tesla Fund" />
+      title="Tesla Fund"
+    />
     <Right
       background="https://cl.ly/i26e/Image%202016-11-07%20at%202.38.14%20PM.png"
-      mobile={true} />
+      mobile={true}
+    />
     <Right
       background="https://cl.ly/i26e/Image%202016-11-07%20at%202.38.14%20PM.png"
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -32,19 +38,22 @@ exports[`Template accepts account object with complete data 1`] = `
         "background--light-primary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <Link
       className="locked-top locked-left soft-double@lap-and-up soft h7 text-dark-secondary plain visuallyhidden@handheld"
       onlyActiveOnIndex={false}
       style={Object {}}
-      to="/give/now">
+      to="/give/now"
+    >
       <i
         className="icon-arrow-back soft-half-right display-inline-block"
         style={
           Object {
             "verticalAlign": "middle",
           }
-        } />
+        }
+      />
       <span
         className="display-inline-block"
         style={
@@ -52,14 +61,17 @@ exports[`Template accepts account object with complete data 1`] = `
             "marginTop": "5px",
             "verticalAlign": "middle",
           }
-        }>
+        }
+      >
         Back
       </span>
     </Link>
     <div
-      className="soft@lap-and-up soft-double-top@lap-and-up">
+      className="soft@lap-and-up soft-double-top@lap-and-up"
+    >
       <div
-        className="soft soft-double-bottom soft-double-top@lap-and-up">
+        className="soft soft-double-bottom soft-double-top@lap-and-up"
+      >
         <h2>
           Tesla Fund
         </h2>
@@ -68,15 +80,19 @@ exports[`Template accepts account object with complete data 1`] = `
             Object {
               "__html": "Web Team Tesla Fund",
             }
-          } />
+          }
+        />
       </div>
     </div>
     <div
-      className="background--light-secondary">
+      className="background--light-secondary"
+    >
       <div
-        className="constrain-copy soft-double@lap-and-up">
+        className="constrain-copy soft-double@lap-and-up"
+      >
         <div
-          className="soft soft-double-bottom soft-double-top@lap-and-up">
+          className="soft soft-double-bottom soft-double-top@lap-and-up"
+        >
           <Connect(CartContainer)
             accounts={
               Array [
@@ -95,11 +111,12 @@ exports[`Template accepts account object with complete data 1`] = `
                   ],
                   "name": "Tesla Fund",
                   "order": 0,
-                  "summary": "Tesla, because they\'re awesome!",
+                  "summary": "Tesla, because they're awesome!",
                 },
               ]
             }
-            donate={true} />
+            donate={true}
+          />
         </div>
       </div>
     </div>
@@ -115,9 +132,10 @@ exports[`Template accepts account object without image data 1`] = `
         "background--light-primary",
       ]
     }
-    nav={true}>
+    nav={true}
+  >
     <Meta
-      description="Tesla, because they\'re awesome!"
+      description="Tesla, because they're awesome!"
       image="https://cl.ly/i26e/Image%202016-11-07%20at%202.38.14%20PM.png"
       meta={
         Array [
@@ -127,13 +145,16 @@ exports[`Template accepts account object without image data 1`] = `
           },
         ]
       }
-      title="Tesla Fund" />
+      title="Tesla Fund"
+    />
     <Right
       background="https://cl.ly/i26e/Image%202016-11-07%20at%202.38.14%20PM.png"
-      mobile={true} />
+      mobile={true}
+    />
     <Right
       background="https://cl.ly/i26e/Image%202016-11-07%20at%202.38.14%20PM.png"
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -141,19 +162,22 @@ exports[`Template accepts account object without image data 1`] = `
         "background--light-primary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <Link
       className="locked-top locked-left soft-double@lap-and-up soft h7 text-dark-secondary plain visuallyhidden@handheld"
       onlyActiveOnIndex={false}
       style={Object {}}
-      to="/give/now">
+      to="/give/now"
+    >
       <i
         className="icon-arrow-back soft-half-right display-inline-block"
         style={
           Object {
             "verticalAlign": "middle",
           }
-        } />
+        }
+      />
       <span
         className="display-inline-block"
         style={
@@ -161,14 +185,17 @@ exports[`Template accepts account object without image data 1`] = `
             "marginTop": "5px",
             "verticalAlign": "middle",
           }
-        }>
+        }
+      >
         Back
       </span>
     </Link>
     <div
-      className="soft@lap-and-up soft-double-top@lap-and-up">
+      className="soft@lap-and-up soft-double-top@lap-and-up"
+    >
       <div
-        className="soft soft-double-bottom soft-double-top@lap-and-up">
+        className="soft soft-double-bottom soft-double-top@lap-and-up"
+      >
         <h2>
           Tesla Fund
         </h2>
@@ -177,15 +204,19 @@ exports[`Template accepts account object without image data 1`] = `
             Object {
               "__html": "Web Team Tesla Fund",
             }
-          } />
+          }
+        />
       </div>
     </div>
     <div
-      className="background--light-secondary">
+      className="background--light-secondary"
+    >
       <div
-        className="constrain-copy soft-double@lap-and-up">
+        className="constrain-copy soft-double@lap-and-up"
+      >
         <div
-          className="soft soft-double-bottom soft-double-top@lap-and-up">
+          className="soft soft-double-bottom soft-double-top@lap-and-up"
+        >
           <Connect(CartContainer)
             accounts={
               Array [
@@ -195,11 +226,12 @@ exports[`Template accepts account object without image data 1`] = `
                   "image": "https://cl.ly/i26e/Image%202016-11-07%20at%202.38.14%20PM.png",
                   "name": "Tesla Fund",
                   "order": 0,
-                  "summary": "Tesla, because they\'re awesome!",
+                  "summary": "Tesla, because they're awesome!",
                 },
               ]
             }
-            donate={true} />
+            donate={true}
+          />
         </div>
       </div>
     </div>
@@ -215,7 +247,8 @@ exports[`Template looks empty with no props 1`] = `
         "background--light-primary",
       ]
     }
-    nav={true}>
+    nav={true}
+  >
     <Meta
       meta={
         Array [
@@ -224,11 +257,14 @@ exports[`Template looks empty with no props 1`] = `
             "property": "og:type",
           },
         ]
-      } />
+      }
+    />
     <Right
-      mobile={true} />
+      mobile={true}
+    />
     <Right
-      mobile={false} />
+      mobile={false}
+    />
   </Connect(SplitContainerWithoutData)>
   <Left
     classes={
@@ -236,19 +272,22 @@ exports[`Template looks empty with no props 1`] = `
         "background--light-primary",
       ]
     }
-    scroll={true}>
+    scroll={true}
+  >
     <Link
       className="locked-top locked-left soft-double@lap-and-up soft h7 text-dark-secondary plain visuallyhidden@handheld"
       onlyActiveOnIndex={false}
       style={Object {}}
-      to="/give/now">
+      to="/give/now"
+    >
       <i
         className="icon-arrow-back soft-half-right display-inline-block"
         style={
           Object {
             "verticalAlign": "middle",
           }
-        } />
+        }
+      />
       <span
         className="display-inline-block"
         style={
@@ -256,36 +295,44 @@ exports[`Template looks empty with no props 1`] = `
             "marginTop": "5px",
             "verticalAlign": "middle",
           }
-        }>
+        }
+      >
         Back
       </span>
     </Link>
     <div
-      className="soft@lap-and-up soft-double-top@lap-and-up">
+      className="soft@lap-and-up soft-double-top@lap-and-up"
+    >
       <div
-        className="soft soft-double-bottom soft-double-top@lap-and-up">
+        className="soft soft-double-bottom soft-double-top@lap-and-up"
+      >
         <h2 />
         <div
           dangerouslySetInnerHTML={
             Object {
               "__html": undefined,
             }
-          } />
+          }
+        />
       </div>
     </div>
     <div
-      className="background--light-secondary">
+      className="background--light-secondary"
+    >
       <div
-        className="constrain-copy soft-double@lap-and-up">
+        className="constrain-copy soft-double@lap-and-up"
+      >
         <div
-          className="soft soft-double-bottom soft-double-top@lap-and-up">
+          className="soft soft-double-bottom soft-double-top@lap-and-up"
+        >
           <Connect(CartContainer)
             accounts={
               Array [
                 "",
               ]
             }
-            donate={true} />
+            donate={true}
+          />
         </div>
       </div>
     </div>

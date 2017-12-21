@@ -1,4 +1,4 @@
-const creditCard = (value) => {
+const creditCard = value => {
   if (value) {
     // remove non numbers
     let newValue = value.replace(/[^\d]+/g, "");

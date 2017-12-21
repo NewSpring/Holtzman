@@ -8,7 +8,7 @@ const setRecoverableSchedule = (state, action) => (
   }
 );
 
-const deleteRecoverableSchedule = (state) => (
+const deleteRecoverableSchedule = state => (
   { ...state,
     ...{
       scheduleToRecover: null,

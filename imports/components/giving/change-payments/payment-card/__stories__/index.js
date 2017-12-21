@@ -1,14 +1,8 @@
 /* eslint-disable */
-import { storiesOf } from "@kadira/storybook";
-import {
-  withKnobs,
-  text,
-  select,
-  object,
-  boolean,
-} from "@kadira/storybook-addon-knobs";
+import { storiesOf } from "@storybook/react";
+import { withKnobs, text, select, object, boolean } from "@storybook/addon-knobs";
 import withReadme from "storybook-readme/with-readme";
-import backgrounds from "react-storybook-addon-backgrounds";
+import backgrounds from "@storybook/addon-backgrounds";
 import centered from "/.storybook/decorators/centered";
 import defaultColors from "/.storybook/defaults";
 
@@ -17,19 +11,19 @@ import PaymentAccounts from "./paymentAccounts";
 import PaymentCard from "../index";
 
 const accountTypes = {
-  "Visa": "Visa",
-  "MasterCard": "MasterCard",
-  "AmEx": "AmEx",
-  "Discover": "Discover",
-  "Bank": "Bank",
-}
+  Visa: "Visa",
+  MasterCard: "MasterCard",
+  AmEx: "AmEx",
+  Discover: "Discover",
+  Bank: "Bank",
+};
 
 const selectedAccount = {
   "1": "First",
   "2": "Second",
-}
+};
 
-const selectAccount = (e) => {
+const selectAccount = e => {
   e.preventDefault;
   alert(`Account ${e.currentTarget.id} Selected`);
 };
@@ -37,11 +31,11 @@ const selectAccount = (e) => {
 const story = storiesOf("Change Payments", module)
   .addDecorator(withKnobs)
   .addDecorator(centered)
-  .addDecorator(backgrounds(defaultColors("light-primary", "light-secondary")))
-  ;
+  .addDecorator(backgrounds(defaultColors("light-primary", "light-secondary")));
 
-story
-  .add("Payment Card", withReadme(Readme, () => (
+story.add(
+  "Payment Card",
+  withReadme(Readme, () => (
     <div className={"floating"}>
       <div className={"grid__item"} style={{ maxWidth: "480px" }}>
         <PaymentCard
@@ -63,10 +57,13 @@ story
 
         <button
           className="btn one-whole push-double-top soft-sides push-bottom"
-          onClick={() => { alert('Account Changed'); }}
+          onClick={() => {
+            alert("Account Changed");
+          }}
         >
           Change Account
         </button>
       </div>
     </div>
-  )));
+  )),
+);

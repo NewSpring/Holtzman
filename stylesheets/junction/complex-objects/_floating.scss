@@ -1,0 +1,158 @@
+
+$use-floating: true !default;
+
+@if $use-floating == true {
+  //
+  // @name %_floating
+  // @description base floating object to be extended which uses floating mixin to manage elements
+  //
+  // @extend true
+  // @private true
+  //
+  %_floating {
+    @include floating(middle, center, floating__item);
+  }
+
+  //
+  // @name Floating
+  // @class .floating
+  // @description Position and element inside a variable sized parent container with no fear
+  //
+  // @block .floating
+  // @element .floating__item
+  //
+  // @complex-object true
+  //
+  // @state :before - create an invisble guide to align off of
+  //
+  // @bugs whitespace - due to the way browsers rendor whitespace, it is important that the parent floating element and the child have no white space between them
+  //
+  // @markup
+  // <div class="floating"><!--
+  //   --><div class="floating__item">
+  //     <h1>Look at me! I'm in space!</h1>
+  //   </div><!--
+  // --></div>
+  //
+  .floating {
+    @extend %_floating;
+  }
+
+  //
+  // @name .floating--left
+  // @class .floating--left
+  // @description Float an item to the left of a parent container
+  //
+  // @block .floating
+  // @element .floating__item
+  // @modifier .floating--left
+  //
+  // @complex-object true
+  //
+  // @state :before - create an invisble guide to align off of
+  //
+  // @bugs whitespace - due to the way browsers rendor whitespace, it is important that the parent floating element and the child have no white space between them
+  //
+  // @markup
+  // <div class="floating--left"><!--
+  //   --><div class="floating__item">
+  //     <h1>Look at me! I'm in space!</h1>
+  //   </div><!--
+  // --></div>
+  //
+  .floating--left {
+    @extend %_floating;
+
+    text-align: left;
+  }
+
+
+  //
+  // @name .floating--right
+  // @class .floating--right
+  // @description Float an item to the right of a parent container
+  //
+  // @block .floating
+  // @element .floating__item
+  // @modifier .floating--right
+  //
+  // @complex-object true
+  //
+  // @state :before - create an invisble guide to align off of
+  //
+  // @bugs whitespace - due to the way browsers rendor whitespace, it is important that the parent floating element and the child have no white space between them
+  //
+  // @markup
+  // <div class="floating--right"><!--
+  //   --><div class="floating__item">
+  //     <h1>Look at me! I'm in space!</h1>
+  //   </div><!--
+  // --></div>
+  //
+  .floating--right {
+    @extend %_floating;
+
+    text-align: right;
+  }
+
+
+  //
+  // @name .floating--top
+  // @class .floating--top
+  // @description Float an item to the top of a parent container
+  //
+  // @block .floating
+  // @element .floating__item
+  // @modifier .floating--top
+  //
+  // @complex-object true
+  //
+  // @state :before - create an invisble guide to align off of
+  //
+  // @bugs whitespace - due to the way browsers rendor whitespace, it is important that the parent floating element and the child have no white space between them
+  //
+  // @markup
+  // <div class="floating--top"><!--
+  //   --><div class="floating__item">
+  //     <h1>Look at me! I'm in space!</h1>
+  //   </div><!--
+  // --></div>
+  //
+  .floating--top {
+    @extend %_floating;
+    &:before,
+    .floating__item {
+      vertical-align: top;
+    }
+  }
+
+  //
+  // @name .floating--bottom
+  // @class .floating--bottom
+  // @description Float an item to the bottom of a parent container
+  //
+  // @block .floating
+  // @element .floating__item
+  // @modifier .floating--bottom
+  //
+  // @complex-object true
+  //
+  // @state :before - create an invisble guide to align off of
+  //
+  // @bugs whitespace - due to the way browsers rendor whitespace, it is important that the parent floating element and the child have no white space between them
+  //
+  // @markup
+  // <div class="floating--bottom"><!--
+  //   --><div class="floating__item">
+  //     <h1>Look at me! I'm in space!</h1>
+  //   </div><!--
+  // --></div>
+  //
+  .floating--bottom {
+    @extend %_floating;
+    &:before,
+    .floating__item {
+      vertical-align: bottom;
+    }
+  }
+}

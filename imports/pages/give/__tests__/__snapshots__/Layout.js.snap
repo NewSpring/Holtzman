@@ -1,8 +1,11 @@
-exports[`test renders a layout 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a layout 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)>
     <Right
-      background="//s3.amazonaws.com/ns.images/newspring/christmasoffering/christmas_offering_1x1.png" />
+      background="//s3.amazonaws.com/ns.images/newspring/christmasoffering/christmas_offering_1x1.png"
+    />
   </Connect(SplitContainerWithoutData)>
   <Left>
     <Connect(Dashboard)
@@ -29,9 +32,11 @@ exports[`test renders a layout 1`] = `
           },
         ]
       }
-      title="My Giving">
+      title="My Giving"
+    >
       <div
-        setRightProps={[Function]} />
+        setRightProps={[Function]}
+      />
     </Connect(Dashboard)>
   </Left>
 </div>
