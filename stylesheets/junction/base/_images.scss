@@ -1,0 +1,21 @@
+
+$use-images: true !default;
+
+@if $use-images == true {
+  //
+  // @name images
+  // @description declerations to be applied to img tags to make them responsive
+  //
+  // @base true
+  //
+  img {
+    max-width: 100%;
+  }
+
+
+  // Non-fluid images if you specify `width` and/or `height` attributes.
+  img[width],
+  img[height] {
+    max-width: none;
+  }
+}

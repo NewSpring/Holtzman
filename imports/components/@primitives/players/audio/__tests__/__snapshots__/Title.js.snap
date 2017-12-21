@@ -1,59 +1,66 @@
-exports[`test getArtistLine returns artist then title if not series 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getArtistLine returns artist then title if not series 1`] = `
 <div>
   <span
-    className="music-album-artist">
+    className="music-album-artist"
+  >
     test artist
   </span>
   <span>
      - 
   </span>
   <span
-    className="music-album-title">
+    className="music-album-title"
+  >
     test album
   </span>
 </div>
 `;
 
-exports[`test getArtistLine returns title then artist if series 1`] = `
+exports[`getArtistLine returns title then artist if series 1`] = `
 <div>
   <span
-    className="music-album-title">
+    className="music-album-title"
+  >
     test album
   </span>
   <span>
      - 
   </span>
   <span
-    className="music-album-artist">
+    className="music-album-artist"
+  >
     test artist
   </span>
 </div>
 `;
 
-exports[`test getPrimaryTextClass has a dark version 1`] = `"text-light-primary"`;
+exports[`getPrimaryTextClass has a dark version 1`] = `"text-light-primary"`;
 
-exports[`test getPrimaryTextClass has a light version 1`] = `"text-light-primary"`;
+exports[`getPrimaryTextClass has a light version 1`] = `"text-light-primary"`;
 
-exports[`test getTertiaryTextClass has a dark version 1`] = `"text-light-tertiary"`;
+exports[`getTertiaryTextClass has a dark version 1`] = `"text-light-tertiary"`;
 
-exports[`test getTertiaryTextClass has a light version 1`] = `"text-light-tertiary"`;
+exports[`getTertiaryTextClass has a light version 1`] = `"text-light-tertiary"`;
 
-exports[`test getTertiaryTextColor has a dark version 1`] = `
+exports[`getTertiaryTextColor has a dark version 1`] = `
 Object {
   "color": "rgba(255,255,255,.5)",
 }
 `;
 
-exports[`test getTertiaryTextColor has a light version 1`] = `
+exports[`getTertiaryTextColor has a light version 1`] = `
 Object {
   "color": "rgba(0,0,0,.5)",
 }
 `;
 
-exports[`test renders playing version 1`] = `
+exports[`renders playing version 1`] = `
 <div>
   <h5
-    className="text-light-primary flush">
+    className="text-light-primary flush"
+  >
     test title
   </h5>
   <h6
@@ -62,17 +69,20 @@ exports[`test renders playing version 1`] = `
       Object {
         "color": "rgba(255,255,255,.5)",
       }
-    }>
+    }
+  >
     <div>
       <span
-        className="music-album-artist">
+        className="music-album-artist"
+      >
         test artist
       </span>
       <span>
          - 
       </span>
       <span
-        className="music-album-title">
+        className="music-album-title"
+      >
         test album
       </span>
     </div>
@@ -80,15 +90,17 @@ exports[`test renders playing version 1`] = `
 </div>
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <div>
   <h4>
     test album
   </h4>
   <h6
-    className="text-dark-tertiary flush">
+    className="text-dark-tertiary flush"
+  >
     <span
-      className="music-album-artist">
+      className="music-album-artist"
+    >
       test artist
     </span>
   </h6>

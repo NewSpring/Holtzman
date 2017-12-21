@@ -1,0 +1,241 @@
+$use-overlays: true !default;
+
+// @if $use-overlays == true {
+
+  // only extend if zindex isn't set
+  @if map-has-key($zindex, overlay) == false {
+    $zindex: extend($zindex,
+      (
+        overlay: 1
+      )
+    );
+  }
+
+
+  //
+  // @name %_overlay
+  // @class .overlay
+  // @description The %_overlay object is the base container to extend for overlays
+  //
+  // @private true
+  // @extend true
+  //
+  // @state :after - fill the after with the overlay
+  //
+  %_overlay {
+    position: relative;
+    z-index: map-get($zindex, "overlay");
+    &:after {
+      @include absolute(top 0 bottom 0 left 0 right 0);
+
+      display: block;
+
+      width: 100%;
+      height: 100%;
+
+      content: "";
+    }
+  }
+
+  //
+  // @name Overlay
+  // @class .overlay
+  // @description The .overlay class is an object class that creates a z-index managed overlay
+  //
+  // @block .overlay
+  // @element .overlay__item
+  //
+  // @complex-object true
+  //
+  // @state :after - fill the overlay with the color
+  //
+  // @markup
+  // <div class="overlay">
+  //   <div class="overlay__item">
+  //     <h1> I'm shaded</h1>
+  //   </div>
+  // </div>
+  //
+  .overlay {
+    @extend %_overlay;
+    &:after {
+      background: rgba($dark-color, .6);
+    }
+  }
+
+  .overlay__item {
+    position: relative;
+    z-index: map-get($zindex, "overlay") + 1;
+  }
+
+
+  //
+  // @name .overlay--brand
+  // @class .overlay--brand
+  // @description The .overlay--brand class creates a brand overlay
+  //
+  // @block .overlay
+  // @element .overlay__item
+  // @modifier .overlay--brand
+  //
+  // @complex-object true
+  //
+  // @state :after - fill the overlay with the color
+  //
+  // @markup
+  // <div class="overlay--brand">
+  //   <h1> I'm shaded</h1>
+  // </div>
+  //
+  .overlay--brand {
+    @extend %_overlay;
+    &:after {
+      background: rgba($brand-color, .65);
+    }
+  }
+
+
+
+  //
+  // @name .overlay--solid-light
+  // @class .overlay--solid-light
+  // @description The .overlay--solid-light class creates a solid-light overlay
+  //
+  // @block .overlay
+  // @element .overlay__item
+  // @modifier .overlay--solid-light
+  //
+  // @complex-object true
+  //
+  // @state :after - fill the overlay with the color
+  //
+  // @markup
+  // <div class="overlay--solid-light">
+  //   <h1> I'm shaded</h1>
+  // </div>
+  //
+  .overlay--solid-light {
+    @extend %_overlay;
+    &:after {
+      background: rgba($dark-color, .1);
+    }
+  }
+
+  //
+  // @name .overlay--solid-dark
+  // @class .overlay--solid-dark
+  // @description The .overlay--solid-dark class creates a solid-dark overlay
+  //
+  // @block .overlay
+  // @element .overlay__item
+  // @modifier .overlay--solid-dark
+  //
+  // @complex-object true
+  //
+  // @state :after - fill the overlay with the color
+  //
+  // @markup
+  // <div class="overlay--solid-dark">
+  //   <h1> I'm shaded</h1>
+  // </div>
+  //
+  .overlay--solid-dark {
+    @extend %_overlay;
+    &:after {
+      background: rgba($dark-color, .8);
+    }
+  }
+
+  //
+  // @name .overlay--gradient
+  // @class .overlay--gradient
+  // @description The .overlay--gradient class creates a gradient overlay
+  //
+  // @block .overlay
+  // @element .overlay__item
+  // @modifier .overlay--gradient
+  //
+  // @complex-object true
+  //
+  // @state :after - fill the overlay with the color
+  //
+  // @markup
+  // <div class="overlay--gradient">
+  //   <h1> I'm shaded</h1>
+  // </div>
+  //
+  .overlay--gradient {
+    @extend %_overlay;
+    &:after {
+      top: auto;
+
+      height: 70%;
+
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, transparent), color-stop(100%, #000));
+      background: -webkit-linear-gradient(top, transparent 0%, #000 100%);
+      background:         linear-gradient(to bottom, transparent 0%, #000 100%);
+    }
+  }
+
+  //
+  // @name .overlay--gradient-left
+  // @class .overlay--gradient-left
+  // @description The .overlay--gradient-left class creates a gradient-left overlay
+  //
+  // @block .overlay
+  // @element .overlay__item
+  // @modifier .overlay--gradient-left
+  //
+  // @complex-object true
+  //
+  // @state :after - fill the overlay with the color
+  //
+  // @markup
+  // <div class="overlay--gradient-left">
+  //   <h1> I'm shaded</h1>
+  // </div>
+  //
+  .overlay--gradient-left {
+    @extend %_overlay;
+    &:after {
+      right: auto;
+
+      width: 80%;
+
+      background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(#000, .9)), color-stop(100%, transparent));
+      background: -webkit-linear-gradient(left, rgba(#000, .9) 0%, transparent 100%);
+      background:         linear-gradient(to right, rgba(#000, .9) 0%, transparent 100%);
+    }
+  }
+
+  //
+  // @name .overlay--gradient-right
+  // @class .overlay--gradient-right
+  // @description The .overlay--gradient-right class creates a gradient-right overlay
+  //
+  // @block .overlay
+  // @element .overlay__item
+  // @modifier .overlay--gradient-right
+  //
+  // @complex-object true
+  //
+  // @state :after - fill the overlay with the color
+  //
+  // @markup
+  // <div class="overlay--gradient-right">
+  //   <h1> I'm shaded</h1>
+  // </div>
+  //
+  .overlay--gradient-right {
+    @extend %_overlay;
+    &:after {
+      left: auto;
+
+      width: 80%;
+
+      background: -webkit-gradient(linear, right top, right top, color-stop(0%, rgba(#000, .9)), color-stop(100%, transparent));
+      background: -webkit-linear-gradient(right, rgba(#000, .9) 0%, transparent 100%);
+      background:         linear-gradient(to left, rgba(#000, .9) 0%, transparent 100%);
+    }
+  }
+// }

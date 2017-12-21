@@ -1,0 +1,92 @@
+$use-toggles: true !default;
+
+@if $use-toggles == true {
+  //
+  // @name %toggle
+  //
+  // <div class="toggle">
+  //   <a href="#" class="toggle__item ">
+  //     Register
+  //   </a>
+  //   <a href="#" class="toggle__item--active">
+  //     Sign In
+  //   </a>
+  // </div>
+  %toggle {
+
+    position: relative;
+    display: inline-block;
+
+    width: 100%;
+
+    vertical-align: middle;
+
+    border-top: 2px solid  map-get($colors, light-tertiary);
+    border-bottom: 2px solid  map-get($colors, light-tertiary);
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+
+  %toggle__item {
+    @extend %h6;
+    @extend %_grid__item;
+
+    margin-bottom: 0;
+    padding-top: ($button-height * .25) + 1;
+    padding-bottom: ($button-height * .25) - 1;
+    padding-left: 0;
+
+    cursor: pointer;
+
+    color: map-get($colors, dark-tertiary);
+    font-weight: bold;
+  }
+
+  .toggle {
+    @extend %toggle;
+  }
+
+  .toggle__item {
+    @extend %toggle__item;
+
+    &:hover {
+      color: $base-font-color;
+    }
+  }
+
+
+  .toggle__item--active {
+    @extend %toggle__item;
+
+    cursor: inherit;
+
+    color: $brand-color;
+    background-color: transparent;
+
+  }
+
+
+  // special use case
+  // TODO: Document
+  .toggle-arrow {
+
+    position: absolute;
+    width: 100%;
+  }
+
+  .toggle-arrow__item {
+    &:before {
+      @include absolute(left 50%);
+      margin-left: -$base-spacing-unit ;
+      bottom: -$base-spacing-unit + ($half-spacing-unit / 2);
+      @include triangle($base-spacing-unit + 1, ($base-spacing-unit - ($half-spacing-unit / 2)), down, map-get($colors, light-tertiary));
+    }
+
+    &:after {
+      @include absolute(left 50%);
+      margin-left: -$base-spacing-unit + 1px;
+      bottom: -$base-spacing-unit + ($half-spacing-unit / 2) + 3px;
+      @include triangle($base-spacing-unit, ($base-spacing-unit - ($half-spacing-unit / 2) - 1), down, white);
+    }
+  }
+
+}

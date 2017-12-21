@@ -1,34 +1,40 @@
-exports[`test disables the label 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`disables the label 1`] = `
 <label
   htmlFor={undefined}
   style={
     Object {
       "cursor": "inherit",
     }
-  } />
+  }
+/>
 `;
 
-exports[`test displays a form label to the user 1`] = `
+exports[`displays a form label to the user 1`] = `
 <label
   htmlFor={undefined}
-  style={undefined} />
+  style={undefined}
+/>
 `;
 
-exports[`test displays a label name to the user 1`] = `
+exports[`displays a label name to the user 1`] = `
 <label
   htmlFor={undefined}
-  style={undefined}>
+  style={undefined}
+>
   label
 </label>
 `;
 
-exports[`test passes the label for to the component 1`] = `
+exports[`passes the label for to the component 1`] = `
 <label
   htmlFor="goGoGadget"
-  style={undefined} />
+  style={undefined}
+/>
 `;
 
-exports[`test spreads styles if disabled is true 1`] = `
+exports[`spreads styles if disabled is true 1`] = `
 <label
   htmlFor={undefined}
   style={
@@ -36,5 +42,6 @@ exports[`test spreads styles if disabled is true 1`] = `
       "color": "green",
       "cursor": "inherit",
     }
-  } />
+  }
+/>
 `;

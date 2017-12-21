@@ -44,7 +44,7 @@ class TagGalleryWithoutData extends Component {
 
   tagClick = (value: string) => {
     this.setState(() => {
-      const activeButton = this.props.tags.find((item) => (
+      const activeButton = this.props.tags.find(item => (
         item.value === value
       )) || {};
 
@@ -92,7 +92,7 @@ class TagGalleryWithoutData extends Component {
   }
 }
 
-const map = (store) => ({
+const map = store => ({
   breakpoints: store.responsive.breakpoints,
 });
 
