@@ -232,7 +232,7 @@ class CartContainer extends Component {
       if (fund && currentFund[0].amount) {
         this.props.addTransactions({
           [id]: {
-            value: `${currentFund[0].amount}`.replace(/[^0-9\.]+/g, ""),
+            value: currentFund[0].amount,
             label: fund.name,
           },
         });
