@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Updated
 
 * The main give input now uses a numeric keyboard and an pattern that doesn’t force you to enter decimal points.
+* The missions section of the Next Steps page has been updated to show the correct number of nations we visited.
 
 ## [5.3.0] 2017.09.26
 
