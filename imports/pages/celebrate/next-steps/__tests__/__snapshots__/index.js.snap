@@ -19,14 +19,16 @@ exports[`Next Steps renders a layout 1`] = `
       <p
         className="constrain-copy"
       >
-        Salvation is a starting point, not a destination. NewSpring exists to connect people to Jesus and each other. We will always be a church that celebrates next steps as well as salvations. Here's a look at how we've seen people take their 
+        Salvation is a starting point, not a destination. NewSpring exists to connect people to Jesus and each other. We will always be a church that celebrates next steps as well as salvations. Here's a look at how we've seen people take their
+         
         <a
           alt="link to next steps"
           href="https://newspring.cc/nextsteps"
         >
           next steps
         </a>
-         in 2016.
+         
+        in 2016.
       </p>
     </div>
   </div>
@@ -545,14 +547,16 @@ exports[`Next Steps renders a layout 1`] = `
       <p
         className="constrain-copy"
       >
-        We all need friends we can be ourselves with, people who make us laugh till it hurts and who will be there when we need prayer. 
+        We all need friends we can be ourselves with, people who make us laugh till it hurts and who will be there when we need prayer.
+         
         <a
           alt="link to connect"
           href="https://newspring.cc/connect"
         >
           Connect
         </a>
-         launched in 2016 as a way to help people connect to Jesus and to each other. This event is for anyone who wants to learn more about NewSpring and to get to know people in the church.
+         
+        launched in 2016 as a way to help people connect to Jesus and to each other. This event is for anyone who wants to learn more about NewSpring and to get to know people in the church.
       </p>
       <div
         className="floating"
@@ -858,7 +862,7 @@ exports[`Next Steps renders a layout 1`] = `
             }
           }
         >
-          7
+          3
         </h1>
       </Connect(FitTextWithoutData)>
       <div
