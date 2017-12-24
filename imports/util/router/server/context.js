@@ -17,13 +17,17 @@ export default class SsrContext {
   }
 
   addSubscription(name, params) {
+    console.log("util/router/server/context addSubscription function");
     const fastRenderContext = FastRender.frContext.get();
+    console.log("fastRenderContext = ", fastRenderContext);
     if (!fastRenderContext) {
       throw new Error(`Cannot add a subscription: ${name} without FastRender Context`);
     }
 
     const args = [name].concat(params);
+    console.log("args = ", args);
     const data = fastRenderContext.subscribe(...args);
+    console.log("data = ", data);
     this.addData(data);
   }
 
