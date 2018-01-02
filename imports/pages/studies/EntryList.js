@@ -1,4 +1,5 @@
-import { Component, PropTypes } from "react";
+import PropTypes from "prop-types";
+import { Component } from "react";
 import { connect } from "react-redux";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
@@ -82,7 +83,7 @@ class StudyEntryWithoutData extends Component {
         <section
           className="soft-half-top"
           style={this.dynamicWidth()}
-          ref={(n) => { this.slider = n; }}
+          ref={n => { this.slider = n; }}
         >
           {studyEntries.map((studyEntry, i) => (
             <SeriesVideoListItem
@@ -101,6 +102,7 @@ class StudyEntryWithoutData extends Component {
 const STUDY_ENTRY_QUERY = gql`
   query GetEntriesFromStudy($id: ID!) {
     content: node(id: $id) {
+      id
       ... on Content {
         studyEntries: children(channels: ["study_entries"], showFutureEntries: true) {
           id
@@ -109,6 +111,7 @@ const STUDY_ENTRY_QUERY = gql`
           status
           channelName
           parent {
+            id
             entryId: id
           }
           meta {
@@ -128,15 +131,15 @@ const STUDY_ENTRY_QUERY = gql`
 
 const withStudyEntries = graphql(STUDY_ENTRY_QUERY, {
   name: "studyEntries",
-  options: (ownProps) => ({
+  options: ownProps => ({
     variables: { id: ownProps.id },
   }),
 });
 
 export default connect()(
   withStudyEntries(
-    StudyEntryWithoutData
-  )
+    StudyEntryWithoutData,
+  ),
 );
 
 export {

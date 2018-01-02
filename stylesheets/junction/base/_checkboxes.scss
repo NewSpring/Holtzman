@@ -1,0 +1,47 @@
+
+$use-checkboxes: true !default;
+
+@if $use-checkboxes == true {
+
+  input[type=checkbox] {
+    @extend %hidden;
+    padding-right: $base-spacing-unit;
+  }
+
+  input[type=checkbox] + label {
+    @include absolute(top $base-border-size left $base-border-size);
+    @include circle($half-spacing-unit + 2);
+    @extend %visible;
+
+    margin-top: $base-border-size;
+    margin-left: $base-border-size;
+
+    padding: 0;
+
+    background-color: transparent;
+
+    &:before {
+      @include circle($base-spacing-unit);
+      @include radius(50%);
+      position: absolute;
+      top: -4px;
+      left: -4px;
+
+      border: ($base-border-size - 1) solid $brand-color;
+    }
+  }
+
+  input[type=checkbox]:checked + label {
+    background-color: $brand-color;
+  }
+
+  // I'm not sure how I feel about this, especially in this file
+  label + h7 {
+    @include absolute(top 0);
+
+    left: $base-spacing-unit;
+
+    text-align: left;
+  }
+
+}

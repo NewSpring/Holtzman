@@ -26,13 +26,13 @@ import types from "./types";
 export default {
   types,
 
-  setVisibility: (visibility) => ({ type: types.SET_VISIBILITY, visibility }),
+  setVisibility: visibility => ({ type: types.SET_VISIBILITY, visibility }),
   resetVisibility: () => ({ type: types.SET_VISIBILITY, visibility: "default" }),
   dock: () => ({ type: types.SET_VISIBILITY, visibility: "dock" }),
   fade: () => ({ type: types.SET_VISIBILITY, visibility: "fade" }),
   hide: () => ({ type: types.SET_VISIBILITY, visibility: "hide" }),
 
-  setOrder: (order) => ({ type: types.SET_ORDER, order }),
+  setOrder: order => ({ type: types.SET_ORDER, order }),
   resetOrder: () => ({ type: types.SET_ORDER, order: "default" }),
   shuffle: () => ({ type: types.SET_ORDER, order: "shuffle" }),
 
@@ -46,15 +46,15 @@ export default {
 
   reset: () => ({ type: types.RESET_ALL }),
 
-  seek: (seek) => ({ type: types.SET_SEEK, seek }),
+  seek: seek => ({ type: types.SET_SEEK, seek }),
   restart: () => ({ type: types.SET_SEEK, seek: 0.01 }),
   end: () => ({ type: types.SET_SEEK, seek: 99.99 }),
 
   setProgress: (progress, time) => ({ type: types.SET_PROGRESS, progress, time }),
 
-  setPlaylist: (playlist) => ({ type: types.SET_PLAYLIST, playlist }),
+  setPlaylist: playlist => ({ type: types.SET_PLAYLIST, playlist }),
 
-  setPlaying: (playing) => ({ type: types.SET_PLAYING, playing, state: "playing" }),
+  setPlaying: playing => ({ type: types.SET_PLAYING, playing, state: "playing" }),
 
   repeat: () => ({ type: types.SET_REPEAT, repeat: "repeat" }),
   resetRepeat: () => ({ type: types.SET_REPEAT, repeat: "default" }),

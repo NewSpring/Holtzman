@@ -32,7 +32,7 @@ export const formatGivingSummaryData = (data: Object): ?Object => {
   let total = 0;
   const accounts = {};
 
-  transactions.map((transaction) => {
+  transactions.map(transaction => {
     // iterate over every transaction, and sum up the months
     const month = moment(new Date(transaction.date)).format("M");
     if (!transaction.details || !transaction.details.length) return transaction;
@@ -82,7 +82,7 @@ const withData = graphql(YTD_QUERY, {
     ssr: false,
   }),
   props: ({ data }) => ({
-    changeYear: (year) => {
+    changeYear: year => {
       const start = moment(`${year}`, "YYYY").startOf("year").format();
       const end = moment(`${year}`, "YYYY").endOf("year").format();
       return data.refetch({ start, end });
