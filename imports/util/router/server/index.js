@@ -93,8 +93,9 @@ function generateSSRData(serverOptions, req, res, renderProps, history) {
   ReactRouterSSR.ssrContext.withValue(ssrContext, () => {
     try {
       const frData = InjectData.getData(res, "fast-render-data");
+      console.log("frData: ", frData);
       if (frData) ssrContext.addData(frData.collectionData);
-
+      console.log("renderProps: ", renderProps);
       renderProps = { ...renderProps, ...serverOptions.props };
 
       // If using redux, create the store.
@@ -103,11 +104,13 @@ function generateSSRData(serverOptions, req, res, renderProps, history) {
         // Create the store, with no initial state.
         reduxStore = serverOptions.createReduxStore(undefined, history);
       }
-
+      console.log("reduxStore: ", reduxStore);
       // Wrap the <RouterContext> if needed before rendering it.
       let app = <RouterContext {...renderProps} />;
+      console.log("app: ", app);
       if (serverOptions.wrapper) {
         const wrapperProps = serverOptions.wrapperProps || {};
+        console.log("wrapperProps: ", wrapperProps);
         // Pass the redux store to the wrapper, which is supposed to be some
         // flavour of react-redux's <Provider>.
         if (reduxStore) {
@@ -122,14 +125,18 @@ function generateSSRData(serverOptions, req, res, renderProps, history) {
         return ReactDOMServer.renderToString(app);
       });
 
+      console.log("renderedData: ", renderedData);
+
       html = renderedData.html;
       css = renderedData.css;
-
+      console.log("html: ", html);
+      console.log("css: ", css);
       if (css) {
+        console.log("res: ", res);
         InjectData.pushData(res, "aphrodite-classes", JSON.stringify(css));
       }
-
       head = ReactHelmet.rewind();
+      console.log("head: ", head);
 
       // If using redux, pass the resulting redux state to the client so that it
       // can hydrate from there.
@@ -142,10 +149,13 @@ function generateSSRData(serverOptions, req, res, renderProps, history) {
 
       // I'm pretty sure this could be avoided in a more elegant way?
       const context = FastRender.frContext.get();
+      console.log("context: ", context);
       const data = context.getData();
+      console.log("data: ", data);
       InjectData.pushData(res, "fast-render-data", data);
     } catch (err) {
       // eslint-disable-next-line
+      console.log("ERROREDEEEED");
       console.error(new Date(), "error while server-rendering", err.stack);
     }
   });
