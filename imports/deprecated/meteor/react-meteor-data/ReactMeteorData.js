@@ -41,7 +41,7 @@ class MeteorDataManager {
     // Computations, where if the outer one is invalidated or stopped,
     // it stops the inner one.
     this.computation = Tracker.nonreactive(() => (
-      Tracker.autorun((c) => {
+      Tracker.autorun(c => {
         if (c.firstRun) {
           const savedSetState = component.setState;
           try {
@@ -76,7 +76,7 @@ class MeteorDataManager {
     ));
 
     if (Package.mongo && Package.mongo.Mongo) {
-      Object.keys(data).forEach((key) => {
+      Object.keys(data).forEach(key => {
         if (data[key] instanceof Package.mongo.Mongo.Cursor) {
           // eslint-disable-next-line no-console
           console.warn(

@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`using a bank card should submit a form to the correct place 1`] = `
 FormData {
   Symbol(impl): FormDataImpl {

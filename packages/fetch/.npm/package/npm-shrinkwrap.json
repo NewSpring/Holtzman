@@ -1,0 +1,25 @@
+{
+  "lockfileVersion": 1,
+  "dependencies": {
+    "encoding": {
+      "version": "0.1.12",
+      "resolved": "https://registry.npmjs.org/encoding/-/encoding-0.1.12.tgz",
+      "integrity": "sha1-U4tm8+5izRq1HsMjgp0flIDHS+s="
+    },
+    "iconv-lite": {
+      "version": "0.4.19",
+      "resolved": "https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.4.19.tgz",
+      "integrity": "sha512-oTZqweIP51xaGPI4uPa56/Pri/480R+mo7SeU+YETByQNhDG55ycFyNLIgta9vXhILrxXDmF7ZGhqZIcuN0gJQ=="
+    },
+    "node-fetch": {
+      "version": "1.3.3",
+      "resolved": "https://registry.npmjs.org/node-fetch/-/node-fetch-1.3.3.tgz",
+      "integrity": "sha1-iAIovnX9IHqKm6ogQurUN+btr4Q="
+    },
+    "whatwg-fetch": {
+      "version": "1.0.0",
+      "resolved": "https://registry.npmjs.org/whatwg-fetch/-/whatwg-fetch-1.0.0.tgz",
+      "integrity": "sha1-AcKsTfQOI2qqGEgOO+dL1cjreY4="
+    }
+  }
+}

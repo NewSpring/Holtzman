@@ -1,4 +1,6 @@
-exports[`test allows adding a saved account 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`allows adding a saved account 1`] = `
 Object {
   "accounts": Object {},
   "attempts": 0,
@@ -47,7 +49,7 @@ Object {
 }
 `;
 
-exports[`test allows clearing a saved account 1`] = `
+exports[`allows clearing a saved account 1`] = `
 Object {
   "accounts": Object {},
   "attempts": 0,

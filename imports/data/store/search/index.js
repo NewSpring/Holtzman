@@ -36,17 +36,17 @@ addReducer({
 });
 
 export default {
-  term: (term) => ({ type: "SEARCH.SET_TERM", term }),
+  term: term => ({ type: "SEARCH.SET_TERM", term }),
 
-  add: (items) => ({ type: "SEARCH.ADD", items }),
+  add: items => ({ type: "SEARCH.ADD", items }),
   clear: () => ({ type: "SEARCH.CLEAR" }),
 
   incrementPage: () => ({ type: "SEARCH.INCREMENT_PAGE" }),
 
   toggleLoading: () => ({ type: "SEARCH.TOGGLE_LOADING" }),
 
-  done: (done) => ({ type: "SEARCH.DONE", done }),
-  none: (none) => ({ type: "SEARCH.NONE", none }),
+  done: done => ({ type: "SEARCH.DONE", done }),
+  none: none => ({ type: "SEARCH.NONE", none }),
 
-  searching: (searching) => ({ type: "SEARCH.SEARCHING", searching }),
+  searching: searching => ({ type: "SEARCH.SEARCHING", searching }),
 };

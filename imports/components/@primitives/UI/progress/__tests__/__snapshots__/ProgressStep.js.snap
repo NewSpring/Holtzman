@@ -1,34 +1,46 @@
-exports[`test renders with props 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders with props 1`] = `
 <div
-  className="progress-bar text-center">
+  className="progress-bar text-center"
+>
   <div
-    className="progress">
+    className="progress"
+  >
     <div
       className="progress__item--active"
+      key="0"
       style={
         Object {
           "zIndex": 1,
         }
-      } />
+      }
+    />
     <div
       className="progress__item"
+      key="1"
       style={
         Object {
           "zIndex": 1,
         }
-      } />
+      }
+    />
     <div
       className="progress__item"
+      key="2"
       style={
         Object {
           "zIndex": 1,
         }
-      } />
+      }
+    />
   </div>
   <p
-    className="flush-bottom">
+    className="flush-bottom"
+  >
     <small
-      className="italic display-inline-block push-half-top">
+      className="italic display-inline-block push-half-top"
+    >
       Step 
       1
        of 

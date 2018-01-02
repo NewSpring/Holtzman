@@ -1,0 +1,12 @@
+
+$use-typography: true !default;
+
+// @if $use-typography == true {
+  //
+  // @name typography
+  // @description set base type styles from variables
+  //
+  // @base true
+  //
+  @include typography();
+// }

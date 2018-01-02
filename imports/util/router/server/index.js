@@ -53,8 +53,16 @@ function moveScripts(data) {
   $("body").append([...heads, ...bodies]);
 
   // Remove empty lines caused by removing scripts
-  $("head").html($("head").html().replace(/(^[ \t]*\n)/gm, ""));
-  $("body").html($("body").html().replace(/(^[ \t]*\n)/gm, ""));
+  $("head").html(
+    $("head")
+      .html()
+      .replace(/(^[ \t]*\n)/gm, ""),
+  );
+  $("body").html(
+    $("body")
+      .html()
+      .replace(/(^[ \t]*\n)/gm, ""),
+  );
   return $.html();
 }
 
@@ -64,11 +72,15 @@ function moveStyles(data) {
   $("head").append(styles);
 
   // Remove empty lines caused by removing scripts
-  $("head").html($("head").html().replace(/(^[ \t]*\n)/gm, ""));
+  $("head").html(
+    $("head")
+      .html()
+      .replace(/(^[ \t]*\n)/gm, ""),
+  );
   return $.html();
 }
 
-const _getCacheKey = (url) => `${Meteor.userId()}::${url}`;
+const _getCacheKey = url => `${Meteor.userId()}::${url}`;
 
 function generateSSRData(serverOptions, req, res, renderProps, history) {
   let html;
@@ -81,8 +93,9 @@ function generateSSRData(serverOptions, req, res, renderProps, history) {
   ReactRouterSSR.ssrContext.withValue(ssrContext, () => {
     try {
       const frData = InjectData.getData(res, "fast-render-data");
+      console.log("frData: ", frData);
       if (frData) ssrContext.addData(frData.collectionData);
-
+      console.log("renderProps: ", renderProps);
       renderProps = { ...renderProps, ...serverOptions.props };
 
       // If using redux, create the store.
@@ -91,21 +104,19 @@ function generateSSRData(serverOptions, req, res, renderProps, history) {
         // Create the store, with no initial state.
         reduxStore = serverOptions.createReduxStore(undefined, history);
       }
-
+      console.log("reduxStore: ", reduxStore);
       // Wrap the <RouterContext> if needed before rendering it.
       let app = <RouterContext {...renderProps} />;
+      console.log("app: ", app);
       if (serverOptions.wrapper) {
         const wrapperProps = serverOptions.wrapperProps || {};
+        console.log("wrapperProps: ", wrapperProps);
         // Pass the redux store to the wrapper, which is supposed to be some
         // flavour of react-redux's <Provider>.
         if (reduxStore) {
           wrapperProps.store = reduxStore;
         }
-        app = (
-          <serverOptions.wrapper {...wrapperProps}>
-            {app}
-          </serverOptions.wrapper>
-        );
+        app = <serverOptions.wrapper {...wrapperProps}>{app}</serverOptions.wrapper>;
       }
 
       // Do the rendering.
@@ -114,14 +125,18 @@ function generateSSRData(serverOptions, req, res, renderProps, history) {
         return ReactDOMServer.renderToString(app);
       });
 
+      console.log("renderedData: ", renderedData);
+
       html = renderedData.html;
       css = renderedData.css;
-
+      console.log("html: ", html);
+      console.log("css: ", css);
       if (css) {
+        console.log("res: ", res);
         InjectData.pushData(res, "aphrodite-classes", JSON.stringify(css));
       }
-
       head = ReactHelmet.rewind();
+      console.log("head: ", head);
 
       // If using redux, pass the resulting redux state to the client so that it
       // can hydrate from there.
@@ -134,10 +149,13 @@ function generateSSRData(serverOptions, req, res, renderProps, history) {
 
       // I'm pretty sure this could be avoided in a more elegant way?
       const context = FastRender.frContext.get();
+      console.log("context: ", context);
       const data = context.getData();
+      console.log("data: ", data);
       InjectData.pushData(res, "fast-render-data", data);
     } catch (err) {
       // eslint-disable-next-line
+      console.log("ERROREDEEEED");
       console.error(new Date(), "error while server-rendering", err.stack);
     }
   });
@@ -162,7 +180,7 @@ function patchResWrite(serverOptions, originalWrite, css, html, head, req, res) 
         // Add react-helmet stuff in the header (yay SEO!)
         data = data.replace(
           "<head>",
-          `<head>${head.title}${head.base}${head.meta}${head.link}${head.script}`
+          `<head>${head.title}${head.base}${head.meta}${head.link}${head.script}`,
         );
       }
 
@@ -171,7 +189,7 @@ function patchResWrite(serverOptions, originalWrite, css, html, head, req, res) 
         `<body><!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=${Meteor.settings.public.gtm}"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) --><div id="react-app">${html}</div>`
+<!-- End Google Tag Manager (noscript) --><div id="react-app">${html}</div>`,
       );
     }
 
@@ -270,10 +288,11 @@ export default function run(routes, serverOptions = {}) {
                 res.write("Not found");
                 res.end();
               }
-            })
+            }),
           );
         });
-      })
+        return true;
+      }),
     );
   })();
 }

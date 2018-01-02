@@ -1,4 +1,6 @@
-exports[`test ListDetail renders the modal 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListDetail renders the modal 1`] = `
 Object {
   "album": Object {
     "content": Object {
@@ -25,7 +27,7 @@ Object {
 }
 `;
 
-exports[`test play prevents default and updates audio store 1`] = `
+exports[`play prevents default and updates audio store 1`] = `
 Object {
   "album": Object {
     "content": Object {
@@ -49,7 +51,7 @@ Object {
 }
 `;
 
-exports[`test play prevents default and updates audio store 2`] = `
+exports[`play prevents default and updates audio store 2`] = `
 Array [
   Object {
     "file": "http://test.com/test.mp3",
@@ -63,31 +65,35 @@ Array [
 ]
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <div
-  className="grid floating">
+  className="grid floating"
+>
   <p
     className="grid__item text-left eight-ninths ellipsis push-half-ends"
-    onClick={[Function]}>
+    onClick={[Function]}
+  >
     test
     <span
-      className="text-dark-tertiary display-block small flush">
+      className="text-dark-tertiary display-block small flush"
+    >
       test title
     </span>
   </p>
   <span
     className="text-dark-tertiary grid__item one-tenth floating__item"
     data-track={2}
-    onClick={[Function]}>
+    onClick={[Function]}
+  >
     •••
   </span>
 </div>
 `;
 
-exports[`test textClasses returns active classes 1`] = `"float-left truncate strong"`;
+exports[`textClasses returns active classes 1`] = `"float-left truncate strong"`;
 
-exports[`test textClasses returns inactive classes 1`] = `"float-left truncate"`;
+exports[`textClasses returns inactive classes 1`] = `"float-left truncate"`;
 
-exports[`test trackClasses returns active classes 1`] = `"background--primary round push-half-top push-half-right unread-notification"`;
+exports[`trackClasses returns active classes 1`] = `"background--primary round push-half-top push-half-right unread-notification"`;
 
-exports[`test trackClasses returns inactive classes 1`] = `"background--primary round push-half-top push-half-right"`;
+exports[`trackClasses returns inactive classes 1`] = `"background--primary round push-half-top push-half-right"`;

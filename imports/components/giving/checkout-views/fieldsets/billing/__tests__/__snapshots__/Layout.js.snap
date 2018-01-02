@@ -1,6 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Header renders default if no override 1`] = `
 <h4
-  className="text-center">
+  className="text-center"
+>
   Billing Address
 </h4>
 `;
@@ -14,7 +17,8 @@ exports[`Header renders override if override 1`] = `
 exports[`Layout renders US by default 1`] = `
 <div>
   <div
-    className="push-double@lap-and-up push">
+    className="push-double@lap-and-up push"
+  >
     <span>
       header
     </span>
@@ -23,72 +27,95 @@ exports[`Layout renders US by default 1`] = `
     child
   </span>
   <div
-    className="soft-sides">
+    className="soft-sides"
+  >
     <div
       className="input input--active"
       data-spec="input-wrapper"
-      style={Object {}}>
+      style={Object {}}
+    >
       <label
         htmlFor="streetAddress"
-        style={Object {}}>
+        style={Object {}}
+      >
         Street Address
       </label>
-      <input
-        autoCapitalize="on"
-        autoComplete="on"
-        autoCorrect="on"
-        className={undefined}
-        data-lpignore={undefined}
-        data-spec="input"
-        defaultValue="123 Some St."
-        disabled={undefined}
-        id="streetAddress"
-        maxLength=""
-        name="streetAddress"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        placeholder="Street Address"
-        readOnly={undefined}
-        spellCheck={undefined}
+      <span
+        className=""
         style={Object {}}
-        type={undefined} />
+      >
+        <input
+          autoCapitalize="on"
+          autoComplete="on"
+          autoCorrect="on"
+          className={undefined}
+          data-lpignore={undefined}
+          data-spec="input"
+          defaultValue="123 Some St."
+          disabled={undefined}
+          id="streetAddress"
+          maxLength=""
+          name="streetAddress"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          pattern={undefined}
+          placeholder="Street Address"
+          readOnly={undefined}
+          spellCheck={undefined}
+          step={undefined}
+          style={Object {}}
+          type={undefined}
+        />
+      </span>
     </div>
     <div
       className="input input--active"
       data-spec="input-wrapper"
-      style={Object {}}>
+      style={Object {}}
+    >
       <label
         htmlFor="streetAddress2"
-        style={Object {}}>
+        style={Object {}}
+      >
         Street Address (optional)
       </label>
-      <input
-        autoCapitalize="on"
-        autoComplete="on"
-        autoCorrect="on"
-        className={undefined}
-        data-lpignore={undefined}
-        data-spec="input"
-        defaultValue="Apt. 1"
-        disabled={undefined}
-        id="streetAddress2"
-        maxLength=""
-        name="streetAddress2"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        placeholder="Street Address (optional)"
-        readOnly={undefined}
-        spellCheck={undefined}
+      <span
+        className=""
         style={Object {}}
-        type={undefined} />
+      >
+        <input
+          autoCapitalize="on"
+          autoComplete="on"
+          autoCorrect="on"
+          className={undefined}
+          data-lpignore={undefined}
+          data-spec="input"
+          defaultValue="Apt. 1"
+          disabled={undefined}
+          id="streetAddress2"
+          maxLength=""
+          name="streetAddress2"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          pattern={undefined}
+          placeholder="Street Address (optional)"
+          readOnly={undefined}
+          spellCheck={undefined}
+          step={undefined}
+          style={Object {}}
+          type={undefined}
+        />
+      </span>
     </div>
     <div
-      className="input input--active select_e8htpf">
+      className="input input--active select_e8htpf"
+    >
       <label
         htmlFor="Country"
-        style={undefined}>
+        style={undefined}
+      >
         Country
       </label>
       <select
@@ -101,62 +128,80 @@ exports[`Layout renders US by default 1`] = `
         onChange={[Function]}
         onFocus={[Function]}
         placeholder="Country"
-        style={undefined}>
+        style={undefined}
+      >
         <option
           style={
             Object {
               "display": "none",
             }
-          }>
+          }
+        >
           
         </option>
         <option
           className={undefined}
-          value={undefined} />
+          value={undefined}
+        />
         <option
           className={undefined}
-          value={undefined} />
+          value={undefined}
+        />
       </select>
     </div>
     <div
       className="input input--active"
       data-spec="input-wrapper"
-      style={Object {}}>
+      style={Object {}}
+    >
       <label
         htmlFor="city"
-        style={Object {}}>
+        style={Object {}}
+      >
         City
       </label>
-      <input
-        autoCapitalize="on"
-        autoComplete="on"
-        autoCorrect="on"
-        className={undefined}
-        data-lpignore={undefined}
-        data-spec="input"
-        defaultValue="Someville"
-        disabled={undefined}
-        id="city"
-        maxLength=""
-        name="city"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        placeholder="City"
-        readOnly={undefined}
-        spellCheck={undefined}
+      <span
+        className=""
         style={Object {}}
-        type={undefined} />
+      >
+        <input
+          autoCapitalize="on"
+          autoComplete="on"
+          autoCorrect="on"
+          className={undefined}
+          data-lpignore={undefined}
+          data-spec="input"
+          defaultValue="Someville"
+          disabled={undefined}
+          id="city"
+          maxLength=""
+          name="city"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          pattern={undefined}
+          placeholder="City"
+          readOnly={undefined}
+          spellCheck={undefined}
+          step={undefined}
+          style={Object {}}
+          type={undefined}
+        />
+      </span>
     </div>
     <div
-      className="grid">
+      className="grid"
+    >
       <div
-        className="grid__item one-half">
+        className="grid__item one-half"
+      >
         <div
-          className="input input--active select_e8htpf">
+          className="input input--active select_e8htpf"
+        >
           <label
             htmlFor="State/Territory"
-            style={undefined}>
+            style={undefined}
+          >
             State/Territory
           </label>
           <select
@@ -169,55 +214,74 @@ exports[`Layout renders US by default 1`] = `
             onChange={[Function]}
             onFocus={[Function]}
             placeholder="State/Territory"
-            style={undefined}>
+            style={undefined}
+          >
             <option
               style={
                 Object {
                   "display": "none",
                 }
-              }>
+              }
+            >
               
             </option>
             <option
               className={undefined}
-              value={undefined} />
+              value={undefined}
+            />
             <option
               className={undefined}
-              value={undefined} />
+              value={undefined}
+            />
           </select>
         </div>
       </div>
       <div
-        className="grid__item one-half">
+        className="grid__item one-half"
+      >
         <div
           className="input"
           data-spec="input-wrapper"
-          style={Object {}}>
+          style={Object {}}
+        >
           <label
             htmlFor="zip"
-            style={Object {}}>
+            style={Object {}}
+          >
             Zip/Postal
           </label>
-          <input
-            autoCapitalize="on"
-            autoComplete="on"
-            autoCorrect="on"
-            className={undefined}
-            data-lpignore={undefined}
-            data-spec="input"
-            defaultValue={undefined}
-            disabled={undefined}
-            id="zip"
-            maxLength=""
-            name="zip"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            placeholder="Zip/Postal"
-            readOnly={undefined}
-            spellCheck={undefined}
-            style={Object {}}
-            type={undefined} />
+          <span
+            className=""
+            style={
+              Object {
+                "color": "#858585",
+              }
+            }
+          >
+            <input
+              autoCapitalize="on"
+              autoComplete="on"
+              autoCorrect="on"
+              className={undefined}
+              data-lpignore={undefined}
+              data-spec="input"
+              defaultValue={undefined}
+              disabled={undefined}
+              id="zip"
+              maxLength=""
+              name="zip"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              pattern={undefined}
+              placeholder="Zip/Postal"
+              readOnly={undefined}
+              spellCheck={undefined}
+              step={undefined}
+              style={Object {}}
+              type={undefined}
+            />
+          </span>
         </div>
       </div>
     </div>
@@ -227,14 +291,16 @@ exports[`Layout renders US by default 1`] = `
       className="btn--small btn--dark-tertiary display-inline-block"
       href=""
       onClick={[Function]}
-      tabIndex={-1}>
+      tabIndex={-1}
+    >
       Back
     </a>
     <button
       className=" push-left btn"
       disabled={false}
       onClick={[Function]}
-      type="submit">
+      type="submit"
+    >
       Next
     </button>
   </div>
@@ -244,7 +310,8 @@ exports[`Layout renders US by default 1`] = `
 exports[`Layout renders your country instead 1`] = `
 <div>
   <div
-    className="push-double@lap-and-up push">
+    className="push-double@lap-and-up push"
+  >
     <span>
       header
     </span>
@@ -253,72 +320,95 @@ exports[`Layout renders your country instead 1`] = `
     child
   </span>
   <div
-    className="soft-sides">
+    className="soft-sides"
+  >
     <div
       className="input input--active"
       data-spec="input-wrapper"
-      style={Object {}}>
+      style={Object {}}
+    >
       <label
         htmlFor="streetAddress"
-        style={Object {}}>
+        style={Object {}}
+      >
         Street Address
       </label>
-      <input
-        autoCapitalize="on"
-        autoComplete="on"
-        autoCorrect="on"
-        className={undefined}
-        data-lpignore={undefined}
-        data-spec="input"
-        defaultValue="123 Some St."
-        disabled={undefined}
-        id="streetAddress"
-        maxLength=""
-        name="streetAddress"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        placeholder="Street Address"
-        readOnly={undefined}
-        spellCheck={undefined}
+      <span
+        className=""
         style={Object {}}
-        type={undefined} />
+      >
+        <input
+          autoCapitalize="on"
+          autoComplete="on"
+          autoCorrect="on"
+          className={undefined}
+          data-lpignore={undefined}
+          data-spec="input"
+          defaultValue="123 Some St."
+          disabled={undefined}
+          id="streetAddress"
+          maxLength=""
+          name="streetAddress"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          pattern={undefined}
+          placeholder="Street Address"
+          readOnly={undefined}
+          spellCheck={undefined}
+          step={undefined}
+          style={Object {}}
+          type={undefined}
+        />
+      </span>
     </div>
     <div
       className="input input--active"
       data-spec="input-wrapper"
-      style={Object {}}>
+      style={Object {}}
+    >
       <label
         htmlFor="streetAddress2"
-        style={Object {}}>
+        style={Object {}}
+      >
         Street Address (optional)
       </label>
-      <input
-        autoCapitalize="on"
-        autoComplete="on"
-        autoCorrect="on"
-        className={undefined}
-        data-lpignore={undefined}
-        data-spec="input"
-        defaultValue="Apt. 1"
-        disabled={undefined}
-        id="streetAddress2"
-        maxLength=""
-        name="streetAddress2"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        placeholder="Street Address (optional)"
-        readOnly={undefined}
-        spellCheck={undefined}
+      <span
+        className=""
         style={Object {}}
-        type={undefined} />
+      >
+        <input
+          autoCapitalize="on"
+          autoComplete="on"
+          autoCorrect="on"
+          className={undefined}
+          data-lpignore={undefined}
+          data-spec="input"
+          defaultValue="Apt. 1"
+          disabled={undefined}
+          id="streetAddress2"
+          maxLength=""
+          name="streetAddress2"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          pattern={undefined}
+          placeholder="Street Address (optional)"
+          readOnly={undefined}
+          spellCheck={undefined}
+          step={undefined}
+          style={Object {}}
+          type={undefined}
+        />
+      </span>
     </div>
     <div
-      className="input input--active select_e8htpf">
+      className="input input--active select_e8htpf"
+    >
       <label
         htmlFor="Country"
-        style={undefined}>
+        style={undefined}
+      >
         Country
       </label>
       <select
@@ -331,62 +421,80 @@ exports[`Layout renders your country instead 1`] = `
         onChange={[Function]}
         onFocus={[Function]}
         placeholder="Country"
-        style={undefined}>
+        style={undefined}
+      >
         <option
           style={
             Object {
               "display": "none",
             }
-          }>
+          }
+        >
           
         </option>
         <option
           className={undefined}
-          value={undefined} />
+          value={undefined}
+        />
         <option
           className={undefined}
-          value={undefined} />
+          value={undefined}
+        />
       </select>
     </div>
     <div
       className="input input--active"
       data-spec="input-wrapper"
-      style={Object {}}>
+      style={Object {}}
+    >
       <label
         htmlFor="city"
-        style={Object {}}>
+        style={Object {}}
+      >
         City
       </label>
-      <input
-        autoCapitalize="on"
-        autoComplete="on"
-        autoCorrect="on"
-        className={undefined}
-        data-lpignore={undefined}
-        data-spec="input"
-        defaultValue="Someville"
-        disabled={undefined}
-        id="city"
-        maxLength=""
-        name="city"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        placeholder="City"
-        readOnly={undefined}
-        spellCheck={undefined}
+      <span
+        className=""
         style={Object {}}
-        type={undefined} />
+      >
+        <input
+          autoCapitalize="on"
+          autoComplete="on"
+          autoCorrect="on"
+          className={undefined}
+          data-lpignore={undefined}
+          data-spec="input"
+          defaultValue="Someville"
+          disabled={undefined}
+          id="city"
+          maxLength=""
+          name="city"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          pattern={undefined}
+          placeholder="City"
+          readOnly={undefined}
+          spellCheck={undefined}
+          step={undefined}
+          style={Object {}}
+          type={undefined}
+        />
+      </span>
     </div>
     <div
-      className="grid">
+      className="grid"
+    >
       <div
-        className="grid__item one-half">
+        className="grid__item one-half"
+      >
         <div
-          className="input input--active select_e8htpf">
+          className="input input--active select_e8htpf"
+        >
           <label
             htmlFor="State/Territory"
-            style={undefined}>
+            style={undefined}
+          >
             State/Territory
           </label>
           <select
@@ -399,55 +507,74 @@ exports[`Layout renders your country instead 1`] = `
             onChange={[Function]}
             onFocus={[Function]}
             placeholder="State/Territory"
-            style={undefined}>
+            style={undefined}
+          >
             <option
               style={
                 Object {
                   "display": "none",
                 }
-              }>
+              }
+            >
               
             </option>
             <option
               className={undefined}
-              value={undefined} />
+              value={undefined}
+            />
             <option
               className={undefined}
-              value={undefined} />
+              value={undefined}
+            />
           </select>
         </div>
       </div>
       <div
-        className="grid__item one-half">
+        className="grid__item one-half"
+      >
         <div
           className="input"
           data-spec="input-wrapper"
-          style={Object {}}>
+          style={Object {}}
+        >
           <label
             htmlFor="zip"
-            style={Object {}}>
+            style={Object {}}
+          >
             Zip/Postal
           </label>
-          <input
-            autoCapitalize="on"
-            autoComplete="on"
-            autoCorrect="on"
-            className={undefined}
-            data-lpignore={undefined}
-            data-spec="input"
-            defaultValue={undefined}
-            disabled={undefined}
-            id="zip"
-            maxLength=""
-            name="zip"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            placeholder="Zip/Postal"
-            readOnly={undefined}
-            spellCheck={undefined}
-            style={Object {}}
-            type={undefined} />
+          <span
+            className=""
+            style={
+              Object {
+                "color": "#858585",
+              }
+            }
+          >
+            <input
+              autoCapitalize="on"
+              autoComplete="on"
+              autoCorrect="on"
+              className={undefined}
+              data-lpignore={undefined}
+              data-spec="input"
+              defaultValue={undefined}
+              disabled={undefined}
+              id="zip"
+              maxLength=""
+              name="zip"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              pattern={undefined}
+              placeholder="Zip/Postal"
+              readOnly={undefined}
+              spellCheck={undefined}
+              step={undefined}
+              style={Object {}}
+              type={undefined}
+            />
+          </span>
         </div>
       </div>
     </div>
@@ -457,14 +584,16 @@ exports[`Layout renders your country instead 1`] = `
       className="btn--small btn--dark-tertiary display-inline-block"
       href=""
       onClick={[Function]}
-      tabIndex={-1}>
+      tabIndex={-1}
+    >
       Back
     </a>
     <button
       className=" push-left btn"
       disabled={false}
       onClick={[Function]}
-      type="submit">
+      type="submit"
+    >
       Next
     </button>
   </div>
@@ -476,7 +605,8 @@ exports[`NextButton renders disabled styles when no city 1`] = `
   className=" push-left btn--disabled"
   disabled={true}
   onClick={[Function]}
-  type="submit">
+  type="submit"
+>
   Next
 </button>
 `;
@@ -486,7 +616,8 @@ exports[`NextButton renders disabled styles when no streetAddress 1`] = `
   className=" push-left btn--disabled"
   disabled={true}
   onClick={[Function]}
-  type="submit">
+  type="submit"
+>
   Next
 </button>
 `;
@@ -496,7 +627,8 @@ exports[`NextButton renders enabled styles when billing information present 1`] 
   className=" push-left btn"
   disabled={false}
   onClick={[Function]}
-  type="submit">
+  type="submit"
+>
   Next
 </button>
 `;
