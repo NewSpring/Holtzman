@@ -142,6 +142,7 @@ function generateSSRData(serverOptions, req, res, renderProps, history) {
 
       // I'm pretty sure this could be avoided in a more elegant way?
       const context = FastRender.frContext.get();
+      console.log("util/router/server/index context = ", context);
       const data = context.getData();
       InjectData.pushData(res, "fast-render-data", data);
     } catch (err) {
