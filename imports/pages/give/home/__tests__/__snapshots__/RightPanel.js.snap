@@ -123,6 +123,10 @@ exports[`RightPanel Layout should render a loading state 1`] = `
           items={
             Array [
               Object {
+                "label": 2018,
+                "value": 2018,
+              },
+              Object {
                 "label": 2017,
                 "value": 2017,
               },
@@ -158,10 +162,6 @@ exports[`RightPanel Layout should render a loading state 1`] = `
                 "label": 2009,
                 "value": 2009,
               },
-              Object {
-                "label": 2008,
-                "value": 2008,
-              },
             ]
           }
           onChange={[Function]}
@@ -183,72 +183,72 @@ exports[`RightPanel Layout should render a loading state 1`] = `
               <option
                 className={undefined}
                 key="0"
+                value={2018}
+              >
+                2018
+              </option>
+              <option
+                className={undefined}
+                key="1"
                 value={2017}
               >
                 2017
               </option>
               <option
                 className={undefined}
-                key="1"
+                key="2"
                 value={2016}
               >
                 2016
               </option>
               <option
                 className={undefined}
-                key="2"
+                key="3"
                 value={2015}
               >
                 2015
               </option>
               <option
                 className={undefined}
-                key="3"
+                key="4"
                 value={2014}
               >
                 2014
               </option>
               <option
                 className={undefined}
-                key="4"
+                key="5"
                 value={2013}
               >
                 2013
               </option>
               <option
                 className={undefined}
-                key="5"
+                key="6"
                 value={2012}
               >
                 2012
               </option>
               <option
                 className={undefined}
-                key="6"
+                key="7"
                 value={2011}
               >
                 2011
               </option>
               <option
                 className={undefined}
-                key="7"
+                key="8"
                 value={2010}
               >
                 2010
               </option>
               <option
                 className={undefined}
-                key="8"
+                key="9"
                 value={2009}
               >
                 2009
-              </option>
-              <option
-                className={undefined}
-                key="9"
-                value={2008}
-              >
-                2008
               </option>
             </select>
           </div>
@@ -404,6 +404,10 @@ exports[`RightPanel Layout should render with data 1`] = `
           items={
             Array [
               Object {
+                "label": 2018,
+                "value": 2018,
+              },
+              Object {
                 "label": 2017,
                 "value": 2017,
               },
@@ -439,10 +443,6 @@ exports[`RightPanel Layout should render with data 1`] = `
                 "label": 2009,
                 "value": 2009,
               },
-              Object {
-                "label": 2008,
-                "value": 2008,
-              },
             ]
           }
           onChange={[Function]}
@@ -464,72 +464,72 @@ exports[`RightPanel Layout should render with data 1`] = `
               <option
                 className={undefined}
                 key="0"
+                value={2018}
+              >
+                2018
+              </option>
+              <option
+                className={undefined}
+                key="1"
                 value={2017}
               >
                 2017
               </option>
               <option
                 className={undefined}
-                key="1"
+                key="2"
                 value={2016}
               >
                 2016
               </option>
               <option
                 className={undefined}
-                key="2"
+                key="3"
                 value={2015}
               >
                 2015
               </option>
               <option
                 className={undefined}
-                key="3"
+                key="4"
                 value={2014}
               >
                 2014
               </option>
               <option
                 className={undefined}
-                key="4"
+                key="5"
                 value={2013}
               >
                 2013
               </option>
               <option
                 className={undefined}
-                key="5"
+                key="6"
                 value={2012}
               >
                 2012
               </option>
               <option
                 className={undefined}
-                key="6"
+                key="7"
                 value={2011}
               >
                 2011
               </option>
               <option
                 className={undefined}
-                key="7"
+                key="8"
                 value={2010}
               >
                 2010
               </option>
               <option
                 className={undefined}
-                key="8"
+                key="9"
                 value={2009}
               >
                 2009
-              </option>
-              <option
-                className={undefined}
-                key="9"
-                value={2008}
-              >
-                2008
               </option>
             </select>
           </div>
