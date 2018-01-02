@@ -230,6 +230,7 @@ function sendSSRHtml(serverOptions, req, res, next, renderProps, history) {
 }
 
 export default function run(routes, serverOptions = {}) {
+  debugger;
   // this line just patches Subscribe and find mechanisms
   patchSubscribeData(ReactRouterSSR);
 
