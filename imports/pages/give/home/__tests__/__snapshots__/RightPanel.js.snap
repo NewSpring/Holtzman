@@ -115,6 +115,10 @@ exports[`RightPanel Layout should render a loading state 1`] = `
           items={
             Array [
               Object {
+                "label": 2018,
+                "value": 2018,
+              },
+              Object {
                 "label": 2017,
                 "value": 2017,
               },
@@ -150,10 +154,6 @@ exports[`RightPanel Layout should render a loading state 1`] = `
                 "label": 2009,
                 "value": 2009,
               },
-              Object {
-                "label": 2008,
-                "value": 2008,
-              },
             ]
           }
           onChange={[Function]}>
@@ -164,6 +164,10 @@ exports[`RightPanel Layout should render a loading state 1`] = `
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}>
+              <option
+                value={2018}>
+                2018
+              </option>
               <option
                 value={2017}>
                 2017
@@ -199,10 +203,6 @@ exports[`RightPanel Layout should render a loading state 1`] = `
               <option
                 value={2009}>
                 2009
-              </option>
-              <option
-                value={2008}>
-                2008
               </option>
             </select>
           </div>
@@ -349,6 +349,10 @@ exports[`RightPanel Layout should render with data 1`] = `
           items={
             Array [
               Object {
+                "label": 2018,
+                "value": 2018,
+              },
+              Object {
                 "label": 2017,
                 "value": 2017,
               },
@@ -384,10 +388,6 @@ exports[`RightPanel Layout should render with data 1`] = `
                 "label": 2009,
                 "value": 2009,
               },
-              Object {
-                "label": 2008,
-                "value": 2008,
-              },
             ]
           }
           onChange={[Function]}>
@@ -398,6 +398,10 @@ exports[`RightPanel Layout should render with data 1`] = `
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}>
+              <option
+                value={2018}>
+                2018
+              </option>
               <option
                 value={2017}>
                 2017
@@ -433,10 +437,6 @@ exports[`RightPanel Layout should render with data 1`] = `
               <option
                 value={2009}>
                 2009
-              </option>
-              <option
-                value={2008}>
-                2008
               </option>
             </select>
           </div>

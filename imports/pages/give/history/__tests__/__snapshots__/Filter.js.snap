@@ -38,7 +38,7 @@ exports[`test doesn't render family members if there are none 1`] = `
           items={
             Array [
               Object {
-                "label": "2016",
+                "label": "2017",
                 "value": "LastYear",
               },
               Object {
@@ -195,7 +195,7 @@ exports[`test renders family members when expanded is true 1`] = `
           items={
             Array [
               Object {
-                "label": "2016",
+                "label": "2017",
                 "value": "LastYear",
               },
               Object {
@@ -380,7 +380,7 @@ exports[`test works with nickname 1`] = `
           items={
             Array [
               Object {
-                "label": "2016",
+                "label": "2017",
                 "value": "LastYear",
               },
               Object {
