@@ -1,4 +1,5 @@
-import { PropTypes, Component } from "react";
+import PropTypes from "prop-types";
+import { Component } from "react";
 import shouldPureComponentUpdate from "react-pure-render/function";
 
 import { base, hover, active } from "./styles";

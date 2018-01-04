@@ -1,4 +1,5 @@
-import { Component, PropTypes } from "react";
+import PropTypes from "prop-types";
+import { Component } from "react";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 import { serverWatch } from "meteor/bjwiley2:server-watch";
@@ -58,7 +59,7 @@ const IsAlive = () => {
 
 // Bind reactive data to component
 const TemplateWithData = createContainer(IsAlive,
-  ((props) => <Page {...props} />)
+  (props => <Page {...props} />),
 );
 
 const Routes = [

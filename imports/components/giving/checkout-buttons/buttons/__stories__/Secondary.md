@@ -1,20 +1,20 @@
-# Secondary
+## Secondary
 
 ### Usage
 
 ```js
-import { SecondaryButton } from "/imports/blocks/checkout-buttons/buttons";
+import { SecondaryButton } from "/imports/components/giving/checkout-buttons/buttons";
 
 <SecondaryButton
-  disable={false}
+  disabled={false}
   onClick={() => { alert("clicked"); }}
 />
 ```
 
 ### Properties
 
-* **disabled** - disables the button
-* **onClick** - function to be run on click of button
+- **disabled**:boolean? - Toggles the disabled state of the button (doesn't need a value)
+- **onClick**:Function! - The function to be run on click of the button
 
 ### Purpose
 

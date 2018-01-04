@@ -1,5 +1,7 @@
 /* eslint-disable react/no-danger */
-import { Component, PropTypes } from "react";
+import PropTypes from "prop-types";
+
+import { Component } from "react";
 import ReactMixin from "react-mixin";
 import { connect } from "react-redux";
 import { graphql } from "react-apollo";
@@ -141,7 +143,7 @@ const GET_EVENT_QUERY = gql`
 
 const withEvent = graphql(GET_EVENT_QUERY, {
   name: "event",
-  options: (ownProps) => ({
+  options: ownProps => ({
     variables: { id: ownProps.params.id },
   }),
 });
@@ -149,9 +151,9 @@ const withEvent = graphql(GET_EVENT_QUERY, {
 export default connect()(
   withEvent(
     ReactMixin.decorate(Headerable)(
-      EventSingleWithoutData
-    )
-  )
+      EventSingleWithoutData,
+    ),
+  ),
 );
 
 export {
