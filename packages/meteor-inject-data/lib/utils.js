@@ -4,7 +4,7 @@ InjectData._encode = function(ejson) {
 };
 
 const isJSON = (decodedEjsonString) => {
-    console.log("decodedEjsonString = ", decodedEjsonString);
+    // console.log("decodedEjsonString = ", decodedEjsonString);
     try {
       JSON.parse(decodedEjsonString);
     }
