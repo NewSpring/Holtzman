@@ -18,10 +18,6 @@ Meteor.startup(() => {
   // var injectedDataString = $.trim(dom.text());
   const dom = document.querySelectorAll('script[type="text/inject-data"]')[0];
   const injectedDataString = dom && dom.innerText ? dom.innerText.trim() : "";
-  console.log(
-    "util/router/client/inject-data injectedDataString = ",
-    injectedDataString,
-  );
   InjectData._data = InjectData._decode(injectedDataString) || {}; // eslint-disable-line
 });
 

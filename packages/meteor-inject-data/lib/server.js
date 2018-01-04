@@ -51,10 +51,7 @@ InjectData.pushData = function pushData(res, key, value) {
     }
 
     // inject data
-    console.log("res._injectPayload = ", res._injectPayload);
     var data = InjectData._encode(res._injectPayload);
-    // console.log("index data template = ", injectDataTemplate({ data: data }));
-    // console.log("data = ", InjectData._decode(data));
     res._injectHtml = injectDataTemplate({ data: data });
     InjectData._hijackWriteIfNeeded(res);
     ensureMiddlewareIsLast();

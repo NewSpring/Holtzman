@@ -16,7 +16,6 @@ const isJSON = (decodedEjsonString) => {
 }
 
 InjectData._decode = function(encodedEjson) {
-  console.log("********** decoding **********");
   var decodedEjsonString = decodeURIComponent(encodedEjson);
   if(!decodedEjsonString) return null;
 

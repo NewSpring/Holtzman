@@ -1,4 +1,4 @@
-if (process.env.WEB) {
+if (process.env.WEB && process.env.NODE_ENV === "production") {
   // cdn party
   if (
     Meteor.settings.cdnPrefix &&
