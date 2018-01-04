@@ -14,12 +14,12 @@ class Template extends Component {
     );
   }
 
-  next = (event) => {
+  next = event => {
     const index = Number(event.target.dataset.index);
     this.refs.welcomeSlider.slickGoTo(index + 1);
   }
 
-  skip = (event) => {
+  skip = event => {
     event.preventDefault();
     this.refs.welcomeSlider.slickGoTo(7);
   }

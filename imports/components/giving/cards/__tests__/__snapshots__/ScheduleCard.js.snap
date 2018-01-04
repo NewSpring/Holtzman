@@ -1,19 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`ScheduleOverview correctly displays a negative value. 1`] = `
 <div
-  className={undefined}>
+  className={undefined}
+>
   <div
-    className="card">
+    className="card"
+  >
     <div
-      className="card__item soft push-half-ends one-whole">
+      className="card__item soft push-half-ends one-whole"
+    >
       <div
-        className="floating text-dark-primary text-left">
+        className="floating text-dark-primary text-left"
+      >
         <h3
           className="floating__item flush"
           style={
             Object {
               "paddingRight": "5px",
             }
-          }>
+          }
+        >
           $
         </h3>
         <h3
@@ -22,22 +29,26 @@ exports[`ScheduleOverview correctly displays a negative value. 1`] = `
             Object {
               "paddingRight": "3px",
             }
-          }>
+          }
+        >
           -
         </h3>
         <h1
           className="floating__item flush"
-          style={undefined}>
+          style={undefined}
+        >
           420
         </h1>
         <h3
-          className="floating__item flush">
+          className="floating__item flush"
+        >
           .
           00
         </h3>
       </div>
       <h5
-        className="floating__item soft-half-right push-half--bottom text-dark-primary">
+        className="floating__item soft-half-right push-half--bottom text-dark-primary"
+      >
         Once A Month
       </h5>
       <p
@@ -46,18 +57,21 @@ exports[`ScheduleOverview correctly displays a negative value. 1`] = `
           Object {
             "marginBottom": "5px",
           }
-        }>
+        }
+      >
         <span
           className="h7 text-dark-tertiary push-half-right"
           style={
             Object {
               "verticalAlign": "middle",
             }
-          }>
+          }
+        >
           Start Date:
         </span>
         <em
-          className="text-dark-primary">
+          className="text-dark-primary"
+        >
           Feb 1, 2017
         </em>
       </p>
@@ -68,11 +82,13 @@ exports[`ScheduleOverview correctly displays a negative value. 1`] = `
             Object {
               "verticalAlign": "middle",
             }
-          }>
+          }
+        >
           Latest Contribution:
         </span>
         <em
-          className="text-dark-primary">
+          className="text-dark-primary"
+        >
           Feb 2, 2017
         </em>
       </p>
@@ -84,9 +100,11 @@ exports[`ScheduleOverview correctly displays a negative value. 1`] = `
             "borderColor": "inherit",
             "borderWidth": "2px",
           }
-        }>
+        }
+      >
         <h6
-          className="display-inline-block soft-half-right flush-bottom">
+          className="display-inline-block soft-half-right flush-bottom"
+        >
           View Schedule Details
         </h6>
         <span
@@ -96,7 +114,8 @@ exports[`ScheduleOverview correctly displays a negative value. 1`] = `
               "right": "-5px",
               "top": "1px",
             }
-          } />
+          }
+        />
       </button>
     </div>
   </div>
@@ -105,51 +124,62 @@ exports[`ScheduleOverview correctly displays a negative value. 1`] = `
 
 exports[`ScheduleOverview doesn't have a latest transaction, if one isn't passed 1`] = `
 <div
-  className={undefined}>
+  className={undefined}
+>
   <div
-    className="card">
+    className="card"
+  >
     <div
-      className="card__item soft push-half-ends one-whole">
+      className="card__item soft push-half-ends one-whole"
+    >
       <div
-        className="floating text-dark-primary text-left">
+        className="floating text-dark-primary text-left"
+      >
         <h3
           className="floating__item flush"
           style={
             Object {
               "paddingRight": "5px",
             }
-          }>
+          }
+        >
           $
         </h3>
         <h1
           className="floating__item flush"
-          style={undefined}>
+          style={undefined}
+        >
           420
         </h1>
         <h3
-          className="floating__item flush">
+          className="floating__item flush"
+        >
           .
           00
         </h3>
       </div>
       <h5
-        className="floating__item soft-half-right push-half--bottom text-dark-primary">
+        className="floating__item soft-half-right push-half--bottom text-dark-primary"
+      >
         Once A Month
       </h5>
       <p
         className="flush-bottom soft-half-top"
-        style={Object {}}>
+        style={Object {}}
+      >
         <span
           className="h7 text-dark-tertiary push-half-right"
           style={
             Object {
               "verticalAlign": "middle",
             }
-          }>
+          }
+        >
           Start Date:
         </span>
         <em
-          className="text-dark-primary">
+          className="text-dark-primary"
+        >
           Feb 1, 2017
         </em>
       </p>
@@ -161,9 +191,11 @@ exports[`ScheduleOverview doesn't have a latest transaction, if one isn't passed
             "borderColor": "inherit",
             "borderWidth": "2px",
           }
-        }>
+        }
+      >
         <h6
-          className="display-inline-block soft-half-right flush-bottom">
+          className="display-inline-block soft-half-right flush-bottom"
+        >
           View Schedule Details
         </h6>
         <span
@@ -173,7 +205,8 @@ exports[`ScheduleOverview doesn't have a latest transaction, if one isn't passed
               "right": "-5px",
               "top": "1px",
             }
-          } />
+          }
+        />
       </button>
     </div>
   </div>
@@ -182,51 +215,62 @@ exports[`ScheduleOverview doesn't have a latest transaction, if one isn't passed
 
 exports[`ScheduleOverview falls back correctly if a base heading size isn't set 1`] = `
 <div
-  className={undefined}>
+  className={undefined}
+>
   <div
-    className="card">
+    className="card"
+  >
     <div
-      className="card__item soft push-half-ends one-whole">
+      className="card__item soft push-half-ends one-whole"
+    >
       <div
-        className="floating text-dark-primary text-left">
+        className="floating text-dark-primary text-left"
+      >
         <h3
           className="floating__item flush"
           style={
             Object {
               "paddingRight": "5px",
             }
-          }>
+          }
+        >
           $
         </h3>
         <h1
           className="floating__item flush"
-          style={undefined}>
+          style={undefined}
+        >
           420
         </h1>
         <h3
-          className="floating__item flush">
+          className="floating__item flush"
+        >
           .
           00
         </h3>
       </div>
       <h5
-        className="floating__item soft-half-right push-half--bottom text-dark-primary">
+        className="floating__item soft-half-right push-half--bottom text-dark-primary"
+      >
         Once A Month
       </h5>
       <p
         className="flush-bottom soft-half-top"
-        style={Object {}}>
+        style={Object {}}
+      >
         <span
           className="h7 text-dark-tertiary push-half-right"
           style={
             Object {
               "verticalAlign": "middle",
             }
-          }>
+          }
+        >
           Start Date:
         </span>
         <em
-          className="text-dark-primary">
+          className="text-dark-primary"
+        >
           Feb 1, 2017
         </em>
       </p>
@@ -238,9 +282,11 @@ exports[`ScheduleOverview falls back correctly if a base heading size isn't set 
             "borderColor": "inherit",
             "borderWidth": "2px",
           }
-        }>
+        }
+      >
         <h6
-          className="display-inline-block soft-half-right flush-bottom">
+          className="display-inline-block soft-half-right flush-bottom"
+        >
           View Schedule Details
         </h6>
         <span
@@ -250,7 +296,8 @@ exports[`ScheduleOverview falls back correctly if a base heading size isn't set 
               "right": "-5px",
               "top": "1px",
             }
-          } />
+          }
+        />
       </button>
     </div>
   </div>
@@ -259,51 +306,62 @@ exports[`ScheduleOverview falls back correctly if a base heading size isn't set 
 
 exports[`ScheduleOverview falls back correctly if currency symbol isn't present. 1`] = `
 <div
-  className={undefined}>
+  className={undefined}
+>
   <div
-    className="card">
+    className="card"
+  >
     <div
-      className="card__item soft push-half-ends one-whole">
+      className="card__item soft push-half-ends one-whole"
+    >
       <div
-        className="floating text-dark-primary text-left">
+        className="floating text-dark-primary text-left"
+      >
         <h3
           className="floating__item flush"
           style={
             Object {
               "paddingRight": "5px",
             }
-          }>
+          }
+        >
           $
         </h3>
         <h1
           className="floating__item flush"
-          style={undefined}>
+          style={undefined}
+        >
           420
         </h1>
         <h3
-          className="floating__item flush">
+          className="floating__item flush"
+        >
           .
           00
         </h3>
       </div>
       <h5
-        className="floating__item soft-half-right push-half--bottom text-dark-primary">
+        className="floating__item soft-half-right push-half--bottom text-dark-primary"
+      >
         Once A Month
       </h5>
       <p
         className="flush-bottom soft-half-top"
-        style={Object {}}>
+        style={Object {}}
+      >
         <span
           className="h7 text-dark-tertiary push-half-right"
           style={
             Object {
               "verticalAlign": "middle",
             }
-          }>
+          }
+        >
           Start Date:
         </span>
         <em
-          className="text-dark-primary">
+          className="text-dark-primary"
+        >
           Feb 1, 2017
         </em>
       </p>
@@ -315,9 +373,11 @@ exports[`ScheduleOverview falls back correctly if currency symbol isn't present.
             "borderColor": "inherit",
             "borderWidth": "2px",
           }
-        }>
+        }
+      >
         <h6
-          className="display-inline-block soft-half-right flush-bottom">
+          className="display-inline-block soft-half-right flush-bottom"
+        >
           View Schedule Details
         </h6>
         <span
@@ -327,7 +387,8 @@ exports[`ScheduleOverview falls back correctly if currency symbol isn't present.
               "right": "-5px",
               "top": "1px",
             }
-          } />
+          }
+        />
       </button>
     </div>
   </div>
@@ -336,51 +397,62 @@ exports[`ScheduleOverview falls back correctly if currency symbol isn't present.
 
 exports[`ScheduleOverview falls back correctly if there isn't an amount. 1`] = `
 <div
-  className={undefined}>
+  className={undefined}
+>
   <div
-    className="card">
+    className="card"
+  >
     <div
-      className="card__item soft push-half-ends one-whole">
+      className="card__item soft push-half-ends one-whole"
+    >
       <div
-        className="floating text-dark-primary text-left">
+        className="floating text-dark-primary text-left"
+      >
         <h3
           className="floating__item flush"
           style={
             Object {
               "paddingRight": "5px",
             }
-          }>
+          }
+        >
           $
         </h3>
         <h1
           className="floating__item flush"
-          style={undefined}>
+          style={undefined}
+        >
           00
         </h1>
         <h3
-          className="floating__item flush">
+          className="floating__item flush"
+        >
           .
           00
         </h3>
       </div>
       <h5
-        className="floating__item soft-half-right push-half--bottom text-dark-primary">
+        className="floating__item soft-half-right push-half--bottom text-dark-primary"
+      >
         Once A Month
       </h5>
       <p
         className="flush-bottom soft-half-top"
-        style={Object {}}>
+        style={Object {}}
+      >
         <span
           className="h7 text-dark-tertiary push-half-right"
           style={
             Object {
               "verticalAlign": "middle",
             }
-          }>
+          }
+        >
           Start Date:
         </span>
         <em
-          className="text-dark-primary">
+          className="text-dark-primary"
+        >
           Feb 1, 2017
         </em>
       </p>
@@ -392,9 +464,11 @@ exports[`ScheduleOverview falls back correctly if there isn't an amount. 1`] = `
             "borderColor": "inherit",
             "borderWidth": "2px",
           }
-        }>
+        }
+      >
         <h6
-          className="display-inline-block soft-half-right flush-bottom">
+          className="display-inline-block soft-half-right flush-bottom"
+        >
           View Schedule Details
         </h6>
         <span
@@ -404,7 +478,8 @@ exports[`ScheduleOverview falls back correctly if there isn't an amount. 1`] = `
               "right": "-5px",
               "top": "1px",
             }
-          } />
+          }
+        />
       </button>
     </div>
   </div>
@@ -413,51 +488,62 @@ exports[`ScheduleOverview falls back correctly if there isn't an amount. 1`] = `
 
 exports[`ScheduleOverview falls back correctly if there isn't any cents. 1`] = `
 <div
-  className={undefined}>
+  className={undefined}
+>
   <div
-    className="card">
+    className="card"
+  >
     <div
-      className="card__item soft push-half-ends one-whole">
+      className="card__item soft push-half-ends one-whole"
+    >
       <div
-        className="floating text-dark-primary text-left">
+        className="floating text-dark-primary text-left"
+      >
         <h3
           className="floating__item flush"
           style={
             Object {
               "paddingRight": "5px",
             }
-          }>
+          }
+        >
           $
         </h3>
         <h1
           className="floating__item flush"
-          style={undefined}>
+          style={undefined}
+        >
           420
         </h1>
         <h3
-          className="floating__item flush">
+          className="floating__item flush"
+        >
           .
           00
         </h3>
       </div>
       <h5
-        className="floating__item soft-half-right push-half--bottom text-dark-primary">
+        className="floating__item soft-half-right push-half--bottom text-dark-primary"
+      >
         Once A Month
       </h5>
       <p
         className="flush-bottom soft-half-top"
-        style={Object {}}>
+        style={Object {}}
+      >
         <span
           className="h7 text-dark-tertiary push-half-right"
           style={
             Object {
               "verticalAlign": "middle",
             }
-          }>
+          }
+        >
           Start Date:
         </span>
         <em
-          className="text-dark-primary">
+          className="text-dark-primary"
+        >
           Feb 1, 2017
         </em>
       </p>
@@ -469,9 +555,11 @@ exports[`ScheduleOverview falls back correctly if there isn't any cents. 1`] = `
             "borderColor": "inherit",
             "borderWidth": "2px",
           }
-        }>
+        }
+      >
         <h6
-          className="display-inline-block soft-half-right flush-bottom">
+          className="display-inline-block soft-half-right flush-bottom"
+        >
           View Schedule Details
         </h6>
         <span
@@ -481,7 +569,8 @@ exports[`ScheduleOverview falls back correctly if there isn't any cents. 1`] = `
               "right": "-5px",
               "top": "1px",
             }
-          } />
+          }
+        />
       </button>
     </div>
   </div>
@@ -490,35 +579,43 @@ exports[`ScheduleOverview falls back correctly if there isn't any cents. 1`] = `
 
 exports[`ScheduleOverview has an amount, fund, frequency, started, latest, onEditClick and onDetailClick. 1`] = `
 <div
-  className={undefined}>
+  className={undefined}
+>
   <div
-    className="card">
+    className="card"
+  >
     <div
-      className="card__item soft push-half-ends one-whole">
+      className="card__item soft push-half-ends one-whole"
+    >
       <div
-        className="floating text-dark-primary text-left">
+        className="floating text-dark-primary text-left"
+      >
         <h3
           className="floating__item flush"
           style={
             Object {
               "paddingRight": "5px",
             }
-          }>
+          }
+        >
           $
         </h3>
         <h1
           className="floating__item flush"
-          style={undefined}>
+          style={undefined}
+        >
           420
         </h1>
         <h3
-          className="floating__item flush">
+          className="floating__item flush"
+        >
           .
           00
         </h3>
       </div>
       <h5
-        className="floating__item soft-half-right push-half--bottom text-dark-primary">
+        className="floating__item soft-half-right push-half--bottom text-dark-primary"
+      >
         Once A Month
       </h5>
       <p
@@ -527,18 +624,21 @@ exports[`ScheduleOverview has an amount, fund, frequency, started, latest, onEdi
           Object {
             "marginBottom": "5px",
           }
-        }>
+        }
+      >
         <span
           className="h7 text-dark-tertiary push-half-right"
           style={
             Object {
               "verticalAlign": "middle",
             }
-          }>
+          }
+        >
           Start Date:
         </span>
         <em
-          className="text-dark-primary">
+          className="text-dark-primary"
+        >
           Feb 1, 2017
         </em>
       </p>
@@ -549,11 +649,13 @@ exports[`ScheduleOverview has an amount, fund, frequency, started, latest, onEdi
             Object {
               "verticalAlign": "middle",
             }
-          }>
+          }
+        >
           Latest Contribution:
         </span>
         <em
-          className="text-dark-primary">
+          className="text-dark-primary"
+        >
           Feb 2, 2017
         </em>
       </p>
@@ -565,9 +667,11 @@ exports[`ScheduleOverview has an amount, fund, frequency, started, latest, onEdi
             "borderColor": "inherit",
             "borderWidth": "2px",
           }
-        }>
+        }
+      >
         <h6
-          className="display-inline-block soft-half-right flush-bottom">
+          className="display-inline-block soft-half-right flush-bottom"
+        >
           View Schedule Details
         </h6>
         <span
@@ -577,7 +681,8 @@ exports[`ScheduleOverview has an amount, fund, frequency, started, latest, onEdi
               "right": "-5px",
               "top": "1px",
             }
-          } />
+          }
+        />
       </button>
     </div>
   </div>

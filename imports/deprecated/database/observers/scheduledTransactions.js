@@ -97,7 +97,7 @@ const ScheduledTransactions = () => {
         FinancialPaymentDetail = { ...FinancialPaymentDetail, ...{ Guid: makeNewGuid() } };
 
         const FinancialPaymentDetailId = api.post.sync(
-          "FinancialPaymentDetails", FinancialPaymentDetail
+          "FinancialPaymentDetails", FinancialPaymentDetail,
         );
 
 
@@ -123,7 +123,7 @@ const ScheduledTransactions = () => {
           delete ScheduledTransaction.Guid;
 
           const response = api.patch.sync(
-            `FinancialScheduledTransactions/${ScheduledTransactionId}`, ScheduledTransaction
+            `FinancialScheduledTransactions/${ScheduledTransactionId}`, ScheduledTransaction,
           );
           if (response.statusText) {
             ScheduledTransactionId = response;
@@ -132,7 +132,7 @@ const ScheduledTransactions = () => {
             // since new deatils were generated
             const details = api.get.sync(
               // eslint-disable-next-line max-len
-              `FinancialScheduledTransactionDetails?$filter=ScheduledTransactionId eq ${ScheduledTransactionId}`
+              `FinancialScheduledTransactionDetails?$filter=ScheduledTransactionId eq ${ScheduledTransactionId}`,
             );
             for (const oldSchedule of details) {
               api.delete.sync(`FinancialScheduledTransactionDetails/${oldSchedule.Id}`);
@@ -140,7 +140,7 @@ const ScheduledTransactions = () => {
           }
         } else {
           ScheduledTransactionId = api.post.sync(
-            "FinancialScheduledTransactions", ScheduledTransaction
+            "FinancialScheduledTransactions", ScheduledTransaction,
           );
         }
 
@@ -170,7 +170,7 @@ const ScheduledTransactions = () => {
           };
 
           const SecondFinancialPaymentDetailId = api.post.sync(
-            "FinancialPaymentDetails", SecondFinancialPaymentDetail
+            "FinancialPaymentDetails", SecondFinancialPaymentDetail,
           );
 
           if (SecondFinancialPaymentDetailId.status) return;

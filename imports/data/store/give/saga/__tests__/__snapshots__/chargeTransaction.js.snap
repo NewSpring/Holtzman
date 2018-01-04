@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`successful charge using a saved payment ends after a normal charge 1`] = `
 Array [
   Array [

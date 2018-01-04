@@ -8,10 +8,10 @@ import content from "../../../util/content";
 import collections from "../../../util/collections";
 import categories from "../../../util/categories";
 
-const isCollectionChild = (channelName) =>
+const isCollectionChild = channelName =>
   channelName === "sermons" || channelName === "study_entries";
 
-const isCollectionParent = (channelName) =>
+const isCollectionParent = channelName =>
   channelName === "series_newspring" || channelName === "studies";
 
 const getImage = (item: Object) => {
@@ -67,19 +67,19 @@ const h4Classes = (item: Object): string =>
   [!isLight(item) ? "text-light-primary" : "text-dark-primary", "capitalize"].join(" ");
 
 const categoryClasses = (item: Object): string =>
-  !isLight(item) ? "text-light-primary" : "text-dark-secondary";
+  [!isLight(item) ? "text-light-primary" : "text-dark-secondary"].join(" ");
 
 const likeClasses = (item: Object, isLiked): string => {
   const classes = ["text-right", "float-right", "flush-bottom", "icon-like"];
-  if (!isLight(item)) {		
+  if (!isLight(item)) {
     classes.push("text-light-primary");
-  } else {		
+  } else {
     classes.push("text-dark-secondary");
   }
 
-  if (isLiked) classes.push("icon-like-solid");	
+  if (isLiked) classes.push("icon-like-solid");
 
-  return classes.join(" ");		
+  return classes.join(" ");
 };
 
 const iconClasses = (item: Object): string => {
@@ -131,8 +131,8 @@ const itemStyles = (item: Object): Object => {
 
 type IFeedItem = {
   item: {
-    entryId: string,
-    title: string
+    entryId: string, // eslint-disable-line
+    title: string, // eslint-disable-line
   },
   isLiked: boolean,
   toggleLike: () => void,
@@ -159,14 +159,7 @@ const likeStyles = {
   zIndex: 10,
 };
 
-export const FeedItem = ({
-  item,
-  isLiked,
-  toggleLike,
-  disableLike,
-  onClick,
-  link,
-}: IFeedItem) => (
+export const FeedItem = ({ item, isLiked, toggleLike, disableLike, onClick, link }: IFeedItem) => (
   <Card
     link={link || content.links(item)}
     onClick={onClick}

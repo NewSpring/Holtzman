@@ -1,11 +1,14 @@
-exports[`test render with enabled button if newP and newPDup 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render with enabled button if newP and newPDup 1`] = `
 <div
   className="background--light-primary one-whole text-center push-double-top@lap-and-up push-double-bottom"
   style={
     Object {
       "overflow": "visible",
     }
-  }>
+  }
+>
   <form
     action={undefined}
     className="hard-ends soft one-whole two-thirds@portable one-half@anchored display-inline-block"
@@ -13,85 +16,119 @@ exports[`test render with enabled button if newP and newPDup 1`] = `
     method={undefined}
     onKeyPress={undefined}
     onSubmit={[Function]}
-    style={undefined}>
+    style={undefined}
+  >
     <fieldset
-      className="flush-bottom">
+      className="flush-bottom"
+    >
       <div
-        className="push-double">
+        className="push-double"
+      >
         <h4
-          className="text-center">
+          className="text-center"
+        >
           Change Password
         </h4>
       </div>
       <div
         className="input"
         data-spec="input-wrapper"
-        style={Object {}}>
+        style={Object {}}
+      >
         <label
           htmlFor="newP"
-          style={Object {}}>
+          style={Object {}}
+        >
           New Password
         </label>
-        <input
-          autoCapitalize="on"
-          autoComplete="on"
-          autoCorrect="on"
-          className={undefined}
-          data-lpignore={undefined}
-          data-spec="input"
-          defaultValue={undefined}
-          disabled={undefined}
-          id="newP"
-          maxLength=""
-          name="newP"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          placeholder="New Password"
-          readOnly={undefined}
-          spellCheck={undefined}
-          style={Object {}}
-          type="password" />
+        <span
+          className=""
+          style={
+            Object {
+              "color": "#858585",
+            }
+          }
+        >
+          <input
+            autoCapitalize="on"
+            autoComplete="on"
+            autoCorrect="on"
+            className={undefined}
+            data-lpignore={undefined}
+            data-spec="input"
+            defaultValue={undefined}
+            disabled={undefined}
+            id="newP"
+            maxLength=""
+            name="newP"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            pattern={undefined}
+            placeholder="New Password"
+            readOnly={undefined}
+            spellCheck={undefined}
+            step={undefined}
+            style={Object {}}
+            type="password"
+          />
+        </span>
       </div>
       <div
         className="input"
         data-spec="input-wrapper"
-        style={Object {}}>
+        style={Object {}}
+      >
         <label
           htmlFor="newPDup"
-          style={Object {}}>
+          style={Object {}}
+        >
           Repeat New Password
         </label>
-        <input
-          autoCapitalize="on"
-          autoComplete="on"
-          autoCorrect="on"
-          className={undefined}
-          data-lpignore={undefined}
-          data-spec="input"
-          defaultValue={undefined}
-          disabled={undefined}
-          id="newPDup"
-          maxLength=""
-          name="newPDup"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          placeholder="Repeat New Password"
-          readOnly={undefined}
-          spellCheck={undefined}
-          style={Object {}}
-          type="password" />
+        <span
+          className=""
+          style={
+            Object {
+              "color": "#858585",
+            }
+          }
+        >
+          <input
+            autoCapitalize="on"
+            autoComplete="on"
+            autoCorrect="on"
+            className={undefined}
+            data-lpignore={undefined}
+            data-spec="input"
+            defaultValue={undefined}
+            disabled={undefined}
+            id="newPDup"
+            maxLength=""
+            name="newPDup"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            pattern={undefined}
+            placeholder="Repeat New Password"
+            readOnly={undefined}
+            spellCheck={undefined}
+            step={undefined}
+            style={Object {}}
+            type="password"
+          />
+        </span>
       </div>
       <a
         className="btn--small btn--dark-tertiary display-inline-block"
         onClick={[Function]}
         style={Object {}}
-        tabIndex={-1}>
+        tabIndex={-1}
+      >
         Back
       </a>
       <button
-        className="push-left btn">
+        className="push-left btn"
+      >
         Enter
       </button>
     </fieldset>
@@ -99,14 +136,15 @@ exports[`test render with enabled button if newP and newPDup 1`] = `
 </div>
 `;
 
-exports[`test renders with disabled button without newP 1`] = `
+exports[`renders with disabled button without newP 1`] = `
 <div
   className="background--light-primary one-whole text-center push-double-top@lap-and-up push-double-bottom"
   style={
     Object {
       "overflow": "visible",
     }
-  }>
+  }
+>
   <form
     action={undefined}
     className="hard-ends soft one-whole two-thirds@portable one-half@anchored display-inline-block"
@@ -114,85 +152,119 @@ exports[`test renders with disabled button without newP 1`] = `
     method={undefined}
     onKeyPress={undefined}
     onSubmit={[Function]}
-    style={undefined}>
+    style={undefined}
+  >
     <fieldset
-      className="flush-bottom">
+      className="flush-bottom"
+    >
       <div
-        className="push-double">
+        className="push-double"
+      >
         <h4
-          className="text-center">
+          className="text-center"
+        >
           Change Password
         </h4>
       </div>
       <div
         className="input"
         data-spec="input-wrapper"
-        style={Object {}}>
+        style={Object {}}
+      >
         <label
           htmlFor="newP"
-          style={Object {}}>
+          style={Object {}}
+        >
           New Password
         </label>
-        <input
-          autoCapitalize="on"
-          autoComplete="on"
-          autoCorrect="on"
-          className={undefined}
-          data-lpignore={undefined}
-          data-spec="input"
-          defaultValue={undefined}
-          disabled={undefined}
-          id="newP"
-          maxLength=""
-          name="newP"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          placeholder="New Password"
-          readOnly={undefined}
-          spellCheck={undefined}
-          style={Object {}}
-          type="password" />
+        <span
+          className=""
+          style={
+            Object {
+              "color": "#858585",
+            }
+          }
+        >
+          <input
+            autoCapitalize="on"
+            autoComplete="on"
+            autoCorrect="on"
+            className={undefined}
+            data-lpignore={undefined}
+            data-spec="input"
+            defaultValue={undefined}
+            disabled={undefined}
+            id="newP"
+            maxLength=""
+            name="newP"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            pattern={undefined}
+            placeholder="New Password"
+            readOnly={undefined}
+            spellCheck={undefined}
+            step={undefined}
+            style={Object {}}
+            type="password"
+          />
+        </span>
       </div>
       <div
         className="input"
         data-spec="input-wrapper"
-        style={Object {}}>
+        style={Object {}}
+      >
         <label
           htmlFor="newPDup"
-          style={Object {}}>
+          style={Object {}}
+        >
           Repeat New Password
         </label>
-        <input
-          autoCapitalize="on"
-          autoComplete="on"
-          autoCorrect="on"
-          className={undefined}
-          data-lpignore={undefined}
-          data-spec="input"
-          defaultValue={undefined}
-          disabled={undefined}
-          id="newPDup"
-          maxLength=""
-          name="newPDup"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          placeholder="Repeat New Password"
-          readOnly={undefined}
-          spellCheck={undefined}
-          style={Object {}}
-          type="password" />
+        <span
+          className=""
+          style={
+            Object {
+              "color": "#858585",
+            }
+          }
+        >
+          <input
+            autoCapitalize="on"
+            autoComplete="on"
+            autoCorrect="on"
+            className={undefined}
+            data-lpignore={undefined}
+            data-spec="input"
+            defaultValue={undefined}
+            disabled={undefined}
+            id="newPDup"
+            maxLength=""
+            name="newPDup"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            pattern={undefined}
+            placeholder="Repeat New Password"
+            readOnly={undefined}
+            spellCheck={undefined}
+            step={undefined}
+            style={Object {}}
+            type="password"
+          />
+        </span>
       </div>
       <a
         className="btn--small btn--dark-tertiary display-inline-block"
         onClick={[Function]}
         style={Object {}}
-        tabIndex={-1}>
+        tabIndex={-1}
+      >
         Back
       </a>
       <button
-        className="push-left btn--disabled">
+        className="push-left btn--disabled"
+      >
         Enter
       </button>
     </fieldset>
@@ -200,14 +272,15 @@ exports[`test renders with disabled button without newP 1`] = `
 </div>
 `;
 
-exports[`test renders with disabled button without newPDup 1`] = `
+exports[`renders with disabled button without newPDup 1`] = `
 <div
   className="background--light-primary one-whole text-center push-double-top@lap-and-up push-double-bottom"
   style={
     Object {
       "overflow": "visible",
     }
-  }>
+  }
+>
   <form
     action={undefined}
     className="hard-ends soft one-whole two-thirds@portable one-half@anchored display-inline-block"
@@ -215,85 +288,119 @@ exports[`test renders with disabled button without newPDup 1`] = `
     method={undefined}
     onKeyPress={undefined}
     onSubmit={[Function]}
-    style={undefined}>
+    style={undefined}
+  >
     <fieldset
-      className="flush-bottom">
+      className="flush-bottom"
+    >
       <div
-        className="push-double">
+        className="push-double"
+      >
         <h4
-          className="text-center">
+          className="text-center"
+        >
           Change Password
         </h4>
       </div>
       <div
         className="input"
         data-spec="input-wrapper"
-        style={Object {}}>
+        style={Object {}}
+      >
         <label
           htmlFor="newP"
-          style={Object {}}>
+          style={Object {}}
+        >
           New Password
         </label>
-        <input
-          autoCapitalize="on"
-          autoComplete="on"
-          autoCorrect="on"
-          className={undefined}
-          data-lpignore={undefined}
-          data-spec="input"
-          defaultValue={undefined}
-          disabled={undefined}
-          id="newP"
-          maxLength=""
-          name="newP"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          placeholder="New Password"
-          readOnly={undefined}
-          spellCheck={undefined}
-          style={Object {}}
-          type="password" />
+        <span
+          className=""
+          style={
+            Object {
+              "color": "#858585",
+            }
+          }
+        >
+          <input
+            autoCapitalize="on"
+            autoComplete="on"
+            autoCorrect="on"
+            className={undefined}
+            data-lpignore={undefined}
+            data-spec="input"
+            defaultValue={undefined}
+            disabled={undefined}
+            id="newP"
+            maxLength=""
+            name="newP"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            pattern={undefined}
+            placeholder="New Password"
+            readOnly={undefined}
+            spellCheck={undefined}
+            step={undefined}
+            style={Object {}}
+            type="password"
+          />
+        </span>
       </div>
       <div
         className="input"
         data-spec="input-wrapper"
-        style={Object {}}>
+        style={Object {}}
+      >
         <label
           htmlFor="newPDup"
-          style={Object {}}>
+          style={Object {}}
+        >
           Repeat New Password
         </label>
-        <input
-          autoCapitalize="on"
-          autoComplete="on"
-          autoCorrect="on"
-          className={undefined}
-          data-lpignore={undefined}
-          data-spec="input"
-          defaultValue={undefined}
-          disabled={undefined}
-          id="newPDup"
-          maxLength=""
-          name="newPDup"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          placeholder="Repeat New Password"
-          readOnly={undefined}
-          spellCheck={undefined}
-          style={Object {}}
-          type="password" />
+        <span
+          className=""
+          style={
+            Object {
+              "color": "#858585",
+            }
+          }
+        >
+          <input
+            autoCapitalize="on"
+            autoComplete="on"
+            autoCorrect="on"
+            className={undefined}
+            data-lpignore={undefined}
+            data-spec="input"
+            defaultValue={undefined}
+            disabled={undefined}
+            id="newPDup"
+            maxLength=""
+            name="newPDup"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            pattern={undefined}
+            placeholder="Repeat New Password"
+            readOnly={undefined}
+            spellCheck={undefined}
+            step={undefined}
+            style={Object {}}
+            type="password"
+          />
+        </span>
       </div>
       <a
         className="btn--small btn--dark-tertiary display-inline-block"
         onClick={[Function]}
         style={Object {}}
-        tabIndex={-1}>
+        tabIndex={-1}
+      >
         Back
       </a>
       <button
-        className="push-left btn--disabled">
+        className="push-left btn--disabled"
+      >
         Enter
       </button>
     </fieldset>

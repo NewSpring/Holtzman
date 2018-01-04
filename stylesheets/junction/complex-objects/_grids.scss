@@ -1,0 +1,125 @@
+
+$use-grids: true !default;
+
+@if $use-grids == true {
+  //
+  // @name %_grid
+  // @description base selector to be extended for grid blocks
+  //
+  // @extend true
+  //
+  %_grid {
+    margin-bottom: 0;
+    margin-left: -$base-spacing-unit;
+
+    list-style: none;
+  }
+
+  //
+  // @name %_grid__item
+  // @description base selector to be extended for grid elements
+  //
+  // @extend true
+  //
+  %_grid__item {
+    position: relative;
+
+    display: inline-block;
+
+    width: 100%;
+    padding-left: $base-spacing-unit;
+
+    vertical-align: top;
+    @if $global-border-box == false {
+      @include vendor(box-sizing, border-box);
+    }
+  }
+
+
+  //
+  // @name Grid
+  // @class .grid
+  // @description The baseline responsive grid system
+  //
+  // @complex-object true
+  //
+  // @block .grid
+  // @element .grid__item
+  //
+  // @bug whitespace - currently browsers render whitespace which throws off the repsonsive grid. Either minify your markup or include comments of your markup language to prevent whitespace from being between grid__items
+  //
+  // @markup
+  // <div class="grid"><!--
+  //
+  //   --><div class="grid__item one-whole lap-and-up-one-half">
+  //
+  //     <h1>Pizza?</h1>
+  //     <p>lots of pizza is always better</p>
+  //
+  //   </div><!--
+  //
+  //  --><div class="grid__item one-whole lap-and-up-one-half">
+  //
+  //     <h1>Donuts?</h1>
+  //     <p>Tasty but pizza is better</p>
+  //
+  //   </div><!--
+  //
+  // --></div>
+  //
+  .grid {
+    @extend %_grid;
+  }
+
+  // remove margin from rare grid within grid
+  .grid > .grid {
+    margin-left: 0;
+  }
+  
+  // Reversed grids
+  .grid--rev{
+  	@extend %_grid;
+  	direction:rtl;
+  	text-align:right;
+  }
+  
+  .grid--rev > .grid__item{
+  	direction:ltr;
+  	text-align:left;
+  }
+
+
+  //
+  // @name .grid__item
+  // @class .grid__item
+  // @description The baseline responsive grid element
+  //
+  // @complex-object true
+  //
+  // @block .grid
+  // @element .grid__item
+  //
+  // @bug whitespace - currently browsers render whitespace which throws off the repsonsive grid. Either minify your markup or include comments of your markup language to prevent whitespace from being between grid__items
+  //
+  .grid__item {
+    @extend %_grid__item;
+  }
+
+
+  //
+  // @name .grid__item
+  // @class .grid__item--push-bottom
+  // @description Grid child with margin bottom of $base-spacing-unit
+  //
+  // @complex-object true
+  //
+  // @block .grid
+  // @element .grid__item-push-bottom
+  //
+  //
+  .grid__item--push-bottom {
+    @extend %_grid__item;
+
+    margin-bottom: $base-spacing-unit;
+  }
+}

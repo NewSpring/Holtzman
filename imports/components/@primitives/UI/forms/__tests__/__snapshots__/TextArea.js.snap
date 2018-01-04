@@ -1,14 +1,18 @@
-exports[`test appends extra classes 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`appends extra classes 1`] = `
 <div
   className="input append me"
   style={
     Object {
       "color": "green",
     }
-  }>
+  }
+>
   <Label
     labelFor="2"
-    labelName="myLabel" />
+    labelName="myLabel"
+  />
   <textarea
     className="input classes"
     defaultValue={null}
@@ -23,18 +27,20 @@ exports[`test appends extra classes 1`] = `
       Object {
         "color": "green",
       }
-    } />
+    }
+  />
 </div>
 `;
 
-exports[`test can hide the label 1`] = `
+exports[`can hide the label 1`] = `
 <div
   className="input"
   style={
     Object {
       "color": "green",
     }
-  }>
+  }
+>
   <textarea
     className="input classes"
     defaultValue={null}
@@ -49,21 +55,24 @@ exports[`test can hide the label 1`] = `
       Object {
         "color": "green",
       }
-    } />
+    }
+  />
 </div>
 `;
 
-exports[`test has active state 1`] = `
+exports[`has active state 1`] = `
 <div
   className="input input--active"
   style={
     Object {
       "color": "green",
     }
-  }>
+  }
+>
   <Label
     labelFor="2"
-    labelName="myLabel" />
+    labelName="myLabel"
+  />
   <textarea
     className="input classes"
     defaultValue={null}
@@ -78,21 +87,24 @@ exports[`test has active state 1`] = `
       Object {
         "color": "green",
       }
-    } />
+    }
+  />
 </div>
 `;
 
-exports[`test has error state 1`] = `
+exports[`has error state 1`] = `
 <div
   className="input input--alert"
   style={
     Object {
       "color": "green",
     }
-  }>
+  }
+>
   <Label
     labelFor="2"
-    labelName="myLabel" />
+    labelName="myLabel"
+  />
   <textarea
     className="input classes"
     defaultValue={null}
@@ -107,21 +119,24 @@ exports[`test has error state 1`] = `
       Object {
         "color": "green",
       }
-    } />
+    }
+  />
 </div>
 `;
 
-exports[`test has focused state 1`] = `
+exports[`has focused state 1`] = `
 <div
   className="input input--focused"
   style={
     Object {
       "color": "green",
     }
-  }>
+  }
+>
   <Label
     labelFor="2"
-    labelName="myLabel" />
+    labelName="myLabel"
+  />
   <textarea
     className="input classes"
     defaultValue={null}
@@ -136,21 +151,24 @@ exports[`test has focused state 1`] = `
       Object {
         "color": "green",
       }
-    } />
+    }
+  />
 </div>
 `;
 
-exports[`test overrides with theme if present 1`] = `
+exports[`overrides with theme if present 1`] = `
 <div
   className="override"
   style={
     Object {
       "color": "green",
     }
-  }>
+  }
+>
   <Label
     labelFor="2"
-    labelName="myLabel" />
+    labelName="myLabel"
+  />
   <textarea
     className="input classes"
     defaultValue={null}
@@ -165,35 +183,40 @@ exports[`test overrides with theme if present 1`] = `
       Object {
         "color": "green",
       }
-    } />
+    }
+  />
 </div>
 `;
 
-exports[`test renderHepText returns when error and error text 1`] = `
+exports[`renderHepText returns when error and error text 1`] = `
 <span
-  className="input__status">
+  className="input__status"
+>
   error
 </span>
 `;
 
-exports[`test renderHepText returns when status 1`] = `
+exports[`renderHepText returns when status 1`] = `
 <span
-  className="input__status">
+  className="input__status"
+>
   some status
 </span>
 `;
 
-exports[`test renders with props 1`] = `
+exports[`renders with props 1`] = `
 <div
   className="input"
   style={
     Object {
       "color": "green",
     }
-  }>
+  }
+>
   <Label
     labelFor="2"
-    labelName="myLabel" />
+    labelName="myLabel"
+  />
   <textarea
     className="input classes"
     defaultValue={null}
@@ -208,6 +231,7 @@ exports[`test renders with props 1`] = `
       Object {
         "color": "green",
       }
-    } />
+    }
+  />
 </div>
 `;
