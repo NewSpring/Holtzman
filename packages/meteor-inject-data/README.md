@@ -1,12 +1,12 @@
-# meteorhacks:inject-data
+# staringatlights:inject-data
 
-#### A way to inject data to the client with initial HTML
+#### A way to inject data to the client with initial HTML. A continuation of `meteorhacks:inject-data`.
 
 This is the package used by [`fast-render`](https://github.com/meteorhacks/fast-render) to push data to the client with the initial HTML.
 
 ## Installation
 
-meteor add meteorhacks:inject-data
+meteor add staringatlights:inject-data
 
 ## Push Data
 
