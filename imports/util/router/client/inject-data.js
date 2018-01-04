@@ -16,6 +16,7 @@ FastRender._securityCheck = function securityCheck(payload) {
 Meteor.startup(() => {
   // var dom = $('script[type="text/inject-data"]', document);
   // var injectedDataString = $.trim(dom.text());
+  // eslint-disable-next-line
   const dom = document.querySelectorAll('script[type="text/inject-data"]')[0];
   const injectedDataString = dom && dom.innerText ? dom.innerText.trim() : "";
   InjectData._data = InjectData._decode(injectedDataString) || {}; // eslint-disable-line
