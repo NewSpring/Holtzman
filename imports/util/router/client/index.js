@@ -52,7 +52,9 @@ export default function run(routes, clientOptions = {}) {
         wrapperProps.store = reduxStore;
       }
 
-      app = <clientOptions.wrapper {...wrapperProps}>{app}</clientOptions.wrapper>;
+      app = (
+        <clientOptions.wrapper {...wrapperProps}>{app}</clientOptions.wrapper>
+      );
     }
 
     // let css;
