@@ -151,6 +151,11 @@ Meteor.methods({
         return api.post("Communications", Communication);
       })
       .then(CommunicationId => {
+        console.log("CommunicationId");
+        console.log(
+          "CommunicationId.statusText = ",
+          CommunicationId.statusText,
+        );
         if (CommunicationId.statusText) {
           throw new Meteor.Error(CommunicationId);
         }
@@ -188,12 +193,17 @@ Meteor.methods({
         return ids;
       })
       .then(communications => {
+        console.log("communications");
         for (const CommunicationRecipientId of communications) {
           api.patch.sync(
             `CommunicationRecipients/${CommunicationRecipientId}`,
             {
               MediumEntityTypeId: 37, // Mandrill
             },
+          );
+          console.log(
+            "CommunicationRecipientId.statusText = ",
+            CommunicationRecipientId.statusText,
           );
           if (CommunicationRecipientId.statusText) {
             throw new Meteor.Error(CommunicationRecipientId);
