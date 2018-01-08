@@ -9,15 +9,11 @@ import Meta from "../../components/shared/meta";
 import MinistriesPage from "./ministries";
 import NextStepsPage from "./next-steps";
 import ShaneTemplate from "./message-from-shane";
-import SmallButton from "../../components/@primitives/UI/buttons/SmallButton";
-import {
-  SolidLeaf,
-  StripedLeaf,
-} from "./components/leaves";
+import { SolidLeaf, StripedLeaf } from "./components/leaves";
 
 type ITemplate = {
   children: React$Element<any>,
-}
+};
 
 class Template extends Component {
   props: ITemplate;
@@ -26,26 +22,33 @@ class Template extends Component {
       {
         key: 1,
         isActive: false,
+        linkUrl: "/annualreport/home",
+        onClick: () => {},
+        title: "Home",
+      },
+      {
+        key: 2,
+        isActive: false,
         linkUrl: "/annualreport/finances",
         onClick: () => {},
         title: "Finances",
       },
       {
-        key: 2,
+        key: 3,
         isActive: false,
         linkUrl: "/annualreport/next-steps",
         onClick: () => {},
         title: "Next Steps",
       },
       {
-        key: 3,
+        key: 4,
         isActive: false,
         linkUrl: "/annualreport/ministries",
         onClick: () => {},
         title: "Ministries",
       },
     ],
-  }
+  };
 
   componentWillMount() {
     this.updateActive(this.props);
@@ -58,16 +61,18 @@ class Template extends Component {
   updateActive = (props: Object) => {
     const { pathname } = props.location;
 
-    this.setState(state => state.subNav.map(x => {
-      const nav = x;
-      nav.isActive = false;
-      if (nav.linkUrl === pathname) {
-        nav.isActive = true;
-      }
+    this.setState(state =>
+      state.subNav.map(x => {
+        const nav = x;
+        nav.isActive = false;
+        if (nav.linkUrl === pathname) {
+          nav.isActive = true;
+        }
 
-      return nav;
-    }));
-  }
+        return nav;
+      })
+    );
+  };
 
   render() {
     return (
@@ -86,17 +91,38 @@ class Template extends Component {
             </h1>
           </div>
           <div className="one-whole text-primary visuallyhidden@lap-and-up">
-            <h3 className="display-inline-block uppercase" style={{ fontWeight: "900", marginBottom: "0" }}>Annual</h3>
-            <h3 className="display-inline-block soft-half-left uppercase" style={{ fontWeight: "900", marginBottom: "0" }}>Report</h3>
+            <h3
+              className="display-inline-block uppercase"
+              style={{ fontWeight: "900", marginBottom: "0" }}
+            >
+              Annual
+            </h3>
+            <h3
+              className="display-inline-block soft-half-left uppercase"
+              style={{ fontWeight: "900", marginBottom: "0" }}
+            >
+              Report
+            </h3>
           </div>
           <div className="one-fourth display-inline-block text-primary visuallyhidden@handheld">
-            <h3 className="uppercase" style={{ fontWeight: "900", marginBottom: "0" }}>Annual</h3>
-            <h3 className="uppercase" style={{ fontWeight: "900", marginBottom: "0" }}>Report</h3>
+            <h3
+              className="uppercase"
+              style={{ fontWeight: "900", marginBottom: "0" }}
+            >
+              Annual
+            </h3>
+            <h3
+              className="uppercase"
+              style={{ fontWeight: "900", marginBottom: "0" }}
+            >
+              Report
+            </h3>
           </div>
         </div>
         <div className="soft-double-sides@lap-and-up soft-sides push-half-top one-half@lap-wide-and-up display-inline-block">
           <p className="italic">
-            Hear from our Executive Pastor Shane Duffey as he reflects on this year.
+            Hear from our Executive Pastor Shane Duffey as he reflects on this
+            year.
           </p>
         </div>
         <div className="visuallyhidden@handheld visuallyhidden@lap one-half display-inline-block">
@@ -143,12 +169,11 @@ class Template extends Component {
             />
           </Leaves>
         </div>
-        <div className="soft-double-left@lap-and-up soft-left">
-          <SmallButton text="Watch Video" className="btn--dark-secondary" linkUrl="/annualreport/message-from-shane" />
-        </div>
         <DashboardLayout
           subNav={this.state.subNav}
-          additionalClasses={"soft-half-sides push-right@lap-and-up push-half-right"}
+          additionalClasses={
+            "soft-half-sides push-right@lap-and-up push-half-right"
+          }
           title={"Annual Report"}
           align={"text-left"}
           hideTitle
@@ -169,12 +194,14 @@ const scripts = [
 ];
 
 const Routes = [
-  { path: "annualreport/message-from-shane", component: ShaneTemplate.Template },
   {
     path: "annualreport",
-    component: scriptLoader(...scripts)(Template),
-    indexRoute: { onEnter: (nextState: Object, replace: Function) => replace("/annualreport/finances") },
+    indexRoute: {
+      onEnter: (nextState: Object, replace: Function) =>
+        replace("/annualreport/home"),
+    },
     childRoutes: [
+      ...ShaneTemplate.Routes,
       ...FinancesPage.Routes,
       ...NextStepsPage.Routes,
       ...MinistriesPage.Routes,
@@ -182,11 +209,17 @@ const Routes = [
   },
   {
     path: "celebrate",
-    indexRoute: { onEnter: (nextState: Object, replace: Function) => replace("/annualreport") },
+    indexRoute: {
+      onEnter: (nextState: Object, replace: Function) =>
+        replace("/annualreport"),
+    },
   },
   {
     path: "annual-report",
-    indexRoute: { onEnter: (nextState: Object, replace: Function) => replace("/annualreport") },
+    indexRoute: {
+      onEnter: (nextState: Object, replace: Function) =>
+        replace("/annualreport"),
+    },
   },
 ];
 
