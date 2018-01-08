@@ -200,7 +200,6 @@ const Routes = [
         replace("/annualreport/home"),
     },
     childRoutes: [
-      ...HomePage.Routes,
       ...FinancesPage.Routes,
       ...NextStepsPage.Routes,
       ...MinistriesPage.Routes,
