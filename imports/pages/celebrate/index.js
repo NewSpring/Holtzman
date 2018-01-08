@@ -1,6 +1,5 @@
 // @flow
 import React, { Component } from "react";
-import scriptLoader from "react-async-script-loader";
 
 import DashboardLayout from "../../components/@primitives/layout/dashboard";
 import FinancesPage from "./finances";
@@ -8,7 +7,7 @@ import { Leaves } from "./components/layout";
 import Meta from "../../components/shared/meta";
 import MinistriesPage from "./ministries";
 import NextStepsPage from "./next-steps";
-import ShaneTemplate from "./message-from-shane";
+import HomePage from "./message-from-shane";
 import { SolidLeaf, StripedLeaf } from "./components/leaves";
 
 type ITemplate = {
@@ -185,14 +184,6 @@ class Template extends Component {
   }
 }
 
-// XXX This is not a great long term solution, but it works for this iteration.
-// We shouldn't have to import the ooyala scripts twice.
-const scripts = [
-  "//player.ooyala.com/static/v4/stable/4.6.9/core.min.js",
-  "//player.ooyala.com/static/v4/stable/4.6.9/video-plugin/main_html5.min.js",
-  "//player.ooyala.com/static/v4/stable/4.6.9/skin-plugin/html5-skin.js",
-];
-
 const Routes = [
   {
     path: "annualreport",
@@ -201,7 +192,7 @@ const Routes = [
         replace("/annualreport/home"),
     },
     childRoutes: [
-      ...ShaneTemplate.Routes,
+      ...HomePage.Routes,
       ...FinancesPage.Routes,
       ...NextStepsPage.Routes,
       ...MinistriesPage.Routes,
