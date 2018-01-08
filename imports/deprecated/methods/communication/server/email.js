@@ -58,7 +58,10 @@ Parser.registerFilters({
     Format(value, format) {
       // hardcode number formating for now
       if (format === "#,##0.00") {
-        return `${Number(value).toFixed(2)}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        return `${Number(value).toFixed(2)}`.replace(
+          /\B(?=(\d{3})+(?!\d))/g,
+          ",",
+        );
       }
       return null;
     },
@@ -79,7 +82,11 @@ Parser.registerFilters({
 });
 
 Meteor.methods({
-  "communication/email/send": function sendEmail(emailId, PersonAliasId, merge) {
+  "communication/email/send": function sendEmail(
+    emailId,
+    PersonAliasId,
+    merge,
+  ) {
     let mergeFields = merge;
     check(emailId, Number);
     // check(PersonAliasId, Number)
@@ -161,7 +168,7 @@ Meteor.methods({
         const ids = [];
         for (const id of PersonAliasId) {
           const CommunicationRecipient = {
-            MediumEntityTypeId: 37, // Mandrill
+            // MediumEntityTypeId: 37, // Mandrill
             PersonAliasId: id,
             CommunicationId,
             Status: 0, // Pending
@@ -182,6 +189,12 @@ Meteor.methods({
       })
       .then(communications => {
         for (const CommunicationRecipientId of communications) {
+          api.patch.sync(
+            `CommunicationRecipients/${CommunicationRecipientId}`,
+            {
+              MediumEntityTypeId: 37, // Mandrill
+            },
+          );
           if (CommunicationRecipientId.statusText) {
             throw new Meteor.Error(CommunicationRecipientId);
           }
