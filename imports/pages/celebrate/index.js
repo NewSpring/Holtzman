@@ -78,8 +78,48 @@ class Template extends Component {
     return (
       <div>
         <Meta title="Annual Report" />
-        <div className="soft-double-top soft-double-left@lap-and-up soft-left push-top@lap-and-up one-whole">
-          <div className="one-whole@handheld one-fourth@lap-and-up soft-half-right@lap-and-up display-inline-block">
+        <div className="text-center soft-double-top soft-double-left@lap-and-up soft-left push-top@lap-and-up one-whole">
+          <div className="one-whole text-primary visuallyhidden@lap-and-up">
+            <h1
+              className="display-inline-block uppercase"
+              style={{ fontWeight: "900", marginBottom: "0" }}
+            >
+              Annual
+            </h1>
+            <h1
+              className="display-inline-block soft-half-left uppercase"
+              style={{ fontWeight: "900", marginBottom: "0" }}
+            >
+              Report
+            </h1>
+          </div>
+          <div className="one-fourth display-inline-block text-primary visuallyhidden@handheld">
+            <h1
+              className="uppercase"
+              style={{ fontWeight: "900", marginBottom: "0" }}
+            >
+              Annual
+            </h1>
+            <h1
+              className="uppercase"
+              style={{ fontWeight: "900", marginBottom: "0" }}
+            >
+              Report
+            </h1>
+          </div>
+          <div className="relative one-whole@handheld one-fourth@lap-and-up soft-half-right@lap-and-up display-inline-block">
+            <span
+              className="text-light-primary rotate--number"
+              style={{
+                position: "absolute",
+                top: "18px",
+                left: "8px",
+                fontWeight: "900",
+                fontSize: 20,
+              }}
+            >
+              20
+            </span>
             <h1
               className="uppercase flush-bottom text-primary"
               style={{
@@ -87,44 +127,23 @@ class Template extends Component {
                 fontSize: 120,
               }}
             >
-              2016
+              17
             </h1>
           </div>
-          <div className="one-whole text-primary visuallyhidden@lap-and-up">
-            <h3
-              className="display-inline-block uppercase"
-              style={{ fontWeight: "900", marginBottom: "0" }}
-            >
-              Annual
-            </h3>
-            <h3
-              className="display-inline-block soft-half-left uppercase"
-              style={{ fontWeight: "900", marginBottom: "0" }}
-            >
-              Report
-            </h3>
-          </div>
-          <div className="one-fourth display-inline-block text-primary visuallyhidden@handheld">
-            <h3
-              className="uppercase"
-              style={{ fontWeight: "900", marginBottom: "0" }}
-            >
-              Annual
-            </h3>
-            <h3
-              className="uppercase"
-              style={{ fontWeight: "900", marginBottom: "0" }}
-            >
-              Report
-            </h3>
-          </div>
         </div>
-        <div className="soft-double-sides@lap-and-up soft-sides push-half-top one-half@lap-wide-and-up display-inline-block">
-          <p className="italic">
-            Hear from our Executive Pastor Shane Duffey as he reflects on this
-            year.
-          </p>
-        </div>
+
+        <DashboardLayout
+          subNav={this.state.subNav}
+          additionalClasses={
+            "soft-half-sides push-right@lap-and-up push-half-right"
+          }
+          title={"Annual Report"}
+          align={"text-center"}
+          hideTitle
+          centerWebNav
+        >
+          {this.props.children}
+        </DashboardLayout>
         <div className="visuallyhidden@handheld visuallyhidden@lap one-half display-inline-block">
           <Leaves>
             <SolidLeaf
@@ -169,17 +188,6 @@ class Template extends Component {
             />
           </Leaves>
         </div>
-        <DashboardLayout
-          subNav={this.state.subNav}
-          additionalClasses={
-            "soft-half-sides push-right@lap-and-up push-half-right"
-          }
-          title={"Annual Report"}
-          align={"text-left"}
-          hideTitle
-        >
-          {this.props.children}
-        </DashboardLayout>
       </div>
     );
   }
@@ -200,6 +208,7 @@ const Routes = [
         replace("/annualreport/home"),
     },
     childRoutes: [
+      ...HomePage.Routes,
       ...FinancesPage.Routes,
       ...NextStepsPage.Routes,
       ...MinistriesPage.Routes,
