@@ -417,13 +417,6 @@ exports[`Layout renders with props 1`] = `
 exports[`TransactionList doesn't render transaction with $0.00 amounts 1`] = `
 <div>
   <div>
-    <p
-      className="italic"
-    >
-      To print your 2017 giving statement, click on "Filter Transactions." For "Date Range," choose 2017. Then, click "Filter Results." Click the printer button to download your statement.
-    </p>
-  </div>
-  <div>
     <div
       key="0"
     >
@@ -482,13 +475,6 @@ exports[`TransactionList doesn't render transaction with $0.00 amounts 1`] = `
 
 exports[`TransactionList renders transactions across years 1`] = `
 <div>
-  <div>
-    <p
-      className="italic"
-    >
-      To print your 2017 giving statement, click on "Filter Transactions." For "Date Range," choose 2017. Then, click "Filter Results." Click the printer button to download your statement.
-    </p>
-  </div>
   <div>
     <div
       key="0"
@@ -676,13 +662,6 @@ exports[`TransactionList renders transactions across years 1`] = `
 
 exports[`TransactionList renders with props 1`] = `
 <div>
-  <div>
-    <p
-      className="italic"
-    >
-      To print your 2017 giving statement, click on "Filter Transactions." For "Date Range," choose 2017. Then, click "Filter Results." Click the printer button to download your statement.
-    </p>
-  </div>
   <div>
     <div
       key="0"
