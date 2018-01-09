@@ -56,7 +56,7 @@ class ForgotPassword extends React.Component {
       },
       err => {
         console.log("forgotPassword callback"); // eslint-disable-line
-        console.log("err = ", err);
+        console.log("err = ", err); // eslint-disable-line
         if (err) {
           console.log("there was an error somewhere in forgotPassword"); // eslint-disable-line
           if (err.error === 403) {

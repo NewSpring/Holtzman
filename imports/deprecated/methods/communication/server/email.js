@@ -128,6 +128,17 @@ Meteor.methods({
     mergeFields = { ...mergeFields, ...{ GlobalAttribute } };
 
     console.log("entering the promise"); // eslint-disable-line
+    /* eslint-disable */
+    console.log("parsing things");
+    console.log(
+      "parsing Email.Subject = ",
+      Parser.parseAndRender(Email.Subject, mergeFields),
+    );
+    console.log(
+      "parsing Email.Body = ",
+      Parser.parseAndRender(Email.Body, mergeFields),
+    );
+    /* eslint-enable */
     return Promise.all([
       // Parser.parse(Email.Subject)
       //   .then((template) => {
@@ -139,9 +150,6 @@ Meteor.methods({
       //     console.log(template.root.nodelist)
       //     return template.render(mergeFields)
       //   }),
-      console.log("parsing things"); // eslint-disable-line
-      console.log("parsing Email.Subject = ", Parser.parseAndRender(Email.Subject, mergeFields)); // eslint-disable-line
-      console.log("parsing Email.Body = ", Parser.parseAndRender(Email.Body, mergeFields)); // eslint-disable-line
       Parser.parseAndRender(Email.Subject, mergeFields),
       Parser.parseAndRender(Email.Body, mergeFields),
     ])
@@ -162,9 +170,14 @@ Meteor.methods({
         return api.post("Communications", Communication);
       })
       .then(CommunicationId => {
-        console.log("set CommunicationRecipient"); // eslint-disable-line
-        console.log("CommunicationId = ", CommunicationId); // eslint-disable-line
-        console.log("CommunicationId.statusText = ", CommunicationId.statusText); // eslint-disable-line
+        /* eslint-disable */
+        console.log("set CommunicationRecipient");
+        console.log("CommunicationId = ", CommunicationId);
+        console.log(
+          "CommunicationId.statusText = ",
+          CommunicationId.statusText,
+        );
+        /* eslint-enable */
         if (CommunicationId.statusText) {
           throw new Meteor.Error(CommunicationId);
         }
@@ -207,7 +220,12 @@ Meteor.methods({
       .then(communications => {
         console.log("checking status text of the CommunicationRecipientId"); // eslint-disable-line
         for (const CommunicationRecipientId of communications) {
-          console.log("CommunicationRecipientId.statusText = ", CommunicationRecipientId.statusText); // eslint-disable-line
+          /* eslint-disable */
+          console.log(
+            "CommunicationRecipientId.statusText = ",
+            CommunicationRecipientId.statusText,
+          );
+          /* eslint-enable */
           if (CommunicationRecipientId.statusText) {
             throw new Meteor.Error(CommunicationRecipientId);
           }
@@ -216,7 +234,7 @@ Meteor.methods({
         return communications;
       })
       .catch(e => {
-        console.log("there was an error somewhere") // eslint-disable-line
+        console.log("there was an error somewhere"); // eslint-disable-line
         // eslint-disable-next-line
         console.log(e);
         throw e;
