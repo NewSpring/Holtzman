@@ -87,17 +87,17 @@ Meteor.methods({
     PersonAliasId,
     merge,
   ) {
-    console.log("********** communication/email/send **********");
-    console.log("emailId = ", emailId);
-    console.log("PersonAliasId = ", PersonAliasId);
+    console.log("********** communication/email/send **********"); // eslint-disable-line
+    console.log("emailId = ", emailId); // eslint-disable-line
+    console.log("PersonAliasId = ", PersonAliasId); // eslint-disable-line
     let mergeFields = merge;
     check(emailId, Number);
     // check(PersonAliasId, Number)
 
     const Email = api.get.sync(`SystemEmails/${emailId}`);
 
-    console.log("Email.Body = ", Email.Body);
-    console.log("Email.Subject = ", Email.Subject);
+    console.log("Email.Body = ", Email.Body); // eslint-disable-line
+    console.log("Email.Subject = ", Email.Subject); // eslint-disable-line
     if (!Email.Body || !Email.Subject) {
       throw new Meteor.Error(`No email body or subject found for ${emailId}`);
     }
@@ -127,7 +127,7 @@ Meteor.methods({
     }
     mergeFields = { ...mergeFields, ...{ GlobalAttribute } };
 
-    console.log("entering the promise");
+    console.log("entering the promise"); // eslint-disable-line
     return Promise.all([
       // Parser.parse(Email.Subject)
       //   .then((template) => {
@@ -139,14 +139,14 @@ Meteor.methods({
       //     console.log(template.root.nodelist)
       //     return template.render(mergeFields)
       //   }),
-      console.log("parsing things");
-      console.log("parsing Email.Subject = ", Parser.parseAndRender(Email.Subject, mergeFields));
-      console.log("parsing Email.Body = ", Parser.parseAndRender(Email.Body, mergeFields));
+      console.log("parsing things"); // eslint-disable-line
+      console.log("parsing Email.Subject = ", Parser.parseAndRender(Email.Subject, mergeFields)); // eslint-disable-line
+      console.log("parsing Email.Body = ", Parser.parseAndRender(Email.Body, mergeFields)); // eslint-disable-line
       Parser.parseAndRender(Email.Subject, mergeFields),
       Parser.parseAndRender(Email.Body, mergeFields),
     ])
       .then(([subject, body]) => {
-        console.log("set Communication");
+        console.log("set Communication"); // eslint-disable-line
         const Communication = {
           CommunicationType: 1,
           SenderPersonAliasId: null,
@@ -157,14 +157,14 @@ Meteor.methods({
           Subject: subject,
           Message: body,
         };
-        console.log("Communication = ", Communication);
+        console.log("Communication = ", Communication); // eslint-disable-line
 
         return api.post("Communications", Communication);
       })
       .then(CommunicationId => {
-        console.log("set CommunicationRecipient");
-        console.log("CommunicationId = ", CommunicationId);
-        console.log("CommunicationId.statusText = ", CommunicationId.statusText);
+        console.log("set CommunicationRecipient"); // eslint-disable-line
+        console.log("CommunicationId = ", CommunicationId); // eslint-disable-line
+        console.log("CommunicationId.statusText = ", CommunicationId.statusText); // eslint-disable-line
         if (CommunicationId.statusText) {
           throw new Meteor.Error(CommunicationId);
         }
@@ -188,26 +188,26 @@ Meteor.methods({
             Status: 0, // Pending
             Guid: makeNewGuid(),
           };
-          console.log("CommunicationRecipient = ", CommunicationRecipient);
+          console.log("CommunicationRecipient = ", CommunicationRecipient); // eslint-disable-line
 
           const CommunicationRecipientId = api.post.sync(
             "CommunicationRecipients",
             CommunicationRecipient,
           );
-          console.log("CommunicationRecipientId = ", CommunicationRecipientId);
+          console.log("CommunicationRecipientId = ", CommunicationRecipientId); // eslint-disable-line
 
           ids.push(CommunicationRecipientId);
         }
 
-        console.log("post to the send API endpoint");
+        console.log("post to the send API endpoint"); // eslint-disable-line
         api.post.sync(`Communications/Send/${CommunicationId}`);
 
         return ids;
       })
       .then(communications => {
-        console.log("checking status text of the CommunicationRecipientId");
+        console.log("checking status text of the CommunicationRecipientId"); // eslint-disable-line
         for (const CommunicationRecipientId of communications) {
-          console.log("CommunicationRecipientId.statusText = ", CommunicationRecipientId.statusText);
+          console.log("CommunicationRecipientId.statusText = ", CommunicationRecipientId.statusText); // eslint-disable-line
           if (CommunicationRecipientId.statusText) {
             throw new Meteor.Error(CommunicationRecipientId);
           }
@@ -216,7 +216,7 @@ Meteor.methods({
         return communications;
       })
       .catch(e => {
-        console.log("there was an error somewhere")
+        console.log("there was an error somewhere") // eslint-disable-line
         // eslint-disable-next-line
         console.log(e);
         throw e;

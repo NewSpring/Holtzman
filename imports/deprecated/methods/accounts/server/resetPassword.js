@@ -4,13 +4,13 @@ import { api } from "../../../../util/rock";
 let RESET_EMAIL_ID = false;
 if (typeof Accounts !== "undefined") {
   Accounts.emailTemplates.resetPassword.text = (user, t) => {
-    console.log("setting resetPassword emailTemplates");
+    console.log("setting resetPassword emailTemplates"); // eslint-disable-line
     let token = t;
 
     // let PersonAliasId, mergeFields
     const { PersonId } = user.services.rock;
     const { ROOT_URL } = __meteor_runtime_config__; // eslint-disable-line
-    console.log("PersonId = ", PersonId);
+    console.log("PersonId = ", PersonId); // eslint-disable-line
 
     const Person = api.get.sync(`People/${PersonId}`);
 
@@ -20,12 +20,12 @@ if (typeof Accounts !== "undefined") {
       );
       RESET_EMAIL_ID = RESET_EMAIL_ID[0].Id;
     }
-    console.log("RESET_EMAIL_ID = ", RESET_EMAIL_ID);
+    console.log("RESET_EMAIL_ID = ", RESET_EMAIL_ID); // eslint-disable-line
 
     token = token.split("/");
     token = token[token.length - 1];
-    console.log("token = ", token);
-    console.log("about to call the communication/email/send function");
+    console.log("token = ", token); // eslint-disable-line
+    console.log("about to call the communication/email/send function"); // eslint-disable-line
     Meteor.call(
       "communication/email/send",
       RESET_EMAIL_ID,

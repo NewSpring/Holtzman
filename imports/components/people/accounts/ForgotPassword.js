@@ -48,25 +48,25 @@ class ForgotPassword extends React.Component {
       state: "loading",
     });
 
-    console.log("********** submit forgot password **********");
-    console.log("calling Accounts.forgotPassword");
+    console.log("********** submit forgot password **********"); // eslint-disable-line
+    console.log("calling Accounts.forgotPassword"); // eslint-disable-line
     Accounts.forgotPassword(
       {
         email: this.props.email,
       },
       err => {
-        console.log("forgotPassword callback");
+        console.log("forgotPassword callback"); // eslint-disable-line
         console.log("err = ", err);
         if (err) {
-          console.log("there was an error somewhere in forgotPassword");
+          console.log("there was an error somewhere in forgotPassword"); // eslint-disable-line
           if (err.error === 403) {
             // this user may exist in Rock but not in Apollos
             // we fire a server side check with Rock then on the server
             // we create a user (if they exist in Rock) and email them the reciept
-            console.log("error was 403. attempting to forceReset");
+            console.log("error was 403. attempting to forceReset"); // eslint-disable-line
             forceReset(this.props.email, error => {
-              console.log("forceReset callback");
-              console.log("error = ", error);
+              console.log("forceReset callback"); // eslint-disable-line
+              console.log("error = ", error); // eslint-disable-line
               if (error) {
                 this.setState({ state: "error", err: error.message });
                 setTimeout(() => {
@@ -75,7 +75,7 @@ class ForgotPassword extends React.Component {
                 return;
               }
 
-              console.log("forceReset set state to success");
+              console.log("forceReset set state to success"); // eslint-disable-line
               this.setState({ state: "success" });
 
               setTimeout(() => {
@@ -93,7 +93,7 @@ class ForgotPassword extends React.Component {
           return;
         }
 
-        console.log("no error, setting state to success");
+        console.log("no error, setting state to success"); // eslint-disable-line
         this.setState({ state: "success" });
 
         setTimeout(() => {

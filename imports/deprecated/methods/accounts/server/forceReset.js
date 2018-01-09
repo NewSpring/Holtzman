@@ -3,8 +3,8 @@ import { api } from "../../../../util/rock";
 
 Meteor.methods({
   "rock/accounts/forceReset": function forceReset(Username) {
-    console.log("********** inside forceReset **********");
-    console.log("Username = ", Username);
+    console.log("********** inside forceReset **********"); // eslint-disable-line
+    console.log("Username = ", Username); // eslint-disable-line
     check(Username, String);
 
     // special case for AD lookup
@@ -13,9 +13,9 @@ Meteor.methods({
     }
 
     let RockUser = api.get.sync(`UserLogins?$filter=UserName eq '${Username}'`);
-    console.log("RockUser = ", RockUser);
-    console.log("RockUser.statusText = ", RockUser.statusText);
-    console.log("RockUser.length = ", RockUser.length);
+    console.log("RockUser = ", RockUser); // eslint-disable-line
+    console.log("RockUser.statusText = ", RockUser.statusText); // eslint-disable-line
+    console.log("RockUser.length = ", RockUser.length); // eslint-disable-line
     if (RockUser.statusText || !RockUser.length) {
       // we don't tell people there account doesn't exist
       return true;
@@ -23,14 +23,14 @@ Meteor.methods({
 
     RockUser = RockUser[0];
     const { PersonId } = RockUser;
-    console.log("PersonId = ", PersonId);
+    console.log("PersonId = ", PersonId); // eslint-disable-line
 
     try {
       const person = api.get.sync(`People/${PersonId}`);
       const { PrimaryAliasId } = person;
 
       const meteorUserId = Accounts.createUser({ email: Username });
-      console.log("meteorUserId = ", meteorUserId);
+      console.log("meteorUserId = ", meteorUserId); // eslint-disable-line
 
       Meteor.users.upsert(
         meteorUserId,
@@ -43,13 +43,13 @@ Meteor.methods({
           },
         },
         err => {
-          console.log("upsert callback");
-          console.log("err = ", err);
+          console.log("upsert callback"); // eslint-disable-line
+          console.log("err = ", err); // eslint-disable-line
           if (!err) Accounts.sendResetPasswordEmail(meteorUserId);
         },
       );
     } catch (e) {
-      console.log("there was an error in forceReset");
+      console.log("there was an error in forceReset"); // eslint-disable-line
       // eslint-disable-next-line
       console.log(e);
     }
