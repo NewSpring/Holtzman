@@ -9,13 +9,13 @@ exports[`Shane renders a layout 1`] = `
     .oo-player-container { min-width: 0 !important }
   </style>
   <div
-    className="soft@lap-and-up soft-double-top@lap-and-up"
+    className="push-big-sides@lap-and-up soft@lap-and-up soft-top@lap-and-up"
   >
     <div
-      className="soft soft-double-bottom soft-double-top@lap-and-up"
+      className="soft soft-bottom soft-top@lap-and-up"
     >
       <div
-        className="soft-double-bottom"
+        className="soft-bottom"
       >
         <Connect(VideoPlayerWithoutData)
           autoplay={false}
@@ -23,7 +23,7 @@ exports[`Shane renders a layout 1`] = `
         />
       </div>
       <h1
-        className="soft-double-top@lap-and-up soft-top push-double-top@handheld"
+        className="text-center soft-top@lap-and-up soft-top push-double-top@handheld"
       >
         Welcome to NewSpring's 2017 Annual Report!
       </h1>
@@ -45,6 +45,67 @@ exports[`Shane renders a layout 1`] = `
         Executive Pastor
       </p>
     </div>
+  </div>
+  <div
+    className="visuallyhidden@handheld visuallyhidden@lap one-half display-inline-block"
+    style={
+      Object {
+        "position": "absolute",
+        "right": "0",
+        "top": "820px",
+      }
+    }
+  >
+    <Leaves>
+      <SolidLeaf
+        className="locked-bottom locked-right"
+        color="text-secondary"
+        size="200px"
+        style={
+          Object {
+            "marginBottom": "-80px",
+            "marginRight": "-50px",
+            "transform": "rotate(225deg)",
+          }
+        }
+      />
+      <SolidLeaf
+        className="locked-bottom locked-right"
+        color="text-primary"
+        size="100px"
+        style={
+          Object {
+            "marginBottom": "-55px",
+            "marginRight": "170px",
+            "transform": "rotate(90deg)",
+          }
+        }
+      />
+      <SolidLeaf
+        className="locked-bottom locked-right"
+        color="text-tertiary"
+        size="200px"
+        style={
+          Object {
+            "marginBottom": "-170px",
+            "marginRight": "-10px",
+            "transform": "rotate(0deg)",
+          }
+        }
+      />
+      <StripedLeaf
+        className="locked-bottom locked-right"
+        color="text-secondary"
+        size="120px"
+        style={
+          Object {
+            "marginBottom": "-180px",
+            "marginRight": "150px",
+            "transform": "rotate(270deg)",
+          }
+        }
+      />
+    </Leaves>
   </div>
   <div
     className="background--primary text-center text-light-primary soft"
