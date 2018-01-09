@@ -4,12 +4,12 @@ import scriptLoader from "react-async-script-loader";
 
 import DashboardLayout from "../../components/@primitives/layout/dashboard";
 import FinancesPage from "./finances";
-import { Leaves } from "./components/layout";
+// import { Leaves } from "./components/layout";
 import Meta from "../../components/shared/meta";
 import MinistriesPage from "./ministries";
 import NextStepsPage from "./next-steps";
 import HomePage from "./message-from-shane";
-import { SolidLeaf, StripedLeaf } from "./components/leaves";
+// import { SolidLeaf, StripedLeaf } from "./components/leaves";
 
 type ITemplate = {
   children: React$Element<any>,
@@ -80,57 +80,10 @@ class Template extends Component {
       <div>
         <Meta title="Annual Report" />
         <div className="text-center soft-double-top soft-double-left@lap-and-up soft-left push-top@lap-and-up one-whole">
-          <div className="one-whole text-primary visuallyhidden@lap-and-up">
-            <h1
-              className="display-inline-block uppercase"
-              style={{ fontWeight: "900", marginBottom: "0" }}
-            >
-              Annual
-            </h1>
-            <h1
-              className="display-inline-block soft-half-left uppercase"
-              style={{ fontWeight: "900", marginBottom: "0" }}
-            >
-              Report
-            </h1>
-          </div>
-          <div className="one-fourth display-inline-block text-primary visuallyhidden@handheld">
-            <h1
-              className="uppercase"
-              style={{ fontWeight: "900", marginBottom: "0" }}
-            >
-              Annual
-            </h1>
-            <h1
-              className="uppercase"
-              style={{ fontWeight: "900", marginBottom: "0" }}
-            >
-              Report
-            </h1>
-          </div>
-          <div className="relative one-whole@handheld one-fourth@lap-and-up soft-half-right@lap-and-up display-inline-block">
-            <span
-              className="text-light-primary rotate--number"
-              style={{
-                position: "absolute",
-                top: "18px",
-                left: "8px",
-                fontWeight: "900",
-                fontSize: 20,
-              }}
-            >
-              20
-            </span>
-            <h1
-              className="uppercase flush-bottom text-primary"
-              style={{
-                fontWeight: "900",
-                fontSize: 120,
-              }}
-            >
-              17
-            </h1>
-          </div>
+          <img
+            src="https://s3.amazonaws.com/ns.images/newspring/annualreport/2017/ar2017.hero.png"
+            alt="Annual Report 2017"
+          />
         </div>
 
         <DashboardLayout
@@ -145,50 +98,6 @@ class Template extends Component {
         >
           {this.props.children}
         </DashboardLayout>
-        <div className="visuallyhidden@handheld visuallyhidden@lap one-half display-inline-block">
-          <Leaves>
-            <SolidLeaf
-              className="locked-bottom locked-right"
-              size="200px"
-              color="text-secondary"
-              style={{
-                transform: "rotate(225deg)",
-                marginBottom: "-80px",
-                marginRight: "-50px",
-              }}
-            />
-            <SolidLeaf
-              className="locked-bottom locked-right"
-              size="100px"
-              color="text-primary"
-              style={{
-                transform: "rotate(90deg)",
-                marginBottom: "-55px",
-                marginRight: "170px",
-              }}
-            />
-            <SolidLeaf
-              className="locked-bottom locked-right"
-              size="200px"
-              color="text-tertiary"
-              style={{
-                transform: "rotate(0deg)",
-                marginBottom: "-170px",
-                marginRight: "-10px",
-              }}
-            />
-            <StripedLeaf
-              className="locked-bottom locked-right"
-              size="120px"
-              color="text-secondary"
-              style={{
-                transform: "rotate(270deg)",
-                marginBottom: "-180px",
-                marginRight: "150px",
-              }}
-            />
-          </Leaves>
-        </div>
       </div>
     );
   }
