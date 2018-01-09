@@ -15,14 +15,16 @@ export const TransactionList = ({ transactions }: ITransactionList) => {
   let lastYear = null;
   return (
     <div>
-      <div>
-        <p className="italic">
-          To print your 2017 giving statement, click on &quot;Filter
-          Transactions.&quot; For &quot;Date Range,&quot; choose 2017. Then,
-          click &quot;Filter Results.&quot; Click the printer button to download
-          your statement.
-        </p>
-      </div>
+      {process.env.WEB && (
+        <div>
+          <p className="italic">
+            To print your 2017 giving statement, click on &quot;Filter
+            Transactions.&quot; For &quot;Date Range,&quot; choose 2017. Then,
+            click &quot;Filter Results.&quot; Click the printer button to
+            download your statement.
+          </p>
+        </div>
+      )}
       <div>
         {transactions &&
           transactions.map((transaction, key) => {
