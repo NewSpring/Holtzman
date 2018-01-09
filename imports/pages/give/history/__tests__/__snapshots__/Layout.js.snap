@@ -16,7 +16,8 @@ exports[`Layout renders no transactions if there are none and ready 1`] = `
       className="text-left soft-ends soft-half-sides"
     >
       <p>
-        We didn't find any contributions associated with your account. If you would like to start giving, click 
+        We didn't find any contributions associated with your account. If you would like to start giving, click
+         
         <Link
           onlyActiveOnIndex={false}
           style={Object {}}
@@ -36,7 +37,8 @@ exports[`Layout renders no transactions if there are none and ready 1`] = `
           >
             contact us
           </a>
-           and someone will be happy to assist you.
+           
+          and someone will be happy to assist you.
         </em>
       </p>
     </div>
@@ -414,56 +416,65 @@ exports[`Layout renders with props 1`] = `
 
 exports[`TransactionList doesn't render transaction with $0.00 amounts 1`] = `
 <div>
-  <div
-    key="0"
-  >
+  <div>
+    <p
+      className="italic"
+    >
+      To print your 2017 giving statement, click on "Filter Transactions." For "Date Range," choose 2017. Then, click "Filter Results." Click the printer button to download your statement.
+    </p>
+  </div>
+  <div>
     <div
       key="0"
     >
       <div
-        className="soft soft-half-left text-left"
+        key="0"
       >
-        <h5>
-          2012
-        </h5>
-      </div>
-      <Component
-        person={
-          Object {
-            "firstName": "1",
-            "lastName": "1",
-            "nickname": "1",
-            "photo": "1",
-          }
-        }
-        transaction={
-          Object {
-            "date": "2012-12-12",
-            "details": Array [
-              Object {
-                "account": "test",
-                "amount": 0,
-              },
-              Object {
-                "account": "test",
-                "amount": 1,
-              },
-            ],
-            "person": Object {
+        <div
+          className="soft soft-half-left text-left"
+        >
+          <h5>
+            2012
+          </h5>
+        </div>
+        <Component
+          person={
+            Object {
               "firstName": "1",
               "lastName": "1",
               "nickname": "1",
               "photo": "1",
-            },
+            }
           }
-        }
-        transactionDetail={
-          Object {
-            "account": "test",
-            "amount": 1,
+          transaction={
+            Object {
+              "date": "2012-12-12",
+              "details": Array [
+                Object {
+                  "account": "test",
+                  "amount": 0,
+                },
+                Object {
+                  "account": "test",
+                  "amount": 1,
+                },
+              ],
+              "person": Object {
+                "firstName": "1",
+                "lastName": "1",
+                "nickname": "1",
+                "photo": "1",
+              },
+            }
           }
-        }
-      />
+          transactionDetail={
+            Object {
+              "account": "test",
+              "amount": 1,
+            }
+          }
+        />
+      </div>
     </div>
   </div>
 </div>
@@ -471,20 +482,67 @@ exports[`TransactionList doesn't render transaction with $0.00 amounts 1`] = `
 
 exports[`TransactionList renders transactions across years 1`] = `
 <div>
-  <div
-    key="0"
-  >
+  <div>
+    <p
+      className="italic"
+    >
+      To print your 2017 giving statement, click on "Filter Transactions." For "Date Range," choose 2017. Then, click "Filter Results." Click the printer button to download your statement.
+    </p>
+  </div>
+  <div>
     <div
       key="0"
     >
       <div
-        className="soft soft-half-left text-left"
+        key="0"
       >
-        <h5>
-          2012
-        </h5>
+        <div
+          className="soft soft-half-left text-left"
+        >
+          <h5>
+            2012
+          </h5>
+        </div>
+        <Component
+          person={
+            Object {
+              "firstName": "1",
+              "lastName": "1",
+              "nickname": "1",
+              "photo": "1",
+            }
+          }
+          transaction={
+            Object {
+              "date": "2012-12-12",
+              "details": Array [
+                Object {
+                  "account": "test",
+                  "amount": 1,
+                },
+                Object {
+                  "account": "test",
+                  "amount": 2,
+                },
+              ],
+              "person": Object {
+                "firstName": "1",
+                "lastName": "1",
+                "nickname": "1",
+                "photo": "1",
+              },
+            }
+          }
+          transactionDetail={
+            Object {
+              "account": "test",
+              "amount": 1,
+            }
+          }
+        />
       </div>
       <Component
+        key="1"
         person={
           Object {
             "firstName": "1",
@@ -517,64 +575,64 @@ exports[`TransactionList renders transactions across years 1`] = `
         transactionDetail={
           Object {
             "account": "test",
-            "amount": 1,
+            "amount": 2,
           }
         }
       />
     </div>
-    <Component
-      key="1"
-      person={
-        Object {
-          "firstName": "1",
-          "lastName": "1",
-          "nickname": "1",
-          "photo": "1",
-        }
-      }
-      transaction={
-        Object {
-          "date": "2012-12-12",
-          "details": Array [
-            Object {
-              "account": "test",
-              "amount": 1,
-            },
-            Object {
-              "account": "test",
-              "amount": 2,
-            },
-          ],
-          "person": Object {
-            "firstName": "1",
-            "lastName": "1",
-            "nickname": "1",
-            "photo": "1",
-          },
-        }
-      }
-      transactionDetail={
-        Object {
-          "account": "test",
-          "amount": 2,
-        }
-      }
-    />
-  </div>
-  <div
-    key="1"
-  >
     <div
-      key="0"
+      key="1"
     >
       <div
-        className="soft soft-half-left text-left"
+        key="0"
       >
-        <h5>
-          2013
-        </h5>
+        <div
+          className="soft soft-half-left text-left"
+        >
+          <h5>
+            2013
+          </h5>
+        </div>
+        <Component
+          person={
+            Object {
+              "firstName": "1",
+              "lastName": "1",
+              "nickname": "1",
+              "photo": "1",
+            }
+          }
+          transaction={
+            Object {
+              "date": "2013-12-12",
+              "details": Array [
+                Object {
+                  "account": "test",
+                  "amount": 3,
+                },
+                Object {
+                  "account": "test",
+                  "amount": 4,
+                },
+              ],
+              "person": Object {
+                "firstName": "1",
+                "lastName": "1",
+                "nickname": "1",
+                "photo": "1",
+              },
+            }
+          }
+          transactionDetail={
+            Object {
+              "account": "test",
+              "amount": 3,
+            }
+          }
+        />
       </div>
       <Component
+        key="1"
         person={
           Object {
             "firstName": "1",
@@ -607,69 +665,64 @@ exports[`TransactionList renders transactions across years 1`] = `
         transactionDetail={
           Object {
             "account": "test",
-            "amount": 3,
+            "amount": 4,
           }
         }
       />
     </div>
-    <Component
-      key="1"
-      person={
-        Object {
-          "firstName": "1",
-          "lastName": "1",
-          "nickname": "1",
-          "photo": "1",
-        }
-      }
-      transaction={
-        Object {
-          "date": "2013-12-12",
-          "details": Array [
-            Object {
-              "account": "test",
-              "amount": 3,
-            },
-            Object {
-              "account": "test",
-              "amount": 4,
-            },
-          ],
-          "person": Object {
-            "firstName": "1",
-            "lastName": "1",
-            "nickname": "1",
-            "photo": "1",
-          },
-        }
-      }
-      transactionDetail={
-        Object {
-          "account": "test",
-          "amount": 4,
-        }
-      }
-    />
   </div>
 </div>
 `;
 
 exports[`TransactionList renders with props 1`] = `
 <div>
-  <div
-    key="0"
-  >
+  <div>
+    <p
+      className="italic"
+    >
+      To print your 2017 giving statement, click on "Filter Transactions." For "Date Range," choose 2017. Then, click "Filter Results." Click the printer button to download your statement.
+    </p>
+  </div>
+  <div>
     <div
       key="0"
     >
       <div
-        className="soft soft-half-left text-left"
+        key="0"
       >
-        <h5>
-          2012
-        </h5>
+        <div
+          className="soft soft-half-left text-left"
+        >
+          <h5>
+            2012
+          </h5>
+        </div>
+        <Component
+          transaction={
+            Object {
+              "date": "2012-12-11",
+              "details": Array [
+                Object {
+                  "account": "test",
+                  "amount": 1,
+                },
+                Object {
+                  "account": "test",
+                  "amount": 2,
+                },
+              ],
+            }
+          }
+          transactionDetail={
+            Object {
+              "account": "test",
+              "amount": 1,
+            }
+          }
+        />
       </div>
       <Component
+        key="1"
         transaction={
           Object {
             "date": "2012-12-11",
@@ -688,87 +741,63 @@ exports[`TransactionList renders with props 1`] = `
         transactionDetail={
           Object {
             "account": "test",
-            "amount": 1,
+            "amount": 2,
           }
         }
       />
     </div>
-    <Component
+    <div
       key="1"
-      transaction={
-        Object {
-          "date": "2012-12-11",
-          "details": Array [
-            Object {
-              "account": "test",
-              "amount": 1,
-            },
-            Object {
-              "account": "test",
-              "amount": 2,
-            },
-          ],
+    >
+      <Component
+        key="0"
+        transaction={
+          Object {
+            "date": "2012-12-12",
+            "details": Array [
+              Object {
+                "account": "test",
+                "amount": 3,
+              },
+              Object {
+                "account": "test",
+                "amount": 4,
+              },
+            ],
+          }
         }
-      }
-      transactionDetail={
-        Object {
-          "account": "test",
-          "amount": 2,
+        transactionDetail={
+          Object {
+            "account": "test",
+            "amount": 3,
+          }
         }
-      }
-    />
-  </div>
-  <div
-    key="1"
-  >
-    <Component
-      key="0"
-      transaction={
-        Object {
-          "date": "2012-12-12",
-          "details": Array [
-            Object {
-              "account": "test",
-              "amount": 3,
-            },
-            Object {
-              "account": "test",
-              "amount": 4,
-            },
-          ],
+      />
+      <Component
+        key="1"
+        transaction={
+          Object {
+            "date": "2012-12-12",
+            "details": Array [
+              Object {
+                "account": "test",
+                "amount": 3,
+              },
+              Object {
+                "account": "test",
+                "amount": 4,
+              },
+            ],
+          }
         }
-      }
-      transactionDetail={
-        Object {
-          "account": "test",
-          "amount": 3,
+        transactionDetail={
+          Object {
+            "account": "test",
+            "amount": 4,
+          }
         }
-      }
-    />
-    <Component
-      key="1"
-      transaction={
-        Object {
-          "date": "2012-12-12",
-          "details": Array [
-            Object {
-              "account": "test",
-              "amount": 3,
-            },
-            Object {
-              "account": "test",
-              "amount": 4,
-            },
-          ],
-        }
-      }
-      transactionDetail={
-        Object {
-          "account": "test",
-          "amount": 4,
-        }
-      }
-    />
+      />
+    </div>
   </div>
 </div>
 `;
