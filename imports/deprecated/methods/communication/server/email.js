@@ -87,12 +87,17 @@ Meteor.methods({
     PersonAliasId,
     merge,
   ) {
+    console.log("********** communication/email/send **********");
+    console.log("emailId = ", emailId);
+    console.log("PersonAliasId = ", PersonAliasId);
     let mergeFields = merge;
     check(emailId, Number);
     // check(PersonAliasId, Number)
 
     const Email = api.get.sync(`SystemEmails/${emailId}`);
 
+    console.log("Email.Body = ", Email.Body);
+    console.log("Email.Subject = ", Email.Subject);
     if (!Email.Body || !Email.Subject) {
       throw new Meteor.Error(`No email body or subject found for ${emailId}`);
     }
@@ -122,6 +127,7 @@ Meteor.methods({
     }
     mergeFields = { ...mergeFields, ...{ GlobalAttribute } };
 
+    console.log("entering the promise");
     return Promise.all([
       // Parser.parse(Email.Subject)
       //   .then((template) => {
@@ -133,10 +139,14 @@ Meteor.methods({
       //     console.log(template.root.nodelist)
       //     return template.render(mergeFields)
       //   }),
+      console.log("parsing things");
+      console.log("parsing Email.Subject = ", Parser.parseAndRender(Email.Subject, mergeFields));
+      console.log("parsing Email.Body = ", Parser.parseAndRender(Email.Body, mergeFields));
       Parser.parseAndRender(Email.Subject, mergeFields),
       Parser.parseAndRender(Email.Body, mergeFields),
     ])
       .then(([subject, body]) => {
+        console.log("set Communication");
         const Communication = {
           CommunicationType: 1,
           SenderPersonAliasId: null,
@@ -147,15 +157,14 @@ Meteor.methods({
           Subject: subject,
           Message: body,
         };
+        console.log("Communication = ", Communication);
 
         return api.post("Communications", Communication);
       })
       .then(CommunicationId => {
-        console.log("CommunicationId");
-        console.log(
-          "CommunicationId.statusText = ",
-          CommunicationId.statusText,
-        );
+        console.log("set CommunicationRecipient");
+        console.log("CommunicationId = ", CommunicationId);
+        console.log("CommunicationId.statusText = ", CommunicationId.statusText);
         if (CommunicationId.statusText) {
           throw new Meteor.Error(CommunicationId);
         }
@@ -173,38 +182,32 @@ Meteor.methods({
         const ids = [];
         for (const id of PersonAliasId) {
           const CommunicationRecipient = {
-            // MediumEntityTypeId: 37, // Mandrill
+            MediumEntityTypeId: 37, // Mandrill
             PersonAliasId: id,
             CommunicationId,
             Status: 0, // Pending
             Guid: makeNewGuid(),
           };
+          console.log("CommunicationRecipient = ", CommunicationRecipient);
 
           const CommunicationRecipientId = api.post.sync(
             "CommunicationRecipients",
             CommunicationRecipient,
           );
+          console.log("CommunicationRecipientId = ", CommunicationRecipientId);
 
           ids.push(CommunicationRecipientId);
         }
 
+        console.log("post to the send API endpoint");
         api.post.sync(`Communications/Send/${CommunicationId}`);
 
         return ids;
       })
       .then(communications => {
-        console.log("communications");
+        console.log("checking status text of the CommunicationRecipientId");
         for (const CommunicationRecipientId of communications) {
-          api.patch.sync(
-            `CommunicationRecipients/${CommunicationRecipientId}`,
-            {
-              MediumEntityTypeId: 37, // Mandrill
-            },
-          );
-          console.log(
-            "CommunicationRecipientId.statusText = ",
-            CommunicationRecipientId.statusText,
-          );
+          console.log("CommunicationRecipientId.statusText = ", CommunicationRecipientId.statusText);
           if (CommunicationRecipientId.statusText) {
             throw new Meteor.Error(CommunicationRecipientId);
           }
@@ -213,6 +216,7 @@ Meteor.methods({
         return communications;
       })
       .catch(e => {
+        console.log("there was an error somewhere")
         // eslint-disable-next-line
         console.log(e);
         throw e;
