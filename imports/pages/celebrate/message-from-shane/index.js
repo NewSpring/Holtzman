@@ -1,6 +1,7 @@
 // @flow
 import { Link } from "react-router";
-
+import { Leaves } from "../components/layout";
+import { SolidLeaf, StripedLeaf } from "../components/leaves";
 import Meta from "../../../components/shared/meta";
 import Video from "../../../components/@primitives/players/video";
 
@@ -10,13 +11,13 @@ export const Shane = () => (
     <Meta title="Message From Shane" />
     {/* Header */}
     <style>{".oo-player-container { min-width: 0 !important }"}</style>
-    <div className="soft@lap-and-up soft-double-top@lap-and-up">
-      <div className="soft soft-double-bottom soft-double-top@lap-and-up">
-        <div className="soft-double-bottom">
+    <div className="push-big-sides@lap-and-up soft@lap-and-up soft-top@lap-and-up">
+      <div className="soft soft-bottom soft-top@lap-and-up">
+        <div className="soft-bottom">
           <Video id={"VoNTB1ODE66MXxAFqcCqRb04c2WT9biy"} autoplay={false} />
         </div>
         <h1
-          className={`soft-double-top@lap-and-up soft-top ${
+          className={`text-center soft-top@lap-and-up soft-top ${
             process.env.NATIVE ? "" : "push-double-top@handheld"
           }`}
         >
@@ -52,6 +53,57 @@ export const Shane = () => (
           Shane Duffey<br />Executive Pastor
         </p>
       </div>
+    </div>
+    <div
+      style={{
+        position: "absolute",
+        top: "820px",
+        right: "0",
+      }}
+      className="visuallyhidden@handheld visuallyhidden@lap one-half display-inline-block"
+    >
+      <Leaves>
+        <SolidLeaf
+          className="locked-bottom locked-right"
+          size="200px"
+          color="text-secondary"
+          style={{
+            transform: "rotate(225deg)",
+            marginBottom: "-80px",
+            marginRight: "-50px",
+          }}
+        />
+        <SolidLeaf
+          className="locked-bottom locked-right"
+          size="100px"
+          color="text-primary"
+          style={{
+            transform: "rotate(90deg)",
+            marginBottom: "-55px",
+            marginRight: "170px",
+          }}
+        />
+        <SolidLeaf
+          className="locked-bottom locked-right"
+          size="200px"
+          color="text-tertiary"
+          style={{
+            transform: "rotate(0deg)",
+            marginBottom: "-170px",
+            marginRight: "-10px",
+          }}
+        />
+        <StripedLeaf
+          className="locked-bottom locked-right"
+          size="120px"
+          color="text-secondary"
+          style={{
+            transform: "rotate(270deg)",
+            marginBottom: "-180px",
+            marginRight: "150px",
+          }}
+        />
+      </Leaves>
     </div>
     <div className="background--primary text-center text-light-primary soft">
       <h3 className="push-double-top">Keep Reading</h3>
