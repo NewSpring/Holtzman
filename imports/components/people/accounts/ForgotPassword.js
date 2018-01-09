@@ -65,6 +65,8 @@ class ForgotPassword extends React.Component {
             // we create a user (if they exist in Rock) and email them the reciept
             console.log("error was 403. attempting to forceReset");
             forceReset(this.props.email, error => {
+              console.log("forceReset callback");
+              console.log("error = ", error);
               if (error) {
                 this.setState({ state: "error", err: error.message });
                 setTimeout(() => {
