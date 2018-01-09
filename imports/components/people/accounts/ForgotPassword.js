@@ -22,12 +22,12 @@ class ForgotPassword extends React.Component {
 
   static defaultProps = {
     errors: {},
-  }
+  };
 
   state = {
     state: "default",
     err: null,
-  }
+  };
 
   isEmail = (value: string) => {
     const isValid = Validate.isEmail(value);
@@ -39,7 +39,7 @@ class ForgotPassword extends React.Component {
     }
 
     return isValid;
-  }
+  };
 
   submit = (e: Event) => {
     e.preventDefault();
@@ -48,55 +48,70 @@ class ForgotPassword extends React.Component {
       state: "loading",
     });
 
-    Accounts.forgotPassword({
-      email: this.props.email,
-    }, err => {
-      if (err) {
-        if (err.error === 403) {
-          // this user may exist in Rock but not in Apollos
-          // we fire a server side check with Rock then on the server
-          // we create a user (if they exist in Rock) and email them the reciept
-          forceReset(this.props.email, error => {
-            if (error) {
-              this.setState({ state: "error", err: error.message });
+    console.log("********** submit forgot password **********"); // eslint-disable-line
+    console.log("calling Accounts.forgotPassword"); // eslint-disable-line
+    Accounts.forgotPassword(
+      {
+        email: this.props.email,
+      },
+      err => {
+        console.log("forgotPassword callback"); // eslint-disable-line
+        console.log("err = ", err); // eslint-disable-line
+        if (err) {
+          console.log("there was an error somewhere in forgotPassword"); // eslint-disable-line
+          if (err.error === 403) {
+            // this user may exist in Rock but not in Apollos
+            // we fire a server side check with Rock then on the server
+            // we create a user (if they exist in Rock) and email them the reciept
+            console.log("error was 403. attempting to forceReset"); // eslint-disable-line
+            forceReset(this.props.email, error => {
+              console.log("forceReset callback"); // eslint-disable-line
+              console.log("error = ", error); // eslint-disable-line
+              if (error) {
+                this.setState({ state: "error", err: error.message });
+                setTimeout(() => {
+                  this.setState({ state: "default" });
+                }, 3000);
+                return;
+              }
+
+              console.log("forceReset set state to success"); // eslint-disable-line
+              this.setState({ state: "success" });
+
               setTimeout(() => {
                 this.setState({ state: "default" });
+                this.props.back();
               }, 3000);
-              return;
-            }
+            });
 
-            this.setState({ state: "success" });
-
-            setTimeout(() => {
-              this.setState({ state: "default" });
-              this.props.back();
-            }, 3000);
-          });
-
+            return;
+          }
+          this.setState({ state: "error", err: err.message });
+          setTimeout(() => {
+            this.setState({ state: "default" });
+          }, 3000);
           return;
         }
-        this.setState({ state: "error", err: err.message });
+
+        console.log("no error, setting state to success"); // eslint-disable-line
+        this.setState({ state: "success" });
+
         setTimeout(() => {
           this.setState({ state: "default" });
+          this.props.back();
         }, 3000);
-        return;
-      }
-
-      this.setState({ state: "success" });
-
-      setTimeout(() => {
-        this.setState({ state: "default" });
-        this.props.back();
-      }, 3000);
-    });
-  }
+      },
+    );
+  };
 
   render() {
     const { err } = this.state;
 
     switch (this.state.state) {
       case "error":
-        return <Error msg="Looks like there was a problem" error={err || " "} />;
+        return (
+          <Error msg="Looks like there was a problem" error={err || " "} />
+        );
       case "loading":
         return <Loading msg="Sending email to reset your password..." />;
       case "success":
@@ -116,9 +131,7 @@ class ForgotPassword extends React.Component {
             classes={["push-double-top"]}
             submit={this.submit}
           >
-            <legend className="push-half-bottom">
-              Reset Password
-            </legend>
+            <legend className="push-half-bottom">Reset Password</legend>
             <h6 className="push-double-bottom">
               confirm your email to send the reset link
             </h6>
@@ -155,7 +168,6 @@ class ForgotPassword extends React.Component {
                   </button>
                 );
               })()}
-
             </div>
           </Forms.Form>
         );
