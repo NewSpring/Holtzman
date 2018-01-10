@@ -382,12 +382,13 @@ exports[`Finances renders a layout 1`] = `
       className="grid push-ends"
     >
       <div
-        className="grid__item one-half@lap-and-up one-whole"
+        className="grid__item text-center one-half@lap-and-up one-whole"
       >
         <h3
           className="italic"
           style={
             Object {
+              "color": "#bc9b67",
               "fontFamily": "ff-meta-serif-web-pro, serif",
             }
           }
@@ -409,16 +410,17 @@ exports[`Finances renders a layout 1`] = `
           </h1>
         </Connect(FitTextWithoutData)>
         <h3>
-          first time givers
+          First time givers
         </h3>
       </div>
       <div
-        className="grid__item one-half@lap-and-up"
+        className="grid__item text-center one-half@lap-and-up"
       >
         <h3
           className="italic"
           style={
             Object {
+              "color": "#bc9b67",
               "fontFamily": "ff-meta-serif-web-pro, serif",
             }
           }
@@ -445,12 +447,24 @@ exports[`Finances renders a layout 1`] = `
           <h3
             className="floating__item push-half-bottom"
           >
-            households gave.
+            Households that gave $250 or more.
           </h3>
         </div>
       </div>
     </div>
   </div>
+  <div
+    className="soft-ends"
+    style={
+      Object {
+        "backgroundImage": "url(\\"https://s3.amazonaws.com/ns.assets/apollos/annual+report/2017/2x1.audit.jpg\\")",
+        "backgroundPosition": "center",
+        "backgroundRepeat": "no-repeat",
+        "backgroundSize": "cover",
+        "height": "36em",
+      }
+    }
+  />
   <div
     className="background--light-primary soft"
   >
@@ -460,7 +474,7 @@ exports[`Finances renders a layout 1`] = `
       Annual Audit
     </h3>
     <p
-      className="constrain-copy push-bottom"
+      className="constrain-copy text-center"
     >
       NewSpring is audited annually by an external accounting firm according to Generally Accepted Accounting Principles. God calls His people to live above reproach, so for us, the annual audit is a financial and spiritual responsibility (
       <a
@@ -472,18 +486,12 @@ exports[`Finances renders a layout 1`] = `
       </a>
       ).
     </p>
-    <div
-      className="text-center"
+    <br />
+    <p
+      className="constrain-copy text-center push-bottom"
     >
-      <a
-        className="btn push-bottom"
-        href="https://s3.amazonaws.com/ns.assets/apollos/annual+report/2016/2016+Audit.pdf"
-        onClick={[Function]}
-        target="_blank"
-      >
-        Detailed Report
-      </a>
-    </div>
+      We'll update this section in May after the Audit is complete. If you have any questions not answered here, please email us at finance@newspring.cc.
+    </p>
   </div>
   <div
     className="background--primary text-center text-light-primary soft"
@@ -493,9 +501,6 @@ exports[`Finances renders a layout 1`] = `
     >
       Keep Reading
     </h3>
-    <p>
-      Up next in the NewSpring 2016 Annual Report is information on Next Steps.
-    </p>
     <Link
       className="btn--light push-double-bottom"
       onlyActiveOnIndex={false}

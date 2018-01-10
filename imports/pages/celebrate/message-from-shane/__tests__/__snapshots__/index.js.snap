@@ -52,7 +52,7 @@ exports[`Shane renders a layout 1`] = `
       Object {
         "position": "absolute",
         "right": "0",
-        "top": "820px",
+        "top": "800px",
       }
     }
   >
