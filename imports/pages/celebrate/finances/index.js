@@ -5,8 +5,9 @@ import Currency from "../../../components/@primitives/typography/currency";
 import FitText from "../components/fit-text";
 import Meta from "../../../components/shared/meta";
 import ProgressBar from "../../../components/giving/giving-progress";
-import inAppLink from "../../../util/inAppLink";
 import Story from "../components/story";
+// import { Leaves } from "../components/layout";
+// import { SolidLeaf, StripedLeaf } from "../components/leaves";
 
 const fundData = [
   { campus: "Aiken", amount: 492202.38 },
@@ -119,6 +120,59 @@ export const Finances = () => {
             })}
           </div>
         </div>
+        {
+          // <div
+          //   style={{
+          //     position: "absolute",
+          //     top: "800px",
+          //     right: "0",
+          //   }}
+          //   className="visuallyhidden@handheld visuallyhidden@lap one-half display-inline-block"
+          // >
+          //   <Leaves>
+          //     <SolidLeaf
+          //       className="locked-bottom locked-right"
+          //       size="200px"
+          //       color="text-secondary"
+          //       style={{
+          //         transform: "rotate(225deg)",
+          //         marginBottom: "-80px",
+          //         marginRight: "-50px",
+          //       }}
+          //     />
+          //     <SolidLeaf
+          //       className="locked-bottom locked-right"
+          //       size="100px"
+          //       color="text-primary"
+          //       style={{
+          //         transform: "rotate(90deg)",
+          //         marginBottom: "-55px",
+          //         marginRight: "170px",
+          //       }}
+          //     />
+          //     <SolidLeaf
+          //       className="locked-bottom locked-right"
+          //       size="200px"
+          //       color="text-tertiary"
+          //       style={{
+          //         transform: "rotate(0deg)",
+          //         marginBottom: "-170px",
+          //         marginRight: "-10px",
+          //       }}
+          //     />
+          //     <StripedLeaf
+          //       className="locked-bottom locked-right"
+          //       size="120px"
+          //       color="text-secondary"
+          //       style={{
+          //         transform: "rotate(270deg)",
+          //         marginBottom: "-180px",
+          //         marginRight: "150px",
+          //       }}
+          //     />
+          //   </Leaves>
+          // </div>
+        }
       </div>
       <div className="background--light-primary text-center soft-double-top">
         <h3 className="push-top push-half-bottom">Land and Building Giving</h3>
@@ -154,11 +208,12 @@ export const Finances = () => {
 
       <div className="soft-ends background--light-secondary">
         <div className="grid push-ends">
-          <div className="grid__item one-half@lap-and-up one-whole">
+          <div className="grid__item text-center one-half@lap-and-up one-whole">
             <h3
               className="italic"
               style={{
                 fontFamily: "ff-meta-serif-web-pro, serif",
+                color: "#bc9b67",
               }}
             >
               We had
@@ -173,13 +228,14 @@ export const Finances = () => {
                 5,400
               </h1>
             </FitText>
-            <h3>first time givers</h3>
+            <h3>First time givers</h3>
           </div>
-          <div className="grid__item one-half@lap-and-up">
+          <div className="grid__item text-center one-half@lap-and-up">
             <h3
               className="italic"
               style={{
                 fontFamily: "ff-meta-serif-web-pro, serif",
+                color: "#bc9b67",
               }}
             >
               and
@@ -196,15 +252,25 @@ export const Finances = () => {
             </FitText>
             <div className="floating text-center">
               <h3 className="floating__item push-half-bottom">
-                households gave.
+                Households that gave $250 or more.
               </h3>
             </div>
           </div>
         </div>
       </div>
+      <div
+        className="soft-ends"
+        style={{
+          backgroundImage: `url("https://s3.amazonaws.com/ns.assets/apollos/annual+report/2017/2x1.audit.jpg")`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          height: "36em",
+        }}
+      />
       <div className="background--light-primary soft">
         <h3 className="text-center push-top">Annual Audit</h3>
-        <p className="constrain-copy push-bottom">
+        <p className="constrain-copy text-center">
           NewSpring is audited annually by an external accounting firm according
           to Generally Accepted Accounting Principles. God calls His people to
           live above reproach, so for us, the annual audit is a financial and
@@ -218,23 +284,28 @@ export const Finances = () => {
             Philippians 2:15
           </a>).
         </p>
-        <div className="text-center">
-          <a
-            className="btn push-bottom"
-            target={"_blank"}
-            href="https://s3.amazonaws.com/ns.assets/apollos/annual+report/2016/2016+Audit.pdf"
-            onClick={inAppLink}
-          >
-            Detailed Report
-          </a>
-        </div>
+        <br />
+        <p className="constrain-copy text-center push-bottom">
+          We&#39;ll update this section in May after the Audit is complete. If
+          you have any questions not answered here, please email us at
+          finance@newspring.cc.
+        </p>
+        {
+          // XXX: Update once 2017 Audit is Complete
+          // <div className="text-center">
+          //   <a
+          //     className="btn push-bottom"
+          //     target={"_blank"}
+          //     href="https://s3.amazonaws.com/ns.assets/apollos/annual+report/2016/2016+Audit.pdf"
+          //     onClick={inAppLink}
+          //   >
+          //     Detailed Report
+          //   </a>
+          // </div>
+        }
       </div>
       <div className="background--primary text-center text-light-primary soft">
         <h3 className="push-double-top">Keep Reading</h3>
-        <p>
-          Up next in the NewSpring 2016 Annual Report is information on Next
-          Steps.
-        </p>
         <Link
           className="btn--light push-double-bottom"
           to="/annualreport/next-steps"
