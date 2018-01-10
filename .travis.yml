@@ -44,6 +44,7 @@ deploy:
   provider: pages
   local_dir: storybook/
   fqdn: holtzman.newspring.io
+  keep-history: true
   project_name: Holtzman
   skip_cleanup: true
   github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
