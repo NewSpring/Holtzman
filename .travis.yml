@@ -48,5 +48,6 @@ deploy:
   project_name: Holtzman
   skip_cleanup: true
   github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
+  verbose: true
   on:
     branch: master
