@@ -125,15 +125,12 @@ export const NextSteps = () => (
     {/* Header */}
     <div className="background--light-secondary soft-double-ends soft-sides">
       <div className="push-ends">
-        <h3 className="text-center">Celebrating Next Steps</h3>
+        <h3 className="text-center">Why do we talk about Next Steps?</h3>
         <p className="constrain-copy">
-          Salvation is a starting point, not a destination. NewSpring exists to connect people to
-          Jesus and each other. We will always be a church that celebrates next steps as well as
-          salvations. Here&#39;s a look at how we&#39;ve seen people take their{" "}
-          <a href={"https://newspring.cc/nextsteps"} alt={"link to next steps"}>
-            next steps
-          </a>{" "}
-          in 2016.
+          NewSpring exists to connect people to Jesus and each other. Salvation
+          is only the start of someone’s spiritual journey, and every journey is
+          a series of next steps. Take a look at some of the next steps we
+          celebrated in 2017...
         </p>
       </div>
     </div>
@@ -148,7 +145,7 @@ export const NextSteps = () => (
               fontWeight: "900",
             }}
           >
-            9,560
+            3,790
           </h1>
         </FitText>
         <hr
@@ -156,7 +153,9 @@ export const NextSteps = () => (
           style={{ borderTop: "1px solid #dddddd" }}
         />
         <Story
-          image={"//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/stories/story-img2.1.png"}
+          image={
+            "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/stories/story-img2.1.png"
+          }
           content={
             "<p>The community Brett Chamberlain found through a fishing interest group at NewSpring Rock Hill helped him recognize that he needed to ask Jesus into his life and take the step of baptism with his teenage son in June 2016.</p>"
           }
@@ -179,13 +178,21 @@ export const NextSteps = () => (
         <div className={css(styles.wave, styles.wave_2)} />
         <div className={css(styles.wave, styles.wave_3)} />
       </div>
-      <div className="soft-double text-light-primary" style={{ backgroundColor: "#0073AF" }}>
+      <div
+        className="soft-double text-light-primary"
+        style={{ backgroundColor: "#0073AF" }}
+      >
         <FitText compressor={0.4} maxFontSize={72}>
-          <h1 className="uppercase flush-bottom soft-half-bottom" style={{ fontWeight: "900" }}>
+          <h1
+            className="uppercase flush-bottom soft-half-bottom"
+            style={{ fontWeight: "900" }}
+          >
             5,557
           </h1>
         </FitText>
-        <h5 className="text-light-primary push-top">people go public for Jesus through</h5>
+        <h5 className="text-light-primary push-top">
+          people go public for Jesus through
+        </h5>
         <h1 className="text-light-primary push-top push-bottom soft-bottom soft-double-bottom@lap-and-up">
           baptism.
         </h1>
@@ -243,7 +250,10 @@ export const NextSteps = () => (
         <div className="floating push-double-left@handheld soft-top@lap-and-up">
           <div className="floating__item text-left">
             {firstTimeVisitorData.map(({ ministry, count, color }, key) => (
-              <div className="push-half display-inline-block@lap-and-up" key={key}>
+              <div
+                className="push-half display-inline-block@lap-and-up"
+                key={key}
+              >
                 <div
                   className="display-inline-block"
                   style={{
@@ -276,7 +286,9 @@ export const NextSteps = () => (
         />
         <div className="text-center">
           <Story
-            image={"//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/stories/story-img3.png"}
+            image={
+              "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/stories/story-img3.png"
+            }
             content={
               "<p>&#34;On my first visit to NewSpring, the VIP Room made a huge impression on me. My host, Cathy, was so warm and friendly. She helped get my daughter checked in to KidSpring, answered my questions, and connected me to some next steps.&#34;</p>"
             }
@@ -346,7 +358,9 @@ export const NextSteps = () => (
           </h1>
         </FitText>
         <div className="one-whole floating">
-          <h3 className="two-thirds@lap-and-up floating__item">people visited the Care room.</h3>
+          <h3 className="two-thirds@lap-and-up floating__item">
+            people visited the Care room.
+          </h3>
         </div>
         <em>Do you need help?</em>
         <div className="push-double-top">
@@ -365,14 +379,14 @@ export const NextSteps = () => (
       <div className="one-whole push-double-top push-double-bottom@handheld push-bottom@lap-and-up">
         <h3 className="text-center">Connect</h3>
         <p className="constrain-copy">
-          We all need friends we can be ourselves with, people who make us laugh till it hurts and
-          who will be there when we need prayer.{" "}
+          We all need friends we can be ourselves with, people who make us laugh
+          till it hurts and who will be there when we need prayer.{" "}
           <a href={"https://newspring.cc/connect"} alt={"link to connect"}>
             Connect
           </a>{" "}
-          launched in 2016 as a way to help people connect to Jesus and to each other. This event is
-          for anyone who wants to learn more about NewSpring and to get to know people in the
-          church.
+          launched in 2016 as a way to help people connect to Jesus and to each
+          other. This event is for anyone who wants to learn more about
+          NewSpring and to get to know people in the church.
         </p>
         <div className="floating">
           <div className="soft-double@lap-and-up hard-sides@handheld text-center three-quarters@lap-wide-and-up nine-tenths@lap floating__item">
@@ -467,9 +481,10 @@ export const NextSteps = () => (
             />
           </div>
           <p className="constrain-copy@lap-and-up push-double-bottom@handheld">
-            God has called our church to make a difference in South Carolina. From rebuilding homes
-            and hosting community service days to giving supplies to low-income schools, the money
-            we budget for local missions creates opportunities to share Jesus&#39; love with our
+            God has called our church to make a difference in South Carolina.
+            From rebuilding homes and hosting community service days to giving
+            supplies to low-income schools, the money we budget for local
+            missions creates opportunities to share Jesus&#39; love with our
             neighbors across the state.
           </p>
         </div>
@@ -522,7 +537,9 @@ export const NextSteps = () => (
               />
             </FitText>
           </div>
-          <h3 className="text-center@handheld soft-bottom@handheld">on foreign missions.</h3>
+          <h3 className="text-center@handheld soft-bottom@handheld">
+            on foreign missions.
+          </h3>
           <div
             className="one-whole visuallyhidden@lap-and-up push-top push-bottom"
             style={{ verticalAlign: "middle" }}
@@ -533,10 +550,12 @@ export const NextSteps = () => (
             />
           </div>
           <p className="constrain-copy@lap-and-up">
-            We partner with Freedom Church to share Jesus&#39; love with people around the world. By
-            partnering with local churches, we&#39;re able to participate in ministry that continues
-            long after our team comes home. The local church is the hope of the world. When we work
-            together, we begin to see the Great Commission happening before our eyes.
+            We partner with Freedom Church to share Jesus&#39; love with people
+            around the world. By partnering with local churches, we&#39;re able
+            to participate in ministry that continues long after our team comes
+            home. The local church is the hope of the world. When we work
+            together, we begin to see the Great Commission happening before our
+            eyes.
           </p>
         </div>
       </div>
@@ -575,7 +594,9 @@ export const NextSteps = () => (
           </h1>
         </FitText>
         <div className="floating">
-          <h3 className="push-top floating__item two-thirds@lap-and-up">different nations.</h3>
+          <h3 className="push-top floating__item two-thirds@lap-and-up">
+            different nations.
+          </h3>
         </div>
       </div>
       <div className="floating">
@@ -585,7 +606,9 @@ export const NextSteps = () => (
             style={{ borderTop: "1px solid #dddddd" }}
           />
           <Story
-            image={"//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/stories/story-img5.png"}
+            image={
+              "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/stories/story-img5.png"
+            }
             content={
               "<p>&#34;I traveled to Uganda with NewSpring Missions in July. The trip was inspirational, heartbreaking, and heartwarming. The highlights were worshipping with, and serving, the young boys living on the streets of Kampala. We also helped make improvements to the Freedom Church Heroes boys home.&#34;</p>"
             }
@@ -600,8 +623,14 @@ export const NextSteps = () => (
     {/* Keep Reading */}
     <div className="background--primary text-center text-light-primary soft">
       <h3 className="soft-double-top">Keep Reading</h3>
-      <p>Up next in the NewSpring 2016 Annual Report is information on our ministries.</p>
-      <Link className="btn--light push-double-bottom" to="/annualreport/ministries">
+      <p>
+        Up next in the NewSpring 2016 Annual Report is information on our
+        ministries.
+      </p>
+      <Link
+        className="btn--light push-double-bottom"
+        to="/annualreport/ministries"
+      >
         Go To Ministries Report
       </Link>
     </div>
