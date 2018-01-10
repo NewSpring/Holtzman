@@ -64,7 +64,7 @@ export const Finances = () => {
               if (count === fundData.length && count % 2 === 1) {
                 return (
                   <div
-                    className="soft-left one-half@lap-and-up push-half-bottom"
+                    className="soft-left two-fifths@lap-and-up push-half-bottom"
                     key={key}
                   >
                     <div className="grid__item one-whole">
@@ -83,7 +83,7 @@ export const Finances = () => {
               if (count <= fundData.length / 2) {
                 return (
                   <div
-                    className="grid__item one-half@lap-and-up push-half-bottom"
+                    className="grid__item two-fifths@lap-and-up push-half-bottom"
                     key={key}
                   >
                     <div className="grid__item one-whole">
@@ -101,7 +101,7 @@ export const Finances = () => {
               }
               return (
                 <div
-                  className="grid__item one-half@lap-and-up push-half-bottom"
+                  className="grid__item two-fifths@lap-and-up push-half-bottom"
                   key={key}
                 >
                   <div className="grid__item one-whole">
@@ -141,64 +141,63 @@ export const Finances = () => {
               className="push-ends"
               style={{ borderTop: "1px solid #dddddd" }}
             />
-            <Story
-              image={
-                "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/stories/story-img2.1.png"
-              }
-              content={`<p>"We gave to the Clemson building campaign because we saw NewSpring's impact on our own daughter when she was at college. We're excited to see the lives that will be changed in and around Clemson and from all over the world because of the new campus."</p>`}
-              overriddenHeader={
-                "Meet givers Carol and Laurie Brown from Sumter"
-              }
-            />
-            <div className="soft-ends background--light-secondary">
-              <div className="grid push-ends">
-                <div className="grid__item one-half@lap-and-up one-whole">
-                  <h3
-                    className="italic"
-                    style={{
-                      fontFamily: "ff-meta-serif-web-pro, serif",
-                    }}
-                  >
-                    We had
-                  </h3>
-                  <FitText compressor={0.5}>
-                    <h1
-                      className="uppercase flush-bottom soft-half-bottom"
-                      style={{
-                        fontWeight: "900",
-                      }}
-                    >
-                      5,400
-                    </h1>
-                  </FitText>
-                  <h3>first time givers</h3>
-                </div>
-                <div className="grid__item one-half@lap-and-up">
-                  <h3
-                    className="italic"
-                    style={{
-                      fontFamily: "ff-meta-serif-web-pro, serif",
-                    }}
-                  >
-                    and
-                  </h3>
-                  <FitText compressor={0.5}>
-                    <h1
-                      className="uppercase flush-bottom soft-half-bottom"
-                      style={{
-                        fontWeight: "900",
-                      }}
-                    >
-                      18,173
-                    </h1>
-                  </FitText>
-                  <div className="floating text-center">
-                    <h3 className="floating__item push-half-bottom">
-                      households gave.
-                    </h3>
-                  </div>
-                </div>
-              </div>
+          </div>
+          <Story
+            image={
+              "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/stories/story-img2.1.png"
+            }
+            content={`<p>"We gave to the Clemson building campaign because we saw NewSpring's impact on our own daughter when she was at college. We're excited to see the lives that will be changed in and around Clemson and from all over the world because of the new campus."</p>`}
+            overriddenHeader={"Meet givers Carol and Laurie Brown from Sumter"}
+          />
+        </div>
+      </div>
+
+      <div className="soft-ends background--light-secondary">
+        <div className="grid push-ends">
+          <div className="grid__item one-half@lap-and-up one-whole">
+            <h3
+              className="italic"
+              style={{
+                fontFamily: "ff-meta-serif-web-pro, serif",
+              }}
+            >
+              We had
+            </h3>
+            <FitText compressor={0.5}>
+              <h1
+                className="uppercase flush-bottom soft-half-bottom"
+                style={{
+                  fontWeight: "900",
+                }}
+              >
+                5,400
+              </h1>
+            </FitText>
+            <h3>first time givers</h3>
+          </div>
+          <div className="grid__item one-half@lap-and-up">
+            <h3
+              className="italic"
+              style={{
+                fontFamily: "ff-meta-serif-web-pro, serif",
+              }}
+            >
+              and
+            </h3>
+            <FitText compressor={0.5}>
+              <h1
+                className="uppercase flush-bottom soft-half-bottom"
+                style={{
+                  fontWeight: "900",
+                }}
+              >
+                18,173
+              </h1>
+            </FitText>
+            <div className="floating text-center">
+              <h3 className="floating__item push-half-bottom">
+                households gave.
+              </h3>
             </div>
           </div>
         </div>

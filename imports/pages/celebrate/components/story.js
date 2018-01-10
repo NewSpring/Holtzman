@@ -30,8 +30,8 @@ const Story = ({
     <div className="constrain-page">
       {image && (
         <div
-          className="grid__item@lap-and-up one-third@lap-and-up soft-right@lap-and-up push-bottom@lap-and-up"
-          style={{ verticalAlign: "middle" }}
+          className="grid__item@lap-and-up one-quarter@lap-and-up soft-right@lap-and-up push-bottom@lap-and-up"
+          style={{ verticalAlign: "middle", margin: "auto" }}
         >
           <div
             className="ratio--square background--fill round visuallyhidden@handheld"
@@ -43,19 +43,17 @@ const Story = ({
       )}
       <div
         className={`grid__item ${image &&
-          "two-thirds@lap-and-up"} floating text-center text-left@lap-and-up`}
+          "three-quarters@lap-and-up"} floating text-center text-left@lap-and-up`}
         style={{ verticalAlign: "middle" }}
       >
         {overriddenHeader && (
-          <strong style={{ fontFamily: "colfax, sans-serif" }}>
-            <h5
-              dangerouslySetInnerHTML={{ __html: overriddenHeader }}
-              className={`${String(
-                contentClass //eslint-disable-line
-              )} soft-half-bottom soft-sides@handheld`}
-              style={{ fontWeight: "400" }}
-            />
-          </strong>
+          <h5
+            dangerouslySetInnerHTML={{ __html: overriddenHeader }}
+            className={`${String(
+              contentClass //eslint-disable-line
+            )} soft-half-bottom soft-sides@handheld`}
+            style={{ fontWeight: "900", fontFamily: "colfax, sans-serif" }}
+          />
         )}
         {!overriddenHeader &&
           heading &&
@@ -74,7 +72,7 @@ const Story = ({
           )}
         {image && (
           <div
-            className="ratio--square floating__item one-half background--fill round visuallyhidden@lap-and-up push-bottom"
+            className="ratio--square floating__item one-fifth background--fill round visuallyhidden@lap-and-up push-bottom"
             style={{ backgroundImage: `url('${image}')` }}
           >
             <div className="ratio__item" />
