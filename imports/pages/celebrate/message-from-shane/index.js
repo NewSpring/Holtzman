@@ -57,7 +57,7 @@ export const Shane = () => (
     <div
       style={{
         position: "absolute",
-        top: "820px",
+        top: "800px",
         right: "0",
       }}
       className="visuallyhidden@handheld visuallyhidden@lap one-half display-inline-block"
