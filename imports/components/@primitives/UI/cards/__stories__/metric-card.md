@@ -13,8 +13,8 @@ import MetricCard from "/imports/components/@primitives/UI/cards/MetricCard";
 
 ### Properties
 
-* **count** - the metric you want to display
-* **label** - the description of the metric you want to display
+- **count**:string! - the metric you want to display
+- **label**:string! - the description of the metric you want to display
 
 ### Note
 

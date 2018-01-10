@@ -1,4 +1,5 @@
-import { Component, PropTypes } from "react";
+import PropTypes from "prop-types";
+import { Component } from "react";
 import { connect } from "react-redux";
 
 import { nav } from "../../../../data/store";
@@ -29,11 +30,11 @@ class ChangePasswordWithoutData extends Component {
     this.props.dispatch(nav.setLevel("TOP"));
   }
 
-  submit = (e) => {
+  submit = e => {
     e.preventDefault();
     this.setState({ state: "loading" });
 
-    reset(this.state.current, this.state.newP, (err) => {
+    reset(this.state.current, this.state.newP, err => {
       if (err) {
         this.setState({ state: "error", err });
         setTimeout(() => {

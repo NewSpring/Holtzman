@@ -1,4 +1,3 @@
-
 // used to create the wrapper
 import React from "react";
 import ReactDOM from "react-dom";
@@ -26,7 +25,7 @@ export default function run(routes, clientOptions = {}) {
     // If using redux, create the store with the initial state injected by the server.
     let reduxStore;
     if (typeof clientOptions.createReduxStore !== "undefined") {
-      InjectData.getData("redux-initial-state", (data) => {
+      InjectData.getData("redux-initial-state", data => {
         const initialState = data ? JSON.parse(data) : undefined;
         // XXX why does this not get mapped correctly in AC?
         if (initialState) initialState.apollo.queries = {};
@@ -53,7 +52,9 @@ export default function run(routes, clientOptions = {}) {
         wrapperProps.store = reduxStore;
       }
 
-      app = <clientOptions.wrapper {...wrapperProps}>{app}</clientOptions.wrapper>;
+      app = (
+        <clientOptions.wrapper {...wrapperProps}>{app}</clientOptions.wrapper>
+      );
     }
 
     // let css;
@@ -66,8 +67,7 @@ export default function run(routes, clientOptions = {}) {
     ReactDOM.render(app, rootElement);
 
     const collectorEl = document.getElementById(
-      clientOptions.styleCollectorId ||
-      "css-style-collector-data"
+      clientOptions.styleCollectorId || "css-style-collector-data",
     );
     if (collectorEl) collectorEl.parentNode.removeChild(collectorEl);
   });

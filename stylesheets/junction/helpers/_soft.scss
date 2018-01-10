@@ -1,0 +1,222 @@
+$use-soft: true !default;
+
+@if $use-soft == true {
+  //
+  // @name .soft
+  // @class .soft
+  // @description force padding to be $base-spacing-unit
+  //
+  // @namespaced true
+  //
+  @include namespace(soft) {
+    padding: $base-spacing-unit;
+  }
+  //
+  // @name .soft-top
+  // @class .soft-top
+  // @description force top padding to be $base-spacing-unit
+  //
+  // @namespaced true
+  //
+  @include namespace(soft-top) {
+    padding-top: $base-spacing-unit;
+  }
+  //
+  // @name .soft-right
+  // @class .soft-right
+  // @description force right padding to be $base-spacing-unit
+  //
+  // @namespaced true
+  //
+  @include namespace(soft-right) {
+    padding-right: $base-spacing-unit;
+  }
+  //
+  // @name .soft-bottom
+  // @class .soft-bottom
+  // @description force bottom padding to be $base-spacing-unit
+  //
+  // @namespaced true
+  //
+  @include namespace(soft-bottom) {
+    padding-bottom: $base-spacing-unit;
+  }
+  //
+  // @name .soft-left
+  // @class .soft-left
+  // @description force left padding to be $base-spacing-unit
+  //
+  // @namespaced true
+  //
+  @include namespace(soft-left) {
+    padding-left: $base-spacing-unit;
+  }
+  //
+  // @name .soft-ends
+  // @class .soft-ends
+  // @description force top and bottom padding to be $base-spacing-unit
+  //
+  // @namespaced true
+  //
+  @include namespace(soft-ends) {
+    padding-top: $base-spacing-unit;
+    padding-bottom: $base-spacing-unit;
+  }
+  //
+  // @name .soft-sides
+  // @class .soft-sides
+  // @description force left and right padding to be $base-spacing-unit
+  //
+  // @namespaced true
+  //
+  @include namespace(soft-sides) {
+    padding-right: $base-spacing-unit;
+    padding-left: $base-spacing-unit;
+  }
+  // Half
+  //
+  // @name .soft-half
+  // @class .soft-half
+  // @description force padding to be $half-spacing-unit
+  //
+  // @namespaced true
+  //
+  @include namespace(soft-half) {
+    padding: $half-spacing-unit;
+  }
+  //
+  // @name .soft-half-top
+  // @class .soft-half-top
+  // @description force top padding to be $half-spacing-unit
+  //
+  // @namespaced true
+  //
+  @include namespace(soft-half-top) {
+    padding-top: $half-spacing-unit;
+  }
+  //
+  // @name .soft-half-right
+  // @class .soft-half-right
+  // @description force right padding to be $half-spacing-unit
+  //
+  // @namespaced true
+  //
+  @include namespace(soft-half-right) {
+    padding-right: $half-spacing-unit;
+  }
+  //
+  // @name .soft-half-bottom
+  // @class .soft-half-bottom
+  // @description force bottom padding to be $half-spacing-unit
+  //
+  // @namespaced true
+  //
+  @include namespace(soft-half-bottom) {
+    padding-bottom: $half-spacing-unit;
+  }
+  //
+  // @name .soft-half-left
+  // @class .soft-half-left
+  // @description force left padding to be $half-spacing-unit
+  //
+  // @namespaced true
+  //
+  @include namespace(soft-half-left) {
+    padding-left: $half-spacing-unit;
+  }
+  //
+  // @name .soft-half-ends
+  // @class .soft-half-ends
+  // @description force top and bottom padding to be $half-spacing-unit
+  //
+  // @namespaced true
+  //
+  @include namespace(soft-half-ends) {
+    padding-top: $half-spacing-unit;
+    padding-bottom: $half-spacing-unit;
+  }
+  //
+  // @name .soft-half-sides
+  // @class .soft-half-sides
+  // @description force left and right padding to be $half-spacing-unit
+  //
+  // @namespaced true
+  //
+  @include namespace(soft-half-sides) {
+    padding-right: $half-spacing-unit;
+    padding-left: $half-spacing-unit;
+  }
+  // Double
+  //
+  // @name .soft-double
+  // @class .soft-double
+  // @description force padding to be $base-spacing-unit * 2
+  //
+  // @namespaced true
+  //
+  @include namespace(soft-double) {
+    padding: $base-spacing-unit * 2;
+  }
+  //
+  // @name .soft-double-top
+  // @class .soft-double-top
+  // @description force top padding to be $base-spacing-unit * 2
+  //
+  // @namespaced true
+  //
+  @include namespace(soft-double-top) {
+    padding-top: $base-spacing-unit * 2;
+  }
+  //
+  // @name .soft-double-right
+  // @class .soft-double-right
+  // @description force right padding to be $base-spacing-unit * 2
+  //
+  // @namespaced true
+  //
+  @include namespace(soft-double-right) {
+    padding-right: $base-spacing-unit * 2;
+  }
+  //
+  // @name .soft-double-bottom
+  // @class .soft-double-bottom
+  // @description force bottom padding to be $base-spacing-unit * 2
+  //
+  // @namespaced true
+  //
+  @include namespace(soft-double-bottom) {
+    padding-bottom: $base-spacing-unit * 2;
+  }
+  //
+  // @name .soft-double-left
+  // @class .soft-double-left
+  // @description force left padding to be $base-spacing-unit * 2
+  //
+  // @namespaced true
+  //
+  @include namespace(soft-double-left) {
+    padding-left: $base-spacing-unit * 2;
+  }
+  //
+  // @name .soft-double-ends
+  // @class .soft-double-ends
+  // @description force top and bottom padding to be $base-spacing-unit * 2
+  //
+  // @namespaced true
+  //
+  @include namespace(soft-double-ends) {
+    padding-top: $base-spacing-unit * 2;
+    padding-bottom: $base-spacing-unit * 2;
+  }
+  //
+  // @name .soft-double-sides
+  // @class .soft-double-sides
+  // @description force left and right padding to be $base-spacing-unit * 2
+  //
+  // @namespaced true
+  //
+  @include namespace(soft-double-sides) {
+    padding-right: $base-spacing-unit * 2;
+    padding-left: $base-spacing-unit * 2;
+  }
+}

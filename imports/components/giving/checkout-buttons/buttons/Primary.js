@@ -6,7 +6,7 @@ import { Meteor } from "meteor/meteor";
 const buttonClasses = (
   savedPayments: Object[],
   disabled: boolean,
-  additionalClasses: string
+  additionalClasses: string,
 ): string => {
   let classes = ["btn"];
 

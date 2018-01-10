@@ -1,7 +1,10 @@
-exports[`test allows a custom link 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`allows a custom link 1`] = `
 <div>
   <h3
-    className="text-dark-tertiary">
+    className="text-dark-tertiary"
+  >
     Unfortunately our giving service is offline.
   </h3>
   <p>
@@ -11,7 +14,8 @@ exports[`test allows a custom link 1`] = `
     <em>
       We appreciate your patience. If you have any questions please contact us at 
       <a
-        href="mailto:hello@newspring.cc">
+        href="mailto:hello@newspring.cc"
+      >
         hello@newspring.cc
       </a>
     </em>
@@ -19,10 +23,11 @@ exports[`test allows a custom link 1`] = `
 </div>
 `;
 
-exports[`test displays a message to the user 1`] = `
+exports[`displays a message to the user 1`] = `
 <div>
   <h3
-    className="text-dark-tertiary">
+    className="text-dark-tertiary"
+  >
     Unfortunately our giving service is offline.
   </h3>
   <p>
@@ -32,7 +37,8 @@ exports[`test displays a message to the user 1`] = `
     <em>
       We appreciate your patience. If you have any questions please contact us at 
       <a
-        href="mailto:finance@newspring.cc">
+        href="mailto:finance@newspring.cc"
+      >
         finance@newspring.cc
       </a>
     </em>

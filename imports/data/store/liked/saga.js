@@ -1,7 +1,6 @@
 /* eslint-disable import/no-named-as-default-member */
 import "regenerator-runtime/runtime";
-import { takeEvery } from "redux-saga";
-import { fork, put } from "redux-saga/effects";
+import { takeEvery, fork, put } from "redux-saga/effects";
 
 import { addSaga } from "../utilities";
 

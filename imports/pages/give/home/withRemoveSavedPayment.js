@@ -25,7 +25,7 @@ export const REMOVE_PAYMENT_MUTATION = gql`
 
 export const updateQuery = (id: string, name: ?string) => (
   prev: Object,
-  { mutationResult }: Object
+  { mutationResult }: Object,
 ) => {
   const { error } = mutationResult.data.payment;
   if (error) return prev;
@@ -42,7 +42,7 @@ export const updateQuery = (id: string, name: ?string) => (
 
 export const withPaymentRemove = graphql(REMOVE_PAYMENT_MUTATION, {
   props: ({ mutate }) => ({
-    remove: (id) => mutate({
+    remove: id => mutate({
       variables: { id },
       optimisticResponse: {
         __typename: "Mutation",

@@ -5,7 +5,6 @@ import Currency from "../../../components/@primitives/typography/currency";
 import FitText from "../components/fit-text";
 import Meta from "../../../components/shared/meta";
 import ProgressBar from "../../../components/giving/giving-progress";
-import Story from "../components/story";
 import inAppLink from "../../../util/inAppLink";
 
 const fundData = [
@@ -31,7 +30,7 @@ const fundData = [
 ];
 
 // -1 for rounding correction
-const generalFundAmountTotal = fundData.reduce(((acc, fund) => acc + fund.amount), 0) - 1;
+const generalFundAmountTotal = fundData.reduce((acc, fund) => acc + fund.amount, 0) - 1;
 const stepUpFundTotal = "1792258.15";
 
 /* eslint-disable max-len */
@@ -61,7 +60,7 @@ export const Finances = () => {
           <div className="grid floating__item three-quarters@lap-wide-and-up nine-tenths@lap-and-up text-center">
             {fundData.map(({ campus, amount }, key) => {
               count += 1;
-              if (count === fundData.length && (count % 2 === 1)) {
+              if (count === fundData.length && count % 2 === 1) {
                 return (
                   <div className="soft-left one-half@lap-and-up push-half-bottom" key={key}>
                     <div className="grid__item one-whole">
@@ -111,9 +110,13 @@ export const Finances = () => {
           </div>
         </div>
         <div className="soft-sides">
-          <small className="text-center"><em>Lexington campus merged with Columbia campus on Oct. 30.</em></small>
+          <small className="text-center">
+            <em>Lexington campus merged with Columbia campus on Oct. 30.</em>
+          </small>
           <br />
-          <small className="text-center"><em>Financials have been audited.</em></small>
+          <small className="text-center">
+            <em>Financials have been audited.</em>
+          </small>
         </div>
       </div>
       <div className="background--light-primary text-center soft-double-top">
@@ -196,15 +199,50 @@ export const Finances = () => {
               roundCurrency
             />
           </FitText>
-          <hr className="visuallyhidden@handheld push-ends" style={{ borderTop: "1px solid #ffffff" }} />
+          <hr
+            className="visuallyhidden@handheld push-ends"
+            style={{ borderTop: "1px solid #ffffff" }}
+          />
           <div className="text-light-primary text-left push-top@lap-and-up soft-double-top@lap-and-up push-double-bottom">
             <div className="floating">
               <div className="floating__item three-quarters@lap-and-up text-left">
                 <p>This year&#39;s Christmas Offering will support these three projects:</p>
                 <ul>
-                  <li>Campus expansion to help our <a href={"https://newspring.cc/locations"} target={"_blank"} alt={"link to locations page"} className={"text-light-primary"}>current campuses</a> take their next step.</li>
-                  <li>Global missions to support <a href={"http://www.freedomchurch.cc/"} target={"_blank"} alt={"link to Freedom Church"} className={"text-light-primary"}>Freedom Church</a> as they launch three new campuses in 2017.</li>
-                  <li>Local missions in the communities where we have <a href={"https://newspring.cc/locations"} target={"_blank"} alt={"link to locations page"} className={"text-light-primary"}>campuses</a>.</li>
+                  <li>
+                    Campus expansion to help our{" "}
+                    <a
+                      href={"https://newspring.cc/locations"}
+                      target={"_blank"}
+                      alt={"link to locations page"}
+                      className={"text-light-primary"}
+                    >
+                      current campuses
+                    </a>{" "}
+                    take their next step.
+                  </li>
+                  <li>
+                    Global missions to support{" "}
+                    <a
+                      href={"http://www.freedomchurch.cc/"}
+                      target={"_blank"}
+                      alt={"link to Freedom Church"}
+                      className={"text-light-primary"}
+                    >
+                      Freedom Church
+                    </a>{" "}
+                    as they launch three new campuses in 2017.
+                  </li>
+                  <li>
+                    Local missions in the communities where we have{" "}
+                    <a
+                      href={"https://newspring.cc/locations"}
+                      target={"_blank"}
+                      alt={"link to locations page"}
+                      className={"text-light-primary"}
+                    >
+                      campuses
+                    </a>.
+                  </li>
                 </ul>
               </div>
             </div>
@@ -213,11 +251,21 @@ export const Finances = () => {
       </div>
       <div className="background--light-primary soft">
         <h3 className="text-center push-top">Annual Audit</h3>
-        <p className="constrain-copy push-bottom">NewSpring is audited annually by an external accounting firm according to Generally Accepted Accounting Principles. God calls His people to live above reproach, so for us, the annual audit is a financial and spiritual responsibility (<a href={"https://www.bible.com/search/bible?q=philippians%202:15&version_id=111"} alt={"Philippians 2:15"} target={"_blank"}>Philippians 2:15</a>).</p>
+        <p className="constrain-copy push-bottom">
+          NewSpring is audited annually by an external accounting firm according to Generally
+          Accepted Accounting Principles. God calls His people to live above reproach, so for us,
+          the annual audit is a financial and spiritual responsibility (<a
+            href={"https://www.bible.com/search/bible?q=philippians%202:15&version_id=111"}
+            alt={"Philippians 2:15"}
+            target={"_blank"}
+          >
+            Philippians 2:15
+          </a>).
+        </p>
         <div className="text-center">
           <a
             className="btn push-bottom"
-            target="_blank"
+            target={"_blank"}
             href="https://s3.amazonaws.com/ns.assets/apollos/annual+report/2016/2016+Audit.pdf"
             onClick={inAppLink}
           >

@@ -1,0 +1,12 @@
+
+
+$use-relative: true!default;
+
+@if $use-relative == true {
+
+  @include namespace(relative) {
+    position: relative;
+  }
+
+
+}
