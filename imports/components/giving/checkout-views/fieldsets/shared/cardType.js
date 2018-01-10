@@ -17,7 +17,7 @@ const cardType = (payment: Object, savedAccount?: Object): string | null => {
     };
 
     let result;
-    Object.keys(defaultRegex).map((regex) => {
+    Object.keys(defaultRegex).map(regex => {
       if (defaultRegex[regex].test(payment.cardNumber.replace(/-/gmi, ""))) {
         result = regex;
       }

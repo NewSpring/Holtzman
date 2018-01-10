@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`home index file has a template 1`] = `
 <Connect(Authorized)>
   <Apollo(Component) />

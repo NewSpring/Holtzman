@@ -1,4 +1,5 @@
-import { Component, PropTypes } from "react";
+import PropTypes from "prop-types";
+import { Component } from "react";
 import { connect } from "react-redux";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
@@ -67,6 +68,7 @@ class SeriesVideoListWithoutData extends Component {
 const SERMONS_QUERY = gql`
   query GetSermonsFromSeries($id: ID!) {
     content: node(id: $id) {
+      id
       ... on Content {
         sermons: children(channels: ["sermons"]) {
           id
@@ -75,6 +77,7 @@ const SERMONS_QUERY = gql`
           status
           channelName
           parent {
+            id
             entryId: id
           }
           meta {
@@ -94,15 +97,15 @@ const SERMONS_QUERY = gql`
 
 const withSermons = graphql(SERMONS_QUERY, {
   name: "sermons",
-  options: (ownProps) => ({
+  options: ownProps => ({
     variables: { id: ownProps.id },
   }),
 });
 
 export default connect()(
   withSermons(
-    SeriesVideoListWithoutData
-  )
+    SeriesVideoListWithoutData,
+  ),
 );
 
 export {

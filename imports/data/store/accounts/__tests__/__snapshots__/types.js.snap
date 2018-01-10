@@ -1,4 +1,6 @@
-exports[`test matches the previous build 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches the previous build 1`] = `
 Object {
   "COMPLETE_ACCOUNT": "ACCOUNTS.COMPLETE_ACCOUNT",
   "IS_AUTHORIZED": "ACCOUNTS.IS_AUTHORIZED",

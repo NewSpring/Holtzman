@@ -1,4 +1,5 @@
-import { Component, PropTypes } from "react";
+import PropTypes from "prop-types";
+import { Component } from "react";
 import { connect } from "react-redux";
 import { graphql } from "react-apollo";
 import ReactMixin from "react-mixin";
@@ -22,7 +23,7 @@ class TemplateWithoutData extends Component {
     attributes: PropTypes.object.isRequired,
     content: PropTypes.object.isRequired,
     campuses: PropTypes.object.isRequired,
-    campus: PropTypes.string,
+    campus: PropTypes.string, // eslint-disable-line
     zip: PropTypes.string,
   };
 
@@ -111,7 +112,7 @@ class TemplateWithoutData extends Component {
     const { latitude, longitude, campus, zip, query } = this.state;
     // create an array of the attributes returned by graphql
     const attributeTags = this.props.attributes.tags.map(
-      tag => (tag && tag.value ? tag.value.toLowerCase() : "")
+      tag => (tag && tag.value ? tag.value.toLowerCase() : ""),
     );
 
     const q = [];
@@ -230,7 +231,7 @@ class TemplateWithoutData extends Component {
               this.state.campus ||
                 this.state.zip ||
                 this.state.query ||
-                (this.state.latitude && this.state.longitude)
+                (this.state.latitude && this.state.longitude),
             )}
             campuses={campuses || defaultArray}
             selectedCampus={this.state.campus}
@@ -348,9 +349,9 @@ const mapStateToProps = state => ({ location: state.routing.location });
 export default withRouter(
   connect(mapStateToProps)(
     withGroupAttributes(
-      withAutoFillMeta(withTaggedContent(ReactMixin.decorate(Headerable)(TemplateWithoutData)))
-    )
-  )
+      withAutoFillMeta(withTaggedContent(ReactMixin.decorate(Headerable)(TemplateWithoutData))),
+    ),
+  ),
 );
 
 export { TemplateWithoutData };

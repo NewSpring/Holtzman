@@ -1,4 +1,3 @@
-
 export default function generateData(newData) {
   const defaultData = {
     title: "Welcome | NewSpring Church",

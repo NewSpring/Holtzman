@@ -1,4 +1,5 @@
-import { Component, PropTypes } from "react";
+import PropTypes from "prop-types";
+import { Component } from "react";
 import { connect } from "react-redux";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
@@ -35,7 +36,7 @@ class TemplateWithoutData extends Component {
     }
   }
 
-  confirm = (e) => {
+  confirm = e => {
     const { dataset } = e.currentTarget;
     const { id } = dataset;
     this.props.dispatch(giveActions.setRecoverableSchedule(Number(id)));
@@ -43,7 +44,7 @@ class TemplateWithoutData extends Component {
     return true;
   }
 
-  cancel = (e) => {
+  cancel = e => {
     const { dataset } = e.currentTarget;
     const { id } = dataset;
     const { dispatch } = this.props;
@@ -112,7 +113,7 @@ const SCHEDULED_TRANSACTIONS_QUERY = gql`
 
 const withScheduledTransactions = graphql(SCHEDULED_TRANSACTIONS_QUERY, {
   skip: () => !Meteor.userId(),
-  options: { ssr: false, forceFetch: true },
+  options: { ssr: false, fetchPolicy: "network-only" },
   name: "schedules",
 });
 
@@ -143,9 +144,9 @@ const mapStateToProps = ({ give, accounts }) => ({
 const Template = connect(mapStateToProps)(
   withFinancialAccounts(
     withScheduledTransactions(
-      TemplateWithoutData
-    )
-  )
+      TemplateWithoutData,
+    ),
+  ),
 );
 
 const Routes = [

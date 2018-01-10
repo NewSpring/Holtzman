@@ -1,0 +1,103 @@
+
+$use-backgrounds: true!default;
+
+@if $use-backgrounds == true {
+  //
+  // @name background
+  // @description base selector to be extended for background images
+  //
+  // @extend true
+  //
+  %_background {
+    // position: relative; // is this needed?
+    overflow: hidden;
+
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100%;
+  }
+
+  //
+  // @name background
+  // @class .background
+  // @description background image support
+  //
+  // @object true
+  //
+  // @block .background - basic background images
+  // @modifier .background--fill - cover full size backgrounds
+  // @modifier .background--cover - cover full size backgrounds
+  // @modifier .background--top - set background to dock top
+  // @modifier .background--right - set background to dock right
+  // @modifier .background--bottom - set background to dock bottom
+  // @modifier .background--left - set background to dock left
+  // @modifier .background--fixed - set background to be fixed in container
+  //
+  // @extends %_background
+  //
+  .background {
+    @extend %_background;
+  }
+
+
+  .background--fill,
+  .background--cover {
+    @extend %_background;
+
+    background-size: cover;
+  }
+
+  // shift image to the right
+  .background--right {
+    @extend %_background;
+
+    background-position-x: right;
+  }
+
+  // shift image to the left
+  .background--left {
+    @extend %_background;
+
+    background-position-x: left;
+  }
+
+  // shift image to the bottom
+  .background--bottom {
+    @extend %_background;
+
+    background-position-y: bottom;
+  }
+
+  // shift image to the top
+  .background--top {
+    @extend %_background;
+
+    background-position-y: top;
+  }
+
+  // fixed image for fun scrolling effects
+  .background--fixed {
+    @extend %_background;
+
+    background-attachment: fixed;
+    background-position-y: top;
+    background-size: 100%;
+  }
+
+
+  //
+  // @name .background-<color variation>
+  // @class .background-<color variation>
+  // @description sets font color of background to be <color variation> color
+  //
+  // @helper true
+  //
+  // Loop through the list of colors we’ve provided in our settings file.
+  @each $_color, $_value in $colors {
+    .background--#{$_color} {
+      @extend %_background;
+      background-color: $_value;
+    }
+  }
+
+}
