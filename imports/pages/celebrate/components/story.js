@@ -30,7 +30,7 @@ const Story = ({
     <div className="constrain-page">
       {image && (
         <div
-          className="grid__item@lap-and-up one-quarter@lap-and-up soft-right@lap-and-up push-bottom@lap-and-up"
+          className="grid__item@lap-and-up one-quarter@lap-and-up push-bottom@lap-and-up"
           style={{ verticalAlign: "middle", margin: "auto" }}
         >
           <div
@@ -46,11 +46,19 @@ const Story = ({
           "three-quarters@lap-and-up"} floating text-center text-left@lap-and-up`}
         style={{ verticalAlign: "middle" }}
       >
+        {image && (
+          <div
+            className="ratio--square floating__item one-half background--fill round visuallyhidden@lap-and-up push-bottom"
+            style={{ backgroundImage: `url('${image}')` }}
+          >
+            <div className="ratio__item" />
+          </div>
+        )}
         {overriddenHeader && (
           <h5
             dangerouslySetInnerHTML={{ __html: overriddenHeader }}
             className={`${String(
-              contentClass //eslint-disable-line
+              contentClass, //eslint-disable-line
             )} soft-half-bottom soft-sides@handheld`}
             style={{ fontWeight: "900", fontFamily: "colfax, sans-serif" }}
           />
@@ -61,7 +69,7 @@ const Story = ({
           location && (
             <h5
               className={`${String(
-                contentClass //eslint-disable-line
+                contentClass, //eslint-disable-line
               )} soft-half-bottom soft-sides@handheld`}
               style={{ fontWeight: "400" }}
             >
@@ -70,14 +78,6 @@ const Story = ({
               </strong>.
             </h5>
           )}
-        {image && (
-          <div
-            className="ratio--square floating__item one-fifth background--fill round visuallyhidden@lap-and-up push-bottom"
-            style={{ backgroundImage: `url('${image}')` }}
-          >
-            <div className="ratio__item" />
-          </div>
-        )}
         <div
           dangerouslySetInnerHTML={{ __html: content }}
           className={`${String(contentClass)} soft-sides@palm-wide`}
