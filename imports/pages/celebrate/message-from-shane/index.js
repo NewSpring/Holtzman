@@ -1,7 +1,7 @@
 // @flow
 import { Link } from "react-router";
-import { Leaves } from "../components/layout";
-import { SolidLeaf, StripedLeaf } from "../components/leaves";
+// import { Leaves } from "../components/layout";
+// import { SolidLeaf, StripedLeaf } from "../components/leaves";
 import Meta from "../../../components/shared/meta";
 import Video from "../../../components/@primitives/players/video";
 
@@ -54,57 +54,60 @@ export const Shane = () => (
         </p>
       </div>
     </div>
-    <div
-      style={{
-        position: "absolute",
-        top: "800px",
-        right: "0",
-      }}
-      className="visuallyhidden@handheld visuallyhidden@lap one-half display-inline-block"
-    >
-      <Leaves>
-        <SolidLeaf
-          className="locked-bottom locked-right"
-          size="200px"
-          color="text-secondary"
-          style={{
-            transform: "rotate(225deg)",
-            marginBottom: "-80px",
-            marginRight: "-50px",
-          }}
-        />
-        <SolidLeaf
-          className="locked-bottom locked-right"
-          size="100px"
-          color="text-primary"
-          style={{
-            transform: "rotate(90deg)",
-            marginBottom: "-55px",
-            marginRight: "170px",
-          }}
-        />
-        <SolidLeaf
-          className="locked-bottom locked-right"
-          size="200px"
-          color="text-tertiary"
-          style={{
-            transform: "rotate(0deg)",
-            marginBottom: "-170px",
-            marginRight: "-10px",
-          }}
-        />
-        <StripedLeaf
-          className="locked-bottom locked-right"
-          size="120px"
-          color="text-secondary"
-          style={{
-            transform: "rotate(270deg)",
-            marginBottom: "-180px",
-            marginRight: "150px",
-          }}
-        />
-      </Leaves>
-    </div>
+    {
+      // XXX: Do we really want this?
+      // <div
+      //   style={{
+      //     position: "absolute",
+      //     top: "800px",
+      //     right: "0",
+      //   }}
+      //   className="visuallyhidden@handheld visuallyhidden@lap one-half display-inline-block"
+      // >
+      //   <Leaves>
+      //     <SolidLeaf
+      //       className="locked-bottom locked-right"
+      //       size="200px"
+      //       color="text-secondary"
+      //       style={{
+      //         transform: "rotate(225deg)",
+      //         marginBottom: "-80px",
+      //         marginRight: "-50px",
+      //       }}
+      //     />
+      //     <SolidLeaf
+      //       className="locked-bottom locked-right"
+      //       size="100px"
+      //       color="text-primary"
+      //       style={{
+      //         transform: "rotate(90deg)",
+      //         marginBottom: "-55px",
+      //         marginRight: "170px",
+      //       }}
+      //     />
+      //     <SolidLeaf
+      //       className="locked-bottom locked-right"
+      //       size="200px"
+      //       color="text-tertiary"
+      //       style={{
+      //         transform: "rotate(0deg)",
+      //         marginBottom: "-170px",
+      //         marginRight: "-10px",
+      //       }}
+      //     />
+      //     <StripedLeaf
+      //       className="locked-bottom locked-right"
+      //       size="120px"
+      //       color="text-secondary"
+      //       style={{
+      //         transform: "rotate(270deg)",
+      //         marginBottom: "-180px",
+      //         marginRight: "150px",
+      //       }}
+      //     />
+      //   </Leaves>
+      // </div>
+    }
     <div className="background--primary text-center text-light-primary soft">
       <h3 className="push-double-top">Keep Reading</h3>
       <Link

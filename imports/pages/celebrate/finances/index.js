@@ -31,7 +31,7 @@ const fundData = [
 // -1 for rounding correction
 const generalFundAmountTotal =
   fundData.reduce((acc, fund) => acc + fund.amount, 0) - 1;
-const stepUpFundTotal = "4567422.90";
+const overflowOfferingTotal = "4567422.90";
 
 /* eslint-disable max-len */
 export const Finances = () => {
@@ -175,14 +175,18 @@ export const Finances = () => {
         }
       </div>
       <div className="background--light-primary text-center soft-double-top">
-        <h3 className="push-top push-half-bottom">Land and Building Giving</h3>
-        <p className="text-center">
-          <i>for land and buildings</i>
-        </p>
+        <h3 className="push-top push-half-bottom">
+          Giving to Overflow Offering
+        </h3>
+        {
+          // <p className="text-center">
+          //   <i>for land and buildings</i>
+          // </p>
+        }
         <div className="push-top">
           <FitText compressor={1.5} maxFontSize={18}>
             <Currency
-              amount={stepUpFundTotal}
+              amount={overflowOfferingTotal}
               baseHeadingSize="1"
               className="display-inline-block text-center soft-bottom text-dark-primary"
               style={{ fontWeight: "900" }}
@@ -196,12 +200,21 @@ export const Finances = () => {
               style={{ borderTop: "1px solid #dddddd" }}
             />
           </div>
+          <h3 className="push-top push-half-bottom">
+            Your Generosity Makes a Difference
+          </h3>
           <Story
             image={
-              "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/stories/story-img2.1.png"
+              "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/20172Kenya-110.jpg"
             }
-            content={`<p>"We gave to the Clemson building campaign because we saw NewSpring's impact on our own daughter when she was at college. We're excited to see the lives that will be changed in and around Clemson and from all over the world because of the new campus."</p>`}
-            overriddenHeader={"Meet givers Carol and Laurie Brown from Sumter"}
+            content={`
+              <p>NewSpring made a new commitment in 2017 to give 10 percent of tithes to support community organizations, ministries, and churches. Following the pledge, that amount totaled <strong>$1.6 million</strong>.</p>
+              <p>CARE for AIDS got $75,000 — in addition to $288,000 given in the Overflow Offering — to provide medical care, job training and the hope of the Gospel to families in Kenya and Tanzania dealing with HIV/AIDS. The combined total was the largest gift in the organization’s history.</p>
+              <p>Learn about the work of <a href="https://newspring.cc/news/how-our-newspring-family-is-embracing-african-families-living-with-hiv-aids">CARE for AIDS</a>...</p>
+              `}
+            overriddenHeader={
+              "Care for AIDS benefits from our Kingdom mentality"
+            }
           />
         </div>
       </div>
@@ -261,7 +274,7 @@ export const Finances = () => {
       <div
         className="soft-ends"
         style={{
-          backgroundImage: `url("https://s3.amazonaws.com/ns.assets/apollos/annual+report/2017/2x1.audit.jpg")`,
+          backgroundImage: `url("//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/2x1.audit.jpg")`,
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           backgroundPosition: "center",
@@ -291,7 +304,7 @@ export const Finances = () => {
           finance@newspring.cc.
         </p>
         {
-          // XXX: Update once 2017 Audit is Complete
+          // TODO: Update once 2017 Audit is Complete
           // <div className="text-center">
           //   <a
           //     className="btn push-bottom"
