@@ -47,67 +47,6 @@ exports[`Shane renders a layout 1`] = `
     </div>
   </div>
   <div
-    className="visuallyhidden@handheld visuallyhidden@lap one-half display-inline-block"
-    style={
-      Object {
-        "position": "absolute",
-        "right": "0",
-        "top": "800px",
-      }
-    }
-  >
-    <Leaves>
-      <SolidLeaf
-        className="locked-bottom locked-right"
-        color="text-secondary"
-        size="200px"
-        style={
-          Object {
-            "marginBottom": "-80px",
-            "marginRight": "-50px",
-            "transform": "rotate(225deg)",
-          }
-        }
-      />
-      <SolidLeaf
-        className="locked-bottom locked-right"
-        color="text-primary"
-        size="100px"
-        style={
-          Object {
-            "marginBottom": "-55px",
-            "marginRight": "170px",
-            "transform": "rotate(90deg)",
-          }
-        }
-      />
-      <SolidLeaf
-        className="locked-bottom locked-right"
-        color="text-tertiary"
-        size="200px"
-        style={
-          Object {
-            "marginBottom": "-170px",
-            "marginRight": "-10px",
-            "transform": "rotate(0deg)",
-          }
-        }
-      />
-      <StripedLeaf
-        className="locked-bottom locked-right"
-        color="text-secondary"
-        size="120px"
-        style={
-          Object {
-            "marginBottom": "-180px",
-            "marginRight": "150px",
-            "transform": "rotate(270deg)",
-          }
-        }
-      />
-    </Leaves>
-  </div>
-  <div
     className="background--primary text-center text-light-primary soft"
   >
     <h3
