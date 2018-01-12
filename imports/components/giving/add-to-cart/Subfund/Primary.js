@@ -16,7 +16,14 @@ type IPrimary = {
   changeAmount: Function,
 };
 
-const Primary = ({ active, fundId, accounts, preFill, changeFund, changeAmount }: IPrimary) => (
+const Primary = ({
+  active,
+  fundId,
+  accounts,
+  preFill,
+  changeFund,
+  changeAmount,
+}: IPrimary) => (
   <div>
     <h3 className="text-dark-primary display-inline-block push-half-bottom push-half-right">
       I&#39;d like to give
@@ -24,12 +31,12 @@ const Primary = ({ active, fundId, accounts, preFill, changeFund, changeAmount }
 
     <Forms.Input
       hideLabel
-      type={Meteor.isCordova ? "number" : "tel"}
+      type={Meteor.isCordova ? "number" : "number"}
       pattern={"[0-9]*"}
       step={"0.01"}
       classes={["soft-bottom", "input--active", "display-inline-block"]}
       inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom text-brand ${css(
-        Styles["show-placeholder"],
+        Styles["show-placeholder"]
       )}`}
       placeholder="0.00"
       format={changeAmount}
@@ -37,7 +44,11 @@ const Primary = ({ active, fundId, accounts, preFill, changeFund, changeAmount }
       style={{ maxWidth: "165px" }}
     />
 
-    <h3 className={"text-dark-primary display-inline-block push-half-bottom push-half-right"}>
+    <h3
+      className={
+        "text-dark-primary display-inline-block push-half-bottom push-half-right"
+      }
+    >
       to
     </h3>
     {/* temporary hack */}

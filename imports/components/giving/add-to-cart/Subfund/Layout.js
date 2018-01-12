@@ -37,11 +37,11 @@ const Layout = ({
       format={changeAmount}
       hideLabel
       inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom text-brand ${css(
-        Styles["show-placeholder"],
+        Styles["show-placeholder"]
       )}`}
       placeholder="0.00"
       style={{ maxWidth: "165px", paddingLeft: ".8em" }}
-      type={Meteor.isCordova ? "number" : "tel"}
+      type={Meteor.isCordova ? "number" : "number"}
       pattern={"[0-9]*"}
       step={"0.01"}
       value={inputVal}
@@ -52,7 +52,11 @@ const Layout = ({
         to
       </h3>
       <Forms.Select
-        classes={["soft-bottom", "display-inline-block", `${css(Styles.select)}`]}
+        classes={[
+          "soft-bottom",
+          "display-inline-block",
+          `${css(Styles.select)}`,
+        ]}
         inputClasses={`${
           active ? "text-brand" : "text-dark-tertiary"
         } outlined--dotted outlined--light h3 hard-top flush-bottom`}
