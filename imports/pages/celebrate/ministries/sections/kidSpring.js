@@ -51,8 +51,10 @@ const data = {
       imageUrl:
         "//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/stories/story-img6.png",
       heading: "",
-      content:
-        "<p>Every week, kids like <strong>Sydney Chandler</strong> from <strong>Anderson</strong> are among the volunteers who make KidSpring a unique, fun, and valuable experience for kids.</p>",
+      content: `
+      <p>Every week, SpringZone provides a loving, safe, fun, personalized environment for people with special needs, like Abby Moore of NewSpring Florence.</p>
+      <p>“Abby walks into church dancing and singing ... high-fiving and reaching out to shake hands with anyone who will look her way.”</p>
+      `,
       linkUrl: "",
       linkText: "Read Her Story",
     },
@@ -200,7 +202,7 @@ const KidSpring = () => (
                   image={story.imageUrl}
                   content={story.content}
                   contentClass={css(styles.secondaryColor)}
-                  linkUrl="https://newspring.cc/stories/sydney-chandler"
+                  linkUrl="https://newspring.cc/stories/allison-moore"
                   linkClass={`h6 btn--small@next soft-sides@portable ${css(
                     styles.secondaryColor,
                     styles.secondaryHover /* eslint-disable-line */
