@@ -46,7 +46,7 @@ exports[`should accept an active prop to show the input 1`] = `
           "paddingLeft": ".8em",
         }
       }
-      type="tel"
+      type="number"
       value="5.00"
     >
       <div
@@ -101,7 +101,7 @@ exports[`should accept an active prop to show the input 1`] = `
                 "paddingLeft": ".8em",
               }
             }
-            type="tel"
+            type="number"
           />
         </span>
       </div>
@@ -221,7 +221,7 @@ exports[`should accept custom classes thru classes prop 1`] = `
           "paddingLeft": ".8em",
         }
       }
-      type="tel"
+      type="number"
       value={undefined}
     >
       <div
@@ -280,7 +280,7 @@ exports[`should accept custom classes thru classes prop 1`] = `
                 "paddingLeft": ".8em",
               }
             }
-            type="tel"
+            type="number"
           />
         </span>
       </div>
@@ -402,7 +402,7 @@ exports[`should accept multiple accounts through accounts prop 1`] = `
           "paddingLeft": ".8em",
         }
       }
-      type="tel"
+      type="number"
       value={undefined}
     >
       <div
@@ -461,7 +461,7 @@ exports[`should accept multiple accounts through accounts prop 1`] = `
                 "paddingLeft": ".8em",
               }
             }
-            type="tel"
+            type="number"
           />
         </span>
       </div>
@@ -590,7 +590,7 @@ exports[`should render with minimal props 1`] = `
           "paddingLeft": ".8em",
         }
       }
-      type="tel"
+      type="number"
       value={undefined}
     >
       <div
@@ -649,7 +649,7 @@ exports[`should render with minimal props 1`] = `
                 "paddingLeft": ".8em",
               }
             }
-            type="tel"
+            type="number"
           />
         </span>
       </div>
