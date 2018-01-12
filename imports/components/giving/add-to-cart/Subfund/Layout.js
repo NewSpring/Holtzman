@@ -37,7 +37,7 @@ const Layout = ({
       format={changeAmount}
       hideLabel
       inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom text-brand ${css(
-        Styles["show-placeholder"]
+        Styles["show-placeholder"] // eslint-disable-line
       )}`}
       placeholder="0.00"
       style={{ maxWidth: "165px", paddingLeft: ".8em" }}
