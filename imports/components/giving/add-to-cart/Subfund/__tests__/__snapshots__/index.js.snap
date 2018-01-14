@@ -56,7 +56,7 @@ exports[`SubFund sets the state to active if it has an amount 1`] = `
             "paddingLeft": ".8em",
           }
         }
-        type="tel"
+        type="number"
         value={undefined}
       >
         <div
@@ -115,7 +115,7 @@ exports[`SubFund sets the state to active if it has an amount 1`] = `
                   "paddingLeft": ".8em",
                 }
               }
-              type="tel"
+              type="number"
             />
           </span>
         </div>
@@ -246,7 +246,7 @@ exports[`SubFund should render a primary fund 1`] = `
             "maxWidth": "165px",
           }
         }
-        type="tel"
+        type="number"
       >
         <div
           className="input soft-bottom input--active display-inline-block"
@@ -303,7 +303,7 @@ exports[`SubFund should render a primary fund 1`] = `
                   "paddingLeft": ".8em",
                 }
               }
-              type="tel"
+              type="number"
             />
           </span>
         </div>
@@ -431,7 +431,7 @@ exports[`SubFund should render with minimal props 1`] = `
             "paddingLeft": ".8em",
           }
         }
-        type="tel"
+        type="number"
         value={undefined}
       >
         <div
@@ -490,7 +490,7 @@ exports[`SubFund should render with minimal props 1`] = `
                   "paddingLeft": ".8em",
                 }
               }
-              type="tel"
+              type="number"
             />
           </span>
         </div>

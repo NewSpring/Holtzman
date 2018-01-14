@@ -50,7 +50,7 @@ class Give extends Component {
     e.preventDefault();
     const { dispatch } = this.props;
     dispatch(giveActions.submit());
-  }
+  };
 
   updateData = ({ data }: { data: Object }) => {
     if (data.loading || !data.person) return;
@@ -86,23 +86,23 @@ class Give extends Component {
     };
 
     this.props.dispatch(giveActions.save(mappedPerson));
-  }
+  };
 
   next = (e: Event) => {
     e.preventDefault();
     this.props.dispatch(giveActions.next());
-  }
+  };
 
   goToStepOne = (e: Event) => {
     e.preventDefault();
     this.props.dispatch(giveActions.clearAccount());
     this.props.dispatch(giveActions.setState("default"));
     this.props.dispatch(giveActions.setProgress(1));
-  }
+  };
 
   changeSavedAccount = (account: Object) => {
     this.props.dispatch(giveActions.setAccount(account));
-  }
+  };
 
   back = (e: Event) => {
     e.preventDefault();
@@ -112,7 +112,7 @@ class Give extends Component {
     }
 
     this.props.dispatch(giveActions.previous());
-  }
+  };
 
   goToAccounts = () => {
     const { data } = this.props.give;
@@ -128,20 +128,20 @@ class Give extends Component {
       },
     };
     this.props.dispatch(modal.render(OnBoard, props));
-  }
+  };
 
   save = (...args: any) => {
     this.props.dispatch(giveActions.save(...args));
-  }
+  };
 
   clear = (...args: any) => {
     this.props.dispatch(giveActions.clear(...args));
-  }
+  };
 
   clearData = () => {
     this.props.dispatch(giveActions.clearData());
     this.props.dispatch(modal.hide());
-  }
+  };
 
   render() {
     return (
@@ -155,7 +155,6 @@ class Give extends Component {
         next={this.next}
         onSubmit={this.onSubmit}
         save={this.save}
-
         campuses={this.props.data.campuses}
         countries={this.props.data.countries}
         data={this.props.data}
@@ -170,24 +169,50 @@ class Give extends Component {
 const CHECKOUT_QUERY = gql`
   query GetCheckoutData($state: Int!, $country: Int!) {
     states: definedValues(id: $state, all: true) {
-      name: description, value, id, _id
+      name: description
+      value
+      id
+      _id
     }
     countries: definedValues(id: $country, all: true) {
-      name: description, value, id, _id
+      name: description
+      value
+      id
+      _id
     }
     person: currentPerson {
+      id
       firstName
       nickName
       lastName
       email
-      campus { name, id: entityId }
-      home { street1, street2, city, state, zip, country }
+      campus {
+        name
+        id: entityId
+      }
+      home {
+        id
+        street1
+        street2
+        city
+        state
+        zip
+        country
+      }
     }
     savedPayments {
-      name, id: entityId, date,
-      payment { accountNumber, paymentType }
+      name
+      id: entityId
+      date
+      payment {
+        accountNumber
+        paymentType
+      }
     }
-    campuses { name, id: entityId }
+    campuses {
+      name
+      id: entityId
+    }
   }
 `;
 
@@ -196,12 +221,15 @@ const withCheckout = graphql(CHECKOUT_QUERY, {
   props: ({ data, data: { campuses, countries, states } }) => ({
     data: {
       ...data,
-      campuses: campuses ?
-        campuses.map(x => ({ label: x.name, value: x.id })) : defaultArray,
-      countries: countries ?
-        countries.map(x => ({ label: x.name, value: x.value })) : defaultArray,
-      states: states ?
-        states.map(x => ({ label: x.name, value: x.value })) : defaultArray,
+      campuses: campuses
+        ? campuses.map(x => ({ label: x.name, value: x.id }))
+        : defaultArray,
+      countries: countries
+        ? countries.map(x => ({ label: x.name, value: x.value }))
+        : defaultArray,
+      states: states
+        ? states.map(x => ({ label: x.name, value: x.value }))
+        : defaultArray,
     },
   }),
 });
@@ -213,6 +241,4 @@ const mapStateToProps = state => ({
 
 export default withCheckout(connect(mapStateToProps)(Give));
 
-export {
-  Give as GiveWithoutData,
-};
+export { Give as GiveWithoutData };

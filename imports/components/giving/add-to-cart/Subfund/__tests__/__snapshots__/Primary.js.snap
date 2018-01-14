@@ -42,7 +42,7 @@ exports[`should accept custom classes thru classes prop 1`] = `
           "maxWidth": "165px",
         }
       }
-      type="tel"
+      type="number"
     >
       <div
         className="input soft-bottom input--active display-inline-block"
@@ -99,7 +99,7 @@ exports[`should accept custom classes thru classes prop 1`] = `
                 "paddingLeft": ".8em",
               }
             }
-            type="tel"
+            type="number"
           />
         </span>
       </div>
@@ -216,7 +216,7 @@ exports[`should accept multiple accounts through accounts prop 1`] = `
           "maxWidth": "165px",
         }
       }
-      type="tel"
+      type="number"
     >
       <div
         className="input soft-bottom input--active display-inline-block"
@@ -273,7 +273,7 @@ exports[`should accept multiple accounts through accounts prop 1`] = `
                 "paddingLeft": ".8em",
               }
             }
-            type="tel"
+            type="number"
           />
         </span>
       </div>
@@ -397,7 +397,7 @@ exports[`should change classes based on active state 1`] = `
           "maxWidth": "165px",
         }
       }
-      type="tel"
+      type="number"
     >
       <div
         className="input soft-bottom input--active display-inline-block"
@@ -454,7 +454,7 @@ exports[`should change classes based on active state 1`] = `
                 "paddingLeft": ".8em",
               }
             }
-            type="tel"
+            type="number"
           />
         </span>
       </div>
@@ -568,7 +568,7 @@ exports[`should render with minimal props 1`] = `
           "maxWidth": "165px",
         }
       }
-      type="tel"
+      type="number"
     >
       <div
         className="input soft-bottom input--active display-inline-block"
@@ -625,7 +625,7 @@ exports[`should render with minimal props 1`] = `
                 "paddingLeft": ".8em",
               }
             }
-            type="tel"
+            type="number"
           />
         </span>
       </div>
