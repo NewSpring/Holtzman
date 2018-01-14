@@ -49,11 +49,11 @@ const data = {
   stories: [
     {
       imageUrl:
-        "//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/stories/story-img6.png",
+        "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/IMG_1748.jpg",
       heading: "",
       content: `
-      <p>Every week, SpringZone provides a loving, safe, fun, personalized environment for people with special needs, like Abby Moore of NewSpring Florence.</p>
-      <p>“Abby walks into church dancing and singing ... high-fiving and reaching out to shake hands with anyone who will look her way.”</p>
+      <p>Every week, SpringZone provides a loving, safe, fun, personalized environment for people with special needs, like <strong>Abby Moore</strong> of <strong>NewSpring Florence</strong>.</p>
+      <p>Abby walks into church dancing and singing ... high-fiving and reaching out to shake hands with anyone who will look her way.</p>
       `,
       linkUrl: "",
       linkText: "Read Her Story",
@@ -205,7 +205,7 @@ const KidSpring = () => (
                   linkUrl="https://newspring.cc/stories/allison-moore"
                   linkClass={`h6 btn--small@next soft-sides@portable ${css(
                     styles.secondaryColor,
-                    styles.secondaryHover /* eslint-disable-line */
+                    styles.secondaryHover // eslint-disable-line
                   )}`}
                   linkText={story.linkText}
                 />
