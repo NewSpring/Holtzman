@@ -23,7 +23,7 @@ exports[`Shane renders a layout 1`] = `
         />
       </div>
       <h1
-        className="text-center soft-top@lap-and-up soft-top push-double-top@handheld"
+        className="text-center soft-top@lap-and-up soft-top"
       >
         Welcome to NewSpring's 2017 Annual Report!
       </h1>

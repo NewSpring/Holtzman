@@ -96,7 +96,8 @@ export class Dashboard extends Component {
                 ? "soft-top@handheld soft-double-top"
                 : "soft-half-left@handheld"
             }
-            soft-double-left
+            soft-double-left@lap-and-up
+            soft-sides
             background--light-primary
           `}
         >

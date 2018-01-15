@@ -16,11 +16,7 @@ export const Shane = () => (
         <div className="soft-bottom">
           <Video id={"VoNTB1ODE66MXxAFqcCqRb04c2WT9biy"} autoplay={false} />
         </div>
-        <h1
-          className={`text-center soft-top@lap-and-up soft-top ${
-            process.env.NATIVE ? "" : "push-double-top@handheld"
-          }`}
-        >
+        <h1 className={`text-center soft-top@lap-and-up soft-top`}>
           Welcome to NewSpring&#39;s 2017 Annual Report!
         </h1>
         <p>
