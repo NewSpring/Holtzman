@@ -347,7 +347,7 @@ export const NextSteps = () => (
         and
       </h3>
       <div className="push-top">
-        <h1 style={{ fontWeight: "900" }}>2,313</h1>
+        <h1 style={{ fontWeight: "900" }}>2,354</h1>
         <h3>for the first time!</h3>
       </div>
       <CardSlider>
@@ -366,7 +366,7 @@ export const NextSteps = () => (
               fontWeight: "900",
             }}
           >
-            8,897
+            4,716
           </h1>
         </FitText>
         <div className="one-whole floating">
@@ -433,7 +433,7 @@ export const NextSteps = () => (
                 fontWeight: "900",
               }}
             >
-              10,946
+              9,055
             </h1>
           </FitText>
           <div className="floating">
@@ -450,7 +450,7 @@ export const NextSteps = () => (
             and
           </h3>
           <div className="push-top">
-            <h1 style={{ fontWeight: "900" }}>7,352</h1>
+            <h1 style={{ fontWeight: "900" }}>2,367</h1>
             <h3>for the first time!</h3>
           </div>
         </div>

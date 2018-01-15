@@ -397,7 +397,7 @@ exports[`Next Steps renders a layout 1`] = `
           }
         }
       >
-        2,313
+        2,354
       </h1>
       <h3>
         for the first time!
@@ -495,7 +495,7 @@ exports[`Next Steps renders a layout 1`] = `
             }
           }
         >
-          8,897
+          4,716
         </h1>
       </Connect(FitTextWithoutData)>
       <div
@@ -592,7 +592,7 @@ exports[`Next Steps renders a layout 1`] = `
               }
             }
           >
-            10,946
+            9,055
           </h1>
         </Connect(FitTextWithoutData)>
         <div
@@ -624,7 +624,7 @@ exports[`Next Steps renders a layout 1`] = `
               }
             }
           >
-            7,352
+            2,367
           </h1>
           <h3>
             for the first time!
