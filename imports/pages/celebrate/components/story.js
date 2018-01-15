@@ -30,7 +30,7 @@ const Story = ({
     <div className="constrain-page">
       {image && (
         <div
-          className="grid__item@lap-and-up one-quarter@lap-and-up push-bottom@lap-and-up"
+          className="grid__item@lap-and-up one-quarter@lap-and-up push-bottom@lap-and-up soft-left@lap-and-up"
           style={{ verticalAlign: "middle", margin: "auto" }}
         >
           <div

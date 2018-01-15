@@ -71,7 +71,7 @@ class Template extends Component {
           }
 
           return nav;
-        }) //eslint-disable-line
+        }), //eslint-disable-line
     );
   };
 
@@ -79,7 +79,7 @@ class Template extends Component {
     return (
       <div>
         <Meta title="Annual Report" />
-        <div className="text-center soft-double-top soft-double-left@lap-and-up soft-left push-top@lap-and-up one-whole">
+        <div className="text-center soft-double-top soft-double-left@lap-and-up soft-sides push-top@lap-and-up one-whole">
           <img
             src="https://s3.amazonaws.com/ns.images/newspring/annualreport/2017/ar2017.hero.png"
             alt="Annual Report 2017"
@@ -88,9 +88,7 @@ class Template extends Component {
 
         <DashboardLayout
           subNav={this.state.subNav}
-          additionalClasses={
-            "soft-half-sides push-right@lap-and-up push-half-right"
-          }
+          additionalClasses={"soft-half-sides push-right@lap-and-up"}
           title={"Annual Report"}
           align={"text-center"}
           hideTitle
