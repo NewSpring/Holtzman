@@ -63,9 +63,9 @@ const data = {
     tags: [
       {
         image1x1:
-          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/1x1.kidspring.returned.jpg",
+          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/KidSpring/1x1.kidspring.returned.jpg",
         image2x1:
-          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/2x1.kidspring.returned.jpg",
+          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/KidSpring/2x1.kidspring.returned.jpg",
         imageAlt: "First timers who returned to KidSpring",
         label: "3,610",
         value: "FirstTime",
@@ -73,9 +73,9 @@ const data = {
       },
       {
         image1x1:
-          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/1x1.kidspring.baptized.jpg",
+          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/KidSpring/1x1.kidspring.baptized.jpg",
         image2x1:
-          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/2x1.kidspring.baptized.jpg",
+          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/KidSpring/2x1.kidspring.baptized.jpg",
         imageAlt: "Kids were baptized",
         label: "307",
         value: "KidsBaptized",
@@ -93,9 +93,9 @@ const data = {
       // },
       {
         image1x1:
-          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/1x1.kidspring.transitioned.jpg",
+          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/KidSpring/1x1.kidspring.transitioned.jpg",
         image2x1:
-          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/2x1.kidspring.transitioned.jpg",
+          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/KidSpring/2x1.kidspring.transitioned.jpg",
         imageAlt: "Kids who transitioned to Fuse",
         label: "581",
         value: "KidsFuse",
@@ -178,7 +178,7 @@ const KidSpring = () => (
                       style={{
                         background: `linear-gradient(${data.tags.overlay}, ${
                           data.tags.overlay
-                        }), url('${item.image2x1}') 0% 0%`,
+                        }), url('${item.image1x1}') 0% 0%`,
                         backgroundRepeat: "no-repeat",
                         backgroundSize: "cover",
                       }}
