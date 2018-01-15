@@ -5,43 +5,45 @@ import Currency from "../../../components/@primitives/typography/currency";
 import FitText from "../components/fit-text";
 import Meta from "../../../components/shared/meta";
 import ProgressBar from "../../../components/giving/giving-progress";
-import inAppLink from "../../../util/inAppLink";
+import Story from "../components/story";
+// import { Leaves } from "../components/layout";
+// import { SolidLeaf, StripedLeaf } from "../components/leaves";
 
 const fundData = [
   { campus: "Aiken", amount: 492202.38 },
   { campus: "Anderson", amount: 14034355.56 },
   { campus: "Boiling Springs", amount: 1243993.92 },
-  { campus: "Central", amount: 118184.91 },
   { campus: "Charleston", amount: 3268977.86 },
   { campus: "Clemson", amount: 1232141.32 },
-  { campus: "Columbia*", amount: 4657366.47 },
+  { campus: "Columbia", amount: 4657366.47 },
   { campus: "Florence", amount: 2884996.14 },
   { campus: "Greenville", amount: 8224077.56 },
   { campus: "Greenwood", amount: 1820647.55 },
   { campus: "Hilton Head", amount: 338145.47 },
-  { campus: "Lexington*", amount: 1265007.66 },
   { campus: "Myrtle Beach", amount: 2317189.53 },
   { campus: "Northeast Columbia", amount: 555401.77 },
   { campus: "Powdersville", amount: 2583636.26 },
   { campus: "Rock Hill", amount: 476788.68 },
   { campus: "Spartanburg", amount: 3136052.53 },
   { campus: "Sumter", amount: 288200.25 },
-  { campus: "Web", amount: 391954.32 },
 ];
 
 // -1 for rounding correction
-const generalFundAmountTotal = fundData.reduce((acc, fund) => acc + fund.amount, 0) - 1;
-const stepUpFundTotal = "1792258.15";
+const generalFundAmountTotal =
+  fundData.reduce((acc, fund) => acc + fund.amount, 0) - 1;
+const overflowOfferingTotal = "4567422.90";
 
 /* eslint-disable max-len */
 export const Finances = () => {
   let count = 0;
   return (
-    <div>
+    <div className="text-dark-primary">
       <Meta title="Finances" />
       {/* Header */}
       <div className="background--primary text-center text-light-primary soft-double-ends">
-        <h3 className="push-top soft-half-sides">General Tithes and Offerings</h3>
+        <h3 className="push-top soft-half-sides">
+          General Tithes and Offerings
+        </h3>
         <div className="push-half-bottom">
           <div className="display-inline-block">
             <FitText compressor={1.5} maxFontSize={18}>
@@ -62,7 +64,10 @@ export const Finances = () => {
               count += 1;
               if (count === fundData.length && count % 2 === 1) {
                 return (
-                  <div className="soft-left one-half@lap-and-up push-half-bottom" key={key}>
+                  <div
+                    className="soft-left two-fifths@lap-and-up push-half-bottom"
+                    key={key}
+                  >
                     <div className="grid__item one-whole">
                       <ProgressBar
                         theme={"dark"}
@@ -78,7 +83,10 @@ export const Finances = () => {
               }
               if (count <= fundData.length / 2) {
                 return (
-                  <div className="grid__item one-half@lap-and-up push-half-bottom" key={key}>
+                  <div
+                    className="grid__item two-fifths@lap-and-up push-half-bottom"
+                    key={key}
+                  >
                     <div className="grid__item one-whole">
                       <ProgressBar
                         theme={"dark"}
@@ -93,7 +101,10 @@ export const Finances = () => {
                 );
               }
               return (
-                <div className="grid__item one-half@lap-and-up push-half-bottom" key={key}>
+                <div
+                  className="grid__item two-fifths@lap-and-up push-half-bottom"
+                  key={key}
+                >
                   <div className="grid__item one-whole">
                     <ProgressBar
                       theme={"dark"}
@@ -109,174 +120,176 @@ export const Finances = () => {
             })}
           </div>
         </div>
-        <div className="soft-sides">
-          <small className="text-center">
-            <em>Lexington campus merged with Columbia campus on Oct. 30.</em>
-          </small>
-          <br />
-          <small className="text-center">
-            <em>Financials have been audited.</em>
-          </small>
-        </div>
       </div>
-      <div className="background--light-primary text-center soft-double-top">
-        <h3 className="push-top push-half-bottom">Land and Building Giving</h3>
+      <div className="background--light-primary text-center soft-double-top soft-sides">
+        <h3 className="push-top push-half-bottom">
+          Giving to Overflow Offering
+        </h3>
+        {
+          // <p className="text-center">
+          //   <i>for land and buildings</i>
+          // </p>
+        }
         <div className="push-top">
           <FitText compressor={1.5} maxFontSize={18}>
             <Currency
-              amount={stepUpFundTotal}
+              amount={overflowOfferingTotal}
               baseHeadingSize="1"
               className="display-inline-block text-center soft-bottom text-dark-primary"
               style={{ fontWeight: "900" }}
-              roundCurrency
             />
           </FitText>
         </div>
         <div className="floating">
           <div className="soft-double-sides soft-sides@handheld text-center three-quarters@lap-wide-and-up nine-tenths@lap floating__item">
-            <hr className="push-ends" style={{ borderTop: "1px solid #dddddd" }} />
-            <div className="soft-ends">
-              <div className="grid push-ends">
-                <div className="grid__item one-half@lap-and-up one-whole">
-                  <h3
-                    className="italic"
-                    style={{
-                      fontFamily: "ff-meta-serif-web-pro, serif",
-                    }}
-                  >
-                    We had
-                  </h3>
-                  <FitText compressor={0.5}>
-                    <h1
-                      className="uppercase flush-bottom soft-half-bottom"
-                      style={{
-                        fontWeight: "900",
-                      }}
-                    >
-                      5,400
-                    </h1>
-                  </FitText>
-                  <h3>first time givers</h3>
-                </div>
-                <div className="grid__item one-half@lap-and-up">
-                  <h3
-                    className="italic"
-                    style={{
-                      fontFamily: "ff-meta-serif-web-pro, serif",
-                    }}
-                  >
-                    and
-                  </h3>
-                  <FitText compressor={0.5}>
-                    <h1
-                      className="uppercase flush-bottom soft-half-bottom"
-                      style={{
-                        fontWeight: "900",
-                      }}
-                    >
-                      18,173
-                    </h1>
-                  </FitText>
-                  <div className="floating text-center">
-                    <h3 className="floating__item push-half-bottom">households gave.</h3>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="background--dark-primary soft floating">
-        <div className="floating__item two-thirds@lap-and-up">
-          <h3 className="push-double-top text-light-primary">Christmas Offering</h3>
-          <FitText compressor={1.5} maxFontSize={18}>
-            <Currency
-              amount={"1125052.43"}
-              baseHeadingSize="1"
-              className="display-inline-block text-center soft-double-bottom"
-              style={{ fontWeight: "900" }}
-              theme="light"
-              roundCurrency
+            <hr
+              className="visuallyhidden@handheld push-ends"
+              style={{ borderTop: "1px solid #dddddd" }}
             />
-          </FitText>
-          <hr
-            className="visuallyhidden@handheld push-ends"
-            style={{ borderTop: "1px solid #ffffff" }}
+          </div>
+          <h3 className="push-top push-bottom">
+            Your Generosity Makes a Difference
+          </h3>
+          <Story
+            image={
+              "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/20172Kenya-110.jpg"
+            }
+            content={`
+              <p style="font-family: colfax-web">NewSpring made a new commitment in 2017 to give 10 percent of tithes to support community organizations, ministries, and churches. Following the pledge, that amount totaled <strong style="font-family: colfax-web">$1.6 million</strong>.</p>
+              <p style="font-family: colfax-web">CARE for AIDS got $75,000 — in addition to $288,000 given in the Overflow Offering — to provide medical care, job training and the hope of the Gospel to families in Kenya and Tanzania dealing with HIV/AIDS. The combined total was the largest gift in the organization’s history.</p>
+              `}
+            overriddenHeader={
+              "Care for AIDS benefits from our Kingdom mentality"
+            }
+            linkUrl={
+              "https://newspring.cc/news/how-our-newspring-family-is-embracing-african-families-living-with-hiv-aids"
+            }
+            linkClass={"h6 btn--small@next btn--dark-secondary"}
+            linkText={"Learn about the work of CARE for AIDS"}
           />
-          <div className="text-light-primary text-left push-top@lap-and-up soft-double-top@lap-and-up push-double-bottom">
-            <div className="floating">
-              <div className="floating__item three-quarters@lap-and-up text-left">
-                <p>This year&#39;s Christmas Offering will support these three projects:</p>
-                <ul>
-                  <li>
-                    Campus expansion to help our{" "}
-                    <a
-                      href={"https://newspring.cc/locations"}
-                      target={"_blank"}
-                      alt={"link to locations page"}
-                      className={"text-light-primary"}
-                    >
-                      current campuses
-                    </a>{" "}
-                    take their next step.
-                  </li>
-                  <li>
-                    Global missions to support{" "}
-                    <a
-                      href={"http://www.freedomchurch.cc/"}
-                      target={"_blank"}
-                      alt={"link to Freedom Church"}
-                      className={"text-light-primary"}
-                    >
-                      Freedom Church
-                    </a>{" "}
-                    as they launch three new campuses in 2017.
-                  </li>
-                  <li>
-                    Local missions in the communities where we have{" "}
-                    <a
-                      href={"https://newspring.cc/locations"}
-                      target={"_blank"}
-                      alt={"link to locations page"}
-                      className={"text-light-primary"}
-                    >
-                      campuses
-                    </a>.
-                  </li>
-                </ul>
-              </div>
+        </div>
+      </div>
+
+      <div className="soft-ends background--light-secondary floating">
+        <div className="grid push-double-ends three-quarters@lap-wide-and-up nine-tenths@lap floating__item">
+          <div className="grid__item text-center one-half@lap-and-up one-whole">
+            <h3
+              className="italic"
+              style={{
+                fontFamily: "ff-meta-serif-web-pro, serif",
+                color: "#bc9b67",
+              }}
+            >
+              We had
+            </h3>
+            <FitText compressor={0.5}>
+              <h1
+                className="uppercase flush-bottom soft-half-bottom"
+                style={{
+                  fontWeight: "900",
+                }}
+              >
+                5,400
+              </h1>
+            </FitText>
+            <h3>First time givers</h3>
+          </div>
+          <div className="grid__item text-center one-half@lap-and-up">
+            <h3
+              className="italic"
+              style={{
+                fontFamily: "ff-meta-serif-web-pro, serif",
+                color: "#bc9b67",
+              }}
+            >
+              and
+            </h3>
+            <FitText compressor={0.5}>
+              <h1
+                className="uppercase flush-bottom soft-half-bottom"
+                style={{
+                  fontWeight: "900",
+                }}
+              >
+                18,173
+              </h1>
+            </FitText>
+            <div className="floating text-center">
+              <h3 className="floating__item push-half-bottom">
+                Households that gave $250 or more.
+              </h3>
             </div>
           </div>
         </div>
       </div>
-      <div className="background--light-primary soft">
+      <div
+        className="soft-ends visuallyhidden@handheld"
+        style={{
+          backgroundImage: `url("//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/2x1.audit.jpg")`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          height: "50em",
+        }}
+      />
+      <div
+        className="soft-ends visuallyhidden@lap-and-up"
+        style={{
+          backgroundImage: `url("//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/1x1.audit.jpg")`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          height: "25em",
+        }}
+      />
+      <div className="background--light-primary soft-sides soft-double-ends">
         <h3 className="text-center push-top">Annual Audit</h3>
-        <p className="constrain-copy push-bottom">
-          NewSpring is audited annually by an external accounting firm according to Generally
-          Accepted Accounting Principles. God calls His people to live above reproach, so for us,
-          the annual audit is a financial and spiritual responsibility (<a
-            href={"https://www.bible.com/search/bible?q=philippians%202:15&version_id=111"}
+        <p
+          style={{ fontFamily: "colfax-web" }}
+          className="constrain-copy text-center"
+        >
+          NewSpring is audited annually by an external accounting firm according
+          to Generally Accepted Accounting Principles. God calls His people to
+          live above reproach, so for us, the annual audit is a financial and
+          spiritual responsibility (<a
+            href={
+              "https://www.bible.com/search/bible?q=philippians%202:15&version_id=111"
+            }
             alt={"Philippians 2:15"}
             target={"_blank"}
           >
             Philippians 2:15
           </a>).
         </p>
-        <div className="text-center">
-          <a
-            className="btn push-bottom"
-            target={"_blank"}
-            href="https://s3.amazonaws.com/ns.assets/apollos/annual+report/2016/2016+Audit.pdf"
-            onClick={inAppLink}
-          >
-            Detailed Report
-          </a>
-        </div>
+        <br />
+        <p
+          style={{ fontFamily: "colfax-web" }}
+          className="constrain-copy text-center push-bottom"
+        >
+          We&#39;ll update this section in May after the Audit is complete. If
+          you have any questions not answered here, please email us at
+          finance@newspring.cc.
+        </p>
+        {
+          // TODO: Update once 2017 Audit is Complete
+          // <div className="text-center">
+          //   <a
+          //     className="btn push-bottom"
+          //     target={"_blank"}
+          //     href="https://s3.amazonaws.com/ns.assets/apollos/annual+report/2016/2016+Audit.pdf"
+          //     onClick={inAppLink}
+          //   >
+          //     Detailed Report
+          //   </a>
+          // </div>
+        }
       </div>
       <div className="background--primary text-center text-light-primary soft">
         <h3 className="push-double-top">Keep Reading</h3>
-        <p>Up next in the NewSpring 2016 Annual Report is information on Next Steps.</p>
-        <Link className="btn--light push-double-bottom" to="/annualreport/next-steps">
+        <Link
+          className="btn--light push-double-bottom"
+          to="/annualreport/next-steps"
+        >
           Go To Next Steps Report
         </Link>
       </div>
