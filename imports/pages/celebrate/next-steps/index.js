@@ -101,8 +101,8 @@ const styles = StyleSheet.create({
 });
 
 const firstTimeVisitorData = [
-  { ministry: "VIP Room", count: 100, color: "#6BAC43" },
-  { ministry: "KidSpring", count: 200, color: "#1C683E" },
+  { ministry: "VIP Room", count: 10636, color: "#6BAC43" },
+  { ministry: "KidSpring", count: 7245, color: "#1C683E" },
   { ministry: "Fuse", count: 9350, color: "#2A4930" },
 ];
 
