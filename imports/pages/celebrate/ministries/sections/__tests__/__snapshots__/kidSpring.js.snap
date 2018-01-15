@@ -23,9 +23,9 @@ exports[`KidSpring renders a layout 1`] = `
               KidSpring
             </h1>
             <p
-              className="text-left"
+              className="text-center"
             >
-              KidSpring is the children's ministry at NewSpring Church.  Every Sunday, children from birth through fifth grade experience Jesus on their level in environments that are safe, fun, and age-appropriate.
+              KidSpring is the children's ministry at NewSpring Church. Every Sunday, children from birth through fifth grade experience Jesus on their level in environments that are safe, fun, and age-appropriate.
             </p>
           </div>
         </div>
@@ -35,7 +35,7 @@ exports[`KidSpring renders a layout 1`] = `
           <h3
             className="push-double-bottom@lap-and-up push-bottom"
           >
-            Average Weekly Attendance
+            Average Number Of Kids Each Sunday
           </h3>
           <Connect(FitTextWithoutData)
             compressor={0.4}
@@ -110,38 +110,33 @@ exports[`KidSpring renders a layout 1`] = `
           label="Hilton Head"
         />
         <MetricCard
-          count="174"
-          key="10"
-          label="Lexington"
-        />
-        <MetricCard
           count="408"
-          key="11"
+          key="10"
           label="Myrtle Beach"
         />
         <MetricCard
           count="75"
-          key="12"
+          key="11"
           label="Northeast Columbia"
         />
         <MetricCard
           count="340"
-          key="13"
+          key="12"
           label="Powdersville"
         />
         <MetricCard
           count="54"
-          key="14"
+          key="13"
           label="Rock Hill"
         />
         <MetricCard
           count="560"
-          key="15"
+          key="14"
           label="Spartanburg"
         />
         <MetricCard
           count="75"
-          key="16"
+          key="15"
           label="Sumter"
         />
       </Connect(CardSlider)>
@@ -160,82 +155,211 @@ exports[`KidSpring renders a layout 1`] = `
           className="italic push-half-bottom secondaryColor_1fivjbh"
         >
           <strong>
-            Every number has a name.
+            Every number is a student life changed
           </strong>
         </h3>
-      </div>
-      <div
-        className="push-double-bottom one-whole text-center"
-      >
-        <small>
-          <em>
-            Click or tap on a number below to see a few interesting facts about this ministry!
-          </em>
-        </small>
       </div>
       <div
         className="floating"
       >
         <div
-          className="floating__item three-quarters@lap-wide-and-up"
+          className="floating__item one-whole"
         >
           <div
             className="floating__item soft-bottom@handheld"
             id="kidspring"
           >
-            <Connect(TagGalleryWithoutData)
-              buttonColor="#0080C1"
-              id="kidspring"
-              overlay="rgba(0, 128, 193, 0.9)"
-              tags={
-                Array [
-                  Object {
-                    "copy": "first time kids returned to KidSpring.",
-                    "image1x1": "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/kidspring/tag1_1x1.jpg",
-                    "image2x1": "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/kidspring/tag1_2x1.jpg",
-                    "imageAlt": "First timers who returned to KidSpring",
-                    "label": "5,970",
-                    "value": "FirstTime",
-                  },
-                  Object {
-                    "copy": "kids were baptized.",
-                    "image1x1": "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/kidspring/tag2_1x1.jpg",
-                    "image2x1": "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/kidspring/tag2_2x1.jpg",
-                    "imageAlt": "Kids were baptized",
-                    "label": "861",
-                    "value": "KidsBaptized",
-                  },
-                  Object {
-                    "copy": "kids gave for the first time.",
-                    "image1x1": "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/kidspring/tag3_1x1.jpg",
-                    "image2x1": "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/kidspring/tag3_2x1.jpg",
-                    "imageAlt": "Kids who gave for the first time",
-                    "label": "191",
-                    "value": "KidsWhoGave",
-                  },
-                  Object {
-                    "copy": "kids transitioned to Fuse.",
-                    "image1x1": "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/kidspring/tag4_1x1.jpg",
-                    "image2x1": "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/kidspring/tag4_2x1.jpg",
-                    "imageAlt": "Kids who transitioned to Fuse",
-                    "label": "928",
-                    "value": "KidsFuse",
-                  },
-                ]
+            <div
+              className="one-half@lap-and-up one-whole text-center display-inline-block soft-ends"
+              key="0"
+              style={
+                Object {
+                  "padding": "1em",
+                }
               }
-            />
+            >
+              <div
+                className="ratio--landscape@lap-and-up ratio--square soft@handheld constrain-copy"
+              >
+                <div
+                  className="ratio__item floating one-whole rounded"
+                  style={
+                    Object {
+                      "background": "linear-gradient(rgba(0, 120, 205, 0.6), rgba(0, 120, 205, 0.6)), url('//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/2x1.kidspring.returned.jpg') 0% 0%",
+                      "backgroundRepeat": "no-repeat",
+                      "backgroundSize": "cover",
+                    }
+                  }
+                >
+                  <div
+                    className="floating__item three-fifths@lap-and-up text-light-primary soft"
+                  >
+                    <h1
+                      className=""
+                      style={
+                        Object {
+                          "fontWeight": "900",
+                        }
+                      }
+                    >
+                      5,970
+                    </h1>
+                    <h4
+                      className="flush"
+                    >
+                      first time kids returned to KidSpring.
+                    </h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              className="one-half@lap-and-up one-whole text-center display-inline-block soft-ends"
+              key="1"
+              style={
+                Object {
+                  "padding": "1em",
+                }
+              }
+            >
+              <div
+                className="ratio--landscape@lap-and-up ratio--square soft@handheld constrain-copy"
+              >
+                <div
+                  className="ratio__item floating one-whole rounded"
+                  style={
+                    Object {
+                      "background": "linear-gradient(rgba(0, 120, 205, 0.6), rgba(0, 120, 205, 0.6)), url('//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/2x1.kidspring.baptized.jpg') 0% 0%",
+                      "backgroundRepeat": "no-repeat",
+                      "backgroundSize": "cover",
+                    }
+                  }
+                >
+                  <div
+                    className="floating__item three-fifths@lap-and-up text-light-primary soft"
+                  >
+                    <h1
+                      className=""
+                      style={
+                        Object {
+                          "fontWeight": "900",
+                        }
+                      }
+                    >
+                      861
+                    </h1>
+                    <h4
+                      className="flush"
+                    >
+                      kids were baptized.
+                    </h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              className="one-half@lap-and-up one-whole text-center display-inline-block soft-ends"
+              key="2"
+              style={
+                Object {
+                  "padding": "1em",
+                }
+              }
+            >
+              <div
+                className="ratio--landscape@lap-and-up ratio--square soft@handheld constrain-copy"
+              >
+                <div
+                  className="ratio__item floating one-whole rounded"
+                  style={
+                    Object {
+                      "background": "linear-gradient(rgba(0, 120, 205, 0.6), rgba(0, 120, 205, 0.6)), url('//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/2x1.kidspring.gave.jpg') 0% 0%",
+                      "backgroundRepeat": "no-repeat",
+                      "backgroundSize": "cover",
+                    }
+                  }
+                >
+                  <div
+                    className="floating__item three-fifths@lap-and-up text-light-primary soft"
+                  >
+                    <h1
+                      className=""
+                      style={
+                        Object {
+                          "fontWeight": "900",
+                        }
+                      }
+                    >
+                      191
+                    </h1>
+                    <h4
+                      className="flush"
+                    >
+                      kids gave for the first time.
+                    </h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              className="one-half@lap-and-up one-whole text-center display-inline-block soft-ends"
+              key="3"
+              style={
+                Object {
+                  "padding": "1em",
+                }
+              }
+            >
+              <div
+                className="ratio--landscape@lap-and-up ratio--square soft@handheld constrain-copy"
+              >
+                <div
+                  className="ratio__item floating one-whole rounded"
+                  style={
+                    Object {
+                      "background": "linear-gradient(rgba(0, 120, 205, 0.6), rgba(0, 120, 205, 0.6)), url('//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/2x1.kidspring.transitioned.jpg') 0% 0%",
+                      "backgroundRepeat": "no-repeat",
+                      "backgroundSize": "cover",
+                    }
+                  }
+                >
+                  <div
+                    className="floating__item three-fifths@lap-and-up text-light-primary soft"
+                  >
+                    <h1
+                      className=""
+                      style={
+                        Object {
+                          "fontWeight": "900",
+                        }
+                      }
+                    >
+                      928
+                    </h1>
+                    <h4
+                      className="flush"
+                    >
+                      kids transitioned to Fuse.
+                    </h4>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <div
             className="soft-double-sides@lap-and-up"
           >
             <Story
-              content="<p>Every week, kids like <strong>Sydney Chandler</strong> from <strong>Anderson</strong> are among the volunteers who make KidSpring a unique, fun, and valuable experience for kids.</p>"
+              content="
+      <p>Every week, SpringZone provides a loving, safe, fun, personalized environment for people with special needs, like <strong>Abby Moore</strong> of <strong>NewSpring Florence</strong>.</p>
+      <p>\\"Abby walks into church dancing and singing ... high-fiving and reaching out to shake hands with anyone who will look her way.\\"</p>
+      "
               contentClass="secondaryColor_1fivjbh"
-              image="//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/stories/story-img6.png"
+              image="//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/IMG_1748.jpg"
               key="0"
               linkClass="h6 btn--small@next soft-sides@portable secondaryColor_1fivjbh-o_O-secondaryHover_106cwja"
               linkText="Read Her Story"
-              linkUrl="https://newspring.cc/stories/sydney-chandler"
+              linkUrl="https://newspring.cc/stories/allison-moore"
             />
           </div>
         </div>

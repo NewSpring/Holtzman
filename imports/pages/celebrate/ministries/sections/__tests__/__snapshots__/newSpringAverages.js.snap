@@ -86,38 +86,33 @@ exports[`NewSpring Averages renders a layout 1`] = `
         label="Hilton Head"
       />
       <MetricCard
-        count="825"
-        key="10"
-        label="Lexington"
-      />
-      <MetricCard
         count="2,046"
-        key="11"
+        key="10"
         label="Myrtle Beach"
       />
       <MetricCard
         count="308"
-        key="12"
+        key="11"
         label="Northeast Columbia"
       />
       <MetricCard
         count="1,446"
-        key="13"
+        key="12"
         label="Powdersville"
       />
       <MetricCard
         count="291"
-        key="14"
+        key="13"
         label="Rock Hill"
       />
       <MetricCard
         count="2,612"
-        key="15"
+        key="14"
         label="Spartanburg"
       />
       <MetricCard
         count="269"
-        key="16"
+        key="15"
         label="Sumter"
       />
     </Connect(CardSlider)>
