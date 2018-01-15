@@ -27,24 +27,22 @@ const styles = StyleSheet.create({
 });
 
 const data = {
-  average: "6,322",
+  average: "4,629",
   campuses: [
     { name: "Aiken", average: "61" },
-    { name: "Anderson", average: "1,394" },
-    { name: "Boiling Springs", average: "198" },
-    { name: "Charleston", average: "585" },
-    { name: "Clemson", average: "128" },
-    { name: "Columbia", average: "679" },
-    { name: "Florence", average: "447" },
-    { name: "Greenville", average: "794" },
-    { name: "Greenwood", average: "339" },
-    { name: "Hilton Head", average: "41" },
-    { name: "Myrtle Beach", average: "408" },
-    { name: "Northeast Columbia", average: "75" },
-    { name: "Powdersville", average: "340" },
-    { name: "Rock Hill", average: "54" },
-    { name: "Spartanburg", average: "560" },
-    { name: "Sumter", average: "75" },
+    { name: "Anderson", average: "979" },
+    { name: "Charleston", average: "446" },
+    { name: "Clemson", average: "226" },
+    { name: "Columbia", average: "512" },
+    { name: "Florence", average: "312" },
+    { name: "Greenville", average: "538" },
+    { name: "Greenwood", average: "231" },
+    { name: "Hilton Head", average: "42" },
+    { name: "Myrtle Beach", average: "290" },
+    { name: "Northeast Columbia", average: "66" },
+    { name: "Powdersville", average: "335" },
+    { name: "Rock Hill", average: "56" },
+    { name: "Spartanburg", average: "489" },
   ],
   stories: [
     {
@@ -69,7 +67,7 @@ const data = {
         image2x1:
           "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/2x1.kidspring.returned.jpg",
         imageAlt: "First timers who returned to KidSpring",
-        label: "5,970",
+        label: "3,610",
         value: "FirstTime",
         copy: "first time kids returned to KidSpring.",
       },
@@ -79,27 +77,27 @@ const data = {
         image2x1:
           "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/2x1.kidspring.baptized.jpg",
         imageAlt: "Kids were baptized",
-        label: "861",
+        label: "307",
         value: "KidsBaptized",
         copy: "kids were baptized.",
       },
-      {
-        image1x1:
-          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/1x1.kidspring.gave.jpg",
-        image2x1:
-          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/2x1.kidspring.gave.jpg",
-        imageAlt: "Kids who gave for the first time",
-        label: "191",
-        value: "KidsWhoGave",
-        copy: "kids gave for the first time.",
-      },
+      // {
+      //   image1x1:
+      //     "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/1x1.kidspring.gave.jpg",
+      //   image2x1:
+      //     "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/2x1.kidspring.gave.jpg",
+      //   imageAlt: "Kids who gave for the first time",
+      //   label: "191",
+      //   value: "KidsWhoGave",
+      //   copy: "kids gave for the first time.",
+      // },
       {
         image1x1:
           "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/1x1.kidspring.transitioned.jpg",
         image2x1:
           "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/2x1.kidspring.transitioned.jpg",
         imageAlt: "Kids who transitioned to Fuse",
-        label: "928",
+        label: "581",
         value: "KidsFuse",
         copy: "kids transitioned to Fuse.",
       },
@@ -171,10 +169,10 @@ const KidSpring = () => (
               {data.tags.tags.map((item, i) => (
                 <div
                   key={i}
-                  className="one-half@lap-and-up one-whole text-center display-inline-block soft-ends"
+                  className="one-third@lap-and-up one-whole text-center display-inline-block soft-ends"
                   style={{ padding: "1em" }}
                 >
-                  <div className="ratio--landscape@lap-and-up ratio--square soft@handheld constrain-copy">
+                  <div className="ratio--square@lap-and-up ratio--square soft@handheld constrain-copy">
                     <div
                       className="ratio__item floating one-whole rounded"
                       style={{
