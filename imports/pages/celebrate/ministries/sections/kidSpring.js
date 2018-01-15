@@ -53,7 +53,7 @@ const data = {
       heading: "",
       content: `
       <p>Every week, SpringZone provides a loving, safe, fun, personalized environment for people with special needs, like <strong>Abby Moore</strong> of <strong>NewSpring Florence</strong>.</p>
-      <p>Abby walks into church dancing and singing ... high-fiving and reaching out to shake hands with anyone who will look her way.</p>
+      <p>"Abby walks into church dancing and singing ... high-fiving and reaching out to shake hands with anyone who will look her way."</p>
       `,
       linkUrl: "",
       linkText: "Read Her Story",
@@ -181,7 +181,8 @@ const KidSpring = () => (
                         background: `linear-gradient(${data.tags.overlay}, ${
                           data.tags.overlay
                         }), url('${item.image2x1}') 0% 0%`,
-                        backgroundSize: "130%",
+                        backgroundRepeat: "no-repeat",
+                        backgroundSize: "cover",
                       }}
                     >
                       <div className="floating__item three-fifths@lap-and-up text-light-primary soft">
