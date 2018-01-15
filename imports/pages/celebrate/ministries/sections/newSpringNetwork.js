@@ -1,4 +1,3 @@
-
 // import FitText from "../../components/fit-text";
 import CardSlider from "../../../../components/@primitives/UI/card-slider";
 import MetricCard from "../../components/metricCard";
@@ -9,24 +8,29 @@ const data = {
   statistics: [
     {
       label: "Leaders Served",
-      value: "46,344",
+      value: "2,397",
     },
     {
       label: "Downloads of free content",
-      value: "56,282",
+      value: "357,384",
     },
     {
       label: "Leaders attended a conference",
-      value: "2,287",
+      value: "73",
     },
   ],
   stories: [
     {
-      imageUrl: "//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/stories/story-img7.1.png",
-      name: "Liz Wynn",
+      imageUrl:
+        "https://www.arcchurches.com/wp-content/uploads/2016/04/openfctv.png",
+      name: "Open Network",
       location: "Arkansas",
-      heading: "Hear from childrens ministry director",
-      content: "<p>&#34;We've been using NewSpring's free children's curriculum exclusively since the beginning of 2016, and the kids love it, especially the acting and the games! Our kids leave excited to tell their friends about church and want to come back every week.&#34;</p>",
+      heading:
+        "In 2017, NewSpring began a new partnership with the Open Network to distribute our resources for free to churches around the world.",
+      content: `
+      <p>The partnership resulted in 252,434 downloads of NewSpring children’s curriculum and the equipping of 5,000 pastors and church leaders.</p>
+      <p>“We have seen a NewSpring series consistently in our top 10 downloads every week. God is definitely making an impact through NewSpring’s resources in the Open Network community.” -- <em>Kyle Kutter, Life.Church</em></p>
+      `,
     },
   ],
 };
@@ -39,7 +43,12 @@ const NewSpringNetwork = () => (
         <div className="grid__item one-whole">
           <div className="constrain-copy">
             <h1 className="uppercase push-bottom">NewSpring Network</h1>
-            <p className="text-left">NewSpring Network equips church leaders with resources, coaching opportunities, and leadership training. Through NewSpring Network, our church provides free children&#39;s ministry curriculum, series graphics, and videos, chord charts, and volunteer training.</p>
+            <p className="text-left">
+              NewSpring Network equips church leaders with resources, coaching
+              opportunities, and leadership training. Through NewSpring Network,
+              our church provides free children&#39;s ministry curriculum,
+              series graphics, and videos, chord charts, and volunteer training.
+            </p>
           </div>
         </div>
       </div>
@@ -47,11 +56,7 @@ const NewSpringNetwork = () => (
 
     <CardSlider>
       {data.statistics.map((statistic, i) => (
-        <MetricCard
-          key={i}
-          count={statistic.value}
-          label={statistic.label}
-        />
+        <MetricCard key={i} count={statistic.value} label={statistic.label} />
       ))}
     </CardSlider>
 
@@ -61,9 +66,7 @@ const NewSpringNetwork = () => (
           <Story
             key={i}
             image={story.imageUrl}
-            name={story.name}
-            location={story.location}
-            heading={story.heading}
+            overriddenHeader={story.heading}
             content={story.content}
           />
         ))}
