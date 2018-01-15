@@ -37,7 +37,7 @@ const overflowOfferingTotal = "4567422.90";
 export const Finances = () => {
   let count = 0;
   return (
-    <div>
+    <div className="text-dark-primary">
       <Meta title="Finances" />
       {/* Header */}
       <div className="background--primary text-center text-light-primary soft-double-ends">
@@ -120,61 +120,8 @@ export const Finances = () => {
             })}
           </div>
         </div>
-        {
-          // <div
-          //   style={{
-          //     position: "absolute",
-          //     top: "800px",
-          //     right: "0",
-          //   }}
-          //   className="visuallyhidden@handheld visuallyhidden@lap one-half display-inline-block"
-          // >
-          //   <Leaves>
-          //     <SolidLeaf
-          //       className="locked-bottom locked-right"
-          //       size="200px"
-          //       color="text-secondary"
-          //       style={{
-          //         transform: "rotate(225deg)",
-          //         marginBottom: "-80px",
-          //         marginRight: "-50px",
-          //       }}
-          //     />
-          //     <SolidLeaf
-          //       className="locked-bottom locked-right"
-          //       size="100px"
-          //       color="text-primary"
-          //       style={{
-          //         transform: "rotate(90deg)",
-          //         marginBottom: "-55px",
-          //         marginRight: "170px",
-          //       }}
-          //     />
-          //     <SolidLeaf
-          //       className="locked-bottom locked-right"
-          //       size="200px"
-          //       color="text-tertiary"
-          //       style={{
-          //         transform: "rotate(0deg)",
-          //         marginBottom: "-170px",
-          //         marginRight: "-10px",
-          //       }}
-          //     />
-          //     <StripedLeaf
-          //       className="locked-bottom locked-right"
-          //       size="120px"
-          //       color="text-secondary"
-          //       style={{
-          //         transform: "rotate(270deg)",
-          //         marginBottom: "-180px",
-          //         marginRight: "150px",
-          //       }}
-          //     />
-          //   </Leaves>
-          // </div>
-        }
       </div>
-      <div className="background--light-primary text-center soft-double-top">
+      <div className="background--light-primary text-center soft-double-top soft-sides">
         <h3 className="push-top push-half-bottom">
           Giving to Overflow Offering
         </h3>
@@ -196,11 +143,11 @@ export const Finances = () => {
         <div className="floating">
           <div className="soft-double-sides soft-sides@handheld text-center three-quarters@lap-wide-and-up nine-tenths@lap floating__item">
             <hr
-              className="push-ends"
+              className="visuallyhidden@handheld push-ends"
               style={{ borderTop: "1px solid #dddddd" }}
             />
           </div>
-          <h3 className="push-top push-half-bottom">
+          <h3 className="push-top push-bottom">
             Your Generosity Makes a Difference
           </h3>
           <Story
@@ -208,19 +155,23 @@ export const Finances = () => {
               "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/20172Kenya-110.jpg"
             }
             content={`
-              <p>NewSpring made a new commitment in 2017 to give 10 percent of tithes to support community organizations, ministries, and churches. Following the pledge, that amount totaled <strong>$1.6 million</strong>.</p>
-              <p>CARE for AIDS got $75,000 — in addition to $288,000 given in the Overflow Offering — to provide medical care, job training and the hope of the Gospel to families in Kenya and Tanzania dealing with HIV/AIDS. The combined total was the largest gift in the organization’s history.</p>
-              <p>Learn about the work of <a href="https://newspring.cc/news/how-our-newspring-family-is-embracing-african-families-living-with-hiv-aids">CARE for AIDS</a>...</p>
+              <p style="font-family: colfax-web">NewSpring made a new commitment in 2017 to give 10 percent of tithes to support community organizations, ministries, and churches. Following the pledge, that amount totaled <strong style="font-family: colfax-web">$1.6 million</strong>.</p>
+              <p style="font-family: colfax-web">CARE for AIDS got $75,000 — in addition to $288,000 given in the Overflow Offering — to provide medical care, job training and the hope of the Gospel to families in Kenya and Tanzania dealing with HIV/AIDS. The combined total was the largest gift in the organization’s history.</p>
               `}
             overriddenHeader={
               "Care for AIDS benefits from our Kingdom mentality"
             }
+            linkUrl={
+              "https://newspring.cc/news/how-our-newspring-family-is-embracing-african-families-living-with-hiv-aids"
+            }
+            linkClass={"h6 btn--small@next btn--dark-secondary"}
+            linkText={"Learn about the work of CARE for AIDS"}
           />
         </div>
       </div>
 
-      <div className="soft-ends background--light-secondary">
-        <div className="grid push-ends">
+      <div className="soft-ends background--light-secondary floating">
+        <div className="grid push-double-ends three-quarters@lap-wide-and-up nine-tenths@lap floating__item">
           <div className="grid__item text-center one-half@lap-and-up one-whole">
             <h3
               className="italic"
@@ -272,18 +223,31 @@ export const Finances = () => {
         </div>
       </div>
       <div
-        className="soft-ends"
+        className="soft-ends visuallyhidden@handheld"
         style={{
           backgroundImage: `url("//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/2x1.audit.jpg")`,
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           backgroundPosition: "center",
-          height: "36em",
+          height: "50em",
         }}
       />
-      <div className="background--light-primary soft">
+      <div
+        className="soft-ends visuallyhidden@lap-and-up"
+        style={{
+          backgroundImage: `url("//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/1x1.audit.jpg")`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          height: "25em",
+        }}
+      />
+      <div className="background--light-primary soft-sides soft-double-ends">
         <h3 className="text-center push-top">Annual Audit</h3>
-        <p className="constrain-copy text-center">
+        <p
+          style={{ fontFamily: "colfax-web" }}
+          className="constrain-copy text-center"
+        >
           NewSpring is audited annually by an external accounting firm according
           to Generally Accepted Accounting Principles. God calls His people to
           live above reproach, so for us, the annual audit is a financial and
@@ -298,7 +262,10 @@ export const Finances = () => {
           </a>).
         </p>
         <br />
-        <p className="constrain-copy text-center push-bottom">
+        <p
+          style={{ fontFamily: "colfax-web" }}
+          className="constrain-copy text-center push-bottom"
+        >
           We&#39;ll update this section in May after the Audit is complete. If
           you have any questions not answered here, please email us at
           finance@newspring.cc.

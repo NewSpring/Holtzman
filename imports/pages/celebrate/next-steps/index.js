@@ -133,7 +133,10 @@ export const NextSteps = () => (
     <div className="background--light-secondary soft-double-ends soft-sides">
       <div className="push-ends">
         <h3 className="text-center">Why do we talk about Next Steps?</h3>
-        <p className="constrain-copy" style={{ fontFamily: "colfax-web" }}>
+        <p
+          className="constrain-copy text-center"
+          style={{ fontFamily: "colfax-web" }}
+        >
           NewSpring exists to connect people to Jesus and each other. Salvation
           is only the start of someone’s spiritual journey, and every journey is
           a series of next steps. Take a look at some of the next steps we
@@ -143,7 +146,7 @@ export const NextSteps = () => (
     </div>
     {/* Salvations */}
     <div className="background--light-primary floating">
-      <div className="soft-double soft-sides@handheld push-double-top text-center three-quarters@lap-wide-and-up nine-tenths@lap floating__item">
+      <div className="soft-ends soft-sides@handheld push-double-top text-center three-quarters@lap-wide-and-up nine-tenths@lap floating__item">
         <h3>Salvations</h3>
         <FitText compressor={0.4} maxFontSize={80}>
           <h1
@@ -201,9 +204,7 @@ export const NextSteps = () => (
         <h5 className="text-light-primary push-top">
           people go public for Jesus through
         </h5>
-        <h1 className="text-light-primary push-top push-bottom soft-bottom soft-double-bottom@lap-and-up">
-          baptism.
-        </h1>
+        <h1 className="text-light-primary push-top push-bottom">baptism.</h1>
       </div>
     </div>
     {/* First Time Visitors */}
@@ -290,6 +291,26 @@ export const NextSteps = () => (
       </div>
     </div>
     {/* Volunteers */}
+    <div
+      className="soft-ends visuallyhidden@handheld"
+      style={{
+        backgroundImage: `url("//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/2x1.serve.jpg")`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        height: "50em",
+      }}
+    />
+    <div
+      className="soft-ends visuallyhidden@lap-and-up"
+      style={{
+        backgroundImage: `url("//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/1x1.serve.jpg")`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        height: "25em",
+      }}
+    />
     <div className="background--light-secondary soft-double-top soft-double-bottom text-center">
       <div className="push-double-top">
         <h3
@@ -369,7 +390,10 @@ export const NextSteps = () => (
     <div className="background--light-primary soft-double@lap-and-up soft@handheld">
       <div className="one-whole push-double-top push-double-bottom@handheld push-bottom@lap-and-up">
         <h3 className="text-center">Connect</h3>
-        <p className="constrain-copy" style={{ fontFamily: "colfax-web" }}>
+        <p
+          className="constrain-copy text-center"
+          style={{ fontFamily: "colfax-web" }}
+        >
           Life is better with friends. Connect is a fun first step for anyone
           who wants to learn more about NewSpring, get to know new people, and
           get connected to next steps.
@@ -467,7 +491,7 @@ export const NextSteps = () => (
             />
           </div>
           <p
-            className="constrain-copy@lap-and-up push-double-bottom@handheld"
+            className="constrain-copy@lap-and-up push-double-bottom@handheld text-center@handheld"
             style={{ fontFamily: "colfax-web" }}
           >
             We are #ForSC! God has called us to make a difference in South
@@ -515,7 +539,7 @@ export const NextSteps = () => (
       </div>
     </div>
     {/* Foreign Missions */}
-    <div className="background--tertiary soft-double@lap-and-up soft-sides@handheld soft-top@handheld">
+    <div className="background--tertiary soft-double@lap-and-up soft-sides@handheld soft-ends@handheld">
       <div className="grid one-whole push-double-top push-double-bottom@lap-and-up">
         <div
           className="grid__item one-half@lap-and-up display-inline-block visuallyhidden@handheld"
@@ -563,7 +587,7 @@ export const NextSteps = () => (
             />
           </div>
           <p
-            className="constrain-copy@lap-and-up"
+            className="constrain-copy@lap-and-up text-center@handheld"
             style={{ fontFamily: "colfax-web" }}
           >
             We believe the local church is the hope of the world. Through
