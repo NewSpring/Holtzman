@@ -175,7 +175,7 @@ exports[`KidSpring renders a layout 1`] = `
                   className="ratio__item floating one-whole rounded"
                   style={
                     Object {
-                      "background": "linear-gradient(rgba(0, 120, 205, 0.6), rgba(0, 120, 205, 0.6)), url('//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/2x1.kidspring.returned.jpg') 0% 0%",
+                      "background": "linear-gradient(rgba(0, 120, 205, 0.6), rgba(0, 120, 205, 0.6)), url('//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/KidSpring/1x1.kidspring.returned.jpg') 0% 0%",
                       "backgroundRepeat": "no-repeat",
                       "backgroundSize": "cover",
                     }
@@ -219,7 +219,7 @@ exports[`KidSpring renders a layout 1`] = `
                   className="ratio__item floating one-whole rounded"
                   style={
                     Object {
-                      "background": "linear-gradient(rgba(0, 120, 205, 0.6), rgba(0, 120, 205, 0.6)), url('//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/2x1.kidspring.baptized.jpg') 0% 0%",
+                      "background": "linear-gradient(rgba(0, 120, 205, 0.6), rgba(0, 120, 205, 0.6)), url('//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/KidSpring/1x1.kidspring.baptized.jpg') 0% 0%",
                       "backgroundRepeat": "no-repeat",
                       "backgroundSize": "cover",
                     }
@@ -263,7 +263,7 @@ exports[`KidSpring renders a layout 1`] = `
                   className="ratio__item floating one-whole rounded"
                   style={
                     Object {
-                      "background": "linear-gradient(rgba(0, 120, 205, 0.6), rgba(0, 120, 205, 0.6)), url('//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/2x1.kidspring.transitioned.jpg') 0% 0%",
+                      "background": "linear-gradient(rgba(0, 120, 205, 0.6), rgba(0, 120, 205, 0.6)), url('//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/KidSpring/1x1.kidspring.transitioned.jpg') 0% 0%",
                       "backgroundRepeat": "no-repeat",
                       "backgroundSize": "cover",
                     }
