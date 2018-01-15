@@ -63,7 +63,7 @@ exports[`Fuse renders a layout 1`] = `
                   }
                 }
               >
-                4,060
+                3,324
               </h1>
             </Connect(FitTextWithoutData)>
           </div>
@@ -71,84 +71,69 @@ exports[`Fuse renders a layout 1`] = `
       </div>
       <Connect(CardSlider)>
         <MetricCard
-          count="59"
+          count="81"
           key="0"
           label="Aiken"
         />
         <MetricCard
-          count="883"
+          count="677"
           key="1"
           label="Anderson"
         />
         <MetricCard
-          count="189"
+          count="384"
           key="2"
-          label="Boiling Springs"
-        />
-        <MetricCard
-          count="361"
-          key="3"
           label="Charleston"
         />
         <MetricCard
-          count="213"
-          key="4"
+          count="278"
+          key="3"
           label="Clemson"
         />
         <MetricCard
-          count="485"
-          key="5"
+          count="418"
+          key="4"
           label="Columbia"
         />
         <MetricCard
-          count="243"
-          key="6"
+          count="146"
+          key="5"
           label="Florence"
         />
         <MetricCard
-          count="529"
-          key="7"
+          count="389"
+          key="6"
           label="Greenville"
         />
         <MetricCard
-          count="173"
-          key="8"
+          count="125"
+          key="7"
           label="Greenwood"
         />
         <MetricCard
-          count="18"
-          key="9"
+          count="20"
+          key="8"
           label="Hilton Head"
         />
         <MetricCard
-          count="201"
-          key="10"
-          label="Lexington"
-        />
-        <MetricCard
-          count="305"
-          key="11"
+          count="226"
+          key="9"
           label="Myrtle Beach"
         />
         <MetricCard
-          count="202"
-          key="12"
+          count="245"
+          key="10"
           label="Powdersville"
         />
         <MetricCard
-          count="28"
-          key="13"
+          count="40"
+          key="11"
           label="Rock Hill"
         />
         <MetricCard
-          count="313"
-          key="14"
+          count="295"
+          key="12"
           label="Spartanburg"
-        />
-        <MetricCard
-          count="80"
-          key="15"
-          label="Sumter"
         />
       </Connect(CardSlider)>
       <div
@@ -189,7 +174,7 @@ exports[`Fuse renders a layout 1`] = `
                   className="ratio__item floating one-whole rounded"
                   style={
                     Object {
-                      "background": "linear-gradient(rgba(107, 164, 184, 0.6), rgba(107, 164, 184, 0.6)), url('//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/fuse/tag1_2x1.jpg') 0% 0%",
+                      "background": "linear-gradient(rgba(107, 164, 184, 0.6), rgba(107, 164, 184, 0.6)), url('//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Fuse/2x1.fuse.1sttime.jpg') 0% 0%",
                       "backgroundRepeat": "no-repeat",
                       "backgroundSize": "cover",
                     }
@@ -206,7 +191,7 @@ exports[`Fuse renders a layout 1`] = `
                         }
                       }
                     >
-                      13,943
+                      9,350
                     </h1>
                     <h4
                       className="flush"
@@ -233,7 +218,7 @@ exports[`Fuse renders a layout 1`] = `
                   className="ratio__item floating one-whole rounded"
                   style={
                     Object {
-                      "background": "linear-gradient(rgba(107, 164, 184, 0.6), rgba(107, 164, 184, 0.6)), url('//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/fuse/tag2_2x1.jpg') 0% 0%",
+                      "background": "linear-gradient(rgba(107, 164, 184, 0.6), rgba(107, 164, 184, 0.6)), url('//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Fuse/2x1.fuse.gave.jpg') 0% 0%",
                       "backgroundRepeat": "no-repeat",
                       "backgroundSize": "cover",
                     }
@@ -250,7 +235,7 @@ exports[`Fuse renders a layout 1`] = `
                         }
                       }
                     >
-                      217
+                      147
                     </h1>
                     <h4
                       className="flush"
@@ -277,7 +262,7 @@ exports[`Fuse renders a layout 1`] = `
                   className="ratio__item floating one-whole rounded"
                   style={
                     Object {
-                      "background": "linear-gradient(rgba(107, 164, 184, 0.6), rgba(107, 164, 184, 0.6)), url('//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/fuse/tag3_2x1.jpg') 0% 0%",
+                      "background": "linear-gradient(rgba(107, 164, 184, 0.6), rgba(107, 164, 184, 0.6)), url('//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Fuse/2x1.fuse.group.jpg') 0% 0%",
                       "backgroundRepeat": "no-repeat",
                       "backgroundSize": "cover",
                     }
@@ -294,7 +279,7 @@ exports[`Fuse renders a layout 1`] = `
                         }
                       }
                     >
-                      3,439
+                      2,564
                     </h1>
                     <h4
                       className="flush"
@@ -321,7 +306,7 @@ exports[`Fuse renders a layout 1`] = `
                   className="ratio__item floating one-whole rounded"
                   style={
                     Object {
-                      "background": "linear-gradient(rgba(107, 164, 184, 0.6), rgba(107, 164, 184, 0.6)), url('//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/fuse/tag4_2x1.jpg') 0% 0%",
+                      "background": "linear-gradient(rgba(107, 164, 184, 0.6), rgba(107, 164, 184, 0.6)), url('//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Fuse/2x1.fuse.volunteer.jpg') 0% 0%",
                       "backgroundRepeat": "no-repeat",
                       "backgroundSize": "cover",
                     }
@@ -338,7 +323,7 @@ exports[`Fuse renders a layout 1`] = `
                         }
                       }
                     >
-                      1,455
+                      1,119
                     </h1>
                     <h4
                       className="flush"
@@ -364,7 +349,7 @@ exports[`Fuse renders a layout 1`] = `
                   className="ratio__item floating one-whole rounded"
                   style={
                     Object {
-                      "background": "linear-gradient(rgba(107, 164, 184, 0.6), rgba(107, 164, 184, 0.6)), url('//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/fuse/tag1_2x1.jpg') 0% 0%",
+                      "background": "linear-gradient(rgba(107, 164, 184, 0.6), rgba(107, 164, 184, 0.6)), url('//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Fuse/2x1.fuse.death2life.jpg') 0% 0%",
                       "backgroundRepeat": "no-repeat",
                       "backgroundSize": "cover",
                     }
@@ -394,7 +379,7 @@ exports[`Fuse renders a layout 1`] = `
                             }
                           }
                         >
-                          3,880
+                          2,469
                         </h1>
                       </Connect(FitTextWithoutData)>
                       <h3
@@ -444,22 +429,22 @@ exports[`Fuse renders a layout 1`] = `
       >
         <Connect(CardSlider)>
           <MetricCard
-            count="671"
+            count="517"
             key="0"
             label="Salvations"
           />
           <MetricCard
-            count="1,407"
+            count="600"
             key="1"
             label="Baptisms"
           />
           <MetricCard
-            count="5,182"
+            count="4,171"
             key="2"
             label="Students"
           />
           <MetricCard
-            count="1,368"
+            count="1,101"
             key="3"
             label="Volunteers"
           />

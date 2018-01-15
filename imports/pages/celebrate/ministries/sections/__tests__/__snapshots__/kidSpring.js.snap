@@ -49,7 +49,7 @@ exports[`KidSpring renders a layout 1`] = `
                 }
               }
             >
-              6,322
+              4,629
             </h1>
           </Connect(FitTextWithoutData)>
         </div>
@@ -65,79 +65,69 @@ exports[`KidSpring renders a layout 1`] = `
           label="Aiken"
         />
         <MetricCard
-          count="1,394"
+          count="979"
           key="1"
           label="Anderson"
         />
         <MetricCard
-          count="198"
+          count="446"
           key="2"
-          label="Boiling Springs"
-        />
-        <MetricCard
-          count="585"
-          key="3"
           label="Charleston"
         />
         <MetricCard
-          count="128"
-          key="4"
+          count="226"
+          key="3"
           label="Clemson"
         />
         <MetricCard
-          count="679"
-          key="5"
+          count="512"
+          key="4"
           label="Columbia"
         />
         <MetricCard
-          count="447"
-          key="6"
+          count="312"
+          key="5"
           label="Florence"
         />
         <MetricCard
-          count="794"
-          key="7"
+          count="538"
+          key="6"
           label="Greenville"
         />
         <MetricCard
-          count="339"
-          key="8"
+          count="231"
+          key="7"
           label="Greenwood"
         />
         <MetricCard
-          count="41"
-          key="9"
+          count="42"
+          key="8"
           label="Hilton Head"
         />
         <MetricCard
-          count="408"
-          key="10"
+          count="290"
+          key="9"
           label="Myrtle Beach"
         />
         <MetricCard
-          count="75"
-          key="11"
+          count="66"
+          key="10"
           label="Northeast Columbia"
         />
         <MetricCard
-          count="340"
-          key="12"
+          count="335"
+          key="11"
           label="Powdersville"
         />
         <MetricCard
-          count="54"
-          key="13"
+          count="56"
+          key="12"
           label="Rock Hill"
         />
         <MetricCard
-          count="560"
-          key="14"
+          count="489"
+          key="13"
           label="Spartanburg"
-        />
-        <MetricCard
-          count="75"
-          key="15"
-          label="Sumter"
         />
       </Connect(CardSlider)>
     </div>
@@ -170,7 +160,7 @@ exports[`KidSpring renders a layout 1`] = `
             id="kidspring"
           >
             <div
-              className="one-half@lap-and-up one-whole text-center display-inline-block soft-ends"
+              className="one-third@lap-and-up one-whole text-center display-inline-block soft-ends"
               key="0"
               style={
                 Object {
@@ -179,7 +169,7 @@ exports[`KidSpring renders a layout 1`] = `
               }
             >
               <div
-                className="ratio--landscape@lap-and-up ratio--square soft@handheld constrain-copy"
+                className="ratio--square@lap-and-up ratio--square soft@handheld constrain-copy"
               >
                 <div
                   className="ratio__item floating one-whole rounded"
@@ -202,7 +192,7 @@ exports[`KidSpring renders a layout 1`] = `
                         }
                       }
                     >
-                      5,970
+                      3,610
                     </h1>
                     <h4
                       className="flush"
@@ -214,7 +204,7 @@ exports[`KidSpring renders a layout 1`] = `
               </div>
             </div>
             <div
-              className="one-half@lap-and-up one-whole text-center display-inline-block soft-ends"
+              className="one-third@lap-and-up one-whole text-center display-inline-block soft-ends"
               key="1"
               style={
                 Object {
@@ -223,7 +213,7 @@ exports[`KidSpring renders a layout 1`] = `
               }
             >
               <div
-                className="ratio--landscape@lap-and-up ratio--square soft@handheld constrain-copy"
+                className="ratio--square@lap-and-up ratio--square soft@handheld constrain-copy"
               >
                 <div
                   className="ratio__item floating one-whole rounded"
@@ -246,7 +236,7 @@ exports[`KidSpring renders a layout 1`] = `
                         }
                       }
                     >
-                      861
+                      307
                     </h1>
                     <h4
                       className="flush"
@@ -258,7 +248,7 @@ exports[`KidSpring renders a layout 1`] = `
               </div>
             </div>
             <div
-              className="one-half@lap-and-up one-whole text-center display-inline-block soft-ends"
+              className="one-third@lap-and-up one-whole text-center display-inline-block soft-ends"
               key="2"
               style={
                 Object {
@@ -267,51 +257,7 @@ exports[`KidSpring renders a layout 1`] = `
               }
             >
               <div
-                className="ratio--landscape@lap-and-up ratio--square soft@handheld constrain-copy"
-              >
-                <div
-                  className="ratio__item floating one-whole rounded"
-                  style={
-                    Object {
-                      "background": "linear-gradient(rgba(0, 120, 205, 0.6), rgba(0, 120, 205, 0.6)), url('//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/2x1.kidspring.gave.jpg') 0% 0%",
-                      "backgroundRepeat": "no-repeat",
-                      "backgroundSize": "cover",
-                    }
-                  }
-                >
-                  <div
-                    className="floating__item three-fifths@lap-and-up text-light-primary soft"
-                  >
-                    <h1
-                      className=""
-                      style={
-                        Object {
-                          "fontWeight": "900",
-                        }
-                      }
-                    >
-                      191
-                    </h1>
-                    <h4
-                      className="flush"
-                    >
-                      kids gave for the first time.
-                    </h4>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              className="one-half@lap-and-up one-whole text-center display-inline-block soft-ends"
-              key="3"
-              style={
-                Object {
-                  "padding": "1em",
-                }
-              }
-            >
-              <div
-                className="ratio--landscape@lap-and-up ratio--square soft@handheld constrain-copy"
+                className="ratio--square@lap-and-up ratio--square soft@handheld constrain-copy"
               >
                 <div
                   className="ratio__item floating one-whole rounded"
@@ -334,7 +280,7 @@ exports[`KidSpring renders a layout 1`] = `
                         }
                       }
                     >
-                      928
+                      581
                     </h1>
                     <h4
                       className="flush"
