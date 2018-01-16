@@ -406,7 +406,7 @@ export const NextSteps = () => (
             />
             <Story
               image={
-                "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/stories/story-img4.png"
+                "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/stories/CHELSEA-1.jpg"
               }
               content={`<p style="font-family: colfax-web">&#34;I am breaking more of my chains every week at my home group. Church has gone from an obligation or a sometimes-thing to an every-week-thing I absolutely look forward to!&#34;</p>`}
               name={"Chelsea Tolive"}

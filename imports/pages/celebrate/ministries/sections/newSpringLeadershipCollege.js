@@ -1,5 +1,6 @@
 import { StyleSheet, css } from "aphrodite";
 import Story from "../../components/story";
+import FitText from "../../components/fit-text";
 
 const styles = StyleSheet.create({
   secondaryColor: {
@@ -62,7 +63,7 @@ const NewSpringLeadershipCollege = () => (
             <h1 className="uppercase push-bottom">
               NewSpring Leadership College
             </h1>
-            <p className="text-left">
+            <p className="text-center" style={{ fontFamily: "colfax-web" }}>
               <a
                 href={"https://newspringcollege.com"}
                 alt={"NewSpring Leadership College link"}
@@ -103,9 +104,11 @@ const NewSpringLeadershipCollege = () => (
                     }}
                   >
                     <div className="floating__item three-fifths@lap-and-up text-light-primary soft">
-                      <h1 className="" style={{ fontWeight: "900" }}>
-                        {item.label}
-                      </h1>
+                      <FitText compressor={1.0} maxFontSize="100">
+                        <h1 className="" style={{ fontWeight: "900" }}>
+                          {item.label}
+                        </h1>
+                      </FitText>
                       <h3 className="flush">{item.copy}</h3>
                     </div>
                   </div>
@@ -120,18 +123,18 @@ const NewSpringLeadershipCollege = () => (
               "Kellen Young graduated from the third year of NewSpring Leadership College in 2017 and took a role as a full-time student pastor."
             }
             image={
-              "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Wesley/Wesley_Intothewater.png"
+              "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/stories/KELLEN_hero_2_1.jpg"
             }
             content={`
-              <p>“If you want to learn practical, hands-on ministry, NewSpring College is the place to go.”</p>
+              <p style="font-family: colfax-web">“If you want to learn practical, hands-on ministry, NewSpring College is the place to go.”</p>
               `}
             contentClass={css(styles.secondaryColor)}
             linkUrl="http://newspring.cc/stories/kellen-young"
             linkClass={`h6 btn--small@next soft-sides@portable ${css(
               styles.secondaryColor,
-              styles.secondaryHover // eslint-disable-line
+              styles.secondaryHover, // eslint-disable-line
             )}`}
-            linkText={"Read Her Story"}
+            linkText={"Read the story"}
           />
         </div>
       </div>

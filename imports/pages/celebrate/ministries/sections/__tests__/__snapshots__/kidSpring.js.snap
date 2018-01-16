@@ -24,6 +24,11 @@ exports[`KidSpring renders a layout 1`] = `
             </h1>
             <p
               className="text-center"
+              style={
+                Object {
+                  "fontFamily": "colfax-web",
+                }
+              }
             >
               KidSpring is the children's ministry at NewSpring Church. Every Sunday, children from birth through fifth grade experience Jesus on their level in environments that are safe, fun, and age-appropriate.
             </p>
@@ -297,8 +302,8 @@ exports[`KidSpring renders a layout 1`] = `
           >
             <Story
               content="
-      <p>Every week, SpringZone provides a loving, safe, fun, personalized environment for people with special needs, like <strong>Abby Moore</strong> of <strong>NewSpring Florence</strong>.</p>
-      <p>\\"Abby walks into church dancing and singing ... high-fiving and reaching out to shake hands with anyone who will look her way.\\"</p>
+      <p style=\\"font-family: colfax-web\\">Every week, SpringZone provides a loving, safe, fun, personalized environment for people with special needs, like <strong>Abby Moore</strong> of <strong>NewSpring Florence</strong>.</p>
+      <p style=\\"font-family: colfax-web\\">\\"Abby walks into church dancing and singing ... high-fiving and reaching out to shake hands with anyone who will look her way.\\"</p>
       "
               contentClass="secondaryColor_1fivjbh"
               image="//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/IMG_1748.jpg"

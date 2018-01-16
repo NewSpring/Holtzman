@@ -43,7 +43,7 @@ const NewSpringNetwork = () => (
         <div className="grid__item one-whole">
           <div className="constrain-copy">
             <h1 className="uppercase push-bottom">NewSpring Network</h1>
-            <p className="text-left">
+            <p className="text-center" style={{ fontFamily: "colfax-web" }}>
               NewSpring Network equips church leaders with resources, coaching
               opportunities, and leadership training. Through NewSpring Network,
               our church provides free children&#39;s ministry curriculum,

@@ -50,8 +50,8 @@ const data = {
         "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/IMG_1748.jpg",
       heading: "",
       content: `
-      <p>Every week, SpringZone provides a loving, safe, fun, personalized environment for people with special needs, like <strong>Abby Moore</strong> of <strong>NewSpring Florence</strong>.</p>
-      <p>"Abby walks into church dancing and singing ... high-fiving and reaching out to shake hands with anyone who will look her way."</p>
+      <p style="font-family: colfax-web">Every week, SpringZone provides a loving, safe, fun, personalized environment for people with special needs, like <strong>Abby Moore</strong> of <strong>NewSpring Florence</strong>.</p>
+      <p style="font-family: colfax-web">"Abby walks into church dancing and singing ... high-fiving and reaching out to shake hands with anyone who will look her way."</p>
       `,
       linkUrl: "",
       linkText: "Read Her Story",
@@ -110,7 +110,7 @@ const KidSpring = () => (
   <div>
     <div
       className={`${css(
-        styles.primaryBackground // eslint-disable-line
+        styles.primaryBackground, // eslint-disable-line
       )} soft-double-ends@lap-and-up soft-ends text-center text-light-primary`}
     >
       <div className="constrain-page soft-double-top soft-sides@handheld soft-sides@lap">
@@ -118,7 +118,7 @@ const KidSpring = () => (
           <div className="grid__item one-whole push-bottom">
             <div className="constrain-copy">
               <h1 className="uppercase push-bottom">KidSpring</h1>
-              <p className="text-center">
+              <p className="text-center" style={{ fontFamily: "colfax-web" }}>
                 KidSpring is the children&#39;s ministry at NewSpring Church.
                 Every Sunday, children from birth through fifth grade experience
                 Jesus on their level in environments that are safe, fun, and
@@ -204,7 +204,7 @@ const KidSpring = () => (
                   linkUrl="https://newspring.cc/stories/allison-moore"
                   linkClass={`h6 btn--small@next soft-sides@portable ${css(
                     styles.secondaryColor,
-                    styles.secondaryHover // eslint-disable-line
+                    styles.secondaryHover, // eslint-disable-line
                   )}`}
                   linkText={story.linkText}
                 />

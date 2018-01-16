@@ -22,7 +22,12 @@ exports[`NewSpring Network renders a layout 1`] = `
             NewSpring Network
           </h1>
           <p
-            className="text-left"
+            className="text-center"
+            style={
+              Object {
+                "fontFamily": "colfax-web",
+              }
+            }
           >
             NewSpring Network equips church leaders with resources, coaching opportunities, and leadership training. Through NewSpring Network, our church provides free children's ministry curriculum, series graphics, and videos, chord charts, and volunteer training.
           </p>
