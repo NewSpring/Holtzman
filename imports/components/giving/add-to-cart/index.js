@@ -159,7 +159,9 @@ class CartContainer extends Component {
     }
 
     const value = Number(`${makeArr.join("")}`.replace(/[^0-9\.]+/g, ""));
-    if (isNaN(value)) return 0.0;
+    if (isNaN(value)) {
+      return 0.0; // eslint-disable-line
+    }
     // this will rerender the component and rebuild
     // the subfunds as needed
     this.setState(({ subfunds }) => {
@@ -180,7 +182,7 @@ class CartContainer extends Component {
       this.props.addTransactions({ [id]: { label: fund.name, value } });
     }
 
-    return value.toFixed(2);
+    return value.toFixed(2); // eslint-disable-line
   };
 
   changeFund = (id: number, subfundId: number) => {
@@ -191,9 +193,10 @@ class CartContainer extends Component {
       // a subfund should never show a slected fund
       // so we find which funds are selected
       // then remove them from the subfunds accounts
-      const selectedFunds = [id, ...subfunds.map(({ amount, fundId }) => amount && fundId)].filter(
-        x => !!x,
-      );
+      const selectedFunds = [
+        id,
+        ...subfunds.map(({ amount, fundId }) => amount && fundId),
+      ].filter(x => !!x);
 
       // move the fund around
       const newFunds = subfunds.map(subfund => {
@@ -222,7 +225,9 @@ class CartContainer extends Component {
     // this is a side effect
     // it wont rerender
     // this subfund instance was managing the following subfund
-    const currentFund: Object[] = state.subfunds.filter(x => x.id === subfundId);
+    const currentFund: Object[] = state.subfunds.filter(
+      x => x.id === subfundId // eslint-disable-line
+    );
 
     if (currentFund.length) {
       this.props.clearTransaction(currentFund[0].fundId);
