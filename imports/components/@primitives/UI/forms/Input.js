@@ -51,7 +51,6 @@ type IInputProps = {
   autoCorrect?: boolean,
   spellCheck?: boolean,
   pattern: string,
-  onInvalid: string,
   step: string,
   readOnly: string,
   ignoreLastPass: boolean,
