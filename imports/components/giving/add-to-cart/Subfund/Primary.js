@@ -1,7 +1,5 @@
 // @flow
 
-// $FlowMeteor
-import { Meteor } from "meteor/meteor";
 import { css } from "aphrodite";
 
 import Forms from "../../../@primitives/UI/forms";
@@ -31,8 +29,8 @@ const Primary = ({
 
     <Forms.Input
       hideLabel
-      type={Meteor.isCordova ? "number" : "number"}
-      pattern={"[0-9]*"}
+      type={"tel"}
+      pattern
       step={"0.01"}
       classes={["soft-bottom", "input--active", "display-inline-block"]}
       inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom text-brand ${css(

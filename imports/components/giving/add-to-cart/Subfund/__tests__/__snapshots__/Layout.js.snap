@@ -37,7 +37,7 @@ exports[`should accept an active prop to show the input 1`] = `
       format={undefined}
       hideLabel={true}
       inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
-      pattern="[0-9]*"
+      pattern={true}
       placeholder="0.00"
       step="0.01"
       style={
@@ -46,7 +46,7 @@ exports[`should accept an active prop to show the input 1`] = `
           "paddingLeft": ".8em",
         }
       }
-      type="number"
+      type="tel"
       value="5.00"
     >
       <div
@@ -90,7 +90,6 @@ exports[`should accept an active prop to show the input 1`] = `
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
-            pattern="[0-9]*"
             placeholder="0.00"
             readOnly={undefined}
             spellCheck={undefined}
@@ -101,7 +100,7 @@ exports[`should accept an active prop to show the input 1`] = `
                 "paddingLeft": ".8em",
               }
             }
-            type="number"
+            type="tel"
           />
         </span>
       </div>
@@ -212,7 +211,7 @@ exports[`should accept custom classes thru classes prop 1`] = `
       format={undefined}
       hideLabel={true}
       inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
-      pattern="[0-9]*"
+      pattern={true}
       placeholder="0.00"
       step="0.01"
       style={
@@ -221,7 +220,7 @@ exports[`should accept custom classes thru classes prop 1`] = `
           "paddingLeft": ".8em",
         }
       }
-      type="number"
+      type="tel"
       value={undefined}
     >
       <div
@@ -269,7 +268,6 @@ exports[`should accept custom classes thru classes prop 1`] = `
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
-            pattern="[0-9]*"
             placeholder="0.00"
             readOnly={undefined}
             spellCheck={undefined}
@@ -280,7 +278,7 @@ exports[`should accept custom classes thru classes prop 1`] = `
                 "paddingLeft": ".8em",
               }
             }
-            type="number"
+            type="tel"
           />
         </span>
       </div>
@@ -393,7 +391,7 @@ exports[`should accept multiple accounts through accounts prop 1`] = `
       format={undefined}
       hideLabel={true}
       inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
-      pattern="[0-9]*"
+      pattern={true}
       placeholder="0.00"
       step="0.01"
       style={
@@ -402,7 +400,7 @@ exports[`should accept multiple accounts through accounts prop 1`] = `
           "paddingLeft": ".8em",
         }
       }
-      type="number"
+      type="tel"
       value={undefined}
     >
       <div
@@ -450,7 +448,6 @@ exports[`should accept multiple accounts through accounts prop 1`] = `
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
-            pattern="[0-9]*"
             placeholder="0.00"
             readOnly={undefined}
             spellCheck={undefined}
@@ -461,7 +458,7 @@ exports[`should accept multiple accounts through accounts prop 1`] = `
                 "paddingLeft": ".8em",
               }
             }
-            type="number"
+            type="tel"
           />
         </span>
       </div>
@@ -581,7 +578,7 @@ exports[`should render with minimal props 1`] = `
       format={undefined}
       hideLabel={true}
       inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
-      pattern="[0-9]*"
+      pattern={true}
       placeholder="0.00"
       step="0.01"
       style={
@@ -590,7 +587,7 @@ exports[`should render with minimal props 1`] = `
           "paddingLeft": ".8em",
         }
       }
-      type="number"
+      type="tel"
       value={undefined}
     >
       <div
@@ -638,7 +635,6 @@ exports[`should render with minimal props 1`] = `
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
-            pattern="[0-9]*"
             placeholder="0.00"
             readOnly={undefined}
             spellCheck={undefined}
@@ -649,7 +645,7 @@ exports[`should render with minimal props 1`] = `
                 "paddingLeft": ".8em",
               }
             }
-            type="number"
+            type="tel"
           />
         </span>
       </div>
