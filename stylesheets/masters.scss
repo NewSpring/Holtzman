@@ -24,6 +24,11 @@
 //   background: #303030;
 // }
 
+.rotate--number {
+  -webkit-transform: rotate(-18deg);
+  transform: rotate(-18deg);
+}
+
 .dollar--icon {
   position: relative;
   &:before {
@@ -173,7 +178,8 @@ blockquote p {
   @extend h7;
 
   //5 10 3.5
-  padding: ($button-height * 0.1) ($button-height * 0.3) ($button-height * 0.1) - 1.5;
+  padding: ($button-height * 0.1) ($button-height * 0.3) ($button-height * 0.1) -
+    1.5;
   border: 1px solid;
 }
 
