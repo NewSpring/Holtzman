@@ -60,7 +60,7 @@ const Story = ({
             className={`${String(
               contentClass, //eslint-disable-line
             )} soft-half-bottom soft-sides@handheld`}
-            style={{ fontWeight: "900", fontFamily: "colfax, sans-serif" }}
+            style={{ fontWeight: "700", fontFamily: "colfax-web, sans-serif" }}
           />
         )}
         {!overriddenHeader &&
@@ -73,7 +73,7 @@ const Story = ({
               )} soft-half-bottom soft-sides@handheld`}
               style={{ fontWeight: "400" }}
             >
-              <strong style={{ fontFamily: "colfax, sans-serif" }}>
+              <strong style={{ fontFamily: "colfax-web, sans-serif" }}>
                 {heading} {name} from {location}
               </strong>.
             </h5>

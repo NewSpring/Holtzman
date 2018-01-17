@@ -16,20 +16,20 @@ export const Shane = () => (
         <div className="soft-bottom">
           <Video id={"VoNTB1ODE66MXxAFqcCqRb04c2WT9biy"} autoplay={false} />
         </div>
-        <h1 className={`text-center soft-top@lap-and-up soft-top`}>
+        <h1 className={`text-center soft-top soft-bottom`}>
           Welcome to NewSpring&#39;s 2017 Annual Report!
         </h1>
-        <p>
+        <p style={{ fontFamily: "colfax-web" }}>
           The annual report is an opportunity to reflect on what God has done
           and to see why the local church is the best investment we can make.
         </p>
-        <p>
+        <p style={{ fontFamily: "colfax-web" }}>
           At NewSpring, we have so much to celebrate from 2016! Thousands of
           lives have been changed as a result of your generosity. Throughout
           this report, you&#39;ll meet people who connected to Jesus and the
           church because of the way you give, serve, and pray.
         </p>
-        <p>
+        <p style={{ fontFamily: "colfax-web" }}>
           You&#39;ll also see that 2016 was a year of transition for our church.
           Growing things change, and NewSpring is no exception. We saw changes
           in leadership and at our campuses. Lexington merged with Columbia, and
@@ -38,14 +38,14 @@ export const Shane = () => (
           - an event designed to help NewSpring attenders connect to Jesus and
           each other.
         </p>
-        <p>
+        <p style={{ fontFamily: "colfax-web" }}>
           In every season of our church&#39;s history, from 2000 to now,
           we&#39;ve seen Jesus come through on His promise to build His church.
           My hope is that as you read this report, you will see the miracles God
           is doing every week at NewSpring, and you&#39;ll join me in
           anticipating what God has in store from us next.
         </p>
-        <p>
+        <p style={{ fontFamily: "colfax-web" }}>
           Shane Duffey<br />Executive Pastor
         </p>
       </div>

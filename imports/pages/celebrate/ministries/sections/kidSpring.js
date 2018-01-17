@@ -93,7 +93,7 @@ const KidSpring = () => (
     >
       <div className="constrain-page soft-double-top soft-sides@handheld soft-sides@lap">
         <div className="grid">
-          <div className="grid__item one-whole push-bottom">
+          <div className="grid__item one-whole">
             <div className="constrain-copy">
               <h1 className="uppercase push-bottom">KidSpring</h1>
               <p className="text-center" style={{ fontFamily: "colfax-web" }}>
