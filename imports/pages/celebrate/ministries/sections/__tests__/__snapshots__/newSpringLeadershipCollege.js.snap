@@ -22,7 +22,12 @@ exports[`NewSpring Leadership College renders a layout 1`] = `
             NewSpring Leadership College
           </h1>
           <p
-            className="text-left"
+            className="text-center"
+            style={
+              Object {
+                "fontFamily": "colfax-web",
+              }
+            }
           >
             <a
               alt="NewSpring Leadership College link"
@@ -78,16 +83,21 @@ exports[`NewSpring Leadership College renders a layout 1`] = `
                 <div
                   className="floating__item three-fifths@lap-and-up text-light-primary soft"
                 >
-                  <h1
-                    className=""
-                    style={
-                      Object {
-                        "fontWeight": "900",
-                      }
-                    }
+                  <Connect(FitTextWithoutData)
+                    compressor={0.3}
+                    maxFontSize="100"
                   >
-                    31
-                  </h1>
+                    <h1
+                      className=""
+                      style={
+                        Object {
+                          "fontWeight": "900",
+                        }
+                      }
+                    >
+                      31
+                    </h1>
+                  </Connect(FitTextWithoutData)>
                   <h3
                     className="flush"
                   >
@@ -122,16 +132,21 @@ exports[`NewSpring Leadership College renders a layout 1`] = `
                 <div
                   className="floating__item three-fifths@lap-and-up text-light-primary soft"
                 >
-                  <h1
-                    className=""
-                    style={
-                      Object {
-                        "fontWeight": "900",
-                      }
-                    }
+                  <Connect(FitTextWithoutData)
+                    compressor={0.3}
+                    maxFontSize="100"
                   >
-                    53
-                  </h1>
+                    <h1
+                      className=""
+                      style={
+                        Object {
+                          "fontWeight": "900",
+                        }
+                      }
+                    >
+                      53
+                    </h1>
+                  </Connect(FitTextWithoutData)>
                   <h3
                     className="flush"
                   >
@@ -166,16 +181,21 @@ exports[`NewSpring Leadership College renders a layout 1`] = `
                 <div
                   className="floating__item three-fifths@lap-and-up text-light-primary soft"
                 >
-                  <h1
-                    className=""
-                    style={
-                      Object {
-                        "fontWeight": "900",
-                      }
-                    }
+                  <Connect(FitTextWithoutData)
+                    compressor={0.3}
+                    maxFontSize="100"
                   >
-                    16
-                  </h1>
+                    <h1
+                      className=""
+                      style={
+                        Object {
+                          "fontWeight": "900",
+                        }
+                      }
+                    >
+                      16
+                    </h1>
+                  </Connect(FitTextWithoutData)>
                   <h3
                     className="flush"
                   >
@@ -192,12 +212,11 @@ exports[`NewSpring Leadership College renders a layout 1`] = `
       >
         <Story
           content="
-              <p>“If you want to learn practical, hands-on ministry, NewSpring College is the place to go.”</p>
+              <p style=\\"font-family: colfax-web\\">“If you want to learn practical, hands-on ministry, NewSpring College is the place to go.”</p>
               "
-          contentClass="secondaryColor_6deryn"
-          image="//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Wesley/Wesley_Intothewater.png"
-          linkClass="h6 btn--small@next soft-sides@portable secondaryColor_6deryn-o_O-secondaryHover_1iaywl0"
-          linkText="Read Her Story"
+          image="//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/stories/KELLEN_hero_2_1.jpg"
+          linkClass="h6 btn--small@next soft-sides@portable btn--dark-secondary"
+          linkText="Read the story"
           linkUrl="http://newspring.cc/stories/kellen-young"
           overriddenHeader="Kellen Young graduated from the third year of NewSpring Leadership College in 2017 and took a role as a full-time student pastor."
         />

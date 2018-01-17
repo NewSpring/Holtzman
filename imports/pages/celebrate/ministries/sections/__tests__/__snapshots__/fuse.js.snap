@@ -33,6 +33,11 @@ exports[`Fuse renders a layout 1`] = `
             </h1>
             <p
               className="text-center"
+              style={
+                Object {
+                  "fontFamily": "colfax-web",
+                }
+              }
             >
               Fuse is NewSpring's student ministry. Fuse is a place where middle and high school students can have fun while connecting to Jesus and to each other.
             </p>
@@ -420,7 +425,6 @@ exports[`Fuse renders a layout 1`] = `
         </div>
       </div>
       <div
-        className="push-bottom"
         style={
           Object {
             "color": "#4F92A9",
@@ -455,17 +459,18 @@ exports[`Fuse renders a layout 1`] = `
   <div
     style={
       Object {
+        "backgroundColor": "#6BA4B8",
         "textAlign": "center",
       }
     }
   >
     <Story
       content="
-          <p>“I didn’t see the reason why I was alive at times ... Now I am definitely seeing that He has a plan for me.”</p>
+          <p style=\\"font-family: colfax-web\\">“I didn’t see the reason why I was alive at times ... Now I am definitely seeing that He has a plan for me.”</p>
           "
-      contentClass="secondaryColor_2ujufm"
+      contentClass="text-light-primary"
       image="//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Wesley/Wesley_Intothewater.png"
-      linkClass="h6 btn--small@next soft-sides@portable secondaryColor_2ujufm-o_O-secondaryHover_rjcojp"
+      linkClass="h6 btn--small@next soft-sides@portable whiteColor_1fmte2e-o_O-whiteHover_vzaxgw"
       linkText="Read His Story"
       linkUrl="https://newspring.cc/stories/wesley-jordan"
       overriddenHeader="Wesley Jordan of NewSpring Charleston was set free when he asked Jesus into his life at Gauntlet 2017."

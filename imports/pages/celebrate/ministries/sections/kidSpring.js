@@ -3,8 +3,6 @@ import { StyleSheet, css } from "aphrodite";
 import FitText from "../../components/fit-text";
 import CardSlider from "../../../../components/@primitives/UI/card-slider";
 import MetricCard from "../../components/metricCard";
-// import TagGallery from "../../../../components/@primitives/UI/tag-gallery";
-
 import Story from "../../components/story";
 
 const styles = StyleSheet.create({
@@ -23,6 +21,9 @@ const styles = StyleSheet.create({
     ":hover": {
       backgroundColor: "#0080C1",
     },
+  },
+  colfax: {
+    fontFamily: "colfax-web",
   },
 });
 
@@ -43,19 +44,6 @@ const data = {
     { name: "Powdersville", average: "335" },
     { name: "Rock Hill", average: "56" },
     { name: "Spartanburg", average: "489" },
-  ],
-  stories: [
-    {
-      imageUrl:
-        "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/IMG_1748.jpg",
-      heading: "",
-      content: `
-      <p>Every week, SpringZone provides a loving, safe, fun, personalized environment for people with special needs, like <strong>Abby Moore</strong> of <strong>NewSpring Florence</strong>.</p>
-      <p>"Abby walks into church dancing and singing ... high-fiving and reaching out to shake hands with anyone who will look her way."</p>
-      `,
-      linkUrl: "",
-      linkText: "Read Her Story",
-    },
   ],
   tags: {
     overlay: "rgba(0, 120, 205, 0.6)",
@@ -81,16 +69,6 @@ const data = {
         value: "KidsBaptized",
         copy: "kids were baptized.",
       },
-      // {
-      //   image1x1:
-      //     "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/1x1.kidspring.gave.jpg",
-      //   image2x1:
-      //     "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/2x1.kidspring.gave.jpg",
-      //   imageAlt: "Kids who gave for the first time",
-      //   label: "191",
-      //   value: "KidsWhoGave",
-      //   copy: "kids gave for the first time.",
-      // },
       {
         image1x1:
           "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/KidSpring/1x1.kidspring.transitioned.jpg",
@@ -110,7 +88,7 @@ const KidSpring = () => (
   <div>
     <div
       className={`${css(
-        styles.primaryBackground // eslint-disable-line
+        styles.primaryBackground, // eslint-disable-line
       )} soft-double-ends@lap-and-up soft-ends text-center text-light-primary`}
     >
       <div className="constrain-page soft-double-top soft-sides@handheld soft-sides@lap">
@@ -118,7 +96,7 @@ const KidSpring = () => (
           <div className="grid__item one-whole push-bottom">
             <div className="constrain-copy">
               <h1 className="uppercase push-bottom">KidSpring</h1>
-              <p className="text-center">
+              <p className="text-center" style={{ fontFamily: "colfax-web" }}>
                 KidSpring is the children&#39;s ministry at NewSpring Church.
                 Every Sunday, children from birth through fifth grade experience
                 Jesus on their level in environments that are safe, fun, and
@@ -131,12 +109,12 @@ const KidSpring = () => (
             <h3 className="push-double-bottom@lap-and-up push-bottom">
               Average Number Of Kids Each Sunday
             </h3>
-            <FitText compressor={0.4} maxFontSize="100">
+            <FitText compressor={0.3} maxFontSize="100">
               <h1
                 style={{
                   fontWeight: 900,
-                  marginBottom: 0,
                 }}
+                className="push-half-bottom"
               >
                 {data.average}
               </h1>
@@ -154,12 +132,10 @@ const KidSpring = () => (
       </div>
     </div>
 
-    <div className="background--light-primary soft-double-sides@lap-and-up soft-double-top@lap-and-up soft soft-double-top">
-      <div className="constrain-page push-double-ends@lap-and-up">
+    <div className="background--light-primary soft-double-sides@lap-and-up soft">
+      <div className="constrain-page push-double-top">
         <div className="one-whole text-center">
-          <h3
-            className={`italic push-half-bottom ${css(styles.secondaryColor)}`}
-          >
+          <h3 className={`italic push-bottom ${css(styles.secondaryColor)}`}>
             <strong>Every number is a student life changed</strong>
           </h3>
         </div>
@@ -184,9 +160,11 @@ const KidSpring = () => (
                       }}
                     >
                       <div className="floating__item three-fifths@lap-and-up text-light-primary soft">
-                        <h1 className="" style={{ fontWeight: "900" }}>
-                          {item.label}
-                        </h1>
+                        <FitText compressor={0.4} maxFontSize="100">
+                          <h1 className="" style={{ fontWeight: "900" }}>
+                            {item.label}
+                          </h1>
+                        </FitText>
                         <h4 className="flush">{item.copy}</h4>
                       </div>
                     </div>
@@ -195,20 +173,26 @@ const KidSpring = () => (
               ))}
             </div>
             <div className="soft-double-sides@lap-and-up">
-              {data.stories.map((story, i) => (
-                <Story
-                  key={i}
-                  image={story.imageUrl}
-                  content={story.content}
-                  contentClass={css(styles.secondaryColor)}
-                  linkUrl="https://newspring.cc/stories/allison-moore"
-                  linkClass={`h6 btn--small@next soft-sides@portable ${css(
-                    styles.secondaryColor,
-                    styles.secondaryHover // eslint-disable-line
-                  )}`}
-                  linkText={story.linkText}
-                />
-              ))}
+              <Story
+                image={
+                  "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/IMG_1748.jpg"
+                }
+                heading={
+                  "Every week, SpringZone provides a loving, safe, fun, personalized environment for people with special needs, like"
+                }
+                name={"Abby Moore"}
+                location={"NewSpring Florence"}
+                content={`
+                  <p style="font-family: colfax-web">"Abby walks into church dancing and singing ... high-fiving and reaching out to shake hands with anyone who will look her way."</p>
+                  `}
+                contentClass={css(styles.secondaryColor)}
+                linkUrl="https://newspring.cc/stories/allison-moore"
+                linkClass={`h6 btn--small@next soft-sides@portable ${css(
+                  styles.secondaryColor,
+                  styles.secondaryHover, // eslint-disable-line
+                )}`}
+                linkText={"Read Her Story"}
+              />
             </div>
           </div>
         </div>

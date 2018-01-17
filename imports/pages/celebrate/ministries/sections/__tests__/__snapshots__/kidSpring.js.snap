@@ -24,6 +24,11 @@ exports[`KidSpring renders a layout 1`] = `
             </h1>
             <p
               className="text-center"
+              style={
+                Object {
+                  "fontFamily": "colfax-web",
+                }
+              }
             >
               KidSpring is the children's ministry at NewSpring Church. Every Sunday, children from birth through fifth grade experience Jesus on their level in environments that are safe, fun, and age-appropriate.
             </p>
@@ -38,14 +43,14 @@ exports[`KidSpring renders a layout 1`] = `
             Average Number Of Kids Each Sunday
           </h3>
           <Connect(FitTextWithoutData)
-            compressor={0.4}
+            compressor={0.3}
             maxFontSize="100"
           >
             <h1
+              className="push-half-bottom"
               style={
                 Object {
                   "fontWeight": 900,
-                  "marginBottom": 0,
                 }
               }
             >
@@ -133,16 +138,16 @@ exports[`KidSpring renders a layout 1`] = `
     </div>
   </div>
   <div
-    className="background--light-primary soft-double-sides@lap-and-up soft-double-top@lap-and-up soft soft-double-top"
+    className="background--light-primary soft-double-sides@lap-and-up soft"
   >
     <div
-      className="constrain-page push-double-ends@lap-and-up"
+      className="constrain-page push-double-top"
     >
       <div
         className="one-whole text-center"
       >
         <h3
-          className="italic push-half-bottom secondaryColor_1fivjbh"
+          className="italic push-bottom secondaryColor_1fivjbh"
         >
           <strong>
             Every number is a student life changed
@@ -184,16 +189,21 @@ exports[`KidSpring renders a layout 1`] = `
                   <div
                     className="floating__item three-fifths@lap-and-up text-light-primary soft"
                   >
-                    <h1
-                      className=""
-                      style={
-                        Object {
-                          "fontWeight": "900",
-                        }
-                      }
+                    <Connect(FitTextWithoutData)
+                      compressor={0.4}
+                      maxFontSize="100"
                     >
-                      3,610
-                    </h1>
+                      <h1
+                        className=""
+                        style={
+                          Object {
+                            "fontWeight": "900",
+                          }
+                        }
+                      >
+                        3,610
+                      </h1>
+                    </Connect(FitTextWithoutData)>
                     <h4
                       className="flush"
                     >
@@ -228,16 +238,21 @@ exports[`KidSpring renders a layout 1`] = `
                   <div
                     className="floating__item three-fifths@lap-and-up text-light-primary soft"
                   >
-                    <h1
-                      className=""
-                      style={
-                        Object {
-                          "fontWeight": "900",
-                        }
-                      }
+                    <Connect(FitTextWithoutData)
+                      compressor={0.4}
+                      maxFontSize="100"
                     >
-                      307
-                    </h1>
+                      <h1
+                        className=""
+                        style={
+                          Object {
+                            "fontWeight": "900",
+                          }
+                        }
+                      >
+                        307
+                      </h1>
+                    </Connect(FitTextWithoutData)>
                     <h4
                       className="flush"
                     >
@@ -272,16 +287,21 @@ exports[`KidSpring renders a layout 1`] = `
                   <div
                     className="floating__item three-fifths@lap-and-up text-light-primary soft"
                   >
-                    <h1
-                      className=""
-                      style={
-                        Object {
-                          "fontWeight": "900",
-                        }
-                      }
+                    <Connect(FitTextWithoutData)
+                      compressor={0.4}
+                      maxFontSize="100"
                     >
-                      581
-                    </h1>
+                      <h1
+                        className=""
+                        style={
+                          Object {
+                            "fontWeight": "900",
+                          }
+                        }
+                      >
+                        581
+                      </h1>
+                    </Connect(FitTextWithoutData)>
                     <h4
                       className="flush"
                     >
@@ -297,15 +317,16 @@ exports[`KidSpring renders a layout 1`] = `
           >
             <Story
               content="
-      <p>Every week, SpringZone provides a loving, safe, fun, personalized environment for people with special needs, like <strong>Abby Moore</strong> of <strong>NewSpring Florence</strong>.</p>
-      <p>\\"Abby walks into church dancing and singing ... high-fiving and reaching out to shake hands with anyone who will look her way.\\"</p>
-      "
+                  <p style=\\"font-family: colfax-web\\">\\"Abby walks into church dancing and singing ... high-fiving and reaching out to shake hands with anyone who will look her way.\\"</p>
+                  "
               contentClass="secondaryColor_1fivjbh"
+              heading="Every week, SpringZone provides a loving, safe, fun, personalized environment for people with special needs, like"
               image="//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/IMG_1748.jpg"
-              key="0"
               linkClass="h6 btn--small@next soft-sides@portable secondaryColor_1fivjbh-o_O-secondaryHover_106cwja"
               linkText="Read Her Story"
               linkUrl="https://newspring.cc/stories/allison-moore"
+              location="NewSpring Florence"
+              name="Abby Moore"
             />
           </div>
         </div>

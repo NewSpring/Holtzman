@@ -2,7 +2,7 @@
 const Thanks = () => (
   <div className="background--primary text-center text-light-primary soft">
     <h3 className="soft-double-top">Thanks For Reading!</h3>
-    <p className="constrain-copy">
+    <p className="constrain-copy" style={{ fontFamily: "colfax-web" }}>
       We hope our Annual Report helped you celebrate what God is doing in our
       cities, our state, and our world.
     </p>
