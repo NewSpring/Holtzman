@@ -42,7 +42,7 @@ const data = {
 
 /* eslint-disable max-len */
 const NewSpringLeadershipCollege = () => (
-  <div className="text-center background--light-primary soft-double-ends@lap-and-up soft-ends">
+  <div className="text-center background--light-primary soft-double-top@lap-and-up soft-top text-dark-primary">
     <div className="constrain-page soft-double-top soft-sides@lap soft-sides@handheld">
       <div className="grid">
         <div className="grid__item one-whole push-double-bottom">
@@ -64,7 +64,7 @@ const NewSpringLeadershipCollege = () => (
             </p>
           </div>
         </div>
-        <div className="grid__item one-whole text-center soft-bottom@lap-and-up">
+        <div className="grid__item one-whole text-center soft-bottom@lap-and-up push-bottom@handheld">
           <div className="constrain-copy">
             <h3 className="italic text-primary">
               <strong>

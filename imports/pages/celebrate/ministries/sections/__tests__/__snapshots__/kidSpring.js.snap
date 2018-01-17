@@ -12,7 +12,7 @@ exports[`KidSpring renders a layout 1`] = `
         className="grid"
       >
         <div
-          className="grid__item one-whole push-bottom"
+          className="grid__item one-whole"
         >
           <div
             className="constrain-copy"

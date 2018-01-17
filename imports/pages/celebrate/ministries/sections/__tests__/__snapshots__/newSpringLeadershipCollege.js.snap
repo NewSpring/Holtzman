@@ -2,7 +2,7 @@
 
 exports[`NewSpring Leadership College renders a layout 1`] = `
 <div
-  className="text-center background--light-primary soft-double-ends@lap-and-up soft-ends"
+  className="text-center background--light-primary soft-double-top@lap-and-up soft-top text-dark-primary"
 >
   <div
     className="constrain-page soft-double-top soft-sides@lap soft-sides@handheld"
@@ -41,7 +41,7 @@ exports[`NewSpring Leadership College renders a layout 1`] = `
         </div>
       </div>
       <div
-        className="grid__item one-whole text-center soft-bottom@lap-and-up"
+        className="grid__item one-whole text-center soft-bottom@lap-and-up push-bottom@handheld"
       >
         <div
           className="constrain-copy"

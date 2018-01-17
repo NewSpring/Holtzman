@@ -105,14 +105,14 @@ const Web = () => (
         </div>
       </div>
     </div>
-    <div className="text-center one-whole background--light-tertiary text-dark-primary">
-      <div
-        className="soft-bottom@handheld"
-        style={{ backgroundColor: "#bc9b67" }}
-      >
+    <div
+      className="text-center one-whole soft-double-top"
+      style={{ backgroundColor: "#bc9b67", color: "#FFFFFF" }}
+    >
+      <div className="soft-bottom@handheld">
         <div className="floating soft-double-top one-whole hard@handheld">
           <div className="floating__item constrain-copy soft-double-sides@lap-and-up push-sides@lap-and-up soft-sides@handheld">
-            <h3 className="text-center italic" style={{ color: "#fff" }}>
+            <h3 className="text-center italic">
               <strong>
                 Using technology to connect people to Jesus and each other, we
                 saw
@@ -126,11 +126,12 @@ const Web = () => (
               key={i}
               count={statistic.value}
               label={statistic.label}
+              additionalClasses={"text-dark-primary"}
             />
           ))}
         </CardSlider>
       </div>
-      <div style={{ background: "#bc9b67" }}>
+      <div className="soft-sides@handheld" style={{ background: "#bc9b67" }}>
         <Story
           overriddenHeader={
             "Amy Buckmaster of NewSpring Greenville grew a daily Bible reading habit in 2017 because of devotionals sent by text message to her phone."

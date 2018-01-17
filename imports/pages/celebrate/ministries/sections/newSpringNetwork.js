@@ -37,7 +37,7 @@ const data = {
 
 /* eslint-disable max-len */
 const NewSpringNetwork = () => (
-  <div className="background--light-secondary soft-double-ends@lap-and-up soft-top text-center">
+  <div className="background--light-secondary soft-double-top@lap-and-up soft-top text-center text-dark-primary">
     <div className="constrain-page soft-double-top soft-sides@lap soft-sides@handheld">
       <div className="grid">
         <div className="grid__item one-whole">
@@ -60,7 +60,7 @@ const NewSpringNetwork = () => (
       ))}
     </CardSlider>
 
-    <div className="constrain-page three-quarters@lap-wide-and-up nine-tenths@lap push-double-top@lap-and-up soft-double-sides soft-sides@handheld">
+    <div className="constrain-page three-quarters@lap-wide-and-up nine-tenths@lap push-top@handheld soft-double-sides soft-sides@handheld">
       <div className="one-whole">
         {data.stories.map((story, i) => (
           <Story
