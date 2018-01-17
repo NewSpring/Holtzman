@@ -15,6 +15,16 @@ const styles = StyleSheet.create({
       backgroundColor: "#6BA4B8",
     },
   },
+  whiteColor: {
+    color: "#FFFFFF",
+    borderColor: "#FFFFFF",
+  },
+  whiteHover: {
+    ":hover": {
+      color: "#6BA4B8",
+      backgroundColor: "#FFFFFF",
+    },
+  },
 });
 
 const data = {
@@ -111,7 +121,7 @@ const Fuse = () => (
               >
                 [ Fuse ]
               </h1>
-              <p className="text-center">
+              <p className="text-center" style={{ fontFamily: "colfax-web" }}>
                 Fuse is NewSpring&#39;s student ministry. Fuse is a place where
                 middle and high school students can have fun while connecting to
                 Jesus and to each other.
@@ -231,7 +241,7 @@ const Fuse = () => (
           </div>
         </div>
 
-        <div className="push-bottom" style={{ color: "#4F92A9" }}>
+        <div style={{ color: "#4F92A9" }}>
           <CardSlider>
             {data.statistics.gauntlet.map((stat, i) => (
               <MetricCard key={i} count={stat.number} label={stat.name} />
@@ -242,6 +252,7 @@ const Fuse = () => (
     </div>
     <div
       style={{
+        backgroundColor: "#6BA4B8",
         textAlign: "center",
       }}
     >
@@ -253,13 +264,13 @@ const Fuse = () => (
           "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Wesley/Wesley_Intothewater.png"
         }
         content={`
-          <p>“I didn’t see the reason why I was alive at times ... Now I am definitely seeing that He has a plan for me.”</p>
+          <p style="font-family: colfax-web">“I didn’t see the reason why I was alive at times ... Now I am definitely seeing that He has a plan for me.”</p>
           `}
-        contentClass={css(styles.secondaryColor)}
+        contentClass={"text-light-primary"}
         linkUrl="https://newspring.cc/stories/wesley-jordan"
         linkClass={`h6 btn--small@next soft-sides@portable ${css(
-          styles.secondaryColor,
-          styles.secondaryHover // eslint-disable-line
+          styles.whiteColor,
+          styles.whiteHover, // eslint-disable-line
         )}`}
         linkText={"Read His Story"}
       />

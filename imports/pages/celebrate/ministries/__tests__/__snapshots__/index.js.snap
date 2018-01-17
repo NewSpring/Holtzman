@@ -8,6 +8,7 @@ exports[`Ministries renders a layout 1`] = `
   <NewSpringAverages />
   <KidSpring />
   <Fuse />
+  <Rally />
   <NewSpringLeadershipCollege />
   <NewSpringNetwork />
   <Web />
