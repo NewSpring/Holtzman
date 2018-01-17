@@ -10,7 +10,7 @@ exports[`Fuse renders a layout 1`] = `
     }
   >
     <div
-      className="soft-double-ends@lap-and-up soft-ends text-center"
+      className="soft-double-ends@lap-and-up soft-ends text-center text-dark-primary"
     >
       <div
         className="constrain-page soft-double-top soft-sides@lap soft-sides@handheld"
@@ -74,73 +74,81 @@ exports[`Fuse renders a layout 1`] = `
           </div>
         </div>
       </div>
-      <Connect(CardSlider)>
-        <MetricCard
-          count="81"
-          key="0"
-          label="Aiken"
-        />
-        <MetricCard
-          count="677"
-          key="1"
-          label="Anderson"
-        />
-        <MetricCard
-          count="384"
-          key="2"
-          label="Charleston"
-        />
-        <MetricCard
-          count="278"
-          key="3"
-          label="Clemson"
-        />
-        <MetricCard
-          count="418"
-          key="4"
-          label="Columbia"
-        />
-        <MetricCard
-          count="146"
-          key="5"
-          label="Florence"
-        />
-        <MetricCard
-          count="389"
-          key="6"
-          label="Greenville"
-        />
-        <MetricCard
-          count="125"
-          key="7"
-          label="Greenwood"
-        />
-        <MetricCard
-          count="20"
-          key="8"
-          label="Hilton Head"
-        />
-        <MetricCard
-          count="226"
-          key="9"
-          label="Myrtle Beach"
-        />
-        <MetricCard
-          count="245"
-          key="10"
-          label="Powdersville"
-        />
-        <MetricCard
-          count="40"
-          key="11"
-          label="Rock Hill"
-        />
-        <MetricCard
-          count="295"
-          key="12"
-          label="Spartanburg"
-        />
-      </Connect(CardSlider)>
+      <div
+        style={
+          Object {
+            "color": "#4F92A9",
+          }
+        }
+      >
+        <Connect(CardSlider)>
+          <MetricCard
+            count="81"
+            key="0"
+            label="Aiken"
+          />
+          <MetricCard
+            count="677"
+            key="1"
+            label="Anderson"
+          />
+          <MetricCard
+            count="384"
+            key="2"
+            label="Charleston"
+          />
+          <MetricCard
+            count="278"
+            key="3"
+            label="Clemson"
+          />
+          <MetricCard
+            count="418"
+            key="4"
+            label="Columbia"
+          />
+          <MetricCard
+            count="146"
+            key="5"
+            label="Florence"
+          />
+          <MetricCard
+            count="389"
+            key="6"
+            label="Greenville"
+          />
+          <MetricCard
+            count="125"
+            key="7"
+            label="Greenwood"
+          />
+          <MetricCard
+            count="20"
+            key="8"
+            label="Hilton Head"
+          />
+          <MetricCard
+            count="226"
+            key="9"
+            label="Myrtle Beach"
+          />
+          <MetricCard
+            count="245"
+            key="10"
+            label="Powdersville"
+          />
+          <MetricCard
+            count="40"
+            key="11"
+            label="Rock Hill"
+          />
+          <MetricCard
+            count="295"
+            key="12"
+            label="Spartanburg"
+          />
+        </Connect(CardSlider)>
+      </div>
       <div
         className="constrain-page soft-sides@handheld"
       >
@@ -405,7 +413,7 @@ exports[`Fuse renders a layout 1`] = `
       className="text-center text-light-primary"
     >
       <div
-        className="constrain-copy push-top push-top@lap-and-up soft-sides@handheld"
+        className="constrain-copy push-bottom soft-sides@handheld"
       >
         <div
           className="one-whole"
@@ -457,6 +465,7 @@ exports[`Fuse renders a layout 1`] = `
     </div>
   </div>
   <div
+    className="soft-top"
     style={
       Object {
         "backgroundColor": "#6BA4B8",

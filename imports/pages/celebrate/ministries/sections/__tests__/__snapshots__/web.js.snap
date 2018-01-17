@@ -197,15 +197,16 @@ exports[`Web renders a layout 1`] = `
     </div>
   </div>
   <div
-    className="text-center one-whole background--light-tertiary text-dark-primary"
+    className="text-center one-whole soft-double-top"
+    style={
+      Object {
+        "backgroundColor": "#bc9b67",
+        "color": "#FFFFFF",
+      }
+    }
   >
     <div
       className="soft-bottom@handheld"
-      style={
-        Object {
-          "backgroundColor": "#bc9b67",
-        }
-      }
     >
       <div
         className="floating soft-double-top one-whole hard@handheld"
@@ -215,11 +216,6 @@ exports[`Web renders a layout 1`] = `
         >
           <h3
             className="text-center italic"
-            style={
-              Object {
-                "color": "#fff",
-              }
-            }
           >
             <strong>
               Using technology to connect people to Jesus and each other, we saw
@@ -229,21 +225,25 @@ exports[`Web renders a layout 1`] = `
       </div>
       <Connect(CardSlider)>
         <MetricCard
+          additionalClasses="text-dark-primary"
           count="986,347"
           key="0"
           label="Articles Read"
         />
         <MetricCard
+          additionalClasses="text-dark-primary"
           count="775,094"
           key="1"
           label="Devotionals Read"
         />
         <MetricCard
+          additionalClasses="text-dark-primary"
           count="157,989"
           key="2"
           label="Stories Viewed"
         />
         <MetricCard
+          additionalClasses="text-dark-primary"
           count="195,891"
           key="3"
           label="Sermons Watched"
@@ -251,6 +251,7 @@ exports[`Web renders a layout 1`] = `
       </Connect(CardSlider)>
     </div>
     <div
+      className="soft-sides@handheld"
       style={
         Object {
           "background": "#bc9b67",

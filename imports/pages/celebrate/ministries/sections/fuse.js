@@ -111,7 +111,7 @@ const Fuse = () => (
         background: `linear-gradient(${"#f7f7f7"} 50%, ${"rgba(107, 164, 184, 1)"})`,
       }}
     >
-      <div className="soft-double-ends@lap-and-up soft-ends text-center">
+      <div className="soft-double-ends@lap-and-up soft-ends text-center text-dark-primary">
         <div className="constrain-page soft-double-top soft-sides@lap soft-sides@handheld">
           <div className="one-whole">
             <div className="constrain-copy">
@@ -150,11 +150,13 @@ const Fuse = () => (
           </div>
         </div>
 
-        <CardSlider>
-          {data.statistics.attendance.campuses.map((campus, i) => (
-            <MetricCard key={i} count={campus.average} label={campus.name} />
-          ))}
-        </CardSlider>
+        <div style={{ color: "#4F92A9" }}>
+          <CardSlider>
+            {data.statistics.attendance.campuses.map((campus, i) => (
+              <MetricCard key={i} count={campus.average} label={campus.name} />
+            ))}
+          </CardSlider>
+        </div>
 
         <div className="constrain-page soft-sides@handheld">
           <div className="soft-double-top@lap-and-up">
@@ -232,7 +234,7 @@ const Fuse = () => (
       </div>
 
       <div className="text-center text-light-primary">
-        <div className="constrain-copy push-top push-top@lap-and-up soft-sides@handheld">
+        <div className="constrain-copy push-bottom soft-sides@handheld">
           <div className="one-whole">
             <h3 className="italic flush">
               <strong>This year at</strong>
@@ -251,6 +253,7 @@ const Fuse = () => (
       </div>
     </div>
     <div
+      className="soft-top"
       style={{
         backgroundColor: "#6BA4B8",
         textAlign: "center",
