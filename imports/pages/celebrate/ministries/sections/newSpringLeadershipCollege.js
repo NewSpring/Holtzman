@@ -1,18 +1,5 @@
-import { StyleSheet, css } from "aphrodite";
 import Story from "../../components/story";
 import FitText from "../../components/fit-text";
-
-const styles = StyleSheet.create({
-  secondaryColor: {
-    color: "#6BAC43",
-    borderColor: "#6BAC43",
-  },
-  secondaryHover: {
-    ":hover": {
-      backgroundColor: "#6BAC43",
-    },
-  },
-});
 
 const data = {
   tags: {
@@ -104,7 +91,7 @@ const NewSpringLeadershipCollege = () => (
                     }}
                   >
                     <div className="floating__item three-fifths@lap-and-up text-light-primary soft">
-                      <FitText compressor={1.0} maxFontSize="100">
+                      <FitText compressor={0.3} maxFontSize="100">
                         <h1 className="" style={{ fontWeight: "900" }}>
                           {item.label}
                         </h1>
@@ -128,12 +115,8 @@ const NewSpringLeadershipCollege = () => (
             content={`
               <p style="font-family: colfax-web">“If you want to learn practical, hands-on ministry, NewSpring College is the place to go.”</p>
               `}
-            contentClass={css(styles.secondaryColor)}
             linkUrl="http://newspring.cc/stories/kellen-young"
-            linkClass={`h6 btn--small@next soft-sides@portable ${css(
-              styles.secondaryColor,
-              styles.secondaryHover, // eslint-disable-line
-            )}`}
+            linkClass={`h6 btn--small@next soft-sides@portable btn--dark-secondary`}
             linkText={"Read the story"}
           />
         </div>

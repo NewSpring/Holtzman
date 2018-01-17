@@ -253,15 +253,16 @@ exports[`Web renders a layout 1`] = `
     <div
       style={
         Object {
-          "background": "#fff",
+          "background": "#bc9b67",
         }
       }
     >
       <Story
         content="
-            <p>“It’s the best way to start each morning! ... It helps me dig deeper into His Word and brings me closer to Jesus.”</p>
-            "
-        image="//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Wesley/Wesley_Intothewater.png"
+            <p style=\\"font-family: colfax-web\\">“It’s the best way to start each morning! ... It helps me dig deeper into His Word and brings me closer to Jesus.”</p>
+          "
+        contentClass="text-light-primary"
+        image="//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/stories/amy.jpg"
         overriddenHeader="Amy Buckmaster of NewSpring Greenville grew a daily Bible reading habit in 2017 because of devotionals sent by text message to her phone."
       />
     </div>

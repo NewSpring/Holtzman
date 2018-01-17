@@ -130,17 +130,18 @@ const Web = () => (
           ))}
         </CardSlider>
       </div>
-      <div style={{ background: "#fff" }}>
+      <div style={{ background: "#bc9b67" }}>
         <Story
           overriddenHeader={
             "Amy Buckmaster of NewSpring Greenville grew a daily Bible reading habit in 2017 because of devotionals sent by text message to her phone."
           }
           image={
-            "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Wesley/Wesley_Intothewater.png"
+            "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/stories/amy.jpg"
           }
           content={`
-            <p>“It’s the best way to start each morning! ... It helps me dig deeper into His Word and brings me closer to Jesus.”</p>
-            `}
+            <p style="font-family: colfax-web">“It’s the best way to start each morning! ... It helps me dig deeper into His Word and brings me closer to Jesus.”</p>
+          `}
+          contentClass={"text-light-primary"}
         />
       </div>
     </div>

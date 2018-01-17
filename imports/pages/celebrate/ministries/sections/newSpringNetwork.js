@@ -28,8 +28,8 @@ const data = {
       heading:
         "In 2017, NewSpring began a new partnership with the Open Network to distribute our resources for free to churches around the world.",
       content: `
-      <p>The partnership resulted in 252,434 downloads of NewSpring children’s curriculum and the equipping of 5,000 pastors and church leaders.</p>
-      <p>“We have seen a NewSpring series consistently in our top 10 downloads every week. God is definitely making an impact through NewSpring’s resources in the Open Network community.” -- <em>Kyle Kutter, Life.Church</em></p>
+      <p style="font-family: colfax-web">The partnership resulted in 252,434 downloads of NewSpring children’s curriculum and the equipping of 5,000 pastors and church leaders.</p>
+      <p style="font-family: colfax-web">“We have seen a NewSpring series consistently in our top 10 downloads every week. God is definitely making an impact through NewSpring’s resources in the Open Network community.” -- <em>Kyle Kutter, Life.Church</em></p>
       `,
     },
   ],
