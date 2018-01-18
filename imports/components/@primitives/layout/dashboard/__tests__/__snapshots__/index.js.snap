@@ -7,7 +7,8 @@ exports[`Dashboard should render with the children 1`] = `
             push-top
             soft-left@handheld
             soft-top@handheld soft-double-top
-            soft-double-left
+            soft-double-left@lap-and-up
+            soft-sides
             background--light-primary
           "
   >
@@ -94,7 +95,8 @@ exports[`Dashboard should render with the default set of props 1`] = `
             push-top
             soft-left@handheld
             soft-top@handheld soft-double-top
-            soft-double-left
+            soft-double-left@lap-and-up
+            soft-sides
             background--light-primary
           "
   >
