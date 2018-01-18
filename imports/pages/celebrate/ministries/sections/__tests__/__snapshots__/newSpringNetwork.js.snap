@@ -2,7 +2,7 @@
 
 exports[`NewSpring Network renders a layout 1`] = `
 <div
-  className="background--light-secondary soft-double-ends@lap-and-up soft-top text-center"
+  className="background--light-secondary soft-double-top@lap-and-up soft-top text-center text-dark-primary"
 >
   <div
     className="constrain-page soft-double-top soft-sides@lap soft-sides@handheld"
@@ -22,7 +22,12 @@ exports[`NewSpring Network renders a layout 1`] = `
             NewSpring Network
           </h1>
           <p
-            className="text-left"
+            className="text-center"
+            style={
+              Object {
+                "fontFamily": "colfax-web",
+              }
+            }
           >
             NewSpring Network equips church leaders with resources, coaching opportunities, and leadership training. Through NewSpring Network, our church provides free children's ministry curriculum, series graphics, and videos, chord charts, and volunteer training.
           </p>
@@ -32,34 +37,35 @@ exports[`NewSpring Network renders a layout 1`] = `
   </div>
   <Connect(CardSlider)>
     <MetricCard
-      count="46,344"
+      count="21,695"
       key="0"
       label="Leaders Served"
     />
     <MetricCard
-      count="56,282"
+      count="357,384"
       key="1"
       label="Downloads of free content"
     />
     <MetricCard
-      count="2,287"
+      count="73"
       key="2"
-      label="Leaders attended a conference"
+      label="Churches that visited NewSpring"
     />
   </Connect(CardSlider)>
   <div
-    className="constrain-page three-quarters@lap-wide-and-up nine-tenths@lap push-double-top@lap-and-up soft-double-sides soft-sides@handheld"
+    className="constrain-page three-quarters@lap-wide-and-up nine-tenths@lap push-top@handheld soft-double-sides soft-sides@handheld"
   >
     <div
       className="one-whole"
     >
       <Story
-        content="<p>&#34;We've been using NewSpring's free children's curriculum exclusively since the beginning of 2016, and the kids love it, especially the acting and the games! Our kids leave excited to tell their friends about church and want to come back every week.&#34;</p>"
-        heading="Hear from childrens ministry director"
-        image="//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/stories/story-img7.1.png"
+        content="
+      <p style=\\"font-family: colfax-web\\">The partnership resulted in 252,434 downloads of NewSpring children’s curriculum and the equipping of 5,000 pastors and church leaders.</p>
+      <p style=\\"font-family: colfax-web\\">“We have seen a NewSpring series consistently in our top 10 downloads every week. God is definitely making an impact through NewSpring’s resources in the Open Network community.” -- <em>Kyle Kutter, Life.Church</em></p>
+      "
+        image="https://www.arcchurches.com/wp-content/uploads/2016/04/openfctv.png"
         key="0"
-        location="Arkansas"
-        name="Liz Wynn"
+        overriddenHeader="In 2017, NewSpring began a new partnership with the Open Network to distribute our resources for free to churches around the world."
       />
     </div>
   </div>
