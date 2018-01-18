@@ -65,7 +65,7 @@ exports[`NewSpring Network renders a layout 1`] = `
       "
         image="//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/life.church.logo.2.jpg"
         key="0"
-        overriddenHeader="In 2017, NewSpring began a new partnership with the Open Network to distribute our resources for free to churches around the world."
+        overriddenHeader="In 2017, NewSpring began a new partnership with Life.Church through the Open Network to distribute our resources for free to churches around the world."
       />
     </div>
   </div>
