@@ -105,7 +105,7 @@ exports[`Fuse renders a layout 1`] = `
           <MetricCard
             count="418"
             key="4"
-            label="Columbia"
+            label="Columbia & NE Columbia"
           />
           <MetricCard
             count="146"

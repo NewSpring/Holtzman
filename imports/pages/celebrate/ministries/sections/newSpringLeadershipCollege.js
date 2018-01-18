@@ -110,7 +110,7 @@ const NewSpringLeadershipCollege = () => (
               "Kellen Young graduated from the third year of NewSpring Leadership College in 2017 and took a role as a full-time student pastor."
             }
             image={
-              "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/stories/KELLEN_hero_2_1.jpg"
+              "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Kellen/KELLEN-9.jpg"
             }
             content={`
               <p style="font-family: colfax-web">“If you want to learn practical, hands-on ministry, NewSpring College is the place to go.”</p>

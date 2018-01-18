@@ -189,7 +189,7 @@ exports[`Web renders a layout 1`] = `
               </h1>
             </Connect(FitTextWithoutData)>
             <h3>
-              countries visted our sites
+              countries/provinces that visted our sites
             </h3>
           </div>
         </div>

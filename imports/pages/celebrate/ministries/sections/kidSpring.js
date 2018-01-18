@@ -175,7 +175,7 @@ const KidSpring = () => (
             <div className="soft-double-sides@lap-and-up">
               <Story
                 image={
-                  "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/IMG_1748.jpg"
+                  "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Allison/Abby_Hero_1_1.jpg"
                 }
                 heading={
                   "Every week, SpringZone provides a loving, safe, fun, personalized environment for people with special needs, like"
