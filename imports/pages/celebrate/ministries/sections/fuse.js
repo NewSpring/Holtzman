@@ -61,9 +61,9 @@ const data = {
     tags: [
       {
         image1x1:
-          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Fuse/1x1.fuse.1sttime.jpg",
+          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Fuse/1x1.fuse.1sttime.bw.jpg",
         image2x1:
-          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Fuse/2x1.fuse.1sttime.jpg",
+          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Fuse/2x1.fuse.1sttime.bw.jpg",
         imageAlt: "First Timers at Fuse",
         label: "9,350",
         value: "FirstTime",
@@ -71,9 +71,9 @@ const data = {
       },
       {
         image1x1:
-          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Fuse/1x1.fuse.gave.jpg",
+          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Fuse/1x1.fuse.gave.bw.jpg",
         image2x1:
-          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Fuse/2x1.fuse.gave.jpg",
+          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Fuse/2x1.fuse.gave.bw.jpg",
         imageAlt: "students gave for the first time",
         label: "147",
         value: "FirstTimeGivers",
@@ -81,9 +81,9 @@ const data = {
       },
       {
         image1x1:
-          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Fuse/1x1.fuse.group.jpg",
+          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Fuse/1x1.fuse.group.bw.jpg",
         image2x1:
-          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Fuse/2x1.fuse.group.jpg",
+          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Fuse/2x1.fuse.group.bw.jpg",
         imageAlt: "students in a Fuse group",
         label: "2,564",
         value: "StudentsInGroups",
@@ -91,9 +91,9 @@ const data = {
       },
       {
         image1x1:
-          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Fuse/1x1.fuse.volunteer.jpg",
+          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Fuse/1x1.fuse.volunteer.bw.jpg",
         image2x1:
-          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Fuse/2x1.fuse.volunteer.jpg",
+          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Fuse/2x1.fuse.volunteer.bw.jpg",
         imageAlt: "students volunteered",
         label: "1,119",
         value: "StudentVolunteers",
@@ -201,7 +201,7 @@ const Fuse = () => (
                     style={{
                       background: `linear-gradient(${data.tags.overlay}, ${
                         data.tags.overlay
-                      }), url('${"//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Fuse/2x1.fuse.death2life.jpg"}') 0% 0%`,
+                      }), url('${"//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Fuse/2x1.fuse.death2life.bw.jpg"}') 0% 0%`,
                       backgroundRepeat: "no-repeat",
                       backgroundSize: "cover",
                     }}

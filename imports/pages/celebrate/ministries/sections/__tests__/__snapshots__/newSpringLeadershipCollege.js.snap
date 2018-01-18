@@ -74,7 +74,7 @@ exports[`NewSpring Leadership College renders a layout 1`] = `
                 className="ratio__item floating one-whole rounded"
                 style={
                   Object {
-                    "background": "linear-gradient(rgba(107, 172, 67, 0.6), rgba(107, 172, 67, 0.6)), url('//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/NSCollege/1x1.college.currentstudents.jpg') 0% 0%",
+                    "background": "linear-gradient(rgba(107, 172, 67, 0.6), rgba(107, 172, 67, 0.6)), url('//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/NSCollege/1x1.college.currentstudents.bw.jpg') 0% 0%",
                     "backgroundRepeat": "no-repeat",
                     "backgroundSize": "cover",
                   }
@@ -123,7 +123,7 @@ exports[`NewSpring Leadership College renders a layout 1`] = `
                 className="ratio__item floating one-whole rounded"
                 style={
                   Object {
-                    "background": "linear-gradient(rgba(107, 172, 67, 0.6), rgba(107, 172, 67, 0.6)), url('//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/NSCollege/1x1.college.graduated.jpg') 0% 0%",
+                    "background": "linear-gradient(rgba(107, 172, 67, 0.6), rgba(107, 172, 67, 0.6)), url('//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/NSCollege/1x1.college.graduated.bw.jpg') 0% 0%",
                     "backgroundRepeat": "no-repeat",
                     "backgroundSize": "cover",
                   }
@@ -172,7 +172,7 @@ exports[`NewSpring Leadership College renders a layout 1`] = `
                 className="ratio__item floating one-whole rounded"
                 style={
                   Object {
-                    "background": "linear-gradient(rgba(107, 172, 67, 0.6), rgba(107, 172, 67, 0.6)), url('//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/NSCollege/1x1.college.workingministry.jpg') 0% 0%",
+                    "background": "linear-gradient(rgba(107, 172, 67, 0.6), rgba(107, 172, 67, 0.6)), url('//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/NSCollege/1x1.college.workingministry.bw.jpg') 0% 0%",
                     "backgroundRepeat": "no-repeat",
                     "backgroundSize": "cover",
                   }
