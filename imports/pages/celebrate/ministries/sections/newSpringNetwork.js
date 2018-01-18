@@ -8,14 +8,14 @@ const data = {
   statistics: [
     {
       label: "Leaders Served",
-      value: "2,397",
+      value: "21,695",
     },
     {
       label: "Downloads of free content",
       value: "357,384",
     },
     {
-      label: "Leaders attended a conference",
+      label: "Churches that visited NewSpring",
       value: "73",
     },
   ],
