@@ -2,7 +2,7 @@
 
 exports[`NewSpring Leadership College renders a layout 1`] = `
 <div
-  className="text-center background--light-primary soft-double-ends@lap-and-up soft-ends"
+  className="text-center background--light-primary soft-double-top@lap-and-up soft-top text-dark-primary"
 >
   <div
     className="constrain-page soft-double-top soft-sides@lap soft-sides@handheld"
@@ -22,7 +22,12 @@ exports[`NewSpring Leadership College renders a layout 1`] = `
             NewSpring Leadership College
           </h1>
           <p
-            className="text-left"
+            className="text-center"
+            style={
+              Object {
+                "fontFamily": "colfax-web",
+              }
+            }
           >
             <a
               alt="NewSpring Leadership College link"
@@ -30,12 +35,13 @@ exports[`NewSpring Leadership College renders a layout 1`] = `
             >
               NewSpring Leadership College
             </a>
-             is a two-year program to raise up passionate leaders for the local church. At NewSpring Leadership College, students receive practical Bible teaching and leadership training as well as real ministry responsibility and experience.
+             
+            is a two-year program to raise up passionate leaders for the local church. At NewSpring Leadership College, students receive practical Bible teaching and leadership training as well as real ministry responsibility and experience.
           </p>
         </div>
       </div>
       <div
-        className="grid__item one-whole text-center soft-bottom@lap-and-up"
+        className="grid__item one-whole text-center soft-bottom@lap-and-up push-bottom@handheld"
       >
         <div
           className="constrain-copy"
@@ -44,7 +50,7 @@ exports[`NewSpring Leadership College renders a layout 1`] = `
             className="italic text-primary"
           >
             <strong>
-              NewSpring Leadership College is raising leaders for the local church.
+              Helping raise up leaders to change their communities
             </strong>
           </h3>
         </div>
@@ -52,40 +58,168 @@ exports[`NewSpring Leadership College renders a layout 1`] = `
           className="soft-half-sides@lap"
           id="college"
         >
-          <Connect(TagGalleryWithoutData)
-            buttonColor="#6BAC43"
-            id="college"
-            overlay="rgba(107, 172, 67, 0.9)"
-            tags={
-              Array [
-                Object {
-                  "copy": "current students",
-                  "image1x1": "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/college/tag1_1x1.jpg",
-                  "image2x1": "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/college/tag1_2x1.jpg",
-                  "imageAlt": "Current NewSpring Leadership College Student",
-                  "label": "45",
-                  "value": "Current Students",
-                },
-                Object {
-                  "copy": "students have graduated from NSLC",
-                  "image1x1": "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/college/tag2_1x1.jpg",
-                  "image2x1": "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/college/tag2_2x1.jpg",
-                  "imageAlt": "NewSpring Leadership College Graduates",
-                  "label": "33",
-                  "value": "CollegeGraduates",
-                },
-                Object {
-                  "copy": "graduates working in ministry",
-                  "image1x1": "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/college/tag3_1x1.jpg",
-                  "image2x1": "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/college/tag3_2x1.jpg",
-                  "imageAlt": "NSLC Grads placed in ministry",
-                  "label": "16",
-                  "value": "GradsInMinistry",
-                },
-              ]
+          <div
+            className="one-third@lap-and-up one-whole text-center display-inline-block soft-ends"
+            key="0"
+            style={
+              Object {
+                "padding": "1em",
+              }
             }
-          />
+          >
+            <div
+              className="ratio--square@lap-and-up ratio--square soft@handheld constrain-copy"
+            >
+              <div
+                className="ratio__item floating one-whole rounded"
+                style={
+                  Object {
+                    "background": "linear-gradient(rgba(107, 172, 67, 0.6), rgba(107, 172, 67, 0.6)), url('//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/NSCollege/1x1.college.currentstudents.bw.jpg') 0% 0%",
+                    "backgroundRepeat": "no-repeat",
+                    "backgroundSize": "cover",
+                  }
+                }
+              >
+                <div
+                  className="floating__item three-fifths@lap-and-up text-light-primary soft"
+                >
+                  <Connect(FitTextWithoutData)
+                    compressor={0.3}
+                    maxFontSize="100"
+                  >
+                    <h1
+                      className=""
+                      style={
+                        Object {
+                          "fontWeight": "900",
+                        }
+                      }
+                    >
+                      31
+                    </h1>
+                  </Connect(FitTextWithoutData)>
+                  <h3
+                    className="flush"
+                  >
+                    current students
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="one-third@lap-and-up one-whole text-center display-inline-block soft-ends"
+            key="1"
+            style={
+              Object {
+                "padding": "1em",
+              }
+            }
+          >
+            <div
+              className="ratio--square@lap-and-up ratio--square soft@handheld constrain-copy"
+            >
+              <div
+                className="ratio__item floating one-whole rounded"
+                style={
+                  Object {
+                    "background": "linear-gradient(rgba(107, 172, 67, 0.6), rgba(107, 172, 67, 0.6)), url('//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/NSCollege/1x1.college.graduated.bw.jpg') 0% 0%",
+                    "backgroundRepeat": "no-repeat",
+                    "backgroundSize": "cover",
+                  }
+                }
+              >
+                <div
+                  className="floating__item three-fifths@lap-and-up text-light-primary soft"
+                >
+                  <Connect(FitTextWithoutData)
+                    compressor={0.3}
+                    maxFontSize="100"
+                  >
+                    <h1
+                      className=""
+                      style={
+                        Object {
+                          "fontWeight": "900",
+                        }
+                      }
+                    >
+                      53
+                    </h1>
+                  </Connect(FitTextWithoutData)>
+                  <h3
+                    className="flush"
+                  >
+                    students have graduated from NSLC
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="one-third@lap-and-up one-whole text-center display-inline-block soft-ends"
+            key="2"
+            style={
+              Object {
+                "padding": "1em",
+              }
+            }
+          >
+            <div
+              className="ratio--square@lap-and-up ratio--square soft@handheld constrain-copy"
+            >
+              <div
+                className="ratio__item floating one-whole rounded"
+                style={
+                  Object {
+                    "background": "linear-gradient(rgba(107, 172, 67, 0.6), rgba(107, 172, 67, 0.6)), url('//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/NSCollege/1x1.college.workingministry.bw.jpg') 0% 0%",
+                    "backgroundRepeat": "no-repeat",
+                    "backgroundSize": "cover",
+                  }
+                }
+              >
+                <div
+                  className="floating__item three-fifths@lap-and-up text-light-primary soft"
+                >
+                  <Connect(FitTextWithoutData)
+                    compressor={0.3}
+                    maxFontSize="100"
+                  >
+                    <h1
+                      className=""
+                      style={
+                        Object {
+                          "fontWeight": "900",
+                        }
+                      }
+                    >
+                      16
+                    </h1>
+                  </Connect(FitTextWithoutData)>
+                  <h3
+                    className="flush"
+                  >
+                    graduates working in ministry
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+      <div
+        className="grid__item one-whole text-center soft-bottom@lap-and-up"
+      >
+        <Story
+          content="
+              <p style=\\"font-family: colfax-web\\">“If you want to learn practical, hands-on ministry, NewSpring College is the place to go.”</p>
+              "
+          image="//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Kellen/KELLEN-9.jpg"
+          linkClass="h6 btn--small@next soft-sides@portable btn--dark-secondary"
+          linkText="Read the story"
+          linkUrl="http://newspring.cc/stories/kellen-young"
+          overriddenHeader="Kellen Young graduated from the third year of NewSpring Leadership College in 2017 and took a role as a full-time student pastor."
+        />
       </div>
     </div>
   </div>

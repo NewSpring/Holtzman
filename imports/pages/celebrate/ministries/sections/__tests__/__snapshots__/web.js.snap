@@ -24,6 +24,18 @@ exports[`Web renders a layout 1`] = `
             >
               Web Stats
             </h1>
+            <h3
+              className="italic"
+              style={
+                Object {
+                  "color": "#bc9b67",
+                }
+              }
+            >
+              <strong>
+                We Have
+              </strong>
+            </h3>
           </div>
           <div
             className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld"
@@ -49,7 +61,7 @@ exports[`Web renders a layout 1`] = `
                   }
                 }
               >
-                12
+                13
               </h1>
             </Connect(FitTextWithoutData)>
             <h3>
@@ -80,47 +92,16 @@ exports[`Web renders a layout 1`] = `
                   }
                 }
               >
-                2,398,759
+                2,035,975
               </h1>
             </Connect(FitTextWithoutData)>
             <h3>
-              unique devices viewed our sites and apps
+              unique devices to view our sites and apps
             </h3>
           </div>
           <div
             className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld"
             key="2"
-          >
-            <img
-              alt="icon"
-              className="push-double-bottom@lap-and-up push-bottom"
-              src="//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/icons/icon-cake.png"
-              style={
-                Object {
-                  "maxHeight": "100px",
-                }
-              }
-            />
-            <Connect(FitTextWithoutData)
-              compressor={0.6}
-            >
-              <h1
-                style={
-                  Object {
-                    "fontWeight": 900,
-                  }
-                }
-              >
-                398
-              </h1>
-            </Connect(FitTextWithoutData)>
-            <h3>
-              church online salvations
-            </h3>
-          </div>
-          <div
-            className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld"
-            key="3"
           >
             <img
               alt="icon"
@@ -142,7 +123,7 @@ exports[`Web renders a layout 1`] = `
                   }
                 }
               >
-                8,353
+                4,431
               </h1>
             </Connect(FitTextWithoutData)>
             <h3>
@@ -151,7 +132,7 @@ exports[`Web renders a layout 1`] = `
           </div>
           <div
             className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld"
-            key="4"
+            key="3"
           >
             <img
               alt="icon"
@@ -173,7 +154,7 @@ exports[`Web renders a layout 1`] = `
                   }
                 }
               >
-                25,322
+                22,155
               </h1>
             </Connect(FitTextWithoutData)>
             <h3>
@@ -182,7 +163,7 @@ exports[`Web renders a layout 1`] = `
           </div>
           <div
             className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld"
-            key="5"
+            key="4"
           >
             <img
               alt="icon"
@@ -204,11 +185,11 @@ exports[`Web renders a layout 1`] = `
                   }
                 }
               >
-                210
+                230
               </h1>
             </Connect(FitTextWithoutData)>
             <h3>
-              countries visted our sites
+              countries/provinces that visted our sites
             </h3>
           </div>
         </div>
@@ -216,13 +197,19 @@ exports[`Web renders a layout 1`] = `
     </div>
   </div>
   <div
-    className="soft-double-ends text-center one-whole background--light-tertiary text-dark-primary"
+    className="text-center one-whole soft-double-top"
+    style={
+      Object {
+        "backgroundColor": "#bc9b67",
+        "color": "#FFFFFF",
+      }
+    }
   >
     <div
-      className="soft-double-ends soft-bottom@handheld"
+      className="soft-bottom@handheld"
     >
       <div
-        className="floating one-whole hard@handheld"
+        className="floating soft-double-top one-whole hard@handheld"
       >
         <div
           className="floating__item constrain-copy soft-double-sides@lap-and-up push-sides@lap-and-up soft-sides@handheld"
@@ -238,31 +225,47 @@ exports[`Web renders a layout 1`] = `
       </div>
       <Connect(CardSlider)>
         <MetricCard
-          count="942,436"
+          additionalClasses="text-dark-primary"
+          count="986,347"
           key="0"
-          label="Articles Pageviews"
+          label="Articles Read"
         />
         <MetricCard
-          count="443,252"
+          additionalClasses="text-dark-primary"
+          count="775,094"
           key="1"
-          label="Devotionals Pageviews"
+          label="Devotionals Read"
         />
         <MetricCard
-          count="252,566"
+          additionalClasses="text-dark-primary"
+          count="157,989"
           key="2"
-          label="Studies Pageviews"
+          label="Stories Viewed"
         />
         <MetricCard
-          count="143,972"
+          additionalClasses="text-dark-primary"
+          count="195,891"
           key="3"
-          label="Stories Pageviews"
-        />
-        <MetricCard
-          count="429,514"
-          key="4"
-          label="Sermons Pageviews"
+          label="Sermons Watched"
         />
       </Connect(CardSlider)>
+    </div>
+    <div
+      className="soft-sides@handheld"
+      style={
+        Object {
+          "background": "#bc9b67",
+        }
+      }
+    >
+      <Story
+        content="
+            <p style=\\"font-family: colfax-web\\">“It’s the best way to start each morning! ... It helps me dig deeper into His Word and brings me closer to Jesus.”</p>
+          "
+        contentClass="text-light-primary"
+        image="//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/stories/amy.jpg"
+        overriddenHeader="Amy Buckmaster of NewSpring Greenville grew a daily Bible reading habit in 2017 because of devotionals sent by text message to her phone."
+      />
     </div>
   </div>
 </div>
