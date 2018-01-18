@@ -40,7 +40,7 @@ const data = {
       {
         image:
           "//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/icons/icon-globe.png",
-        label: "countries visted our sites",
+        label: "countries/provinces that visted our sites",
         value: "230",
       },
     ],

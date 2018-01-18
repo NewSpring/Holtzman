@@ -37,7 +37,7 @@ const data = {
         { name: "Anderson", average: "677" },
         { name: "Charleston", average: "384" },
         { name: "Clemson", average: "278" },
-        { name: "Columbia", average: "418" },
+        { name: "Columbia & NE Columbia", average: "418" },
         { name: "Florence", average: "146" },
         { name: "Greenville", average: "389" },
         { name: "Greenwood", average: "125" },

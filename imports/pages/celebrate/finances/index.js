@@ -10,28 +10,29 @@ import Story from "../components/story";
 // import { SolidLeaf, StripedLeaf } from "../components/leaves";
 
 const fundData = [
-  { campus: "Aiken", amount: 492202.38 },
-  { campus: "Anderson", amount: 14034355.56 },
-  { campus: "Boiling Springs", amount: 1243993.92 },
-  { campus: "Charleston", amount: 3268977.86 },
-  { campus: "Clemson", amount: 1232141.32 },
-  { campus: "Columbia", amount: 4657366.47 },
-  { campus: "Florence", amount: 2884996.14 },
-  { campus: "Greenville", amount: 8224077.56 },
-  { campus: "Greenwood", amount: 1820647.55 },
-  { campus: "Hilton Head", amount: 338145.47 },
-  { campus: "Myrtle Beach", amount: 2317189.53 },
-  { campus: "Northeast Columbia", amount: 555401.77 },
-  { campus: "Powdersville", amount: 2583636.26 },
-  { campus: "Rock Hill", amount: 476788.68 },
-  { campus: "Spartanburg", amount: 3136052.53 },
-  { campus: "Sumter", amount: 288200.25 },
+  { campus: "Aiken", amount: 739435.15 },
+  { campus: "Anderson", amount: 11243591.08 },
+  { campus: "Central", amount: 98323.65 },
+  { campus: "Charleston", amount: 2586687.61 },
+  { campus: "Clemson", amount: 1888688.38 },
+  { campus: "Columbia", amount: 4344099.72 },
+  { campus: "Florence", amount: 2312139.63 },
+  { campus: "Greenville", amount: 6518651.54 },
+  { campus: "Greenwood", amount: 1401734.45 },
+  { campus: "Hilton Head", amount: 394393.01 },
+  { campus: "Myrtle Beach", amount: 1680226.18 },
+  { campus: "Northeast Columbia", amount: 477516.62 },
+  { campus: "Powdersville", amount: 2758991.23 },
+  { campus: "Rock Hill", amount: 427965.39 },
+  { campus: "Spartanburg", amount: 3614753.79 },
+  // { campus: "Sumter", amount: 89416.38 },
+  { campus: "Web", amount: 230173.23 },
 ];
 
 // -1 for rounding correction
 const generalFundAmountTotal =
   fundData.reduce((acc, fund) => acc + fund.amount, 0) - 1;
-const overflowOfferingTotal = "4567422.90";
+const overflowOfferingTotal = "1180357.03";
 
 /* eslint-disable max-len */
 export const Finances = () => {
