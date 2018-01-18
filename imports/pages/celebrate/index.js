@@ -1,15 +1,12 @@
 // @flow
 import React, { Component } from "react";
 import scriptLoader from "react-async-script-loader";
-
 import DashboardLayout from "../../components/@primitives/layout/dashboard";
 import FinancesPage from "./finances";
-// import { Leaves } from "./components/layout";
 import Meta from "../../components/shared/meta";
 import MinistriesPage from "./ministries";
 import NextStepsPage from "./next-steps";
-import HomePage from "./message-from-shane";
-// import { SolidLeaf, StripedLeaf } from "./components/leaves";
+import WelcomePage from "./welcome";
 
 type ITemplate = {
   children: React$Element<any>,
@@ -22,9 +19,9 @@ class Template extends Component {
       {
         key: 1,
         isActive: false,
-        linkUrl: "/annualreport/home",
+        linkUrl: "/annualreport/welcome",
         onClick: () => {},
-        title: "Home",
+        title: "Welcome",
       },
       {
         key: 2,
@@ -113,10 +110,10 @@ const Routes = [
     component: scriptLoader(...scripts)(Template),
     indexRoute: {
       onEnter: (nextState: Object, replace: Function) =>
-        replace("/annualreport/home"),
+        replace("/annualreport/welcome"),
     },
     childRoutes: [
-      ...HomePage.Routes,
+      ...WelcomePage.Routes,
       ...FinancesPage.Routes,
       ...NextStepsPage.Routes,
       ...MinistriesPage.Routes,

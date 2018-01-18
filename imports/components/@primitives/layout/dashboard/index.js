@@ -97,14 +97,16 @@ export class Dashboard extends Component {
                 : "soft-half-left@handheld"
             }
             soft-double-left@lap-and-up
-            soft-sides
+            soft-half-sides
             background--light-primary
           `}
         >
           {!process.env.NATIVE &&
             title &&
             !hideTitle && (
-              <h1 className="soft-half-bottom@handheld soft-bottom">{title}</h1>
+              <h1 className="soft-half-bottom@handheld soft-bottom soft-half-left">
+                {title}
+              </h1>
             )}
           {!centerWebNav && (
             <div

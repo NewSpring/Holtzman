@@ -8,12 +8,12 @@ exports[`Dashboard should render with the children 1`] = `
             soft-left@handheld
             soft-top@handheld soft-double-top
             soft-double-left@lap-and-up
-            soft-sides
+            soft-half-sides
             background--light-primary
           "
   >
     <h1
-      className="soft-half-bottom@handheld soft-bottom"
+      className="soft-half-bottom@handheld soft-bottom soft-half-left"
     >
       Your Giving
     </h1>
@@ -96,12 +96,12 @@ exports[`Dashboard should render with the default set of props 1`] = `
             soft-left@handheld
             soft-top@handheld soft-double-top
             soft-double-left@lap-and-up
-            soft-sides
+            soft-half-sides
             background--light-primary
           "
   >
     <h1
-      className="soft-half-bottom@handheld soft-bottom"
+      className="soft-half-bottom@handheld soft-bottom soft-half-left"
     >
       Your Giving
     </h1>
