@@ -26,7 +26,7 @@ exports[`NewSpring Averages renders a layout 1`] = `
             }
           }
         >
-          29,156
+          20,563
         </h1>
       </Connect(FitTextWithoutData)>
     </div>
@@ -36,89 +36,74 @@ exports[`NewSpring Averages renders a layout 1`] = `
   >
     <Connect(CardSlider)>
       <MetricCard
-        count="345"
+        count="327"
         key="0"
         label="Aiken"
       />
       <MetricCard
-        count="6,401"
+        count="4,437"
         key="1"
         label="Anderson"
       />
       <MetricCard
-        count="875"
+        count="1,748"
         key="2"
-        label="Boiling Springs"
-      />
-      <MetricCard
-        count="2,449"
-        key="3"
         label="Charleston"
       />
       <MetricCard
-        count="646"
-        key="4"
+        count="1,284"
+        key="3"
         label="Clemson"
       />
       <MetricCard
-        count="3,166"
-        key="5"
+        count="2,316"
+        key="4"
         label="Columbia"
       />
       <MetricCard
-        count="2,096"
-        key="6"
+        count="1,385"
+        key="5"
         label="Florence"
       />
       <MetricCard
-        count="3,800"
-        key="7"
+        count="2,335"
+        key="6"
         label="Greenville"
       />
       <MetricCard
-        count="1,560"
-        key="8"
+        count="1,032"
+        key="7"
         label="Greenwood"
       />
       <MetricCard
-        count="158"
-        key="9"
+        count="174"
+        key="8"
         label="Hilton Head"
       />
       <MetricCard
-        count="825"
-        key="10"
-        label="Lexington"
-      />
-      <MetricCard
-        count="2,046"
-        key="11"
+        count="1,435"
+        key="9"
         label="Myrtle Beach"
       />
       <MetricCard
-        count="308"
-        key="12"
+        count="234"
+        key="10"
         label="Northeast Columbia"
       />
       <MetricCard
-        count="1,446"
-        key="13"
+        count="1,358"
+        key="11"
         label="Powdersville"
       />
       <MetricCard
-        count="291"
-        key="14"
+        count="227"
+        key="12"
         label="Rock Hill"
       />
       <MetricCard
-        count="2,612"
-        key="15"
+        count="2,097"
+        key="13"
         label="Spartanburg"
-      />
-      <MetricCard
-        count="269"
-        key="16"
-        label="Sumter"
       />
     </Connect(CardSlider)>
   </div>

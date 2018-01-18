@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Next Steps renders a layout 1`] = `
-<div>
+<div
+  className="text-dark-primary"
+>
   <Meta
     title="Next Steps"
   />
@@ -14,21 +16,17 @@ exports[`Next Steps renders a layout 1`] = `
       <h3
         className="text-center"
       >
-        Celebrating Next Steps
+        Why do we talk about Next Steps?
       </h3>
       <p
-        className="constrain-copy"
+        className="constrain-copy text-center"
+        style={
+          Object {
+            "fontFamily": "colfax-web",
+          }
+        }
       >
-        Salvation is a starting point, not a destination. NewSpring exists to connect people to Jesus and each other. We will always be a church that celebrates next steps as well as salvations. Here's a look at how we've seen people take their
-         
-        <a
-          alt="link to next steps"
-          href="https://newspring.cc/nextsteps"
-        >
-          next steps
-        </a>
-         
-        in 2016.
+        NewSpring exists to connect people to Jesus and each other. Salvation is only the start of someone’s spiritual journey, and every journey is a series of next steps. Take a look at some of the next steps we celebrated in 2017...
       </p>
     </div>
   </div>
@@ -36,7 +34,7 @@ exports[`Next Steps renders a layout 1`] = `
     className="background--light-primary floating"
   >
     <div
-      className="soft-double soft-sides@handheld push-double-top text-center three-quarters@lap-wide-and-up nine-tenths@lap floating__item"
+      className="soft-ends soft-sides@handheld push-double-top text-center three-quarters@lap-wide-and-up nine-tenths@lap floating__item"
     >
       <h3>
         Salvations
@@ -53,7 +51,7 @@ exports[`Next Steps renders a layout 1`] = `
             }
           }
         >
-          9,560
+          3,790
         </h1>
       </Connect(FitTextWithoutData)>
       <hr
@@ -64,16 +62,19 @@ exports[`Next Steps renders a layout 1`] = `
           }
         }
       />
-      <Story
-        content="<p>The community Brett Chamberlain found through a fishing interest group at NewSpring Rock Hill helped him recognize that he needed to ask Jesus into his life and take the step of baptism with his teenage son in June 2016.</p>"
-        heading="Every number has a name, like"
-        image="//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/stories/story-img2.1.png"
-        linkClass="h6 btn--small@next btn--dark-secondary"
-        linkText="Read the Full Story"
-        linkUrl="https://newspring.cc/stories/brett-chamberlain"
-        location="Rock Hill"
-        name="Brett"
-      />
+      <div
+        className="push-double-top@handheld"
+      >
+        <Story
+          content="<p style=\\"font-family: colfax-web\\">Dan, his wife, and his daughter, asked Jesus into their lives at Connect and got baptized together.</p><p style=\\"font-family: colfax-web\\">&#34;Instead of fearing what troubles the future will bring, I now can’t wait to see what God has in store for us.&#34;</p>"
+          image="//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/stories/Dan_Fletcher_2.jpg"
+          linkClass="h6 btn--small@next btn--dark-secondary"
+          linkText="Read the story and watch their baptism"
+          linkUrl="https://newspring.cc/stories/dan-fletcher"
+          name="Dan Fletcher"
+          overriddenHeader="Dan Fletcher and his family found hope at NewSpring Clemson in 2017."
+        />
+      </div>
     </div>
   </div>
   <div
@@ -87,7 +88,7 @@ exports[`Next Steps renders a layout 1`] = `
         }
       }
     >
-      We saw
+      We witnessed
     </h3>
     <div
       className="waves_hfu71k"
@@ -122,7 +123,7 @@ exports[`Next Steps renders a layout 1`] = `
             }
           }
         >
-          5,557
+          2,040
         </h1>
       </Connect(FitTextWithoutData)>
       <h5
@@ -131,7 +132,7 @@ exports[`Next Steps renders a layout 1`] = `
         people go public for Jesus through
       </h5>
       <h1
-        className="text-light-primary push-top push-bottom soft-bottom soft-double-bottom@lap-and-up"
+        className="text-light-primary push-top push-bottom"
       >
         baptism.
       </h1>
@@ -141,7 +142,7 @@ exports[`Next Steps renders a layout 1`] = `
     className="background--light-primary soft-double@lap-and-up soft-double-top@handheld soft-half-bottom@handheld"
   >
     <div
-      className="grid one-whole push-top@handheld"
+      className="grid one-whole push-top@handheld push-double-bottom@handheld"
     >
       <div
         className="grid__item push-half-left@handheld floating one-half@lap-and-up text-center display-inline-block"
@@ -158,6 +159,7 @@ exports[`Next Steps renders a layout 1`] = `
             className="italic"
             style={
               Object {
+                "color": "#bc9b67",
                 "fontFamily": "ff-meta-serif-web-pro, serif",
               }
             }
@@ -176,11 +178,11 @@ exports[`Next Steps renders a layout 1`] = `
                 }
               }
             >
-              47,137
+              27,231
             </h1>
           </Connect(FitTextWithoutData)>
           <h3
-            className="push-top"
+            className="push-top soft-sides@handheld"
           >
             first time visitors come to NewSpring.
           </h3>
@@ -238,7 +240,7 @@ exports[`Next Steps renders a layout 1`] = `
             >
               VIP Room
               : 
-              21,635
+              10636
             </h6>
           </div>
           <div
@@ -270,7 +272,7 @@ exports[`Next Steps renders a layout 1`] = `
             >
               KidSpring
               : 
-              11,559
+              7245
             </h6>
           </div>
           <div
@@ -302,7 +304,7 @@ exports[`Next Steps renders a layout 1`] = `
             >
               Fuse
               : 
-              13,943
+              9350
             </h6>
           </div>
         </div>
@@ -310,32 +312,29 @@ exports[`Next Steps renders a layout 1`] = `
     </div>
   </div>
   <div
-    className="floating background--light-primary"
-  >
-    <div
-      className="soft-double-ends@lap-and-up soft-top soft-sides text-center three-quarters@lap-wide-and-up nine-tenths@lap floating__item"
-    >
-      <hr
-        className="visuallyhidden@handheld push-ends"
-        style={
-          Object {
-            "borderTop": "1px solid #dddddd",
-          }
-        }
-      />
-      <div
-        className="text-center"
-      >
-        <Story
-          content="<p>&#34;On my first visit to NewSpring, the VIP Room made a huge impression on me. My host, Cathy, was so warm and friendly. She helped get my daughter checked in to KidSpring, answered my questions, and connected me to some next steps.&#34;</p>"
-          heading="The VIP Room made a difference for"
-          image="//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/stories/story-img3.png"
-          location="Charleston"
-          name="Angel Hill"
-        />
-      </div>
-    </div>
-  </div>
+    className="soft-ends visuallyhidden@handheld"
+    style={
+      Object {
+        "backgroundImage": "url(\\"//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/2x1.serve.jpg\\")",
+        "backgroundPosition": "center",
+        "backgroundRepeat": "no-repeat",
+        "backgroundSize": "cover",
+        "height": "50em",
+      }
+    }
+  />
+  <div
+    className="soft-ends visuallyhidden@lap-and-up"
+    style={
+      Object {
+        "backgroundImage": "url(\\"//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/1x1.serve.jpg\\")",
+        "backgroundPosition": "center",
+        "backgroundRepeat": "no-repeat",
+        "backgroundSize": "cover",
+        "height": "25em",
+      }
+    }
+  />
   <div
     className="background--light-secondary soft-double-top soft-double-bottom text-center"
   >
@@ -346,6 +345,7 @@ exports[`Next Steps renders a layout 1`] = `
         className="italic push-top"
         style={
           Object {
+            "color": "#bc9b67",
             "fontFamily": "ff-meta-serif-web-pro, serif",
           }
         }
@@ -365,7 +365,7 @@ exports[`Next Steps renders a layout 1`] = `
           }
         }
       >
-        9,447
+        7,808
       </h1>
     </Connect(FitTextWithoutData)>
     <div
@@ -397,92 +397,82 @@ exports[`Next Steps renders a layout 1`] = `
           }
         }
       >
-        2,313
+        2,354
       </h1>
       <h3>
-        people served for the first time!
+        for the first time!
       </h3>
     </div>
     <Connect(CardSlider)>
       <MetricCard
-        count="178"
+        count="157"
         key="0"
         label="Aiken"
       />
       <MetricCard
-        count="2,165"
+        count="1,947"
         key="1"
         label="Anderson"
       />
       <MetricCard
-        count="359"
+        count="609"
         key="2"
-        label="Boiling Springs"
-      />
-      <MetricCard
-        count="689"
-        key="3"
         label="Charleston"
       />
       <MetricCard
-        count="375"
-        key="4"
+        count="480"
+        key="3"
         label="Clemson"
       />
       <MetricCard
-        count="1,187"
-        key="5"
+        count="767"
+        key="4"
         label="Columbia"
       />
       <MetricCard
-        count="576"
-        key="6"
+        count="499"
+        key="5"
         label="Florence"
       />
       <MetricCard
-        count="1,208"
-        key="7"
+        count="874"
+        key="6"
         label="Greenville"
       />
       <MetricCard
-        count="440"
-        key="8"
+        count="355"
+        key="7"
         label="Greenwood"
       />
       <MetricCard
-        count="75"
-        key="9"
+        count="85"
+        key="8"
         label="Hilton Head"
       />
       <MetricCard
-        count="478"
-        key="10"
+        count="414"
+        key="9"
         label="Myrtle Beach"
       />
       <MetricCard
-        count="161"
-        key="11"
+        count="121"
+        key="10"
         label="Northeast Columbia"
       />
       <MetricCard
-        count="585"
-        key="12"
+        count="553"
+        key="11"
         label="Powdersville"
       />
       <MetricCard
-        count="136"
-        key="13"
+        count="134"
+        key="12"
         label="Rock Hill"
       />
       <MetricCard
-        count="726"
-        key="14"
+        count="813"
+        key="13"
         label="Spartanburg"
-      />
-      <MetricCard
-        count="109"
-        key="15"
-        label="Sumter"
       />
     </Connect(CardSlider)>
   </div>
@@ -505,7 +495,7 @@ exports[`Next Steps renders a layout 1`] = `
             }
           }
         >
-          8,897
+          4,716
         </h1>
       </Connect(FitTextWithoutData)>
       <div
@@ -545,21 +535,17 @@ exports[`Next Steps renders a layout 1`] = `
         Connect
       </h3>
       <p
-        className="constrain-copy"
+        className="constrain-copy text-center"
+        style={
+          Object {
+            "fontFamily": "colfax-web",
+          }
+        }
       >
-        We all need friends we can be ourselves with, people who make us laugh till it hurts and who will be there when we need prayer.
-         
-        <a
-          alt="link to connect"
-          href="https://newspring.cc/connect"
-        >
-          Connect
-        </a>
-         
-        launched in 2016 as a way to help people connect to Jesus and to each other. This event is for anyone who wants to learn more about NewSpring and to get to know people in the church.
+        Life is better with friends. Connect is a fun first step for anyone who wants to learn more about NewSpring, get to know new people, and get connected to next steps.
       </p>
       <div
-        className="floating"
+        className="floating push-double-top@handheld"
       >
         <div
           className="soft-double@lap-and-up hard-sides@handheld text-center three-quarters@lap-wide-and-up nine-tenths@lap floating__item"
@@ -573,11 +559,10 @@ exports[`Next Steps renders a layout 1`] = `
             }
           />
           <Story
-            content="<p>&#34;To grow in our relationship with Jesus, we knew our next step was to start serving. We walked into Connect very nervous about what it would take to get plugged in. Our host put us at ease and guided us on the start of a new journey.&#34;</p>"
-            heading="Get connected like"
-            image="//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/stories/story-img4.png"
-            location="Florence"
-            name="Brian and Ashley Davison"
+            content="<p style=\\"font-family: colfax-web\\">&#34;I am breaking more of my chains every week at my home group. Church has gone from an obligation or a sometimes-thing to an every-week-thing I absolutely look forward to!&#34;</p>"
+            image="//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/stories/CHELSEA-1.jpg"
+            name="Chelsea Tolive"
+            overriddenHeader="Chelsea Tolive was baptized and connected with a home group through Connect at NewSpring Anderson in 2017."
           />
         </div>
       </div>
@@ -588,6 +573,7 @@ exports[`Next Steps renders a layout 1`] = `
           className="italic"
           style={
             Object {
+              "color": "#bc9b67",
               "fontFamily": "ff-meta-serif-web-pro, serif",
             }
           }
@@ -606,7 +592,7 @@ exports[`Next Steps renders a layout 1`] = `
               }
             }
           >
-            10,946
+            9,055
           </h1>
         </Connect(FitTextWithoutData)>
         <div
@@ -638,10 +624,10 @@ exports[`Next Steps renders a layout 1`] = `
               }
             }
           >
-            7,352
+            2,367
           </h1>
           <h3>
-            attended for the first time!
+            for the first time!
           </h3>
         </div>
       </div>
@@ -675,11 +661,11 @@ exports[`Next Steps renders a layout 1`] = `
           className="text-center@handheld"
         >
           <Connect(FitTextWithoutData)
-            compressor={1.4}
+            compressor={1}
             maxFontSize={18}
           >
             <Currency
-              amount="1246884.72"
+              amount="1371578.00"
               baseHeadingSize="1"
               className="display-inline-block text-center soft-bottom"
               roundCurrency={true}
@@ -706,9 +692,14 @@ exports[`Next Steps renders a layout 1`] = `
           />
         </div>
         <p
-          className="constrain-copy@lap-and-up push-double-bottom@handheld"
+          className="constrain-copy@lap-and-up push-double-bottom@handheld text-center@handheld"
+          style={
+            Object {
+              "fontFamily": "colfax-web",
+            }
+          }
         >
-          God has called our church to make a difference in South Carolina. From rebuilding homes and hosting community service days to giving supplies to low-income schools, the money we budget for local missions creates opportunities to share Jesus' love with our neighbors across the state.
+          We are #ForSC! God has called us to make a difference in South Carolina. From community service days to home repairs to partnerships with non-profit organizations, money dedicated to #ForSC projects created opportunities to share Jesus’ love with our neighbors.
         </p>
       </div>
       <div
@@ -728,10 +719,35 @@ exports[`Next Steps renders a layout 1`] = `
           />
         </div>
       </div>
+      <div
+        className="grid__item push-half-left@handheld floating push-double-top@lap-and-up"
+      >
+        <div
+          className="text-center three-quarters@lap-wide-and-up nine-tenths@lap floating__item"
+        >
+          <hr
+            className="visuallyhidden@handheld push-ends"
+            style={
+              Object {
+                "borderTop": "1px solid #dddddd",
+              }
+            }
+          />
+          <Story
+            content="<p style=\\"font-family: colfax-web\\">&#34;I never had a place that felt like a family until I got to NewSpring… They took me in from the beginning, and they always support me now.&#34;</p>"
+            contentClass="text-light-primary"
+            image="//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/stories/SherriMoss.jpg"
+            linkClass="h6 btn--small@next btn--light whiteColor_1fmte2e-o_O-whiteHover_1tswaje"
+            linkText="Read the story"
+            linkUrl="https://newspring.cc/stories/sherri-moss"
+            overriddenHeader="Sherry Moss of NewSpring Aiken moved out of a recovery center and into her own home on #ForSC day in April 2017."
+          />
+        </div>
+      </div>
     </div>
   </div>
   <div
-    className="background--tertiary soft-double@lap-and-up soft-sides@handheld soft-top@handheld"
+    className="background--tertiary soft-double@lap-and-up soft-sides@handheld soft-ends@handheld"
   >
     <div
       className="grid one-whole push-double-top push-double-bottom@lap-and-up"
@@ -771,11 +787,11 @@ exports[`Next Steps renders a layout 1`] = `
           className="text-center@handheld"
         >
           <Connect(FitTextWithoutData)
-            compressor={1.2}
+            compressor={1}
             maxFontSize={18}
           >
             <Currency
-              amount="493845.39"
+              amount="829264.00"
               baseHeadingSize="1"
               className="display-inline-block text-center soft-bottom"
               roundCurrency={true}
@@ -807,9 +823,14 @@ exports[`Next Steps renders a layout 1`] = `
           />
         </div>
         <p
-          className="constrain-copy@lap-and-up"
+          className="constrain-copy@lap-and-up text-center@handheld"
+          style={
+            Object {
+              "fontFamily": "colfax-web",
+            }
+          }
         >
-          We partner with Freedom Church to share Jesus' love with people around the world. By partnering with local churches, we're able to participate in ministry that continues long after our team comes home. The local church is the hope of the world. When we work together, we begin to see the Great Commission happening before our eyes.
+          We believe the local church is the hope of the world. Through partnerships with several organizations, NewSpring Missions teams traveled to several foreign countries. By investing in local churches sharing the Gospel, we know the impact continues long after teams return home. When we work together, we can see the Great Commission happening before our eyes.
         </p>
       </div>
     </div>
@@ -828,7 +849,7 @@ exports[`Next Steps renders a layout 1`] = `
             }
           }
         >
-          63
+          104
         </h1>
       </Connect(FitTextWithoutData)>
       <div
@@ -862,7 +883,7 @@ exports[`Next Steps renders a layout 1`] = `
             }
           }
         >
-          3
+          4
         </h1>
       </Connect(FitTextWithoutData)>
       <div
@@ -875,28 +896,6 @@ exports[`Next Steps renders a layout 1`] = `
         </h3>
       </div>
     </div>
-    <div
-      className="floating"
-    >
-      <div
-        className="text-center three-quarters@lap-wide-and-up nine-tenths@lap floating__item"
-      >
-        <hr
-          className="visuallyhidden@handheld push-ends"
-          style={
-            Object {
-              "borderTop": "1px solid #dddddd",
-            }
-          }
-        />
-        <Story
-          content="<p>&#34;I traveled to Uganda with NewSpring Missions in July. The trip was inspirational, heartbreaking, and heartwarming. The highlights were worshipping with, and serving, the young boys living on the streets of Kampala. We also helped make improvements to the Freedom Church Heroes boys home.&#34;</p>"
-          contentClass="text-light-primary"
-          image="//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/stories/story-img5.png"
-          overriddenHeader="<strong style='font-family: colfax, sans-serif;'>Chat Davis</strong> from <strong style='font-family: colfax, sans-serif;'>Greenwood</strong> went to Kampala."
-        />
-      </div>
-    </div>
   </div>
   <div
     className="background--primary text-center text-light-primary soft"
@@ -906,9 +905,6 @@ exports[`Next Steps renders a layout 1`] = `
     >
       Keep Reading
     </h3>
-    <p>
-      Up next in the NewSpring 2016 Annual Report is information on our ministries.
-    </p>
     <Link
       className="btn--light push-double-bottom"
       onlyActiveOnIndex={false}

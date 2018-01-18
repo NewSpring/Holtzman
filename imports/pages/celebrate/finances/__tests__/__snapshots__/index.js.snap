@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Finances renders a layout 1`] = `
-<div>
+<div
+  className="text-dark-primary"
+>
   <Meta
     title="Finances"
   />
@@ -24,7 +26,7 @@ exports[`Finances renders a layout 1`] = `
           maxFontSize={18}
         >
           <Currency
-            amount="49329319.14"
+            amount="47554172.25"
             baseHeadingSize="1"
             className="display-inline-block text-center soft-bottom"
             roundCurrency={true}
@@ -45,7 +47,7 @@ exports[`Finances renders a layout 1`] = `
         className="grid floating__item three-quarters@lap-wide-and-up nine-tenths@lap-and-up text-center"
       >
         <div
-          className="grid__item one-half@lap-and-up push-half-bottom"
+          className="grid__item two-fifths@lap-and-up push-half-bottom"
           key="0"
         >
           <div
@@ -53,7 +55,7 @@ exports[`Finances renders a layout 1`] = `
           >
             <Progress
               key="0"
-              percentDone={0.9977887158813115}
+              percentDone={1.0350351119822088}
               style={Object {}}
               theme="dark"
               title="Aiken"
@@ -62,7 +64,7 @@ exports[`Finances renders a layout 1`] = `
           </div>
         </div>
         <div
-          className="grid__item one-half@lap-and-up push-half-bottom"
+          className="grid__item two-fifths@lap-and-up push-half-bottom"
           key="1"
         >
           <div
@@ -70,7 +72,7 @@ exports[`Finances renders a layout 1`] = `
           >
             <Progress
               key="1"
-              percentDone={28.45033299602116}
+              percentDone={29.512353797725922}
               style={Object {}}
               theme="dark"
               title="Anderson"
@@ -79,7 +81,7 @@ exports[`Finances renders a layout 1`] = `
           </div>
         </div>
         <div
-          className="grid__item one-half@lap-and-up push-half-bottom"
+          className="grid__item two-fifths@lap-and-up push-half-bottom"
           key="2"
         >
           <div
@@ -87,7 +89,7 @@ exports[`Finances renders a layout 1`] = `
           >
             <Progress
               key="2"
-              percentDone={2.5218144942756244}
+              percentDone={2.615951158733501}
               style={Object {}}
               theme="dark"
               title="Boiling Springs"
@@ -96,7 +98,7 @@ exports[`Finances renders a layout 1`] = `
           </div>
         </div>
         <div
-          className="grid__item one-half@lap-and-up push-half-bottom"
+          className="grid__item two-fifths@lap-and-up push-half-bottom"
           key="3"
         >
           <div
@@ -104,24 +106,7 @@ exports[`Finances renders a layout 1`] = `
           >
             <Progress
               key="3"
-              percentDone={0.23958350137487833}
-              style={Object {}}
-              theme="dark"
-              title="Central"
-              total="118184.91"
-            />
-          </div>
-        </div>
-        <div
-          className="grid__item one-half@lap-and-up push-half-bottom"
-          key="4"
-        >
-          <div
-            className="grid__item one-whole"
-          >
-            <Progress
-              key="4"
-              percentDone={6.626845691347201}
+              percentDone={6.874218823144377}
               style={Object {}}
               theme="dark"
               title="Charleston"
@@ -130,15 +115,15 @@ exports[`Finances renders a layout 1`] = `
           </div>
         </div>
         <div
-          className="grid__item one-half@lap-and-up push-half-bottom"
-          key="5"
+          className="grid__item two-fifths@lap-and-up push-half-bottom"
+          key="4"
         >
           <div
             className="grid__item one-whole"
           >
             <Progress
-              key="5"
-              percentDone={2.497786998646988}
+              key="4"
+              percentDone={2.591026742138278}
               style={Object {}}
               theme="dark"
               title="Clemson"
@@ -147,7 +132,24 @@ exports[`Finances renders a layout 1`] = `
           </div>
         </div>
         <div
-          className="grid__item one-half@lap-and-up push-half-bottom"
+          className="grid__item two-fifths@lap-and-up push-half-bottom"
+          key="5"
+        >
+          <div
+            className="grid__item one-whole"
+          >
+            <Progress
+              key="5"
+              percentDone={9.793812508217929}
+              style={Object {}}
+              theme="dark"
+              title="Columbia"
+              total="4657366.47"
+            />
+          </div>
+        </div>
+        <div
+          className="grid__item two-fifths@lap-and-up push-half-bottom"
           key="6"
         >
           <div
@@ -155,24 +157,7 @@ exports[`Finances renders a layout 1`] = `
           >
             <Progress
               key="6"
-              percentDone={9.441375942737166}
-              style={Object {}}
-              theme="dark"
-              title="Columbia*"
-              total="4657366.47"
-            />
-          </div>
-        </div>
-        <div
-          className="grid__item one-half@lap-and-up push-half-bottom"
-          key="7"
-        >
-          <div
-            className="grid__item one-whole"
-          >
-            <Progress
-              key="7"
-              percentDone={5.848441029182225}
+              percentDone={6.066757139274988}
               style={Object {}}
               theme="dark"
               title="Florence"
@@ -181,15 +166,15 @@ exports[`Finances renders a layout 1`] = `
           </div>
         </div>
         <div
-          className="grid__item one-half@lap-and-up push-half-bottom"
-          key="8"
+          className="grid__item two-fifths@lap-and-up push-half-bottom"
+          key="7"
         >
           <div
             className="grid__item one-whole"
           >
             <Progress
-              key="8"
-              percentDone={16.67178404927808}
+              key="7"
+              percentDone={17.294124092339764}
               style={Object {}}
               theme="dark"
               title="Greenville"
@@ -198,15 +183,15 @@ exports[`Finances renders a layout 1`] = `
           </div>
         </div>
         <div
-          className="grid__item one-half@lap-and-up push-half-bottom"
-          key="9"
+          className="grid__item two-fifths@lap-and-up push-half-bottom"
+          key="8"
         >
           <div
             className="grid__item one-whole"
           >
             <Progress
-              key="9"
-              percentDone={3.6908021066191425}
+              key="8"
+              percentDone={3.8285758406824124}
               style={Object {}}
               theme="dark"
               title="Greenwood"
@@ -215,15 +200,15 @@ exports[`Finances renders a layout 1`] = `
           </div>
         </div>
         <div
-          className="grid__item one-half@lap-and-up push-half-bottom"
-          key="10"
+          className="grid__item two-fifths@lap-and-up push-half-bottom"
+          key="9"
         >
           <div
             className="grid__item one-whole"
           >
             <Progress
-              key="10"
-              percentDone={0.6854857839012938}
+              key="9"
+              percentDone={0.7110742422816537}
               style={Object {}}
               theme="dark"
               title="Hilton Head"
@@ -232,32 +217,15 @@ exports[`Finances renders a layout 1`] = `
           </div>
         </div>
         <div
-          className="grid__item one-half@lap-and-up push-half-bottom"
-          key="11"
+          className="grid__item two-fifths@lap-and-up push-half-bottom"
+          key="10"
         >
           <div
             className="grid__item one-whole"
           >
             <Progress
-              key="11"
-              percentDone={2.5644133794140176}
-              style={Object {}}
-              theme="dark"
-              title="Lexington*"
-              total="1265007.66"
-            />
-          </div>
-        </div>
-        <div
-          className="grid__item one-half@lap-and-up push-half-bottom"
-          key="12"
-        >
-          <div
-            className="grid__item one-whole"
-          >
-            <Progress
-              key="12"
-              percentDone={4.697388024804592}
+              key="10"
+              percentDone={4.872736545214494}
               style={Object {}}
               theme="dark"
               title="Myrtle Beach"
@@ -266,15 +234,15 @@ exports[`Finances renders a layout 1`] = `
           </div>
         </div>
         <div
-          className="grid__item one-half@lap-and-up push-half-bottom"
-          key="13"
+          className="grid__item two-fifths@lap-and-up push-half-bottom"
+          key="11"
         >
           <div
             className="grid__item one-whole"
           >
             <Progress
-              key="13"
-              percentDone={1.1259060122515203}
+              key="11"
+              percentDone={1.1679348913490972}
               style={Object {}}
               theme="dark"
               title="Northeast Columbia"
@@ -283,15 +251,15 @@ exports[`Finances renders a layout 1`] = `
           </div>
         </div>
         <div
-          className="grid__item one-half@lap-and-up push-half-bottom"
-          key="14"
+          className="grid__item two-fifths@lap-and-up push-half-bottom"
+          key="12"
         >
           <div
             className="grid__item one-whole"
           >
             <Progress
-              key="14"
-              percentDone={5.237526698204494}
+              key="12"
+              percentDone={5.433038023283014}
               style={Object {}}
               theme="dark"
               title="Powdersville"
@@ -300,15 +268,15 @@ exports[`Finances renders a layout 1`] = `
           </div>
         </div>
         <div
-          className="grid__item one-half@lap-and-up push-half-bottom"
-          key="15"
+          className="grid__item two-fifths@lap-and-up push-half-bottom"
+          key="13"
         >
           <div
             className="grid__item one-whole"
           >
             <Progress
-              key="15"
-              percentDone={0.9665421869027645}
+              key="13"
+              percentDone={1.0026221831671143}
               style={Object {}}
               theme="dark"
               title="Rock Hill"
@@ -317,15 +285,15 @@ exports[`Finances renders a layout 1`] = `
           </div>
         </div>
         <div
-          className="grid__item one-half@lap-and-up push-half-bottom"
-          key="16"
+          className="grid__item two-fifths@lap-and-up push-half-bottom"
+          key="14"
         >
           <div
             className="grid__item one-whole"
           >
             <Progress
-              key="16"
-              percentDone={6.357380528808165}
+              key="14"
+              percentDone={6.594694811452636}
               style={Object {}}
               theme="dark"
               title="Spartanburg"
@@ -334,15 +302,15 @@ exports[`Finances renders a layout 1`] = `
           </div>
         </div>
         <div
-          className="grid__item one-half@lap-and-up push-half-bottom"
-          key="17"
+          className="grid__item two-fifths@lap-and-up push-half-bottom"
+          key="15"
         >
           <div
             className="grid__item one-whole"
           >
             <Progress
-              key="17"
-              percentDone={0.5842372346191681}
+              key="15"
+              percentDone={0.6060461918775171}
               style={Object {}}
               theme="dark"
               title="Sumter"
@@ -350,52 +318,16 @@ exports[`Finances renders a layout 1`] = `
             />
           </div>
         </div>
-        <div
-          className="soft-left one-half@lap-and-up push-half-bottom"
-          key="18"
-        >
-          <div
-            className="grid__item one-whole"
-          >
-            <Progress
-              key="18"
-              percentDone={0.7945666529221833}
-              style={Object {}}
-              theme="dark"
-              title="Web"
-              total="391954.32"
-            />
-          </div>
-        </div>
       </div>
-    </div>
-    <div
-      className="soft-sides"
-    >
-      <small
-        className="text-center"
-      >
-        <em>
-          Lexington campus merged with Columbia campus on Oct. 30.
-        </em>
-      </small>
-      <br />
-      <small
-        className="text-center"
-      >
-        <em>
-          Financials have been audited.
-        </em>
-      </small>
     </div>
   </div>
   <div
-    className="background--light-primary text-center soft-double-top"
+    className="background--light-primary text-center soft-double-top soft-sides"
   >
     <h3
       className="push-top push-half-bottom"
     >
-      Land and Building Giving
+      Giving to Overflow Offering
     </h3>
     <div
       className="push-top"
@@ -405,10 +337,9 @@ exports[`Finances renders a layout 1`] = `
         maxFontSize={18}
       >
         <Currency
-          amount="1792258.15"
+          amount="4567422.90"
           baseHeadingSize="1"
           className="display-inline-block text-center soft-bottom text-dark-primary"
-          roundCurrency={true}
           style={
             Object {
               "fontWeight": "900",
@@ -424,190 +355,136 @@ exports[`Finances renders a layout 1`] = `
         className="soft-double-sides soft-sides@handheld text-center three-quarters@lap-wide-and-up nine-tenths@lap floating__item"
       >
         <hr
-          className="push-ends"
+          className="visuallyhidden@handheld push-ends"
           style={
             Object {
               "borderTop": "1px solid #dddddd",
             }
           }
         />
-        <div
-          className="soft-ends"
-        >
-          <div
-            className="grid push-ends"
-          >
-            <div
-              className="grid__item one-half@lap-and-up one-whole"
-            >
-              <h3
-                className="italic"
-                style={
-                  Object {
-                    "fontFamily": "ff-meta-serif-web-pro, serif",
-                  }
-                }
-              >
-                We had
-              </h3>
-              <Connect(FitTextWithoutData)
-                compressor={0.5}
-              >
-                <h1
-                  className="uppercase flush-bottom soft-half-bottom"
-                  style={
-                    Object {
-                      "fontWeight": "900",
-                    }
-                  }
-                >
-                  5,400
-                </h1>
-              </Connect(FitTextWithoutData)>
-              <h3>
-                first time givers
-              </h3>
-            </div>
-            <div
-              className="grid__item one-half@lap-and-up"
-            >
-              <h3
-                className="italic"
-                style={
-                  Object {
-                    "fontFamily": "ff-meta-serif-web-pro, serif",
-                  }
-                }
-              >
-                and
-              </h3>
-              <Connect(FitTextWithoutData)
-                compressor={0.5}
-              >
-                <h1
-                  className="uppercase flush-bottom soft-half-bottom"
-                  style={
-                    Object {
-                      "fontWeight": "900",
-                    }
-                  }
-                >
-                  18,173
-                </h1>
-              </Connect(FitTextWithoutData)>
-              <div
-                className="floating text-center"
-              >
-                <h3
-                  className="floating__item push-half-bottom"
-                >
-                  households gave.
-                </h3>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
+      <h3
+        className="push-top push-bottom"
+      >
+        Your Generosity Makes a Difference
+      </h3>
+      <Story
+        content="
+              <p style=\\"font-family: colfax-web\\">NewSpring made a new commitment in 2017 to give 10 percent of tithes to support community organizations, ministries, and churches. Following the pledge, that amount totaled <strong style=\\"font-family: colfax-web\\">$1.6 million</strong>.</p>
+              <p style=\\"font-family: colfax-web\\">CARE for AIDS got $75,000 — in addition to $288,000 given in the Overflow Offering — to provide medical care, job training and the hope of the Gospel to families in Kenya and Tanzania dealing with HIV/AIDS. The combined total was the largest gift in the organization’s history.</p>
+              "
+        image="//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/20172Kenya-110.jpg"
+        linkClass="h6 btn--small@next btn--dark-secondary"
+        linkText="Learn about the work of CARE for AIDS"
+        linkUrl="https://newspring.cc/news/how-our-newspring-family-is-embracing-african-families-living-with-hiv-aids"
+        overriddenHeader="Care for AIDS benefits from our Kingdom mentality"
+      />
     </div>
   </div>
   <div
-    className="background--dark-primary soft floating"
+    className="soft-ends background--light-secondary floating"
   >
     <div
-      className="floating__item two-thirds@lap-and-up"
+      className="grid push-double-ends three-quarters@lap-wide-and-up nine-tenths@lap floating__item"
     >
-      <h3
-        className="push-double-top text-light-primary"
+      <div
+        className="grid__item text-center one-half@lap-and-up one-whole"
       >
-        Christmas Offering
-      </h3>
-      <Connect(FitTextWithoutData)
-        compressor={1.5}
-        maxFontSize={18}
-      >
-        <Currency
-          amount="1125052.43"
-          baseHeadingSize="1"
-          className="display-inline-block text-center soft-double-bottom"
-          roundCurrency={true}
+        <h3
+          className="italic"
           style={
             Object {
-              "fontWeight": "900",
+              "color": "#bc9b67",
+              "fontFamily": "ff-meta-serif-web-pro, serif",
             }
           }
-          theme="light"
-        />
-      </Connect(FitTextWithoutData)>
-      <hr
-        className="visuallyhidden@handheld push-ends"
-        style={
-          Object {
-            "borderTop": "1px solid #ffffff",
-          }
-        }
-      />
-      <div
-        className="text-light-primary text-left push-top@lap-and-up soft-double-top@lap-and-up push-double-bottom"
-      >
-        <div
-          className="floating"
         >
-          <div
-            className="floating__item three-quarters@lap-and-up text-left"
+          We had
+        </h3>
+        <Connect(FitTextWithoutData)
+          compressor={0.5}
+        >
+          <h1
+            className="uppercase flush-bottom soft-half-bottom"
+            style={
+              Object {
+                "fontWeight": "900",
+              }
+            }
           >
-            <p>
-              This year's Christmas Offering will support these three projects:
-            </p>
-            <ul>
-              <li>
-                Campus expansion to help our
-                 
-                <a
-                  alt="link to locations page"
-                  className="text-light-primary"
-                  href="https://newspring.cc/locations"
-                  target="_blank"
-                >
-                  current campuses
-                </a>
-                 
-                take their next step.
-              </li>
-              <li>
-                Global missions to support
-                 
-                <a
-                  alt="link to Freedom Church"
-                  className="text-light-primary"
-                  href="http://www.freedomchurch.cc/"
-                  target="_blank"
-                >
-                  Freedom Church
-                </a>
-                 
-                as they launch three new campuses in 2017.
-              </li>
-              <li>
-                Local missions in the communities where we have
-                 
-                <a
-                  alt="link to locations page"
-                  className="text-light-primary"
-                  href="https://newspring.cc/locations"
-                  target="_blank"
-                >
-                  campuses
-                </a>
-                .
-              </li>
-            </ul>
-          </div>
+            5,400
+          </h1>
+        </Connect(FitTextWithoutData)>
+        <h3>
+          First time givers
+        </h3>
+      </div>
+      <div
+        className="grid__item text-center one-half@lap-and-up"
+      >
+        <h3
+          className="italic"
+          style={
+            Object {
+              "color": "#bc9b67",
+              "fontFamily": "ff-meta-serif-web-pro, serif",
+            }
+          }
+        >
+          and
+        </h3>
+        <Connect(FitTextWithoutData)
+          compressor={0.5}
+        >
+          <h1
+            className="uppercase flush-bottom soft-half-bottom"
+            style={
+              Object {
+                "fontWeight": "900",
+              }
+            }
+          >
+            18,173
+          </h1>
+        </Connect(FitTextWithoutData)>
+        <div
+          className="floating text-center"
+        >
+          <h3
+            className="floating__item push-half-bottom"
+          >
+            Households that gave $250 or more.
+          </h3>
         </div>
       </div>
     </div>
   </div>
   <div
-    className="background--light-primary soft"
+    className="soft-ends visuallyhidden@handheld"
+    style={
+      Object {
+        "backgroundImage": "url(\\"//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/2x1.audit.jpg\\")",
+        "backgroundPosition": "center",
+        "backgroundRepeat": "no-repeat",
+        "backgroundSize": "cover",
+        "height": "50em",
+      }
+    }
+  />
+  <div
+    className="soft-ends visuallyhidden@lap-and-up"
+    style={
+      Object {
+        "backgroundImage": "url(\\"//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/1x1.audit.jpg\\")",
+        "backgroundPosition": "center",
+        "backgroundRepeat": "no-repeat",
+        "backgroundSize": "cover",
+        "height": "25em",
+      }
+    }
+  />
+  <div
+    className="background--light-primary soft-sides soft-double-ends"
   >
     <h3
       className="text-center push-top"
@@ -615,7 +492,12 @@ exports[`Finances renders a layout 1`] = `
       Annual Audit
     </h3>
     <p
-      className="constrain-copy push-bottom"
+      className="constrain-copy text-center"
+      style={
+        Object {
+          "fontFamily": "colfax-web",
+        }
+      }
     >
       NewSpring is audited annually by an external accounting firm according to Generally Accepted Accounting Principles. God calls His people to live above reproach, so for us, the annual audit is a financial and spiritual responsibility (
       <a
@@ -627,18 +509,17 @@ exports[`Finances renders a layout 1`] = `
       </a>
       ).
     </p>
-    <div
-      className="text-center"
+    <br />
+    <p
+      className="constrain-copy text-center push-bottom"
+      style={
+        Object {
+          "fontFamily": "colfax-web",
+        }
+      }
     >
-      <a
-        className="btn push-bottom"
-        href="https://s3.amazonaws.com/ns.assets/apollos/annual+report/2016/2016+Audit.pdf"
-        onClick={[Function]}
-        target="_blank"
-      >
-        Detailed Report
-      </a>
-    </div>
+      We'll update this section in May after the Audit is complete. If you have any questions not answered here, please email us at finance@newspring.cc.
+    </p>
   </div>
   <div
     className="background--primary text-center text-light-primary soft"
@@ -648,9 +529,6 @@ exports[`Finances renders a layout 1`] = `
     >
       Keep Reading
     </h3>
-    <p>
-      Up next in the NewSpring 2016 Annual Report is information on Next Steps.
-    </p>
     <Link
       className="btn--light push-double-bottom"
       onlyActiveOnIndex={false}
