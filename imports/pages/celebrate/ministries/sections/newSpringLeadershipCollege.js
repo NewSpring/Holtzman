@@ -8,9 +8,9 @@ const data = {
     tags: [
       {
         image1x1:
-          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/NSCollege/1x1.college.currentstudents.jpg",
+          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/NSCollege/1x1.college.currentstudents.bw.jpg",
         image2x1:
-          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/NSCollege/2x1.college.currentstudents.jpg",
+          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/NSCollege/2x1.college.currentstudents.bw.jpg",
         imageAlt: "Current NewSpring Leadership College Students",
         label: "31",
         value: "Current Students",
@@ -18,9 +18,9 @@ const data = {
       },
       {
         image1x1:
-          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/NSCollege/1x1.college.graduated.jpg",
+          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/NSCollege/1x1.college.graduated.bw.jpg",
         image2x1:
-          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/NSCollege/2x1.college.graduated.jpg",
+          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/NSCollege/2x1.college.graduated.bw.jpg",
         imageAlt: "NewSpring Leadership College Graduates",
         label: "53",
         value: "CollegeGraduates",
@@ -28,9 +28,9 @@ const data = {
       },
       {
         image1x1:
-          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/NSCollege/1x1.college.workingministry.jpg",
+          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/NSCollege/1x1.college.workingministry.bw.jpg",
         image2x1:
-          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/NSCollege/2x1.college.workingministry.jpg",
+          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/NSCollege/2x1.college.workingministry.bw.jpg",
         imageAlt: "NSLC Grads placed in ministry",
         label: "16",
         value: "GradsInMinistry",

@@ -51,9 +51,9 @@ const data = {
     tags: [
       {
         image1x1:
-          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/KidSpring/1x1.kidspring.returned.jpg",
+          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/KidSpring/1x1.kidspring.returned.bw.jpg",
         image2x1:
-          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/KidSpring/2x1.kidspring.returned.jpg",
+          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/KidSpring/2x1.kidspring.returned.bw.jpg",
         imageAlt: "First timers who returned to KidSpring",
         label: "3,610",
         value: "FirstTime",
@@ -61,9 +61,9 @@ const data = {
       },
       {
         image1x1:
-          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/KidSpring/1x1.kidspring.baptized.jpg",
+          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/KidSpring/1x1.kidspring.baptized.bw.jpg",
         image2x1:
-          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/KidSpring/2x1.kidspring.baptized.jpg",
+          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/KidSpring/2x1.kidspring.baptized.bw.jpg",
         imageAlt: "Kids were baptized",
         label: "307",
         value: "KidsBaptized",
@@ -71,9 +71,9 @@ const data = {
       },
       {
         image1x1:
-          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/KidSpring/1x1.kidspring.transitioned.jpg",
+          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/KidSpring/1x1.kidspring.transitioned.bw.jpg",
         image2x1:
-          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/KidSpring/2x1.kidspring.transitioned.jpg",
+          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/KidSpring/2x1.kidspring.transitioned.bw.jpg",
         imageAlt: "Kids who transitioned to Fuse",
         label: "581",
         value: "KidsFuse",
