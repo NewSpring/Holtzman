@@ -5,19 +5,17 @@ import { Link } from "react-router";
 
 import { header } from "../../../../data/store";
 
-type ISubNav = [{
-  isActive: boolean,
-  linkUrl: string,
-  onClick: Function,
-  title: string,
-}];
+type ISubNav = [
+  {
+    isActive: boolean,
+    linkUrl: string,
+    onClick: Function,
+    title: string,
+  },
+];
 
 const getLinkClasses = (additionalClasses?: string, isActive: boolean) => {
-  const classes = [
-    "floating__item",
-    "text-center",
-    "plain",
-  ];
+  const classes = ["floating__item", "text-center", "plain"];
 
   if (isActive) {
     classes.push("outlined--bottom");
@@ -65,11 +63,11 @@ type IDashboard = {
   subNav: ISubNav,
   title: string,
   align?: string,
+  centerWebNav?: boolean,
   hideTitle?: boolean,
 };
 
 export class Dashboard extends Component {
-
   props: IDashboard;
 
   componentWillMount() {
@@ -84,6 +82,7 @@ export class Dashboard extends Component {
       title,
       align,
       hideTitle,
+      centerWebNav,
     } = this.props;
 
     return (
@@ -92,22 +91,49 @@ export class Dashboard extends Component {
           className={`
             push-top
             soft-left@handheld
-            ${!process.env.NATIVE ? "soft-top@handheld soft-double-top" : "soft-half-left@handheld"}
-            soft-double-left
+            ${
+              !process.env.NATIVE
+                ? "soft-top@handheld soft-double-top"
+                : "soft-half-left@handheld"
+            }
+            soft-double-left@lap-and-up
+            soft-half-sides
             background--light-primary
           `}
         >
-          {!process.env.NATIVE && title && !hideTitle && (
-            <h1 className="soft-half-bottom@handheld soft-bottom">{title}</h1>
+          {!process.env.NATIVE &&
+            title &&
+            !hideTitle && (
+              <h1 className="soft-half-bottom@handheld soft-bottom soft-half-left">
+                {title}
+              </h1>
+            )}
+          {!centerWebNav && (
+            <div
+              className={`floating ${
+                !process.env.NATIVE ? "text-left" : align || "text-center"
+              }`}
+            >
+              {getLinks(additionalClasses, subNav)}
+            </div>
           )}
-          <div className={`floating ${!process.env.NATIVE ? "text-left" : align || "text-center"}`}>
-            {getLinks(additionalClasses, subNav)}
-          </div>
+          {!process.env.NATIVE &&
+            centerWebNav && (
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                {getLinks(additionalClasses, subNav)}
+              </div>
+            )}
         </div>
-        <div className="background--light-secondary outlined--top outlined--light" style={{ borderWidth: "1px" }}>
-          <div>
-            {children}
-          </div>
+        <div
+          className="background--light-secondary outlined--top outlined--light"
+          style={{ borderWidth: "1px" }}
+        >
+          <div>{children}</div>
         </div>
       </div>
     );
