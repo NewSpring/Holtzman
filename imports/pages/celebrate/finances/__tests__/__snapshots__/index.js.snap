@@ -320,6 +320,25 @@ exports[`Finances renders a layout 1`] = `
         </div>
       </div>
     </div>
+    <div
+      className="soft-sides"
+    >
+      <small
+        className="text-center"
+      >
+        <em>
+          Boiling Springs campus merged with Spartanburg campus on March 5.
+        </em>
+      </small>
+      <br />
+      <small
+        className="text-center"
+      >
+        <em>
+          Sumter campus closed on May 28.
+        </em>
+      </small>
+    </div>
   </div>
   <div
     className="background--light-primary text-center soft-double-top soft-sides"
