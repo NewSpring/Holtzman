@@ -26,7 +26,7 @@ exports[`Finances renders a layout 1`] = `
           maxFontSize={18}
         >
           <Currency
-            amount="47554172.25"
+            amount="40717369.65999999"
             baseHeadingSize="1"
             className="display-inline-block text-center soft-bottom"
             roundCurrency={true}
@@ -55,11 +55,11 @@ exports[`Finances renders a layout 1`] = `
           >
             <Progress
               key="0"
-              percentDone={1.0350351119822088}
+              percentDone={1.8160189525366317}
               style={Object {}}
               theme="dark"
               title="Aiken"
-              total="492202.38"
+              total="739435.15"
             />
           </div>
         </div>
@@ -72,11 +72,11 @@ exports[`Finances renders a layout 1`] = `
           >
             <Progress
               key="1"
-              percentDone={29.512353797725922}
+              percentDone={27.61374610856924}
               style={Object {}}
               theme="dark"
               title="Anderson"
-              total="14034355.56"
+              total="11243591.08"
             />
           </div>
         </div>
@@ -89,11 +89,11 @@ exports[`Finances renders a layout 1`] = `
           >
             <Progress
               key="2"
-              percentDone={2.615951158733501}
+              percentDone={0.24147839317968364}
               style={Object {}}
               theme="dark"
-              title="Boiling Springs"
-              total="1243993.92"
+              title="Central"
+              total="98323.65"
             />
           </div>
         </div>
@@ -106,11 +106,11 @@ exports[`Finances renders a layout 1`] = `
           >
             <Progress
               key="3"
-              percentDone={6.874218823144377}
+              percentDone={6.352786615637196}
               style={Object {}}
               theme="dark"
               title="Charleston"
-              total="3268977.86"
+              total="2586687.61"
             />
           </div>
         </div>
@@ -123,11 +123,11 @@ exports[`Finances renders a layout 1`] = `
           >
             <Progress
               key="4"
-              percentDone={2.591026742138278}
+              percentDone={4.638532389913716}
               style={Object {}}
               theme="dark"
               title="Clemson"
-              total="1232141.32"
+              total="1888688.38"
             />
           </div>
         </div>
@@ -140,11 +140,11 @@ exports[`Finances renders a layout 1`] = `
           >
             <Progress
               key="5"
-              percentDone={9.793812508217929}
+              percentDone={10.668910482858536}
               style={Object {}}
               theme="dark"
               title="Columbia"
-              total="4657366.47"
+              total="4344099.72"
             />
           </div>
         </div>
@@ -157,11 +157,11 @@ exports[`Finances renders a layout 1`] = `
           >
             <Progress
               key="6"
-              percentDone={6.066757139274988}
+              percentDone={5.678509317539252}
               style={Object {}}
               theme="dark"
               title="Florence"
-              total="2884996.14"
+              total="2312139.63"
             />
           </div>
         </div>
@@ -174,11 +174,11 @@ exports[`Finances renders a layout 1`] = `
           >
             <Progress
               key="7"
-              percentDone={17.294124092339764}
+              percentDone={16.009510423763462}
               style={Object {}}
               theme="dark"
               title="Greenville"
-              total="8224077.56"
+              total="6518651.54"
             />
           </div>
         </div>
@@ -191,11 +191,11 @@ exports[`Finances renders a layout 1`] = `
           >
             <Progress
               key="8"
-              percentDone={3.8285758406824124}
+              percentDone={3.4425957808788383}
               style={Object {}}
               theme="dark"
               title="Greenwood"
-              total="1820647.55"
+              total="1401734.45"
             />
           </div>
         </div>
@@ -208,11 +208,11 @@ exports[`Finances renders a layout 1`] = `
           >
             <Progress
               key="9"
-              percentDone={0.7110742422816537}
+              percentDone={0.968611217505645}
               style={Object {}}
               theme="dark"
               title="Hilton Head"
-              total="338145.47"
+              total="394393.01"
             />
           </div>
         </div>
@@ -225,11 +225,11 @@ exports[`Finances renders a layout 1`] = `
           >
             <Progress
               key="10"
-              percentDone={4.872736545214494}
+              percentDone={4.126558748834466}
               style={Object {}}
               theme="dark"
               title="Myrtle Beach"
-              total="2317189.53"
+              total="1680226.18"
             />
           </div>
         </div>
@@ -242,11 +242,11 @@ exports[`Finances renders a layout 1`] = `
           >
             <Progress
               key="11"
-              percentDone={1.1679348913490972}
+              percentDone={1.1727590067516167}
               style={Object {}}
               theme="dark"
               title="Northeast Columbia"
-              total="555401.77"
+              total="477516.62"
             />
           </div>
         </div>
@@ -259,11 +259,11 @@ exports[`Finances renders a layout 1`] = `
           >
             <Progress
               key="12"
-              percentDone={5.433038023283014}
+              percentDone={6.775956435885355}
               style={Object {}}
               theme="dark"
               title="Powdersville"
-              total="2583636.26"
+              total="2758991.23"
             />
           </div>
         </div>
@@ -276,11 +276,11 @@ exports[`Finances renders a layout 1`] = `
           >
             <Progress
               key="13"
-              percentDone={1.0026221831671143}
+              percentDone={1.0510634492689872}
               style={Object {}}
               theme="dark"
               title="Rock Hill"
-              total="476788.68"
+              total="427965.39"
             />
           </div>
         </div>
@@ -293,11 +293,11 @@ exports[`Finances renders a layout 1`] = `
           >
             <Progress
               key="14"
-              percentDone={6.594694811452636}
+              percentDone={8.877670193787269}
               style={Object {}}
               theme="dark"
               title="Spartanburg"
-              total="3136052.53"
+              total="3614753.79"
             />
           </div>
         </div>
@@ -310,11 +310,11 @@ exports[`Finances renders a layout 1`] = `
           >
             <Progress
               key="15"
-              percentDone={0.6060461918775171}
+              percentDone={0.5652949390444493}
               style={Object {}}
               theme="dark"
-              title="Sumter"
-              total="288200.25"
+              title="Web"
+              total="230173.23"
             />
           </div>
         </div>
@@ -337,7 +337,7 @@ exports[`Finances renders a layout 1`] = `
         maxFontSize={18}
       >
         <Currency
-          amount="4567422.90"
+          amount="1180357.03"
           baseHeadingSize="1"
           className="display-inline-block text-center soft-bottom text-dark-primary"
           style={
