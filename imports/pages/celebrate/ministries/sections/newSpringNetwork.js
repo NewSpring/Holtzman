@@ -22,7 +22,7 @@ const data = {
   stories: [
     {
       imageUrl:
-        "https://www.arcchurches.com/wp-content/uploads/2016/04/openfctv.png",
+        "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/life.church.logo.2.jpg",
       name: "Open Network",
       location: "Arkansas",
       heading:
