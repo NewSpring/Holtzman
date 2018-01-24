@@ -3,7 +3,6 @@ import FitText from "../../components/fit-text";
 import CardSlider from "../../../../components/@primitives/UI/card-slider";
 import MetricCard from "../../components/metricCard";
 import Story from "../../components/story";
-// import TagGallery from "../../../../components/@primitives/UI/tag-gallery";
 
 const styles = StyleSheet.create({
   secondaryColor: {
@@ -37,7 +36,7 @@ const data = {
         { name: "Anderson", average: "677" },
         { name: "Charleston", average: "384" },
         { name: "Clemson", average: "278" },
-        { name: "Columbia & NE Columbia", average: "418" },
+        { name: "Columbia & Northeast Columbia", average: "418" },
         { name: "Florence", average: "146" },
         { name: "Greenville", average: "389" },
         { name: "Greenwood", average: "125" },
@@ -115,16 +114,12 @@ const Fuse = () => (
         <div className="constrain-page soft-double-top soft-sides@lap soft-sides@handheld">
           <div className="one-whole">
             <div className="constrain-copy">
-              <h1
-                className="uppercase push-bottom"
-                style={{ color: "#4F92A9" }}
-              >
+              <h1 className="uppercase push-bottom" style={{ color: "#4F92A9" }}>
                 [ Fuse ]
               </h1>
               <p className="text-center" style={{ fontFamily: "colfax-web" }}>
-                Fuse is NewSpring&#39;s student ministry. Fuse is a place where
-                middle and high school students can have fun while connecting to
-                Jesus and to each other.
+                Fuse is NewSpring&#39;s student ministry. Fuse is a place where middle and high
+                school students can have fun while connecting to Jesus and to each other.
               </p>
             </div>
 
@@ -220,9 +215,7 @@ const Fuse = () => (
                             {data.statistics.salvations}
                           </h1>
                         </FitText>
-                        <h3 className="soft-bottom">
-                          Students cross from death to life at Fuse
-                        </h3>
+                        <h3 className="soft-bottom">Students cross from death to life at Fuse</h3>
                       </div>
                     </div>
                   </div>
@@ -260,20 +253,16 @@ const Fuse = () => (
       }}
     >
       <Story
-        overriddenHeader={
-          "Wesley Jordan of NewSpring Charleston was set free when he asked Jesus into his life at Gauntlet 2017."
-        }
-        image={
-          "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Wesley/Wesley_Intothewater.png"
-        }
+        image={"//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/stories/Wesley_Jordan.png"}
         content={`
+          <p style="font-family: colfax-web"><strong style="font-family: colfax-web">Wesley Jordan</strong> of <strong style="font-family: colfax-web">NewSpring Charleston</strong> was set free when he asked Jesus into his life at <strong style="font-family: colfax-web">Gauntlet 2017</strong>.</p>
           <p style="font-family: colfax-web">“I didn’t see the reason why I was alive at times ... Now I am definitely seeing that He has a plan for me.”</p>
           `}
         contentClass={"text-light-primary"}
         linkUrl="https://newspring.cc/stories/wesley-jordan"
         linkClass={`h6 btn--small@next soft-sides@portable ${css(
           styles.whiteColor,
-          styles.whiteHover, // eslint-disable-line
+          styles.whiteHover,
         )}`}
         linkText={"Read His Story"}
       />

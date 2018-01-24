@@ -32,6 +32,7 @@ exports[`NewSpring Leadership College renders a layout 1`] = `
             <a
               alt="NewSpring Leadership College link"
               href="https://newspringcollege.com"
+              target="_blank"
             >
               NewSpring Leadership College
             </a>
@@ -212,13 +213,13 @@ exports[`NewSpring Leadership College renders a layout 1`] = `
       >
         <Story
           content="
+              <p style=\\"font-family: colfax-web\\"><strong style=\\"font-family: colfax-web\\">Kellen Young</strong> graduated from <strong style=\\"font-family: colfax-web\\">NewSpring Leadership College</strong> in 2017 and took a role as a full-time student pastor.</p>
               <p style=\\"font-family: colfax-web\\">“If you want to learn practical, hands-on ministry, NewSpring College is the place to go.”</p>
               "
-          image="//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Kellen/KELLEN-9.jpg"
+          image="//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/stories/Kellen_Young.jpg"
           linkClass="h6 btn--small@next soft-sides@portable btn--dark-secondary"
           linkText="Read the story"
           linkUrl="http://newspring.cc/stories/kellen-young"
-          overriddenHeader="Kellen Young graduated from the third year of NewSpring Leadership College in 2017 and took a role as a full-time student pastor."
         />
       </div>
     </div>

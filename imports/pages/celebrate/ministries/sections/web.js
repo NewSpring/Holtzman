@@ -7,63 +7,46 @@ const data = {
   statistics: {
     icons: [
       {
-        image:
-          "//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/icons/icon-branch.png",
+        image: "//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/icons/icon-branch.png",
         label: "different websites and apps",
         value: "13",
       },
       {
-        image:
-          "//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/icons/icon-mac.png",
+        image: "//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/icons/icon-mac.png",
         label: "unique devices to view our sites and apps",
         value: "2,035,975",
       },
-      // TODO: Removed for 2017
-      // {
-      //   image:
-      //     "//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/icons/icon-cake.png",
-      //   label: "church online salvations",
-      //   value: "398",
-      // },
       {
-        image:
-          "//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/icons/icon-viewers.png",
+        image: "//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/icons/icon-viewers.png",
         label: "average weekly church online viewers",
         value: "4,431",
       },
       {
-        image:
-          "//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/icons/icon-phone.png",
+        image: "//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/icons/icon-phone.png",
         label: "NewSpring app downloads",
         value: "22,155",
       },
       {
-        image:
-          "//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/icons/icon-globe.png",
+        image: "//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/icons/icon-globe.png",
         label: "countries/provinces that visted our sites",
         value: "230",
       },
     ],
     cards: [
       {
-        label: "Articles Read",
+        label: "Articles Pageviews",
         value: "986,347",
       },
       {
-        label: "Devotionals Read",
+        label: "Devotionals Pageviews",
         value: "775,094",
       },
-      // TODO: Removed for 2017
-      // {
-      //   label: "Studies Pageviews",
-      //   value: "252,566",
-      // },
       {
-        label: "Stories Viewed",
+        label: "Stories Pageviews",
         value: "157,989",
       },
       {
-        label: "Sermons Watched",
+        label: "Sermons Pageviews",
         value: "195,891",
       },
     ],
@@ -113,10 +96,7 @@ const Web = () => (
         <div className="floating soft-double-top one-whole hard@handheld">
           <div className="floating__item constrain-copy soft-double-sides@lap-and-up push-sides@lap-and-up soft-sides@handheld">
             <h3 className="text-center italic">
-              <strong>
-                Using technology to connect people to Jesus and each other, we
-                saw
-              </strong>
+              <strong>Using technology to connect people to Jesus and each other, we saw</strong>
             </h3>
           </div>
         </div>
@@ -133,14 +113,13 @@ const Web = () => (
       </div>
       <div className="soft-sides@handheld" style={{ background: "#bc9b67" }}>
         <Story
-          overriddenHeader={
-            "Amy Buckmaster of NewSpring Greenville grew a daily Bible reading habit in 2017 because of devotionals sent by text message to her phone."
-          }
           image={
-            "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/stories/amy.jpg"
+            "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/stories/Amy_Buckmaster.jpg"
           }
           content={`
+            <p style="font-family: colfax-web"><strong style="font-family: colfax-web">Amy Buckmaster</strong> of <strong style="font-family: colfax-web">NewSpring Greenville</strong> grew a daily Bible reading habit in 2017 because of devotionals sent by text message to her phone.</p>
             <p style="font-family: colfax-web">“It’s the best way to start each morning! ... It helps me dig deeper into His Word and brings me closer to Jesus.”</p>
+            <p style="font-family: colfax-web">Do you want to receive a daily devotional by text message each morning? Text READ MY BIBLE to 30303.</p>
           `}
           contentClass={"text-light-primary"}
         />

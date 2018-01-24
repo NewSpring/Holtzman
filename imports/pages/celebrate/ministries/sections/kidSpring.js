@@ -88,7 +88,7 @@ const KidSpring = () => (
   <div>
     <div
       className={`${css(
-        styles.primaryBackground, // eslint-disable-line
+        styles.primaryBackground,
       )} soft-double-ends@lap-and-up soft-ends text-center text-light-primary`}
     >
       <div className="constrain-page soft-double-top soft-sides@handheld soft-sides@lap">
@@ -97,10 +97,9 @@ const KidSpring = () => (
             <div className="constrain-copy">
               <h1 className="uppercase push-bottom">KidSpring</h1>
               <p className="text-center" style={{ fontFamily: "colfax-web" }}>
-                KidSpring is the children&#39;s ministry at NewSpring Church.
-                Every Sunday, children from birth through fifth grade experience
-                Jesus on their level in environments that are safe, fun, and
-                age-appropriate.
+                KidSpring is the children&#39;s ministry at NewSpring Church. Every Sunday, children
+                from birth through fifth grade experience Jesus on their level in environments that
+                are safe, fun, and age-appropriate.
               </p>
             </div>
           </div>
@@ -136,7 +135,7 @@ const KidSpring = () => (
       <div className="constrain-page push-double-top">
         <div className="one-whole text-center">
           <h3 className={`italic push-bottom ${css(styles.secondaryColor)}`}>
-            <strong>Every number is a student life changed</strong>
+            <strong>Every number is a kid&#39;s life changed</strong>
           </h3>
         </div>
         <div className="floating">
@@ -175,21 +174,17 @@ const KidSpring = () => (
             <div className="soft-double-sides@lap-and-up">
               <Story
                 image={
-                  "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Allison/Abby_Hero_1_1.jpg"
+                  "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/stories/Abby_Moore.jpg"
                 }
-                heading={
-                  "Every week, SpringZone provides a loving, safe, fun, personalized environment for people with special needs, like"
-                }
-                name={"Abby Moore"}
-                location={"NewSpring Florence"}
                 content={`
+                  <p style="font-family: colfax-web">Every week, <strong style="font-family: colfax-web">Spring Zone</strong> provides a loving, safe, fun, personalized environment for people with special needs, like <strong style="font-family: colfax-web">Abby Moore</strong> from <strong style="font-family: colfax-web">NewSpring Florence</strong>.</p>
                   <p style="font-family: colfax-web">"Abby walks into church dancing and singing ... high-fiving and reaching out to shake hands with anyone who will look her way."</p>
                   `}
                 contentClass={css(styles.secondaryColor)}
                 linkUrl="https://newspring.cc/stories/allison-moore"
                 linkClass={`h6 btn--small@next soft-sides@portable ${css(
                   styles.secondaryColor,
-                  styles.secondaryHover, // eslint-disable-line
+                  styles.secondaryHover,
                 )}`}
                 linkText={"Read Her Story"}
               />

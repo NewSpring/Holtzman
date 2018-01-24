@@ -10,7 +10,6 @@ import Web from "./sections/web";
 import Thanks from "./sections/thanks";
 import Rally from "./sections/rally";
 
-/* eslint-disable max-len */
 export const Ministries = () => (
   <div>
     <Meta title="Ministries" />
