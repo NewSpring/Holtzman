@@ -101,9 +101,9 @@ const styles = StyleSheet.create({
 });
 
 const firstTimeVisitorData = [
-  { ministry: "VIP Room", count: 10636, color: "#6BAC43" },
-  { ministry: "KidSpring", count: 7245, color: "#1C683E" },
-  { ministry: "Fuse", count: 9350, color: "#2A4930" },
+  { ministry: "VIP Room", count: 10636, color: "#6BAC43", countString: "10,636" },
+  { ministry: "KidSpring", count: 7245, color: "#1C683E", countString: "7,245" },
+  { ministry: "Fuse", count: 9350, color: "#2A4930", countString: "9.350" },
 ];
 
 const volunteerData = [
@@ -133,14 +133,10 @@ export const NextSteps = () => (
     <div className="background--light-secondary soft-double-ends soft-sides">
       <div className="push-ends">
         <h3 className="text-center">Why do we talk about Next Steps?</h3>
-        <p
-          className="constrain-copy text-center"
-          style={{ fontFamily: "colfax-web" }}
-        >
-          NewSpring exists to connect people to Jesus and each other. Salvation
-          is only the start of someone’s spiritual journey, and every journey is
-          a series of next steps. Take a look at some of the next steps we
-          celebrated in 2017...
+        <p className="constrain-copy text-center" style={{ fontFamily: "colfax-web" }}>
+          NewSpring exists to connect people to Jesus and each other. Salvation is only the start of
+          someone’s spiritual journey, and every journey is a series of next steps. Take a look at
+          some of the next steps we celebrated in 2017 ...
         </p>
       </div>
     </div>
@@ -165,16 +161,16 @@ export const NextSteps = () => (
         <div className="push-double-top@handheld">
           <Story
             image={
-              "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/stories/Dan_Fletcher_2.jpg"
+              "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/stories/Dan_Fletcher.jpg"
             }
-            content={`<p style="font-family: colfax-web">Dan, his wife, and his daughter, asked Jesus into their lives at Connect and got baptized together.</p><p style="font-family: colfax-web">&#34;Instead of fearing what troubles the future will bring, I now can’t wait to see what God has in store for us.&#34;</p>`}
+            content={`
+              <p style="font-family: colfax-web"><strong style="font-family: colfax-web">Dan Fletcher</strong> and his family found hope at <strong style="font-family: colfax-web">NewSpring Clemson</strong> in 2017.</p>
+              <p style="font-family: colfax-web">Dan, his wife, and his daughter, asked Jesus into their lives at Connect and got baptized together.</p>
+              <p style="font-family: colfax-web">&#34;Instead of fearing what troubles the future will bring, I now can’t wait to see what God has in store for us.&#34;</p>
+            `}
             linkUrl={"https://newspring.cc/stories/dan-fletcher"}
             linkClass={"h6 btn--small@next btn--dark-secondary"}
             linkText={"Read the story and watch their baptism"}
-            name={"Dan Fletcher"}
-            overriddenHeader={
-              "Dan Fletcher and his family found hope at NewSpring Clemson in 2017."
-            }
           />
         </div>
       </div>
@@ -189,21 +185,13 @@ export const NextSteps = () => (
         <div className={css(styles.wave, styles.wave_2)} />
         <div className={css(styles.wave, styles.wave_3)} />
       </div>
-      <div
-        className="soft-double text-light-primary"
-        style={{ backgroundColor: "#0073AF" }}
-      >
+      <div className="soft-double text-light-primary" style={{ backgroundColor: "#0073AF" }}>
         <FitText compressor={0.4} maxFontSize={72}>
-          <h1
-            className="uppercase flush-bottom soft-half-bottom"
-            style={{ fontWeight: "900" }}
-          >
+          <h1 className="uppercase flush-bottom soft-half-bottom" style={{ fontWeight: "900" }}>
             2,040
           </h1>
         </FitText>
-        <h5 className="text-light-primary push-top">
-          people go public for Jesus through
-        </h5>
+        <h5 className="text-light-primary push-top">people go public for Jesus through</h5>
         <h1 className="text-light-primary push-top push-bottom">baptism.</h1>
       </div>
     </div>
@@ -234,9 +222,7 @@ export const NextSteps = () => (
                 27,231
               </h1>
             </FitText>
-            <h3 className="push-top soft-sides@handheld">
-              first time visitors come to NewSpring.
-            </h3>
+            <h3 className="push-top soft-sides@handheld">first time visitors come to NewSpring.</h3>
           </div>
         </div>
         <div
@@ -261,11 +247,8 @@ export const NextSteps = () => (
         </div>
         <div className="floating push-double-left@handheld soft-top@lap-and-up">
           <div className="floating__item text-left">
-            {firstTimeVisitorData.map(({ ministry, count, color }, key) => (
-              <div
-                className="push-half display-inline-block@lap-and-up"
-                key={key}
-              >
+            {firstTimeVisitorData.map(({ ministry, count, color, countString }, key) => (
+              <div className="push-half display-inline-block@lap-and-up" key={key}>
                 <div
                   className="display-inline-block"
                   style={{
@@ -282,7 +265,7 @@ export const NextSteps = () => (
                   key={key}
                   style={{ verticalAlign: "middle", marginBottom: "0" }}
                 >
-                  {ministry}: {count}
+                  {ministry}: {countString}
                 </h6>
               </div>
             ))}
@@ -294,7 +277,7 @@ export const NextSteps = () => (
     <div
       className="soft-ends visuallyhidden@handheld"
       style={{
-        backgroundImage: `url("//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/2x1.serve.jpg")`,
+        backgroundImage: `url("//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/serve_2x1.jpg")`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         backgroundPosition: "center",
@@ -304,7 +287,7 @@ export const NextSteps = () => (
     <div
       className="soft-ends visuallyhidden@lap-and-up"
       style={{
-        backgroundImage: `url("//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/1x1.serve.jpg")`,
+        backgroundImage: `url("//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/serve_1x1.jpg")`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         backgroundPosition: "center",
@@ -370,14 +353,12 @@ export const NextSteps = () => (
           </h1>
         </FitText>
         <div className="one-whole floating">
-          <h3 className="two-thirds@lap-and-up floating__item">
-            people visited the Care room.
-          </h3>
+          <h3 className="two-thirds@lap-and-up floating__item">people visited the Care room.</h3>
         </div>
         <em>Do you need help?</em>
         <div className="push-double-top">
           <a
-            href={"https://rock.newspring.cc/Workflows/83"}
+            href={"https://rock.newspring.cc/Workflows/268?Social=No"}
             className={"btn btn--light btn--small@next"}
             target={"_blank"}
           >
@@ -390,13 +371,9 @@ export const NextSteps = () => (
     <div className="background--light-primary soft-double@lap-and-up soft@handheld">
       <div className="one-whole push-double-top push-double-bottom@handheld push-bottom@lap-and-up">
         <h3 className="text-center">Connect</h3>
-        <p
-          className="constrain-copy text-center"
-          style={{ fontFamily: "colfax-web" }}
-        >
-          Life is better with friends. Connect is a fun first step for anyone
-          who wants to learn more about NewSpring, get to know new people, and
-          get connected to next steps.
+        <p className="constrain-copy text-center" style={{ fontFamily: "colfax-web" }}>
+          Life is better with friends. Connect is a fun first step for anyone who wants to learn
+          more about NewSpring, get to know new people, and get connected to next steps.
         </p>
         <div className="floating push-double-top@handheld">
           <div className="soft-double@lap-and-up hard-sides@handheld text-center three-quarters@lap-wide-and-up nine-tenths@lap floating__item">
@@ -406,13 +383,13 @@ export const NextSteps = () => (
             />
             <Story
               image={
-                "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/stories/CHELSEA-1.jpg"
+                "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/stories/Chelsea_Tolive.jpg"
               }
-              content={`<p style="font-family: colfax-web">&#34;I am breaking more of my chains every week at my home group. Church has gone from an obligation or a sometimes-thing to an every-week-thing I absolutely look forward to!&#34;</p>`}
+              content={`
+                <p style="font-family: colfax-web"><strong style="font-family: colfax-web">Chelsea Tolive</strong> was baptized and connected with a home group through <strong style="font-family: colfax-web">Connect</strong> at <strong style="font-family: colfax-web">NewSpring Anderson</strong> in 2017.</p>
+                <p style="font-family: colfax-web">&#34;I am breaking more of my chains every week at my home group. Church has gone from an obligation or a sometimes-thing to an every-week-thing I absolutely look forward to!&#34;</p>
+              `}
               name={"Chelsea Tolive"}
-              overriddenHeader={
-                "Chelsea Tolive was baptized and connected with a home group through Connect at NewSpring Anderson in 2017."
-              }
             />
           </div>
         </div>
@@ -494,10 +471,9 @@ export const NextSteps = () => (
             className="constrain-copy@lap-and-up push-double-bottom@handheld text-center@handheld"
             style={{ fontFamily: "colfax-web" }}
           >
-            We are #ForSC! God has called us to make a difference in South
-            Carolina. From community service days to home repairs to
-            partnerships with non-profit organizations, money dedicated to
-            #ForSC projects created opportunities to share Jesus’ love with our
+            We are #ForSC! God has called us to make a difference in South Carolina. From community
+            service days to home repairs to partnerships with non-profit organizations, money
+            dedicated to #ForSC projects created opportunities to share Jesus’ love with our
             neighbors.
           </p>
         </div>
@@ -520,13 +496,13 @@ export const NextSteps = () => (
             />
             <Story
               image={
-                "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/stories/SherriMoss.jpg"
+                "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/stories/Sherri_Moss.jpg"
               }
-              content={`<p style="font-family: colfax-web">&#34;I never had a place that felt like a family until I got to NewSpring… They took me in from the beginning, and they always support me now.&#34;</p>`}
+              content={`
+                <p style="font-family: colfax-web"><strong style="font-family: colfax-web">Sherri Moss</strong> of <strong style="font-family: colfax-web">NewSpring Aiken</strong> moved out of a recovery center and into her own home on <strong style="font-family: colfax-web">#ForSC</strong> day in April 2017.</p>
+                <p style="font-family: colfax-web">&#34;I never had a place that felt like a family until I got to NewSpring … They took me in from the beginning, and they always support me now.&#34;</p>
+              `}
               contentClass={"text-light-primary"}
-              overriddenHeader={
-                "Sherry Moss of NewSpring Aiken moved out of a recovery center and into her own home on #ForSC day in April 2017."
-              }
               linkUrl={"https://newspring.cc/stories/sherri-moss"}
               linkClass={`h6 btn--small@next btn--light ${css(
                 styles.whiteColor,
@@ -574,9 +550,7 @@ export const NextSteps = () => (
               />
             </FitText>
           </div>
-          <h3 className="text-center@handheld soft-bottom@handheld">
-            on foreign missions.
-          </h3>
+          <h3 className="text-center@handheld soft-bottom@handheld">on foreign missions.</h3>
           <div
             className="one-whole visuallyhidden@lap-and-up push-top push-bottom"
             style={{ verticalAlign: "middle" }}
@@ -590,12 +564,11 @@ export const NextSteps = () => (
             className="constrain-copy@lap-and-up text-center@handheld"
             style={{ fontFamily: "colfax-web" }}
           >
-            We believe the local church is the hope of the world. Through
-            partnerships with several organizations, NewSpring Missions teams
-            traveled to several foreign countries. By investing in local
-            churches sharing the Gospel, we know the impact continues long after
-            teams return home. When we work together, we can see the Great
-            Commission happening before our eyes.
+            We believe the local church is the hope of the world. Through partnerships with several
+            organizations, NewSpring Missions teams traveled to several foreign countries. By
+            investing in local churches sharing the Gospel, we know the impact continues long after
+            teams return home. When we work together, we can see the Great Commission happening
+            before our eyes.
           </p>
         </div>
       </div>
@@ -634,9 +607,7 @@ export const NextSteps = () => (
           </h1>
         </FitText>
         <div className="floating">
-          <h3 className="push-top floating__item two-thirds@lap-and-up">
-            different nations.
-          </h3>
+          <h3 className="push-top floating__item two-thirds@lap-and-up">different nations.</h3>
         </div>
       </div>
     </div>
@@ -647,10 +618,7 @@ export const NextSteps = () => (
         Up next in the NewSpring 2016 Annual Report is information on our
         ministries.
       </p> */}
-      <Link
-        className="btn--light push-double-bottom"
-        to="/annualreport/ministries"
-      >
+      <Link className="btn--light push-double-bottom" to="/annualreport/ministries">
         Go To Ministries Report
       </Link>
     </div>

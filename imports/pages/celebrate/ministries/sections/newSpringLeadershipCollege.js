@@ -47,29 +47,25 @@ const NewSpringLeadershipCollege = () => (
       <div className="grid">
         <div className="grid__item one-whole push-double-bottom">
           <div className="constrain-copy">
-            <h1 className="uppercase push-bottom">
-              NewSpring Leadership College
-            </h1>
+            <h1 className="uppercase push-bottom">NewSpring Leadership College</h1>
             <p className="text-center" style={{ fontFamily: "colfax-web" }}>
               <a
                 href={"https://newspringcollege.com"}
                 alt={"NewSpring Leadership College link"}
+                target={"_blank"}
               >
                 NewSpring Leadership College
               </a>{" "}
-              is a two-year program to raise up passionate leaders for the local
-              church. At NewSpring Leadership College, students receive
-              practical Bible teaching and leadership training as well as real
-              ministry responsibility and experience.
+              is a two-year program to raise up passionate leaders for the local church. At
+              NewSpring Leadership College, students receive practical Bible teaching and leadership
+              training as well as real ministry responsibility and experience.
             </p>
           </div>
         </div>
         <div className="grid__item one-whole text-center soft-bottom@lap-and-up push-bottom@handheld">
           <div className="constrain-copy">
             <h3 className="italic text-primary">
-              <strong>
-                Helping raise up leaders to change their communities
-              </strong>
+              <strong>Helping raise up leaders to change their communities</strong>
             </h3>
           </div>
           <div id="college" className="soft-half-sides@lap">
@@ -106,13 +102,11 @@ const NewSpringLeadershipCollege = () => (
         </div>
         <div className="grid__item one-whole text-center soft-bottom@lap-and-up">
           <Story
-            overriddenHeader={
-              "Kellen Young graduated from the third year of NewSpring Leadership College in 2017 and took a role as a full-time student pastor."
-            }
             image={
-              "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Kellen/KELLEN-9.jpg"
+              "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/stories/Kellen_Young.jpg"
             }
             content={`
+              <p style="font-family: colfax-web"><strong style="font-family: colfax-web">Kellen Young</strong> graduated from <strong style="font-family: colfax-web">NewSpring Leadership College</strong> in 2017 and took a role as a full-time student pastor.</p>
               <p style="font-family: colfax-web">“If you want to learn practical, hands-on ministry, NewSpring College is the place to go.”</p>
               `}
             linkUrl="http://newspring.cc/stories/kellen-young"
