@@ -26,7 +26,7 @@ exports[`Next Steps renders a layout 1`] = `
           }
         }
       >
-        NewSpring exists to connect people to Jesus and each other. Salvation is only the start of someone’s spiritual journey, and every journey is a series of next steps. Take a look at some of the next steps we celebrated in 2017...
+        NewSpring exists to connect people to Jesus and each other. Salvation is only the start of someone’s spiritual journey, and every journey is a series of next steps. Take a look at some of the next steps we celebrated in 2017 ...
       </p>
     </div>
   </div>
@@ -66,13 +66,15 @@ exports[`Next Steps renders a layout 1`] = `
         className="push-double-top@handheld"
       >
         <Story
-          content="<p style=\\"font-family: colfax-web\\">Dan, his wife, and his daughter, asked Jesus into their lives at Connect and got baptized together.</p><p style=\\"font-family: colfax-web\\">&#34;Instead of fearing what troubles the future will bring, I now can’t wait to see what God has in store for us.&#34;</p>"
-          image="//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/stories/Dan_Fletcher_2.jpg"
+          content="
+              <p style=\\"font-family: colfax-web\\"><strong style=\\"font-family: colfax-web\\">Dan Fletcher</strong> and his family found hope at <strong style=\\"font-family: colfax-web\\">NewSpring Clemson</strong> in 2017.</p>
+              <p style=\\"font-family: colfax-web\\">Dan, his wife, and his daughter, asked Jesus into their lives at Connect and got baptized together.</p>
+              <p style=\\"font-family: colfax-web\\">&#34;Instead of fearing what troubles the future will bring, I now can’t wait to see what God has in store for us.&#34;</p>
+            "
+          image="//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/stories/Dan_Fletcher.jpg"
           linkClass="h6 btn--small@next btn--dark-secondary"
           linkText="Read the story and watch their baptism"
           linkUrl="https://newspring.cc/stories/dan-fletcher"
-          name="Dan Fletcher"
-          overriddenHeader="Dan Fletcher and his family found hope at NewSpring Clemson in 2017."
         />
       </div>
     </div>
@@ -240,7 +242,7 @@ exports[`Next Steps renders a layout 1`] = `
             >
               VIP Room
               : 
-              10636
+              10,636
             </h6>
           </div>
           <div
@@ -272,7 +274,7 @@ exports[`Next Steps renders a layout 1`] = `
             >
               KidSpring
               : 
-              7245
+              7,245
             </h6>
           </div>
           <div
@@ -304,7 +306,7 @@ exports[`Next Steps renders a layout 1`] = `
             >
               Fuse
               : 
-              9350
+              9.350
             </h6>
           </div>
         </div>
@@ -315,7 +317,7 @@ exports[`Next Steps renders a layout 1`] = `
     className="soft-ends visuallyhidden@handheld"
     style={
       Object {
-        "backgroundImage": "url(\\"//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/2x1.serve.jpg\\")",
+        "backgroundImage": "url(\\"//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/serve_2x1.jpg\\")",
         "backgroundPosition": "center",
         "backgroundRepeat": "no-repeat",
         "backgroundSize": "cover",
@@ -327,7 +329,7 @@ exports[`Next Steps renders a layout 1`] = `
     className="soft-ends visuallyhidden@lap-and-up"
     style={
       Object {
-        "backgroundImage": "url(\\"//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/1x1.serve.jpg\\")",
+        "backgroundImage": "url(\\"//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/serve_1x1.jpg\\")",
         "backgroundPosition": "center",
         "backgroundRepeat": "no-repeat",
         "backgroundSize": "cover",
@@ -515,7 +517,7 @@ exports[`Next Steps renders a layout 1`] = `
       >
         <a
           className="btn btn--light btn--small@next"
-          href="https://rock.newspring.cc/Workflows/83"
+          href="https://rock.newspring.cc/Workflows/268?Social=No"
           target="_blank"
         >
           Talk To Someone
@@ -559,10 +561,12 @@ exports[`Next Steps renders a layout 1`] = `
             }
           />
           <Story
-            content="<p style=\\"font-family: colfax-web\\">&#34;I am breaking more of my chains every week at my home group. Church has gone from an obligation or a sometimes-thing to an every-week-thing I absolutely look forward to!&#34;</p>"
-            image="//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/stories/CHELSEA-1.jpg"
+            content="
+                <p style=\\"font-family: colfax-web\\"><strong style=\\"font-family: colfax-web\\">Chelsea Tolive</strong> was baptized and connected with a home group through <strong style=\\"font-family: colfax-web\\">Connect</strong> at <strong style=\\"font-family: colfax-web\\">NewSpring Anderson</strong> in 2017.</p>
+                <p style=\\"font-family: colfax-web\\">&#34;I am breaking more of my chains every week at my home group. Church has gone from an obligation or a sometimes-thing to an every-week-thing I absolutely look forward to!&#34;</p>
+              "
+            image="//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/stories/Chelsea_Tolive.jpg"
             name="Chelsea Tolive"
-            overriddenHeader="Chelsea Tolive was baptized and connected with a home group through Connect at NewSpring Anderson in 2017."
           />
         </div>
       </div>
@@ -734,13 +738,15 @@ exports[`Next Steps renders a layout 1`] = `
             }
           />
           <Story
-            content="<p style=\\"font-family: colfax-web\\">&#34;I never had a place that felt like a family until I got to NewSpring… They took me in from the beginning, and they always support me now.&#34;</p>"
+            content="
+                <p style=\\"font-family: colfax-web\\"><strong style=\\"font-family: colfax-web\\">Sherri Moss</strong> of <strong style=\\"font-family: colfax-web\\">NewSpring Aiken</strong> moved out of a recovery center and into her own home on <strong style=\\"font-family: colfax-web\\">#ForSC</strong> day in April 2017.</p>
+                <p style=\\"font-family: colfax-web\\">&#34;I never had a place that felt like a family until I got to NewSpring … They took me in from the beginning, and they always support me now.&#34;</p>
+              "
             contentClass="text-light-primary"
-            image="//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/stories/SherriMoss.jpg"
+            image="//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/stories/Sherri_Moss.jpg"
             linkClass="h6 btn--small@next btn--light whiteColor_1fmte2e-o_O-whiteHover_1tswaje"
             linkText="Read the story"
             linkUrl="https://newspring.cc/stories/sherri-moss"
-            overriddenHeader="Sherry Moss of NewSpring Aiken moved out of a recovery center and into her own home on #ForSC day in April 2017."
           />
         </div>
       </div>

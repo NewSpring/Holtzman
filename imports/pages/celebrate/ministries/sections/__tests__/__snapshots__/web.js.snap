@@ -228,25 +228,25 @@ exports[`Web renders a layout 1`] = `
           additionalClasses="text-dark-primary"
           count="986,347"
           key="0"
-          label="Articles Read"
+          label="Articles Pageviews"
         />
         <MetricCard
           additionalClasses="text-dark-primary"
           count="775,094"
           key="1"
-          label="Devotionals Read"
+          label="Devotionals Pageviews"
         />
         <MetricCard
           additionalClasses="text-dark-primary"
           count="157,989"
           key="2"
-          label="Stories Viewed"
+          label="Stories Pageviews"
         />
         <MetricCard
           additionalClasses="text-dark-primary"
           count="195,891"
           key="3"
-          label="Sermons Watched"
+          label="Sermons Pageviews"
         />
       </Connect(CardSlider)>
     </div>
@@ -260,11 +260,12 @@ exports[`Web renders a layout 1`] = `
     >
       <Story
         content="
+            <p style=\\"font-family: colfax-web\\"><strong style=\\"font-family: colfax-web\\">Amy Buckmaster</strong> of <strong style=\\"font-family: colfax-web\\">NewSpring Greenville</strong> grew a daily Bible reading habit in 2017 because of devotionals sent by text message to her phone.</p>
             <p style=\\"font-family: colfax-web\\">“It’s the best way to start each morning! ... It helps me dig deeper into His Word and brings me closer to Jesus.”</p>
+            <p style=\\"font-family: colfax-web\\">Do you want to receive a daily devotional by text message each morning? Text READ MY BIBLE to 30303.</p>
           "
         contentClass="text-light-primary"
-        image="//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/stories/amy.jpg"
-        overriddenHeader="Amy Buckmaster of NewSpring Greenville grew a daily Bible reading habit in 2017 because of devotionals sent by text message to her phone."
+        image="//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/stories/Amy_Buckmaster.jpg"
       />
     </div>
   </div>

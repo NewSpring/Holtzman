@@ -14,8 +14,7 @@ const Rally = () => (
               className="text-center text-light-primary push-double-bottom@handheld"
               style={{ fontFamily: "colfax-web" }}
             >
-              In 2017, NewSpring launched Rally, a young adult ministry for
-              18-to 25-year-olds.
+              In 2017, NewSpring launched Rally, a ministry for 18-to-25-year-olds.
             </p>
           </div>
           <div
@@ -24,13 +23,11 @@ const Rally = () => (
             }}
           >
             <Story
-              overriddenHeader={
-                "Brianna Yon of NewSpring Greenville rallied around Jesus with hundreds of others at monthly gatherings."
-              }
               image={
-                "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/stories/Brianna.jpg"
+                "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/stories/Brianna_Yon.jpg"
               }
               content={`
+                <p style="font-family: colfax-web"><strong style="font-family: colfax-web">Brianna Yon</strong> of <strong style="font-family: colfax-web">NewSpring Greenville</strong> rallied around Jesus with hundreds of others at monthly gatherings.</p>
                 <p style="font-family: colfax-web">“I saw a clear example of how loving God looks: Different races coming together under one name, to serve one name, to worship one name — and that’s Jesus."</p>
                 `}
               contentClass={"text-light-primary"}
