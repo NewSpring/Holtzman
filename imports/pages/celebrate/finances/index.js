@@ -28,7 +28,7 @@ const fundData = [
   { campus: "Web", amount: 230173.23 },
 ];
 
-const generalFundAmountTotal = 40797789.0;
+const generalFundAmountTotal = 40797786.0;
 const overflowOfferingTotal = "1180357.03";
 
 /* eslint-disable max-len */
