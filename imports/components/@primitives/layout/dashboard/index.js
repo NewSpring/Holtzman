@@ -91,11 +91,7 @@ export class Dashboard extends Component {
           className={`
             push-top
             soft-left@handheld
-            ${
-              !process.env.NATIVE
-                ? "soft-top@handheld soft-double-top"
-                : "soft-half-left@handheld"
-            }
+            ${!process.env.NATIVE ? "soft-top@handheld soft-double-top" : "soft-half-left@handheld"}
             soft-double-left@lap-and-up
             soft-half-sides
             background--light-primary
@@ -104,30 +100,25 @@ export class Dashboard extends Component {
           {!process.env.NATIVE &&
             title &&
             !hideTitle && (
-              <h1 className="soft-half-bottom@handheld soft-bottom soft-half-left">
-                {title}
-              </h1>
+              <h1 className="soft-half-bottom@handheld soft-bottom soft-half-left">{title}</h1>
             )}
           {!centerWebNav && (
             <div
-              className={`floating ${
-                !process.env.NATIVE ? "text-left" : align || "text-center"
-              }`}
+              className={`floating ${!process.env.NATIVE ? "text-left" : align || "text-center"}`}
             >
               {getLinks(additionalClasses, subNav)}
             </div>
           )}
-          {!process.env.NATIVE &&
-            centerWebNav && (
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                }}
-              >
-                {getLinks(additionalClasses, subNav)}
-              </div>
-            )}
+          {centerWebNav && (
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              {getLinks(additionalClasses, subNav)}
+            </div>
+          )}
         </div>
         <div
           className="background--light-secondary outlined--top outlined--light"
