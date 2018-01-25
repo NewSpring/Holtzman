@@ -1,16 +1,16 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
-import { Shane } from "../";
+import { Welcome } from "../";
 
 const defaultProps = {
   dispatch: jest.fn(),
 };
 
 const generateComponent = () => {
-  return <Shane { ...defaultProps } />;
+  return <Welcome { ...defaultProps } />;
 };
 
-describe("Shane", () => {
+describe("Welcome", () => {
   it("renders a layout", () => {
     const component = shallow(generateComponent());
     expect(shallowToJson(component)).toMatchSnapshot();

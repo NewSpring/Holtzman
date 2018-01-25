@@ -89,57 +89,60 @@ const styles = StyleSheet.create({
     backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='384' height='2000' viewBox='0 0 384 2000'><path fill-rule='evenodd' clip-rule='evenodd' fill='#0273AF' d='M0 0h384v2000c-80.64 0-113.28-32.047-192-32.047S78.72 2000 0 2000V0z'/></svg>")`,
     backgroundPosition: "bottom center",
   },
+  whiteColor: {
+    color: "#FFFFFF",
+    borderColor: "#FFFFFF",
+  },
+  whiteHover: {
+    ":hover": {
+      backgroundColor: "#FFFFFF",
+    },
+  },
 });
 
 const firstTimeVisitorData = [
-  { ministry: "VIP Room", count: "21,635", color: "#6BAC43" },
-  { ministry: "KidSpring", count: "11,559", color: "#1C683E" },
-  { ministry: "Fuse", count: "13,943", color: "#2A4930" },
+  { ministry: "VIP Room", count: 10636, color: "#6BAC43", countString: "10,636" },
+  { ministry: "KidSpring", count: 7245, color: "#1C683E", countString: "7,245" },
+  { ministry: "Fuse", count: 9350, color: "#2A4930", countString: "9,350" },
 ];
 
 const volunteerData = [
-  { label: "Aiken", count: "178" },
-  { label: "Anderson", count: "2,165" },
-  { label: "Boiling Springs", count: "359" },
-  { label: "Charleston", count: "689" },
-  { label: "Clemson", count: "375" },
-  { label: "Columbia", count: "1,187" },
-  { label: "Florence", count: "576" },
-  { label: "Greenville", count: "1,208" },
-  { label: "Greenwood", count: "440" },
-  { label: "Hilton Head", count: "75" },
-  { label: "Myrtle Beach", count: "478" },
-  { label: "Northeast Columbia", count: "161" },
-  { label: "Powdersville", count: "585" },
-  { label: "Rock Hill", count: "136" },
-  { label: "Spartanburg", count: "726" },
-  { label: "Sumter", count: "109" },
+  { label: "Aiken", count: "157" },
+  { label: "Anderson", count: "1,947" },
+  { label: "Charleston", count: "609" },
+  { label: "Clemson", count: "480" },
+  { label: "Columbia", count: "767" },
+  { label: "Florence", count: "499" },
+  { label: "Greenville", count: "874" },
+  { label: "Greenwood", count: "355" },
+  { label: "Hilton Head", count: "85" },
+  { label: "Myrtle Beach", count: "414" },
+  { label: "Northeast Columbia", count: "121" },
+  { label: "Powdersville", count: "553" },
+  { label: "Rock Hill", count: "134" },
+  { label: "Spartanburg", count: "813" },
 ];
-const localMissionAmount = "1246884.72";
-const foreignMissionAmount = "493845.39";
+const localMissionAmount = "1371578.00";
+const foreignMissionAmount = "829264.00";
 
 /* eslint-disable max-len */
 export const NextSteps = () => (
-  <div>
+  <div className="text-dark-primary">
     <Meta title="Next Steps" />
     {/* Header */}
     <div className="background--light-secondary soft-double-ends soft-sides">
       <div className="push-ends">
-        <h3 className="text-center">Celebrating Next Steps</h3>
-        <p className="constrain-copy">
-          Salvation is a starting point, not a destination. NewSpring exists to connect people to
-          Jesus and each other. We will always be a church that celebrates next steps as well as
-          salvations. Here&#39;s a look at how we&#39;ve seen people take their{" "}
-          <a href={"https://newspring.cc/nextsteps"} alt={"link to next steps"}>
-            next steps
-          </a>{" "}
-          in 2016.
+        <h3 className="text-center">Why do we talk about Next Steps?</h3>
+        <p className="constrain-copy text-center" style={{ fontFamily: "colfax-web" }}>
+          NewSpring exists to connect people to Jesus and each other. Salvation is only the start of
+          someone’s spiritual journey, and every journey is a series of next steps. Take a look at
+          some of the next steps we celebrated in 2017 ...
         </p>
       </div>
     </div>
     {/* Salvations */}
     <div className="background--light-primary floating">
-      <div className="soft-double soft-sides@handheld push-double-top text-center three-quarters@lap-wide-and-up nine-tenths@lap floating__item">
+      <div className="soft-ends soft-sides@handheld push-double-top text-center three-quarters@lap-wide-and-up nine-tenths@lap floating__item">
         <h3>Salvations</h3>
         <FitText compressor={0.4} maxFontSize={80}>
           <h1
@@ -148,31 +151,34 @@ export const NextSteps = () => (
               fontWeight: "900",
             }}
           >
-            9,560
+            3,790
           </h1>
         </FitText>
         <hr
           className="visuallyhidden@handheld push-ends"
           style={{ borderTop: "1px solid #dddddd" }}
         />
-        <Story
-          image={"//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/stories/story-img2.1.png"}
-          content={
-            "<p>The community Brett Chamberlain found through a fishing interest group at NewSpring Rock Hill helped him recognize that he needed to ask Jesus into his life and take the step of baptism with his teenage son in June 2016.</p>"
-          }
-          linkUrl={"https://newspring.cc/stories/brett-chamberlain"}
-          linkClass={"h6 btn--small@next btn--dark-secondary"}
-          linkText={"Read the Full Story"}
-          name={"Brett"}
-          location={"Rock Hill"}
-          heading={"Every number has a name, like"}
-        />
+        <div className="push-double-top@handheld">
+          <Story
+            image={
+              "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/stories/Dan_Fletcher.jpg"
+            }
+            content={`
+              <p style="font-family: colfax-web"><strong style="font-family: colfax-web">Dan Fletcher</strong> and his family found hope at <strong style="font-family: colfax-web">NewSpring Clemson</strong> in 2017.</p>
+              <p style="font-family: colfax-web">Dan, his wife, and his daughter, asked Jesus into their lives at Connect and got baptized together.</p>
+              <p style="font-family: colfax-web">&#34;Instead of fearing what troubles the future will bring, I now can’t wait to see what God has in store for us.&#34;</p>
+            `}
+            linkUrl={"https://newspring.cc/stories/dan-fletcher"}
+            linkClass={"h6 btn--small@next btn--dark-secondary"}
+            linkText={"Read the story and watch their baptism"}
+          />
+        </div>
       </div>
     </div>
     {/* Baptism */}
     <div className="background--light-seconday soft-double-top text-center one-whole soft-top">
       <h3 className="one-whole push-top" style={{ color: "#0073AF" }}>
-        We saw
+        We witnessed
       </h3>
       <div className={css(styles.waves)}>
         <div className={css(styles.wave, styles.wave_1)} />
@@ -182,18 +188,16 @@ export const NextSteps = () => (
       <div className="soft-double text-light-primary" style={{ backgroundColor: "#0073AF" }}>
         <FitText compressor={0.4} maxFontSize={72}>
           <h1 className="uppercase flush-bottom soft-half-bottom" style={{ fontWeight: "900" }}>
-            5,557
+            2,040
           </h1>
         </FitText>
         <h5 className="text-light-primary push-top">people go public for Jesus through</h5>
-        <h1 className="text-light-primary push-top push-bottom soft-bottom soft-double-bottom@lap-and-up">
-          baptism.
-        </h1>
+        <h1 className="text-light-primary push-top push-bottom">baptism.</h1>
       </div>
     </div>
     {/* First Time Visitors */}
     <div className="background--light-primary soft-double@lap-and-up soft-double-top@handheld soft-half-bottom@handheld">
-      <div className="grid one-whole push-top@handheld">
+      <div className="grid one-whole push-top@handheld push-double-bottom@handheld">
         <div
           className="grid__item push-half-left@handheld floating one-half@lap-and-up text-center display-inline-block"
           style={{ verticalAlign: "middle" }}
@@ -203,6 +207,7 @@ export const NextSteps = () => (
               className="italic"
               style={{
                 fontFamily: "ff-meta-serif-web-pro, serif",
+                color: "#bc9b67",
               }}
             >
               We had
@@ -214,10 +219,10 @@ export const NextSteps = () => (
                   fontWeight: "900",
                 }}
               >
-                47,137
+                27,231
               </h1>
             </FitText>
-            <h3 className="push-top">first time visitors come to NewSpring.</h3>
+            <h3 className="push-top soft-sides@handheld">first-time visitors come to NewSpring.</h3>
           </div>
         </div>
         <div
@@ -242,7 +247,7 @@ export const NextSteps = () => (
         </div>
         <div className="floating push-double-left@handheld soft-top@lap-and-up">
           <div className="floating__item text-left">
-            {firstTimeVisitorData.map(({ ministry, count, color }, key) => (
+            {firstTimeVisitorData.map(({ ministry, count, color, countString }, key) => (
               <div className="push-half display-inline-block@lap-and-up" key={key}>
                 <div
                   className="display-inline-block"
@@ -260,7 +265,7 @@ export const NextSteps = () => (
                   key={key}
                   style={{ verticalAlign: "middle", marginBottom: "0" }}
                 >
-                  {ministry}: {count}
+                  {ministry}: {countString}
                 </h6>
               </div>
             ))}
@@ -268,32 +273,34 @@ export const NextSteps = () => (
         </div>
       </div>
     </div>
-    <div className="floating background--light-primary">
-      <div className="soft-double-ends@lap-and-up soft-top soft-sides text-center three-quarters@lap-wide-and-up nine-tenths@lap floating__item">
-        <hr
-          className="visuallyhidden@handheld push-ends"
-          style={{ borderTop: "1px solid #dddddd" }}
-        />
-        <div className="text-center">
-          <Story
-            image={"//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/stories/story-img3.png"}
-            content={
-              "<p>&#34;On my first visit to NewSpring, the VIP Room made a huge impression on me. My host, Cathy, was so warm and friendly. She helped get my daughter checked in to KidSpring, answered my questions, and connected me to some next steps.&#34;</p>"
-            }
-            name={"Angel Hill"}
-            location={"Charleston"}
-            heading={"The VIP Room made a difference for"}
-          />
-        </div>
-      </div>
-    </div>
     {/* Volunteers */}
+    <div
+      className="soft-ends visuallyhidden@handheld"
+      style={{
+        backgroundImage: `url("//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/serve_2x1.jpg")`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        height: "50em",
+      }}
+    />
+    <div
+      className="soft-ends visuallyhidden@lap-and-up"
+      style={{
+        backgroundImage: `url("//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/serve_1x1.jpg")`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        height: "25em",
+      }}
+    />
     <div className="background--light-secondary soft-double-top soft-double-bottom text-center">
       <div className="push-double-top">
         <h3
           className="italic push-top"
           style={{
             fontFamily: "ff-meta-serif-web-pro, serif",
+            color: "#bc9b67",
           }}
         >
           This year
@@ -306,7 +313,7 @@ export const NextSteps = () => (
             fontWeight: "900",
           }}
         >
-          9,447
+          7,808
         </h1>
       </FitText>
       <div className="floating">
@@ -323,8 +330,8 @@ export const NextSteps = () => (
         and
       </h3>
       <div className="push-top">
-        <h1 style={{ fontWeight: "900" }}>2,313</h1>
-        <h3>people served for the first time!</h3>
+        <h1 style={{ fontWeight: "900" }}>2,354</h1>
+        <h3>for the first time!</h3>
       </div>
       <CardSlider>
         {volunteerData.map(({ count, label }, key) => (
@@ -342,7 +349,7 @@ export const NextSteps = () => (
               fontWeight: "900",
             }}
           >
-            8,897
+            4,716
           </h1>
         </FitText>
         <div className="one-whole floating">
@@ -351,7 +358,7 @@ export const NextSteps = () => (
         <em>Do you need help?</em>
         <div className="push-double-top">
           <a
-            href={"https://rock.newspring.cc/Workflows/83"}
+            href={"https://rock.newspring.cc/Workflows/268?Social=No"}
             className={"btn btn--light btn--small@next"}
             target={"_blank"}
           >
@@ -364,17 +371,11 @@ export const NextSteps = () => (
     <div className="background--light-primary soft-double@lap-and-up soft@handheld">
       <div className="one-whole push-double-top push-double-bottom@handheld push-bottom@lap-and-up">
         <h3 className="text-center">Connect</h3>
-        <p className="constrain-copy">
-          We all need friends we can be ourselves with, people who make us laugh till it hurts and
-          who will be there when we need prayer.{" "}
-          <a href={"https://newspring.cc/connect"} alt={"link to connect"}>
-            Connect
-          </a>{" "}
-          launched in 2016 as a way to help people connect to Jesus and to each other. This event is
-          for anyone who wants to learn more about NewSpring and to get to know people in the
-          church.
+        <p className="constrain-copy text-center" style={{ fontFamily: "colfax-web" }}>
+          Life is better with friends. Connect is a fun first step for anyone who wants to learn
+          more about NewSpring, get to know new people, and get connected to next steps.
         </p>
-        <div className="floating">
+        <div className="floating push-double-top@handheld">
           <div className="soft-double@lap-and-up hard-sides@handheld text-center three-quarters@lap-wide-and-up nine-tenths@lap floating__item">
             <hr
               className="visuallyhidden@handheld push-ends"
@@ -382,14 +383,13 @@ export const NextSteps = () => (
             />
             <Story
               image={
-                "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/stories/story-img4.png"
+                "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/stories/Chelsea_Tolive.jpg"
               }
-              content={
-                "<p>&#34;To grow in our relationship with Jesus, we knew our next step was to start serving. We walked into Connect very nervous about what it would take to get plugged in. Our host put us at ease and guided us on the start of a new journey.&#34;</p>"
-              }
-              name={"Brian and Ashley Davison"}
-              location={"Florence"}
-              heading={"Get connected like"}
+              content={`
+                <p style="font-family: colfax-web"><strong style="font-family: colfax-web">Chelsea Tolive</strong> was baptized and connected with a home group through <strong style="font-family: colfax-web">Connect</strong> at <strong style="font-family: colfax-web">NewSpring Anderson</strong> in 2017.</p>
+                <p style="font-family: colfax-web">&#34;I am breaking more of my chains every week at my home group. Church has gone from an obligation or a sometimes-thing to an every-week-thing I absolutely look forward to!&#34;</p>
+              `}
+              name={"Chelsea Tolive"}
             />
           </div>
         </div>
@@ -398,6 +398,7 @@ export const NextSteps = () => (
             className="italic"
             style={{
               fontFamily: "ff-meta-serif-web-pro, serif",
+              color: "#bc9b67",
             }}
           >
             This year
@@ -409,7 +410,7 @@ export const NextSteps = () => (
                 fontWeight: "900",
               }}
             >
-              10,946
+              9,055
             </h1>
           </FitText>
           <div className="floating">
@@ -426,8 +427,8 @@ export const NextSteps = () => (
             and
           </h3>
           <div className="push-top">
-            <h1 style={{ fontWeight: "900" }}>7,352</h1>
-            <h3>attended for the first time!</h3>
+            <h1 style={{ fontWeight: "900" }}>2,367</h1>
+            <h3>for the first time!</h3>
           </div>
         </div>
       </div>
@@ -448,7 +449,7 @@ export const NextSteps = () => (
             We spent
           </h3>
           <div className="text-center@handheld">
-            <FitText compressor={1.4} maxFontSize={18}>
+            <FitText compressor={1.0} maxFontSize={18}>
               <Currency
                 amount={localMissionAmount}
                 baseHeadingSize="1"
@@ -466,11 +467,14 @@ export const NextSteps = () => (
               alt="map of south carolina"
             />
           </div>
-          <p className="constrain-copy@lap-and-up push-double-bottom@handheld">
-            God has called our church to make a difference in South Carolina. From rebuilding homes
-            and hosting community service days to giving supplies to low-income schools, the money
-            we budget for local missions creates opportunities to share Jesus&#39; love with our
-            neighbors across the state.
+          <p
+            className="constrain-copy@lap-and-up push-double-bottom@handheld text-center@handheld"
+            style={{ fontFamily: "colfax-web" }}
+          >
+            We are #ForSC! God has called us to make a difference in South Carolina. From community
+            service days to home repairs to partnerships with non-profit organizations, money
+            dedicated to #ForSC projects created opportunities to share Jesus’ love with our
+            neighbors.
           </p>
         </div>
         <div
@@ -484,10 +488,34 @@ export const NextSteps = () => (
             />
           </div>
         </div>
+        <div className="grid__item push-half-left@handheld floating push-double-top@lap-and-up">
+          <div className="text-center three-quarters@lap-wide-and-up nine-tenths@lap floating__item">
+            <hr
+              className="visuallyhidden@handheld push-ends"
+              style={{ borderTop: "1px solid #dddddd" }}
+            />
+            <Story
+              image={
+                "//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/stories/Sherri_Moss.jpg"
+              }
+              content={`
+                <p style="font-family: colfax-web"><strong style="font-family: colfax-web">Sherri Moss</strong> of <strong style="font-family: colfax-web">NewSpring Aiken</strong> moved out of a recovery center and into her own home on <strong style="font-family: colfax-web">#ForSC</strong> day in April 2017.</p>
+                <p style="font-family: colfax-web">&#34;I never had a place that felt like a family until I got to NewSpring … They took me in from the beginning, and they always support me now.&#34;</p>
+              `}
+              contentClass={"text-light-primary"}
+              linkUrl={"https://newspring.cc/stories/sherri-moss"}
+              linkClass={`h6 btn--small@next btn--light ${css(
+                styles.whiteColor,
+                styles.whiteHover,
+              )}`}
+              linkText={"Read the story"}
+            />
+          </div>
+        </div>
       </div>
     </div>
     {/* Foreign Missions */}
-    <div className="background--tertiary soft-double@lap-and-up soft-sides@handheld soft-top@handheld">
+    <div className="background--tertiary soft-double@lap-and-up soft-sides@handheld soft-ends@handheld">
       <div className="grid one-whole push-double-top push-double-bottom@lap-and-up">
         <div
           className="grid__item one-half@lap-and-up display-inline-block visuallyhidden@handheld"
@@ -511,7 +539,7 @@ export const NextSteps = () => (
             We spent
           </h3>
           <div className="text-center@handheld">
-            <FitText compressor={1.2} maxFontSize={18}>
+            <FitText compressor={1.0} maxFontSize={18}>
               <Currency
                 amount={foreignMissionAmount}
                 baseHeadingSize="1"
@@ -532,11 +560,15 @@ export const NextSteps = () => (
               alt="map of the world"
             />
           </div>
-          <p className="constrain-copy@lap-and-up">
-            We partner with Freedom Church to share Jesus&#39; love with people around the world. By
-            partnering with local churches, we&#39;re able to participate in ministry that continues
-            long after our team comes home. The local church is the hope of the world. When we work
-            together, we begin to see the Great Commission happening before our eyes.
+          <p
+            className="constrain-copy@lap-and-up text-center@handheld"
+            style={{ fontFamily: "colfax-web" }}
+          >
+            We believe the local church is the hope of the world. Through partnerships with several
+            organizations, NewSpring Missions teams traveled to several foreign countries. By
+            investing in local churches sharing the Gospel, we know the impact continues long after
+            teams return home. When we work together, we can see the Great Commission happening
+            before our eyes.
           </p>
         </div>
       </div>
@@ -548,7 +580,7 @@ export const NextSteps = () => (
               fontWeight: "900",
             }}
           >
-            63
+            104
           </h1>
         </FitText>
         <div className="floating">
@@ -571,36 +603,21 @@ export const NextSteps = () => (
               fontWeight: "900",
             }}
           >
-            3
+            4
           </h1>
         </FitText>
         <div className="floating">
           <h3 className="push-top floating__item two-thirds@lap-and-up">different nations.</h3>
         </div>
       </div>
-      <div className="floating">
-        <div className="text-center three-quarters@lap-wide-and-up nine-tenths@lap floating__item">
-          <hr
-            className="visuallyhidden@handheld push-ends"
-            style={{ borderTop: "1px solid #dddddd" }}
-          />
-          <Story
-            image={"//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/stories/story-img5.png"}
-            content={
-              "<p>&#34;I traveled to Uganda with NewSpring Missions in July. The trip was inspirational, heartbreaking, and heartwarming. The highlights were worshipping with, and serving, the young boys living on the streets of Kampala. We also helped make improvements to the Freedom Church Heroes boys home.&#34;</p>"
-            }
-            contentClass={"text-light-primary"}
-            overriddenHeader={
-              "<strong style='font-family: colfax, sans-serif;'>Chat Davis</strong> from <strong style='font-family: colfax, sans-serif;'>Greenwood</strong> went to Kampala."
-            }
-          />
-        </div>
-      </div>
     </div>
     {/* Keep Reading */}
     <div className="background--primary text-center text-light-primary soft">
       <h3 className="soft-double-top">Keep Reading</h3>
-      <p>Up next in the NewSpring 2016 Annual Report is information on our ministries.</p>
+      {/* <p>
+        Up next in the NewSpring 2016 Annual Report is information on our
+        ministries.
+      </p> */}
       <Link className="btn--light push-double-bottom" to="/annualreport/ministries">
         Go To Ministries Report
       </Link>
