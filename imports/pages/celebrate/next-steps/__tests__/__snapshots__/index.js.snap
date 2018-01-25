@@ -186,7 +186,7 @@ exports[`Next Steps renders a layout 1`] = `
           <h3
             className="push-top soft-sides@handheld"
           >
-            first time visitors come to NewSpring.
+            first-time visitors come to NewSpring.
           </h3>
         </div>
       </div>
@@ -306,7 +306,7 @@ exports[`Next Steps renders a layout 1`] = `
             >
               Fuse
               : 
-              9.350
+              9,350
             </h6>
           </div>
         </div>

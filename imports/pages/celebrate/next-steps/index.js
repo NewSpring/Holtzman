@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
 const firstTimeVisitorData = [
   { ministry: "VIP Room", count: 10636, color: "#6BAC43", countString: "10,636" },
   { ministry: "KidSpring", count: 7245, color: "#1C683E", countString: "7,245" },
-  { ministry: "Fuse", count: 9350, color: "#2A4930", countString: "9.350" },
+  { ministry: "Fuse", count: 9350, color: "#2A4930", countString: "9,350" },
 ];
 
 const volunteerData = [
@@ -222,7 +222,7 @@ export const NextSteps = () => (
                 27,231
               </h1>
             </FitText>
-            <h3 className="push-top soft-sides@handheld">first time visitors come to NewSpring.</h3>
+            <h3 className="push-top soft-sides@handheld">first-time visitors come to NewSpring.</h3>
           </div>
         </div>
         <div
