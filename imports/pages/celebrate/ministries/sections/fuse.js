@@ -114,9 +114,26 @@ const Fuse = () => (
         <div className="constrain-page soft-double-top soft-sides@lap soft-sides@handheld">
           <div className="one-whole">
             <div className="constrain-copy">
-              <h1 className="uppercase push-bottom" style={{ color: "#4F92A9" }}>
-                [ Fuse ]
-              </h1>
+              <div
+                className="push-double-bottom visuallyhidden@handheld"
+                style={{
+                  backgroundImage: `url("//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Logos/fuse_logo.svg")`,
+                  backgroundRepeat: "no-repeat",
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  height: "15em",
+                }}
+              />
+              <div
+                className="push-double-bottom visuallyhidden@lap-and-up"
+                style={{
+                  backgroundImage: `url("//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Logos/fuse_logo.svg")`,
+                  backgroundRepeat: "no-repeat",
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  height: "10em",
+                }}
+              />
               <p className="text-center" style={{ fontFamily: "colfax-web" }}>
                 Fuse is NewSpring&#39;s student ministry. Fuse is a place where middle and high
                 school students can have fun while connecting to Jesus and to each other.
