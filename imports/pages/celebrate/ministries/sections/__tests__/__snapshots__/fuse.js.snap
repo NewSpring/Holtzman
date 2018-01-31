@@ -21,16 +21,30 @@ exports[`Fuse renders a layout 1`] = `
           <div
             className="constrain-copy"
           >
-            <h1
-              className="uppercase push-bottom"
+            <div
+              className="push-double-bottom visuallyhidden@handheld"
               style={
                 Object {
-                  "color": "#4F92A9",
+                  "backgroundImage": "url(\\"//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Logos/fuse_logo.svg\\")",
+                  "backgroundPosition": "center",
+                  "backgroundRepeat": "no-repeat",
+                  "backgroundSize": "cover",
+                  "height": "15em",
                 }
               }
-            >
-              [ Fuse ]
-            </h1>
+            />
+            <div
+              className="push-double-bottom visuallyhidden@lap-and-up"
+              style={
+                Object {
+                  "backgroundImage": "url(\\"//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Logos/fuse_logo.svg\\")",
+                  "backgroundPosition": "center",
+                  "backgroundRepeat": "no-repeat",
+                  "backgroundSize": "cover",
+                  "height": "10em",
+                }
+              }
+            />
             <p
               className="text-center"
               style={

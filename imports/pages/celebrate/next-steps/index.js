@@ -124,6 +124,7 @@ const volunteerData = [
 ];
 const localMissionAmount = "1371578.00";
 const foreignMissionAmount = "829264.00";
+const digitalMissionAmount = "1000000.00";
 
 /* eslint-disable max-len */
 export const NextSteps = () => (
@@ -435,10 +436,10 @@ export const NextSteps = () => (
     </div>
     {/* Local Missions */}
     <div className="background--primary soft-double@lap-and-up soft@handheld">
-      <div className="grid one-whole push-double-top push-double-bottom@lap-and-up">
+      <div className="grid one-whole soft-top@handheld soft-double@lap-and-up floating">
         <div
-          className="grid__item push-half-left@handheld one-half@lap-and-up text-light-primary display-inline-block"
-          style={{ verticalAlign: "middle" }}
+          className="grid__item push-half-left@handheld two-thirds@lap-and-up text-light-primary display-inline-block constrain-copy"
+          style={{ verticalAlign: "middle", textAlign: "left" }}
         >
           <h3
             className="italic text-center@handheld"
@@ -478,13 +479,14 @@ export const NextSteps = () => (
           </p>
         </div>
         <div
-          className="grid__item floating one-half@lap-and-up display-inline-block visuallyhidden@handheld"
+          className="grid__item floating one-third@lap-and-up display-inline-block visuallyhidden@handheld"
           style={{ verticalAlign: "middle" }}
         >
           <div className="floating__item one-whole@lap-and-up two-thirds@handheld">
             <img
               src="//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/maps/map-sc.png"
               alt="map of south carolina"
+              style={{ height: "25em" }}
             />
           </div>
         </div>
@@ -515,10 +517,10 @@ export const NextSteps = () => (
       </div>
     </div>
     {/* Foreign Missions */}
-    <div className="background--tertiary soft-double@lap-and-up soft-sides@handheld soft-ends@handheld">
-      <div className="grid one-whole push-double-top push-double-bottom@lap-and-up">
+    <div className="background--tertiary soft-double@lap-and-up soft@handheld">
+      <div className="grid one-whole soft-top@handheld soft-double@lap-and-up floating">
         <div
-          className="grid__item one-half@lap-and-up display-inline-block visuallyhidden@handheld"
+          className="grid__item one-third@lap-and-up display-inline-block visuallyhidden@handheld"
           style={{ verticalAlign: "middle" }}
         >
           <img
@@ -527,8 +529,8 @@ export const NextSteps = () => (
           />
         </div>
         <div
-          className="grid__item push-half-left@handheld one-half@lap-and-up soft-double-left@lap-and-up soft-right@lap-and-up text-light-primary display-inline-block"
-          style={{ verticalAlign: "middle" }}
+          className="grid__item push-half-left@handheld two-thirds@lap-and-up soft-double-left@lap-and-up soft-right@lap-and-up text-light-primary display-inline-block constrain-copy"
+          style={{ verticalAlign: "middle", textAlign: "left" }}
         >
           <h3
             className="italic text-center@handheld"
@@ -608,6 +610,63 @@ export const NextSteps = () => (
         </FitText>
         <div className="floating">
           <h3 className="push-top floating__item two-thirds@lap-and-up">different nations.</h3>
+        </div>
+      </div>
+    </div>
+    {/* Digital Missions */}
+    <div className="background--dark-primary soft-double@lap-and-up soft@handheld">
+      <div className="grid one-whole soft-top@handheld soft-double@lap-and-up floating">
+        <div
+          className="grid__item push-half-left@handheld two-thirds@lap-and-up text-light-primary display-inline-block constrain-copy"
+          style={{ verticalAlign: "middle", textAlign: "left" }}
+        >
+          <h3
+            className="italic text-center@handheld"
+            style={{
+              fontFamily: "ff-meta-serif-web-pro, serif",
+            }}
+          >
+            We spent
+          </h3>
+          <div className="text-center@handheld">
+            <FitText compressor={1.0} maxFontSize={18}>
+              <Currency
+                amount={digitalMissionAmount}
+                baseHeadingSize="1"
+                className="display-inline-block text-center soft-bottom"
+                style={{ fontWeight: "900" }}
+                theme="light"
+                roundCurrency
+              />
+            </FitText>
+          </div>
+          <h3 className="text-center@handheld">on digital missions.</h3>
+          <div className="floating__item two-thirds@lap-and-up visuallyhidden@lap-and-up push-double-bottom push-double-top">
+            <img
+              src="//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/aol.gif"
+              alt="map of south carolina"
+            />
+          </div>
+          <p
+            className="constrain-copy@lap-and-up push-double-bottom@handheld text-center@handheld"
+            style={{ fontFamily: "colfax-web" }}
+          >
+            We are #ForSC! God has called us to make a difference in South Carolina. From community
+            service days to home repairs to partnerships with non-profit organizations, money
+            dedicated to #ForSC projects created opportunities to share Jesus’ love with our
+            neighbors.
+          </p>
+        </div>
+        <div
+          className="grid__item floating one-third@lap-and-up display-inline-block visuallyhidden@handheld"
+          style={{ verticalAlign: "middle" }}
+        >
+          <div className="floating__item one-whole@lap-and-up two-thirds@handheld">
+            <img
+              src="//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/aol.gif"
+              alt="map of south carolina"
+            />
+          </div>
         </div>
       </div>
     </div>
