@@ -98,7 +98,7 @@ const KidSpring = () => (
               <div
                 className="push-double-bottom visuallyhidden@handheld"
                 style={{
-                  backgroundImage: `url("//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Logos/kidspring_logo.svg")`,
+                  backgroundImage: `url("//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Logos/kidspring_logo_white.svg")`,
                   backgroundRepeat: "no-repeat",
                   backgroundSize: "cover",
                   backgroundPosition: "center",
@@ -108,7 +108,7 @@ const KidSpring = () => (
               <div
                 className="push-double-bottom visuallyhidden@lap-and-up"
                 style={{
-                  backgroundImage: `url("//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Logos/kidspring_logo.svg")`,
+                  backgroundImage: `url("//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Logos/kidspring_logo_white.svg")`,
                   backgroundRepeat: "no-repeat",
                   backgroundSize: "cover",
                   backgroundPosition: "center",

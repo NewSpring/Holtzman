@@ -25,7 +25,7 @@ exports[`Fuse renders a layout 1`] = `
               className="push-double-bottom visuallyhidden@handheld"
               style={
                 Object {
-                  "backgroundImage": "url(\\"//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Logos/fuse_logo.svg\\")",
+                  "backgroundImage": "url(\\"//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Logos/fuse_logo_blue.svg\\")",
                   "backgroundPosition": "center",
                   "backgroundRepeat": "no-repeat",
                   "backgroundSize": "cover",
@@ -37,7 +37,7 @@ exports[`Fuse renders a layout 1`] = `
               className="push-double-bottom visuallyhidden@lap-and-up"
               style={
                 Object {
-                  "backgroundImage": "url(\\"//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Logos/fuse_logo.svg\\")",
+                  "backgroundImage": "url(\\"//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Logos/fuse_logo_blue.svg\\")",
                   "backgroundPosition": "center",
                   "backgroundRepeat": "no-repeat",
                   "backgroundSize": "cover",
@@ -63,7 +63,7 @@ exports[`Fuse renders a layout 1`] = `
               className="push-double-bottom@lap-and-up push-bottom"
               style={
                 Object {
-                  "color": "#4F92A9",
+                  "color": "#6BA4B8",
                 }
               }
             >
@@ -76,7 +76,7 @@ exports[`Fuse renders a layout 1`] = `
               <h1
                 style={
                   Object {
-                    "color": "#4F92A9",
+                    "color": "#6BA4B8",
                     "fontWeight": 900,
                     "marginBottom": 0,
                   }
@@ -91,7 +91,7 @@ exports[`Fuse renders a layout 1`] = `
       <div
         style={
           Object {
-            "color": "#4F92A9",
+            "color": "#6BA4B8",
           }
         }
       >
@@ -173,7 +173,7 @@ exports[`Fuse renders a layout 1`] = `
             className="italic"
             style={
               Object {
-                "color": "#4F92A9",
+                "color": "#6BA4B8",
               }
             }
           >
@@ -449,7 +449,7 @@ exports[`Fuse renders a layout 1`] = `
       <div
         style={
           Object {
-            "color": "#4F92A9",
+            "color": "#6BA4B8",
           }
         }
       >
@@ -479,7 +479,7 @@ exports[`Fuse renders a layout 1`] = `
     </div>
   </div>
   <div
-    className="soft-top"
+    className="soft-ends"
     style={
       Object {
         "backgroundColor": "#6BA4B8",

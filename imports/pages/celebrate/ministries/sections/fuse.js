@@ -117,7 +117,7 @@ const Fuse = () => (
               <div
                 className="push-double-bottom visuallyhidden@handheld"
                 style={{
-                  backgroundImage: `url("//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Logos/fuse_logo.svg")`,
+                  backgroundImage: `url("//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Logos/fuse_logo_blue.svg")`,
                   backgroundRepeat: "no-repeat",
                   backgroundSize: "cover",
                   backgroundPosition: "center",
@@ -127,7 +127,7 @@ const Fuse = () => (
               <div
                 className="push-double-bottom visuallyhidden@lap-and-up"
                 style={{
-                  backgroundImage: `url("//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Logos/fuse_logo.svg")`,
+                  backgroundImage: `url("//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Logos/fuse_logo_blue.svg")`,
                   backgroundRepeat: "no-repeat",
                   backgroundSize: "cover",
                   backgroundPosition: "center",
@@ -143,7 +143,7 @@ const Fuse = () => (
             <div className="one-whole soft-double-top@lap-and-up soft-top soft-bottom@lap-and-up">
               <h3
                 className="push-double-bottom@lap-and-up push-bottom"
-                style={{ color: "#4F92A9" }}
+                style={{ color: "#6BA4B8" }}
               >
                 Average Weekly Attendance
               </h3>
@@ -151,7 +151,7 @@ const Fuse = () => (
                 <h1
                   style={{
                     fontWeight: 900,
-                    color: "#4F92A9",
+                    color: "#6BA4B8",
                     marginBottom: 0,
                   }}
                 >
@@ -162,7 +162,7 @@ const Fuse = () => (
           </div>
         </div>
 
-        <div style={{ color: "#4F92A9" }}>
+        <div style={{ color: "#6BA4B8" }}>
           <CardSlider>
             {data.statistics.attendance.campuses.map((campus, i) => (
               <MetricCard key={i} count={campus.average} label={campus.name} />
@@ -172,7 +172,7 @@ const Fuse = () => (
 
         <div className="constrain-page soft-sides@handheld">
           <div className="soft-double-top@lap-and-up">
-            <h3 className="italic" style={{ color: "#4F92A9" }}>
+            <h3 className="italic" style={{ color: "#6BA4B8" }}>
               <strong>Every number is a student life changed</strong>
             </h3>
             <div id={"fuse"} className="soft-sides@lap">
@@ -253,7 +253,7 @@ const Fuse = () => (
           </div>
         </div>
 
-        <div style={{ color: "#4F92A9" }}>
+        <div style={{ color: "#6BA4B8" }}>
           <CardSlider>
             {data.statistics.gauntlet.map((stat, i) => (
               <MetricCard key={i} count={stat.number} label={stat.name} />
@@ -263,7 +263,7 @@ const Fuse = () => (
       </div>
     </div>
     <div
-      className="soft-top"
+      className="soft-ends"
       style={{
         backgroundColor: "#6BA4B8",
         textAlign: "center",
