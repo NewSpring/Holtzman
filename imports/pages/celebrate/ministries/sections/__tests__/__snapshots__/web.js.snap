@@ -33,7 +33,7 @@ exports[`Web renders a layout 1`] = `
               }
             >
               <strong>
-                We Have
+                We have
               </strong>
             </h3>
           </div>
