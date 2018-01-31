@@ -63,7 +63,7 @@ const Web = () => (
             <div className="one-whole text-center push-bottom push-double-top@handheld">
               <h1 className="uppercase">Web Stats</h1>
               <h3 className="italic" style={{ color: "#bc9b67" }}>
-                <strong>We Have</strong>
+                <strong>We have</strong>
               </h3>
             </div>
 
