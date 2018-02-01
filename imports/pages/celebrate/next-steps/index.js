@@ -435,10 +435,10 @@ export const NextSteps = () => (
       </div>
     </div>
     {/* Local Missions */}
-    <div className="background--primary soft-double@lap-and-up soft@handheld">
+    <div className="background--light-secondary soft-double@lap-and-up soft@handheld">
       <div className="grid one-whole soft-top@handheld soft-double@lap-and-up floating">
         <div
-          className="grid__item push-half-left@handheld two-thirds@lap-and-up text-light-primary display-inline-block constrain-copy"
+          className="grid__item push-half-left@handheld two-thirds@lap-and-up display-inline-block constrain-copy"
           style={{ verticalAlign: "middle", textAlign: "left" }}
         >
           <h3
@@ -456,7 +456,6 @@ export const NextSteps = () => (
                 baseHeadingSize="1"
                 className="display-inline-block text-center soft-bottom"
                 style={{ fontWeight: "900" }}
-                theme="light"
                 roundCurrency
               />
             </FitText>
@@ -504,12 +503,8 @@ export const NextSteps = () => (
                 <p style="font-family: colfax-web"><strong style="font-family: colfax-web">Sherri Moss</strong> of <strong style="font-family: colfax-web">NewSpring Aiken</strong> moved out of a recovery center and into her own home on <strong style="font-family: colfax-web">#ForSC</strong> day in April 2017.</p>
                 <p style="font-family: colfax-web">&#34;I never had a place that felt like a family until I got to NewSpring … They took me in from the beginning, and they always support me now.&#34;</p>
               `}
-              contentClass={"text-light-primary"}
               linkUrl={"https://newspring.cc/stories/sherri-moss"}
-              linkClass={`h6 btn--small@next btn--light ${css(
-                styles.whiteColor,
-                styles.whiteHover,
-              )}`}
+              linkClass={`h6 btn--dark-secondary btn--small@next`}
               linkText={"Read the story"}
             />
           </div>
@@ -517,7 +512,7 @@ export const NextSteps = () => (
       </div>
     </div>
     {/* Foreign Missions */}
-    <div className="background--tertiary soft-double@lap-and-up soft@handheld">
+    <div className="background--light-primary soft-double@lap-and-up soft@handheld">
       <div className="grid one-whole soft-top@handheld soft-double@lap-and-up floating">
         <div
           className="grid__item one-third@lap-and-up display-inline-block visuallyhidden@handheld"
@@ -529,7 +524,7 @@ export const NextSteps = () => (
           />
         </div>
         <div
-          className="grid__item push-half-left@handheld two-thirds@lap-and-up soft-double-left@lap-and-up soft-right@lap-and-up text-light-primary display-inline-block constrain-copy"
+          className="grid__item push-half-left@handheld two-thirds@lap-and-up soft-double-left@lap-and-up soft-right@lap-and-up display-inline-block constrain-copy"
           style={{ verticalAlign: "middle", textAlign: "left" }}
         >
           <h3
@@ -547,7 +542,6 @@ export const NextSteps = () => (
                 baseHeadingSize="1"
                 className="display-inline-block text-center soft-bottom"
                 style={{ fontWeight: "900" }}
-                theme="light"
                 roundCurrency
               />
             </FitText>
@@ -574,7 +568,7 @@ export const NextSteps = () => (
           </p>
         </div>
       </div>
-      <div className="text-center text-light-primary soft-double-top soft">
+      <div className="text-center soft-double-top soft">
         <FitText compressor={0.4} maxFontSize={80}>
           <h1
             className="uppercase flush-bottom soft-half-bottom"
@@ -614,10 +608,10 @@ export const NextSteps = () => (
       </div>
     </div>
     {/* Digital Missions */}
-    <div className="background--dark-primary soft-double@lap-and-up soft@handheld">
+    <div className="background--light-secondary soft-double@lap-and-up soft@handheld">
       <div className="grid one-whole soft-top@handheld soft-double@lap-and-up floating">
         <div
-          className="grid__item push-half-left@handheld two-thirds@lap-and-up text-light-primary display-inline-block constrain-copy"
+          className="grid__item push-half-left@handheld two-thirds@lap-and-up display-inline-block constrain-copy"
           style={{ verticalAlign: "middle", textAlign: "left" }}
         >
           <h3
@@ -635,7 +629,6 @@ export const NextSteps = () => (
                 baseHeadingSize="1"
                 className="display-inline-block text-center soft-bottom"
                 style={{ fontWeight: "900" }}
-                theme="light"
                 roundCurrency
               />
             </FitText>

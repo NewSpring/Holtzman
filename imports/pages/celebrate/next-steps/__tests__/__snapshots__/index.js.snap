@@ -638,13 +638,13 @@ exports[`Next Steps renders a layout 1`] = `
     </div>
   </div>
   <div
-    className="background--primary soft-double@lap-and-up soft@handheld"
+    className="background--light-secondary soft-double@lap-and-up soft@handheld"
   >
     <div
       className="grid one-whole soft-top@handheld soft-double@lap-and-up floating"
     >
       <div
-        className="grid__item push-half-left@handheld two-thirds@lap-and-up text-light-primary display-inline-block constrain-copy"
+        className="grid__item push-half-left@handheld two-thirds@lap-and-up display-inline-block constrain-copy"
         style={
           Object {
             "textAlign": "left",
@@ -679,7 +679,6 @@ exports[`Next Steps renders a layout 1`] = `
                   "fontWeight": "900",
                 }
               }
-              theme="light"
             />
           </Connect(FitTextWithoutData)>
         </div>
@@ -748,9 +747,8 @@ exports[`Next Steps renders a layout 1`] = `
                 <p style=\\"font-family: colfax-web\\"><strong style=\\"font-family: colfax-web\\">Sherri Moss</strong> of <strong style=\\"font-family: colfax-web\\">NewSpring Aiken</strong> moved out of a recovery center and into her own home on <strong style=\\"font-family: colfax-web\\">#ForSC</strong> day in April 2017.</p>
                 <p style=\\"font-family: colfax-web\\">&#34;I never had a place that felt like a family until I got to NewSpring … They took me in from the beginning, and they always support me now.&#34;</p>
               "
-            contentClass="text-light-primary"
             image="//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/stories/Sherri_Moss.jpg"
-            linkClass="h6 btn--small@next btn--light whiteColor_1fmte2e-o_O-whiteHover_1tswaje"
+            linkClass="h6 btn--dark-secondary btn--small@next"
             linkText="Read the story"
             linkUrl="https://newspring.cc/stories/sherri-moss"
           />
@@ -759,7 +757,7 @@ exports[`Next Steps renders a layout 1`] = `
     </div>
   </div>
   <div
-    className="background--tertiary soft-double@lap-and-up soft@handheld"
+    className="background--light-primary soft-double@lap-and-up soft@handheld"
   >
     <div
       className="grid one-whole soft-top@handheld soft-double@lap-and-up floating"
@@ -778,7 +776,7 @@ exports[`Next Steps renders a layout 1`] = `
         />
       </div>
       <div
-        className="grid__item push-half-left@handheld two-thirds@lap-and-up soft-double-left@lap-and-up soft-right@lap-and-up text-light-primary display-inline-block constrain-copy"
+        className="grid__item push-half-left@handheld two-thirds@lap-and-up soft-double-left@lap-and-up soft-right@lap-and-up display-inline-block constrain-copy"
         style={
           Object {
             "textAlign": "left",
@@ -813,7 +811,6 @@ exports[`Next Steps renders a layout 1`] = `
                   "fontWeight": "900",
                 }
               }
-              theme="light"
             />
           </Connect(FitTextWithoutData)>
         </div>
@@ -848,7 +845,7 @@ exports[`Next Steps renders a layout 1`] = `
       </div>
     </div>
     <div
-      className="text-center text-light-primary soft-double-top soft"
+      className="text-center soft-double-top soft"
     >
       <Connect(FitTextWithoutData)
         compressor={0.4}
@@ -911,13 +908,13 @@ exports[`Next Steps renders a layout 1`] = `
     </div>
   </div>
   <div
-    className="background--dark-primary soft-double@lap-and-up soft@handheld"
+    className="background--light-secondary soft-double@lap-and-up soft@handheld"
   >
     <div
       className="grid one-whole soft-top@handheld soft-double@lap-and-up floating"
     >
       <div
-        className="grid__item push-half-left@handheld two-thirds@lap-and-up text-light-primary display-inline-block constrain-copy"
+        className="grid__item push-half-left@handheld two-thirds@lap-and-up display-inline-block constrain-copy"
         style={
           Object {
             "textAlign": "left",
@@ -952,7 +949,6 @@ exports[`Next Steps renders a layout 1`] = `
                   "fontWeight": "900",
                 }
               }
-              theme="light"
             />
           </Connect(FitTextWithoutData)>
         </div>
