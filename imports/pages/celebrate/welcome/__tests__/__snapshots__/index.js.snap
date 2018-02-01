@@ -17,7 +17,7 @@ exports[`Welcome renders a layout 1`] = `
       <div>
         <Connect(VideoPlayerWithoutData)
           autoplay={false}
-          id="VoNTB1ODE66MXxAFqcCqRb04c2WT9biy"
+          id="90ZG00ZTE6k8sukbExReu6mnNTG9t8Be"
         />
       </div>
     </div>

@@ -10,16 +10,13 @@ export const Welcome = () => (
     <div className="push-big-sides@lap-and-up soft@lap-and-up soft-top@lap-and-up">
       <div className="soft soft-bottom soft-top@lap-and-up">
         <div>
-          <Video id={"VoNTB1ODE66MXxAFqcCqRb04c2WT9biy"} autoplay={false} />
+          <Video id={"90ZG00ZTE6k8sukbExReu6mnNTG9t8Be"} autoplay={false} />
         </div>
       </div>
     </div>
     <div className="background--primary text-center text-light-primary soft">
       <h3 className="push-double-top">Keep Reading</h3>
-      <Link
-        className="btn--light push-double-bottom"
-        to="/annualreport/finances"
-      >
+      <Link className="btn--light push-double-bottom" to="/annualreport/finances">
         Go to Finance Report
       </Link>
     </div>
