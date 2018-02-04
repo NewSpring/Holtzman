@@ -4,7 +4,6 @@ import { graphql } from "react-apollo";
 import { connect } from "react-redux";
 import gql from "graphql-tag";
 import { css } from "aphrodite";
-import { Link } from "react-router";
 import { Motion, spring } from "react-motion";
 
 import Styles from "./live-css";
@@ -70,18 +69,6 @@ class LiveWithoutData extends Component {
   };
 
   getLink(fuse: Boolean) {
-    // const { embedCode } = this.props.live;
-
-    // // create beta link
-    // const shouldShowBetaLink = (
-    //   this.props.person
-    //   && !this.props.person.authLoading
-    //   && this.props.person.authorized
-    // );
-    // return shouldShowBetaLink ? "/wowza" : `/video/${embedCode}`;
-    // make wowza default for everyone watching live
-    // return "/wowza";
-
     let liveLink = "https://live.newspring.cc";
     if (fuse) {
       liveLink = "https://live.newspringfuse.com";
@@ -91,13 +78,7 @@ class LiveWithoutData extends Component {
 
   render() {
     const { live, fuse, show } = this.props.live;
-    console.log("this.prop.live = ", this.props.live);
-    console.log("live = ", live);
-    console.log("fuse = ", fuse);
-    console.log("show = ", show);
     if (!live || !show) return null;
-
-    // TODO load different embed code for beta users
 
     const link = this.getLink(fuse);
 
