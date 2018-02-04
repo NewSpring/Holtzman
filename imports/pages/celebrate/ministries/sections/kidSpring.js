@@ -95,7 +95,26 @@ const KidSpring = () => (
         <div className="grid">
           <div className="grid__item one-whole">
             <div className="constrain-copy">
-              <h1 className="uppercase push-bottom">KidSpring</h1>
+              <div
+                className="push-double-bottom visuallyhidden@handheld"
+                style={{
+                  backgroundImage: `url("//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Logos/kidspring_logo_white.svg")`,
+                  backgroundRepeat: "no-repeat",
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  height: "20em",
+                }}
+              />
+              <div
+                className="push-double-bottom visuallyhidden@lap-and-up"
+                style={{
+                  backgroundImage: `url("//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Logos/kidspring_logo_white.svg")`,
+                  backgroundRepeat: "no-repeat",
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  height: "10em",
+                }}
+              />
               <p className="text-center" style={{ fontFamily: "colfax-web" }}>
                 KidSpring is the children&#39;s ministry at NewSpring Church. Every Sunday, children
                 from birth through fifth grade experience Jesus on their level in environments that

@@ -2,14 +2,31 @@ import Story from "../../components/story";
 
 /* eslint-disable max-len */
 const Rally = () => (
-  <div className="background--dark-primary">
-    <div className="soft-double-top@lap-and-up soft-top text-center">
+  <div className="background--dark-primary soft-double-bottom@lap-and-up soft-bottom">
+    <div className="soft-double-top@lap-and-up text-center">
       <div className="constrain-page soft-double-top soft-sides@lap soft-sides@handheld">
         <div className="one-whole">
           <div className="constrain-copy">
-            <h1 className="uppercase push-bottom" style={{ color: "#FFFFFF" }}>
-              Rally
-            </h1>
+            <div
+              className="push-double-bottom visuallyhidden@handheld"
+              style={{
+                backgroundImage: `url("//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Logos/rally_logo.svg")`,
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                height: "15em",
+              }}
+            />
+            <div
+              className="push-double-bottom visuallyhidden@lap-and-up"
+              style={{
+                backgroundImage: `url("//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Logos/rally_logo.svg")`,
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                height: "10em",
+              }}
+            />
             <p
               className="text-center text-light-primary push-double-bottom@handheld"
               style={{ fontFamily: "colfax-web" }}
@@ -33,6 +50,95 @@ const Rally = () => (
               contentClass={"text-light-primary"}
             />
           </div>
+        </div>
+        {/* Image Gallery */}
+        <div className="one-whole floating soft-top soft-double-bottom visuallyhidden@handheld">
+          <div
+            className="floating__item two-thirds"
+            style={{
+              backgroundImage: `url("//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Rally/rally.1.2x1.jpg")`,
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              height: "25em",
+              border: "1px solid white",
+            }}
+          />
+          <div
+            className="floating__item one-third"
+            style={{
+              backgroundImage: `url("//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Rally/rally.2.1x1.jpg")`,
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              height: "25em",
+              border: "1px solid white",
+            }}
+          />
+          <div
+            className="floating__item one-third"
+            style={{
+              backgroundImage: `url("//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Rally/rally.3.1x1.jpg")`,
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              height: "25em",
+              border: "1px solid white",
+            }}
+          />
+          <div
+            className="floating__item two-thirds"
+            style={{
+              backgroundImage: `url("//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Rally/rally.4.2x1.jpg")`,
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              height: "25em",
+              border: "1px solid white",
+            }}
+          />
+        </div>
+        <div className="soft-top soft-double-bottom visuallyhidden@lap-and-up">
+          <div
+            style={{
+              backgroundImage: `url("//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Rally/rally.1.1x1.jpg")`,
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              height: "15em",
+              border: "1px solid white",
+            }}
+          />
+          <div
+            style={{
+              backgroundImage: `url("//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Rally/rally.2.1x1.jpg")`,
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover",
+              backgroundPosition: "top center",
+              height: "15em",
+              border: "1px solid white",
+            }}
+          />
+          <div
+            style={{
+              backgroundImage: `url("//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Rally/rally.3.1x1.jpg")`,
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover",
+              backgroundPosition: "top center",
+              height: "15em",
+              border: "1px solid white",
+            }}
+          />
+          <div
+            style={{
+              backgroundImage: `url("//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Rally/rally.4.1x1.jpg")`,
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              height: "15em",
+              border: "1px solid white",
+            }}
+          />
         </div>
       </div>
     </div>

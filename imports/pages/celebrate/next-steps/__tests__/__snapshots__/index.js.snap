@@ -638,15 +638,16 @@ exports[`Next Steps renders a layout 1`] = `
     </div>
   </div>
   <div
-    className="background--primary soft-double@lap-and-up soft@handheld"
+    className="background--light-secondary soft-double@lap-and-up soft@handheld"
   >
     <div
-      className="grid one-whole push-double-top push-double-bottom@lap-and-up"
+      className="grid one-whole soft-top@handheld soft-double@lap-and-up floating"
     >
       <div
-        className="grid__item push-half-left@handheld one-half@lap-and-up text-light-primary display-inline-block"
+        className="grid__item push-half-left@handheld two-thirds@lap-and-up display-inline-block constrain-copy"
         style={
           Object {
+            "textAlign": "left",
             "verticalAlign": "middle",
           }
         }
@@ -678,7 +679,6 @@ exports[`Next Steps renders a layout 1`] = `
                   "fontWeight": "900",
                 }
               }
-              theme="light"
             />
           </Connect(FitTextWithoutData)>
         </div>
@@ -707,7 +707,7 @@ exports[`Next Steps renders a layout 1`] = `
         </p>
       </div>
       <div
-        className="grid__item floating one-half@lap-and-up display-inline-block visuallyhidden@handheld"
+        className="grid__item floating one-third@lap-and-up display-inline-block visuallyhidden@handheld"
         style={
           Object {
             "verticalAlign": "middle",
@@ -720,6 +720,11 @@ exports[`Next Steps renders a layout 1`] = `
           <img
             alt="map of south carolina"
             src="//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/maps/map-sc.png"
+            style={
+              Object {
+                "height": "25em",
+              }
+            }
           />
         </div>
       </div>
@@ -742,9 +747,8 @@ exports[`Next Steps renders a layout 1`] = `
                 <p style=\\"font-family: colfax-web\\"><strong style=\\"font-family: colfax-web\\">Sherri Moss</strong> of <strong style=\\"font-family: colfax-web\\">NewSpring Aiken</strong> moved out of a recovery center and into her own home on <strong style=\\"font-family: colfax-web\\">#ForSC</strong> day in April 2017.</p>
                 <p style=\\"font-family: colfax-web\\">&#34;I never had a place that felt like a family until I got to NewSpring … They took me in from the beginning, and they always support me now.&#34;</p>
               "
-            contentClass="text-light-primary"
             image="//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/stories/Sherri_Moss.jpg"
-            linkClass="h6 btn--small@next btn--light whiteColor_1fmte2e-o_O-whiteHover_1tswaje"
+            linkClass="h6 btn--dark-secondary btn--small@next"
             linkText="Read the story"
             linkUrl="https://newspring.cc/stories/sherri-moss"
           />
@@ -753,13 +757,13 @@ exports[`Next Steps renders a layout 1`] = `
     </div>
   </div>
   <div
-    className="background--tertiary soft-double@lap-and-up soft-sides@handheld soft-ends@handheld"
+    className="background--light-primary soft-double@lap-and-up soft@handheld"
   >
     <div
-      className="grid one-whole push-double-top push-double-bottom@lap-and-up"
+      className="grid one-whole soft-top@handheld soft-double@lap-and-up floating"
     >
       <div
-        className="grid__item one-half@lap-and-up display-inline-block visuallyhidden@handheld"
+        className="grid__item one-third@lap-and-up display-inline-block visuallyhidden@handheld"
         style={
           Object {
             "verticalAlign": "middle",
@@ -772,9 +776,10 @@ exports[`Next Steps renders a layout 1`] = `
         />
       </div>
       <div
-        className="grid__item push-half-left@handheld one-half@lap-and-up soft-double-left@lap-and-up soft-right@lap-and-up text-light-primary display-inline-block"
+        className="grid__item push-half-left@handheld two-thirds@lap-and-up soft-double-left@lap-and-up soft-right@lap-and-up display-inline-block constrain-copy"
         style={
           Object {
+            "textAlign": "left",
             "verticalAlign": "middle",
           }
         }
@@ -806,7 +811,6 @@ exports[`Next Steps renders a layout 1`] = `
                   "fontWeight": "900",
                 }
               }
-              theme="light"
             />
           </Connect(FitTextWithoutData)>
         </div>
@@ -841,7 +845,7 @@ exports[`Next Steps renders a layout 1`] = `
       </div>
     </div>
     <div
-      className="text-center text-light-primary soft-double-top soft"
+      className="text-center soft-double-top soft"
     >
       <Connect(FitTextWithoutData)
         compressor={0.4}
@@ -900,6 +904,94 @@ exports[`Next Steps renders a layout 1`] = `
         >
           different nations.
         </h3>
+      </div>
+    </div>
+  </div>
+  <div
+    className="background--light-secondary soft-double@lap-and-up soft@handheld"
+  >
+    <div
+      className="grid one-whole soft-top@handheld soft-double@lap-and-up floating"
+    >
+      <div
+        className="grid__item push-half-left@handheld two-thirds@lap-and-up display-inline-block constrain-copy"
+        style={
+          Object {
+            "textAlign": "left",
+            "verticalAlign": "middle",
+          }
+        }
+      >
+        <h3
+          className="italic text-center@handheld"
+          style={
+            Object {
+              "fontFamily": "ff-meta-serif-web-pro, serif",
+            }
+          }
+        >
+          We spent
+        </h3>
+        <div
+          className="text-center@handheld"
+        >
+          <Connect(FitTextWithoutData)
+            compressor={1}
+            maxFontSize={18}
+          >
+            <Currency
+              amount="1000000.00"
+              baseHeadingSize="1"
+              className="display-inline-block text-center soft-bottom"
+              roundCurrency={true}
+              style={
+                Object {
+                  "fontWeight": "900",
+                }
+              }
+            />
+          </Connect(FitTextWithoutData)>
+        </div>
+        <h3
+          className="text-center@handheld"
+        >
+          on digital missions.
+        </h3>
+        <div
+          className="floating__item two-thirds@lap-and-up visuallyhidden@lap-and-up push-double-bottom push-double-top"
+        >
+          <img
+            alt="map of south carolina"
+            src="//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/aol.gif"
+          />
+        </div>
+        <p
+          className="constrain-copy@lap-and-up push-double-bottom@handheld text-center@handheld"
+          style={
+            Object {
+              "fontFamily": "colfax-web",
+            }
+          }
+        >
+          We are #ForSC! God has called us to make a difference in South Carolina. From community service days to home repairs to partnerships with non-profit organizations, money dedicated to #ForSC projects created opportunities to share Jesus’ love with our neighbors.
+        </p>
+      </div>
+      <div
+        className="grid__item floating one-third@lap-and-up display-inline-block visuallyhidden@handheld"
+        style={
+          Object {
+            "verticalAlign": "middle",
+          }
+        }
+      >
+        <div
+          className="floating__item one-whole@lap-and-up two-thirds@handheld"
+        >
+          <img
+            alt="map of south carolina"
+            src="//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/aol.gif"
+          />
+        </div>
       </div>
     </div>
   </div>
