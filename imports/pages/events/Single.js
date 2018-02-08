@@ -20,16 +20,15 @@ import backgrounds from "../../util/backgrounds";
 import react from "../../util/react";
 
 import RelatedContent from "../../components/content/related-content";
-import SingleVideoPlayer from "../../components/@primitives/players/video";
+import Video from "../../components/@primitives/players/video";
 
 const defaultArray = [];
 
 class EventSingleWithoutData extends Component {
-
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     event: PropTypes.object.isRequired,
-  }
+  };
 
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("BASIC_CONTENT"));
@@ -61,13 +60,11 @@ class EventSingleWithoutData extends Component {
           title={event.title}
           image={photo}
           id={event.id}
-          meta={[
-            { property: "og:type", content: "article" },
-          ]}
+          meta={[{ property: "og:type", content: "article" }]}
         />
         <Split nav classes={["background--light-primary"]}>
           {(() => {
-            if (event.content.ooyalaId.length === 0 && !live.live) {
+            if (event.content.wistiaId.length === 0 && !live.live) {
               return (
                 <Right
                   mobile
@@ -78,10 +75,12 @@ class EventSingleWithoutData extends Component {
                 />
               );
             }
-            // set the correct ooyala id based on live
-            let ooyalaId = event.content.ooyalaId;
-            if (live.live) { ooyalaId = live.embedCode; }
-            return <SingleVideoPlayer id={ooyalaId} autoplay="false" />;
+            // set the correct wistia id based on live
+            let wistiaId = event.content.wistiaId;
+            if (live.live) {
+              wistiaId = live.embedCode;
+            }
+            return <Video id={wistiaId} autoplay="false" />;
           })()}
         </Split>
         <Left scroll>
@@ -95,10 +94,7 @@ class EventSingleWithoutData extends Component {
               <h2 className="capitalize">{event.title}</h2>
               <div dangerouslySetInnerHTML={react.markup(event)} />
             </section>
-            <RelatedContent
-              excludedIds={[event.id]}
-              tags={event.content.tags || defaultArray}
-            />
+            <RelatedContent excludedIds={[event.id]} tags={event.content.tags || defaultArray} />
           </div>
         </Left>
       </div>
@@ -123,7 +119,7 @@ const GET_EVENT_QUERY = gql`
         }
         content {
           body
-          ooyalaId
+          wistiaId
           tags
           images(sizes: ["large"]) {
             fileName
@@ -148,15 +144,6 @@ const withEvent = graphql(GET_EVENT_QUERY, {
   }),
 });
 
-export default connect()(
-  withEvent(
-    ReactMixin.decorate(Headerable)(
-      EventSingleWithoutData,
-    ),
-  ),
-);
+export default connect()(withEvent(ReactMixin.decorate(Headerable)(EventSingleWithoutData)));
 
-export {
-  EventSingleWithoutData,
-  GET_EVENT_QUERY,
-};
+export { EventSingleWithoutData, GET_EVENT_QUERY };

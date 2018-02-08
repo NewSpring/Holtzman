@@ -1,4 +1,3 @@
-
 // @flow
 // ignore mixin until we can remove it entirely
 // $FlowMeteor
@@ -20,7 +19,7 @@ import Loading from "../../components/@primitives/UI/loading";
 import backgrounds from "../../util/backgrounds";
 import RelatedContent from "../../components/content/related-content";
 
-import SingleVideoPlayer from "../../components/@primitives/players/video/Player";
+import Video from "../../components/@primitives/players/video";
 
 // import content component
 import Content from "./Content";
@@ -53,13 +52,11 @@ const ArticlesSingle = (props: IArticlesSingle) => {
         title={article.title}
         image={photo}
         id={article.id}
-        meta={[
-          { property: "og:type", content: "article" },
-        ]}
+        meta={[{ property: "og:type", content: "article" }]}
       />
       <Split nav classes={["background--light-primary"]}>
         {(() => {
-          if (article.content.ooyalaId.length === 0) {
+          if (article.content.wistiaId.length === 0) {
             return (
               <Right
                 mobile
@@ -70,10 +67,10 @@ const ArticlesSingle = (props: IArticlesSingle) => {
               />
             );
           }
-          return <SingleVideoPlayer ooyalaId={article.content.ooyalaId} />;
+          return <Video id={article.content.wistiaId} autoplay={false} />;
         })()}
       </Split>
-      <Left scroll >
+      <Left scroll>
         <div className="one-whole">
           <section
             className={
@@ -83,10 +80,7 @@ const ArticlesSingle = (props: IArticlesSingle) => {
           >
             <Content article={article} />
           </section>
-          <RelatedContent
-            excludedIds={[article.id]}
-            tags={article.content.tags || defaultArray}
-          />
+          <RelatedContent excludedIds={[article.id]} tags={article.content.tags || defaultArray} />
         </div>
       </Left>
     </div>
@@ -110,7 +104,7 @@ const ARTICLE_QUERY = gql`
         }
         content {
           body
-          ooyalaId
+          wistiaId
           tags
           images(sizes: ["large"]) {
             fileName
@@ -135,14 +129,10 @@ export default connect()(
   withArticle(
     ReactMixin.decorate(Shareable)(
       ReactMixin.decorate(Headerable)(
-        canLike(
-          props => (props.article.loading ? null : props.article.content.id),
-        )(ArticlesSingle),
+        canLike(props => (props.article.loading ? null : props.article.content.id))(ArticlesSingle),
       ),
     ),
   ),
 );
 
-export {
-  ArticlesSingle as ArticlesSingleWithoutData,
-};
+export { ArticlesSingle as ArticlesSingleWithoutData };
