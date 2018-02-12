@@ -45,7 +45,6 @@ export default class SeriesHero extends Component {
   };
 
   button = () => {
-    console.log("this.props.series.content.wistiaId = ", this.props.series.content.wistiaId);
     if (!this.props.series.content.wistiaId) return null;
     const { isLight } = this.props.series.content;
     if (this.state.playing) {
@@ -80,7 +79,8 @@ export default class SeriesHero extends Component {
     const imageLabel = window.isTablet ? "2:1" : "1:1";
     return (
       <section className="relative hard">
-        <div
+        {/* I'm not sure why this was here at all. Anyone?
+          <div
           className="one-whole ratio--square ratio--landscape@palm-wide"
           style={{
             position: "absolute",
@@ -91,15 +91,21 @@ export default class SeriesHero extends Component {
             {(() => {
               if (!series.content.wistiaId) return null;
               return (
-                <Video id={series.content.wistiaId} ref="video" success={this.ready} hide popover />
+                <Video
+                  id={series.content.wistiaId}
+                  ref="video"
+                  success={this.ready}
+                  hide
+                  autoplay
+                />
               );
             })()}
           </div>
-        </div>
+        </div> */}
         {(() => {
           if (!series.content.wistiaId) return null;
           return (
-            <Video id={series.content.wistiaId} ref="video" success={this.ready} hide popover />
+            <Video id={series.content.wistiaId} ref="video" success={this.ready} hide autoplay />
           );
         })()}
         <div className={this.backgroundClasses()} style={backgrounds.styles(series, imageLabel)}>
