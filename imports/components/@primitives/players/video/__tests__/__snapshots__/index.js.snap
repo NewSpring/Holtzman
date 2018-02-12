@@ -5,6 +5,7 @@ exports[`renders with props 1`] = `
   className="wistia_responsive_padding"
   style={
     Object {
+      "color": "red",
       "padding": "56.25% 0 28px 0",
       "position": "relative",
     }
@@ -23,7 +24,7 @@ exports[`renders with props 1`] = `
     }
   >
     <div
-      className="wistia_embed wistia_async_2 videoFoam=true"
+      className="wistia_embed wistia_async_2 videoFoam=true autoplay=true"
       style={
         Object {
           "height": "100%",
@@ -41,11 +42,15 @@ exports[`styles has hidden styles 1`] = `
 Object {
   "color": "red",
   "display": "none",
+  "padding": "56.25% 0 28px 0",
+  "position": "relative",
 }
 `;
 
 exports[`styles has non hidden styles 1`] = `
 Object {
   "color": "red",
+  "padding": "56.25% 0 28px 0",
+  "position": "relative",
 }
 `;

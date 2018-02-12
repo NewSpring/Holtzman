@@ -7,19 +7,6 @@ exports[`renders close trailer button when playing 1`] = `
   className="relative hard"
 >
   <div
-    className="one-whole ratio--square ratio--landscape@palm-wide"
-    style={
-      Object {
-        "position": "absolute",
-        "zIndex": "10",
-      }
-    }
-  >
-    <div
-      className="ratio__item"
-    />
-  </div>
-  <div
     className="one-whole overlay--gradient ratio--square ratio--landscape@palm-wide background--fill overlay-color--0000ff"
     style={
       Object {
@@ -39,19 +26,6 @@ exports[`renders with props 1`] = `
   className="relative hard"
 >
   <div
-    className="one-whole ratio--square ratio--landscape@palm-wide"
-    style={
-      Object {
-        "position": "absolute",
-        "zIndex": "10",
-      }
-    }
-  >
-    <div
-      className="ratio__item"
-    />
-  </div>
-  <div
     className="one-whole overlay--gradient ratio--square ratio--landscape@palm-wide background--fill overlay-color--0000ff"
     style={
       Object {
@@ -70,19 +44,6 @@ exports[`renders without video 1`] = `
 <section
   className="relative hard"
 >
-  <div
-    className="one-whole ratio--square ratio--landscape@palm-wide"
-    style={
-      Object {
-        "position": "absolute",
-        "zIndex": "10",
-      }
-    }
-  >
-    <div
-      className="ratio__item"
-    />
-  </div>
   <div
     className="one-whole overlay--gradient ratio--square ratio--landscape@palm-wide background--fill overlay-color--0000ff"
     style={
