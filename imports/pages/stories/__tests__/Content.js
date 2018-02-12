@@ -66,7 +66,7 @@ describe("StoriesContent", () => {
           },
         ],
         tags: ["one", "two"],
-        ooyalaId: "",
+        wistiaId: "",
       },
     },
   };
@@ -86,7 +86,7 @@ describe("StoriesContent", () => {
 
   it("renders with video", () => {
     const props = clone(defaultProps);
-    props.story.content.ooyalaId = "test";
+    props.story.content.wistiaId = "test";
     const wrapper = shallow(generateComponent(props));
     expect(shallowToJson(wrapper)).toMatchSnapshot();
   });
