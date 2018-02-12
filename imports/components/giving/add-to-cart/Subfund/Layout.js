@@ -1,7 +1,5 @@
 // @flow
 
-// $FlowMeteor
-import { Meteor } from "meteor/meteor";
 import { css } from "aphrodite";
 
 import Forms from "../../../@primitives/UI/forms";
@@ -41,8 +39,8 @@ const Layout = ({
       )}`}
       placeholder="0.00"
       style={{ maxWidth: "165px", paddingLeft: ".8em" }}
-      type={Meteor.isCordova ? "number" : "number"}
-      pattern={"[0-9]*"}
+      type={"tel"}
+      pattern
       step={"0.01"}
       value={inputVal}
     />

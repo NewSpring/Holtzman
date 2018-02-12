@@ -47,7 +47,7 @@ exports[`SubFund sets the state to active if it has an amount 1`] = `
         format={[Function]}
         hideLabel={true}
         inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
-        pattern="[0-9]*"
+        pattern={true}
         placeholder="0.00"
         step="0.01"
         style={
@@ -56,7 +56,7 @@ exports[`SubFund sets the state to active if it has an amount 1`] = `
             "paddingLeft": ".8em",
           }
         }
-        type="number"
+        type="tel"
         value={undefined}
       >
         <div
@@ -104,7 +104,6 @@ exports[`SubFund sets the state to active if it has an amount 1`] = `
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
-              pattern="[0-9]*"
               placeholder="0.00"
               readOnly={undefined}
               spellCheck={undefined}
@@ -115,7 +114,7 @@ exports[`SubFund sets the state to active if it has an amount 1`] = `
                   "paddingLeft": ".8em",
                 }
               }
-              type="number"
+              type="tel"
             />
           </span>
         </div>
@@ -238,7 +237,7 @@ exports[`SubFund should render a primary fund 1`] = `
         format={[Function]}
         hideLabel={true}
         inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
-        pattern="[0-9]*"
+        pattern={true}
         placeholder="0.00"
         step="0.01"
         style={
@@ -246,7 +245,7 @@ exports[`SubFund should render a primary fund 1`] = `
             "maxWidth": "165px",
           }
         }
-        type="number"
+        type="tel"
       >
         <div
           className="input soft-bottom input--active display-inline-block"
@@ -292,7 +291,6 @@ exports[`SubFund should render a primary fund 1`] = `
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
-              pattern="[0-9]*"
               placeholder="0.00"
               readOnly={undefined}
               spellCheck={undefined}
@@ -303,7 +301,7 @@ exports[`SubFund should render a primary fund 1`] = `
                   "paddingLeft": ".8em",
                 }
               }
-              type="number"
+              type="tel"
             />
           </span>
         </div>
@@ -422,7 +420,7 @@ exports[`SubFund should render with minimal props 1`] = `
         format={[Function]}
         hideLabel={true}
         inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
-        pattern="[0-9]*"
+        pattern={true}
         placeholder="0.00"
         step="0.01"
         style={
@@ -431,7 +429,7 @@ exports[`SubFund should render with minimal props 1`] = `
             "paddingLeft": ".8em",
           }
         }
-        type="number"
+        type="tel"
         value={undefined}
       >
         <div
@@ -479,7 +477,6 @@ exports[`SubFund should render with minimal props 1`] = `
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
-              pattern="[0-9]*"
               placeholder="0.00"
               readOnly={undefined}
               spellCheck={undefined}
@@ -490,7 +487,7 @@ exports[`SubFund should render with minimal props 1`] = `
                   "paddingLeft": ".8em",
                 }
               }
-              type="number"
+              type="tel"
             />
           </span>
         </div>
