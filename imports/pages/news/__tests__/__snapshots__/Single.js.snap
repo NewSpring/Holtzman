@@ -197,7 +197,7 @@ Object {
                               "kind": "Field",
                               "name": Object {
                                 "kind": "Name",
-                                "value": "ooyalaId",
+                                "value": "wistiaId",
                               },
                               "selectionSet": null,
                             },
@@ -352,7 +352,7 @@ Object {
         }
         content {
           body
-          ooyalaId
+          wistiaId
           tags
           images(sizes: [\\"large\\"]) {
             fileName

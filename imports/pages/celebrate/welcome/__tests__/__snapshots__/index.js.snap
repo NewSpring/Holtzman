@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Welcome renders a layout 1`] = `
+<div>
+  <Meta
+    title="Welcome"
+  />
+  <div
+    className="push-big-sides@lap-and-up soft@lap-and-up soft-top@lap-and-up"
+  >
+    <div
+      className="soft soft-bottom soft-top@lap-and-up"
+    >
+      <div>
+        <Connect(VideoPlayerWithoutData)
+          autoplay={false}
+          id="nspbl277d4"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="background--primary text-center text-light-primary soft"
+  >
+    <h3
+      className="push-double-top"
+    >
+      Keep Reading
+    </h3>
+    <Link
+      className="btn--light push-double-bottom"
+      onlyActiveOnIndex={false}
+      style={Object {}}
+      to="/annualreport/finances"
+    >
+      Go to Finance Report
+    </Link>
+  </div>
+</div>
+`;

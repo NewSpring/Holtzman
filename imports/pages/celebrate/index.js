@@ -160,20 +160,14 @@ class Template extends Component {
   }
 }
 
-// XXX This is not a great long term solution, but it works for this iteration.
-// We shouldn't have to import the ooyala scripts twice.
-const scripts = [
-  "//player.ooyala.com/static/v4/stable/4.6.9/core.min.js",
-  "//player.ooyala.com/static/v4/stable/4.6.9/video-plugin/main_html5.min.js",
-  "//player.ooyala.com/static/v4/stable/4.6.9/skin-plugin/html5-skin.js",
-];
-
 const Routes = [
   { path: "annualreport/message-from-shane", component: ShaneTemplate.Template },
   {
     path: "annualreport",
-    component: scriptLoader(...scripts)(Template),
-    indexRoute: { onEnter: (nextState: Object, replace: Function) => replace("/annualreport/finances") },
+    component: Template,
+    indexRoute: {
+      onEnter: (nextState: Object, replace: Function) => replace("/annualreport/welcome"),
+    },
     childRoutes: [
       ...FinancesPage.Routes,
       ...NextStepsPage.Routes,
@@ -182,11 +176,15 @@ const Routes = [
   },
   {
     path: "celebrate",
-    indexRoute: { onEnter: (nextState: Object, replace: Function) => replace("/annualreport") },
+    indexRoute: {
+      onEnter: (nextState: Object, replace: Function) => replace("/annualreport"),
+    },
   },
   {
     path: "annual-report",
-    indexRoute: { onEnter: (nextState: Object, replace: Function) => replace("/annualreport") },
+    indexRoute: {
+      onEnter: (nextState: Object, replace: Function) => replace("/annualreport"),
+    },
   },
 ];
 
