@@ -14,24 +14,20 @@ import Shareable from "../../../deprecated/mixins/mixins.Shareable";
 // import contentHelpers from "../../../util/content";
 import collections from "../../../util/collections";
 
-import {
-  header as headerActions,
-  live as liveActions,
-} from "../../../data/store";
+import { header as headerActions, live as liveActions } from "../../../data/store";
 
 import StudyEntryList from "../EntryList";
 import Content from "./Content";
 import Slider from "./Slider";
 
 class StudyEntrySingle extends Component {
-
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     live: PropTypes.object.isRequired,
     studyEntry: PropTypes.object.isRequired,
     study: PropTypes.object.isRequired,
     params: PropTypes.object.isRequried,
-  }
+  };
 
   state = {};
 
@@ -57,7 +53,7 @@ class StudyEntrySingle extends Component {
       this.props.studyEntry.content &&
       this.props.study.content &&
       nextProps.study.content
-      ) {
+    ) {
       if (
         nextProps.studyEntry.content.id === this.props.studyEntry.content.id &&
         this.props.study.content.id === nextProps.studyEntry.content.id
@@ -83,7 +79,7 @@ class StudyEntrySingle extends Component {
   onClickLink = event => {
     event.preventDefault();
     this.setState({ liveSet: false, livePush: false });
-  }
+  };
 
   getLiveClasses = () => {
     const classes = [];
@@ -92,7 +88,7 @@ class StudyEntrySingle extends Component {
     }
 
     return classes;
-  }
+  };
 
   // if has scripture and live re-enabled
   // the live bar
@@ -118,7 +114,7 @@ class StudyEntrySingle extends Component {
         this.props.dispatch(liveActions.show());
       }, 1000);
     }
-  }
+  };
 
   handleHeader = nextProps => {
     const content = nextProps.study.content;
@@ -136,7 +132,7 @@ class StudyEntrySingle extends Component {
 
     this.headerSet = true;
     this.props.dispatch(headerActions.set(options));
-  }
+  };
 
   renderContent = (studyEntry, study) => {
     if (!studyEntry.content.scripture) {
@@ -161,7 +157,7 @@ class StudyEntrySingle extends Component {
         flush
       />
     );
-  }
+  };
 
   render() {
     const { loading, content } = this.props.studyEntry;
@@ -182,29 +178,22 @@ class StudyEntrySingle extends Component {
           title={studyEntry.title}
           id={studyEntry.id}
           image={
-              studyEntry.content.images && studyEntry.content.images.length > 0
-                ? studyEntry.content.images[0].url
-                : null
+            studyEntry.content.images && studyEntry.content.images.length > 0
+              ? studyEntry.content.images[0].url
+              : null
           }
-          meta={[
-            { property: "og:type", content: "article" },
-          ]}
+          meta={[{ property: "og:type", content: "article" }]}
         />
         {this.renderContent(studyEntry, this.props.study)}
         <div className="one-whole background--light-secondary text-center">
           <h4 className="text-dark-secondary soft-ends flush-bottm push-half-top">
             Next in this study
           </h4>
-          <StudyEntryList
-            id={this.props.params.id}
-            focus={this.props.params.studyEntryId}
-            light
-          />
+          <StudyEntryList id={this.props.params.id} focus={this.props.params.studyEntryId} light />
         </div>
       </div>
     );
   }
-
 }
 
 const CURRENT_STUDY_ENTRY_QUERY = gql`
@@ -241,7 +230,7 @@ const CURRENT_STUDY_ENTRY_QUERY = gql`
           body
           tags
           speaker
-          ooyalaId
+          wistiaId
         }
       }
     }
@@ -278,7 +267,7 @@ const STUDY_QUERY = gql`
             url
             size
           }
-          ooyalaId
+          wistiaId
           colors {
             value
             description
@@ -306,14 +295,12 @@ export default connect(mapStateToProps)(
   withCurrentStudyEntry(
     withStudy(
       ReactMixin.decorate(Shareable)(
-        canLike(
-          props => (props.studyEntry.loading ? null : props.studyEntry.content.entryId),
-        )(StudyEntrySingle),
+        canLike(props => (props.studyEntry.loading ? null : props.studyEntry.content.entryId))(
+          StudyEntrySingle,
+        ),
       ),
     ),
   ),
 );
 
-export {
-  StudyEntrySingle as StudyEntrySingleWithoutData,
-};
+export { StudyEntrySingle as StudyEntrySingleWithoutData };

@@ -2,8 +2,6 @@
 
 exports[`doesn't render if don't show 1`] = `""`;
 
-exports[`doesn't render if no embed code 1`] = `""`;
-
 exports[`doesn't render if not live 1`] = `""`;
 
 exports[`getClasses returns default classes 1`] = `"text-center soft-half-ends display-inline-block plain one-whole live-banner_58jhza"`;
@@ -16,7 +14,7 @@ exports[`parses query 1`] = `
 "query IsLive {
   live {
     live
-    embedCode
+    fuse
   }
 }
 "
