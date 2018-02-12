@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from "react";
-import scriptLoader from "react-async-script-loader";
+// import scriptLoader from "react-async-script-loader";
 import DashboardLayout from "../../components/@primitives/layout/dashboard";
 import FinancesPage from "./finances";
 import Meta from "../../components/shared/meta";
@@ -98,19 +98,12 @@ class Template extends Component {
   }
 }
 
-const scripts = [
-  "//player.ooyala.com/static/v4/stable/4.6.9/core.min.js",
-  "//player.ooyala.com/static/v4/stable/4.6.9/video-plugin/main_html5.min.js",
-  "//player.ooyala.com/static/v4/stable/4.6.9/skin-plugin/html5-skin.js",
-];
-
 const Routes = [
   {
     path: "annualreport",
-    component: scriptLoader(...scripts)(Template),
+    component: Template,
     indexRoute: {
-      onEnter: (nextState: Object, replace: Function) =>
-        replace("/annualreport/welcome"),
+      onEnter: (nextState: Object, replace: Function) => replace("/annualreport/welcome"),
     },
     childRoutes: [
       ...WelcomePage.Routes,
@@ -122,15 +115,13 @@ const Routes = [
   {
     path: "celebrate",
     indexRoute: {
-      onEnter: (nextState: Object, replace: Function) =>
-        replace("/annualreport"),
+      onEnter: (nextState: Object, replace: Function) => replace("/annualreport"),
     },
   },
   {
     path: "annual-report",
     indexRoute: {
-      onEnter: (nextState: Object, replace: Function) =>
-        replace("/annualreport"),
+      onEnter: (nextState: Object, replace: Function) => replace("/annualreport"),
     },
   },
 ];

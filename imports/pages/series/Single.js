@@ -16,7 +16,6 @@ import Headerable from "../../deprecated/mixins/mixins.Header";
 import canLike from "../../components/@enhancers/likes/toggle";
 import Shareable from "../../deprecated/mixins/mixins.Shareable";
 
-
 import RelatedContent from "../../components/content/related-content";
 
 import collections from "../../util/collections";
@@ -27,12 +26,11 @@ import SeriesHero from "./Hero";
 import SeriesVideoList from "./VideoList";
 
 class SeriesSingleWithoutData extends Component {
-
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     series: PropTypes.object.isRequired,
     params: PropTypes.object.isRequired,
-  }
+  };
 
   componentWillMount() {
     if (process.env.WEB) return;
@@ -50,12 +48,14 @@ class SeriesSingleWithoutData extends Component {
     if (!content) return;
     const { isLight } = nextProps.series.content.content;
     const color = collections.color(content);
-    this.props.dispatch(headerActions.set({
-      title: "Series",
-      color,
-      light: !isLight,
-    }));
-  }
+    this.props.dispatch(
+      headerActions.set({
+        title: "Series",
+        color,
+        light: !isLight,
+      }),
+    );
+  };
 
   hackBackgroundStyles() {
     return {
@@ -100,14 +100,17 @@ class SeriesSingleWithoutData extends Component {
           <style>{styles.overlay(series)}</style>
           <style>{collections.backgroundStyles(series)}</style>
           <SeriesHero series={series} />
-          <section className={`${series.content.isLight ? "text-dark-primary" : "text-light-primary"} hard-bottom soft-double-sides@palm-wide`}>
+          <section
+            className={`${
+              series.content.isLight ? "text-dark-primary" : "text-light-primary"
+            } hard-bottom soft-double-sides@palm-wide`}
+          >
             <div dangerouslySetInnerHTML={react.markup(series, "description")} />
           </section>
           <SeriesVideoList id={this.props.params.id} />
         </div>
         <RelatedContent excludedIds={[series.id]} tags={series.content.tags} />
       </div>
-
     );
   }
 }
@@ -137,7 +140,7 @@ const SERIES_SINGLE_QUERY = gql`
             fileLabel
             url
           }
-          ooyalaId
+          wistiaId
           colors {
             value
             description
@@ -159,15 +162,12 @@ export default connect()(
   withSingleSeries(
     ReactMixin.decorate(Shareable)(
       ReactMixin.decorate(Headerable)(
-        canLike(
-          props => (props.series.loading ? null : props.series.content.id),
-        )(SeriesSingleWithoutData),
+        canLike(props => (props.series.loading ? null : props.series.content.id))(
+          SeriesSingleWithoutData,
+        ),
       ),
     ),
   ),
 );
 
-export {
-  SeriesSingleWithoutData,
-  SERIES_SINGLE_QUERY,
-};
+export { SeriesSingleWithoutData, SERIES_SINGLE_QUERY };
