@@ -37,11 +37,11 @@ exports[`StoriesContent renders with props 1`] = `
                 "url": "http://test.com/1x2.jpg",
               },
             ],
-            "ooyalaId": "",
             "tags": Array [
               "one",
               "two",
             ],
+            "wistiaId": "",
           },
           "id": "1",
           "subtitle": "test subtitle",
@@ -105,8 +105,8 @@ exports[`StoriesContent renders with video 1`] = `
   <section
     className="background--light-primary hard-sides hard-top"
   >
-    <SingleVideoPlayer
-      ooyalaId="test"
+    <Connect(VideoPlayerWithoutData)
+      id="test"
     />
     <div
       className="soft soft-double-sides@palm-wide-and-up push-top"
@@ -170,11 +170,11 @@ exports[`StoriesContent renders without imaes 1`] = `
           "content": Object {
             "body": "test body",
             "images": Array [],
-            "ooyalaId": "",
             "tags": Array [
               "one",
               "two",
             ],
+            "wistiaId": "",
           },
           "id": "1",
           "subtitle": "test subtitle",

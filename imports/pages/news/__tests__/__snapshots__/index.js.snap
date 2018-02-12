@@ -289,7 +289,7 @@ Object {
                         "kind": "Field",
                         "name": Object {
                           "kind": "Name",
-                          "value": "ooyalaId",
+                          "value": "wistiaId",
                         },
                         "selectionSet": null,
                       },
@@ -373,7 +373,7 @@ Object {
           fileLabel
           url
         }
-        ooyalaId
+        wistiaId
       }
     }
   }
