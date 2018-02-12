@@ -22,7 +22,7 @@ jest.mock("../../../../components/@primitives/players/video");
 const defaultProps = {
   studyEntry: {
     content: {
-      ooyalaId: null,
+      wistiaId: null,
       images: [],
       body: "<h2>study body</h2>",
     },
@@ -68,7 +68,7 @@ it("renders with an ooyala video", () => {
   const tree = renderer.create(generateComponent({
     studyEntry: {
       content: {
-        ooyalaId: "fake-ooyala-Id",
+        wistiaId: "fake-ooyala-Id",
       }
     },
   }));

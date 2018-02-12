@@ -30,7 +30,7 @@ const defaultProps = {
             url: "https://test.com/1234/testImage.jpg"
           }
         ],
-        ooyalaId: "owqoitpuq52059akplsat0520",
+        wistiaId: "owqoitpuq52059akplsat0520",
       },
       entryId: "10458239056qaklpstjw40951281",
       id: "10458239056qaklpstjw40951281",
@@ -77,7 +77,7 @@ it("renders the live video when live", () => {
               url: "https://test.com/1234/testImage.jpg"
             }
           ],
-          ooyalaId: "owqoitpuq52059akplsat0520",
+          wistiaId: "owqoitpuq52059akplsat0520",
         },
         entryId: "10458239056qaklpstjw40951281",
         id: "10458239056qaklpstjw40951281",
@@ -113,7 +113,7 @@ it("renders an on demand video if present, and not live", () => {
               url: "https://test.com/1234/testImage.jpg"
             }
           ],
-          ooyalaId: "owqoitpuq52059akplsat0520",
+          wistiaId: "owqoitpuq52059akplsat0520",
         },
         entryId: "10458239056qaklpstjw40951281",
         id: "10458239056qaklpstjw40951281",

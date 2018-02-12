@@ -20,7 +20,7 @@ const defaultProps = {
       content: {
         body: "<h1>article</h1>",
         images: [],
-        ooyalaId: "",
+        wistiaId: "",
       },
     },
   },
@@ -46,7 +46,7 @@ it("renders loading if no content", () => {
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 
-it("renders video if ooyalaId", () => {
+it("renders video if wistiaId", () => {
   const wrapper = shallow(generateComponent({
     article: {
       content: {
@@ -54,7 +54,7 @@ it("renders video if ooyalaId", () => {
         content: {
           body: "<h1>article</h1>",
           images: [],
-          ooyalaId: "id",
+          wistiaId: "id",
         },
       },
     },
