@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from "react";
-import scriptLoader from "react-async-script-loader";
+// import scriptLoader from "react-async-script-loader";
 import DashboardLayout from "../../components/@primitives/layout/dashboard";
 import FinancesPage from "./finances";
 import Meta from "../../components/shared/meta";
