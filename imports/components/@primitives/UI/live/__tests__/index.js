@@ -22,17 +22,24 @@ const defaultProps = {
   live: {
     float: false,
     live: true,
-    embedCode: "test",
+    fuse: false,
     show: true,
   },
   dispatch: jest.fn(),
   data: {
     live: {
       live: true,
-      embedCode: "test",
+      fuse: false,
       show: true,
     },
   },
+  fuseLive: {
+    live: {
+      live: true,
+      fuse: true,
+      show: true,
+    }
+  }
 };
 
 const generateComponent = (additionalProps = {}) => {
@@ -61,18 +68,7 @@ it("doesn't render if not live", () => {
   const wrapper = shallow(generateComponent({
     live: {
       live: false,
-      embedCode: "test",
-      show: true,
-    },
-  }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
-});
-
-it("doesn't render if no embed code", () => {
-  const wrapper = shallow(generateComponent({
-    live: {
-      live: true,
-      embedCode: null,
+      fuse: true,
       show: true,
     },
   }));
@@ -83,7 +79,7 @@ it("doesn't render if don't show", () => {
   const wrapper = shallow(generateComponent({
     live: {
       live: true,
-      embedCode: "test",
+      fuse: true,
       show: false,
     },
   }));
@@ -95,7 +91,7 @@ it("renders float version", () => {
     live: {
       float: true,
       live: true,
-      embedCode: "test",
+      fuse: false,
       show: true,
     },
   }));
@@ -113,7 +109,7 @@ it("getClasses returns float version", () => {
     live: {
       float: true,
       live: true,
-      embedCode: "test",
+      fuse: false,
       show: true,
     },
   }));
@@ -149,18 +145,18 @@ it("handleLive returns data live is the same as props live", () => {
     data: {
       live: {
         live: true,
-        embedCode: "test",
+        fuse: false,
       },
     },
     live: {
       live: true,
-      embedCode: "test",
+      fuse: false,
     },
   });
   expect(mockDispatch).not.toHaveBeenCalled();
 });
 
-it("handleLive updates store when data live is and props live is not", () => {
+it("handleLive updates store when data live is live and props live is not", () => {
   const mockDispatch = jest.fn();
   liveActions.set = jest.fn();
   liveActions.reset = jest.fn();
@@ -171,19 +167,19 @@ it("handleLive updates store when data live is and props live is not", () => {
     data: {
       live: {
         live: true,
-        embedCode: "test",
+        fuse: false,
       },
     },
     live: {
       live: false,
-      embedCode: null,
+      fuse: false,
     },
   });
   expect(mockDispatch).toHaveBeenCalledTimes(1);
   expect(liveActions.set).toHaveBeenCalledTimes(1);
   expect(liveActions.set).toHaveBeenCalledWith({
     isLive: true,
-    embedCode: "test",
+    isFuse: false,
   });
 });
 
@@ -198,12 +194,12 @@ it("handleLive updates store when data is not live and props live is", () => {
     data: {
       live: {
         live: false,
-        embedCode: null,
+        fuse: false,
       },
     },
     live: {
       live: true,
-      embedCode: "test",
+      fuse: false,
     },
   });
   expect(mockDispatch).toHaveBeenCalledTimes(1);
@@ -221,17 +217,17 @@ it("shows beta users a link to wowza page", () => {
   liveActions.reset = jest.fn();
   const props = {
     dispatch: mockDispatch,
-    live: { embedCode: "harambe" },
+    live: { live: true, fuse: true },
     person: {
       authLoading: false,
       authorized: true,
     },
   };
   const wrapper = shallow(generateComponent(props));
-  expect(wrapper.instance().getLink()).toEqual("/wowza");
+  expect(wrapper.instance().getLink()).toEqual("https://live.newspring.cc");
   wrapper.setProps({ ...props, person: {
     authLoading: false, authorized: false,
   }});
   // use only wowza now
-  expect(wrapper.instance().getLink()).toEqual("/wowza");
+  expect(wrapper.instance().getLink()).toEqual("https://live.newspring.cc");
 });
