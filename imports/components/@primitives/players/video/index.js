@@ -1,4 +1,3 @@
-
 import PropTypes from "prop-types";
 import { Component } from "react";
 import { connect } from "react-redux";
@@ -6,7 +5,6 @@ import { connect } from "react-redux";
 import { audio as audioActions } from "../../../../data/store";
 
 class VideoPlayerWithoutData extends Component {
-
   static propTypes = {
     id: PropTypes.string.isRequired,
     hide: PropTypes.bool,
@@ -15,16 +13,18 @@ class VideoPlayerWithoutData extends Component {
     audioState: PropTypes.string,
     dispatch: PropTypes.func,
     autoplay: PropTypes.bool,
+    popover: PropTypes.bool,
     // color: PropTypes.string
-  }
+  };
 
   static defaultProps = {
     autoplay: true,
-  }
+  };
 
   state = {
     hide: this.props.hide || false,
-  }
+    popover: this.props.popover || false,
+  };
 
   componentDidMount() {
     this.createPlayer(this.props.id, this.props.success);
@@ -38,10 +38,7 @@ class VideoPlayerWithoutData extends Component {
     const { audioState } = nextProps;
     if (
       (audioState === "playing" || audioState === "loading") &&
-      (
-        this.props.audioState !== "loading" &&
-        this.props.audioState !== "playing"
-      )
+      (this.props.audioState !== "loading" && this.props.audioState !== "playing")
     ) {
       if (this.player) this.player.pause();
     }
@@ -53,12 +50,13 @@ class VideoPlayerWithoutData extends Component {
     }
   }
 
-
-  getDivId = () => (`ooyala-player-${this.props.id}`)
+  getDivId = () => `ooyala-player-${this.props.id}`;
 
   createPlayer = (id, cb) => {
     if ((typeof window !== "undefined" || window !== null) && !window.OO) {
-      const callback = () => { this.createPlayer(id, cb); };
+      const callback = () => {
+        this.createPlayer(id, cb);
+      };
 
       setTimeout(callback, 250);
 
@@ -73,7 +71,14 @@ class VideoPlayerWithoutData extends Component {
         config: "/ooyala/skin.new.json",
         // "config": "//player.ooyala.com/static/v4/stable/4.6.9/skin-plugin/skin.json",
         // eslint-disable-next-line max-len
-        inline: { shareScreen: { embed: { source: "<iframe width='640' height='480' frameborder='0' allowfullscreen src='//player.ooyala.com/static/v4/stable/4.5.5/skin-plugin/iframe.html?ec=<ASSET_ID>&pbid=<PLAYER_ID>&pcode=<PUBLISHER_ID>'></iframe>" } } },
+        inline: {
+          shareScreen: {
+            embed: {
+              source:
+                "<iframe width='640' height='480' frameborder='0' allowfullscreen src='//player.ooyala.com/static/v4/stable/4.5.5/skin-plugin/iframe.html?ec=<ASSET_ID>&pbid=<PLAYER_ID>&pcode=<PUBLISHER_ID>'></iframe>",
+            },
+          },
+        },
       },
       onCreate: player => {
         if (player.isPlaying()) this.props.dispatch(audioActions.pause());
@@ -113,7 +118,7 @@ class VideoPlayerWithoutData extends Component {
     OO.ready(() => {
       this.player = OO.Player.create(this.getDivId(), id, videoParams);
     });
-  }
+  };
 
   show = () => {
     const playerReady = () => {
@@ -128,20 +133,20 @@ class VideoPlayerWithoutData extends Component {
     this.props.dispatch(audioActions.pause());
     this.player.play();
 
-
     playerReady();
-  }
+  };
 
   hide = () => {
     this.player.pause();
     this.setState({ hide: true });
-  }
+  };
 
   styles = () => {
     let style = this.props.style;
 
     if (this.state.hide) {
-      style = { ...style,
+      style = {
+        ...style,
         ...{
           display: "none",
         },
@@ -149,12 +154,26 @@ class VideoPlayerWithoutData extends Component {
     }
 
     return style;
-  }
-
+  };
 
   render() {
     return (
-      <div id={this.getDivId()} className="ooyala-player" style={this.styles()} />
+      <div
+        className="wistia_responsive_padding"
+        style={{ padding: "56.25% 0 28px 0", position: "relative" }}
+      >
+        <div
+          className="wistia_responsive_wrapper"
+          style={{ height: "100%", left: "0", position: "absolute", top: "0", width: "100%" }}
+        >
+          <div
+            className={`wistia_embed wistia_async_${this.props.id} videoFoam=true`}
+            style={{ height: "100%", width: "100%" }}
+          >
+            &nbsp;
+          </div>
+        </div>
+      </div>
     );
   }
 }
@@ -163,6 +182,4 @@ const map = ({ audio }) => ({ audioState: audio.state });
 const withRedux = connect(map);
 export default withRedux(VideoPlayerWithoutData);
 
-export {
-  VideoPlayerWithoutData,
-};
+export { VideoPlayerWithoutData };

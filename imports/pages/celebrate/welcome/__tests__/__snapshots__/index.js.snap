@@ -5,9 +5,6 @@ exports[`Welcome renders a layout 1`] = `
   <Meta
     title="Welcome"
   />
-  <style>
-    .oo-player-container { min-width: 0 !important }
-  </style>
   <div
     className="push-big-sides@lap-and-up soft@lap-and-up soft-top@lap-and-up"
   >
@@ -17,7 +14,7 @@ exports[`Welcome renders a layout 1`] = `
       <div>
         <Connect(VideoPlayerWithoutData)
           autoplay={false}
-          id="90ZG00ZTE6k8sukbExReu6mnNTG9t8Be"
+          id="nspbl277d4"
         />
       </div>
     </div>

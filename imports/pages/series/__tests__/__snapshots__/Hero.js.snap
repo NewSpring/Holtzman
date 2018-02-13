@@ -17,19 +17,8 @@ exports[`renders close trailer button when playing 1`] = `
   >
     <div
       className="ratio__item"
-    >
-      <Connect(VideoPlayerWithoutData)
-        hide={true}
-        id="testid"
-        success={[Function]}
-      />
-    </div>
+    />
   </div>
-  <Connect(VideoPlayerWithoutData)
-    hide={true}
-    id="testid"
-    success={[Function]}
-  />
   <div
     className="one-whole overlay--gradient ratio--square ratio--landscape@palm-wide background--fill overlay-color--0000ff"
     style={
@@ -40,17 +29,7 @@ exports[`renders close trailer button when playing 1`] = `
   >
     <div
       className="overlay__item text-dark-primary text-center soft-sides push-top"
-    >
-      <button
-        className="btn--light push-double-top@palm-wide-and-up display-inline-block one-whole@palm"
-        onClick={[Function]}
-      >
-        <i
-          className="icon-close soft-half-right"
-        />
-        Close The Trailer
-      </button>
-    </div>
+    />
   </div>
 </section>
 `;
@@ -70,19 +49,8 @@ exports[`renders with props 1`] = `
   >
     <div
       className="ratio__item"
-    >
-      <Connect(VideoPlayerWithoutData)
-        hide={true}
-        id="testid"
-        success={[Function]}
-      />
-    </div>
+    />
   </div>
-  <Connect(VideoPlayerWithoutData)
-    hide={true}
-    id="testid"
-    success={[Function]}
-  />
   <div
     className="one-whole overlay--gradient ratio--square ratio--landscape@palm-wide background--fill overlay-color--0000ff"
     style={
@@ -93,17 +61,7 @@ exports[`renders with props 1`] = `
   >
     <div
       className="overlay__item text-dark-primary text-center soft-sides push-top"
-    >
-      <button
-        className="btn--light display-inline-block one-whole@palm"
-        onClick={[Function]}
-      >
-        <i
-          className="icon-play soft-half-right"
-        />
-        Watch The Trailer
-      </button>
-    </div>
+    />
   </div>
 </section>
 `;
