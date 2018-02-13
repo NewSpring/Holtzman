@@ -12,7 +12,7 @@ exports[`renders loading if no content 1`] = `
 </div>
 `;
 
-exports[`renders video if ooyalaId 1`] = `
+exports[`renders video if wistiaId 1`] = `
 <div>
   <Meta
     id="1"
@@ -34,8 +34,9 @@ exports[`renders video if ooyalaId 1`] = `
     }
     nav={true}
   >
-    <SingleVideoPlayer
-      ooyalaId="id"
+    <Connect(VideoPlayerWithoutData)
+      autoplay={false}
+      id="id"
     />
   </Connect(SplitContainerWithoutData)>
   <Left
@@ -53,7 +54,7 @@ exports[`renders video if ooyalaId 1`] = `
               "content": Object {
                 "body": "<h1>article</h1>",
                 "images": Array [],
-                "ooyalaId": "id",
+                "wistiaId": "id",
               },
               "id": "1",
             }
@@ -130,7 +131,7 @@ exports[`renders with props 1`] = `
               "content": Object {
                 "body": "<h1>article</h1>",
                 "images": Array [],
-                "ooyalaId": "",
+                "wistiaId": "",
               },
               "id": "1",
             }

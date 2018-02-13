@@ -6,15 +6,12 @@ import Video from "../video";
 
 // XXX Why does this exist?
 // XXX answer: it used to be a lot more complicated
-const SingleVideoPlayer = ({ ooyalaId, autoPlay = true }) => (
-  <Video
-    id={ooyalaId}
-    autoplay={autoPlay}
-  />
+const SingleVideoPlayer = ({ wistiaId, autoPlay = true }) => (
+  <Video id={wistiaId} autoplay={autoPlay} />
 );
 
 SingleVideoPlayer.propTypes = {
-  ooyalaId: PropTypes.string.isRequired,
+  wistiaId: PropTypes.string.isRequired,
   autoPlay: PropTypes.boolean,
 };
 
