@@ -13,8 +13,6 @@ class VideoPlayerWithoutData extends Component {
     audioState: PropTypes.string,
     dispatch: PropTypes.func,
     autoplay: PropTypes.bool,
-    popover: PropTypes.bool,
-    // color: PropTypes.string
   };
 
   static defaultProps = {
@@ -23,7 +21,6 @@ class VideoPlayerWithoutData extends Component {
 
   state = {
     hide: this.props.hide || false,
-    popover: this.props.popover || false,
   };
 
   componentDidMount() {
@@ -46,98 +43,30 @@ class VideoPlayerWithoutData extends Component {
 
   componentWillUnmount() {
     if (this.player) {
-      this.player.destroy();
+      this.player.remove();
     }
   }
 
-  getDivId = () => `ooyala-player-${this.props.id}`;
-
   createPlayer = (id, cb) => {
-    if ((typeof window !== "undefined" || window !== null) && !window.OO) {
+    if ((typeof window !== "undefined" || window !== null) && !window.Wistia) {
       const callback = () => {
         this.createPlayer(id, cb);
       };
 
       setTimeout(callback, 250);
-
-      return;
     }
 
-    const videoParams = {
-      pcode: "E1dWM6UGncxhent7MRATc3hmkzUD",
-      playerBrandingId: "ZmJmNTVlNDk1NjcwYTVkMzAzODkyMjg0",
-      autoplay: this.props.autoplay,
-      skin: {
-        config: "/ooyala/skin.new.json",
-        // "config": "//player.ooyala.com/static/v4/stable/4.6.9/skin-plugin/skin.json",
-        // eslint-disable-next-line max-len
-        inline: {
-          shareScreen: {
-            embed: {
-              source:
-                "<iframe width='640' height='480' frameborder='0' allowfullscreen src='//player.ooyala.com/static/v4/stable/4.5.5/skin-plugin/iframe.html?ec=<ASSET_ID>&pbid=<PLAYER_ID>&pcode=<PUBLISHER_ID>'></iframe>",
-            },
-          },
-        },
-      },
-      onCreate: player => {
-        if (player.isPlaying()) this.props.dispatch(audioActions.pause());
-
-        // bind message bus for reporting analaytics
-        this.messages = player.mb;
-        if (cb) {
-          cb(this);
-        }
-
-        // if (this.props.hide) {
-        this.messages.subscribe(OO.EVENTS.PLAYED, "Video", () => {
-          this.destroy();
-        });
-
-        this.messages.subscribe(OO.EVENTS.PLAY, "Video", () => {
-          this.props.dispatch(audioActions.pause());
-        });
-
-        this.messages.subscribe(OO.EVENTS.PLAY_FAILED, "Video", () => {
-          this.destroy();
-        });
-
-        this.messages.subscribe(OO.EVENTS.FULLSCREEN_CHANGED, "Video", () => {
-          // ios sets the status bar text color to black
-          // when it goes full screen
-          if (!player.isFullscreen()) {
-            // wait a bit because it doesn't work right away
-            setTimeout(() => {
-              StatusBar.styleLightContent();
-            }, 500);
-          }
-        });
-      },
-    };
-
-    OO.ready(() => {
-      this.player = OO.Player.create(this.getDivId(), id, videoParams);
-    });
+    if (cb) {
+      cb(this);
+    }
   };
 
   show = () => {
-    const playerReady = () => {
-      this.setState({ hide: false });
-    };
-
-    if ((this.player && this.player.state === "destroyed") || !this.player) {
-      this.createPlayer(this.props.id, playerReady);
-      return;
-    }
-
     this.props.dispatch(audioActions.pause());
-    this.player.play();
-
-    playerReady();
+    this.setState({ hide: false });
   };
 
   hide = () => {
-    this.player.pause();
     this.setState({ hide: true });
   };
 
@@ -153,21 +82,28 @@ class VideoPlayerWithoutData extends Component {
       };
     }
 
+    style = {
+      ...style,
+      ...{
+        padding: "56.25% 0 28px 0",
+        position: "relative",
+      },
+    };
+
     return style;
   };
 
   render() {
     return (
-      <div
-        className="wistia_responsive_padding"
-        style={{ padding: "56.25% 0 28px 0", position: "relative" }}
-      >
+      <div className="wistia_responsive_padding" style={this.styles()}>
         <div
           className="wistia_responsive_wrapper"
           style={{ height: "100%", left: "0", position: "absolute", top: "0", width: "100%" }}
         >
           <div
-            className={`wistia_embed wistia_async_${this.props.id} videoFoam=true`}
+            className={`wistia_embed wistia_async_${this.props.id} videoFoam=true autoplay=${
+              this.props.autoplay
+            }`}
             style={{ height: "100%", width: "100%" }}
           >
             &nbsp;
