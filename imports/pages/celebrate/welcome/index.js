@@ -6,11 +6,10 @@ import Video from "../../../components/@primitives/players/video";
 export const Welcome = () => (
   <div>
     <Meta title="Welcome" />
-    <style>{".oo-player-container { min-width: 0 !important }"}</style>
     <div className="push-big-sides@lap-and-up soft@lap-and-up soft-top@lap-and-up">
       <div className="soft soft-bottom soft-top@lap-and-up">
         <div>
-          <Video id={"90ZG00ZTE6k8sukbExReu6mnNTG9t8Be"} autoplay={false} />
+          <Video id={"nspbl277d4"} autoplay={false} />
         </div>
       </div>
     </div>

@@ -2,25 +2,55 @@
 
 exports[`renders with props 1`] = `
 <div
-  className="ooyala-player"
-  id="ooyala-player-2"
+  className="wistia_responsive_padding"
   style={
     Object {
       "color": "red",
+      "padding": "56.25% 0 28px 0",
+      "position": "relative",
     }
   }
-/>
+>
+  <div
+    className="wistia_responsive_wrapper"
+    style={
+      Object {
+        "height": "100%",
+        "left": "0",
+        "position": "absolute",
+        "top": "0",
+        "width": "100%",
+      }
+    }
+  >
+    <div
+      className="wistia_embed wistia_async_2 videoFoam=true autoplay=true"
+      style={
+        Object {
+          "height": "100%",
+          "width": "100%",
+        }
+      }
+    >
+       
+    </div>
+  </div>
+</div>
 `;
 
 exports[`styles has hidden styles 1`] = `
 Object {
   "color": "red",
   "display": "none",
+  "padding": "56.25% 0 28px 0",
+  "position": "relative",
 }
 `;
 
 exports[`styles has non hidden styles 1`] = `
 Object {
   "color": "red",
+  "padding": "56.25% 0 28px 0",
+  "position": "relative",
 }
 `;
