@@ -29,7 +29,7 @@ const fundData = [
 ];
 
 const generalFundAmountTotal = 40797786.0;
-const overflowOfferingTotal = "1180357.03";
+const overflowOfferingTotal = "1166856.00";
 
 /* eslint-disable max-len */
 export const Finances = () => {
@@ -141,9 +141,9 @@ export const Finances = () => {
           <Story
             image={"//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/stories/Kenya.jpg"}
             content={`
+              <p style="font-family: colfax-web">The Overflow Offering enabled our NewSpring family to share the love of Jesus with families in our cities, our state, and our world. The money was split between family-focused non-profits in each of our 14 communities, campus development in South Carolina, and <strong style="font-family: colfax-web">CARE for AIDS</strong> in Africa.</p>
               <p style="font-family: colfax-web"><strong style="font-family: colfax-web">CARE for AIDS</strong> benefits from our kingdom mentality.</p>
-              <p style="font-family: colfax-web">NewSpring made a new commitment in 2017 to give 10 percent of tithes to support community organizations, ministries, and churches. Following the pledge, that amount totaled <strong style="font-family: colfax-web">$1.6 million</strong>.</p>
-              <p style="font-family: colfax-web">CARE for AIDS got $75,000 — in addition to $288,000 given in the Overflow Offering — to provide medical care, job training, and the hope of the Gospel to families in Kenya and Tanzania dealing with HIV/AIDS. The combined total was the largest gift in the organization’s history.</p>
+              <p style="font-family: colfax-web">NewSpring gave <strong style="font-family: colfax-web">CARE for AIDS</strong> $362,500 in 2017 to provide medical care, job training and the hope of the Gospel to families in Kenya and Tanzania dealing with HIV/AIDS. The amount was largest gift in the organization’s history.</p>
               `}
             linkUrl={
               "https://newspring.cc/news/how-our-newspring-family-is-embracing-african-families-living-with-hiv-aids"
