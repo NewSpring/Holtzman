@@ -638,6 +638,45 @@ exports[`Next Steps renders a layout 1`] = `
     </div>
   </div>
   <div
+    className="background--light-tertiary text-center text-dark-primary soft-double-ends soft-sides"
+  >
+    <h3
+      className="push-top push-half-bottom"
+    >
+      Missions
+    </h3>
+    <div
+      className="push-top"
+    >
+      <Connect(FitTextWithoutData)
+        compressor={1.5}
+        maxFontSize={18}
+      >
+        <Currency
+          amount="3754228.00"
+          baseHeadingSize="1"
+          className="display-inline-block text-center soft-bottom text-dark-primary"
+          style={
+            Object {
+              "fontWeight": "900",
+            }
+          }
+        />
+      </Connect(FitTextWithoutData)>
+    </div>
+    <div>
+      <p
+        style={
+          Object {
+            "fontFamily": "colfax-web",
+          }
+        }
+      >
+        This total giving to kingdom causes does not include the money given to our Overflow Offering.
+      </p>
+    </div>
+  </div>
+  <div
     className="background--light-secondary soft-double@lap-and-up soft@handheld"
   >
     <div
@@ -670,7 +709,7 @@ exports[`Next Steps renders a layout 1`] = `
             maxFontSize={18}
           >
             <Currency
-              amount="1371578.00"
+              amount="2165581.00"
               baseHeadingSize="1"
               className="display-inline-block text-center soft-bottom"
               roundCurrency={true}
@@ -703,7 +742,7 @@ exports[`Next Steps renders a layout 1`] = `
             }
           }
         >
-          We are #ForSC! God has called us to make a difference in South Carolina. From community service days to home repairs to partnerships with non-profit organizations, money dedicated to #ForSC projects created opportunities to share Jesus’ love with our neighbors.
+          We are #ForSC! God has called us to make a difference in South Carolina, and your giving creates opportunities to share Jesus’ love with our neighbors. The amount includes financial assistance to community organizations, people in need, and Gauntlet assistance, among other things.
         </p>
       </div>
       <div
@@ -802,7 +841,7 @@ exports[`Next Steps renders a layout 1`] = `
             maxFontSize={18}
           >
             <Currency
-              amount="829264.00"
+              amount="719237.00"
               baseHeadingSize="1"
               className="display-inline-block text-center soft-bottom"
               roundCurrency={true}
@@ -840,7 +879,7 @@ exports[`Next Steps renders a layout 1`] = `
             }
           }
         >
-          We believe the local church is the hope of the world. Through partnerships with several organizations, NewSpring Missions teams traveled to several foreign countries. By investing in local churches sharing the Gospel, we know the impact continues long after teams return home. When we work together, we can see the Great Commission happening before our eyes.
+          We believe the local church is the hope of the world. Through partnerships, NewSpring Missions teams traveled to several foreign countries to carry out the Great Commission. By investing in local churches sharing the Gospel, we know the impact continues long after teams return home.
         </p>
       </div>
     </div>
@@ -940,7 +979,7 @@ exports[`Next Steps renders a layout 1`] = `
             maxFontSize={18}
           >
             <Currency
-              amount="1000000.00"
+              amount="869410.00"
               baseHeadingSize="1"
               className="display-inline-block text-center soft-bottom"
               roundCurrency={true}
@@ -961,8 +1000,8 @@ exports[`Next Steps renders a layout 1`] = `
           className="floating__item two-thirds@lap-and-up visuallyhidden@lap-and-up push-double-bottom push-double-top"
         >
           <img
-            alt="map of south carolina"
-            src="//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/aol.gif"
+            alt="digital missions"
+            src="//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Missions/digital.missions.1x1.jpg"
           />
         </div>
         <p
@@ -973,7 +1012,7 @@ exports[`Next Steps renders a layout 1`] = `
             }
           }
         >
-          We are #ForSC! God has called us to make a difference in South Carolina. From community service days to home repairs to partnerships with non-profit organizations, money dedicated to #ForSC projects created opportunities to share Jesus’ love with our neighbors.
+          Digital platforms offer many opportunities to leverage the work of the local church. NewSpring is a partner in the development of Rock, an open-source church management software, and a new mobile app for churches. Our KidSpring curriculum is made free for churches to use, too.
         </p>
       </div>
       <div
@@ -989,7 +1028,7 @@ exports[`Next Steps renders a layout 1`] = `
         >
           <img
             alt="map of south carolina"
-            src="//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/aol.gif"
+            src="//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Missions/digital.missions.1x1.jpg"
           />
         </div>
       </div>
