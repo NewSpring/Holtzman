@@ -122,9 +122,10 @@ const volunteerData = [
   { label: "Rock Hill", count: "134" },
   { label: "Spartanburg", count: "813" },
 ];
-const localMissionAmount = "1371578.00";
-const foreignMissionAmount = "829264.00";
-const digitalMissionAmount = "1000000.00";
+const totalMissionAmount = "3754228.00";
+const localMissionAmount = "2165581.00";
+const foreignMissionAmount = "719237.00";
+const digitalMissionAmount = "869410.00";
 
 /* eslint-disable max-len */
 export const NextSteps = () => (
@@ -434,6 +435,26 @@ export const NextSteps = () => (
         </div>
       </div>
     </div>
+    {/* Total Missions */}
+    <div className="background--light-tertiary text-center text-dark-primary soft-double-ends soft-sides">
+      <h3 className="push-top push-half-bottom">Missions</h3>
+      <div className="push-top">
+        <FitText compressor={1.5} maxFontSize={18}>
+          <Currency
+            amount={totalMissionAmount}
+            baseHeadingSize="1"
+            className="display-inline-block text-center soft-bottom text-dark-primary"
+            style={{ fontWeight: "900" }}
+          />
+        </FitText>
+      </div>
+      <div>
+        <p style={{ fontFamily: "colfax-web" }}>
+          This total giving to kingdom causes does not include the money given to our Overflow
+          Offering.
+        </p>
+      </div>
+    </div>
     {/* Local Missions */}
     <div className="background--light-secondary soft-double@lap-and-up soft@handheld">
       <div className="grid one-whole soft-top@handheld soft-double@lap-and-up floating">
@@ -471,10 +492,10 @@ export const NextSteps = () => (
             className="constrain-copy@lap-and-up push-double-bottom@handheld text-center@handheld"
             style={{ fontFamily: "colfax-web" }}
           >
-            We are #ForSC! God has called us to make a difference in South Carolina. From community
-            service days to home repairs to partnerships with non-profit organizations, money
-            dedicated to #ForSC projects created opportunities to share Jesus’ love with our
-            neighbors.
+            We are #ForSC! God has called us to make a difference in South Carolina, and your giving
+            creates opportunities to share Jesus’ love with our neighbors. The amount includes
+            financial assistance to community organizations, people in need, and Gauntlet
+            assistance, among other things.
           </p>
         </div>
         <div
@@ -560,11 +581,10 @@ export const NextSteps = () => (
             className="constrain-copy@lap-and-up text-center@handheld"
             style={{ fontFamily: "colfax-web" }}
           >
-            We believe the local church is the hope of the world. Through partnerships with several
-            organizations, NewSpring Missions teams traveled to several foreign countries. By
-            investing in local churches sharing the Gospel, we know the impact continues long after
-            teams return home. When we work together, we can see the Great Commission happening
-            before our eyes.
+            We believe the local church is the hope of the world. Through partnerships, NewSpring
+            Missions teams traveled to several foreign countries to carry out the Great Commission.
+            By investing in local churches sharing the Gospel, we know the impact continues long
+            after teams return home.
           </p>
         </div>
       </div>
@@ -636,18 +656,18 @@ export const NextSteps = () => (
           <h3 className="text-center@handheld">on digital missions.</h3>
           <div className="floating__item two-thirds@lap-and-up visuallyhidden@lap-and-up push-double-bottom push-double-top">
             <img
-              src="//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/aol.gif"
-              alt="map of south carolina"
+              src="//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Missions/digital.missions.1x1.jpg"
+              alt="digital missions"
             />
           </div>
           <p
             className="constrain-copy@lap-and-up push-double-bottom@handheld text-center@handheld"
             style={{ fontFamily: "colfax-web" }}
           >
-            We are #ForSC! God has called us to make a difference in South Carolina. From community
-            service days to home repairs to partnerships with non-profit organizations, money
-            dedicated to #ForSC projects created opportunities to share Jesus’ love with our
-            neighbors.
+            Digital platforms offer many opportunities to leverage the work of the local church.
+            NewSpring is a partner in the development of Rock, an open-source church management
+            software, and a new mobile app for churches. Our KidSpring curriculum is made free for
+            churches to use, too.
           </p>
         </div>
         <div
@@ -656,7 +676,7 @@ export const NextSteps = () => (
         >
           <div className="floating__item one-whole@lap-and-up two-thirds@handheld">
             <img
-              src="//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/aol.gif"
+              src="//s3.amazonaws.com/ns.assets/apollos/annual+report/2017/Missions/digital.missions.1x1.jpg"
               alt="map of south carolina"
             />
           </div>
