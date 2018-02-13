@@ -1,4 +1,3 @@
-
 // @flow
 // ignore this until we can remove it entirely
 // $FlowMeteor
@@ -56,7 +55,7 @@ const GET_NEWS_QUERY = gql`
         }
         content {
           body
-          ooyalaId
+          wistiaId
           tags
           images(sizes: ["large"]) {
             fileName
@@ -81,15 +80,12 @@ export default connect()(
   withNews(
     ReactMixin.decorate(Shareable)(
       ReactMixin.decorate(Headerable)(
-        canLike(
-          props => (props.news.loading ? null : props.news.content.id),
-        )(StoriesSingleWithoutData),
+        canLike(props => (props.news.loading ? null : props.news.content.id))(
+          StoriesSingleWithoutData,
+        ),
       ),
     ),
   ),
 );
 
-export {
-  StoriesSingleWithoutData,
-  GET_NEWS_QUERY,
-};
+export { StoriesSingleWithoutData, GET_NEWS_QUERY };

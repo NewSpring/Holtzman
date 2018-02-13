@@ -292,7 +292,7 @@ Object {
                               "kind": "Field",
                               "name": Object {
                                 "kind": "Name",
-                                "value": "ooyalaId",
+                                "value": "wistiaId",
                               },
                               "selectionSet": null,
                             },
@@ -415,7 +415,7 @@ Object {
             url
             size
           }
-          ooyalaId
+          wistiaId
           colors {
             value
             description
@@ -681,7 +681,7 @@ Object {
                               "kind": "Field",
                               "name": Object {
                                 "kind": "Name",
-                                "value": "ooyalaId",
+                                "value": "wistiaId",
                               },
                               "selectionSet": null,
                             },
@@ -754,7 +754,7 @@ Object {
           }
           description
           speaker
-          ooyalaId
+          wistiaId
         }
       }
     }
@@ -795,8 +795,8 @@ exports[`renders with props 1`] = `
 <div
   className="background--light-primary"
 >
-  <SingleVideoPlayer
-    ooyalaId="testid"
+  <Connect(VideoPlayerWithoutData)
+    autoplay={false}
   />
   <div
     className="soft-sides background--light-secondary text-dark-secondary"
