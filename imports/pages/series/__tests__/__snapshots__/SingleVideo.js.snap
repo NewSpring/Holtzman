@@ -795,7 +795,7 @@ exports[`renders with props 1`] = `
 <div
   className="background--light-primary"
 >
-  <Connect(VideoPlayerWithoutData)
+  <Connect(ScriptLoader)
     autoplay={false}
   />
   <div

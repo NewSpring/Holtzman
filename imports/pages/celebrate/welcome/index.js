@@ -9,7 +9,7 @@ export const Welcome = () => (
     <div className="push-big-sides@lap-and-up soft@lap-and-up soft-top@lap-and-up">
       <div className="soft soft-bottom soft-top@lap-and-up">
         <div>
-          <Video id={"nspbl277d4"} autoplay={false} />
+          <Video id={"4vv8a1jku0"} autoplay={false} />
         </div>
       </div>
     </div>
