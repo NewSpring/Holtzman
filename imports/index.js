@@ -2,7 +2,6 @@
 import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 
-import scriptLoader from "react-async-script-loader";
 import AudioPlayer from "./components/@primitives/players/audio";
 
 import { wrapper, createReduxStore } from "./data/store";
@@ -15,8 +14,6 @@ import Global from "./components/@primitives/layout/global";
 let App = null;
 
 if (process.env.NATIVE) {
-  const scripts = ["//fast.wistia.com/assets/external/E-v1.js"];
-  @scriptLoader(...scripts)
   @connect(state => ({ audio: state.audio, pathname: state.routing.location.pathname }))
   class AppGlobal extends Component {
     static propTypes = {

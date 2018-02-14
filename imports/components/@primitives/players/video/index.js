@@ -1,9 +1,12 @@
 import PropTypes from "prop-types";
 import { Component } from "react";
 import { connect } from "react-redux";
+import scriptLoader from "react-async-script-loader";
 
 import { audio as audioActions } from "../../../../data/store";
 
+const scripts = ["//fast.wistia.com/assets/external/E-v1.js"];
+@scriptLoader(...scripts)
 class VideoPlayerWithoutData extends Component {
   static propTypes = {
     id: PropTypes.string.isRequired,
