@@ -93,7 +93,7 @@ const STORIES_QUERY = gql`
           fileLabel
           url
         }
-        ooyalaId
+        wistiaId
       }
     }
   }
