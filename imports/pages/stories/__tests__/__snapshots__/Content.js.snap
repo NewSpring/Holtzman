@@ -105,7 +105,7 @@ exports[`StoriesContent renders with video 1`] = `
   <section
     className="background--light-primary hard-sides hard-top"
   >
-    <Connect(VideoPlayerWithoutData)
+    <Connect(ScriptLoader)
       id="test"
     />
     <div

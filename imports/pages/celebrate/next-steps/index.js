@@ -494,8 +494,7 @@ export const NextSteps = () => (
           >
             We are #ForSC! God has called us to make a difference in South Carolina, and your giving
             creates opportunities to share Jesus’ love with our neighbors. The amount includes
-            financial assistance to community organizations, people in need, and Gauntlet
-            assistance, among other things.
+            financial assistance to community organizations and people in need.
           </p>
         </div>
         <div
@@ -665,9 +664,10 @@ export const NextSteps = () => (
             style={{ fontFamily: "colfax-web" }}
           >
             Digital platforms offer many opportunities to leverage the work of the local church.
-            NewSpring is a partner in the development of Rock, an open-source church management
-            software, and a new mobile app for churches. Our KidSpring curriculum is made free for
-            churches to use, too.
+            NewSpring is a partner in the development of Rock, a free open-source church management
+            software, and a free, new mobile app for churches. In addition, we make our KidSpring
+            curriculum free for other churches to use, and in 2017, over 252,000 pieces of
+            children’s content were downloaded.
           </p>
         </div>
         <div

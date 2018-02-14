@@ -34,7 +34,7 @@ exports[`renders video if wistiaId 1`] = `
     }
     nav={true}
   >
-    <Connect(VideoPlayerWithoutData)
+    <Connect(ScriptLoader)
       autoplay={false}
       id="id"
     />
