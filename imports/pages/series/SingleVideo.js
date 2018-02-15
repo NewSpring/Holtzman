@@ -8,10 +8,7 @@ import { connect } from "react-redux";
 import gql from "graphql-tag";
 
 import Loading from "../../components/@primitives/UI/loading";
-import {
-  audio as audioActions,
-  header as headerActions,
-} from "../../data/store";
+import { audio as audioActions, header as headerActions } from "../../data/store";
 
 import Headerable from "../../deprecated/mixins/mixins.Header";
 import canLike from "../../components/@enhancers/likes/toggle";
@@ -22,18 +19,18 @@ import react from "../../util/react";
 import contentHelpers from "../../util/content";
 import collections from "../../util/collections";
 
-import SingleVideoPlayer from "../../components/@primitives/players/video/Player";
+// import SingleVideoPlayer from "../../components/@primitives/players/video/Player";
+import Video from "../../components/@primitives/players/video";
 import SeriesVideoList from "./VideoList";
 
 class SeriesSingleVideoWithoutData extends Component {
-
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     live: PropTypes.object.isRequired,
     currentSermon: PropTypes.object.isRequired,
     series: PropTypes.object.isRequired,
     params: PropTypes.object.isRequired,
-  }
+  };
 
   componentWillMount() {
     if (process.env.WEB) return;
@@ -64,21 +61,23 @@ class SeriesSingleVideoWithoutData extends Component {
     if (!live) options.subTitle = content.title;
 
     this.props.dispatch(headerActions.set(options));
-  }
+  };
 
   playAudio = e => {
     e.preventDefault();
     const currentSermon = this.props.currentSermon.content;
     const series = this.props.series.content;
-    this.props.dispatch(audioActions.setPlaying({
-      track: {
-        ...currentSermon.content.audio[0],
-        title: currentSermon.title,
-        artist: contentHelpers.speakers(currentSermon),
-      },
-      album: series,
-    }));
-  }
+    this.props.dispatch(
+      audioActions.setPlaying({
+        track: {
+          ...currentSermon.content.audio[0],
+          title: currentSermon.title,
+          artist: contentHelpers.speakers(currentSermon),
+        },
+        album: series,
+      }),
+    );
+  };
 
   render() {
     const sermonContent = this.props.currentSermon.content;
@@ -99,7 +98,7 @@ class SeriesSingleVideoWithoutData extends Component {
 
     return (
       <div className="background--light-primary">
-        <SingleVideoPlayer ooyalaId={currentSermon.content.ooyalaId} />
+        <Video id={currentSermon.content.wistiaId} autoplay={false} />
         {currentSermon.content.audio.length > 0 && (
           <div
             className="soft-sides background--light-secondary text-dark-secondary"
@@ -107,10 +106,7 @@ class SeriesSingleVideoWithoutData extends Component {
             onClick={this.playAudio}
           >
             <h7 style={{ verticalAlign: "middle" }}>Listen To Audio</h7>
-            <i
-              className="icon-category-audio float-right"
-              style={{ marginTop: "-2px" }}
-            />
+            <i className="icon-category-audio float-right" style={{ marginTop: "-2px" }} />
           </div>
         )}
         <div className="soft soft-double@palm-wide-and-up push-top">
@@ -147,7 +143,7 @@ const CURRENT_SERMON_QUERY = gql`
           }
           description
           speaker
-          ooyalaId
+          wistiaId
         }
       }
     }
@@ -184,7 +180,7 @@ const SERIES_QUERY = gql`
             url
             size
           }
-          ooyalaId
+          wistiaId
           colors {
             value
             description
@@ -218,8 +214,4 @@ export default connect(mapStateToProps)(
   ),
 );
 
-export {
-  SeriesSingleVideoWithoutData,
-  CURRENT_SERMON_QUERY,
-  SERIES_QUERY,
-};
+export { SeriesSingleVideoWithoutData, CURRENT_SERMON_QUERY, SERIES_QUERY };

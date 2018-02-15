@@ -45,7 +45,7 @@ platform :ios do
       type: "appstore",
       git_url: ENV['CERTIFICATES_REPO'],
       app_identifier: [ "cc.newspring.newspringapp", "com.subsplashstudio31.NewSpring-Church" ],
-      readonly: true,
+      # readonly: true,
       username: ENV["APPLE_ID"],
     )
 

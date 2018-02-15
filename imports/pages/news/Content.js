@@ -2,7 +2,7 @@
 import PropTypes from "prop-types";
 
 import RelatedContent from "../../components/content/related-content";
-import SingleVideoPlayer from "../../components/@primitives/players/video/Player";
+import Video from "../../components/@primitives/players/video";
 import backgrounds from "../../util/backgrounds";
 import react from "../../util/react";
 
@@ -34,14 +34,12 @@ const StoriesContent = props => {
             : null
         }
         id={story.id}
-        meta={[
-          { property: "og:type", content: "article" },
-        ]}
+        meta={[{ property: "og:type", content: "article" }]}
       />
       <section className="background--light-primary hard-sides hard-top">
         {(() => {
-          if (story.content.ooyalaId.length === 0) return <StoryImage story={story} />;
-          return <SingleVideoPlayer ooyalaId={story.content.ooyalaId} />;
+          if (story.content.wistiaId.length === 0) return <StoryImage story={story} />;
+          return <Video id={story.content.wistiaId} />;
         })()}
         <div className="soft soft-double-sides@palm-wide-and-up push-top">
           <h2 className="capitalize">{story.title}</h2>
@@ -60,6 +58,4 @@ StoriesContent.propTypes = {
 
 export default StoriesContent;
 
-export {
-  StoryImage,
-};
+export { StoryImage };

@@ -4,7 +4,6 @@ import { graphql } from "react-apollo";
 import { connect } from "react-redux";
 import gql from "graphql-tag";
 import { css } from "aphrodite";
-import { Link } from "react-router";
 import { Motion, spring } from "react-motion";
 
 import Styles from "./live-css";
@@ -56,47 +55,39 @@ class LiveWithoutData extends Component {
     if (!live) return;
 
     const isLive = live.live;
-    const embedCode = live.embedCode;
+    const isFuse = live.fuse;
 
-    if (isLive === nextProps.live.live && embedCode === nextProps.live.embedCode) {
+    if (isLive === nextProps.live.live) {
       return;
     }
 
     if (isLive) {
-      this.props.dispatch(liveActions.set({ isLive, embedCode }));
+      this.props.dispatch(liveActions.set({ isLive, isFuse }));
     } else {
       this.props.dispatch(liveActions.reset());
     }
   };
 
-  getLink() {
-    // const { embedCode } = this.props.live;
-
-    // // create beta link
-    // const shouldShowBetaLink = (
-    //   this.props.person
-    //   && !this.props.person.authLoading
-    //   && this.props.person.authorized
-    // );
-    // return shouldShowBetaLink ? "/wowza" : `/video/${embedCode}`;
-    // make wowza default for everyone watching live
-    return "/wowza";
+  getLink(fuse: Boolean) {
+    let liveLink = "https://live.newspring.cc";
+    if (fuse) {
+      liveLink = "https://live.newspringfuse.com";
+    }
+    return liveLink;
   }
 
   render() {
-    const { live, show, embedCode } = this.props.live;
-    if (!live || !show || !embedCode) return null;
+    const { live, fuse, show } = this.props.live;
+    if (!live || !show) return null;
 
-    // TODO load different embed code for beta users
-
-    const link = this.getLink();
+    const link = this.getLink(fuse);
 
     return (
       <Motion defaultStyle={{ height: 0 }} style={{ height: spring(40) }}>
         {interpolatingStyle => (
-          <Link to={link} className={this.getClasses()} style={interpolatingStyle}>
+          <a href={link} className={this.getClasses()} style={interpolatingStyle}>
             <h7 className={this.getTextClasses()}>NewSpring Church Live, Watch Now!</h7>
-          </Link>
+          </a>
         )}
       </Motion>
     );
@@ -107,7 +98,7 @@ const LIVE_QUERY = gql`
   query IsLive {
     live {
       live
-      embedCode
+      fuse
     }
   }
 `;
