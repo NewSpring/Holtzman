@@ -241,8 +241,8 @@ export const Finances = () => {
         </p>
         <br />
         <p style={{ fontFamily: "colfax-web" }} className="constrain-copy text-center push-bottom">
-          We&#39;ll update this section in May after the audit is complete. If you have any
-          questions not answered here, please email us at finance@newspring.cc.
+          We&#39;ll update this section after the audit is complete. If you have any questions not
+          answered here, please email us at finance@newspring.cc.
         </p>
         {
           // TODO: Update once 2017 Audit is Complete
