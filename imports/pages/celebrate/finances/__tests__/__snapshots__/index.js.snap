@@ -571,7 +571,7 @@ exports[`Finances renders a layout 1`] = `
         }
       }
     >
-      We'll update this section in May after the audit is complete. If you have any questions not answered here, please email us at finance@newspring.cc.
+      We'll update this section after the audit is complete. If you have any questions not answered here, please email us at finance@newspring.cc.
     </p>
   </div>
   <div
