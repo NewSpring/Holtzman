@@ -1,15 +1,10 @@
 /* eslint-disable react/prefer-stateless-function */
-import Meteor from "meteor/meteor";
 import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 
-import scriptLoader from "react-async-script-loader";
 import AudioPlayer from "./components/@primitives/players/audio";
 
-import {
-  wrapper,
-  createReduxStore,
-} from "./data/store";
+import { wrapper, createReduxStore } from "./data/store";
 
 import { GraphQL } from "./data/graphql";
 
@@ -19,27 +14,13 @@ import Global from "./components/@primitives/layout/global";
 let App = null;
 
 if (process.env.NATIVE) {
-  // sync load ooyala scripts
-  // XXX can we move this to just the video component?
-  const scripts = [
-    "//player.ooyala.com/static/v4/stable/4.6.9/core.min.js",
-    "//player.ooyala.com/static/v4/stable/4.6.9/video-plugin/main_html5.min.js",
-    "//player.ooyala.com/static/v4/stable/4.6.9/skin-plugin/html5-skin.js",
-  ];
-  if (Meteor.isCordova) {
-    scripts.push(
-      "//player.ooyala.com/static/v4/stable/4.6.9/video-plugin/bit_wrapper.min.js",
-    );
-  }
-  @scriptLoader(...scripts)
   @connect(state => ({ audio: state.audio, pathname: state.routing.location.pathname }))
   class AppGlobal extends Component {
-
     static propTypes = {
       pathname: PropTypes.string.isRequired,
       audio: PropTypes.object.isRequired,
       children: PropTypes.object.isRequired,
-    }
+    };
 
     render() {
       if (this.props.pathname === "/welcome") {

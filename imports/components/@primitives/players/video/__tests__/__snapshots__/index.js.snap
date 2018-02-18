@@ -1,14 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders with props 1`] = `
-<div
-  className="ooyala-player"
-  id="ooyala-player-2"
+<VideoPlayerWithoutData
+  audioState="default"
+  autoplay={true}
+  dispatch={[Function]}
+  hide={false}
+  id="2"
+  isScriptLoadSucceed={false}
+  isScriptLoaded={false}
+  onScriptLoaded={[Function]}
   style={
     Object {
       "color": "red",
     }
   }
+  success={[Function]}
 />
 `;
 
@@ -16,11 +23,15 @@ exports[`styles has hidden styles 1`] = `
 Object {
   "color": "red",
   "display": "none",
+  "padding": "56.25% 0 28px 0",
+  "position": "relative",
 }
 `;
 
 exports[`styles has non hidden styles 1`] = `
 Object {
   "color": "red",
+  "padding": "56.25% 0 28px 0",
+  "position": "relative",
 }
 `;

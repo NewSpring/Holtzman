@@ -1,4 +1,3 @@
-
 $use-push: true !default;
 
 @if $use-push == true {
@@ -219,5 +218,16 @@ $use-push: true !default;
   @include namespace(push-double-sides) {
     margin-right: $base-spacing-unit * 2;
     margin-left: $base-spacing-unit * 2;
+  }
+  //
+  // @name .push-big-sides
+  // @class .push-big-sides
+  // @description force left and right margin to be 20em
+  //
+  // @namespaced true
+  //
+  @include namespace(push-big-sides) {
+    margin-left: 20em;
+    margin-right: 20em;
   }
 }

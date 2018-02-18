@@ -197,7 +197,7 @@ Object {
                               "kind": "Field",
                               "name": Object {
                                 "kind": "Name",
-                                "value": "ooyalaId",
+                                "value": "wistiaId",
                               },
                               "selectionSet": null,
                             },
@@ -389,7 +389,7 @@ Object {
         }
         content {
           body
-          ooyalaId
+          wistiaId
           tags
           images(sizes: [\\"large\\"]) {
             fileName
@@ -436,7 +436,7 @@ exports[`renders an on demand video if present, and not live 1`] = `
     }
     nav={true}
   >
-    <Connect(VideoPlayerWithoutData)
+    <Connect(ScriptLoader)
       autoplay="false"
       id="owqoitpuq52059akplsat0520"
     />
@@ -511,7 +511,7 @@ exports[`renders the live video when live 1`] = `
     }
     nav={true}
   >
-    <Connect(VideoPlayerWithoutData)
+    <Connect(ScriptLoader)
       autoplay="false"
       id="1234LIVETEST4321"
     />
@@ -574,7 +574,7 @@ exports[`renders with props 1`] = `
     }
     nav={true}
   >
-    <Connect(VideoPlayerWithoutData)
+    <Connect(ScriptLoader)
       autoplay="false"
       id="owqoitpuq52059akplsat0520"
     />
